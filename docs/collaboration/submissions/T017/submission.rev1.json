@@ -1,0 +1,19 @@
+{
+  "task_id": "T017",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "政策版本对比闭环完成：独立合成比较语料（同组两版本含修改/新增/删除/未变 + 异组文档）；确定性对齐（第X条标识优先→顺序文本匹配→相似度修改配对，新增一条不致后续错位）；groups/compare API（拒绝同文档与跨组，两侧元数据+四类计数+块级条目绑定原文/跨度/身份/链接）；/compare 页面（版本选择/交换/文字标签/只看变化与显示全部/原文展开与双侧跳转/复制差异摘要/失败不冒充旧结果）；四页导航互通；手工期望与程序结果对照全部一致。文字差异不判断适用性，日期较新≠现行有效。零外部模型调用。",
+  "external_model_calls": 0,
+  "verification": {
+    "pytest": {"total": 42, "passed": 42, "note": "test_comparison 10 + test_search_api 工厂回归 32"},
+    "js_syntax": "5 files passed",
+    "js_behavior": {"comparison": "5 scenarios passed", "search": "14", "ask": "13", "procedures": "9"},
+    "api_demo": {"calls": 5, "counts": {"added": 1, "deleted": 1, "modified": 1, "unchanged": 3}},
+    "manual_vs_program": "comparison-expectations.md 6 行全部一致"
+  },
+  "browser_check": "无浏览器工具，未执行真实浏览器闭环；demo-notes.md 提供 Astra 可运行入口与逐步核验表；stub 不冒充真实浏览器证据",
+  "algorithm_limits": ["条款重编号→删除+新增", "条款移动→删除+新增", "重复标识仅首个配对"],
+  "not_claimed": ["版本适用性判断", "现行有效认定", "真实学校语料效果", "真实浏览器验证"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

@@ -1,0 +1,23 @@
+{
+  "task_id": "T028",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "tinyagent_integration_kind": "reference",
+  "summary": "T028 论文系统设计与答辩交付包完成：docs/delivery/ 六件（README 索引与完成状态/用户材料清单、system-design 含 Mermaid 架构与三时序图+API-代码映射+数据存储生命周期、thesis-outline 八章结构与可改写段落+摘要草稿+真实资料五步路线、evidence-matrix 四类证据分层矩阵+未验证清单+T027-R3 勘误声明、defense-script 8—10 分钟脚本+10 条答辩问答、windows-runbook 真实 --help 核对的可复制命令+状态口径+故障定位）。架构/接口/数据流按实际代码核对（无虚构数据库/账户/部署）；合成实验/模拟/历史真实调用/未验证四类严格分开；T027 v2.1 最终指标入表；T025 partial 三处均不包装为成功；TinyAgent=reference、RAGFlow=调研参考更正旧状态。README 增交付入口一节。核查：6 文件/0 断链/15 代码路径/参数与 --help 一致/指标与 T027-R3 机器值逐位一致/三条文档→实现抽查命中/T027-R3 勘误落实。",
+  "verification": {
+    "links_and_paths": "交付 6 文件存在；README 相对链接 0 断链；15 条关键代码路径存在",
+    "params": "serve-corpus(10 参数)/demo-campus/evaluation run/live-smoke-planner/register-corpus 与真实 --help 逐一相符",
+    "metrics": "aggregate.json 机器值与文档主表逐位一致（BM25 0.950/0.950/0.925、Dense 0.900/0.900/0.705833、Hybrid 0.950/0.950/0.891667）",
+    "mapping_spotcheck": "问答（api/ask.py + qa/deepseek.py）、办事（procedures/service.py build_draft/_check_citation/saveable）、规划（agent/workflow.py _finish_verdict + tools.py forbidden）三条命中",
+    "scope_note": "仅文档核查与抽查；未重跑全量/UI/ASR/检索实验；未执行真实模型冒烟；零外部调用、无下载/安装"
+  },
+  "deliverables": ["docs/delivery/README.md", "docs/delivery/system-design.md", "docs/delivery/thesis-outline.md", "docs/delivery/evidence-matrix.md", "docs/delivery/defense-script.md", "docs/delivery/windows-runbook.md", "report.md", "verification.md", "submission.json", "changed-files.json"],
+  "corrections_declared": ["T027-R3：Dense rev2→v2.1 为 R 升、H 不变（历史表述勘误）", "T027-R3：医院证明或学院书面说明为析取/备选表述（历史“合取口径”系笔误）", "标注为执行模型辅助（非独立教师/盲评）"],
+  "browser_note": "无浏览器能力；defense-script 为预期操作单未本轮实操，可见结果引用的历史浏览器证据已注明所属任务（T016—T023 等），不冒充当前新测",
+  "pending_user_materials": ["真实四川农业大学公开文档（原件+来源 URL+适用信息）", "真实题集人工标注", "答辩安排（时长/形式）", "学校论文格式要求", "（可选）生成/规划质量评测授权"],
+  "not_claimed": ["真实校园效果（资料未提供）", "planner_live_verified=true（T025 partial 口径保持）", "统计显著性/问卷调查/学校审核结论（未杜撰）", "TinyAgent/RAGFlow 运行时集成（reference/调研参考）"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改；未改产品代码、语料、gold、docs/01—04、历史实验原始文件"
+}

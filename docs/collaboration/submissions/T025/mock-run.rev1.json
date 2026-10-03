@@ -1,0 +1,618 @@
+{
+  "generated_at": "2026-09-28T12:16:00",
+  "mode": "mock",
+  "marking": "mock 联调（本地模拟服务，非真实冒烟）",
+  "input_snapshot": {
+    "question": "查找缓考依据并整理办理草稿",
+    "procedure_id": "proc-apply-defer",
+    "filters": {
+      "campus": null,
+      "student_type": null,
+      "admission_year": 2023,
+      "as_of_date": null
+    },
+    "source": "T025 任务固定合成题（编译进脚本，不接受改写）"
+  },
+  "corpus_identity": {
+    "manifest_path": "F:\\Collage Paper\\step2_code\\backend\\examples\\parse-corpus\\manifest.json",
+    "documents": [
+      {
+        "document_id": "syn-parse-txt-001",
+        "title": "合成测试教务管理办法（正文解析示例）",
+        "sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+        "is_synthetic": true
+      },
+      {
+        "document_id": "syn-parse-docx-001",
+        "title": "合成测试课程成绩登记表（正文解析示例）",
+        "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+        "is_synthetic": true
+      }
+    ],
+    "manifest_sha256": "b60255f3ac8776d1343674d72a9f180c7be508a232f8a6e5e8b7fc48d491ec3b",
+    "document_count": 2,
+    "all_synthetic": true,
+    "template": {
+      "path": "F:\\Collage Paper\\step2_code\\backend\\examples\\procedures\\procedures.json",
+      "sha256": "70d35d7875f98e92df33b62bfe180f812ea8bd0f4697525f0d1d645f53f4ca11",
+      "procedure_id": "proc-apply-defer",
+      "template_version": "1.0",
+      "is_synthetic": true
+    }
+  },
+  "config": {
+    "base_url": "http://127.0.0.1:37713",
+    "model": "mock（loopback）",
+    "max_tokens": 300,
+    "call_timeout_s": 20.0,
+    "deadline_s": 30.0,
+    "max_planning_http": 4,
+    "auto_retries": 0,
+    "answer_generator": "未启用（本脚本不构造任何答案生成器）",
+    "key_present": true,
+    "key_note": "密钥仅经现有环境变量加载；值不记录、不打印"
+  },
+  "preflight": [
+    {
+      "check": "配置：loopback 显式注入（测试专用）",
+      "expected": "http://127.0.0.1[:port] 或 localhost",
+      "observed": "http://127.0.0.1:37713",
+      "pass": true
+    },
+    {
+      "check": "配置：max_tokens",
+      "expected": "300",
+      "observed": "300",
+      "pass": true
+    },
+    {
+      "check": "配置：预算",
+      "expected": "≤4 次规划 HTTP、零重试、单次 20s/总 30s",
+      "observed": "max_http=4, auto_retries=0",
+      "pass": true
+    },
+    {
+      "check": "语料：解析成功且非空",
+      "expected": "valid 且 ≥1 文档",
+      "observed": "valid=True，文档 2",
+      "pass": true
+    },
+    {
+      "check": "语料：全部 is_synthetic=true",
+      "expected": "全部 true",
+      "observed": "全部 2 篇 is_synthetic=True",
+      "pass": true
+    },
+    {
+      "check": "模板：含固定事项",
+      "expected": "proc-apply-defer",
+      "observed": "proc-apply-defer",
+      "pass": true
+    },
+    {
+      "check": "题目：固定合成题",
+      "expected": "查找缓考依据并整理办理草稿 / proc-apply-defer / 年级 2023",
+      "observed": "查找缓考依据并整理办理草稿 / proc-apply-defer / 年级 2023",
+      "pass": true
+    },
+    {
+      "check": "密钥：mock 显式假密钥",
+      "expected": "不使用真实密钥",
+      "observed": "mock 假密钥（标注）",
+      "pass": true
+    }
+  ],
+  "budget": {
+    "max_plan_rounds": 4,
+    "max_tool_calls": 6,
+    "planning_http_per_round": 1,
+    "auto_retries": 0,
+    "max_tokens_per_call": 300
+  },
+  "run": {
+    "run_id": "c8622066f82d",
+    "workflow_kind": "deepseek_planner",
+    "workflow_label": "DeepSeek 规划（mock-model，结构化动作；未联调验证）",
+    "status": "completed",
+    "stop_reason": "finished",
+    "message": "查找依据与办理草稿均已生成。完成仅指生成可核对结果，不代表学校审批、办事已办妥或待办已保存。",
+    "input_needed": [],
+    "snapshot": {
+      "procedure_id": "proc-apply-defer",
+      "query": "查找缓考依据并整理办理草稿",
+      "filters": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": 2023,
+        "as_of_date": null
+      }
+    },
+    "steps": [],
+    "events": [
+      {
+        "round": 1,
+        "kind": "plan_decision",
+        "tool": "search_policy",
+        "status": "ok",
+        "error": null,
+        "summary": "动作 call",
+        "observation": null,
+        "audit": {
+          "provider": "deepseek",
+          "model": "mock-planner（模拟，非真实 DeepSeek）",
+          "request_id": "mock-1",
+          "usage": {
+            "prompt_tokens": 1,
+            "completion_tokens": 1,
+            "total_tokens": 2
+          },
+          "latency_ms": 0,
+          "max_tokens": 300,
+          "finish_reason": "stop"
+        },
+        "action": {
+          "type": "call",
+          "tool": "search_policy",
+          "args": {
+            "query": "缓考"
+          }
+        }
+      },
+      {
+        "round": 1,
+        "kind": "tool_call",
+        "tool": "search_policy",
+        "status": "ok",
+        "error": null,
+        "summary": "命中 1 条",
+        "observation": {
+          "round": 1,
+          "tool": "search_policy",
+          "status": "ok",
+          "hit_count": 1,
+          "top_evidence": [
+            {
+              "document_id": "syn-parse-txt-001",
+              "block_id": "9df6bfbd98df733e",
+              "excerpt": "第二条 学生因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请。缓考申请须经所在学院批准，报教务处备案后方可生效。"
+            }
+          ]
+        },
+        "audit": null
+      },
+      {
+        "round": 2,
+        "kind": "plan_decision",
+        "tool": "build_checklist_draft",
+        "status": "ok",
+        "error": null,
+        "summary": "动作 call",
+        "observation": null,
+        "audit": {
+          "provider": "deepseek",
+          "model": "mock-planner（模拟，非真实 DeepSeek）",
+          "request_id": "mock-2",
+          "usage": {
+            "prompt_tokens": 1,
+            "completion_tokens": 1,
+            "total_tokens": 2
+          },
+          "latency_ms": 0,
+          "max_tokens": 300,
+          "finish_reason": "stop"
+        },
+        "action": {
+          "type": "call",
+          "tool": "build_checklist_draft",
+          "args": {}
+        }
+      },
+      {
+        "round": 2,
+        "kind": "tool_call",
+        "tool": "build_checklist_draft",
+        "status": "ok",
+        "error": null,
+        "summary": "草稿 saveable=True，步骤 4 个",
+        "observation": {
+          "round": 2,
+          "tool": "build_checklist_draft",
+          "status": "ok",
+          "procedure_id": "proc-apply-defer",
+          "saveable": true,
+          "status_text": "ready",
+          "issues": [],
+          "pending_items": [
+            "考试前提出缓考申请：申请入口与表格获取方式",
+            "经所在学院批准：学院审批部门联系方式",
+            "报教务处备案生效：备案办理地点与工作时间"
+          ]
+        },
+        "audit": null
+      },
+      {
+        "round": 3,
+        "kind": "plan_decision",
+        "tool": null,
+        "status": "ok",
+        "error": null,
+        "summary": "动作 finish",
+        "observation": null,
+        "audit": {
+          "provider": "deepseek",
+          "model": "mock-planner（模拟，非真实 DeepSeek）",
+          "request_id": "mock-3",
+          "usage": {
+            "prompt_tokens": 1,
+            "completion_tokens": 1,
+            "total_tokens": 2
+          },
+          "latency_ms": 0,
+          "max_tokens": 300,
+          "finish_reason": "stop"
+        },
+        "action": {
+          "type": "finish",
+          "tool": null,
+          "args": null
+        }
+      },
+      {
+        "round": 3,
+        "kind": "finish",
+        "tool": null,
+        "status": "ok",
+        "error": null,
+        "summary": "规划器结束语（仅记录，不作结论）：【模拟】全部办理工作已完成",
+        "observation": null,
+        "audit": null
+      }
+    ],
+    "results": {
+      "search": {
+        "query": "缓考",
+        "mode": "bm25",
+        "top_k": 5,
+        "hit_count": 1,
+        "hits": [
+          {
+            "rank": 1,
+            "score": 2.139886826484734,
+            "chunk": {
+              "chunk_id": "1808dc49035170f32fe995017a4e13afa744ea421b1cb286b118412ba63d1c30",
+              "document_id": "syn-parse-txt-001",
+              "block_id": "9df6bfbd98df733e",
+              "ordinal": 3,
+              "kind": "paragraph",
+              "text": "第二条 学生因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请。缓考申请须经所在学院批准，报教务处备案后方可生效。",
+              "char_start": 0,
+              "char_end": 63,
+              "locator": {
+                "type": "lines",
+                "line_start": 5,
+                "line_end": 5
+              },
+              "cells": null,
+              "metadata": {
+                "document_id": "syn-parse-txt-001",
+                "policy_group_id": "syn-parse-group",
+                "title": "合成测试教务管理办法（正文解析示例）",
+                "source_url": "https://example.org/policy/parse/txt",
+                "source_site": "合成测试示例站",
+                "local_path": "sample.txt",
+                "sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "version_label": "解析示例 v1",
+                "published_at": "2025-01-15",
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "is_synthetic": true
+              },
+              "parser_version": "1.0",
+              "chunker_version": "1.0",
+              "strategy": "block_window_v1",
+              "max_chars": 500,
+              "warnings": []
+            },
+            "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e",
+            "matched_terms": [
+              {
+                "term": "缓考",
+                "tf": 2,
+                "df": 2,
+                "idf": 1.9740810260220096,
+                "contribution": 2.139886826484734
+              }
+            ],
+            "bm25_rank": null,
+            "dense_rank": null,
+            "bm25_score": null,
+            "dense_score": null
+          }
+        ],
+        "filter_summary": {
+          "active": true,
+          "document_total": 2,
+          "allowed_count": 1,
+          "excluded_counts": {
+            "scope_unknown": 0,
+            "scope_mismatch": 1,
+            "date_unknown_from": 0,
+            "not_yet_effective": 0,
+            "expired": 0
+          },
+          "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。",
+          "notes": []
+        }
+      },
+      "draft": {
+        "procedure_id": "proc-apply-defer",
+        "title": "缓考申请（合成演示）",
+        "summary": "因病或其他特殊原因不能参加期末考试时的缓考申请流程（合成语料整理）。",
+        "template_version": "1.0",
+        "is_synthetic": true,
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": 2023,
+          "as_of_date": null
+        },
+        "filter_summary": {
+          "active": true,
+          "allowed_count": 1,
+          "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。"
+        },
+        "steps": [
+          {
+            "step_id": "d1",
+            "title": "考试前提出缓考申请",
+            "detail": "因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请（原文所载为相对期限“考试前”，未给出具体日期）。",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "9df6bfbd98df733e",
+                "char_start": 0,
+                "char_end": 38,
+                "quote": "第二条 学生因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请。",
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e",
+                "document_title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "申请入口与表格获取方式"
+            ],
+            "status": "ok",
+            "fallback": null
+          },
+          {
+            "step_id": "d2",
+            "title": "经所在学院批准",
+            "detail": "缓考申请须经所在学院批准。",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "9df6bfbd98df733e",
+                "char_start": 38,
+                "char_end": 50,
+                "quote": "缓考申请须经所在学院批准",
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e",
+                "document_title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "学院审批部门联系方式"
+            ],
+            "status": "ok",
+            "fallback": null
+          },
+          {
+            "step_id": "d3",
+            "title": "报教务处备案生效",
+            "detail": "报教务处备案后方可生效。",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "9df6bfbd98df733e",
+                "char_start": 51,
+                "char_end": 63,
+                "quote": "报教务处备案后方可生效。",
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e",
+                "document_title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "备案办理地点与工作时间"
+            ],
+            "status": "ok",
+            "fallback": null
+          },
+          {
+            "step_id": "d4",
+            "title": "确认材料与办理时点",
+            "detail": "材料与时点以适用资料所载为准；未覆盖部分请向办理部门核实。",
+            "citations": [
+              {
+                "required": false,
+                "usable": false,
+                "status": "source_excluded",
+                "document_id": "syn-parse-docx-001",
+                "block_id": "0a7595fda827d87e",
+                "char_start": 0,
+                "char_end": 19,
+                "quote": null,
+                "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+                "preview_url": "/preview#syn-parse-docx-001/0a7595fda827d87e",
+                "document_title": "合成测试课程成绩登记表（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": "来源不符合当前筛选条件（不放宽筛选）"
+              }
+            ],
+            "unspecified": [
+              "其他可能要求的材料"
+            ],
+            "status": "degraded",
+            "fallback": "资料未说明，请向办理部门核实。"
+          }
+        ],
+        "saveable": true,
+        "status": "ready",
+        "issues": [],
+        "disclaimer": "合成演示清单，不代表学校受理或资格认证；政策步骤来自原文引用，缺失信息不编造。"
+      }
+    },
+    "plan_rounds_used": 3,
+    "tool_calls_used": 2,
+    "planner_http_attempts": 3,
+    "budget": {
+      "max_plan_rounds": 4,
+      "max_tool_calls": 6,
+      "planning_http_per_round": 1,
+      "auto_retries": 0,
+      "deadline_s": 30.0
+    },
+    "cancellable_note": "工具为本地同步计算，规划调用可能是远程 HTTP；均不支持中途取消。停止/超时只终止后续调度，正在执行的调用会运行完毕（不谎称已取消底层计算）。",
+    "planner": {
+      "kind": "deepseek",
+      "label": "DeepSeek 规划（mock-model，结构化动作；未联调验证）"
+    },
+    "planner_summary": "【模拟】全部办理工作已完成",
+    "http_observed_at_send": 3,
+    "http_send_urls": [
+      "http://127.0.0.1:37713/chat/completions",
+      "http://127.0.0.1:37713/chat/completions",
+      "http://127.0.0.1:37713/chat/completions"
+    ]
+  },
+  "checklist": [
+    {
+      "item": "是否实际搜索",
+      "expected": "search_policy 至少一次成功并返回命中",
+      "observed": "search_policy 成功 1 次，命中 1 条",
+      "pass": true
+    },
+    {
+      "item": "草稿是否存在且事项/条件正确",
+      "expected": "草稿存在、procedure_id=proc-apply-defer、条件=年级 2023",
+      "observed": "草稿 存在，procedure_id=proc-apply-defer，快照条件={\"campus\": null, \"student_type\": null, \"admission_year\": 2023, \"as_of_date\": null}",
+      "pass": true
+    },
+    {
+      "item": "引用是否与直接 service 相同",
+      "expected": "草稿引用与本地 build_draft 直接结果逐条一致",
+      "observed": "草稿引用 4 条，与直接 build_draft 一致",
+      "pass": true
+    },
+    {
+      "item": "是否需人工核实",
+      "expected": "saveable=false/待核实项如实标注（不隐藏）",
+      "observed": "saveable=True，未明确事项 4 项，未通过引用 1 条——需人工核实（已如实标注）",
+      "pass": true
+    },
+    {
+      "item": "是否有失败/提前 finish",
+      "expected": "无失败动作、无缺产物提前结束（status=completed）",
+      "observed": "status=completed，stop_reason=finished，失败/被拒事件 0 条",
+      "pass": true
+    },
+    {
+      "item": "是否零自动保存",
+      "expected": "零自动保存（不写待办/localStorage/任何存储）",
+      "observed": "本脚本只写出 --out 运行记录，不写其他任何存储",
+      "pass": true
+    }
+  ],
+  "exit_ok": true,
+  "notes": [
+    "B 阶段真实调用尚未授权；--live 不因本脚本存在而获得授权。",
+    "mock 模式仅为 loopback 显式联调，不静默作为 live 的降级分支。",
+    "计数在 HTTP 发送处观察（CountingHTTPClient.sent），不按 plan_rounds 推算。"
+  ]
+}

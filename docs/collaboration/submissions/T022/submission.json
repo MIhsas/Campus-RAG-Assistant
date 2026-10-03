@@ -1,0 +1,20 @@
+{
+  "task_id": "T022",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "summary": "统一运行入口与配置状态完成：serve-corpus.py 单入口（指定语料 + 显式可选 embedding/ASR/生成器/模板/规则，全部默认关闭、无隐式合成装载；缺配置明确降级不静默；生成器密钥仅本地环境变量、启动不探测）；中性首页实时聚合能力状态（语料成功/错误与真实/合成/混合、检索模式、生成器身份与配置、ASR、模板/规则、可比较版本），已配置与已验证分开表述；合成演示问题仅存于 demo-campus 演示首页；启动/状态/摘录零生成请求（计数桩实测），显式生成才调用。T021-R1 三整理完成：登记命令 PowerShell 引号、is_synthetic 严格布尔、跨度独立对照。",
+  "verification": {
+    "tests": {"total": 25, "passed": 25, "note": "run_entry 9 + pdf 11 + demo_campus 5"},
+    "config_combos": {"combos": 6, "all_match": true, "file": "config-combos.md"},
+    "js_syntax": "8 files passed",
+    "zero_generator_calls": "启动/状态/摘录 0；显式生成 1（计数桩）",
+    "deps": "无变化，无需 pip check"
+  },
+  "t021r1_fixes": ["登记启动命令路径引号（含空格可复制）", "is_synthetic 仅 JSON 布尔（拒绝字符串/数字/null，原值保留）", "跨度测试改 API evidence 与解析块独立对照"],
+  "browser_check": "无浏览器工具，浏览器主路径留待 Astra（demo-notes 检查表 a—f）；stub 不冒充浏览器证据",
+  "deliverables_extra": ["config-combos.md（配置组合→预期/实测能力表 + 可复制 Windows 命令）", "config-combos.json（原始记录）"],
+  "not_claimed": ["真实语料效果", "真实 DeepSeek 生成链路本轮验证", "已配置=已验证"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "8b7007b4fe51c6166ba11bbc4818acbdcac14a7c2a4c8bad84e5bdae212a2a5c",
+    "size": 30729
+  },
+  {
+    "path": "scripts\\live-smoke-deepseek.py",
+    "sha256": "3600451646aa4b4b0fbc03faead05aae484b5f8adcb7e755134d3bed2ea27a67",
+    "size": 21221
+  },
+  {
+    "path": "tests\\test_live_smoke_script.py",
+    "sha256": "f597e27b8beccf143e5a28dbd1135209a8007028730af64568230515ad07abbd",
+    "size": 12371
+  },
+  {
+    "path": "src\\campus_assistant\\qa\\deepseek.py",
+    "sha256": "77ab3defc83ff166bb8ee8162d2d58a02bd9fa5ead413c52f8c4b24e02a69e6a",
+    "size": 10749
+  }
+]

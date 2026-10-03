@@ -1,0 +1,499 @@
+{
+  "demo": "T012 extractive /ask API demo (local corpus, BM25, no generation model)",
+  "corpus": "examples/parse-corpus",
+  "notes": [
+    "合成语料，不代表四川农业大学真实政策。",
+    "answer_mode=extractive 只整理原文摘录，status=evidence_only、answer=null。",
+    "generated 在未注入 AnswerProvider 时返回 503/GENERATOR_NOT_CONFIGURED，摘录不会伪装成生成答案。",
+    "本演示未调用任何外部或付费模型。"
+  ],
+  "ask_status": {
+    "answer_mode_default": "extractive",
+    "answer_modes_available": [
+      "extractive"
+    ],
+    "generator_configured": false,
+    "corpus_status": "ready"
+  },
+  "scenarios": [
+    {
+      "scenario": "status",
+      "request": null,
+      "status_code": 200,
+      "response": {
+        "corpus_status": "ready",
+        "answer_mode_default": "extractive",
+        "answer_modes_available": [
+          "extractive"
+        ],
+        "generator_configured": false,
+        "generator_identity": null,
+        "available_modes": [
+          "bm25"
+        ],
+        "filter_options": {
+          "campus": [
+            "成都校区"
+          ],
+          "student_type": [
+            "全日制本科"
+          ],
+          "admission_year": [
+            2023,
+            2024
+          ]
+        },
+        "request_id": "41fafa47-c142-4fd5-a814-aefdf7e87fe3"
+      }
+    },
+    {
+      "scenario": "extractive-no-filters",
+      "request": {
+        "query": "缓考申请需要什么材料",
+        "top_k": 5,
+        "mode": "bm25",
+        "answer_mode": "extractive"
+      },
+      "status_code": 200,
+      "response": {
+        "query": "缓考申请需要什么材料",
+        "query_tokens": [
+          "缓考",
+          "考申",
+          "申请",
+          "请需",
+          "需要",
+          "要什",
+          "什么",
+          "么材",
+          "材料"
+        ],
+        "mode": "bm25",
+        "answer_mode": "extractive",
+        "status": "evidence_only",
+        "answer": null,
+        "answer_error": null,
+        "disclaimer": "以下是相关原文摘录，尚未生成答案，需核对适用条件。",
+        "evidence": [
+          {
+            "evidence_id": "E1",
+            "text": "缓考申请\t考试前3个工作日\t需医院证明",
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "chunk_id": "8726b8b809c996bce2710ba1126a63ac59a0556f084dad2f44d0e6cd02f82924",
+            "char_start": 0,
+            "char_end": 19,
+            "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+            "title": "合成测试课程成绩登记表（正文解析示例）",
+            "source_url": "https://example.org/policy/parse/docx",
+            "version_label": "解析示例 v1",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2024
+              ]
+            },
+            "published_at": "2025-02-01",
+            "effective_from": "2025-03-01",
+            "effective_to": null,
+            "is_synthetic": true,
+            "preview_url": "/preview#syn-parse-docx-001/0a7595fda827d87e"
+          },
+          {
+            "evidence_id": "E2",
+            "text": "第二条 学生因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请。缓考申请须经所在学院批准，报教务处备案后方可生效。",
+            "document_id": "syn-parse-txt-001",
+            "block_id": "9df6bfbd98df733e",
+            "chunk_id": "1808dc49035170f32fe995017a4e13afa744ea421b1cb286b118412ba63d1c30",
+            "char_start": 0,
+            "char_end": 63,
+            "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+            "title": "合成测试教务管理办法（正文解析示例）",
+            "source_url": "https://example.org/policy/parse/txt",
+            "version_label": "解析示例 v1",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2023,
+                2024
+              ]
+            },
+            "published_at": "2025-01-15",
+            "effective_from": "2025-03-01",
+            "effective_to": null,
+            "is_synthetic": true,
+            "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+          },
+          {
+            "evidence_id": "E3",
+            "text": "以上成绩仅供参考。实际成绩以教务系统公布为准。如有疑问，请在成绩公布后10个工作日内向所在学院提出复核申请。",
+            "document_id": "syn-parse-docx-001",
+            "block_id": "f28ee3e4c5372f7c",
+            "chunk_id": "28ef3f3e2bb91687eca70eaec02989d98239ad0df9edc09c5f0f19d342a7a9d8",
+            "char_start": 0,
+            "char_end": 54,
+            "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+            "title": "合成测试课程成绩登记表（正文解析示例）",
+            "source_url": "https://example.org/policy/parse/docx",
+            "version_label": "解析示例 v1",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2024
+              ]
+            },
+            "published_at": "2025-02-01",
+            "effective_from": "2025-03-01",
+            "effective_to": null,
+            "is_synthetic": true,
+            "preview_url": "/preview#syn-parse-docx-001/f28ee3e4c5372f7c"
+          },
+          {
+            "evidence_id": "E4",
+            "text": "第三条 课程考核不合格的学生，可以在下一学期开学后两周内申请补考。补考成绩最高记为60分。补考仍不合格的，应当重新学习该课程。",
+            "document_id": "syn-parse-txt-001",
+            "block_id": "009121d9f2695116",
+            "chunk_id": "8571753b3134a37487ebaaa49d3c5b4d8fc881b9c49bbd48e94ad413eb2ecf28",
+            "char_start": 0,
+            "char_end": 63,
+            "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+            "title": "合成测试教务管理办法（正文解析示例）",
+            "source_url": "https://example.org/policy/parse/txt",
+            "version_label": "解析示例 v1",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2023,
+                2024
+              ]
+            },
+            "published_at": "2025-01-15",
+            "effective_from": "2025-03-01",
+            "effective_to": null,
+            "is_synthetic": true,
+            "preview_url": "/preview#syn-parse-txt-001/009121d9f2695116"
+          },
+          {
+            "evidence_id": "E5",
+            "text": "第五条 学生转专业应当在入学后第一学年末提出申请。转专业条件包括：\n1. 在读期间无违纪记录；\n2. 第一学年加权平均成绩排名在本专业前30%；\n3. 通过接收学院组织的考核。",
+            "document_id": "syn-parse-txt-001",
+            "block_id": "ce15747a6cdf597a",
+            "chunk_id": "da719a8c1b4ec06b9652eb831378cd62c9c36c3ffc42d1d5424e831c58d084f7",
+            "char_start": 0,
+            "char_end": 88,
+            "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+            "title": "合成测试教务管理办法（正文解析示例）",
+            "source_url": "https://example.org/policy/parse/txt",
+            "version_label": "解析示例 v1",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2023,
+                2024
+              ]
+            },
+            "published_at": "2025-01-15",
+            "effective_from": "2025-03-01",
+            "effective_to": null,
+            "is_synthetic": true,
+            "preview_url": "/preview#syn-parse-txt-001/ce15747a6cdf597a"
+          }
+        ],
+        "evidence_state": "ok",
+        "empty_message": null,
+        "insufficient_reason": null,
+        "budget": {
+          "max_items": 5,
+          "max_total_chars": 6000,
+          "included_items": 5,
+          "included_chars": 287,
+          "skipped_items": 0,
+          "duplicate_chunks": 0
+        },
+        "filters": null,
+        "filter_summary": {
+          "active": false,
+          "document_total": 2,
+          "allowed_count": 2,
+          "excluded_counts": {
+            "scope_unknown": 0,
+            "scope_mismatch": 0,
+            "date_unknown_from": 0,
+            "not_yet_effective": 0,
+            "expired": 0
+          },
+          "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。",
+          "notes": []
+        },
+        "request_id": "fbafa12b-b507-4048-a2ca-2bc3e77bf0f0"
+      }
+    },
+    {
+      "scenario": "extractive-filtered-2023",
+      "request": {
+        "query": "缓考申请需要什么材料",
+        "top_k": 5,
+        "mode": "bm25",
+        "answer_mode": "extractive",
+        "filters": {
+          "campus": "成都校区",
+          "admission_year": 2023,
+          "as_of_date": "2026-09-22"
+        }
+      },
+      "status_code": 200,
+      "response": {
+        "query": "缓考申请需要什么材料",
+        "query_tokens": [
+          "缓考",
+          "考申",
+          "申请",
+          "请需",
+          "需要",
+          "要什",
+          "什么",
+          "么材",
+          "材料"
+        ],
+        "mode": "bm25",
+        "answer_mode": "extractive",
+        "status": "evidence_only",
+        "answer": null,
+        "answer_error": null,
+        "disclaimer": "以下是相关原文摘录，尚未生成答案，需核对适用条件。",
+        "evidence": [
+          {
+            "evidence_id": "E1",
+            "text": "第二条 学生因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请。缓考申请须经所在学院批准，报教务处备案后方可生效。",
+            "document_id": "syn-parse-txt-001",
+            "block_id": "9df6bfbd98df733e",
+            "chunk_id": "1808dc49035170f32fe995017a4e13afa744ea421b1cb286b118412ba63d1c30",
+            "char_start": 0,
+            "char_end": 63,
+            "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+            "title": "合成测试教务管理办法（正文解析示例）",
+            "source_url": "https://example.org/policy/parse/txt",
+            "version_label": "解析示例 v1",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2023,
+                2024
+              ]
+            },
+            "published_at": "2025-01-15",
+            "effective_from": "2025-03-01",
+            "effective_to": null,
+            "is_synthetic": true,
+            "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+          },
+          {
+            "evidence_id": "E2",
+            "text": "第三条 课程考核不合格的学生，可以在下一学期开学后两周内申请补考。补考成绩最高记为60分。补考仍不合格的，应当重新学习该课程。",
+            "document_id": "syn-parse-txt-001",
+            "block_id": "009121d9f2695116",
+            "chunk_id": "8571753b3134a37487ebaaa49d3c5b4d8fc881b9c49bbd48e94ad413eb2ecf28",
+            "char_start": 0,
+            "char_end": 63,
+            "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+            "title": "合成测试教务管理办法（正文解析示例）",
+            "source_url": "https://example.org/policy/parse/txt",
+            "version_label": "解析示例 v1",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2023,
+                2024
+              ]
+            },
+            "published_at": "2025-01-15",
+            "effective_from": "2025-03-01",
+            "effective_to": null,
+            "is_synthetic": true,
+            "preview_url": "/preview#syn-parse-txt-001/009121d9f2695116"
+          },
+          {
+            "evidence_id": "E3",
+            "text": "第五条 学生转专业应当在入学后第一学年末提出申请。转专业条件包括：\n1. 在读期间无违纪记录；\n2. 第一学年加权平均成绩排名在本专业前30%；\n3. 通过接收学院组织的考核。",
+            "document_id": "syn-parse-txt-001",
+            "block_id": "ce15747a6cdf597a",
+            "chunk_id": "da719a8c1b4ec06b9652eb831378cd62c9c36c3ffc42d1d5424e831c58d084f7",
+            "char_start": 0,
+            "char_end": 88,
+            "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+            "title": "合成测试教务管理办法（正文解析示例）",
+            "source_url": "https://example.org/policy/parse/txt",
+            "version_label": "解析示例 v1",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2023,
+                2024
+              ]
+            },
+            "published_at": "2025-01-15",
+            "effective_from": "2025-03-01",
+            "effective_to": null,
+            "is_synthetic": true,
+            "preview_url": "/preview#syn-parse-txt-001/ce15747a6cdf597a"
+          }
+        ],
+        "evidence_state": "ok",
+        "empty_message": null,
+        "insufficient_reason": null,
+        "budget": {
+          "max_items": 5,
+          "max_total_chars": 6000,
+          "included_items": 3,
+          "included_chars": 214,
+          "skipped_items": 0,
+          "duplicate_chunks": 0
+        },
+        "filters": {
+          "campus": "成都校区",
+          "student_type": null,
+          "admission_year": 2023,
+          "as_of_date": "2026-09-22"
+        },
+        "filter_summary": {
+          "active": true,
+          "document_total": 2,
+          "allowed_count": 1,
+          "excluded_counts": {
+            "scope_unknown": 0,
+            "scope_mismatch": 1,
+            "date_unknown_from": 0,
+            "not_yet_effective": 0,
+            "expired": 0
+          },
+          "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。",
+          "notes": [
+            "1 份适用文档未标注截止日期（effective_to=null），不证明永久有效。"
+          ]
+        },
+        "request_id": "ac296c7c-602e-4d5f-9a8e-2ab801d2fa08"
+      }
+    },
+    {
+      "scenario": "extractive-no-admissible-docs",
+      "request": {
+        "query": "缓考申请需要什么材料",
+        "top_k": 5,
+        "mode": "bm25",
+        "answer_mode": "extractive",
+        "filters": {
+          "admission_year": 1900
+        }
+      },
+      "status_code": 200,
+      "response": {
+        "query": "缓考申请需要什么材料",
+        "query_tokens": [
+          "缓考",
+          "考申",
+          "申请",
+          "请需",
+          "需要",
+          "要什",
+          "什么",
+          "么材",
+          "材料"
+        ],
+        "mode": "bm25",
+        "answer_mode": "extractive",
+        "status": "evidence_only",
+        "answer": null,
+        "answer_error": null,
+        "disclaimer": "以下是相关原文摘录，尚未生成答案，需核对适用条件。",
+        "evidence": [],
+        "evidence_state": "no_admissible_docs",
+        "empty_message": "没有满足所选条件的资料，无法整理依据；可清除条件后重试。",
+        "insufficient_reason": null,
+        "budget": {
+          "max_items": 5,
+          "max_total_chars": 6000,
+          "included_items": 0,
+          "included_chars": 0,
+          "skipped_items": 0,
+          "duplicate_chunks": 0
+        },
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": 1900,
+          "as_of_date": null
+        },
+        "filter_summary": {
+          "active": true,
+          "document_total": 2,
+          "allowed_count": 0,
+          "excluded_counts": {
+            "scope_unknown": 0,
+            "scope_mismatch": 2,
+            "date_unknown_from": 0,
+            "not_yet_effective": 0,
+            "expired": 0
+          },
+          "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。",
+          "notes": []
+        },
+        "request_id": "2a8c7524-4b3a-41f5-a3b7-6da818bd8f7c"
+      }
+    },
+    {
+      "scenario": "generated-not-configured",
+      "request": {
+        "query": "缓考申请需要什么材料",
+        "top_k": 5,
+        "mode": "bm25",
+        "answer_mode": "generated"
+      },
+      "status_code": 503,
+      "response": {
+        "code": "GENERATOR_NOT_CONFIGURED",
+        "message": "自动作答未配置；可使用原文摘录（answer_mode=extractive）。运行时模型 API/预算需由用户之后提供。",
+        "request_id": "2c3b8425-b857-473e-bfe8-5a4b6637392d"
+      }
+    }
+  ]
+}

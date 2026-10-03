@@ -1,0 +1,49 @@
+{
+  "note": "T025 后端变更清单（相对 step2_code/backend），submission_revision=2（T025-R1）。sha256/size 为交付时实际文件；r1_touched 标注返工单触碰项。",
+  "new": [
+    {
+      "path": "scripts/live-smoke-planner.py",
+      "sha256": "379ef476e2f55e104e0dd892d4f606f83bb8fc9d8368e08ab7b1251d6d1e2089",
+      "size": 24896,
+      "r1_touched": true
+    },
+    {
+      "path": "scripts/smoke-mock-sample.py",
+      "sha256": "0c6cb8d043cf39f2603ea1c55ad53745ed3820d6a67484728ff769913881fceb",
+      "size": 2238,
+      "r1_touched": false
+    },
+    {
+      "path": "tests/test_live_smoke_planner.py",
+      "sha256": "f56a50e8098f458b351af049609d40df4df1a4502b2b6e3ac447642c738a86b5",
+      "size": 11714,
+      "r1_touched": true
+    }
+  ],
+  "modified": [
+    {
+      "path": "README.md",
+      "sha256": "72da23e445db10e6d01fd76c232c57fbc3b084363e1491e1d96a6882be770d69",
+      "size": 52008,
+      "r1_touched": false
+    },
+    {
+      "path": "src/campus_assistant/agent/deepseek_planner.py",
+      "sha256": "ec0ed102e5176a87c80ded636b35e49728e613cf3881419edcf097600e1836a7",
+      "size": 15887,
+      "r1_touched": true
+    },
+    {
+      "path": "src/campus_assistant/agent/workflow.py",
+      "sha256": "0ab82121b5b0a0c517c82470d205588fc78db4f788f5d5e875b5412b8a6be2c7",
+      "size": 21697,
+      "r1_touched": true
+    },
+    {
+      "path": "tests/test_deepseek_planner.py",
+      "sha256": "1780d8f4a485b47a8f4fc897aaba267a5474a53c899b6f02d3cf6310112e598b",
+      "size": 23896,
+      "r1_touched": true
+    }
+  ]
+}

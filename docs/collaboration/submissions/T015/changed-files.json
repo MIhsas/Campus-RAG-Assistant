@@ -1,0 +1,27 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "524ab06603fca4f56f1d8b29c799396bc68beae881bcc0d6c335911bf39d3156",
+    "size": 32440
+  },
+  {
+    "path": "env.example",
+    "sha256": "410c17347c99c960d3f6d005beb5fe0b908bc93ab041ec8bec815d09e023cd6d",
+    "size": 852
+  },
+  {
+    "path": "scripts\\check-ask-behavior.cjs",
+    "sha256": "175c0242763b564f891ac630172e456c3910b6ba0b63eed804284d071b040420",
+    "size": 21590
+  },
+  {
+    "path": "scripts\\demo-ask-page-mock.py",
+    "sha256": "8ef6e059bae9d1539395c3211967602b2612d966d978957ac1e8868475ff66a8",
+    "size": 3258
+  },
+  {
+    "path": "src\\campus_assistant\\static\\ask.html",
+    "sha256": "7b2fe720ff6079f5c0966f9e2ce147977ca067393a3081ac672217f1583b7271",
+    "size": 31995
+  }
+]

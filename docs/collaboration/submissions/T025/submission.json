@@ -1,0 +1,24 @@
+{
+  "task_id": "T025",
+  "task_revision": "v1",
+  "submission_revision": 3,
+  "responds_to": "T025-R2（B 执行交接）",
+  "status": "ready_for_review",
+  "stage": "B_executed",
+  "external_model_calls": 4,
+  "planner_live_verified": false,
+  "planner_live_verified_note": "留待 Astra 依据真实证据认定；不以退出码或自测改 true",
+  "tinyagent_integration_kind": "reference",
+  "summary": "B 阶段一次真实冒烟已按 T025-R2 固定范围执行（用户授权：固定合成题 查找缓考依据并整理办理草稿/proc-apply-defer/年级 2023、官方 https://api.deepseek.com、deepseek-flash、≤4 次 HTTP、max_tokens=300、零重试）。实跑一次，exit 1：status=partial/stop_reason=failed_actions——4 轮结构化动作全部真实往返（request_id/usage/finish_reason/latency 完整审计），发送处计数 4=循环计数 4=服务端应答，零重试恰达预算上限；第 2 轮提示含第 1 轮真实观察（命中 3 条）；草稿 saveable=True 4 步骤、4 条引用与直接 build_draft 逐条一致、快照条件（年级 2023）未被第 1 轮模型自造 filters 改写（范围锁业务前拒绝）。partial 判定因期间有 1 条被拒动作（T024-R1 产物判定：产物齐但不得伪装全部成功），失败历史原样保留。未发额外探测、未启用答案生成器、未自动修复重跑、密钥零落盘。逐条核对记录见 live-review-notes.md（程序化核对与人工核对分开）。",
+  "verification": {
+    "live_run": "live-run.json：mode=live、official endpoint、deepseek-flash、4 轮审计齐备、http 4=4=4、exit 1（partial/failed_actions 如实）",
+    "checklist_programmatic": "5 ✓ / 1 ✗（第 5 行失败如实记录）：搜索命中 3、草稿身份条件正确、引用对照一致、人工核实需求已标注、失败行如实失败、零自动保存（静态）",
+    "human_review_pending": ["草稿 4 步骤语义人工核对", "4 项未明确事项确认", "第 1 轮模型改写 filters 行为后续关注（已被范围锁拦截）"],
+    "counts": {"planning_http_sent": 4, "planning_http_loop": 4, "tool_calls": 2, "plan_rounds": 4, "auto_retries": 0, "tokens_total_per_round": [666, 706, 978, 1124]},
+    "scope_note": "B 仅此一次授权执行完毕；失败未重跑；未发探测请求；A/rev2 证据全保留"
+  },
+  "deliverables": ["live-run.json（真实运行记录）", "live-review-notes.md（逐条核对记录）", "dry-run.json", "mock-run.json", "checklist-template.md", "fix-report.md", "report.md", "verification.md", "changed-files.json", "历史归档 *.rev1.*/*.rev2.*"],
+  "run_outcome": "partial/failed_actions（exit 1）：必要产物（检索+草稿）均已生成且条件未放宽，但期间 1 条工具被拒（模型自造 filters），按服务端判定不得标 completed；未补工具凑成功",
+  "not_claimed": ["planner_live_verified=true（留待 Astra 认定）", "全部核对通过（第 5 行如实失败）", "人工核对已通过（程序化摘要 ≠ 人工结论）", "真实学校政策/办事效果（合成语料）", "自动重跑后的更好结果（未重跑）"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改；B 未改任何后端代码；密钥零落盘，未读取/打印 .env 或完整环境变量"
+}

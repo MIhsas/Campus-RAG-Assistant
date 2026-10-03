@@ -1,0 +1,1021 @@
+{
+  "demo": "T016 procedures local API demo (synthetic template explicitly enabled)",
+  "evidence_kind": "本地 API 演示（合成模板+合成语料），零外部模型调用；不代表学校现行办事指南",
+  "external_model_calls": 0,
+  "corpus": "examples/parse-corpus",
+  "procedures_template": "examples/procedures/procedures.json",
+  "calls": [
+    {
+      "name": "list",
+      "method": "GET",
+      "url": "/api/v1/procedures",
+      "request": null,
+      "status_code": 200,
+      "response": {
+        "configured": true,
+        "is_synthetic": true,
+        "procedures": [
+          {
+            "procedure_id": "proc-apply-defer",
+            "title": "缓考申请（合成演示）",
+            "summary": "因病或其他特殊原因不能参加期末考试时的缓考申请流程（合成语料整理）。",
+            "template_version": "1.0",
+            "is_synthetic": true,
+            "step_count": 4
+          },
+          {
+            "procedure_id": "proc-review-grade",
+            "title": "成绩复核（合成演示）",
+            "summary": "对课程成绩有疑问时的复核流程（合成语料整理）。",
+            "template_version": "1.0",
+            "is_synthetic": true,
+            "step_count": 3
+          }
+        ],
+        "request_id": "b79d100e-8abe-4f5b-83fd-504fc3155747"
+      }
+    },
+    {
+      "name": "draft-defer-2023",
+      "method": "POST",
+      "url": "/api/v1/procedures/proc-apply-defer/draft",
+      "request": {
+        "filters": {
+          "admission_year": 2023
+        }
+      },
+      "status_code": 200,
+      "response": {
+        "procedure_id": "proc-apply-defer",
+        "title": "缓考申请（合成演示）",
+        "summary": "因病或其他特殊原因不能参加期末考试时的缓考申请流程（合成语料整理）。",
+        "template_version": "1.0",
+        "is_synthetic": true,
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": 2023,
+          "as_of_date": null
+        },
+        "filter_summary": {
+          "active": true,
+          "allowed_count": 1,
+          "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。"
+        },
+        "steps": [
+          {
+            "step_id": "d1",
+            "title": "考试前提出缓考申请",
+            "detail": "因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请（原文所载为相对期限“考试前”，未给出具体日期）。",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "9df6bfbd98df733e",
+                "char_start": 0,
+                "char_end": 38,
+                "quote": "第二条 学生因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请。",
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e",
+                "document_title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "申请入口与表格获取方式"
+            ],
+            "status": "ok",
+            "fallback": null
+          },
+          {
+            "step_id": "d2",
+            "title": "经所在学院批准",
+            "detail": "缓考申请须经所在学院批准。",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "9df6bfbd98df733e",
+                "char_start": 38,
+                "char_end": 50,
+                "quote": "缓考申请须经所在学院批准",
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e",
+                "document_title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "学院审批部门联系方式"
+            ],
+            "status": "ok",
+            "fallback": null
+          },
+          {
+            "step_id": "d3",
+            "title": "报教务处备案生效",
+            "detail": "报教务处备案后方可生效。",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "9df6bfbd98df733e",
+                "char_start": 51,
+                "char_end": 63,
+                "quote": "报教务处备案后方可生效。",
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e",
+                "document_title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "备案办理地点与工作时间"
+            ],
+            "status": "ok",
+            "fallback": null
+          },
+          {
+            "step_id": "d4",
+            "title": "确认材料与办理时点",
+            "detail": "材料与时点以适用资料所载为准；未覆盖部分请向办理部门核实。",
+            "citations": [
+              {
+                "required": false,
+                "usable": false,
+                "status": "source_excluded",
+                "document_id": "syn-parse-docx-001",
+                "block_id": "0a7595fda827d87e",
+                "char_start": 0,
+                "char_end": 19,
+                "quote": null,
+                "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+                "preview_url": "/preview#syn-parse-docx-001/0a7595fda827d87e",
+                "document_title": "合成测试课程成绩登记表（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": "来源不符合当前筛选条件（不放宽筛选）"
+              }
+            ],
+            "unspecified": [
+              "其他可能要求的材料"
+            ],
+            "status": "degraded",
+            "fallback": "资料未说明，请向办理部门核实。"
+          }
+        ],
+        "saveable": true,
+        "status": "ready",
+        "issues": [],
+        "disclaimer": "合成演示清单，不代表学校受理或资格认证；政策步骤来自原文引用，缺失信息不编造。"
+      }
+    },
+    {
+      "name": "draft-defer-2024",
+      "method": "POST",
+      "url": "/api/v1/procedures/proc-apply-defer/draft",
+      "request": {
+        "filters": {
+          "admission_year": 2024
+        }
+      },
+      "status_code": 200,
+      "response": {
+        "procedure_id": "proc-apply-defer",
+        "title": "缓考申请（合成演示）",
+        "summary": "因病或其他特殊原因不能参加期末考试时的缓考申请流程（合成语料整理）。",
+        "template_version": "1.0",
+        "is_synthetic": true,
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": 2024,
+          "as_of_date": null
+        },
+        "filter_summary": {
+          "active": true,
+          "allowed_count": 2,
+          "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。"
+        },
+        "steps": [
+          {
+            "step_id": "d1",
+            "title": "考试前提出缓考申请",
+            "detail": "因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请（原文所载为相对期限“考试前”，未给出具体日期）。",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "9df6bfbd98df733e",
+                "char_start": 0,
+                "char_end": 38,
+                "quote": "第二条 学生因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请。",
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e",
+                "document_title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "申请入口与表格获取方式"
+            ],
+            "status": "ok",
+            "fallback": null
+          },
+          {
+            "step_id": "d2",
+            "title": "经所在学院批准",
+            "detail": "缓考申请须经所在学院批准。",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "9df6bfbd98df733e",
+                "char_start": 38,
+                "char_end": 50,
+                "quote": "缓考申请须经所在学院批准",
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e",
+                "document_title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "学院审批部门联系方式"
+            ],
+            "status": "ok",
+            "fallback": null
+          },
+          {
+            "step_id": "d3",
+            "title": "报教务处备案生效",
+            "detail": "报教务处备案后方可生效。",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "9df6bfbd98df733e",
+                "char_start": 51,
+                "char_end": 63,
+                "quote": "报教务处备案后方可生效。",
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e",
+                "document_title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "备案办理地点与工作时间"
+            ],
+            "status": "ok",
+            "fallback": null
+          },
+          {
+            "step_id": "d4",
+            "title": "确认材料与办理时点",
+            "detail": "材料与时点以适用资料所载为准；未覆盖部分请向办理部门核实。",
+            "citations": [
+              {
+                "required": false,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-docx-001",
+                "block_id": "0a7595fda827d87e",
+                "char_start": 0,
+                "char_end": 19,
+                "quote": "缓考申请\t考试前3个工作日\t需医院证明",
+                "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+                "preview_url": "/preview#syn-parse-docx-001/0a7595fda827d87e",
+                "document_title": "合成测试课程成绩登记表（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "其他可能要求的材料"
+            ],
+            "status": "ok",
+            "fallback": null
+          }
+        ],
+        "saveable": true,
+        "status": "ready",
+        "issues": [],
+        "disclaimer": "合成演示清单，不代表学校受理或资格认证；政策步骤来自原文引用，缺失信息不编造。"
+      }
+    },
+    {
+      "name": "draft-grade-2024",
+      "method": "POST",
+      "url": "/api/v1/procedures/proc-review-grade/draft",
+      "request": {
+        "filters": {
+          "admission_year": 2024
+        }
+      },
+      "status_code": 200,
+      "response": {
+        "procedure_id": "proc-review-grade",
+        "title": "成绩复核（合成演示）",
+        "summary": "对课程成绩有疑问时的复核流程（合成语料整理）。",
+        "template_version": "1.0",
+        "is_synthetic": true,
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": 2024,
+          "as_of_date": null
+        },
+        "filter_summary": {
+          "active": true,
+          "allowed_count": 2,
+          "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。"
+        },
+        "steps": [
+          {
+            "step_id": "g1",
+            "title": "了解成绩构成",
+            "detail": "每门课程成绩由平时成绩和期末考试成绩综合评定，平时成绩占比不超过40%。",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "542187ebbac5a4b2",
+                "char_start": 0,
+                "char_end": 71,
+                "quote": "第一条 学生应当按照教学计划参加课程学习，完成规定的学时和学分。每门课程的成绩由平时成绩和期末考试成绩综合评定，其中平时成绩占比不超过40%。",
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "preview_url": "/preview#syn-parse-txt-001/542187ebbac5a4b2",
+                "document_title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "成绩查询入口"
+            ],
+            "status": "ok",
+            "fallback": null
+          },
+          {
+            "step_id": "g2",
+            "title": "在期限内向所在学院提出复核申请",
+            "detail": "实际成绩以教务系统公布为准；如有疑问，请在成绩公布后10个工作日内向所在学院提出复核申请（相对期限，未给出具体日期）。",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-docx-001",
+                "block_id": "f28ee3e4c5372f7c",
+                "char_start": 23,
+                "char_end": 54,
+                "quote": "如有疑问，请在成绩公布后10个工作日内向所在学院提出复核申请。",
+                "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+                "preview_url": "/preview#syn-parse-docx-001/f28ee3e4c5372f7c",
+                "document_title": "合成测试课程成绩登记表（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "复核申请表与提交方式"
+            ],
+            "status": "ok",
+            "fallback": null
+          },
+          {
+            "step_id": "g3",
+            "title": "知悉复核范围与期限",
+            "detail": "复核期限为公布后10个工作日，范围仅查分不查卷。",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-docx-001",
+                "block_id": "b304f406a03da01b",
+                "char_start": 0,
+                "char_end": 21,
+                "quote": "成绩复核\t公布后10个工作日\t仅查分不查卷",
+                "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+                "preview_url": "/preview#syn-parse-docx-001/b304f406a03da01b",
+                "document_title": "合成测试课程成绩登记表（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "复核结果反馈方式"
+            ],
+            "status": "ok",
+            "fallback": null
+          }
+        ],
+        "saveable": true,
+        "status": "ready",
+        "issues": [],
+        "disclaimer": "合成演示清单，不代表学校受理或资格认证；政策步骤来自原文引用，缺失信息不编造。"
+      }
+    },
+    {
+      "name": "draft-grade-2023",
+      "method": "POST",
+      "url": "/api/v1/procedures/proc-review-grade/draft",
+      "request": {
+        "filters": {
+          "admission_year": 2023
+        }
+      },
+      "status_code": 200,
+      "response": {
+        "procedure_id": "proc-review-grade",
+        "title": "成绩复核（合成演示）",
+        "summary": "对课程成绩有疑问时的复核流程（合成语料整理）。",
+        "template_version": "1.0",
+        "is_synthetic": true,
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": 2023,
+          "as_of_date": null
+        },
+        "filter_summary": {
+          "active": true,
+          "allowed_count": 1,
+          "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。"
+        },
+        "steps": [
+          {
+            "step_id": "g1",
+            "title": "了解成绩构成",
+            "detail": "每门课程成绩由平时成绩和期末考试成绩综合评定，平时成绩占比不超过40%。",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "542187ebbac5a4b2",
+                "char_start": 0,
+                "char_end": 71,
+                "quote": "第一条 学生应当按照教学计划参加课程学习，完成规定的学时和学分。每门课程的成绩由平时成绩和期末考试成绩综合评定，其中平时成绩占比不超过40%。",
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "preview_url": "/preview#syn-parse-txt-001/542187ebbac5a4b2",
+                "document_title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "成绩查询入口"
+            ],
+            "status": "ok",
+            "fallback": null
+          },
+          {
+            "step_id": "g2",
+            "title": "在期限内向所在学院提出复核申请",
+            "detail": null,
+            "citations": [
+              {
+                "required": true,
+                "usable": false,
+                "status": "source_excluded",
+                "document_id": "syn-parse-docx-001",
+                "block_id": "f28ee3e4c5372f7c",
+                "char_start": 23,
+                "char_end": 54,
+                "quote": null,
+                "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+                "preview_url": "/preview#syn-parse-docx-001/f28ee3e4c5372f7c",
+                "document_title": "合成测试课程成绩登记表（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": "来源不符合当前筛选条件（不放宽筛选）"
+              }
+            ],
+            "unspecified": [
+              "复核申请表与提交方式"
+            ],
+            "status": "failed",
+            "fallback": "资料未说明，请向办理部门核实。"
+          },
+          {
+            "step_id": "g3",
+            "title": "知悉复核范围与期限",
+            "detail": null,
+            "citations": [
+              {
+                "required": true,
+                "usable": false,
+                "status": "source_excluded",
+                "document_id": "syn-parse-docx-001",
+                "block_id": "b304f406a03da01b",
+                "char_start": 0,
+                "char_end": 21,
+                "quote": null,
+                "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+                "preview_url": "/preview#syn-parse-docx-001/b304f406a03da01b",
+                "document_title": "合成测试课程成绩登记表（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": "来源不符合当前筛选条件（不放宽筛选）"
+              }
+            ],
+            "unspecified": [
+              "复核结果反馈方式"
+            ],
+            "status": "failed",
+            "fallback": "资料未说明，请向办理部门核实。"
+          }
+        ],
+        "saveable": false,
+        "status": "insufficient",
+        "issues": [
+          "步骤「在期限内向所在学院提出复核申请」：来源不符合当前筛选条件（不放宽筛选）（syn-parse-docx-001/f28ee3e4c5372f7c）",
+          "步骤「知悉复核范围与期限」：来源不符合当前筛选条件（不放宽筛选）（syn-parse-docx-001/b304f406a03da01b）"
+        ],
+        "disclaimer": "合成演示清单，不代表学校受理或资格认证；政策步骤来自原文引用，缺失信息不编造。"
+      }
+    },
+    {
+      "name": "verify-unchanged",
+      "method": "POST",
+      "url": "/api/v1/procedures/proc-review-grade/verify",
+      "request": {
+        "template_version": "1.0",
+        "filters": {
+          "admission_year": 2024
+        },
+        "steps": [
+          {
+            "step_id": "g1",
+            "title": "了解成绩构成",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "542187ebbac5a4b2",
+                "char_start": 0,
+                "char_end": 71,
+                "quote": "第一条 学生应当按照教学计划参加课程学习，完成规定的学时和学分。每门课程的成绩由平时成绩和期末考试成绩综合评定，其中平时成绩占比不超过40%。",
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "preview_url": "/preview#syn-parse-txt-001/542187ebbac5a4b2",
+                "document_title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ]
+          },
+          {
+            "step_id": "g2",
+            "title": "在期限内向所在学院提出复核申请",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-docx-001",
+                "block_id": "f28ee3e4c5372f7c",
+                "char_start": 23,
+                "char_end": 54,
+                "quote": "如有疑问，请在成绩公布后10个工作日内向所在学院提出复核申请。",
+                "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+                "preview_url": "/preview#syn-parse-docx-001/f28ee3e4c5372f7c",
+                "document_title": "合成测试课程成绩登记表（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ]
+          },
+          {
+            "step_id": "g3",
+            "title": "知悉复核范围与期限",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-docx-001",
+                "block_id": "b304f406a03da01b",
+                "char_start": 0,
+                "char_end": 21,
+                "quote": "成绩复核\t公布后10个工作日\t仅查分不查卷",
+                "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+                "preview_url": "/preview#syn-parse-docx-001/b304f406a03da01b",
+                "document_title": "合成测试课程成绩登记表（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ]
+          }
+        ]
+      },
+      "status_code": 200,
+      "response": {
+        "status": "unchanged",
+        "issues": [],
+        "current_template_version": "1.0"
+      }
+    },
+    {
+      "name": "verify-changed-version",
+      "method": "POST",
+      "url": "/api/v1/procedures/proc-review-grade/verify",
+      "request": {
+        "template_version": "0.9",
+        "filters": {
+          "admission_year": 2024
+        },
+        "steps": [
+          {
+            "step_id": "g1",
+            "title": "了解成绩构成",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "542187ebbac5a4b2",
+                "char_start": 0,
+                "char_end": 71,
+                "quote": "第一条 学生应当按照教学计划参加课程学习，完成规定的学时和学分。每门课程的成绩由平时成绩和期末考试成绩综合评定，其中平时成绩占比不超过40%。",
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "preview_url": "/preview#syn-parse-txt-001/542187ebbac5a4b2",
+                "document_title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ]
+          },
+          {
+            "step_id": "g2",
+            "title": "在期限内向所在学院提出复核申请",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-docx-001",
+                "block_id": "f28ee3e4c5372f7c",
+                "char_start": 23,
+                "char_end": 54,
+                "quote": "如有疑问，请在成绩公布后10个工作日内向所在学院提出复核申请。",
+                "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+                "preview_url": "/preview#syn-parse-docx-001/f28ee3e4c5372f7c",
+                "document_title": "合成测试课程成绩登记表（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ]
+          },
+          {
+            "step_id": "g3",
+            "title": "知悉复核范围与期限",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-docx-001",
+                "block_id": "b304f406a03da01b",
+                "char_start": 0,
+                "char_end": 21,
+                "quote": "成绩复核\t公布后10个工作日\t仅查分不查卷",
+                "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+                "preview_url": "/preview#syn-parse-docx-001/b304f406a03da01b",
+                "document_title": "合成测试课程成绩登记表（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ]
+          }
+        ]
+      },
+      "status_code": 200,
+      "response": {
+        "status": "changed",
+        "issues": [
+          "模板版本已变化（保存时 0.9，当前 1.0）"
+        ],
+        "current_template_version": "1.0"
+      }
+    }
+  ],
+  "notes": [
+    "缓考申请：2023 与 2024 均可保存（2023 的材料信息回退“资料未说明”，不混入 2024 专属 DOCX 内容）。",
+    "成绩复核：2024 可保存；2023 的必要来源（2024 专属 DOCX）被筛选排除 → saveable=false，明确“资料不足/依据需更新”。",
+    "verify：同快照 unchanged；模板版本不同 → changed（提示复核，不覆盖用户进度）。"
+  ]
+}

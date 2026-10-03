@@ -1,0 +1,95 @@
+{
+  "task_id": "T001",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "Windows 环境与项目基线盘点完成。Python 3.12、Git 2.54、Node 24、Docker 28.4、WSL2 Ubuntu、RTX 4070 GPU 均已确认存在。项目无 Git 仓库、无业务代码、无校园政策语料。系统方案、开发路线和前台方案已读取并复述。",
+  "files": [
+    "docs/collaboration/submissions/T001/report.md",
+    "docs/collaboration/submissions/T001/verification.md",
+    "docs/collaboration/submissions/T001/inventory.json",
+    "docs/collaboration/submissions/T001/submission.json"
+  ],
+  "checks": [
+    {
+      "item": "工作区确认",
+      "result": "pass",
+      "evidence_id": "V01"
+    },
+    {
+      "item": "Git 状态（只读检查）",
+      "result": "pass - 未初始化，如实记录",
+      "evidence_id": "V02"
+    },
+    {
+      "item": "操作系统与资源",
+      "result": "pass",
+      "evidence_id": "V03-V06"
+    },
+    {
+      "item": "GPU 信息",
+      "result": "pass - nvidia-smi 可用",
+      "evidence_id": "V07"
+    },
+    {
+      "item": "Python 环境",
+      "result": "pass - 3.12.7, pip, venv 均可用",
+      "evidence_id": "V08"
+    },
+    {
+      "item": "Git 客户端",
+      "result": "pass",
+      "evidence_id": "V09"
+    },
+    {
+      "item": "Node.js",
+      "result": "pass",
+      "evidence_id": "V10"
+    },
+    {
+      "item": "Docker（客户端可用，守护进程未运行）",
+      "result": "pass",
+      "evidence_id": "V11"
+    },
+    {
+      "item": "WSL（Ubuntu 已安装，未启动）",
+      "result": "pass",
+      "evidence_id": "V12"
+    },
+    {
+      "item": "项目文件盘点与哈希",
+      "result": "pass",
+      "evidence_id": "V14-V15"
+    },
+    {
+      "item": "校园政策语料搜索",
+      "result": "pass - 目录范围内未发现",
+      "evidence_id": "V16"
+    },
+    {
+      "item": "凭据与隐私检查",
+      "result": "pass - 无 .env 或敏感文件",
+      "evidence_id": "V17"
+    },
+    {
+      "item": "JSON 解析验证",
+      "result": "pass",
+      "evidence_id": "V18"
+    },
+    {
+      "item": "交付文件完整性",
+      "result": "pass",
+      "evidence_id": "V19"
+    }
+  ],
+  "blockers": [
+    {
+      "description": "学校名称和权威语料来源未确定",
+      "impact": "下一阶段（M0 语料盘点）的前置条件"
+    },
+    {
+      "description": "导师技术栈要求未确认（Spring Boot 是否必须）",
+      "impact": "影响路线 A vs B 选择"
+    }
+  ]
+}

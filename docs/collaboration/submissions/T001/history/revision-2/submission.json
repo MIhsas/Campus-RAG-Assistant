@@ -1,0 +1,154 @@
+{
+  "task_id": "T001",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T001-R1",
+  "status": "ready_for_review",
+  "summary": "R1 修订：Docker 路径已修正为 Get-Command 实际定位结果；Docker Daemon 改标 unknown 并附连接失败详情；可行性对照表改为候选路线/理论可行；内存描述修正并注明 TotalVisibleMemorySize 口径；安全章节收窄为文件名模式检查；新增 Astra 确认的项目条件（四川农业大学、Python/FastAPI 路线）；补查所有工具可执行文件路径。",
+  "files": [
+    "docs/collaboration/submissions/T001/report.md",
+    "docs/collaboration/submissions/T001/verification.md",
+    "docs/collaboration/submissions/T001/inventory.json",
+    "docs/collaboration/submissions/T001/submission.json"
+  ],
+  "history": [
+    "docs/collaboration/submissions/T001/history/revision-1/report.md",
+    "docs/collaboration/submissions/T001/history/revision-1/verification.md",
+    "docs/collaboration/submissions/T001/history/revision-1/inventory.json",
+    "docs/collaboration/submissions/T001/history/revision-1/submission.json"
+  ],
+  "checks": [
+    {
+      "item": "工作区确认",
+      "result": "pass",
+      "evidence_id": "V01"
+    },
+    {
+      "item": "Git 状态（只读检查）",
+      "result": "pass - 未初始化，如实记录",
+      "evidence_id": "V02"
+    },
+    {
+      "item": "操作系统与资源",
+      "result": "pass",
+      "evidence_id": "V03-V06"
+    },
+    {
+      "item": "GPU 信息",
+      "result": "pass - nvidia-smi 可用，未验证 CUDA",
+      "evidence_id": "V07"
+    },
+    {
+      "item": "Python 环境",
+      "result": "pass - 3.12.7, pip, venv 均可用",
+      "evidence_id": "V08"
+    },
+    {
+      "item": "Git 客户端",
+      "result": "pass",
+      "evidence_id": "V09"
+    },
+    {
+      "item": "Node.js",
+      "result": "pass",
+      "evidence_id": "V10"
+    },
+    {
+      "item": "Docker 客户端（路径已修正）",
+      "result": "pass",
+      "evidence_id": "V11a, V11b"
+    },
+    {
+      "item": "Docker 守护进程（改标 unknown）",
+      "result": "unknown - 命名管道不存在，当前上下文无法连接",
+      "evidence_id": "V11c"
+    },
+    {
+      "item": "WSL（Ubuntu 已安装，未启动）",
+      "result": "pass",
+      "evidence_id": "V12"
+    },
+    {
+      "item": "项目文件盘点与哈希",
+      "result": "pass",
+      "evidence_id": "V14-V15"
+    },
+    {
+      "item": "校园政策语料搜索",
+      "result": "pass - 目录范围内未发现",
+      "evidence_id": "V16"
+    },
+    {
+      "item": "敏感文件名检查（范围已收窄）",
+      "result": "pass - 按 .env 模式未发现，不代表全面审计",
+      "evidence_id": "V17"
+    },
+    {
+      "item": "JSON 解析验证",
+      "result": "pass",
+      "evidence_id": "V18"
+    },
+    {
+      "item": "交付文件完整性",
+      "result": "pass",
+      "evidence_id": "V19"
+    },
+    {
+      "item": "协作文件未被修改",
+      "result": "pass",
+      "evidence_id": "V20"
+    }
+  ],
+  "blockers": [
+    {
+      "description": "具体语料尚未由用户提供",
+      "impact": "M0 语料盘点的前置条件；学校已确认为四川农业大学"
+    }
+  ],
+  "change_log": [
+    {
+      "finding": "F1",
+      "description": "Docker 可执行路径错误及状态证据不足",
+      "actions": [
+        "Docker executable 修正为 D:\\devSoft\\Docke\\resources\\bin\\docker.exe（Get-Command 定位）",
+        "Git executable 修正为 C:\\Program Files\\Git\\mingw64\\bin\\git.exe（Get-Command 定位）",
+        "Node.js executable 补充为 D:\\nodejs\\node.exe（Get-Command 定位）",
+        "WSL executable 补充为 C:\\Windows\\system32\\wsl.exe（Get-Command 定位）",
+        "nvidia-smi executable 补充为 C:\\Windows\\system32\\nvidia-smi.exe（Get-Command 定位）",
+        "Docker Daemon 状态从 not_running 改为 unknown，附 V11c 连接失败详情",
+        "V11 拆分为 V11a/V11b/V11c，使用 docker info --format 定向查询"
+      ]
+    },
+    {
+      "finding": "F2",
+      "description": "已安装工具与未验证的计算环境混淆",
+      "actions": [
+        "可行性对照表全部改为'候选路线/理论可行，尚未实测'",
+        "内存描述修正为'系统可见内存约 31.74 GiB，接近方案中约 32 GiB 配置建议'",
+        "注明 TotalVisibleMemorySize 测量口径",
+        "GPU 条目注明未验证 CUDA Toolkit/PyTorch 兼容性"
+      ]
+    },
+    {
+      "finding": "F3",
+      "description": "验证与隐私表述应与实际检查范围一致",
+      "actions": [
+        "report 安全章节收窄为按文件名模式检查的事实描述",
+        "V14 说明选取摘要，不冒充完整遍历",
+        "V13 改为直接引用 V07，不重复记录裸 nvidia-smi 执行",
+        "V17 收窄结论，注明不代表全面安全审计",
+        "新增 V20 确认协作文件未被修改"
+      ]
+    },
+    {
+      "finding": "R1-§4",
+      "description": "用户确认新条件",
+      "actions": [
+        "新增 PROJECT_CONTEXT.md 到 inventory",
+        "open_questions 更新：移除学校名称和 Spring Boot 阻塞",
+        "下一步建议更新：学校确认为四川农业大学，等待用户提供具体语料",
+        "blockers 从2项减为1项（移除导师技术栈）"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "note": "T027 后端变更清单（submission_revision=2 / T027-R1）。corpus 语料文件与 rev1 一致（未改）；questions.json 为 v2.0 修订版（rev1 逐字节存档于 submissions/T027/rev1/）。r1_touched 标注返工触碰项。sha256/size 为交付时实际文件。",
+  "new": [
+    {
+      "path": "scripts/build-eval-v2.py",
+      "sha256": "3f46490986e3d831775644b5107d8eeea8d3b2417bf49c93452e907ee20cb3cc",
+      "size": 9488,
+      "r1_touched": false
+    },
+    {
+      "path": "scripts/eval-v2-compare.py",
+      "sha256": "4053b1757c9645b1e4439c123693716c8b6fd7d2300a88357366cc75da58403c",
+      "size": 9986,
+      "r1_touched": true
+    },
+    {
+      "path": "scripts/eval-v2-rescore.py",
+      "sha256": "8a6563f1ad7abc2b8b1508e45443e4ad62c73f3b1f6c88d552fd20268a771ba8",
+      "size": 3762,
+      "r1_touched": true
+    },
+    {
+      "path": "tests/test_evaluation_v2.py",
+      "sha256": "ac88614af752b2e83b8d2467113a82a454b857344f5e72900f28d5262a1fba41",
+      "size": 7956,
+      "r1_touched": true
+    },
+    {
+      "path": "examples/evaluation-v2/README.md",
+      "sha256": "082c9b5e7034978ca72cd911d941b93e29575f5ff716eae7c439c3bebfddde70",
+      "size": 1314,
+      "r1_touched": false
+    },
+    {
+      "path": "examples/evaluation-v2/questions.json",
+      "sha256": "25f379a287b871c82e77b19ec5175f73560f23cd75470f18892c63c22e8098cc",
+      "size": 33216,
+      "r1_touched": true
+    },
+    {
+      "path": "examples/evaluation-v2/corpus/cmp-defer-v1.txt",
+      "sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+      "size": 374,
+      "r1_touched": false
+    },
+    {
+      "path": "examples/evaluation-v2/corpus/cmp-defer-v2.txt",
+      "sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+      "size": 386,
+      "r1_touched": false
+    },
+    {
+      "path": "examples/evaluation-v2/corpus/cmp-grades-1.txt",
+      "sha256": "ea3f68c1b0abb3254b7e7792cd007a0a69bf23325e150bd416c4ea29a75e635b",
+      "size": 194,
+      "r1_touched": false
+    },
+    {
+      "path": "examples/evaluation-v2/corpus/dis-graduate-defer.txt",
+      "sha256": "25f67d9d62217448738f061fb53ea90e2a50989aa5d0c96b6fece003c13cf6bc",
+      "size": 545,
+      "r1_touched": false
+    },
+    {
+      "path": "examples/evaluation-v2/corpus/dis-scholarship.txt",
+      "sha256": "35073428d5fd09cac4113786a008c95340d232cc5e26d06e4372512e8aed0576",
+      "size": 442,
+      "r1_touched": false
+    },
+    {
+      "path": "examples/evaluation-v2/corpus/fd-2024.txt",
+      "sha256": "131838cca37947cc960da8f0c25d21124006093f5643d85fe23b27e38ed1aa3f",
+      "size": 270,
+      "r1_touched": false
+    },
+    {
+      "path": "examples/evaluation-v2/corpus/fd-2025.txt",
+      "sha256": "745e52eaab4c64fcbc66370b58e0934b46a8874d55dd261d0605905973921248",
+      "size": 315,
+      "r1_touched": false
+    },
+    {
+      "path": "examples/evaluation-v2/corpus/fd-future.txt",
+      "sha256": "6835a4093590341d65f53a04c94f39d417577a11d5103d1e28dc342bcd61e2d2",
+      "size": 282,
+      "r1_touched": false
+    },
+    {
+      "path": "examples/evaluation-v2/corpus/fd-unknown.txt",
+      "sha256": "4425d3bd299f7dcdfa9b88d08c662da1f78356b11765d80071ea17857891089b",
+      "size": 304,
+      "r1_touched": false
+    },
+    {
+      "path": "examples/evaluation-v2/corpus/fd-yjy.txt",
+      "sha256": "121ba90a3ee72b3ccd155bc645d363f873906395aeee54472ec5fb362b7c945b",
+      "size": 280,
+      "r1_touched": false
+    },
+    {
+      "path": "examples/evaluation-v2/corpus/manifest.json",
+      "sha256": "4fa135dd0963dad4dfcf378b7fd8424241f33f0bf575dcfccd7974c954a43042",
+      "size": 10041,
+      "r1_touched": false
+    },
+    {
+      "path": "examples/evaluation-v2/corpus/syn-parse-docx-001.docx",
+      "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+      "size": 37304,
+      "r1_touched": false
+    },
+    {
+      "path": "examples/evaluation-v2/corpus/syn-parse-txt-001.txt",
+      "sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+      "size": 1112,
+      "r1_touched": false
+    },
+    {
+      "path": "examples/evaluation-v2/corpus/syn-pdf-text-001.pdf",
+      "sha256": "66e0f6287aa365cfcc89f2cad15e4d9213f782c6303c86fb713b086aad71fa76",
+      "size": 15880,
+      "r1_touched": false
+    }
+  ],
+  "modified": [
+    {
+      "path": "src/campus_assistant/evaluation/models.py",
+      "sha256": "4b01ae5816a2fae8aff5216ffc29b50f79f135d02966bdb6775415eeaaa499e5",
+      "size": 9545,
+      "r1_touched": true
+    },
+    {
+      "path": "src/campus_assistant/evaluation/run.py",
+      "sha256": "04b015b5e520eb86a2bf690182af2c40894155b65f89574f2b28b470df23c86b",
+      "size": 18852,
+      "r1_touched": true
+    },
+    {
+      "path": "src/campus_assistant/evaluation/metrics.py",
+      "sha256": "18b353ecd3443ab614ab391cea92c41927e7eb2ec79b3a0c160d99b384fc249d",
+      "size": 7792,
+      "r1_touched": true
+    },
+    {
+      "path": "tests/test_evaluation_cli.py",
+      "sha256": "8a6d436fb67e25c5ee4c00e2653c387b5b313bf0472632cadc531cd54e6ab53e",
+      "size": 19966,
+      "r1_touched": false
+    }
+  ]
+}

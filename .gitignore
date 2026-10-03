@@ -1,0 +1,49 @@
+# Local Python environments, caches and generated build output
+.venv*/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+*.egg-info/
+build/
+dist/
+node_modules/
+.coverage
+htmlcov/
+*.log
+
+# Secrets and machine-specific configuration (examples are safe to track)
+.env
+.env.*
+!.env.example
+env.local
+env.*.local
+*.pem
+*.key
+credentials.json
+cookies.txt
+cookies.json
+.aws/
+.ssh/
+.codex/
+.agents/
+
+# Model weights, generated indexes and local data collections
+models/
+indices/
+faiss_index/
+/data/
+
+# Original thesis documents remain local; project design is in docs/
+/step1/
+
+# Local editor/OS state
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+Desktop.ini
+.DS_Store

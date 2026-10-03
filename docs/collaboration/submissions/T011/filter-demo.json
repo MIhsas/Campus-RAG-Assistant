@@ -1,0 +1,391 @@
+{
+  "demo": "T011 filter API demo (real local BGE over synthetic corpus)",
+  "corpus": "examples/filter-demo",
+  "model_path_arg": "models/bge-small-zh-v1.5",
+  "mode": "hybrid",
+  "query": "缓考申请",
+  "status": {
+    "available_modes": [
+      "bm25",
+      "dense",
+      "hybrid"
+    ],
+    "embedding_model": "bge-small-zh-v1.5",
+    "embedding_model_revision": "7999e1d3359715c523056ef9478215996d62a620",
+    "embedding_max_seq_length": 512,
+    "truncated_chunk_count": 0,
+    "embedding_error": null,
+    "filter_options": {
+      "campus": [
+        "成都校区",
+        "都江堰校区"
+      ],
+      "student_type": [
+        "全日制本科"
+      ],
+      "admission_year": [
+        2024,
+        2025,
+        2026
+      ]
+    },
+    "document_count": 5,
+    "chunk_count": 10
+  },
+  "encode_documents_calls": 1,
+  "scenarios": [
+    {
+      "scenario": "no-filters",
+      "request": {
+        "query": "缓考申请",
+        "top_k": 10,
+        "mode": "hybrid"
+      },
+      "status_code": 200,
+      "hits": [
+        {
+          "rank": 1,
+          "document_id": "fd-2024",
+          "score": 0.032266458495966696
+        },
+        {
+          "rank": 2,
+          "document_id": "fd-future",
+          "score": 0.032018442622950824
+        },
+        {
+          "rank": 3,
+          "document_id": "fd-yjy",
+          "score": 0.0315136476426799
+        },
+        {
+          "rank": 4,
+          "document_id": "fd-unknown",
+          "score": 0.0315136476426799
+        },
+        {
+          "rank": 5,
+          "document_id": "fd-2025",
+          "score": 0.03149801587301587
+        },
+        {
+          "rank": 6,
+          "document_id": "fd-future",
+          "score": 0.015151515151515152
+        },
+        {
+          "rank": 7,
+          "document_id": "fd-2025",
+          "score": 0.014925373134328358
+        },
+        {
+          "rank": 8,
+          "document_id": "fd-unknown",
+          "score": 0.014705882352941176
+        },
+        {
+          "rank": 9,
+          "document_id": "fd-yjy",
+          "score": 0.014492753623188406
+        },
+        {
+          "rank": 10,
+          "document_id": "fd-2024",
+          "score": 0.014285714285714285
+        }
+      ],
+      "filters": null,
+      "filter_summary": {
+        "active": false,
+        "document_total": 5,
+        "allowed_count": 5,
+        "excluded_counts": {
+          "scope_unknown": 0,
+          "scope_mismatch": 0,
+          "date_unknown_from": 0,
+          "not_yet_effective": 0,
+          "expired": 0
+        },
+        "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。",
+        "notes": []
+      }
+    },
+    {
+      "scenario": "year-2024",
+      "request": {
+        "query": "缓考申请",
+        "top_k": 10,
+        "mode": "hybrid",
+        "filters": {
+          "admission_year": 2024
+        }
+      },
+      "status_code": 200,
+      "hits": [
+        {
+          "rank": 1,
+          "document_id": "fd-2024",
+          "score": 0.03278688524590164
+        },
+        {
+          "rank": 2,
+          "document_id": "fd-yjy",
+          "score": 0.03225806451612903
+        },
+        {
+          "rank": 3,
+          "document_id": "fd-yjy",
+          "score": 0.015873015873015872
+        },
+        {
+          "rank": 4,
+          "document_id": "fd-2024",
+          "score": 0.015625
+        }
+      ],
+      "filters": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": 2024,
+        "as_of_date": null
+      },
+      "filter_summary": {
+        "active": true,
+        "document_total": 5,
+        "allowed_count": 2,
+        "excluded_counts": {
+          "scope_unknown": 1,
+          "scope_mismatch": 2,
+          "date_unknown_from": 0,
+          "not_yet_effective": 0,
+          "expired": 0
+        },
+        "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。",
+        "notes": []
+      }
+    },
+    {
+      "scenario": "year-2025",
+      "request": {
+        "query": "缓考申请",
+        "top_k": 10,
+        "mode": "hybrid",
+        "filters": {
+          "admission_year": 2025
+        }
+      },
+      "status_code": 200,
+      "hits": [
+        {
+          "rank": 1,
+          "document_id": "fd-2025",
+          "score": 0.03252247488101534
+        },
+        {
+          "rank": 2,
+          "document_id": "fd-yjy",
+          "score": 0.03252247488101534
+        },
+        {
+          "rank": 3,
+          "document_id": "fd-2025",
+          "score": 0.015873015873015872
+        },
+        {
+          "rank": 4,
+          "document_id": "fd-yjy",
+          "score": 0.015625
+        }
+      ],
+      "filters": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": 2025,
+        "as_of_date": null
+      },
+      "filter_summary": {
+        "active": true,
+        "document_total": 5,
+        "allowed_count": 2,
+        "excluded_counts": {
+          "scope_unknown": 1,
+          "scope_mismatch": 2,
+          "date_unknown_from": 0,
+          "not_yet_effective": 0,
+          "expired": 0
+        },
+        "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。",
+        "notes": []
+      }
+    },
+    {
+      "scenario": "as-of-2024-10-01",
+      "request": {
+        "query": "缓考申请",
+        "top_k": 10,
+        "mode": "hybrid",
+        "filters": {
+          "as_of_date": "2024-10-01"
+        }
+      },
+      "status_code": 200,
+      "hits": [
+        {
+          "rank": 1,
+          "document_id": "fd-2024",
+          "score": 0.03278688524590164
+        },
+        {
+          "rank": 2,
+          "document_id": "fd-yjy",
+          "score": 0.03225806451612903
+        },
+        {
+          "rank": 3,
+          "document_id": "fd-yjy",
+          "score": 0.015873015873015872
+        },
+        {
+          "rank": 4,
+          "document_id": "fd-2024",
+          "score": 0.015625
+        }
+      ],
+      "filters": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": "2024-10-01"
+      },
+      "filter_summary": {
+        "active": true,
+        "document_total": 5,
+        "allowed_count": 2,
+        "excluded_counts": {
+          "scope_unknown": 0,
+          "scope_mismatch": 0,
+          "date_unknown_from": 1,
+          "not_yet_effective": 2,
+          "expired": 0
+        },
+        "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。",
+        "notes": [
+          "1 份适用文档未标注截止日期（effective_to=null），不证明永久有效。"
+        ]
+      }
+    },
+    {
+      "scenario": "as-of-2025-09-10",
+      "request": {
+        "query": "缓考申请",
+        "top_k": 10,
+        "mode": "hybrid",
+        "filters": {
+          "as_of_date": "2025-09-10"
+        }
+      },
+      "status_code": 200,
+      "hits": [
+        {
+          "rank": 1,
+          "document_id": "fd-2025",
+          "score": 0.03252247488101534
+        },
+        {
+          "rank": 2,
+          "document_id": "fd-yjy",
+          "score": 0.03252247488101534
+        },
+        {
+          "rank": 3,
+          "document_id": "fd-2025",
+          "score": 0.015873015873015872
+        },
+        {
+          "rank": 4,
+          "document_id": "fd-yjy",
+          "score": 0.015625
+        }
+      ],
+      "filters": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": "2025-09-10"
+      },
+      "filter_summary": {
+        "active": true,
+        "document_total": 5,
+        "allowed_count": 2,
+        "excluded_counts": {
+          "scope_unknown": 0,
+          "scope_mismatch": 0,
+          "date_unknown_from": 1,
+          "not_yet_effective": 1,
+          "expired": 1
+        },
+        "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。",
+        "notes": [
+          "2 份适用文档未标注截止日期（effective_to=null），不证明永久有效。"
+        ]
+      }
+    },
+    {
+      "scenario": "chengdu-2024-as-of-2025-09-10",
+      "request": {
+        "query": "缓考申请",
+        "top_k": 10,
+        "mode": "hybrid",
+        "filters": {
+          "campus": "成都校区",
+          "admission_year": 2024,
+          "as_of_date": "2025-09-10"
+        }
+      },
+      "status_code": 200,
+      "hits": [],
+      "filters": {
+        "campus": "成都校区",
+        "student_type": null,
+        "admission_year": 2024,
+        "as_of_date": "2025-09-10"
+      },
+      "filter_summary": {
+        "active": true,
+        "document_total": 5,
+        "allowed_count": 0,
+        "excluded_counts": {
+          "scope_unknown": 1,
+          "scope_mismatch": 3,
+          "date_unknown_from": 0,
+          "not_yet_effective": 0,
+          "expired": 1
+        },
+        "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。",
+        "notes": []
+      }
+    }
+  ],
+  "repeat_query": {
+    "request": {
+      "query": "缓考申请",
+      "top_k": 10,
+      "mode": "hybrid",
+      "filters": {
+        "admission_year": 2024
+      }
+    },
+    "hit_document_ids": [
+      "fd-2024",
+      "fd-yjy",
+      "fd-yjy",
+      "fd-2024"
+    ],
+    "encode_documents_calls_after_repeat": 1
+  },
+  "notes": [
+    "语料为合成测试资料，不代表四川农业大学真实政策。",
+    "encode_documents_calls 必须为 1：正文向量在应用创建时批量构建，重复查询只编码 query。",
+    "无匹配场景的 filters 回显与提交一致，不会悄悄取消条件。"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "note": "T023 后端变更清单（相对 step2_code/backend）。sha256 与 size 为交付时实际文件。",
+  "new": [
+    {
+      "path": "src/campus_assistant/agent/__init__.py",
+      "sha256": "1e749c09725b97d21a6e760144eb5655cf2df70e129f6cc5a9c852b03ef9192d",
+      "size": 1449
+    },
+    {
+      "path": "src/campus_assistant/agent/tools.py",
+      "sha256": "920c33296aca7ccc74b40a994cb88d54c97e867dd6a29a25d8eb95bff9702be5",
+      "size": 9040
+    },
+    {
+      "path": "src/campus_assistant/agent/planner.py",
+      "sha256": "2f01d78e1bfa96e7a30453ede003afc347df84e273e4f5acee3e4ff5e7518a15",
+      "size": 2838
+    },
+    {
+      "path": "src/campus_assistant/agent/workflow.py",
+      "sha256": "3e0fb659f6ced4e6f869c3d92bc31dbc9cff1f31b10529207cf30230f74e8034",
+      "size": 12495
+    },
+    {
+      "path": "src/campus_assistant/api/agent.py",
+      "sha256": "0a9dc472a9532c3bbb1a9f3b0ce7f9309aa9b3ca423c733c7c72291b28d89489",
+      "size": 6055
+    },
+    {
+      "path": "src/campus_assistant/static/workflow.html",
+      "sha256": "991d44060ed59e9fbb8282e745995213aa2c15cefdf5f3f52cf1f9058a2fddc2",
+      "size": 14401
+    },
+    {
+      "path": "tests/test_agent_workflow.py",
+      "sha256": "bc28f7d4c2c4421340b6e5d4cedc453e7ed8410e915a80162749df5eac0b52d6",
+      "size": 12635
+    },
+    {
+      "path": "scripts/trace-agent-run.py",
+      "sha256": "5c1ffb0c28a766e2c25ab3ead30ba0bd42ab381674204c6b6bbf74c084ac4b83",
+      "size": 4730
+    }
+  ],
+  "modified": [
+    {
+      "path": "src/campus_assistant/main.py",
+      "sha256": "9319c6ff4f0cd5ed1beeed9ab5bc68390930342365a6f6c390969b3297c82391",
+      "size": 12383
+    },
+    {
+      "path": "scripts/demo-campus.py",
+      "sha256": "3b3a0009a038de9413b4e00211e1287577422509af673c283f62a3c0d9370e18",
+      "size": 11378
+    },
+    {
+      "path": "scripts/serve-corpus.py",
+      "sha256": "6e3ff1016b582e648779b1509f3f591fba0160c3e14eedb7df42847e21e06cf9",
+      "size": 8615
+    },
+    {
+      "path": "src/campus_assistant/static/home.html",
+      "sha256": "3d0735e6b000058a347a718aa4883ec61f1ac4fdf09321127f8237fe1e381f60",
+      "size": 7389
+    },
+    {
+      "path": "src/campus_assistant/static/ask.html",
+      "sha256": "631dd9bdc79908b61adc457ab0f2ee3a62e3745bfe67a70eba9c3d46e8db1e98",
+      "size": 46303
+    },
+    {
+      "path": "scripts/check-ask-behavior.cjs",
+      "sha256": "19bb739385367b4d516df4a9e71145c0dc38846438bef6ef12a32a0a1aa7b758",
+      "size": 35478
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "task_id": "T003",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T003-R1",
+  "status": "ready_for_review",
+  "summary": "R1-R5 全部修复：StrictBool 拒绝字符串布尔；date.fromisoformat 验证真实日历日期；scope 必需无默认值；admission_years 严格 int+范围；campus 元素非空验证；urlparse 主机解析；document_count 改为结构合法条目数；显式 ValidationError 捕获+UnicodeDecodeError 处理；Pydantic 声明为直接依赖；符号链接逃逸测试（skip if no perms）；全部测试重写为有效基线+单字段破坏+精确断言。76 passed, 1 skipped。",
+  "files": [
+    "docs/collaboration/submissions/T003/report.md",
+    "docs/collaboration/submissions/T003/verification.md",
+    "docs/collaboration/submissions/T003/submission.json",
+    "docs/collaboration/submissions/T003/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T003/changed-files.json",
+  "history": [
+    "docs/collaboration/submissions/T003/history/revision-1/"
+  ],
+  "checks": [
+    {"item": "R1: StrictBool 拒绝字符串布尔", "result": "pass", "evidence_id": "V08"},
+    {"item": "R1: 真实日历日期验证", "result": "pass", "evidence_id": "V08"},
+    {"item": "R1: scope 必需无默认值", "result": "pass", "evidence_id": "V08"},
+    {"item": "R1: admission_years 严格 int+范围", "result": "pass", "evidence_id": "V08"},
+    {"item": "R1: campus 元素非空验证", "result": "pass", "evidence_id": "V08"},
+    {"item": "R1: urlparse 主机解析", "result": "pass", "evidence_id": "V08"},
+    {"item": "R2: 测试重写为有效基线+精确断言", "result": "pass - 76 passed", "evidence_id": "V01"},
+    {"item": "R3: 非 UTF-8 CLI JSON 输出", "result": "pass", "evidence_id": "V05"},
+    {"item": "R3: null campus CLI JSON 输出", "result": "pass", "evidence_id": "V06"},
+    {"item": "R4: document_count = 结构合法条目数", "result": "pass", "evidence_id": "V09"},
+    {"item": "R5: Pydantic 声明为直接依赖", "result": "pass", "evidence_id": "V02"},
+    {"item": "R5: 符号链接逃逸测试", "result": "skip - 无权限创建符号链接", "evidence_id": "V01"},
+    {"item": "R5: is_file() 替代 not is_dir()", "result": "pass", "evidence_id": "V01"},
+    {"item": "全量 pytest", "result": "pass - 76 passed, 1 skipped", "evidence_id": "V01"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V02"},
+    {"item": "健康接口回归", "result": "pass", "evidence_id": "V07"}
+  ],
+  "blockers": []
+}

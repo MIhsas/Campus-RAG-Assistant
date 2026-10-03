@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>语料预览</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
+.header{background:#fff;border-bottom:1px solid #ddd;padding:12px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10}
+.header h1{font-size:18px;font-weight:600}
+.synthetic-banner{background:#fff3cd;border:1px solid #ffc107;padding:8px 16px;font-size:13px;color:#856404}
+.container{display:flex;height:calc(100vh - 96px)}
+.sidebar{width:320px;background:#fff;border-right:1px solid #ddd;overflow-y:auto;flex-shrink:0}
+.search{padding:12px;border-bottom:1px solid #eee}
+.search input{width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;font-size:14px}
+.doc-list{list-style:none}
+.doc-item{padding:12px 16px;border-bottom:1px solid #eee;cursor:pointer;transition:background .15s;display:block;width:100%;text-align:left;border:none;background:none;font:inherit;color:inherit}
+.doc-item:hover{background:#f0f7ff}
+.doc-item:focus{outline:2px solid #1976d2;outline-offset:-2px}
+.doc-item.active{background:#e3f2fd;border-left:3px solid #1976d2}
+.doc-title{font-size:14px;font-weight:500;margin-bottom:2px}
+.doc-meta{font-size:12px;color:#666}
+.doc-warn{color:#e65100;font-size:12px;margin-top:2px}
+.detail{flex:1;overflow-y:auto;padding:20px}
+.detail-empty{color:#999;text-align:center;padding:60px 20px}
+.status-bar{padding:8px 16px;font-size:13px;border-bottom:1px solid #eee}
+.status-ready{background:#e8f5e9;color:#2e7d32}
+.status-partial{background:#fff3e0;color:#e65100}
+.status-failed{background:#ffebee;color:#c62828}
+.status-unconfigured{background:#f5f5f5;color:#757575}
+.meta-section{background:#fff;border:1px solid #ddd;border-radius:6px;padding:16px;margin-bottom:16px}
+.meta-section h3{font-size:15px;margin-bottom:10px;color:#1976d2}
+.meta-grid{display:grid;grid-template-columns:120px 1fr;gap:6px 12px;font-size:14px}
+.meta-label{color:#666;font-weight:500}
+.meta-value{word-break:break-all}
+.meta-value a{color:#1976d2;text-decoration:none}
+.meta-value a:hover{text-decoration:underline}
+.null-val{color:#999;font-style:italic}
+.blocks-section h3{margin-bottom:12px}
+.block{background:#fff;border:1px solid #ddd;border-radius:6px;padding:14px;margin-bottom:10px;scroll-margin-top:10px}
+.block.highlight{border-color:#1976d2;box-shadow:0 0 0 2px rgba(25,118,210,.2)}
+.block-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.block-kind{font-size:12px;background:#e3f2fd;color:#1565c0;padding:2px 8px;border-radius:3px}
+.block-locator{font-size:12px;color:#666}
+.block-text{font-size:14px;white-space:pre-wrap;word-break:break-word}
+.block-cells{margin-top:8px}
+.block-cells table{border-collapse:collapse;font-size:13px;width:100%}
+.block-cells td{border:1px solid #ddd;padding:4px 8px}
+.warnings-box{background:#fff8e1;border:1px solid #ffcc02;border-radius:6px;padding:12px;margin-bottom:16px}
+.warnings-box h4{color:#e65100;margin-bottom:6px;font-size:14px}
+.warnings-box ul{margin-left:20px;font-size:13px;color:#bf360c}
+.errors-box{background:#ffebee;border:1px solid #ef9a9a;border-radius:6px;padding:12px;margin-bottom:16px}
+.errors-box h4{color:#c62828;margin-bottom:6px;font-size:14px}
+.errors-box ul{margin-left:20px;font-size:13px}
+.copy-link{font-size:12px;color:#1976d2;cursor:pointer;background:none;border:none;padding:2px 6px}
+.copy-link:hover{text-decoration:underline}
+.retry-btn{margin-top:8px;padding:6px 16px;border:1px solid #1976d2;background:#fff;color:#1976d2;border-radius:4px;cursor:pointer;font-size:13px}
+.retry-btn:hover{background:#e3f2fd}
+@media(max-width:768px){
+  .container{flex-direction:column}
+  .sidebar{width:100%;max-height:40vh;border-right:none;border-bottom:1px solid #ddd}
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>语料预览</h1>
+  <a href="/">首页</a>
+  <a href="/search">证据搜索</a>
+  <a href="/ask">证据整理</a>
+  <a href="/procedures">办事指南</a>
+  <a href="/compare">版本对比</a>
+</div>
+<div id="synthetic-banner" class="synthetic-banner"></div>
+<div id="status-bar" class="status-bar"></div>
+<div class="container">
+  <div class="sidebar">
+    <div class="search">
+      <input type="text" id="filter" placeholder="按标题筛选…" aria-label="按标题筛选">
+    </div>
+    <div id="doc-list-container"></div>
+  </div>
+  <div class="detail" id="detail">
+    <div class="detail-empty" id="detail-empty">选择左侧文档查看详情</div>
+  </div>
+</div>
+<script>
+(function(){
+  var API = '/api/v1/corpus';
+  var allDocs = [];
+  var currentDocId = null;
+  var currentBlockId = null;
+  var docsLoaded = false;
+  var pendingDocId = null;
+  var pendingBlockId = null;
+  var detailRequestSeq = 0;
+  var statusRequestSeq = 0;
+  var listRequestSeq = 0;
+  var listState = 'idle';
+
+  function tc(el, text){ el.textContent = text; return el; }
+  function ce(tag, cls, text){
+    var el = document.createElement(tag);
+    if(cls) el.className = cls;
+    if(text !== undefined) el.textContent = text;
+    return el;
+  }
+
+  function formatDate(v){ return v || '未标注'; }
+
+  function scopeText(scope){
+    if(!scope) return '未标注';
+    var parts = [];
+    if(scope.campus && scope.campus.length) parts.push('校区：' + scope.campus.join('、'));
+    if(scope.student_type && scope.student_type.length) parts.push('类型：' + scope.student_type.join('、'));
+    if(scope.admission_years && scope.admission_years.length) parts.push('年级：' + scope.admission_years.join('、'));
+    return parts.length ? parts.join('；') : '未标注';
+  }
+
+  function locatorText(loc){
+    if(!loc) return '';
+    if(loc.type === 'lines') return '第 ' + loc.line_start + '–' + loc.line_end + ' 行';
+    if(loc.type === 'paragraph') return '段落 #' + loc.paragraph_index;
+    if(loc.type === 'table_row') return '表格 ' + loc.table_index + ' 第 ' + loc.row_index + ' 行';
+    if(loc.type === 'pdf_page') return 'PDF 第 ' + loc.page + ' 页 · 段 ' + loc.part;
+    return JSON.stringify(loc);
+  }
+
+  function updateBanner(){
+    var banner = document.getElementById('synthetic-banner');
+    if(!allDocs.length){
+      banner.textContent = '⚠ 语料未加载';
+      return;
+    }
+    var hasSynthetic = allDocs.some(function(d){ return d.is_synthetic; });
+    var hasReal = allDocs.some(function(d){ return !d.is_synthetic; });
+    if(hasSynthetic && hasReal){
+      banner.textContent = '⚠ 部分为合成测试资料，不代表四川农业大学真实政策。';
+    } else if(hasSynthetic){
+      banner.textContent = '⚠ 合成测试资料，不代表四川农业大学真实政策。本页面仅供开发预览与来源核对。';
+    } else {
+      banner.textContent = '本页面仅供开发预览与来源核对。';
+    }
+  }
+
+  // --- Status error management (owned by loadStatus only) ---
+
+  function removeStatusErrors(){
+    var old = document.querySelectorAll('.status-errors-box');
+    old.forEach(function(el){ el.parentNode.removeChild(el); });
+  }
+
+  function showStatusError(bar, msg){
+    bar.className = 'status-bar status-failed';
+    bar.textContent = '';
+    bar.appendChild(ce('span', '', msg));
+    bar.appendChild(document.createTextNode(' '));
+    var btn = ce('button', 'retry-btn', '重试');
+    btn.style.marginLeft = '8px';
+    btn.addEventListener('click', function(){ loadStatus(); });
+    bar.appendChild(btn);
+  }
+
+  async function loadStatus(){
+    statusRequestSeq++;
+    var mySeq = statusRequestSeq;
+    var bar = document.getElementById('status-bar');
+    try {
+      var r = await fetch(API + '/status');
+      if(mySeq !== statusRequestSeq) return;
+      if(!r.ok){
+        showStatusError(bar, '状态接口错误：HTTP ' + r.status);
+        return;
+      }
+      var d;
+      try { d = await r.json(); } catch(je){
+        if(mySeq !== statusRequestSeq) return;
+        showStatusError(bar, '状态接口返回无效 JSON');
+        return;
+      }
+      if(mySeq !== statusRequestSeq) return;
+      removeStatusErrors();
+      var cls = {ready:'status-ready', partial:'status-partial', failed:'status-failed', unconfigured:'status-unconfigured'}[d.status] || '';
+      bar.className = 'status-bar ' + cls;
+      var labels = {ready:'就绪', partial:'部分成功', failed:'失败', unconfigured:'未配置'};
+      bar.textContent = '状态：' + labels[d.status] + '　文档：' + d.parsed_count + '/' + d.document_count;
+      if(d.errors && d.errors.length){
+        var errDiv = ce('div', 'errors-box status-errors-box');
+        errDiv.appendChild(ce('h4', '', '错误明细（' + d.errors.length + ' 条）'));
+        var ul = ce('ul');
+        d.errors.forEach(function(e){
+          var li = ce('li');
+          var msgText = (e.document_id ? '[' + e.document_id + '] ' : '') + (e.message || e.code || '');
+          tc(li, msgText);
+          ul.appendChild(li);
+        });
+        errDiv.appendChild(ul);
+        bar.parentNode.insertBefore(errDiv, bar.nextSibling);
+      }
+    } catch(e) {
+      if(mySeq !== statusRequestSeq) return;
+      showStatusError(bar, '无法获取状态：网络错误');
+    }
+  }
+
+  // --- List management ---
+
+  function showListError(container, msg, showRetry){
+    container.innerHTML = '';
+    var wrap = ce('div');
+    wrap.appendChild(ce('div', 'detail-empty', msg));
+    if(showRetry){
+      var btn = ce('button', 'retry-btn', '重试');
+      btn.addEventListener('click', function(){ loadDocs(); });
+      wrap.appendChild(btn);
+    }
+    container.appendChild(wrap);
+  }
+
+  function renderListWithFilter(){
+    var q = document.getElementById('filter').value.trim().toLowerCase();
+    if(!q){ renderList(allDocs); return; }
+    renderList(allDocs.filter(function(d){ return d.title.toLowerCase().indexOf(q) >= 0; }));
+  }
+
+  async function loadDocs(){
+    listRequestSeq++;
+    var mySeq = listRequestSeq;
+    var container = document.getElementById('doc-list-container');
+    listState = 'loading';
+    container.textContent = '加载中…';
+    try {
+      var r = await fetch(API + '/documents');
+      if(mySeq !== listRequestSeq) return;
+      if(r.status === 503){
+        allDocs = [];
+        docsLoaded = true;
+        listState = 'unconfigured';
+        showListError(container, '语料未配置，请先提供 manifest 和 corpus-root', false);
+        updateBanner();
+        processPending();
+        return;
+      }
+      if(!r.ok){
+        allDocs = [];
+        docsLoaded = true;
+        listState = 'error';
+        showListError(container, '列表接口错误：HTTP ' + r.status, true);
+        updateBanner();
+        return;
+      }
+      var d;
+      try { d = await r.json(); } catch(je){
+        if(mySeq !== listRequestSeq) return;
+        allDocs = [];
+        docsLoaded = true;
+        listState = 'error';
+        showListError(container, '列表接口返回无效 JSON', true);
+        updateBanner();
+        return;
+      }
+      if(mySeq !== listRequestSeq) return;
+      allDocs = d.items || [];
+      docsLoaded = true;
+      listState = 'ready';
+      updateBanner();
+      renderListWithFilter();
+      processPending();
+    } catch(e) {
+      if(mySeq !== listRequestSeq) return;
+      allDocs = [];
+      docsLoaded = true;
+      listState = 'error';
+      showListError(container, '加载失败：网络错误', true);
+      updateBanner();
+    }
+  }
+
+  function renderList(docs){
+    var container = document.getElementById('doc-list-container');
+    container.innerHTML = '';
+    if(docs.length === 0 && docsLoaded){
+      var q = document.getElementById('filter').value.trim();
+      container.appendChild(ce('div', 'detail-empty', q ? '无匹配文档' : '暂无文档'));
+      return;
+    }
+    var ul = ce('ul', 'doc-list');
+    ul.setAttribute('role', 'list');
+    docs.forEach(function(doc){
+      var li = ce('li');
+      var btn = ce('button', 'doc-item' + (doc.document_id === currentDocId ? ' active' : ''));
+      btn.type = 'button';
+      btn.appendChild(ce('div', 'doc-title', doc.title));
+      var metaText = (doc.format || '') + ' · ' + doc.block_count + ' 块';
+      if(doc.is_synthetic) metaText += ' · 合成';
+      btn.appendChild(ce('div', 'doc-meta', metaText));
+      if(doc.warnings && doc.warnings.length){
+        btn.appendChild(ce('div', 'doc-warn', '⚠ ' + doc.warnings.length + ' 条提示'));
+      }
+      btn.addEventListener('click', function(){ selectDoc(doc.document_id); });
+      li.appendChild(btn);
+      ul.appendChild(li);
+    });
+    container.appendChild(ul);
+  }
+
+  function filterDocs(){
+    if(listState !== 'ready') return;
+    renderListWithFilter();
+  }
+
+  // --- Detail management ---
+
+  async function selectDoc(docId, blockId){
+    currentDocId = docId;
+    currentBlockId = blockId || null;
+    renderList(allDocs.filter(function(d){
+      var q = document.getElementById('filter').value.trim().toLowerCase();
+      return !q || d.title.toLowerCase().indexOf(q) >= 0;
+    }));
+    updateHash(docId, currentBlockId);
+
+    detailRequestSeq++;
+    var mySeq = detailRequestSeq;
+    var capturedDocId = docId;
+    var capturedBlockId = blockId || null;
+
+    var detail = document.getElementById('detail');
+    detail.textContent = '';
+    detail.appendChild(ce('div', 'detail-empty', '加载中…'));
+    try {
+      var r = await fetch(API + '/documents/' + encodeURIComponent(docId));
+      if(mySeq !== detailRequestSeq) return;
+
+      if(r.status === 404){
+        detail.textContent = '';
+        detail.appendChild(ce('div', 'detail-empty', '文档不存在：' + capturedDocId));
+        return;
+      }
+      if(r.status === 503){
+        detail.textContent = '';
+        detail.appendChild(ce('div', 'detail-empty', '语料未配置'));
+        return;
+      }
+      if(!r.ok){
+        showDetailError(detail, '详情接口错误：HTTP ' + r.status, capturedDocId, capturedBlockId);
+        return;
+      }
+      var d;
+      try { d = await r.json(); } catch(je){
+        if(mySeq !== detailRequestSeq) return;
+        showDetailError(detail, '详情接口返回无效 JSON', capturedDocId, capturedBlockId);
+        return;
+      }
+      if(mySeq !== detailRequestSeq) return;
+      renderDetail(d.document, capturedDocId, capturedBlockId);
+    } catch(e) {
+      if(mySeq !== detailRequestSeq) return;
+      showDetailError(detail, '加载失败：网络错误', capturedDocId, capturedBlockId);
+    }
+  }
+
+  function showDetailError(detail, msg, docId, blockId){
+    detail.textContent = '';
+    var wrap = ce('div');
+    wrap.appendChild(ce('div', 'detail-empty', msg));
+    var btn = ce('button', 'retry-btn', '重试');
+    btn.addEventListener('click', function(){ selectDoc(docId, blockId); });
+    wrap.appendChild(btn);
+    detail.appendChild(wrap);
+  }
+
+  function renderDetail(doc, capturedDocId, capturedBlockId){
+    var el = document.getElementById('detail');
+    el.textContent = '';
+
+    var meta = doc.metadata || {};
+
+    if(doc.warnings && doc.warnings.length){
+      var wb = ce('div', 'warnings-box');
+      wb.appendChild(ce('h4', '', '⚠ 解析提示'));
+      var wul = ce('ul');
+      doc.warnings.forEach(function(w){ wul.appendChild(ce('li', '', w)); });
+      wb.appendChild(wul);
+      el.appendChild(wb);
+    }
+
+    var section = ce('div', 'meta-section');
+    section.appendChild(ce('h3', '', '来源信息'));
+    var grid = ce('div', 'meta-grid');
+
+    function addMeta(label, valueEl){
+      grid.appendChild(ce('div', 'meta-label', label));
+      var v = ce('div', 'meta-value');
+      v.appendChild(valueEl);
+      grid.appendChild(v);
+    }
+
+    addMeta('标题', ce('span', '', meta.title || ''));
+    addMeta('来源站', ce('span', '', meta.source_site || ''));
+
+    var url = meta.source_url || '';
+    var safeUrl = url.match(/^https?:\/\//) ? url : '';
+    if(safeUrl){
+      var a = ce('a');
+      a.href = safeUrl;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      tc(a, safeUrl);
+      addMeta('来源链接', a);
+    } else {
+      addMeta('来源链接', ce('span', 'null-val', '未标注'));
+    }
+
+    addMeta('版本', ce('span', '', meta.version_label || '未标注'));
+    addMeta('发布日期', ce('span', '', formatDate(meta.published_at)));
+    addMeta('生效日期', ce('span', '', formatDate(meta.effective_from)));
+    addMeta('失效日期', ce('span', '', formatDate(meta.effective_to)));
+    addMeta('适用范围', ce('span', '', scopeText(meta.scope)));
+    addMeta('document_id', (function(){ var c = ce('code', '', doc.document_id); var s = ce('span'); s.appendChild(c); return s; })());
+    addMeta('解析器', ce('span', '', doc.parser_version || ''));
+    section.appendChild(grid);
+    el.appendChild(section);
+
+    var bs = ce('div', 'blocks-section');
+    bs.appendChild(ce('h3', '', '正文块 (' + doc.blocks.length + ')'));
+    doc.blocks.forEach(function(b){
+      var block = ce('div', 'block');
+      block.id = 'block-' + b.block_id;
+
+      var hdr = ce('div', 'block-header');
+      hdr.appendChild(ce('span', 'block-kind', b.kind));
+      hdr.appendChild(ce('span', 'block-locator', locatorText(b.locator)));
+      var copyBtn = ce('button', 'copy-link', '🔗 复制链接');
+      copyBtn.type = 'button';
+      copyBtn.title = '复制定位链接';
+      copyBtn.addEventListener('click', function(){ copyBlockLink(doc.document_id, b.block_id); });
+      hdr.appendChild(copyBtn);
+      block.appendChild(hdr);
+
+      block.appendChild(ce('div', 'block-text', b.text));
+
+      if(b.cells && b.cells.length){
+        var cellDiv = ce('div', 'block-cells');
+        var table = document.createElement('table');
+        var tr = document.createElement('tr');
+        b.cells.forEach(function(c){
+          var td = document.createElement('td');
+          tc(td, c);
+          tr.appendChild(td);
+        });
+        table.appendChild(tr);
+        cellDiv.appendChild(table);
+        block.appendChild(cellDiv);
+      }
+      bs.appendChild(block);
+    });
+    el.appendChild(bs);
+
+    if(capturedBlockId){
+      scrollToBlock(capturedBlockId);
+    }
+  }
+
+  function updateHash(docId, blockId){
+    var hash = '#' + encodeURIComponent(docId);
+    if(blockId) hash += '/' + encodeURIComponent(blockId);
+    history.replaceState(null, '', hash);
+  }
+
+  function copyBlockLink(docId, blockId){
+    var url = location.origin + location.pathname + '#' + encodeURIComponent(docId) + '/' + encodeURIComponent(blockId);
+    updateHash(docId, blockId);
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(url).then(function(){ alert('链接已复制'); })
+        .catch(function(){ prompt('请复制链接：', url); });
+    } else {
+      prompt('请复制链接：', url);
+    }
+  }
+
+  function scrollToBlock(blockId){
+    var block = document.getElementById('block-' + blockId);
+    if(block){
+      block.classList.add('highlight');
+      block.scrollIntoView({behavior:'smooth', block:'center'});
+    } else {
+      var detail = document.getElementById('detail');
+      var msg = ce('div', 'detail-empty', '未找到指定正文块：' + blockId);
+      detail.insertBefore(msg, detail.firstChild);
+    }
+  }
+
+  function handleHash(){
+    var hash = location.hash.slice(1);
+    if(!hash) return;
+    var parts = hash.split('/');
+    var docId, blockId;
+    try {
+      docId = decodeURIComponent(parts[0]);
+      blockId = parts[1] ? decodeURIComponent(parts[1]) : null;
+    } catch(e){
+      document.getElementById('detail').textContent = '';
+      document.getElementById('detail').appendChild(ce('div', 'detail-empty', '无效的定位链接'));
+      return;
+    }
+    currentBlockId = blockId;
+
+    if(!docsLoaded){
+      pendingDocId = docId;
+      pendingBlockId = blockId;
+      return;
+    }
+    if(allDocs.length === 0){
+      // If list is in error/loading state, preserve pending IDs for retry recovery
+      if(listState === 'error' || listState === 'loading'){
+        pendingDocId = docId;
+        pendingBlockId = blockId;
+        return;
+      }
+      // Genuine unconfigured or ready-with-empty: show message
+      document.getElementById('detail').textContent = '';
+      var emptyMsg = listState === 'unconfigured' ? '语料未配置' : '暂无文档';
+      document.getElementById('detail').appendChild(ce('div', 'detail-empty', emptyMsg));
+      return;
+    }
+    var found = allDocs.find(function(d){ return d.document_id === docId; });
+    if(!found){
+      document.getElementById('detail').textContent = '';
+      document.getElementById('detail').appendChild(ce('div', 'detail-empty', '文档不存在：' + docId));
+      return;
+    }
+    selectDoc(docId, blockId);
+  }
+
+  function processPending(){
+    if(pendingDocId){
+      var docId = pendingDocId;
+      var blockId = pendingBlockId;
+      pendingDocId = null;
+      pendingBlockId = null;
+      if(allDocs.length === 0) return;
+      var found = allDocs.find(function(d){ return d.document_id === docId; });
+      if(!found){
+        document.getElementById('detail').textContent = '';
+        document.getElementById('detail').appendChild(ce('div', 'detail-empty', '文档不存在：' + docId));
+        return;
+      }
+      selectDoc(docId, blockId);
+    }
+  }
+
+  document.getElementById('filter').addEventListener('input', filterDocs);
+  window.addEventListener('hashchange', handleHash);
+
+  loadStatus();
+  loadDocs().then(function(){ handleHash(); });
+})();
+</script>
+</body>
+</html>

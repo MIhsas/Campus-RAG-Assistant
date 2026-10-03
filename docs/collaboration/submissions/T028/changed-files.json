@@ -1,0 +1,35 @@
+{
+  "note": "T028 revision 2（T028-R1 文档定向返工）变更清单（相对项目根）。六件交付文档修订；v1 历史存档于 docs/delivery/rev1/ 与 submissions/T028/rev1/。未改产品代码、语料、gold、docs/01—04、历史实验原始文件。",
+  "files": [
+    {
+      "path": "docs/delivery/README.md",
+      "sha256": "4df07971abb0eb4e50c25bac91506c7bd3924d4a5d968dbfa9994750d425e486",
+      "size": 5033
+    },
+    {
+      "path": "docs/delivery/system-design.md",
+      "sha256": "3029812f37e40746e1eb6c2813018a1d049ca357297f1e57da2025629a6c7055",
+      "size": 12290
+    },
+    {
+      "path": "docs/delivery/thesis-outline.md",
+      "sha256": "9cd4a7480ea3c7f46a3e181b60a32c15e305371e51afbece76fccbc2a4da8dcb",
+      "size": 13227
+    },
+    {
+      "path": "docs/delivery/evidence-matrix.md",
+      "sha256": "3a8451a376a81695ac63a4dbf09dfae5f2fb5949c9dc849e948c21d5af40e07f",
+      "size": 10163
+    },
+    {
+      "path": "docs/delivery/defense-script.md",
+      "sha256": "26e9f7329b9b1fe9c6e6e8b195cb0c6d2003b5024718d384d8a1625072edb3cb",
+      "size": 10701
+    },
+    {
+      "path": "docs/delivery/windows-runbook.md",
+      "sha256": "1d1e326c33e249724529d7603636ab6cbc2d96ac391485473b04e0d2f41ff213",
+      "size": 8324
+    }
+  ]
+}

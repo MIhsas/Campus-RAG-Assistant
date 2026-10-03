@@ -1,0 +1,559 @@
+{
+  "schema_version": "1.0",
+  "dataset_id": "eval-v2-synthetic",
+  "dataset_version": "1.0",
+  "split": "dev",
+  "is_synthetic": true,
+  "authoring_note": "题目与标注由 MiMo（Claude Code 执行模型）直接阅读合成语料原文块后辅助编写；跨度由 scripts/build-eval-v2.py fill-spans 按原文子串精确定位并校验；金标准未从任何检索结果反推。全部为合成资料，不代表真实学校政策。",
+  "questions": [
+    {
+      "question_id": "v2-q01",
+      "query": "补考成绩最高记为多少分",
+      "question_type": "direct",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "syn-parse-txt-001",
+          "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+          "parser_version": "1.0",
+          "block_id": "009121d9f2695116",
+          "char_start": 33,
+          "char_end": 44,
+          "quote": "补考成绩最高记为60分"
+        }
+      ],
+      "rationale": "直述：查询关键词与原文第三条直接对应，答案为明确数字上限。",
+      "missing": null,
+      "group_id": null,
+      "conditions": null
+    },
+    {
+      "question_id": "v2-q02",
+      "query": "缓考申请须经哪个部门批准",
+      "question_type": "direct",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "syn-parse-txt-001",
+          "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+          "parser_version": "1.0",
+          "block_id": "9df6bfbd98df733e",
+          "char_start": 38,
+          "char_end": 63,
+          "quote": "缓考申请须经所在学院批准，报教务处备案后方可生效。"
+        }
+      ],
+      "rationale": "直述：原文第二条直接给出审批部门链。",
+      "missing": null,
+      "group_id": null,
+      "conditions": null
+    },
+    {
+      "question_id": "v2-q03",
+      "query": "都江堰校区学生的缓考申请交到哪里",
+      "question_type": "direct",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "fd-yjy",
+          "document_sha256": "121ba90a3ee72b3ccd155bc645d363f873906395aeee54472ec5fb362b7c945b",
+          "parser_version": "1.0",
+          "block_id": "692d28b992c6eff3",
+          "char_start": 18,
+          "char_end": 49,
+          "quote": "都江堰校区学生的缓考申请交校区教务办公室，不经过学院教学秘书。"
+        }
+      ],
+      "rationale": "直述：查询含校区专名，原文首句直接给出受理部门。",
+      "missing": null,
+      "group_id": null,
+      "conditions": null
+    },
+    {
+      "question_id": "v2-q04",
+      "query": "成绩以什么为准",
+      "question_type": "direct",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "cmp-grades-1",
+          "document_sha256": "ea3f68c1b0abb3254b7e7792cd007a0a69bf23325e150bd416c4ea29a75e635b",
+          "parser_version": "1.0",
+          "block_id": "b475a4d00030292e",
+          "char_start": 4,
+          "char_end": 16,
+          "quote": "成绩以教务系统公布为准。"
+        }
+      ],
+      "rationale": "直述：原文第一条直接回答；同文档为成绩主题，非缓考主题干扰。",
+      "missing": null,
+      "group_id": null,
+      "conditions": null
+    },
+    {
+      "question_id": "v2-q05",
+      "query": "因病因事无法参加期末考试时如何延期考核",
+      "question_type": "paraphrase",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "cmp-defer-v1",
+          "document_sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+          "parser_version": "1.0",
+          "block_id": "3d5e04669fbfe064",
+          "char_start": 4,
+          "char_end": 35,
+          "quote": "本办法所称缓考，指学生因病因事不能参加期末考试而申请延期考核。"
+        }
+      ],
+      "rationale": "同义改写：查询用“延期考核”替代“缓考”，考查同义映射；金标准取 cmp-defer-v1（cmp-defer-v2 有逐字相同表述，命中 v2 计为未覆盖——twin 干扰，见 gold-review）。",
+      "missing": null,
+      "group_id": "g-defer-def-twin",
+      "conditions": null
+    },
+    {
+      "question_id": "v2-q06",
+      "query": "补考没通过要怎么办",
+      "question_type": "paraphrase",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "syn-parse-txt-001",
+          "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+          "parser_version": "1.0",
+          "block_id": "009121d9f2695116",
+          "char_start": 45,
+          "char_end": 63,
+          "quote": "补考仍不合格的，应当重新学习该课程。"
+        }
+      ],
+      "rationale": "同义改写：“没通过”对应“仍不合格”，答案为重修规定；与 v2-q01 同块不同跨度。",
+      "missing": null,
+      "group_id": null,
+      "conditions": null
+    },
+    {
+      "question_id": "v2-q07",
+      "query": "作弊被处分后还能补考吗",
+      "question_type": "paraphrase",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "syn-parse-txt-001",
+          "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+          "parser_version": "1.0",
+          "block_id": "b8b8a0c2bf59b405",
+          "char_start": 20,
+          "char_end": 32,
+          "quote": "（一）考试违纪或作弊者；"
+        }
+      ],
+      "rationale": "同义改写：查询以疑问形式命中第四条取消补考资格清单首项；答案跨度取该项本身。",
+      "missing": null,
+      "group_id": null,
+      "conditions": null
+    },
+    {
+      "question_id": "v2-q08",
+      "query": "备案",
+      "question_type": "low_keyword",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "syn-parse-txt-001",
+          "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+          "parser_version": "1.0",
+          "block_id": "9df6bfbd98df733e",
+          "char_start": 51,
+          "char_end": 63,
+          "quote": "报教务处备案后方可生效。"
+        }
+      ],
+      "rationale": "少关键词：查询仅一个低频词，考查稀疏查询；金标准为含“备案”的最小充分跨度。",
+      "missing": null,
+      "group_id": null,
+      "conditions": null
+    },
+    {
+      "question_id": "v2-q09",
+      "query": "三分之一",
+      "question_type": "low_keyword",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "syn-parse-txt-001",
+          "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+          "parser_version": "1.0",
+          "block_id": "b8b8a0c2bf59b405",
+          "char_start": 33,
+          "char_end": 55,
+          "quote": "（二）缺课累计超过该课程教学时数三分之一者；"
+        }
+      ],
+      "rationale": "少关键词：数字词查询，原文仅第四条一处出现。",
+      "missing": null,
+      "group_id": null,
+      "conditions": null
+    },
+    {
+      "question_id": "v2-q10",
+      "query": "缓考申请的证明材料和审批流程分别是什么",
+      "question_type": "multi_evidence",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "syn-parse-txt-001",
+          "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+          "parser_version": "1.0",
+          "block_id": "9df6bfbd98df733e",
+          "char_start": 38,
+          "char_end": 63,
+          "quote": "缓考申请须经所在学院批准，报教务处备案后方可生效。"
+        },
+        {
+          "evidence_id": "ev2",
+          "document_id": "syn-parse-docx-001",
+          "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+          "parser_version": "1.0",
+          "block_id": "0a7595fda827d87e",
+          "char_start": 14,
+          "char_end": 19,
+          "quote": "需医院证明"
+        }
+      ],
+      "rationale": "多证据：审批流程在正文第二条，证明材料在成绩登记表附表行；两证据分属不同文档/块，缺一不完整。",
+      "missing": null,
+      "group_id": null,
+      "conditions": null
+    },
+    {
+      "question_id": "v2-q11",
+      "query": "2025级学生缓考的申请时限和成绩如何记录",
+      "question_type": "multi_evidence",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "fd-2025",
+          "document_sha256": "745e52eaab4c64fcbc66370b58e0934b46a8874d55dd261d0605905973921248",
+          "parser_version": "1.0",
+          "block_id": "93d350b5c0fb8b15",
+          "char_start": 32,
+          "char_end": 49,
+          "quote": "须在考前 3 个工作日提交缓考申请"
+        },
+        {
+          "evidence_id": "ev2",
+          "document_id": "fd-2025",
+          "document_sha256": "745e52eaab4c64fcbc66370b58e0934b46a8874d55dd261d0605905973921248",
+          "parser_version": "1.0",
+          "block_id": "93d350b5c0fb8b15",
+          "char_start": 76,
+          "char_end": 85,
+          "quote": "成绩按正常考试记录"
+        }
+      ],
+      "rationale": "多证据（同块双跨度）：2025 级办法同一块含时限与成绩记录两个必要事实；条件 admission_year=2025 只准入 fd-2025/fd-yjy（后者无此内容）。",
+      "missing": null,
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": 2025,
+        "as_of_date": null
+      }
+    },
+    {
+      "question_id": "v2-q12",
+      "query": "缓考申请的提交期限和附加材料是什么",
+      "question_type": "multi_evidence",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "cmp-defer-v1",
+          "document_sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+          "parser_version": "1.0",
+          "block_id": "285acc86e242ef04",
+          "char_start": 4,
+          "char_end": 23,
+          "quote": "缓考申请须在考试前 5 个工作日提交。"
+        },
+        {
+          "evidence_id": "ev2",
+          "document_id": "cmp-defer-v1",
+          "document_sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+          "parser_version": "1.0",
+          "block_id": "f35e800308f2c324",
+          "char_start": 4,
+          "char_end": 20,
+          "quote": "申请缓考须同时提交书面情况说明。"
+        }
+      ],
+      "rationale": "多证据（跨块）：v1 版第二、三条各提供一个必要事实；v2 版存在相近表述（3 个工作日）构成同主题干扰，金标准限定 v1 跨度。",
+      "missing": null,
+      "group_id": null,
+      "conditions": null
+    },
+    {
+      "question_id": "v2-q13",
+      "query": "研究生因科研任务不能参加考试如何申请缓考",
+      "question_type": "distractor",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "dis-graduate-defer",
+          "document_sha256": "25f67d9d62217448738f061fb53ea90e2a50989aa5d0c96b6fece003c13cf6bc",
+          "parser_version": "1.0",
+          "block_id": "292ef8b2ddf35040",
+          "char_start": 22,
+          "char_end": 61,
+          "quote": "应在考试前 7 个工作日内向研究生院提交缓考申请，并附导师签字的科研任务说明。"
+        }
+      ],
+      "rationale": "相似主题干扰：查询限定研究生，语料中 5 份本科生缓考资料同主题易误检；金标准为研究生办法第二条。",
+      "missing": null,
+      "group_id": null,
+      "conditions": null
+    },
+    {
+      "question_id": "v2-q14",
+      "query": "缓考申请可以由他人代办吗",
+      "question_type": "distractor",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "syn-pdf-text-001",
+          "document_sha256": "66e0f6287aa365cfcc89f2cad15e4d9213f782c6303c86fb713b086aad71fa76",
+          "parser_version": "pdf-1.0",
+          "block_id": "d897e41b44bfa468",
+          "char_start": 7,
+          "char_end": 23,
+          "quote": "第三条 缓考申请不得由他人代办。"
+        }
+      ],
+      "rationale": "相似主题干扰（PDF 来源）：其他缓考资料均未提代办；仅 PDF 示例第三条作答。",
+      "missing": null,
+      "group_id": null,
+      "conditions": null
+    },
+    {
+      "question_id": "v2-q15",
+      "query": "成绩复核申请须在多长时间内提出",
+      "question_type": "distractor",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "syn-pdf-text-001",
+          "document_sha256": "66e0f6287aa365cfcc89f2cad15e4d9213f782c6303c86fb713b086aad71fa76",
+          "parser_version": "pdf-1.0",
+          "block_id": "3428681d9af60ba3",
+          "char_start": 37,
+          "char_end": 66,
+          "quote": "第一条 成绩复核申请须在成绩公布后 10 个工作日内提出。"
+        }
+      ],
+      "rationale": "相似主题干扰：成绩登记表中“成绩公布后10个工作日内向所在学院提出复核申请”为近义 twin 表述（命中不计覆盖，见 gold-review）；金标准取 PDF 第一条。",
+      "missing": null,
+      "group_id": null,
+      "conditions": null
+    },
+    {
+      "question_id": "v2-q16",
+      "query": "缓考申请的提交时限是什么",
+      "question_type": "filtered",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "fd-2024",
+          "document_sha256": "131838cca37947cc960da8f0c25d21124006093f5643d85fe23b27e38ed1aa3f",
+          "parser_version": "1.0",
+          "block_id": "773e8568327bac71",
+          "char_start": 32,
+          "char_end": 42,
+          "quote": "须在考前提交缓考申请"
+        }
+      ],
+      "rationale": "同题不同筛选组 g-year-defer：年级 2024 只准入 fd-2024（及非缓考时限文档），金标准为其“考前”表述（该版未给具体天数）。",
+      "missing": null,
+      "group_id": "g-year-defer",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": 2024,
+        "as_of_date": null
+      }
+    },
+    {
+      "question_id": "v2-q17",
+      "query": "缓考申请的提交时限是什么",
+      "question_type": "filtered",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "fd-2025",
+          "document_sha256": "745e52eaab4c64fcbc66370b58e0934b46a8874d55dd261d0605905973921248",
+          "parser_version": "1.0",
+          "block_id": "93d350b5c0fb8b15",
+          "char_start": 32,
+          "char_end": 49,
+          "quote": "须在考前 3 个工作日提交缓考申请"
+        }
+      ],
+      "rationale": "同题不同筛选组 g-year-defer：年级 2025 只准入 fd-2025，金标准为其 3 个工作日表述——与 v2-q16 同题不同准入证据。",
+      "missing": null,
+      "group_id": "g-year-defer",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": 2025,
+        "as_of_date": null
+      }
+    },
+    {
+      "question_id": "v2-q18",
+      "query": "缓考申请如何提交和审批",
+      "question_type": "filtered",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "fd-2024",
+          "document_sha256": "131838cca37947cc960da8f0c25d21124006093f5643d85fe23b27e38ed1aa3f",
+          "parser_version": "1.0",
+          "block_id": "773e8568327bac71",
+          "char_start": 50,
+          "char_end": 69,
+          "quote": "缓考申请经所在学院批准后报教务处备案。"
+        }
+      ],
+      "rationale": "同题不同筛选组 g-campus-defer：成都校区+2024 级准入 fd-2024 等；金标准为该办法审批句（正文第二条有近义 twin，不计覆盖）。",
+      "missing": null,
+      "group_id": "g-campus-defer",
+      "conditions": {
+        "campus": "成都校区",
+        "student_type": null,
+        "admission_year": 2024,
+        "as_of_date": null
+      }
+    },
+    {
+      "question_id": "v2-q19",
+      "query": "缓考申请如何提交和审批",
+      "question_type": "filtered",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "fd-yjy",
+          "document_sha256": "121ba90a3ee72b3ccd155bc645d363f873906395aeee54472ec5fb362b7c945b",
+          "parser_version": "1.0",
+          "block_id": "692d28b992c6eff3",
+          "char_start": 18,
+          "char_end": 49,
+          "quote": "都江堰校区学生的缓考申请交校区教务办公室，不经过学院教学秘书。"
+        }
+      ],
+      "rationale": "同题不同筛选组 g-campus-defer：都江堰校区准入 fd-yjy（成都校区文档被筛除），与 v2-q18 同题不同准入证据。",
+      "missing": null,
+      "group_id": "g-campus-defer",
+      "conditions": {
+        "campus": "都江堰校区",
+        "student_type": null,
+        "admission_year": 2024,
+        "as_of_date": null
+      }
+    },
+    {
+      "question_id": "v2-q20",
+      "query": "缓考申请通过什么方式提交",
+      "question_type": "filtered",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "ev1",
+          "document_id": "fd-future",
+          "document_sha256": "6835a4093590341d65f53a04c94f39d417577a11d5103d1e28dc342bcd61e2d2",
+          "parser_version": "1.0",
+          "block_id": "899b7d2b54e9a72e",
+          "char_start": 26,
+          "char_end": 51,
+          "quote": "缓考申请将通过线上教务系统提交，不再收取纸质材料。"
+        }
+      ],
+      "rationale": "同题不同筛选组 g-time-defer：查询日期 2026-10-01 时 2026 版办法已生效，金标准为线上提交句。",
+      "missing": null,
+      "group_id": "g-time-defer",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": "2026-10-01"
+      }
+    },
+    {
+      "question_id": "v2-q21",
+      "query": "缓考申请通过什么方式提交",
+      "question_type": "unanswerable",
+      "answerable": false,
+      "evidence": [],
+      "rationale": "同题不同筛选组 g-time-defer：查询日期 2025-10-01 时 2026 版办法未生效，生效资料均未说明线上/纸质提交方式——答案可得性随筛选变化；命中相关句不得当答案。",
+      "missing": "查询日期早于 2026 版办法生效日，现有生效资料未说明线上/纸质提交方式",
+      "group_id": "g-time-defer",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": "2025-10-01"
+      }
+    },
+    {
+      "question_id": "v2-q22",
+      "query": "国家奖学金的评审条件是什么",
+      "question_type": "unanswerable",
+      "answerable": false,
+      "evidence": [],
+      "rationale": "相似主题材料不足：语料仅有《学校奖学金评定细则》（不同奖项），命中不代表有依据。",
+      "missing": "语料仅含学校奖学金评定细则，未收录国家奖学金评审规定",
+      "group_id": null,
+      "conditions": null
+    },
+    {
+      "question_id": "v2-q23",
+      "query": "学生宿舍晚归如何处理",
+      "question_type": "unanswerable",
+      "answerable": false,
+      "evidence": [],
+      "rationale": "材料不足：全语料无宿舍管理主题，预期低命中或无命中。",
+      "missing": "语料无宿舍管理相关资料",
+      "group_id": null,
+      "conditions": null
+    },
+    {
+      "question_id": "v2-q24",
+      "query": "缓考申请的线上提交入口网址是什么",
+      "question_type": "unanswerable",
+      "answerable": false,
+      "evidence": [],
+      "rationale": "陷阱材料不足：fd-future 提及“线上教务系统”易产生高分命中，但未给出网址/入口；有命中不等于有依据。",
+      "missing": "资料提及线上教务系统但未给出网址或入口地址",
+      "group_id": null,
+      "conditions": null
+    }
+  ]
+}

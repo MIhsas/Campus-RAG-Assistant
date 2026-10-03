@@ -1,0 +1,26 @@
+{
+  "note": "完整回答文本，供人工核对；与主输出中的预览截断无关，不代表模型截断。",
+  "answers": [
+    {
+      "question_id": "smoke-01-answerable",
+      "answer": {
+        "paragraphs": [
+          {
+            "text": "缓考申请须经所在学院批准，报教务处备案后方可生效。",
+            "evidence_ids": [
+              "E1"
+            ],
+            "citations": [
+              {
+                "evidence_id": "E1",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "9df6bfbd98df733e",
+                "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

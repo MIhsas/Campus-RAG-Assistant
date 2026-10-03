@@ -1,0 +1,36 @@
+{
+  "task_id": "T005",
+  "task_revision": "v1",
+  "submission_revision": 3,
+  "responds_to": "T005-R2",
+  "status": "ready_for_review",
+  "summary": "R1-R2 修复：detailRequestSeq 请求序号防止旧响应覆盖（fetch 后+JSON 后双重检查）；loadStatus/loadDocs/selectDoc 全面检查 HTTP 状态（503/!r.ok/JSON 失败/网络错误各自处理）；clearOldErrors 替换错误明细而非累加；重试按钮刷新状态+列表。151 passed, 1 skipped。浏览器交互未验证。",
+  "files": [
+    "docs/collaboration/submissions/T005/report.md",
+    "docs/collaboration/submissions/T005/verification.md",
+    "docs/collaboration/submissions/T005/submission.json",
+    "docs/collaboration/submissions/T005/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T005/changed-files.json",
+  "history": [
+    "docs/collaboration/submissions/T005/history/revision-1/",
+    "docs/collaboration/submissions/T005/history/revision-2/"
+  ],
+  "checks": [
+    {"item": "R1: detailRequestSeq 计数器", "result": "pass（源码+服务确认）", "evidence_id": "V05"},
+    {"item": "R1: fetch 后序号检查", "result": "pass（源码确认）", "evidence_id": "V05"},
+    {"item": "R1: JSON 解析后二次检查", "result": "pass（源码确认）", "evidence_id": "V05"},
+    {"item": "R1: capturedDocId/capturedBlockId 局部变量", "result": "pass（源码确认）", "evidence_id": "V05"},
+    {"item": "R2: loadStatus 检查 !r.ok", "result": "pass（源码确认）", "evidence_id": "V06"},
+    {"item": "R2: loadDocs 区分 503/!r.ok/JSON失败/网络错误", "result": "pass（源码确认）", "evidence_id": "V06"},
+    {"item": "R2: selectDoc 检查 !r.ok", "result": "pass（源码确认）", "evidence_id": "V06"},
+    {"item": "R2: clearOldErrors 替换而非累加", "result": "pass（源码确认）", "evidence_id": "V06"},
+    {"item": "R2: 重试按钮刷新状态+列表", "result": "pass（源码确认）", "evidence_id": "V06"},
+    {"item": "全量 pytest", "result": "pass - 151 passed, 1 skipped", "evidence_id": "V01"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V02"},
+    {"item": "wheel 含 preview.html", "result": "pass", "evidence_id": "V03"},
+    {"item": "API 冒烟", "result": "pass", "evidence_id": "V04"},
+    {"item": "浏览器交互验证", "result": "未验证（Claude Code 无浏览器能力）", "evidence_id": "V07"}
+  ],
+  "blockers": []
+}

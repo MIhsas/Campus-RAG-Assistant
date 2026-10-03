@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>证据搜索</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
+.header{background:#fff;border-bottom:1px solid #ddd;padding:12px 20px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:10}
+.header h1{font-size:18px;font-weight:600}
+.header a{font-size:13px;color:#1976d2;text-decoration:none}
+.header a:hover{text-decoration:underline}
+.notice{background:#e3f2fd;padding:8px 16px;font-size:13px;color:#1565c0}
+.container{max-width:900px;margin:0 auto;padding:16px}
+.search-form{display:flex;gap:8px;margin-bottom:12px;align-items:center}
+.search-form input[type="text"]{flex:1;padding:10px;border:1px solid #ccc;border-radius:4px;font-size:15px}
+.search-form button{padding:10px 20px;background:#1976d2;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:15px}
+.search-form button:hover{background:#1565c0}
+.search-form button:disabled{background:#bbb;cursor:not-allowed}
+.mode-selector{display:flex;gap:4px;margin-bottom:12px}
+.mode-btn{padding:6px 16px;border:1px solid #ccc;background:#fff;border-radius:4px;cursor:pointer;font-size:13px}
+.mode-btn:hover{background:#f0f0f0}
+.mode-btn.active{background:#1976d2;color:#fff;border-color:#1976d2}
+.mode-btn:disabled{opacity:0.5;cursor:not-allowed}
+.mode-btn.active:disabled{background:#a0c4e8;border-color:#a0c4e8}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;padding:10px;background:#fff;border:1px solid #ddd;border-radius:6px}
+.filter-bar label{font-size:13px;color:#555}
+.filter-bar select,.filter-bar input[type="date"]{padding:6px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;background:#fff}
+.filter-clear-btn{padding:6px 14px;border:1px solid #999;background:#fff;color:#555;border-radius:4px;cursor:pointer;font-size:13px}
+.filter-clear-btn:hover{background:#f0f0f0}
+.status-bar{padding:8px 16px;font-size:13px;border-radius:4px;margin-bottom:12px}
+.status-ready{background:#e8f5e9;color:#2e7d32}
+.status-partial{background:#fff3e0;color:#e65100}
+.status-failed{background:#ffebee;color:#c62828}
+.status-unconfigured{background:#f5f5f5;color:#757575}
+.errors-box{background:#ffebee;border:1px solid #ef9a9a;border-radius:6px;padding:12px;margin-bottom:12px}
+.errors-box h4{color:#c62828;margin-bottom:6px;font-size:14px}
+.errors-box ul{margin-left:20px;font-size:13px}
+.query-label{font-size:13px;color:#666;margin-bottom:12px}
+.filter-notes{font-size:12px;color:#8a6d3b;background:#fcf8e3;border:1px solid #faebcc;border-radius:4px;padding:8px 12px;margin-bottom:12px}
+.hit-card{background:#fff;border:1px solid #ddd;border-radius:6px;padding:16px;margin-bottom:12px}
+.hit-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.hit-rank{font-size:13px;color:#1976d2;font-weight:600}
+.hit-score{font-size:12px;color:#666}
+.hit-title{font-size:15px;font-weight:500;margin-bottom:4px}
+.hit-meta{font-size:12px;color:#666;margin-bottom:8px}
+.hit-text{font-size:14px;white-space:pre-wrap;word-break:break-word;background:#fafafa;padding:10px;border-radius:4px;margin-bottom:8px;border-left:3px solid #1976d2}
+.hit-source{font-size:12px;color:#666;margin-bottom:8px}
+.hit-source a{color:#1976d2;text-decoration:none}
+.hit-source a:hover{text-decoration:underline}
+.synthetic-badge{font-size:11px;background:#fff3cd;color:#856404;padding:1px 6px;border-radius:3px;margin-left:4px}
+.hit-actions{display:flex;gap:12px;align-items:center}
+.hit-actions a{font-size:13px;color:#1976d2;text-decoration:none}
+.hit-actions a:hover{text-decoration:underline}
+details{margin-top:8px}
+summary{font-size:13px;color:#1976d2;cursor:pointer}
+summary:hover{text-decoration:underline}
+.matched-terms{font-size:13px;margin-top:4px}
+.matched-terms table{border-collapse:collapse;width:100%;margin-top:4px}
+.matched-terms th,.matched-terms td{border:1px solid #ddd;padding:4px 8px;text-align:left;font-size:12px}
+.matched-terms th{background:#f5f5f5}
+.hybrid-info{font-size:12px;color:#666;margin-top:4px}
+.empty-state{text-align:center;color:#999;padding:40px 20px}
+.retry-btn{margin-top:8px;padding:6px 16px;border:1px solid #1976d2;background:#fff;color:#1976d2;border-radius:4px;cursor:pointer;font-size:13px}
+.retry-btn:hover{background:#e3f2fd}
+.loading{color:#666;text-align:center;padding:20px}
+@media(max-width:600px){
+  .container{padding:10px}
+  .search-form{flex-direction:column}
+  .hit-card{padding:12px}
+  .mode-selector{flex-wrap:wrap}
+  .filter-bar{flex-direction:column;align-items:stretch}
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>证据搜索</h1>
+  <a href="/">首页</a>
+  <a href="/preview">← 语料预览</a>
+  <a href="/ask">证据整理</a>
+  <a href="/procedures">办事指南</a>
+  <a href="/compare">版本对比</a>
+</div>
+<div class="notice">证据检索结果，不是自动生成的政策答案，也不是资格认证。</div>
+<div class="container">
+  <div class="mode-selector" id="mode-selector">
+    <button class="mode-btn active" data-mode="bm25">关键词</button>
+    <button class="mode-btn" data-mode="dense">语义</button>
+    <button class="mode-btn" data-mode="hybrid">混合</button>
+  </div>
+  <div class="filter-bar" id="filter-bar">
+    <label for="filter-campus">校区</label>
+    <select id="filter-campus" aria-label="校区"><option value="">不限</option></select>
+    <label for="filter-student-type">学生类型</label>
+    <select id="filter-student-type" aria-label="学生类型"><option value="">不限</option></select>
+    <label for="filter-admission-year">入学年份</label>
+    <select id="filter-admission-year" aria-label="入学年份"><option value="">不限</option></select>
+    <label for="filter-as-of-date">查询日期</label>
+    <input type="date" id="filter-as-of-date" aria-label="查询日期">
+    <button type="button" class="filter-clear-btn" id="clear-filters-btn">清除条件</button>
+  </div>
+  <div class="search-form" id="search-form">
+    <label for="query-input" class="sr-only" style="position:absolute;left:-9999px">搜索关键词</label>
+    <input type="text" id="query-input" placeholder="输入关键词，如：缓考申请" aria-label="搜索关键词">
+    <button type="button" id="search-btn">搜索</button>
+  </div>
+  <div id="status-area"></div>
+  <div id="results-area"></div>
+</div>
+<script>
+(function(){
+  var API = '/api/v1/search';
+  var input = document.getElementById('query-input');
+  var btn = document.getElementById('search-btn');
+  var statusArea = document.getElementById('status-area');
+  var resultsArea = document.getElementById('results-area');
+  var modeSelector = document.getElementById('mode-selector');
+  var campusSel = document.getElementById('filter-campus');
+  var typeSel = document.getElementById('filter-student-type');
+  var yearSel = document.getElementById('filter-admission-year');
+  var dateInput = document.getElementById('filter-as-of-date');
+  var clearBtn = document.getElementById('clear-filters-btn');
+  var searchSeq = 0;
+  var statusSeq = 0;
+  var lastSubmittedQuery = '';
+  var lastSubmittedTopK = 5;
+  var lastSubmittedMode = 'bm25';
+  var lastSubmittedFilters = null;
+  var selectedMode = 'bm25';
+  var availableModes = [];
+  var lastFilterOptionsJson = '';
+
+  function ce(tag, cls, text){
+    var el = document.createElement(tag);
+    if(cls) el.className = cls;
+    if(text !== undefined) el.textContent = text;
+    return el;
+  }
+
+  function formatScore(s){ return (Math.round(s * 1000) / 1000).toFixed(3); }
+  function formatDate(v){ return v || '未标注'; }
+  function formatEndDate(v){ return v || '未标注截止'; }
+
+  function scoreLabel(mode){
+    if(mode === 'dense') return '语义相似度';
+    if(mode === 'hybrid') return '融合排序分';
+    return '关键词匹配分';
+  }
+
+  function scopeText(scope){
+    if(!scope) return '未标注';
+    var parts = [];
+    if(scope.campus && scope.campus.length) parts.push('校区：' + scope.campus.join('、'));
+    if(scope.student_type && scope.student_type.length) parts.push('类型：' + scope.student_type.join('、'));
+    if(scope.admission_years && scope.admission_years.length) parts.push('年级：' + scope.admission_years.join('、'));
+    return parts.length ? parts.join('；') : '未标注';
+  }
+
+  function currentFilters(){
+    return {
+      campus: campusSel.value ? campusSel.value : null,
+      student_type: typeSel.value ? typeSel.value : null,
+      admission_year: yearSel.value ? parseInt(yearSel.value, 10) : null,
+      as_of_date: dateInput.value ? dateInput.value : null
+    };
+  }
+
+  function hasFilter(f){
+    return !!f && (f.campus !== null || f.student_type !== null ||
+      f.admission_year !== null || f.as_of_date !== null);
+  }
+
+  function filtersText(f){
+    if(!hasFilter(f)) return '不限条件';
+    var parts = [];
+    if(f.campus) parts.push('校区=' + f.campus);
+    if(f.student_type) parts.push('类型=' + f.student_type);
+    if(f.admission_year !== null && f.admission_year !== undefined) parts.push('年级=' + f.admission_year);
+    if(f.as_of_date) parts.push('查询日期=' + f.as_of_date);
+    return parts.join('　');
+  }
+
+  function clearFilters(){
+    campusSel.value = '';
+    typeSel.value = '';
+    yearSel.value = '';
+    dateInput.value = '';
+  }
+
+  // Rebuild one filter select from status options, preserving the user's
+  // current selection. Returns vanished entries like "年级=2024" when the
+  // selected value is no longer among the options — the constraint is kept
+  // (and reported), never silently dropped.
+  function fillSelect(sel, values, fieldName){
+    var prev = sel.value;
+    var vals = [];
+    (values || []).forEach(function(v){ vals.push(String(v)); });
+    sel.innerHTML = '';
+    var optAll = document.createElement('option');
+    optAll.value = '';
+    optAll.textContent = '不限';
+    sel.appendChild(optAll);
+    vals.forEach(function(v){
+      var opt = document.createElement('option');
+      opt.value = v;
+      opt.textContent = v;
+      sel.appendChild(opt);
+    });
+    var vanished = [];
+    if(prev && vals.indexOf(prev) < 0){
+      var ghost = document.createElement('option');
+      ghost.value = prev;
+      ghost.textContent = prev + '（已不在当前选项）';
+      sel.appendChild(ghost);
+      sel.value = prev;
+      vanished.push(fieldName + '=' + prev);
+      return vanished;
+    }
+    sel.value = prev || '';
+    return vanished;
+  }
+
+  function updateModeButtons(){
+    var btns = modeSelector.querySelectorAll('.mode-btn');
+    btns.forEach(function(b){
+      var m = b.getAttribute('data-mode');
+      b.classList.toggle('active', m === selectedMode);
+      b.disabled = availableModes.indexOf(m) < 0;
+    });
+  }
+
+  // Status loading
+  async function loadStatus(){
+    statusSeq++;
+    var mySeq = statusSeq;
+    try {
+      var r = await fetch(API + '/status');
+      if(mySeq !== statusSeq) return;
+      if(!r.ok){
+        statusArea.innerHTML = '';
+        var wrap = ce('div');
+        wrap.appendChild(ce('div', 'status-bar status-failed', '状态接口错误：HTTP ' + r.status));
+        var retryBtn = ce('button', 'retry-btn', '重试');
+        retryBtn.addEventListener('click', loadStatus);
+        wrap.appendChild(retryBtn);
+        statusArea.appendChild(wrap);
+        return;
+      }
+      var d;
+      try { d = await r.json(); } catch(je){
+        if(mySeq !== statusSeq) return;
+        statusArea.innerHTML = '';
+        var wrap = ce('div');
+        wrap.appendChild(ce('div', 'status-bar status-failed', '状态接口返回无效 JSON'));
+        var retryBtn = ce('button', 'retry-btn', '重试');
+        retryBtn.addEventListener('click', loadStatus);
+        wrap.appendChild(retryBtn);
+        statusArea.appendChild(wrap);
+        return;
+      }
+      if(mySeq !== statusSeq) return;
+      availableModes = d.available_modes || ['bm25'];
+      updateModeButtons();
+      // Only rebuild filter controls when the option set actually changed;
+      // background status refreshes must never touch the user's selections
+      // (including edits made while a search was in flight).
+      var opts = d.filter_options || {};
+      var optsJson = JSON.stringify(opts);
+      var vanished = [];
+      if(optsJson !== lastFilterOptionsJson){
+        vanished = vanished
+          .concat(fillSelect(campusSel, opts.campus, '校区'))
+          .concat(fillSelect(typeSel, opts.student_type, '学生类型'))
+          .concat(fillSelect(yearSel, opts.admission_year, '入学年份'));
+        lastFilterOptionsJson = optsJson;
+      }
+      statusArea.innerHTML = '';
+      var bar = ce('div', 'status-bar');
+      var cls = {ready:'status-ready',partial:'status-partial',failed:'status-failed',unconfigured:'status-unconfigured'}[d.status]||'';
+      bar.className = 'status-bar ' + cls;
+      var labels = {ready:'就绪',partial:'部分成功',failed:'失败',unconfigured:'未配置'};
+      var txt = '语料状态：' + labels[d.status] + '　已解析：' + d.parsed_count + '　分块：' + d.chunk_count + '　有效索引：' + d.indexed_chunk_count;
+      if(d.embedding_model) txt += '　模型：' + d.embedding_model;
+      if(d.truncated_chunk_count > 0) txt += '　截断块：' + d.truncated_chunk_count;
+      bar.textContent = txt;
+      statusArea.appendChild(bar);
+      if(vanished.length){
+        var vanishNotice = ce('div', 'notice', '以下筛选条件已不在当前语料选项中，仍按该条件筛选（仅手动更改或清除条件会取消）：' + vanished.join('、'));
+        vanishNotice.style.marginTop = '4px';
+        statusArea.appendChild(vanishNotice);
+      }
+      if(d.embedding_error){
+        var embNotice = ce('div', 'notice', '向量模型不可用：' + d.embedding_error + '（关键词检索与原文预览不受影响）');
+        embNotice.style.marginTop = '4px';
+        statusArea.appendChild(embNotice);
+      }
+      if(d.truncated_chunk_count > 0){
+        var truncNotice = ce('div', 'notice', d.truncated_chunk_count + ' 个长块超出模型 token 上限，向量计算可能仅部分参与；原文与分块文本未被截短。');
+        truncNotice.style.marginTop = '4px';
+        statusArea.appendChild(truncNotice);
+      }
+      if(d.synthetic_count > 0){
+        var synNotice;
+        if(d.synthetic_count >= d.parsed_count){
+          synNotice = ce('div', 'notice', '⚠ 全部为合成测试资料，不代表四川农业大学真实政策。');
+        } else {
+          synNotice = ce('div', 'notice', '⚠ 部分文档为合成测试资料（' + d.synthetic_count + '/' + d.parsed_count + '），不代表真实学校政策。');
+        }
+        synNotice.style.marginTop = '4px';
+        statusArea.appendChild(synNotice);
+      }
+      if(d.errors && d.errors.length){
+        var eb = ce('div', 'errors-box');
+        eb.appendChild(ce('h4', '', '错误明细'));
+        var ul = ce('ul');
+        d.errors.forEach(function(e){ ul.appendChild(ce('li', '', (e.document_id?'['+e.document_id+'] ':'') + (e.message||e.code||''))); });
+        eb.appendChild(ul);
+        statusArea.appendChild(eb);
+      }
+    } catch(e){
+      if(mySeq !== statusSeq) return;
+      statusArea.innerHTML = '';
+      var wrap = ce('div');
+      wrap.appendChild(ce('div', 'status-bar status-failed', '无法获取状态：网络错误'));
+      var retryBtn = ce('button', 'retry-btn', '重试');
+      retryBtn.addEventListener('click', loadStatus);
+      wrap.appendChild(retryBtn);
+      statusArea.appendChild(wrap);
+    }
+  }
+
+  // Search
+  async function doSearch(query, topK, mode, filters){
+    if(query === undefined) query = input.value;
+    if(topK === undefined) topK = 5;
+    if(mode === undefined) mode = selectedMode;
+    if(filters === undefined) filters = currentFilters();
+    searchSeq++;
+    var mySeq = searchSeq;
+    if(!query.trim()){
+      resultsArea.innerHTML = '';
+      resultsArea.appendChild(ce('div','empty-state','请输入搜索关键词'));
+      btn.disabled = false;
+      return;
+    }
+    lastSubmittedQuery = query;
+    lastSubmittedTopK = topK;
+    lastSubmittedMode = mode;
+    lastSubmittedFilters = filters;
+    btn.disabled = true;
+    resultsArea.innerHTML = '';
+    resultsArea.appendChild(ce('div','loading','搜索中…'));
+    await executeSearch(query, topK, mode, filters, mySeq);
+    if(mySeq === searchSeq) btn.disabled = false;
+  }
+
+  function retrySearchParams(){
+    searchSeq++;
+    var mySeq = searchSeq;
+    btn.disabled = true;
+    resultsArea.innerHTML = '';
+    resultsArea.appendChild(ce('div','loading','搜索中…'));
+    executeSearch(lastSubmittedQuery, lastSubmittedTopK, lastSubmittedMode, lastSubmittedFilters, mySeq).then(function(){
+      if(mySeq === searchSeq) btn.disabled = false;
+    });
+  }
+
+  async function executeSearch(query, topK, mode, filters, mySeq){
+    try {
+      var body = {query: query, top_k: topK, mode: mode};
+      if(hasFilter(filters)) body.filters = filters;
+      var r = await fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
+      if(mySeq !== searchSeq) return;
+      if(r.status === 503){
+        var err;
+        try { err = await r.json(); } catch(je){
+          if(mySeq !== searchSeq) return;
+          resultsArea.innerHTML = '';
+          var wrap = ce('div');
+          wrap.appendChild(ce('div','empty-state','接口返回无效 JSON'));
+          var retryBtn = ce('button','retry-btn','重试');
+          retryBtn.addEventListener('click', retrySearchParams);
+          wrap.appendChild(retryBtn);
+          resultsArea.appendChild(wrap);
+          return;
+        }
+        if(mySeq !== searchSeq) return;
+        resultsArea.innerHTML = '';
+        var wrap = ce('div');
+        wrap.appendChild(ce('div','empty-state', err.message || '检索不可用'));
+        var retryBtn = ce('button','retry-btn','重试');
+        retryBtn.addEventListener('click', retrySearchParams);
+        wrap.appendChild(retryBtn);
+        resultsArea.appendChild(wrap);
+        return;
+      }
+      if(!r.ok){
+        if(mySeq !== searchSeq) return;
+        resultsArea.innerHTML = '';
+        var wrap = ce('div');
+        wrap.appendChild(ce('div','empty-state','接口错误：HTTP ' + r.status));
+        var retryBtn = ce('button','retry-btn','重试');
+        retryBtn.addEventListener('click', retrySearchParams);
+        wrap.appendChild(retryBtn);
+        resultsArea.appendChild(wrap);
+        return;
+      }
+      var d;
+      try { d = await r.json(); } catch(je){
+        if(mySeq !== searchSeq) return;
+        resultsArea.innerHTML = '';
+        var wrap = ce('div');
+        wrap.appendChild(ce('div','empty-state','返回无效 JSON'));
+        var retryBtn = ce('button','retry-btn','重试');
+        retryBtn.addEventListener('click', retrySearchParams);
+        wrap.appendChild(retryBtn);
+        resultsArea.appendChild(wrap);
+        return;
+      }
+      if(mySeq !== searchSeq) return;
+      loadStatus();
+      renderResults(d, query, mode);
+    } catch(e){
+      if(mySeq !== searchSeq) return;
+      resultsArea.innerHTML = '';
+      var wrap = ce('div');
+      wrap.appendChild(ce('div','empty-state','网络错误'));
+      var retryBtn = ce('button','retry-btn','重试');
+      retryBtn.addEventListener('click', retrySearchParams);
+      wrap.appendChild(retryBtn);
+      resultsArea.appendChild(wrap);
+    }
+  }
+
+  function appendClearAction(wrap){
+    var clearAction = ce('button', 'filter-clear-btn', '清除条件');
+    clearAction.addEventListener('click', clearFilters);
+    wrap.appendChild(clearAction);
+  }
+
+  function renderResults(d, query, mode){
+    resultsArea.innerHTML = '';
+    var hitCount = (d.hits && d.hits.length) || 0;
+    // Condition line reflects the submitted query's snapshot (response echo),
+    // not the current control values — later edits must not rewrite it.
+    var ql = ce('div', 'query-label',
+      '查询：' + query + '　模式：' + ({bm25:'关键词',dense:'语义',hybrid:'混合'}[mode]||mode) +
+      '　条件：' + filtersText(d.filters) + '　结果：' + hitCount + ' 条');
+    resultsArea.appendChild(ql);
+
+    if(d.filter_summary && d.filter_summary.notes && d.filter_summary.notes.length){
+      var notesDiv = ce('div', 'filter-notes', d.filter_summary.notes.join('　'));
+      resultsArea.appendChild(notesDiv);
+    }
+
+    if(!d.hits || d.hits.length === 0){
+      var wrap = ce('div');
+      if(d.filter_summary && d.filter_summary.active && d.filter_summary.allowed_count === 0){
+        wrap.appendChild(ce('div','empty-state','没有满足所选条件的资料'));
+        appendClearAction(wrap);
+      } else if(d.filter_summary && d.filter_summary.active){
+        wrap.appendChild(ce('div','empty-state','满足条件的资料中没有检索命中'));
+        appendClearAction(wrap);
+      } else if(mode === 'bm25' && (!d.query_tokens || d.query_tokens.length === 0)){
+        wrap.appendChild(ce('div','empty-state','无有效搜索词（输入内容不包含可检索的汉字或字母数字）'));
+      } else if(d.indexed_chunk_count === 0){
+        wrap.appendChild(ce('div','empty-state','无有效索引内容，无法匹配'));
+      } else {
+        wrap.appendChild(ce('div','empty-state','无匹配结果'));
+      }
+      resultsArea.appendChild(wrap);
+      return;
+    }
+
+    d.hits.forEach(function(hit){
+      var card = ce('div', 'hit-card');
+      var hdr = ce('div', 'hit-header');
+      hdr.appendChild(ce('span', 'hit-rank', '#' + hit.rank));
+      hdr.appendChild(ce('span', 'hit-score', scoreLabel(mode) + '：' + formatScore(hit.score)));
+      card.appendChild(hdr);
+      var chunk = hit.chunk;
+      var meta = chunk.metadata || {};
+      var titleEl = ce('div', 'hit-title');
+      titleEl.textContent = meta.title || chunk.document_id;
+      if(meta.is_synthetic) titleEl.appendChild(ce('span', 'synthetic-badge', '合成'));
+      card.appendChild(titleEl);
+      var metaLine = [];
+      if(meta.source_site) metaLine.push(meta.source_site);
+      if(meta.version_label) metaLine.push(meta.version_label);
+      if(chunk.locator && chunk.locator.type === 'pdf_page') metaLine.push('PDF 第 ' + chunk.locator.page + ' 页');
+      if(metaLine.length) card.appendChild(ce('div', 'hit-meta', metaLine.join(' · ')));
+      var datesDiv = ce('div', 'hit-meta');
+      datesDiv.textContent = '发布：' + formatDate(meta.published_at) + '　生效：' + formatDate(meta.effective_from) + '　失效：' + formatEndDate(meta.effective_to);
+      card.appendChild(datesDiv);
+      card.appendChild(ce('div', 'hit-text', chunk.text));
+      var srcDiv = ce('div', 'hit-source');
+      srcDiv.appendChild(document.createTextNode('适用范围：' + scopeText(meta.scope)));
+      if(meta.source_url && meta.source_url.match(/^https?:\/\//)){
+        srcDiv.appendChild(document.createTextNode('　'));
+        var a = ce('a');
+        a.href = meta.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        a.textContent = '来源链接';
+        srcDiv.appendChild(a);
+      }
+      card.appendChild(srcDiv);
+      var actions = ce('div', 'hit-actions');
+      var previewA = ce('a');
+      previewA.href = hit.preview_url;
+      previewA.textContent = '查看原文';
+      actions.appendChild(previewA);
+      card.appendChild(actions);
+
+      // Hybrid: show both ranks
+      if(mode === 'hybrid' && (hit.bm25_rank || hit.dense_rank)){
+        var hInfo = ce('div', 'hybrid-info');
+        var parts = [];
+        if(hit.bm25_rank) parts.push('关键词排名 #' + hit.bm25_rank);
+        if(hit.dense_rank) parts.push('语义排名 #' + hit.dense_rank);
+        hInfo.textContent = parts.join('　');
+        card.appendChild(hInfo);
+      }
+
+      // Matched terms (BM25 only has them)
+      if(hit.matched_terms && hit.matched_terms.length){
+        var det = document.createElement('details');
+        var summ = document.createElement('summary');
+        summ.textContent = '匹配依据';
+        det.appendChild(summ);
+        var mtDiv = ce('div', 'matched-terms');
+        var table = document.createElement('table');
+        var thead = document.createElement('thead');
+        thead.innerHTML = '<tr><th>词</th><th>词频</th><th>文档频率</th><th>IDF</th><th>贡献</th></tr>';
+        table.appendChild(thead);
+        var tbody = document.createElement('tbody');
+        hit.matched_terms.forEach(function(mt){
+          var tr = document.createElement('tr');
+          [mt.term, mt.tf, mt.df, formatScore(mt.idf), formatScore(mt.contribution)].forEach(function(v){
+            var td = document.createElement('td');
+            td.textContent = v;
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        mtDiv.appendChild(table);
+        det.appendChild(mtDiv);
+        card.appendChild(det);
+      }
+      resultsArea.appendChild(card);
+    });
+  }
+
+  // Mode selector
+  modeSelector.addEventListener('click', function(e){
+    var btn = e.target.closest('.mode-btn');
+    if(!btn || btn.disabled) return;
+    selectedMode = btn.getAttribute('data-mode');
+    updateModeButtons();
+  });
+
+  btn.addEventListener('click', function(){ doSearch(); });
+  input.addEventListener('keydown', function(e){ if(e.key === 'Enter') doSearch(); });
+  clearBtn.addEventListener('click', function(){ clearFilters(); });
+  loadStatus();
+})();
+</script>
+</body>
+</html>

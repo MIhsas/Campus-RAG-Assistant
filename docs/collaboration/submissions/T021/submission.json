@@ -1,0 +1,24 @@
+{
+  "task_id": "T021",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "summary": "文本PDF解析与语料接入准备完成：pypdf 逐页文本提取（明确空白/换行规范化、页码+页内段序定位、引用跨度逐字）；PDF 独立解析版本 pdf-1.0 参与块 ID——旧 TXT/DOCX 块 ID 与模板/规则引用零变化；无文本/混合/加密损坏明确提示（不冒充成功、不进索引）；preview→search→ask 串通页码与原文跳转；登记 CLI（不猜元数据、不覆盖、不改输入）+ serve-corpus（不加载合成模板/规则/mock）；真实资料接入说明与合成 PDF 夹具、原文→提取块对照、候选语料包示例齐备。",
+  "verification": {
+    "test_pdf_corpus": {"total": 11, "passed": 11},
+    "affected_regression": {"total": 91, "passed": 91, "note": "parse/procedures/ask_api/demo_campus"},
+    "js_syntax": "7 files passed",
+    "js_behavior": {"ask": 25, "search": 14},
+    "pip_check": "No broken requirements found",
+    "register_cli_demo": "candidate-package 登记/解析通过（register_exit 0）"
+  },
+  "compatibility": {
+    "legacy_block_ids": "未变（断言 9df6bfbd98df733e / f28ee3e4c5372f7c 等在位，parser_version=1.0）",
+    "pdf_parser_version": "pdf-1.0（独立参与 PDF 块 ID，全局 PARSER_VERSION 不动）"
+  },
+  "browser_check": "无浏览器工具，preview/检索跳转/摘录实测留待 Astra（demo-notes 检查表 a—e）；stub 不冒充浏览器证据",
+  "deliverables_extra": ["pdf-extraction-crosscheck.md（原文→提取块/页码→命中引用对照）", "candidate-package/ + candidate-package-report.txt（候选语料包示例）"],
+  "not_claimed": ["OCR/扫描件识别", "视觉排版等价提取", "真实学校资料效果"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

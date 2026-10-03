@@ -1,0 +1,57 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "d993041ca7fbd2239fd578bc47f115ef793653933751ca29e3a99d860bac308d",
+    "size": 29716
+  },
+  {
+    "path": "..\\README.md",
+    "sha256": "95e9fefef3c0282822672c37689860ee11d81c9308141abee3740166eec10513",
+    "size": 3728
+  },
+  {
+    "path": "env.example",
+    "sha256": "8ae07e8a83a7fdd31ed77e483879e86f71c4d8e913ad7cf23a5cd004a4fde411",
+    "size": 624
+  },
+  {
+    "path": "src\\campus_assistant\\api\\ask.py",
+    "sha256": "d16d8c723689529eee7ce6623cf72bfb7473a31e21357500aaafccb182086052",
+    "size": 12900
+  },
+  {
+    "path": "src\\campus_assistant\\demo.py",
+    "sha256": "5cc1b5f5098e4d97e5e4873be006a9185442cb54f37f5d6fc2e514a2118ce87d",
+    "size": 894
+  },
+  {
+    "path": "src\\campus_assistant\\main.py",
+    "sha256": "5359cbabbc45567810f711af78507600e31ba47b29f88084ed67b15f8d7d55e7",
+    "size": 8403
+  },
+  {
+    "path": "src\\campus_assistant\\qa\\deepseek.py",
+    "sha256": "1c503b7df8a609a784111e8763b9d9ca0976418d0536fb4e277d7584cc7a520f",
+    "size": 10599
+  },
+  {
+    "path": "src\\campus_assistant\\qa\\providers.py",
+    "sha256": "6394aa31a81439b17a7e756d1fbb110f7eb897dbd699868f2a3b2f2ae797865f",
+    "size": 5299
+  },
+  {
+    "path": "scripts\\demo-deepseek-mock.py",
+    "sha256": "799ff892c253ebbc8dab391703335d65be7d4ca8eb08ace0c9c8b9f7fccb6b4c",
+    "size": 8287
+  },
+  {
+    "path": "scripts\\live-smoke-deepseek.py",
+    "sha256": "74b1b120aa818e91d1b5da4d2845729a34a7e3e780edae2fc5f6858094d61764",
+    "size": 5068
+  },
+  {
+    "path": "tests\\test_deepseek_provider.py",
+    "sha256": "93f82797792af97864f9ef66ad3fbc5c113dc4cd20b3b56be6925131086f8596",
+    "size": 11806
+  }
+]

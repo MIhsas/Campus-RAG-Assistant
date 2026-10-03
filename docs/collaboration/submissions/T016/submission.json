@@ -1,0 +1,29 @@
+{
+  "task_id": "T016",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T016-R1",
+  "status": "ready_for_review",
+  "summary": "T016-R1 三项定向修复完成：(1) 被筛除/失效引用不再携带原文、不渲染为清单依据（仅保留状态+来源标识诊断），2023 草稿与保存恢复的待办均无医院证明/3个工作日并保留“资料未说明/待核实”，2024 对照正常；失效必要步骤不展示具体办理要求；横幅如实反映部分未知；保存快照只存已采用引用并保留待核实语义。(2) verify 逐条核查保存时实际采用的全部引用（含可选）——缺失/哈希/条件变化均提示复核并保留勾选备注个人步骤。(3) 新草稿请求开始即令旧草稿失效，失败后不可保存、零写入。三条因果链回归通过，未改 ask/search 与产品语料/gold，零外部调用。",
+  "live_verified": false,
+  "external_model_calls": 0,
+  "fix_scope": {
+    "modified": ["src/campus_assistant/procedures/service.py", "src/campus_assistant/static/procedures.html", "tests/test_procedures.py", "scripts/check-procedures-behavior.cjs", "scripts/demo-procedures-api.py"],
+    "kept_unchanged": ["其他 T016 功能", "T015 三项整理", "ask/search 页面与其测试", "产品语料与 gold"]
+  },
+  "regression_chains": {
+    "chain1_excluded_content": "pytest 全输出断言 + stub 草稿→保存→刷新恢复：2023 无医院证明/3个工作日、含待核实；2024 有效引用正常",
+    "chain2_verify_optional": "pytest：2024 快照（含已采用可选引用）原语料 unchanged；隔离 DOCX 缺失/哈希更新均 changed 并指名步骤",
+    "chain3_stale_draft": "stub：成功草稿→新请求失败→保存禁用、点击零写入、提示旧草稿已失效"
+  },
+  "verification": {
+    "procedures_pytest": {"total": 14, "passed": 14, "note": "12 原有 + 2 R1 因果链"},
+    "js_syntax": "4 files passed",
+    "js_behavior_procedures": {"total": 9, "passed": 9, "note": "7 原有 + 2 R1 因果链"},
+    "api_demo_regenerated": "7 calls；2023/2024/拒绝场景与 verify 双分支修复断言全过"
+  },
+  "evidence_levels": "pytest（服务全输出）+ DOM/fetch/localStorage stub（页面渲染/保存/恢复）+ 本地 API 演示；stub 不冒充真实浏览器，完整待办闭环浏览器复验留待 Astra（步骤见 demo-notes.md）",
+  "history": ["report.rev1.md", "verification.rev1.md", "submission.rev1.json", "changed-files.rev1.json", "api-demo.rev1.json", "citation-crosscheck.rev1.md", "demo-notes.rev1.md"],
+  "not_claimed": ["学校现行办事指南", "真实浏览器完整闭环（待 Astra 补验）", "校园准确率"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

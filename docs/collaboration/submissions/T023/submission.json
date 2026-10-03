@@ -1,0 +1,24 @@
+{
+  "task_id": "T023",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T023-R1",
+  "status": "ready_for_review",
+  "tinyagent_integration_kind": "reference",
+  "tinyagent_integration_note": "参考 TinyAgent（Datawhale tiny-universe/content/TinyAgent）的工具声明式注册与动作→工具→观察循环思路，自研受限编排；无运行时代码复用、未导入其模块、未运行其示例、未接入真实 Agent。许可（T023-R1 校正）：仓库根 README 声明 CC BY-NC-SA 4.0（第 193—197 行）；GitHub license=null/无独立 LICENSE 不等于无任何许可声明，rev1 绝对推断已撤回；对 content/TinyAgent 具体代码的适用范围如实保留疑问；快照仅留档（含根 README），不复制、不引依赖，reference 定位不变。",
+  "planner_live_verified": false,
+  "external_model_calls": 0,
+  "summary": "T023-R1 三处定向修复完成：① 模拟规划器改无状态按 round_no 取动作，同一注入实例跨请求/跨运行完全隔离，连续两次 plan/run 均独立执行且结果属各自快照（API 级回归 + 调用轨迹 shared_planner 两连跑）；② 年份严格校验——非空非法值（abc、2023abc）提示并停止提交，不截断、不静默转不限，留空=不限保留；③ 新请求开始即清空旧依据/草稿/办理入口，422/无效 JSON/网络异常共用清理并明确“本次未生成新结果”，成功结果展示服务端回传的本次提交快照。随单校正 TinyAgent 根 README 许可调查（补存固定 commit 原文+哈希）。原 T023 交付（受限编排、只读双工具、条件锁、预算停止、工作流页）保持有效。",
+  "verification": {
+    "tests": {"total": 20, "passed": 20, "note": "test_agent_workflow.py 18+2（R1 隔离回归）"},
+    "workflow_stub": {"scenarios": 3, "note": "check-workflow-behavior.cjs（vm stub 层级，非真实浏览器）：年份三类/成功→422/网络异常清理"},
+    "js_syntax": "9 files passed",
+    "call_trace": "6 类运行（含同一实例两连跑）call-trace.json",
+    "scope_note": "按返工单未重跑全量/ASR/embedding/真实 DeepSeek；工厂装配未改无需补 run_entry"
+  },
+  "deliverables_extra": ["fix-report.md（R1 修复报告）", "tinyagent-assessment.md（许可校正版）", "tinyagent-snapshot/root-README.md（补存）", "call-trace.json", "rev1 归档 *.rev1.*"],
+  "r1_fixes": ["模拟规划器无状态化（round_no 索引，跨请求隔离）", "年份严格校验不放宽条件", "失败清理旧结果与办理入口+提交快照绑定", "TinyAgent 根 README 许可声明调查校正"],
+  "browser_check": "无浏览器工具；R1 三链交互证据为 vm stub 层级（check-workflow-behavior.cjs），不冒充浏览器验证，浏览器复验由 Astra 补做（demo-notes 检查表 a—k）",
+  "not_claimed": ["真实 Agent/真实 DeepSeek 规划已接入或已验证", "已集成 TinyAgent（仅参考）", "浏览器交互已验证（仅 stub）", "TinyAgent 子目录代码许可适用范围已确定（疑问保留）", "真实学校语料效果"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改；未改 Astra 文档/旧语料/gold/既有 service 判断算法"
+}

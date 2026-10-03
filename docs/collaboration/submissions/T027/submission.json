@@ -1,0 +1,24 @@
+{
+  "task_id": "T027",
+  "task_revision": "v1",
+  "submission_revision": 3,
+  "responds_to": "T027-R2",
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "tinyagent_integration_kind": "reference",
+  "data_version": "2.1",
+  "metric_semantics": "fact_group_or_v1.1",
+  "data_note": "全部合成资料（13 文档/52 块/24 题），未经真实校园质量验证；合成管线实验记录，非校园准确率结论",
+  "summary": "T027-R2 限定修订完成（仅 q10 与 q16/q17）：① q10 题面+条件限定「2024级本科生」使材料要求确定——f2 仅医院证明 2 等价源（各自独立完整支持），「医院证明或学院书面说明」合取口径与「须同时提交书面情况说明」剔除（不同材料要求不互替、不同文件≠互为替代、不并成全体 AND）；Astra 探针误判（仅审批+书面说明记满）回归实测消除（Recall=0.5）。② q16/q17 来源系列题面限定「按入学年级适用的缓考申请办法」保留精确时限比较：q16 gold=该版完整规定「考前提交」、q17=「考前 3 个工作日提交」，宽泛考前与精确 3 日双向不互替回归锁定（各 Recall=0.0）。③ OR 完整性原则：组内每条来源独立支持组的完整事实。q10/q16/q17 题面变化子集重检索（3 题×3 模式），其余 21 题复用 rev2 已存排名计分（零全库编码）；21 题×3 模式与 rev2 逐项零偏差。指标（K=5）：BM25 0.950/0.950/0.925 不变、Dense 0.900/0.900/0.706（q16 精度收窄 MRR 如实下降，未以得分为依据选措辞）、Hybrid 0.950/0.950/0.892 不变。rev2 题集/哈希/结果完整保留（逐字节核对一致）。",
+  "verification": {
+    "tests": {"total": 83, "passed": 83, "note": "两处标注回归新增（探针场景 Recall=0.5、精度双向 Recall=0.0）+ 受影响评测验证"},
+    "consistency": "21 题×3 模式合并与 rev2 零偏差；q10/q16/q17 子集重检索 EXIT 0/0/0",
+    "hand_check": "q10 事实组/精度互替/q24 不足题 3 例与机器一致",
+    "scope_note": "仅两处标注回归及受影响评测验证；未跑全量/UI/ASR/Agent；零外部调用、无下载/安装；未改产品算法、原语料、旧 8 题"
+  },
+  "results_summary": {"k5_v21": {"bm25": {"recall": 0.95, "hit": 0.95, "mrr": 0.925}, "dense": {"recall": 0.9, "hit": 0.9, "mrr": 0.7058}, "hybrid": {"recall": 0.95, "hit": 0.95, "mrr": 0.8917}}, "note": "变化主因与案例见 evaluation-report rev3 / fix-report-r2"},
+  "deliverables": ["fix-report-r2.md（修订理由与真实验证结果）", "gold-revisions.md（R1+R2 修订清单）", "evaluation-report.md（rev3）", "gold-review.md（rev3 规则与速查）", "results/（v3 合并输出）", "rerun/（3 题子集重检索）", "rescore-from-rev2.json", "rev2/ + rev1/（题集/哈希/结果存档）", "dataset-hashes.json（v2.1）", "report.md", "verification.md", "submission.json", "changed-files.json"],
+  "not_claimed": ["真实校园准确率（数据全合成）", "Hybrid 必须领先（实测未领先）", "以得分为依据调整措辞（q16 MRR 下降如实保留）", "统计显著性（单次小样本）"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改；未改旧 examples/evaluation、原语料、metrics 规则、产品检索算法、Astra 文档"
+}

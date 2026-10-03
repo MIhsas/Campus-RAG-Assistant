@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>受限任务流程</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
+.notice{background:#e3f2fd;padding:8px 16px;font-size:13px;color:#1565c0}
+.warn{background:#fcf8e3;border:1px solid #faebcc;color:#8a6d3b}
+.container{max-width:960px;margin:0 auto;padding:20px}
+h1{font-size:20px;margin:12px 0}
+h2{font-size:16px;margin:18px 0 10px}
+.panel{background:#fff;border:1px solid #ddd;border-radius:8px;padding:16px;margin-bottom:14px}
+label{display:block;font-size:13px;color:#555;margin:10px 0 4px}
+input,select,textarea{width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;font-size:14px;font-family:inherit}
+.row2{display:flex;gap:12px;flex-wrap:wrap}
+.row2>div{flex:1;min-width:160px}
+button{background:#1976d2;color:#fff;border:none;border-radius:4px;padding:9px 16px;font-size:14px;cursor:pointer}
+button:disabled{background:#bbb;cursor:not-allowed}
+button.alt{background:#607d8b}
+.steps{list-style:none;margin:8px 0}
+.steps li{padding:8px 12px;border-left:4px solid #ccc;margin:6px 0;background:#fafafa;font-size:14px}
+.steps li.ok{border-color:#43a047}
+.steps li.failed{border-color:#e53935}
+.steps li.awaiting,.steps li.skipped{border-color:#ffb300}
+.badge{display:inline-block;font-size:11px;padding:1px 8px;border-radius:10px;margin-left:6px;vertical-align:middle}
+.badge.sim{background:#ffe0b2;color:#e65100}
+.badge.fixed{background:#e0f2f1;color:#00695c}
+.badge.ds{background:#e3f2fd;color:#0d47a1}
+.ev{font-size:12px;color:#666;margin:3px 0;padding:4px 8px;background:#f5f5f5;border-radius:3px}
+.cite{border-left:3px solid #90caf9;padding:6px 10px;margin:8px 0;font-size:13px;background:#f8fbff}
+.cite .q{color:#0d47a1}
+.cite .src{color:#666;font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
+th,td{border:1px solid #ddd;padding:6px 8px;text-align:left}
+th{background:#f0f0f0}
+a{color:#1976d2}
+.muted{color:#888;font-size:12px}
+</style>
+</head>
+<body>
+<div class="notice">本页展示受限任务流程的实际步骤与引用。固定流程为确定性步骤（非大模型 Agent）。草稿仅供核对，须进入办理页手动保存；本页不写入任何本机记录。</div>
+<div class="container">
+  <h1>受限任务流程 <span class="badge fixed">固定流程，非大模型 Agent</span></h1>
+
+  <div class="panel">
+    <h2>1. 提交条件（明确输入，不放宽范围）</h2>
+    <div class="row2">
+      <div>
+        <label for="proc">办事事项（来自当前已配置列表）</label>
+        <select id="proc"><option value="">（加载中）</option></select>
+      </div>
+      <div>
+        <label for="query">要查找的政策问题</label>
+        <input id="query" placeholder="例：缓考申请的条件与流程">
+      </div>
+    </div>
+    <div class="row2">
+      <div><label for="campus">校区（留空=不限）</label><input id="campus"></div>
+      <div><label for="student_type">学生类型（留空=不限）</label><input id="student_type"></div>
+      <div><label for="admission_year">入学年份（留空=不限）</label><input id="admission_year" placeholder="2023"></div>
+      <div><label for="as_of_date">查询日期 YYYY-MM-DD（留空=不限）</label><input id="as_of_date" placeholder="2026-09-27"></div>
+    </div>
+    <p class="muted" style="margin-top:8px">上述条件来自你的明确提交，流程内任何步骤都不得放宽或改写。</p>
+    <div style="margin-top:12px">
+      <button id="run-fixed">运行固定流程（选事项→查找依据→整理草稿）</button>
+      <button id="run-plan" class="alt" style="display:none">运行模拟规划（演示）</button>
+    </div>
+    <div id="planner-hint" class="muted" style="margin-top:8px"></div>
+  </div>
+
+  <div class="panel" id="steps-panel" style="display:none">
+    <h2>2. 实际执行步骤</h2>
+    <div id="run-label"></div>
+    <ul class="steps" id="steps"></ul>
+    <div id="tool-trace"></div>
+    <div id="stop-info"></div>
+  </div>
+
+  <div class="panel" id="evidence-panel" style="display:none">
+    <h2>3. 查找依据（原文摘录）</h2>
+    <div id="evidence"></div>
+  </div>
+
+  <div class="panel" id="draft-panel" style="display:none">
+    <h2>4. 办理草稿（需人工核对后手动保存）</h2>
+    <div id="draft"></div>
+    <div id="draft-actions" style="margin-top:12px"></div>
+  </div>
+
+  <div class="notice warn" id="fallback" style="display:none"></div>
+</div>
+<script>
+(function(){
+  var procSel = document.getElementById('proc');
+  var queryIn = document.getElementById('query');
+  var campusIn = document.getElementById('campus');
+  var typeIn = document.getElementById('student_type');
+  var yearIn = document.getElementById('admission_year');
+  var dateIn = document.getElementById('as_of_date');
+  var fixedBtn = document.getElementById('run-fixed');
+  var planBtn = document.getElementById('run-plan');
+  var plannerHint = document.getElementById('planner-hint');
+  var fallback = document.getElementById('fallback');
+
+  function ce(tag, cls, text){
+    var e = document.createElement(tag);
+    if(cls) e.className = cls;
+    if(text !== undefined) e.textContent = text;
+    return e;
+  }
+  function show(id){ document.getElementById(id).style.display = ''; }
+  function hide(id){ document.getElementById(id).style.display = 'none'; }
+
+  // T023-R1：非空年份严格校验——非法值提示并停止提交，不截断、不静默转为不限。
+  function parseYearStrict(){
+    var y = yearIn.value.trim();
+    if(!y) return {ok: true, value: null};           // 留空 = 不限（保留用户意图）
+    if(!/^[0-9]{4}$/.test(y)) return {ok: false, error: '入学年份格式无效：「' + y + '」应为 4 位数字（如 2023），或留空表示不限。'};
+    var n = parseInt(y, 10);
+    if(n < 1900 || n > 2100) return {ok: false, error: '入学年份超出 1900—2100 范围：「' + y + '」。'};
+    return {ok: true, value: n};
+  }
+
+  function buildBody(){
+    var y = parseYearStrict();
+    if(!y.ok) return {ok: false, error: y.error};
+    return {
+      ok: true,
+      body: {
+        procedure_id: procSel.value || null,
+        query: queryIn.value.trim() || null,
+        filters: {
+          campus: campusIn.value.trim() || null,
+          student_type: typeIn.value.trim() || null,
+          admission_year: y.value,
+          as_of_date: dateIn.value.trim() || null
+        }
+      }
+    };
+  }
+
+  // 链接携带本次条件快照（进入办理页核对后由用户手动保存）
+  function proceduresLink(procId, query, f){
+    f = f || {};
+    return '/procedures?procedure_id=' + encodeURIComponent(procId || '') +
+      '&query=' + encodeURIComponent(query || '') +
+      '&campus=' + encodeURIComponent(f.campus || '') +
+      '&student_type=' + encodeURIComponent(f.student_type || '') +
+      '&admission_year=' + encodeURIComponent((f.admission_year === null || f.admission_year === undefined) ? '' : f.admission_year) +
+      '&as_of_date=' + encodeURIComponent(f.as_of_date || '');
+  }
+
+  async function loadStatus(){
+    try {
+      var rs = await fetch('/api/v1/agent/status');
+      if(!rs.ok) throw new Error('status ' + rs.status);
+      var s = await rs.json();
+      var w = s.workflow || {};
+      if(!w.fixed_available){
+        fallback.textContent = w.reason || '固定流程不可用。';
+        fallback.style.display = '';
+        fixedBtn.disabled = true;
+      }
+      if(s.planner && s.agent_mode === 'simulated'){
+        planBtn.style.display = '';
+        planBtn.textContent = '运行模拟规划（演示）';
+        plannerHint.textContent = '已注入模拟规划器（' + s.planner.label + '）。仅演示用途，非真实大模型规划；点击才会执行。';
+      } else if(s.planner && s.agent_mode === 'deepseek'){
+        planBtn.style.display = '';
+        planBtn.textContent = '运行 DeepSeek 规划（显式点击）';
+        plannerHint.textContent = '已配置 DeepSeek 结构化规划（' + (s.planner.model || '') +
+          '）。已配置 ≠ 已联调验证（planner_live_verified=' + (s.planner_live_verified ? 'true' : 'false') +
+          '）；仅显式点击触发，启动/状态/固定流程不发出规划请求。';
+      } else {
+        plannerHint.textContent = 'Agent 模式未开启：普通服务不注入规划器。可运行上方固定流程。';
+      }
+    } catch(e){
+      fallback.textContent = '无法读取流程能力状态（读取失败/未知）。';
+      fallback.style.display = '';
+    }
+    try {
+      var rp = await fetch('/api/v1/procedures');
+      if(rp.ok){
+        var p = await rp.json();
+        procSel.innerHTML = '';
+        (p.procedures || []).forEach(function(x){
+          var o = document.createElement('option');
+          o.value = x.procedure_id; o.textContent = x.title || x.procedure_id;
+          procSel.appendChild(o);
+        });
+        if(!(p.procedures || []).length) procSel.innerHTML = '<option value="">（无已配置事项）</option>';
+      } else {
+        procSel.innerHTML = '<option value="">（未配置办事模板）</option>';
+      }
+    } catch(e){
+      procSel.innerHTML = '<option value="">（读取失败）</option>';
+    }
+  }
+
+  function renderRun(r){
+    show('steps-panel');
+    var label = document.getElementById('run-label');
+    label.innerHTML = '';
+    // T024-R1：按本次响应的实际模式标注（fixed/simulated/deepseek），
+    // 不把“用了规划接口”一律当模拟；mock 标识来自服务端 label/模型身份的显式标注。
+    var kind = r.workflow_kind || '';
+    if(kind === 'deepseek_planner'){
+      label.appendChild(ce('span', 'badge ds', r.workflow_label || 'DeepSeek 规划'));
+      label.appendChild(ce('div', 'muted', '结果来自 DeepSeek 规划模式。已配置 ≠ 已联调验证（planner_live_verified=false）。不输出模型 Thought/隐藏推理。'));
+    } else if(kind === 'simulated_planner'){
+      label.appendChild(ce('span', 'badge sim', r.workflow_label || '模拟规划'));
+      label.appendChild(ce('div', 'muted', '模拟规划，非DeepSeek实时规划；不输出模型 Thought/隐藏推理。'));
+    } else {
+      label.appendChild(ce('span', 'badge fixed', r.workflow_label || '固定流程'));
+      label.appendChild(ce('div', 'muted', '固定流程为确定性步骤（选事项→查找依据→整理草稿），非大模型 Agent。'));
+    }
+    // T023-R1：成功结果展示“提交时”条件快照（服务端回传），不依赖会变化的输入框。
+    var snap = r.snapshot || {};
+    label.appendChild(ce('div', 'muted', '本次提交快照：事项=' + (snap.procedure_id || '（未选）') +
+      '　问题=' + (snap.query || '（未填）') + '　条件：' + filtersTextSnap(snap.filters)));
+
+    var ul = document.getElementById('steps');
+    ul.innerHTML = '';
+    (r.steps || []).forEach(function(s){
+      var li = ce('li', s.status || '', (s.title || s.step_id) + (s.detail ? '：' + s.detail : ''));
+      li.appendChild(ce('span', 'badge', s.status || ''));
+      ul.appendChild(li);
+    });
+    if(!(r.steps || []).length) ul.appendChild(ce('li', 'skipped', '（固定流程未产生步骤；见工具调用轨迹）'));
+
+    var tr = document.getElementById('tool-trace');
+    tr.innerHTML = '';
+    tr.appendChild(ce('div', 'muted', '工具调用：' + (r.tool_calls_used || 0) + ' 次；规划轮次：' + (r.plan_rounds_used || 0) + ' / ' + ((r.budget && r.budget.max_plan_rounds) || '?') +
+      '；规划 HTTP 尝试：' + (r.planner_http_attempts || 0) + '（无自动重试）'));
+    (r.events || []).forEach(function(ev){
+      var label = ev.kind === 'plan_decision' ? ('规划动作 ' + ((ev.action && ev.action.type) || '')) : (ev.tool || '(finish)');
+      tr.appendChild(ce('div', 'ev', '轮' + ev.round + '　' + label + '　' + ev.status + (ev.summary ? '　' + ev.summary : '') + (ev.error ? '　' + ev.error : '')));
+    });
+
+    var si = document.getElementById('stop-info');
+    si.innerHTML = '';
+    if(r.status === 'awaiting_input'){
+      si.appendChild(ce('div', 'notice warn', r.message || '等待补充输入。' + ((r.input_needed && r.input_needed.length) ? '（缺：' + r.input_needed.join('、') + '）' : '')));
+    } else if(r.status === 'partial'){
+      si.appendChild(ce('div', 'notice warn', (r.message || '部分完成') + (r.stop_reason ? '（停止原因：' + r.stop_reason + '）' : '')));
+    } else if(r.stop_reason && r.stop_reason !== 'finished'){
+      si.appendChild(ce('div', 'notice warn', (r.message || '') + '（停止原因：' + r.stop_reason + '）'));
+    } else if(r.message){
+      si.appendChild(ce('div', 'muted', r.message));
+    }
+    if(r.cancellable_note) si.appendChild(ce('div', 'muted', r.cancellable_note));
+
+    // 依据
+    var ev2 = r.results && r.results.search;
+    if(ev2 && ev2.hits && ev2.hits.length){
+      show('evidence-panel');
+      var evBox = document.getElementById('evidence');
+      evBox.innerHTML = '';
+      evBox.appendChild(ce('div', 'muted', '查询：' + (ev2.query || '') + '　命中 ' + ev2.hit_count + ' 条'));
+      ev2.hits.slice(0, 8).forEach(function(h, i){
+        var c = h.chunk || {};
+        var d = ce('div', 'cite');
+        d.appendChild(ce('div', 'q', '【E' + (i + 1) + '】' + (c.text || '').slice(0, 160)));
+        d.appendChild(ce('div', 'src', (c.document_id || '') + ' / ' + (c.block_id || '') + (h.preview_url ? '　' : '')));
+        if(h.preview_url){
+          var a = ce('a'); a.href = h.preview_url; a.textContent = '查看原文';
+          d.querySelector('.src').appendChild(document.createTextNode('　'));
+          d.querySelector('.src').appendChild(a);
+        }
+        evBox.appendChild(d);
+      });
+    } else {
+      hide('evidence-panel');
+    }
+
+    // 草稿
+    var draft = r.results && r.results.draft;
+    if(draft){
+      show('draft-panel');
+      var db = document.getElementById('draft');
+      db.innerHTML = '';
+      db.appendChild(ce('div', '', draft.title || draft.procedure_id || ''));
+      if(draft.status === 'insufficient' || draft.saveable === false){
+        db.appendChild(ce('div', 'notice warn', '依据不足或需更新，暂不可保存（' + (draft.issues || []).join('；') + '）。缺失信息不编造。'));
+      } else {
+        db.appendChild(ce('div', 'muted', '草稿已按当前语料与条件生成，可进入办理页核对。'));
+      }
+      (draft.steps || []).forEach(function(st){
+        var wrap = ce('div', 'cite');
+        wrap.appendChild(ce('b', '', (st.title || st.step_id || '') + (st.status ? '（' + st.status + '）' : '')));
+        if(st.detail) wrap.appendChild(ce('div', '', st.detail));
+        if(st.fallback) wrap.appendChild(ce('div', 'muted', st.fallback));
+        (st.citations || []).forEach(function(ct){
+          if(ct.usable && ct.quote){
+            wrap.appendChild(ce('div', 'q', '原文：' + ct.quote));
+            wrap.appendChild(ce('div', 'src', (ct.document_id || '') + ' / ' + (ct.block_id || '')));
+          } else {
+            wrap.appendChild(ce('div', 'muted', '依据未通过核对：' + (ct.note || ct.status || '')));
+          }
+        });
+        db.appendChild(wrap);
+      });
+      var act = document.getElementById('draft-actions');
+      act.innerHTML = '';
+      var snap = r.snapshot || {};
+      var link = ce('a');
+      link.href = proceduresLink(snap.procedure_id, snap.query, snap.filters);
+      link.textContent = '进入办理页核对并手动保存（带入本次条件）';
+      act.appendChild(link);
+      act.appendChild(ce('div', 'muted', '保存动作在办理页由你手动触发；本页不写入 localStorage、不自动保存待办。'));
+    } else {
+      hide('draft-panel');
+    }
+  }
+
+  // T023-R1：新请求开始即清空旧结果与办理入口；失败沿用同一清理，明确本次未生成新结果。
+  function clearResults(){
+    hide('evidence-panel');
+    hide('draft-panel');
+    document.getElementById('evidence').innerHTML = '';
+    document.getElementById('draft').innerHTML = '';
+    document.getElementById('draft-actions').innerHTML = '';
+    document.getElementById('run-label').innerHTML = '';
+    document.getElementById('steps').innerHTML = '';
+    document.getElementById('tool-trace').innerHTML = '';
+    document.getElementById('stop-info').innerHTML = '';
+  }
+
+  function showFailure(msg){
+    clearResults();
+    show('steps-panel');
+    var si = document.getElementById('stop-info');
+    si.appendChild(ce('div', 'notice warn', msg));
+    si.appendChild(ce('div', 'notice warn', '本次未生成新结果；下方不保留旧依据与旧草稿。'));
+  }
+
+  function filtersTextSnap(f){
+    f = f || {};
+    if(f.campus === null && f.student_type === null && f.admission_year === null && f.as_of_date === null) return '不限条件';
+    var parts = [];
+    if(f.campus) parts.push('校区=' + f.campus);
+    if(f.student_type) parts.push('类型=' + f.student_type);
+    if(f.admission_year !== null && f.admission_year !== undefined) parts.push('年级=' + f.admission_year);
+    if(f.as_of_date) parts.push('查询日期=' + f.as_of_date);
+    return parts.join('　') || '不限条件';
+  }
+
+  async function run(url){
+    var built = buildBody();
+    if(!built.ok){
+      showFailure(built.error + ' 未提交本次请求。');
+      return;
+    }
+    clearResults();
+    fixedBtn.disabled = true; planBtn.disabled = true;
+    try {
+      var r = await fetch(url, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(built.body)
+      });
+      var d;
+      try { d = await r.json(); }
+      catch(je){ showFailure('返回无效 JSON（HTTP ' + r.status + '）。'); return; }
+      if(!r.ok){
+        showFailure(d && d.message ? d.message : ('请求失败 HTTP ' + r.status));
+        return;
+      }
+      renderRun(d);
+    } catch(e){
+      showFailure('运行失败（网络错误）。');
+    } finally {
+      fixedBtn.disabled = false; planBtn.disabled = false;
+    }
+  }
+
+  fixedBtn.addEventListener('click', function(){ run('/api/v1/agent/workflow/run'); });
+  planBtn.addEventListener('click', function(){ run('/api/v1/agent/plan/run'); });
+
+  // 页面加载只读状态/列表；不自动运行任何流程、不自动保存任何内容。
+  loadStatus();
+})();
+</script>
+</body>
+</html>

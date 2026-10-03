@@ -1,0 +1,25 @@
+{
+  "task_id": "T025",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T025-R1",
+  "status": "partial",
+  "stage": "A_ready_for_review",
+  "status_note": "partial 表示 B 阶段（真实调用）待用户授权，不代表 A 未做完；A 各项完整实施并本地验证（含 R1 修复）",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "tinyagent_integration_kind": "reference",
+  "summary": "T025-R1 两处修复完成：① mock 目标改标准 URL 解析严格校验（urllib.parse：完整主机名恰为 127.0.0.1/localhost/::1、拒绝 userinfo 与畸形端口、纯解析不 DNS），前缀绕过两例（127.0.0.1.example.invalid、localhost@example.invalid）零请求非零退出，正常 loopback 仍接受；② 失败轮已获得的安全审计字段经异常元数据保留进运行记录（id/model/usage/finish_reason/latency/max_tokens 白名单，缺失 null，不传 headers/密钥/正文）——带审计信封的截断响应一次请求 exit 1 且 plan_error.audit 完整。随单校正：零自动保存标注静态实现判断、人工核实行标注程序化摘要口径、CLI 参数统一 --mode live。T025 A 原交付（dry-run 默认/固定合成题/前置核对/发送处 HTTP 计数/完整审计/失败非零/逐条核对表/mock 示例）保持有效。",
+  "verification": {
+    "tests": {"total": 34, "passed": 34, "note": "test_live_smoke_planner 11（含 R1 新增 2）+ test_deepseek_planner 23（含审计扩展断言）"},
+    "r1_regressions": ["前缀绕过两例拒绝零请求", "截断响应一次请求 exit 1 且失败审计保留", "正常 loopback 仍接受", "适配器截断异常 e.value.audit 保留"],
+    "dry_run": "dry-run.json 重生成：前置 7/7、exit 0",
+    "mock_sample": "mock-run.json 重生成：completed、http 3=3=3、核对表全过、exit 0（loopback 模拟服务）",
+    "scope_note": "仅冒烟聚焦测试与受影响 planner 异常测试；未执行 --mode live、未重跑全量/ASR/页面；零外部调用、无下载、无安装"
+  },
+  "deliverables": ["fix-report.md", "dry-run.json", "mock-run.json（本地 mock 示例）", "checklist-template.md（含证据层级说明）", "report.md", "verification.md", "submission.json", "changed-files.json", "rev1 归档 *.rev1.*"],
+  "r1_fixes": ["mock 目标标准 URL 解析校验（防前缀绕过，零请求拒绝）", "失败轮审计字段保留进运行记录", "核对表证据层级措辞校正", "CLI 参数统一 --mode live"],
+  "stage_b_status": "未授权未执行：--mode live 待用户明确批准范围（固定一题、官方端点/模型、≤4 次 HTTP、max_tokens=300、零重试）并确认密钥配置后运行一次；本任务书/历史 T014 授权/本地配置存在均不构成 B 授权",
+  "not_claimed": ["真实模型规划能力已验证（planner_live_verified=false）", "--mode live 已执行（未授权）", "人工核对已通过（核对表第 4 行为程序化摘要）", "零自动保存为运行时监控证据（该项为静态实现判断）"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改；未改语料/gold/产品模板/前端/qa 问答协议/Astra 文档"
+}

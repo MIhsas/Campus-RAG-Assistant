@@ -1,0 +1,7 @@
+候选语料包：F:\Collage Paper\docs\collaboration\submissions\T021\candidate-package
+原文复制：sample-text.pdf（sha256=66e0f6287aa365cf…，输入文件未修改）
+登记校验：通过
+解析检查：通过（文档 1，错误 0）
+  - candidate-pdf-001: 2 块，2 页
+启动命令（不加载任何合成模板/规则/mock 生成器）：
+  .venv\Scripts\python.exe scripts\serve-corpus.py --manifest F:\Collage Paper\docs\collaboration\submissions\T021\candidate-package\manifest.json --corpus-root F:\Collage Paper\docs\collaboration\submissions\T021\candidate-package

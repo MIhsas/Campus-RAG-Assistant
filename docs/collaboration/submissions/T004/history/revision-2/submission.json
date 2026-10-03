@@ -1,0 +1,34 @@
+{
+  "task_id": "T004",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T004-R1",
+  "status": "ready_for_review",
+  "summary": "R1-R4 全部修复：表格行 row_index 对源行递增含空行；DOCX 遍历异常转 DOCUMENT_PARSE_ERROR 保留同批结果；CLI 入口 _ensure_utf8_stdout 保证 UTF-8 输出；合并单元格/页眉页脚/浮动图片检测并 warnings。backend/README 新增解析章节。125 passed, 1 skipped。",
+  "files": [
+    "docs/collaboration/submissions/T004/report.md",
+    "docs/collaboration/submissions/T004/verification.md",
+    "docs/collaboration/submissions/T004/submission.json",
+    "docs/collaboration/submissions/T004/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T004/changed-files.json",
+  "history": [
+    "docs/collaboration/submissions/T004/history/revision-1/"
+  ],
+  "checks": [
+    {"item": "R1: 空首行 row_index 正确", "result": "pass", "evidence_id": "V03"},
+    {"item": "R1: 中间空行 row_index 正确", "result": "pass", "evidence_id": "V03"},
+    {"item": "R1: 连续空行 row_index 正确", "result": "pass", "evidence_id": "V03"},
+    {"item": "R2: 损坏 DOCX + 正常 TXT 批次隔离", "result": "pass", "evidence_id": "V04"},
+    {"item": "R2: subprocess 无 Traceback", "result": "pass", "evidence_id": "V04"},
+    {"item": "R3: 无 PYTHONIOENCODING 原始字节 UTF-8", "result": "pass", "evidence_id": "V05"},
+    {"item": "R4: 合并单元格警告", "result": "pass", "evidence_id": "V06"},
+    {"item": "R4: 页眉检测警告", "result": "pass", "evidence_id": "V06"},
+    {"item": "R4: 简单文档无警告", "result": "pass", "evidence_id": "V06"},
+    {"item": "全量 pytest", "result": "pass - 125 passed, 1 skipped", "evidence_id": "V01"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V02"},
+    {"item": "示例 CLI 成功", "result": "pass", "evidence_id": "V07"},
+    {"item": "复现验证", "result": "pass", "evidence_id": "V08"}
+  ],
+  "blockers": []
+}

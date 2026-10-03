@@ -1,0 +1,28 @@
+{
+  "task_id": "T020",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T020-R1",
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "local_asr_verified": true,
+  "summary": "T020-R1 定向修复：(1) 解码后、推理前拦截静音（保守峰值阈值 1e-3，含数字静音），静音不进入识别逻辑（adapter.calls==0），API 返回明确“音频为静音，未识别到有效语音”；不做幻觉字符串过滤。(2) 空/空白转写结果 → 200 status=no_speech“未识别到有效语音，请重录或重新选择音频”，页面不显示成功编辑器、不覆盖已有问题；编辑区清空后“使用/替换”有空文本防护。(3) 最小因果链回归 + 真实静音探针（exit 0，修复前 1）与正常样本（输出与 rev1 一致）各一次。(4) 未配置提示（录音前展示可用性、语音入口禁用、文字入口保留）；模型身份带 PROVENANCE 摘要来源标识。",
+  "fix_scope": {
+    "modified": ["src/campus_assistant/asr/audio.py", "src/campus_assistant/asr/adapter.py", "src/campus_assistant/api/asr.py", "src/campus_assistant/static/ask.html", "tests/test_asr.py", "scripts/check-ask-behavior.cjs"],
+    "added": ["silence-probe.txt"],
+    "kept_unchanged": ["rev1 真实转写证据与依赖模型记录", "正常转写主路径", "其余功能与测试"]
+  },
+  "probe_evidence": {
+    "silence_probe": "docs/collaboration/reviews/T020-R1-probe.py（Astra 探针）对本地服务：HTTP 400 AUDIO_INVALID“音频为静音，未识别到有效语音…”，无识别文字，exit 0；记录 silence-probe.txt",
+    "normal_sample": "tts-sample.wav 修复后转写与 rev1 相同（原始错字保留），344ms"
+  },
+  "verification": {
+    "test_asr": {"total": 13, "passed": 13, "new": 3},
+    "js_syntax": "7 files passed",
+    "js_behavior_ask": {"total": 25, "passed": 25, "new": 3},
+    "not_rerun": ["selfcheck/embedding/全量（按返工单）"]
+  },
+  "history": ["report.rev1.md", "verification.rev1.md", "submission.rev1.json", "changed-files.rev1.json"],
+  "not_claimed": ["全部幻觉问题已解决", "真人语音识别准确率", "真实浏览器实测"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

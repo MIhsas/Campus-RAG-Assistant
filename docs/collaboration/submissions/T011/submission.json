@@ -1,0 +1,35 @@
+{
+  "task_id": "T011",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T011-R1",
+  "status": "ready_for_review",
+  "summary": "定向修复 P1：搜索成功后 loadStatus 重建筛选控件清空用户选择、下一次搜索悄悄放宽范围。修复为三层：选项未变化不重建控件（后台刷新不触碰控件，含搜索等待期间的编辑）、重建时保留仍有效选择、选项消失时保留条件并明确提示。新增因果链回归（选条件→成功搜索→status 刷新后控件保留→再次搜索仍带原条件）与选项消失回归，共 14 个行为场景通过。",
+  "fix_scope": {
+    "backend_changed": false,
+    "files_modified": [
+      "src/campus_assistant/static/search.html",
+      "scripts/check-search-behavior.cjs"
+    ],
+    "detail": "fix-report.md"
+  },
+  "verification_this_revision": {
+    "js_syntax": "2 files passed (exit 0)",
+    "js_behavior": {"scenarios": 14, "result": "passed (exit 0)", "new": ["Test 9 因果链回归", "Test 10 选项消失保留+提示"]},
+    "negative_control": "退回旧逻辑后回归失败于 campus survives status refresh（exit 1），还原后 14 passed",
+    "not_rerun_by_design": ["全量 pytest", "pip check", "模型编码/演示", "三模式评测 CLI"],
+    "unverified": ["真实浏览器 筛选→搜索→原文→清除条件 与一次错误重试，按 T011-R1 交 Astra 补验"]
+  },
+  "carried_from_revision_1": {
+    "test_results": {"full_suite": {"total": 404, "passed": 404, "skipped": 1}, "note": "Astra T011-R1 独立复核一致"},
+    "evaluation_comparison": {
+      "bm25": {"evidence_recall": 1.0, "hit": 1.0, "mrr": 0.9166666666666666},
+      "dense": {"evidence_recall": 1.0, "hit": 1.0, "mrr": 0.9166666666666666},
+      "hybrid": {"evidence_recall": 1.0, "hit": 1.0, "mrr": 0.9166666666666666}
+    },
+    "filter_demo": {"encode_documents_calls": 1, "scenarios": 6},
+    "model_identity": {"id": "bge-small-zh-v1.5", "revision": "7999e1d3359715c523056ef9478215996d62a620"}
+  },
+  "history": ["report.rev1.md", "verification.rev1.md", "submission.rev1.json", "changed-files.rev1.json"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

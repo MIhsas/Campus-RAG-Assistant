@@ -1,0 +1,34 @@
+{
+  "task_id": "T006",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T006-R1",
+  "status": "ready_for_review",
+  "summary": "R1-R3 修复：每个 chunk 独立 deepcopy metadata/locator（sibling 隔离测试通过）；CLI 参数验证前置，无效 max_chars 退出 2 + stdout 空；blocks 按 ordinal 排序不改输入。54 passed, 205 total, pip check, JS 语法均通过。",
+  "files": [
+    "docs/collaboration/submissions/T006/report.md",
+    "docs/collaboration/submissions/T006/verification.md",
+    "docs/collaboration/submissions/T006/submission.json",
+    "docs/collaboration/submissions/T006/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T006/changed-files.json",
+  "history": [
+    "docs/collaboration/submissions/T006/history/revision-1/"
+  ],
+  "checks": [
+    {"item": "R1: sibling metadata 隔离", "result": "pass", "evidence_id": "V05"},
+    {"item": "R1: sibling locator 隔离", "result": "pass", "evidence_id": "V05"},
+    {"item": "R2: --max-chars 0 exit 2", "result": "pass", "evidence_id": "V06"},
+    {"item": "R2: --max-chars -1 exit 2", "result": "pass", "evidence_id": "V06"},
+    {"item": "R2: --max-chars 10001 exit 2", "result": "pass", "evidence_id": "V06"},
+    {"item": "R2: --max-chars abc exit 2", "result": "pass", "evidence_id": "V06"},
+    {"item": "R2: boundary 1/10000 exit 0", "result": "pass", "evidence_id": "V06"},
+    {"item": "R3: unsorted blocks sorted by ordinal", "result": "pass", "evidence_id": "V07"},
+    {"item": "R3: input array not mutated", "result": "pass", "evidence_id": "V07"},
+    {"item": "分块测试 54 passed", "result": "pass", "evidence_id": "V01"},
+    {"item": "全量 pytest 205 passed", "result": "pass", "evidence_id": "V02"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V03"},
+    {"item": "JS 语法检查", "result": "pass", "evidence_id": "V04"}
+  ],
+  "blockers": []
+}

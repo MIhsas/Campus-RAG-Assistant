@@ -1,0 +1,70 @@
+{
+  "files": [
+    {
+      "path": "step2_code/backend/src/campus_assistant/evaluation/__init__.py",
+      "size": 53,
+      "sha256": "7623a6a34e6c555c386e85985898409e5bb47db372fa6b5742cd81f66d23ade2"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/evaluation/models.py",
+      "size": 5926,
+      "sha256": "5311e902c75fe298912cefd3be302fb57d0157c642703f9fe988f2f02fa47b8e"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/evaluation/metrics.py",
+      "size": 6475,
+      "sha256": "ae8f7242d792374697575ec3310240fb2cf48af2c3a676cedb99a82673062460"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/evaluation/run.py",
+      "size": 13053,
+      "sha256": "eb3922cda1bff7d35d5459ac9576753559689797a095f82a6520f14f115a5c5a"
+    },
+    {
+      "path": "step2_code/backend/tests/test_evaluation.py",
+      "size": 17734,
+      "sha256": "c8214fd90699be02d86b1350693a23d71d78235d68254ac15d7d29510f4ec541"
+    },
+    {
+      "path": "step2_code/backend/tests/test_evaluation_cli.py",
+      "size": 19706,
+      "sha256": "03d29fa44b10cadedcf041659c90ec1eaa1f1c72c7d0565bbaf7108913c382b9"
+    },
+    {
+      "path": "step2_code/backend/examples/evaluation/questions.json",
+      "size": 4629,
+      "sha256": "59f715f0ecd58a82cea538c41396bfd8fdf1215589559d553e4c32b486cb3360"
+    },
+    {
+      "path": "step2_code/backend/examples/evaluation/README.md",
+      "size": 1283,
+      "sha256": "f8b34a5c418548b8b9ba34dc36b2e2e42c0ba0ec5856d4f4fcaaf092d8a79f3c"
+    },
+    {
+      "path": "step2_code/backend/scripts/check-search-behavior.cjs",
+      "size": 5304,
+      "sha256": "786d5fddd502e9f7a7dc8ca2847c0838a48d13074688bfbb736cf9cf4b57ed89"
+    },
+    {
+      "path": "step2_code/backend/README.md",
+      "size": 16256,
+      "sha256": "e1ad653d36c3a83b947ff68640b8cb5c9f70d689d65fe5b82f4c91aa8937b97f"
+    },
+    {
+      "path": "step2_code/README.md",
+      "size": 1934,
+      "sha256": "03790c56ad394c50a35ba14e0cfc7acdf7b4e3373e68c4ff80660fa72f28122b"
+    },
+    {
+      "path": "step2_code/backend/pyproject.toml",
+      "size": 637,
+      "sha256": "940099448e7f7793f57485ba2d02e1b0ba9ee83538f32a32feccdbca81b16bee"
+    },
+    {
+      "path": "step2_code/backend/requirements.lock.txt",
+      "size": 728,
+      "sha256": "aad74ff9bad98d8ed07efc10246146344d300a1a359c6b6382487e21b51c559d"
+    }
+  ],
+  "total": 13
+}

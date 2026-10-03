@@ -1,0 +1,32 @@
+{
+  "task_id": "T005",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "语料预览与来源定位完成：应用工厂扩展（manifest_path/corpus_root + 四状态）、corpus API（status/documents/detail）、demo 入口、/preview 静态页面（列表筛选/详情/正文块/locator/hash 定位/警告）、22 项预览测试。149 passed, 1 skipped。",
+  "files": [
+    "docs/collaboration/submissions/T005/report.md",
+    "docs/collaboration/submissions/T005/verification.md",
+    "docs/collaboration/submissions/T005/submission.json",
+    "docs/collaboration/submissions/T005/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T005/changed-files.json",
+  "checks": [
+    {"item": "未配置状态（status/documents/detail）", "result": "pass", "evidence_id": "V04"},
+    {"item": "ready 状态（列表/详情/未知ID）", "result": "pass", "evidence_id": "V04"},
+    {"item": "partial 状态（部分失败）", "result": "pass", "evidence_id": "V04"},
+    {"item": "request_id 追踪", "result": "pass", "evidence_id": "V04"},
+    {"item": "多 app 隔离", "result": "pass", "evidence_id": "V04"},
+    {"item": "快照只解析一次", "result": "pass", "evidence_id": "V04"},
+    {"item": "工厂参数校验", "result": "pass", "evidence_id": "V04"},
+    {"item": "预览页可访问", "result": "pass", "evidence_id": "V04"},
+    {"item": "OpenAPI 声明", "result": "pass", "evidence_id": "V04"},
+    {"item": "健康接口回归", "result": "pass", "evidence_id": "V04"},
+    {"item": "demo 模块", "result": "pass", "evidence_id": "V04"},
+    {"item": "API 冒烟（真实服务）", "result": "pass", "evidence_id": "V03"},
+    {"item": "浏览器交互验证", "result": "未验证（Claude Code 无浏览器能力）", "evidence_id": "V05"},
+    {"item": "全量 pytest", "result": "pass - 149 passed, 1 skipped", "evidence_id": "V01"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V02"}
+  ],
+  "blockers": []
+}

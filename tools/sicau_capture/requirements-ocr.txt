@@ -1,0 +1,5 @@
+# Installed only in tools/sicau_capture/.venv-ocr, which uses existing base packages.
+ddddocr==1.6.1
+onnxruntime==1.30.0
+opencv-python==5.0.0.93
+flatbuffers==25.12.19

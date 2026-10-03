@@ -1,0 +1,182 @@
+{
+  "task_id": "T001",
+  "task_revision": "v1",
+  "checked_at": "2026-09-12T13:00:43+08:00",
+  "workspace": "F:\\Collage Paper",
+  "system": {
+    "os": "Microsoft Windows 11 家庭中文版",
+    "architecture": "64 位",
+    "cpu": "12th Gen Intel(R) Core(TM) i7-12650H",
+    "memory_gib": 31.74,
+    "memory_note": "来自 TotalVisibleMemorySize，为操作系统可见内存总量",
+    "workspace_disk_free_gib": 118
+  },
+  "tools": [
+    {
+      "name": "Python",
+      "status": "available",
+      "version": "3.12.7",
+      "executable": "D:\\Anaconda\\python.exe",
+      "evidence_id": "V08"
+    },
+    {
+      "name": "pip",
+      "status": "available",
+      "version": "24.2",
+      "executable": "D:\\Anaconda\\Lib\\site-packages\\pip",
+      "evidence_id": "V08"
+    },
+    {
+      "name": "venv",
+      "status": "available",
+      "version": null,
+      "executable": null,
+      "evidence_id": "V08"
+    },
+    {
+      "name": "Git",
+      "status": "available",
+      "version": "2.54.0.windows.1",
+      "executable": "C:\\Program Files\\Git\\mingw64\\bin\\git.exe",
+      "evidence_id": "V09"
+    },
+    {
+      "name": "Node.js",
+      "status": "available",
+      "version": "24.15.0",
+      "executable": "D:\\nodejs\\node.exe",
+      "evidence_id": "V10"
+    },
+    {
+      "name": "Docker",
+      "status": "available",
+      "version": "28.4.0",
+      "executable": "D:\\devSoft\\Docke\\resources\\bin\\docker.exe",
+      "evidence_id": "V11a"
+    },
+    {
+      "name": "Docker Compose",
+      "status": "available",
+      "version": "2.39.2",
+      "executable": "D:\\devSoft\\Docke\\resources\\bin\\docker-compose.exe",
+      "evidence_id": "V11d"
+    },
+    {
+      "name": "Docker Daemon",
+      "status": "unknown",
+      "version": null,
+      "executable": null,
+      "evidence_id": "V11c",
+      "note": "当前上下文无法连接守护进程（命名管道不存在），无法确定全局运行状态"
+    },
+    {
+      "name": "WSL",
+      "status": "available",
+      "version": "2",
+      "executable": "C:\\Windows\\system32\\wsl.exe",
+      "evidence_id": "V12"
+    },
+    {
+      "name": "WSL Ubuntu",
+      "status": "available",
+      "version": null,
+      "executable": null,
+      "evidence_id": "V12"
+    },
+    {
+      "name": "nvidia-smi",
+      "status": "available",
+      "version": null,
+      "executable": "C:\\Windows\\system32\\nvidia-smi.exe",
+      "evidence_id": "V07"
+    }
+  ],
+  "project_files": [
+    {
+      "path": "step1/基于RAG技术的校园教务智能问答系统设计与实现开题报告v2.0.docx",
+      "bytes": 370586,
+      "sha256": "fe0ab70d5110f00e6d78d84477b2accab3e0d6ce58e8c150ebdd2ddf6a81ca72",
+      "category": "proposal"
+    },
+    {
+      "path": "step1/基于RAG技术的校园教务智能问答系统设计与实现开题报告v2.0.pdf",
+      "bytes": 596316,
+      "sha256": "2bdace49c6e26766373ac48c9314549bee96c0386cfdecd247293e97cbcee6da",
+      "category": "proposal"
+    },
+    {
+      "path": "docs/01-系统方案.md",
+      "bytes": 27048,
+      "sha256": "7626bed129f556cefd40cca88fdd875bd45bd39956422e72b36a1048608d39f7",
+      "category": "design_doc"
+    },
+    {
+      "path": "docs/02-开发路线与实验设计.md",
+      "bytes": 19476,
+      "sha256": "e5a7c781b8c6b76adbe228e1d15de175b6368b151585ec8e30a95600c378d362",
+      "category": "design_doc"
+    },
+    {
+      "path": "docs/03-资料与GitHub调研.md",
+      "bytes": 12764,
+      "sha256": "97016f477fa934a0870f0db19b2c410d64a3e1520a27aba81fd120f8dca76b64",
+      "category": "design_doc"
+    },
+    {
+      "path": "docs/04-前台体验与Agent方案.md",
+      "bytes": 21629,
+      "sha256": "1d4e59f0648838e9e4d94f730f69f84a293bb38c424c5a1be172e9d4cf5d7ab1",
+      "category": "design_doc"
+    },
+    {
+      "path": "docs/README.md",
+      "bytes": 2521,
+      "sha256": "42f4377c6537c145bd6eb506491a922d2db13e2ec1be29025bfc6ecc5df8eb40",
+      "category": "design_doc"
+    },
+    {
+      "path": "docs/collaboration/PROTOCOL.md",
+      "bytes": 3566,
+      "sha256": "75405df87e34f38549adb103e15c02ef64029222a156f15e89112d1d42192d01",
+      "category": "collaboration"
+    },
+    {
+      "path": "docs/collaboration/STATUS.md",
+      "bytes": 948,
+      "sha256": "3f9aa30177089ed6bdcbd9200015d0961d4dfbaef7a6c936c8e0f8fe8657ce54",
+      "category": "collaboration"
+    },
+    {
+      "path": "docs/collaboration/PROJECT_CONTEXT.md",
+      "bytes": 937,
+      "sha256": "6e03495eb56cace1503fc62eb5b0d60da36daa2ee81703a151bfcd099e292465",
+      "category": "collaboration"
+    },
+    {
+      "path": "docs/collaboration/reviews/T001-R1.md",
+      "bytes": 4952,
+      "sha256": "ba08778da4816c6a31936d99d599a129655048e4616ec042037bef9b44388ecc",
+      "category": "collaboration"
+    },
+    {
+      "path": "docs/collaboration/reviews/T001-R2.md",
+      "bytes": 3587,
+      "sha256": "c3ae12f570103061679de3bfb28f94ab931da002b785bb2fb9591256c6b010ca",
+      "category": "collaboration"
+    }
+  ],
+  "knowledge_corpus": {
+    "status": "not_found_in_scoped_scan",
+    "scope": "F:\\Collage Paper (project directory only)",
+    "paths": []
+  },
+  "open_questions": [
+    "具体语料——学校已确认为四川农业大学，但教务网文档尚未由用户提供",
+    "TinyAgent 具体仓库未指定",
+    "每周可投入时间未确认",
+    "小程序账号与上线部署条件未确认",
+    "模型 API（如 DeepSeek）的实际可用性与预算未确认",
+    "Docker Desktop 守护进程需手动启动并验证连接",
+    "WSL2 是否作为开发路线的一部分需用户明确选择"
+  ]
+}

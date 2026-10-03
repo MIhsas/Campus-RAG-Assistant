@@ -1,0 +1,42 @@
+{
+  "evidence_kind": "真实本地 ASR 转写（FunASR Paraformer，Windows CPU）；零外部推理调用",
+  "external_model_calls": 0,
+  "audio": {
+    "path": ".cache\\t020-audio\\tts-sample.wav",
+    "origin": "本地 Windows TTS 合成（Microsoft Huihui Desktop, zh-CN），非真人录音",
+    "sha256": "51a3b41b5e4fd97c294731cdb5f90fba108187a787b7eb3bfdec5735d29b7c6a",
+    "size_bytes": 252190
+  },
+  "reference_text": "缓考申请须经所在学院批准，并报教务处备案。",
+  "raw_recognition": {
+    "text": "缓考申请需经所在学院批准并报教务处备案",
+    "note": "识别原始输出，保留实际错字；未做任何人工改正。"
+  },
+  "model": {
+    "provider": "funasr-paraformer",
+    "model_id": "paraformer-zh@paraformer-zh",
+    "model_dir": ".cache/asr-models/paraformer-zh",
+    "provenance_files": [
+      {
+        "name": ".gitattributes",
+        "sha256": "add805e08e8143963fdf431296858f87fdd1fb0828f05f6914323ab750ed4574",
+        "size": 1546
+      },
+      {
+        "name": "am.mvn",
+        "sha256": "29b3c740a2c0cfc6b308126d31d7f265fa2be74f3bb095cd2f143ea970896ae5",
+        "size": 11203
+      },
+      {
+        "name": "config.yaml",
+        "sha256": "bfd424b9f61846aac63591e96fe24d66b35f4643bddcb4b9bb759db8f987ab79",
+        "size": 2509
+      }
+    ]
+  },
+  "timing": {
+    "audio_duration_seconds": 5.718,
+    "transcribe_elapsed_ms": 375
+  },
+  "confidence": null
+}

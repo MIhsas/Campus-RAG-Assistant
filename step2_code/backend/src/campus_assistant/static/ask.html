@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>证据整理</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
+.header{background:#fff;border-bottom:1px solid #ddd;padding:12px 20px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:10}
+.header h1{font-size:18px;font-weight:600}
+.header a{font-size:13px;color:#1976d2;text-decoration:none}
+.header a:hover{text-decoration:underline}
+.notice{background:#e3f2fd;padding:8px 16px;font-size:13px;color:#1565c0}
+.container{max-width:900px;margin:0 auto;padding:16px}
+.search-form{display:flex;gap:8px;margin-bottom:8px;align-items:center;flex-wrap:wrap}
+.search-form input[type="text"]{flex:1;min-width:220px;padding:10px;border:1px solid #ccc;border-radius:4px;font-size:15px}
+.action-btn{padding:10px 20px;background:#1976d2;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:15px}
+.action-btn:hover{background:#1565c0}
+.action-btn:disabled{background:#bbb;cursor:not-allowed}
+.action-btn.secondary{background:#fff;color:#1976d2;border:1px solid #1976d2}
+.action-btn.secondary:hover{background:#e3f2fd}
+.action-btn.secondary:disabled{color:#bbb;border-color:#ccc;background:#fff}
+.mode-hint{font-size:12px;color:#666;margin-bottom:12px}
+.mode-selector{display:flex;gap:4px;margin-bottom:12px}
+.mode-btn{padding:6px 16px;border:1px solid #ccc;background:#fff;border-radius:4px;cursor:pointer;font-size:13px}
+.mode-btn:hover{background:#f0f0f0}
+.mode-btn.active{background:#1976d2;color:#fff;border-color:#1976d2}
+.mode-btn:disabled{opacity:0.5;cursor:not-allowed}
+.mode-btn.active:disabled{background:#a0c4e8;border-color:#a0c4e8}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;padding:10px;background:#fff;border:1px solid #ddd;border-radius:6px}
+.filter-bar label{font-size:13px;color:#555}
+.filter-bar select,.filter-bar input[type="date"]{padding:6px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;background:#fff}
+.filter-clear-btn{padding:6px 14px;border:1px solid #999;background:#fff;color:#555;border-radius:4px;cursor:pointer;font-size:13px}
+.filter-clear-btn:hover{background:#f0f0f0}
+.status-bar{padding:8px 16px;font-size:13px;border-radius:4px;margin-bottom:12px}
+.status-ready{background:#e8f5e9;color:#2e7d32}
+.status-partial{background:#fff3e0;color:#e65100}
+.status-failed{background:#ffebee;color:#c62828}
+.status-unconfigured{background:#f5f5f5;color:#757575}
+.query-label{font-size:13px;color:#666;margin-bottom:8px}
+.answer-mode-label{display:inline-block;font-size:14px;font-weight:600;padding:6px 12px;border-radius:4px;margin-bottom:8px}
+.label-evidence-only{background:#fff3e0;color:#e65100;border:1px solid #ffcc80}
+.label-generated{background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7}
+.label-insufficient{background:#fce4ec;color:#ad1457;border:1px solid #f48fb1}
+.label-failed{background:#ffebee;color:#c62828;border:1px solid #ef9a9a}
+.disclaimer{font-size:13px;color:#8a6d3b;background:#fcf8e3;border:1px solid #faebcc;border-radius:4px;padding:8px 12px;margin-bottom:12px}
+.history-banner{font-size:13px;color:#6a4c93;background:#f3e5f5;border:1px solid #ce93d8;border-radius:4px;padding:8px 12px;margin-bottom:12px}
+.copy-row{margin-bottom:12px}
+.answer-card{background:#fff;border:1px solid #a5d6a7;border-radius:6px;padding:16px;margin-bottom:12px}
+.answer-card p{margin-bottom:8px;font-size:14px}
+.cite-chip{display:inline-block;font-size:12px;color:#1976d2;background:#e3f2fd;border:1px solid #90caf9;border-radius:3px;padding:0 6px;margin-left:4px;cursor:pointer;text-decoration:none}
+.cite-chip:hover{text-decoration:underline}
+.ev-card{background:#fff;border:1px solid #ddd;border-radius:6px;padding:16px;margin-bottom:12px;transition:box-shadow .3s,border-color .3s}
+.ev-card.highlight{border-color:#1976d2;box-shadow:0 0 0 2px #90caf9}
+.ev-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.ev-id{font-size:14px;color:#1976d2;font-weight:700}
+.ev-budget{font-size:12px;color:#666}
+.ev-title{font-size:15px;font-weight:500;margin-bottom:4px}
+.ev-meta{font-size:12px;color:#666;margin-bottom:8px}
+.ev-text{font-size:14px;white-space:pre-wrap;word-break:break-word;background:#fafafa;padding:10px;border-radius:4px;margin-bottom:8px;border-left:3px solid #1976d2}
+.ev-source{font-size:12px;color:#666;margin-bottom:8px}
+.ev-source a{color:#1976d2;text-decoration:none}
+.ev-source a:hover{text-decoration:underline}
+.synthetic-badge{font-size:11px;background:#fff3cd;color:#856404;padding:1px 6px;border-radius:3px;margin-left:4px}
+.ev-actions a{font-size:13px;color:#1976d2;text-decoration:none;margin-right:12px}
+.ev-actions a:hover{text-decoration:underline}
+.empty-state{text-align:center;color:#999;padding:40px 20px}
+.retry-btn{margin-top:8px;margin-right:8px;padding:6px 16px;border:1px solid #1976d2;background:#fff;color:#1976d2;border-radius:4px;cursor:pointer;font-size:13px}
+.retry-btn:hover{background:#e3f2fd}
+.loading{color:#666;text-align:center;padding:20px}
+.history-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0 8px;padding:10px;background:#fff;border:1px solid #ddd;border-radius:6px;font-size:13px}
+.history-bar label{color:#333;display:flex;align-items:center;gap:6px;cursor:pointer}
+.history-note{font-size:12px;color:#8a6d3b;margin-bottom:8px}
+.history-item{background:#fff;border:1px solid #ddd;border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.history-item .h-meta{color:#666;font-size:12px}
+.history-item .h-query{font-weight:500}
+.history-item .h-tag{font-size:11px;padding:1px 6px;border-radius:3px;border:1px solid #ccc;color:#555}
+.history-item button{padding:3px 10px;font-size:12px;border:1px solid #999;background:#fff;border-radius:4px;cursor:pointer;color:#555}
+.history-item button:hover{background:#f0f0f0}
+.filter-label{font-size:13px;color:#555}
+#transcript-area textarea{width:100%;font-size:14px;padding:8px;border:1px solid #ccc;border-radius:4px;margin:6px 0}
+@media(max-width:600px){
+  .container{padding:10px}
+  .search-form{flex-direction:column}
+  .ev-card{padding:12px}
+  .mode-selector{flex-wrap:wrap}
+  .filter-bar{flex-direction:column;align-items:stretch}
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>证据整理</h1>
+  <a href="/">首页</a>
+  <a href="/search">证据搜索</a>
+  <a href="/preview">语料预览</a>
+  <a href="/procedures">办事指南</a>
+  <a href="/compare">版本对比</a>
+</div>
+<div class="notice">围绕问题整理原文证据与（可选的）自动生成回答，不是政策结论，也不是资格认证。</div>
+<div class="container">
+  <div class="mode-selector" id="mode-selector">
+    <button class="mode-btn active" data-mode="bm25">关键词</button>
+    <button class="mode-btn" data-mode="dense">语义</button>
+    <button class="mode-btn" data-mode="hybrid">混合</button>
+  </div>
+  <div class="filter-bar" id="filter-bar">
+    <label for="filter-campus">校区</label>
+    <select id="filter-campus" aria-label="校区"><option value="">不限</option></select>
+    <label for="filter-student-type">学生类型</label>
+    <select id="filter-student-type" aria-label="学生类型"><option value="">不限</option></select>
+    <label for="filter-admission-year">入学年份</label>
+    <select id="filter-admission-year" aria-label="入学年份"><option value="">不限</option></select>
+    <label for="filter-as-of-date">查询日期</label>
+    <input type="date" id="filter-as-of-date" aria-label="查询日期">
+    <button type="button" class="filter-clear-btn" id="clear-filters-btn">清除条件</button>
+  </div>
+  <div class="search-form" id="search-form">
+    <label for="query-input" class="sr-only" style="position:absolute;left:-9999px">问题</label>
+    <input type="text" id="query-input" placeholder="输入问题，如：缓考申请需要什么材料" aria-label="问题">
+    <button type="button" class="action-btn" id="ask-btn">整理依据</button>
+    <button type="button" class="action-btn secondary" id="generate-btn" disabled>生成答案</button>
+  </div>
+  <div class="mode-hint" id="mode-hint">「整理依据」只整理原文摘录，不调用生成模型；「生成答案」在原文摘录基础上调用自动生成并附引用（需配置生成器）。</div>
+  <div class="filter-bar" id="voice-bar">
+    <button type="button" class="filter-clear-btn" id="record-btn">开始录音</button>
+    <button type="button" class="filter-clear-btn" id="record-stop-btn" disabled>停止</button>
+    <button type="button" class="filter-clear-btn" id="record-cancel-btn" disabled>取消</button>
+    <label class="filter-label" for="audio-file">上传音频</label>
+    <input type="file" id="audio-file" accept="audio/*">
+    <button type="button" class="filter-clear-btn" id="transcribe-btn" disabled>转写音频</button>
+    <span class="ev-budget" id="voice-hint">本地识别（≤30 秒 / ≤5MB）；仅在点击录音时请求麦克风，音频不上传第三方。</span>
+  </div>
+  <div id="transcript-area"></div>
+  <div id="status-area"></div>
+  <div id="results-area"></div>
+  <div class="history-bar" id="history-bar">
+    <label for="history-toggle"><input type="checkbox" id="history-toggle"> 在本机保存历史</label>
+    <span class="ev-budget" id="history-privacy">仅保存在此浏览器本机，不是学校账户记录。</span>
+    <button type="button" class="filter-clear-btn" id="history-clear-btn">清空历史</button>
+  </div>
+  <div class="history-note" id="history-note"></div>
+  <div id="history-list"></div>
+</div>
+<script>
+(function(){
+  var ASK_API = '/api/v1/ask';
+  var HISTORY_KEY = 'campus_ask_history_v1';
+  var HISTORY_MAX = 20;
+  var input = document.getElementById('query-input');
+  var askBtn = document.getElementById('ask-btn');
+  var generateBtn = document.getElementById('generate-btn');
+  var statusArea = document.getElementById('status-area');
+  var resultsArea = document.getElementById('results-area');
+  var modeSelector = document.getElementById('mode-selector');
+  var campusSel = document.getElementById('filter-campus');
+  var typeSel = document.getElementById('filter-student-type');
+  var yearSel = document.getElementById('filter-admission-year');
+  var dateInput = document.getElementById('filter-as-of-date');
+  var clearBtn = document.getElementById('clear-filters-btn');
+  var historyToggle = document.getElementById('history-toggle');
+  var historyClearBtn = document.getElementById('history-clear-btn');
+  var historyNote = document.getElementById('history-note');
+  var historyList = document.getElementById('history-list');
+  var askSeq = 0;
+  var statusSeq = 0;
+  var busy = false;
+  var historySeq = 0;
+  var storageOk = true;
+  var lastSubmittedQuery = '';
+  var lastSubmittedMode = 'bm25';
+  var lastSubmittedFilters = null;
+  var lastSubmittedAnswerMode = 'extractive';
+  var selectedMode = 'bm25';
+  var availableModes = [];
+  var lastFilterOptionsJson = '';
+  var generatorConfigured = false;
+
+  function ce(tag, cls, text){
+    var el = document.createElement(tag);
+    if(cls) el.className = cls;
+    if(text !== undefined) el.textContent = text;
+    return el;
+  }
+
+  // T018: URL 参数解析（首页演示问题预填；不依赖 URLSearchParams）
+  function parseQueryParams(){
+    var out = {};
+    try {
+      var qs = (typeof location !== 'undefined' && location.search) ? String(location.search).replace(/^\?/, '') : '';
+      qs.split('&').forEach(function(pair){
+        if(!pair) return;
+        var kv = pair.split('=');
+        out[decodeURIComponent(kv[0])] = decodeURIComponent((kv[1] || '').replace(/\+/g, ' '));
+      });
+    } catch(e){}
+    return out;
+  }
+
+  // T018: 相关办事事项——显式关键词/事项映射（非 Agent 推理）
+  var PROCEDURE_LINKS = [
+    { procedure_id: 'proc-apply-defer', title: '缓考申请', keywords: ['缓考'] },
+    { procedure_id: 'proc-review-grade', title: '成绩复核', keywords: ['复核'] }
+  ];
+  // T022-R1: 仅推荐当前已配置的事项；未配置对应指南时明确说明，不给死入口。
+  var configuredProcedureIds = null; // null=未知(尚未读取)；数组=当前已配置列表
+
+  function relatedProcedure(q){
+    for(var i = 0; i < PROCEDURE_LINKS.length; i++){
+      var p = PROCEDURE_LINKS[i];
+      for(var j = 0; j < p.keywords.length; j++){
+        if(String(q || '').indexOf(p.keywords[j]) >= 0) return p;
+      }
+    }
+    return null;
+  }
+
+  function proceduresLinkFor(rel, query, f){
+    f = f || {};
+    return '/procedures?procedure_id=' + encodeURIComponent(rel.procedure_id) +
+      '&query=' + encodeURIComponent(query || '') +
+      '&campus=' + encodeURIComponent(f.campus || '') +
+      '&student_type=' + encodeURIComponent(f.student_type || '') +
+      '&admission_year=' + encodeURIComponent(
+        (f.admission_year === null || f.admission_year === undefined) ? '' : f.admission_year) +
+      '&as_of_date=' + encodeURIComponent(f.as_of_date || '');
+  }
+
+  function formatDate(v){ return v || '未标注'; }
+  function formatEndDate(v){ return v || '未标注截止'; }
+  function nowText(){
+    var d = new Date();
+    function p(n){ return (n < 10 ? '0' : '') + n; }
+    return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) + ' ' + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+  }
+
+  function scopeText(scope){
+    if(!scope) return '未标注';
+    var parts = [];
+    if(scope.campus && scope.campus.length) parts.push('校区：' + scope.campus.join('、'));
+    if(scope.student_type && scope.student_type.length) parts.push('类型：' + scope.student_type.join('、'));
+    if(scope.admission_years && scope.admission_years.length) parts.push('年级：' + scope.admission_years.join('、'));
+    return parts.length ? parts.join('；') : '未标注';
+  }
+
+  function currentFilters(){
+    return {
+      campus: campusSel.value ? campusSel.value : null,
+      student_type: typeSel.value ? typeSel.value : null,
+      admission_year: yearSel.value ? parseInt(yearSel.value, 10) : null,
+      as_of_date: dateInput.value ? dateInput.value : null
+    };
+  }
+
+  function hasFilter(f){
+    return !!f && (f.campus !== null || f.student_type !== null ||
+      f.admission_year !== null || f.as_of_date !== null);
+  }
+
+  function filtersText(f){
+    if(!hasFilter(f)) return '不限条件';
+    var parts = [];
+    if(f.campus) parts.push('校区=' + f.campus);
+    if(f.student_type) parts.push('类型=' + f.student_type);
+    if(f.admission_year !== null && f.admission_year !== undefined) parts.push('年级=' + f.admission_year);
+    if(f.as_of_date) parts.push('查询日期=' + f.as_of_date);
+    return parts.join('　');
+  }
+
+  function clearFilters(){
+    campusSel.value = '';
+    typeSel.value = '';
+    yearSel.value = '';
+    dateInput.value = '';
+  }
+
+  // Preserve the user's selection across option rebuilds (T011-R1 rule).
+  function fillSelect(sel, values, fieldName){
+    var prev = sel.value;
+    var vals = [];
+    (values || []).forEach(function(v){ vals.push(String(v)); });
+    sel.innerHTML = '';
+    var optAll = document.createElement('option');
+    optAll.value = '';
+    optAll.textContent = '不限';
+    sel.appendChild(optAll);
+    vals.forEach(function(v){
+      var opt = document.createElement('option');
+      opt.value = v;
+      opt.textContent = v;
+      sel.appendChild(opt);
+    });
+    var vanished = [];
+    if(prev && vals.indexOf(prev) < 0){
+      var ghost = document.createElement('option');
+      ghost.value = prev;
+      ghost.textContent = prev + '（已不在当前选项）';
+      sel.appendChild(ghost);
+      sel.value = prev;
+      vanished.push(fieldName + '=' + prev);
+      return vanished;
+    }
+    sel.value = prev || '';
+    return vanished;
+  }
+
+  function updateModeButtons(){
+    var btns = modeSelector.querySelectorAll('.mode-btn');
+    btns.forEach(function(b){
+      var m = b.getAttribute('data-mode');
+      b.classList.toggle('active', m === selectedMode);
+      b.disabled = availableModes.indexOf(m) < 0;
+    });
+  }
+
+  // ---- 本机历史（仅在用户开启后写入 localStorage；不保存密钥/异常） ----
+  function loadHistory(){
+    try {
+      var raw = localStorage.getItem(HISTORY_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch(e){
+      storageOk = false;
+      return [];
+    }
+  }
+
+  function persistHistory(list){
+    try {
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(list.slice(0, HISTORY_MAX)));
+      return true;
+    } catch(e){
+      storageOk = false;
+      renderHistoryNote();
+      return false;
+    }
+  }
+
+  function renderHistoryNote(){
+    if(!storageOk){
+      historyNote.textContent = '本机存储不可用：历史功能停用，不影响当前问答。';
+      historyToggle.disabled = true;
+      historyToggle.checked = false;
+      return;
+    }
+    var list = loadHistory();
+    if(historyToggle.checked){
+      historyNote.textContent = '已开启保存：新的问答结果仅保存在此浏览器本机（最多 ' + HISTORY_MAX + ' 条，新的替换最旧的）。不是学校账户记录，不上传、不含密钥。';
+    } else if(list.length){
+      historyNote.textContent = '已停止保存新结果；已保存的 ' + list.length + ' 条记录仍保留在此浏览器，可查看、删除或清空。';
+    } else {
+      historyNote.textContent = '未开启保存：问答结果不会被保存。开启后仅保存在此浏览器本机。';
+    }
+  }
+
+  function statusTag(s){
+    return {generated:'自动生成', evidence_only:'原文摘录', insufficient_evidence:'材料不足'}[s] || s;
+  }
+
+  function renderHistory(){
+    historyList.innerHTML = '';
+    if(!storageOk) return;
+    var list = loadHistory();
+    historySeq++;
+    list.forEach(function(entry){
+      var item = ce('div', 'history-item');
+      item.appendChild(ce('span', 'h-tag', statusTag(entry.status)));
+      item.appendChild(ce('span', 'h-query', entry.query));
+      item.appendChild(ce('span', 'h-meta', '保存于 ' + entry.saved_at + '　条件：' + filtersText(entry.filters)));
+      var viewBtn = ce('button', '', '查看');
+      viewBtn.addEventListener('click', function(){
+        // 本地恢复：仅渲染，不发任何请求，不调用模型
+        renderResult(entry.result, entry.query, entry.mode, entry.answer_mode, {fromHistory: entry.saved_at});
+      });
+      var delBtn = ce('button', '', '删除');
+      delBtn.addEventListener('click', function(){
+        var next = loadHistory().filter(function(x){ return x.id !== entry.id; });
+        persistHistory(next);
+        renderHistory();
+        renderHistoryNote();
+      });
+      item.appendChild(viewBtn);
+      item.appendChild(delBtn);
+      historyList.appendChild(item);
+    });
+  }
+
+  function maybeSaveHistory(d, query, mode, answerMode){
+    if(!historyToggle.checked || !storageOk) return;
+    if(['generated', 'evidence_only', 'insufficient_evidence'].indexOf(d.status) < 0) return;
+    var entry = {
+      id: nowText() + '-' + String(historySeq) + '-' + String(loadHistory().length),
+      saved_at: nowText(),
+      query: query,
+      mode: mode,
+      filters: d.filters || null,
+      answer_mode: answerMode,
+      status: d.status,
+      result: d
+    };
+    var list = loadHistory();
+    list.unshift(entry);
+    if(!persistHistory(list)) return;
+    renderHistory();
+    renderHistoryNote();
+  }
+
+  async function loadProceduresConfigured(){
+    // T022-R1: 读取当前已配置事项列表，仅推荐真实存在的事项。
+    try {
+      var r = await fetch('/api/v1/procedures');
+      if(r.status === 200){
+        var d = await r.json();
+        configuredProcedureIds = (d.procedures || []).map(function(p){ return p.procedure_id; });
+      } else {
+        // 未配置或读取失败：不推荐任何入口（在渲染处给清楚说明）
+        configuredProcedureIds = [];
+      }
+    } catch(e){
+      configuredProcedureIds = [];
+    }
+  }
+
+  async function loadStatus(){
+    statusSeq++;
+    var mySeq = statusSeq;
+    try {
+      var r = await fetch(ASK_API + '/status');
+      if(mySeq !== statusSeq) return;
+      if(!r.ok){ renderStatusError('状态接口错误：HTTP ' + r.status); return; }
+      var d;
+      try { d = await r.json(); } catch(je){
+        if(mySeq !== statusSeq) return;
+        renderStatusError('状态接口返回无效 JSON');
+        return;
+      }
+      if(mySeq !== statusSeq) return;
+      availableModes = d.available_modes || ['bm25'];
+      updateModeButtons();
+      generatorConfigured = !!d.generator_configured;
+      if(!busy) generateBtn.disabled = !generatorConfigured;
+      // Option rebuild only when the set changed; keep current selections.
+      var opts = d.filter_options || {};
+      var optsJson = JSON.stringify(opts);
+      var vanished = [];
+      if(optsJson !== lastFilterOptionsJson){
+        vanished = vanished
+          .concat(fillSelect(campusSel, opts.campus, '校区'))
+          .concat(fillSelect(typeSel, opts.student_type, '学生类型'))
+          .concat(fillSelect(yearSel, opts.admission_year, '入学年份'));
+        lastFilterOptionsJson = optsJson;
+      }
+      statusArea.innerHTML = '';
+      var bar = ce('div', 'status-bar');
+      var cls = {ready:'status-ready',partial:'status-partial',failed:'status-failed',unconfigured:'status-unconfigured'}[d.corpus_status]||'';
+      bar.className = 'status-bar ' + cls;
+      var labels = {ready:'就绪',partial:'部分成功',failed:'失败',unconfigured:'未配置'};
+      bar.textContent = '语料状态：' + (labels[d.corpus_status]||d.corpus_status) + '　可用操作：整理依据' + (generatorConfigured ? '、生成答案' : '（生成答案未启用）');
+      statusArea.appendChild(bar);
+      if(!generatorConfigured){
+        var genNotice = ce('div', 'notice', '自动作答未配置：本次运行未显式开启生成器（需以 --generator deepseek 显式开启并配置密钥，见 README；仅配置密钥不会自动启用）。原文整理不受影响。');
+        genNotice.style.marginTop = '4px';
+        statusArea.appendChild(genNotice);
+      }
+      if(vanished.length){
+        var vanishNotice = ce('div', 'notice', '以下筛选条件已不在当前语料选项中，仍按该条件筛选（仅手动更改或清除条件会取消）：' + vanished.join('、'));
+        vanishNotice.style.marginTop = '4px';
+        statusArea.appendChild(vanishNotice);
+      }
+    } catch(e){
+      if(mySeq !== statusSeq) return;
+      renderStatusError('无法获取状态：网络错误');
+    }
+  }
+
+  function renderStatusError(msg){
+    statusArea.innerHTML = '';
+    var wrap = ce('div');
+    wrap.appendChild(ce('div', 'status-bar status-failed', msg));
+    var retryBtn = ce('button', 'retry-btn', '重试');
+    retryBtn.addEventListener('click', loadStatus);
+    wrap.appendChild(retryBtn);
+    statusArea.appendChild(wrap);
+  }
+
+  function busyText(answerMode){
+    return answerMode === 'generated' ? '生成中…' : '整理中…';
+  }
+
+  function setBusy(on){
+    busy = on;
+    askBtn.disabled = on;
+    generateBtn.disabled = on || !generatorConfigured;
+    input.disabled = on;
+  }
+
+  async function doAsk(answerMode, query, topK, mode, filters){
+    if(busy) return;
+    if(query === undefined) query = input.value;
+    if(topK === undefined) topK = 5;
+    if(mode === undefined) mode = selectedMode;
+    if(filters === undefined) filters = currentFilters();
+    if(answerMode === undefined) answerMode = 'extractive';
+    askSeq++;
+    var mySeq = askSeq;
+    if(!query.trim()){
+      resultsArea.innerHTML = '';
+      resultsArea.appendChild(ce('div','empty-state','请输入问题'));
+      return;
+    }
+    // Submit-time snapshot: query/mode/filters/answer_mode.
+    lastSubmittedQuery = query;
+    lastSubmittedMode = mode;
+    lastSubmittedFilters = filters;
+    lastSubmittedAnswerMode = answerMode;
+    setBusy(true);
+    resultsArea.innerHTML = '';
+    resultsArea.appendChild(ce('div','loading', busyText(answerMode)));
+    await executeAsk(query, topK, mode, filters, answerMode, mySeq);
+    if(mySeq === askSeq) setBusy(false);
+  }
+
+  function retryParams(){
+    if(busy) return;
+    askSeq++;
+    var mySeq = askSeq;
+    setBusy(true);
+    resultsArea.innerHTML = '';
+    resultsArea.appendChild(ce('div','loading', busyText(lastSubmittedAnswerMode)));
+    // Retry uses the submitted snapshot — never the edited controls.
+    executeAsk(lastSubmittedQuery, 5, lastSubmittedMode, lastSubmittedFilters, lastSubmittedAnswerMode, mySeq).then(function(){
+      if(mySeq === askSeq) setBusy(false);
+    });
+  }
+
+  // 生成失败后：用失败请求的查询/筛选快照走 extractive，不调用模型、不丢条件。
+  function viewEvidenceForLastRequest(){
+    if(busy) return;
+    doAsk('extractive', lastSubmittedQuery, 5, lastSubmittedMode, lastSubmittedFilters);
+  }
+
+  async function executeAsk(query, topK, mode, filters, answerMode, mySeq){
+    try {
+      var body = {query: query, top_k: topK, mode: mode, answer_mode: answerMode};
+      if(hasFilter(filters)) body.filters = filters;
+      var r = await fetch(ASK_API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
+      if(mySeq !== askSeq) return;
+      if(r.status === 503 || r.status === 502){
+        var err;
+        try { err = await r.json(); } catch(je){
+          if(mySeq !== askSeq) return;
+          renderErrorState('接口返回无效 JSON', answerMode);
+          return;
+        }
+        if(mySeq !== askSeq) return;
+        renderErrorState(err.message || '请求不可用', answerMode);
+        return;
+      }
+      if(!r.ok){
+        if(mySeq !== askSeq) return;
+        renderErrorState('接口错误：HTTP ' + r.status, answerMode);
+        return;
+      }
+      var d;
+      try { d = await r.json(); } catch(je){
+        if(mySeq !== askSeq) return;
+        renderErrorState('返回无效 JSON', answerMode);
+        return;
+      }
+      if(mySeq !== askSeq) return;
+      loadStatus();
+      loadProceduresConfigured();
+      renderResult(d, query, mode, answerMode);
+      maybeSaveHistory(d, query, mode, answerMode);
+    } catch(e){
+      if(mySeq !== askSeq) return;
+      renderErrorState('网络错误', answerMode);
+    }
+  }
+
+  function renderErrorState(msg, answerMode){
+    resultsArea.innerHTML = '';
+    var isGen = answerMode === 'generated';
+    resultsArea.appendChild(ce('div', 'answer-mode-label label-failed', isGen ? '生成失败 / 未返回答案' : '请求失败 / 未返回结果'));
+    var wrap = ce('div');
+    wrap.appendChild(ce('div','empty-state', msg));
+    var retryBtn = ce('button','retry-btn','重试');
+    retryBtn.addEventListener('click', retryParams);
+    wrap.appendChild(retryBtn);
+    if(isGen){
+      var evBtn = ce('button','retry-btn','查看本次问题的原文依据');
+      evBtn.addEventListener('click', viewEvidenceForLastRequest);
+      wrap.appendChild(evBtn);
+    }
+    resultsArea.appendChild(wrap);
+  }
+
+  function plainTextOf(d){
+    var lines = [];
+    lines.push('问题：' + d.query);
+    lines.push('条件：' + filtersText(d.filters));
+    if(d.status === 'generated' && d.answer && d.answer.paragraphs){
+      lines.push('说明：' + (d.disclaimer || ''));
+      d.answer.paragraphs.forEach(function(p){
+        lines.push('');
+        lines.push(p.text + '（依据 ' + p.evidence_ids.join('、') + '）');
+      });
+    } else if(d.status === 'insufficient_evidence'){
+      lines.push('说明：材料不足，未生成答案。' + (d.insufficient_reason || ''));
+    } else {
+      lines.push('说明：以下是相关原文摘录，尚未生成答案，需核对适用条件。');
+    }
+    (d.evidence || []).forEach(function(ev){
+      lines.push('');
+      lines.push('【' + ev.evidence_id + '】' + (ev.title || ev.document_id));
+      var meta = [];
+      if(ev.version_label) meta.push('版本：' + ev.version_label);
+      meta.push('适用范围：' + scopeText(ev.scope));
+      lines.push(meta.join('　'));
+      lines.push('发布：' + formatDate(ev.published_at) + '　生效：' + formatDate(ev.effective_from) + '　失效：' + formatEndDate(ev.effective_to));
+      if(ev.source_url && ev.source_url.match(/^https?:\/\//)) lines.push('来源：' + ev.source_url);
+      if(ev.is_synthetic) lines.push('（合成测试资料，不代表真实学校政策）');
+      lines.push('原文：');
+      lines.push(ev.text);
+    });
+    return lines.join('\n');
+  }
+
+  function copyPlainText(d){
+    var text = plainTextOf(d);
+    function fail(){
+      resultsArea.querySelectorAll('.copy-hint').forEach(function(n){ n.textContent = '复制失败，请手动选择文本复制'; });
+    }
+    try {
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){
+          resultsArea.querySelectorAll('.copy-hint').forEach(function(n){ n.textContent = '已复制为纯文本'; });
+        }).catch(fail);
+      } else {
+        fail();
+      }
+    } catch(e){
+      fail();
+    }
+  }
+
+  function highlightEvidence(evId){
+    var card = document.getElementById('ev-' + evId);
+    if(!card) return;
+    if(card.scrollIntoView) card.scrollIntoView({behavior: 'smooth', block: 'center'});
+    resultsArea.querySelectorAll('.ev-card').forEach(function(c){ c.classList.remove('highlight'); });
+    card.classList.add('highlight');
+  }
+
+  function renderResult(d, query, mode, answerMode, opts){
+    opts = opts || {};
+    resultsArea.innerHTML = '';
+    var hitCount = (d.evidence && d.evidence.length) || 0;
+    // Snapshot of the submitted request — later control edits don't rewrite it.
+    var ql = ce('div', 'query-label',
+      '问题：' + query + '　模式：' + ({bm25:'关键词',dense:'语义',hybrid:'混合'}[mode]||mode) +
+      '　方式：' + (answerMode === 'generated' ? '生成答案' : '原文摘录') +
+      '　条件：' + filtersText(d.filters) + '　证据：' + hitCount + ' 条');
+    resultsArea.appendChild(ql);
+
+    if(opts.fromHistory){
+      resultsArea.appendChild(ce('div', 'history-banner',
+        '历史结果，资料可能已更新（保存于 ' + opts.fromHistory + '）。如需最新结果请重新提问；查看历史不会发出任何请求。'));
+    }
+
+    // T018: 相关办事事项入口——链接携带本条结果的问题/条件快照（非当前控件）
+    // T022-R1: 仅推荐当前已配置的事项；否则明确“本次运行未配置对应指南”。
+    var rel = relatedProcedure(query);
+    if(rel){
+      var relCard = ce('div', 'disclaimer');
+      relCard.appendChild(ce('b', '', '相关事项入口'));
+      var relConfigured = configuredProcedureIds !== null &&
+        configuredProcedureIds.indexOf(rel.procedure_id) >= 0;
+      if(relConfigured){
+        relCard.appendChild(document.createTextNode(
+          '（关键词映射，不代表系统判断您符合办理条件）：' + rel.title + '　'));
+        var relA = ce('a');
+        relA.href = proceduresLinkFor(rel, query, d.filters);
+        relA.textContent = '进入办事页（带入本次问题与条件快照）';
+        relCard.appendChild(relA);
+      } else if(configuredProcedureIds === null){
+        relCard.appendChild(document.createTextNode(
+          '（关键词映射）命中「' + rel.title + '」，正在确认当前配置，稍后刷新可见入口。'));
+      } else {
+        relCard.appendChild(document.createTextNode(
+          '（关键词映射）命中「' + rel.title + '」，但本次运行未配置对应指南，暂不提供入口。'));
+      }
+      if(opts.fromHistory){
+        relCard.appendChild(ce('div', '', '历史结果：办事页将按当前加载资料重新生成指南，并使用本条历史条件（非当前控件值）。'));
+      }
+      resultsArea.appendChild(relCard);
+    }
+
+    if(d.status === 'generated'){
+      resultsArea.appendChild(ce('div', 'answer-mode-label label-generated', '自动生成（需人工核对适用条件与语义支持）'));
+    } else if(d.status === 'insufficient_evidence'){
+      resultsArea.appendChild(ce('div', 'answer-mode-label label-insufficient', '材料不足 / 未生成答案'));
+    } else {
+      resultsArea.appendChild(ce('div', 'answer-mode-label label-evidence-only', '原文摘录 / 未生成答案'));
+    }
+
+    if(d.disclaimer){
+      resultsArea.appendChild(ce('div', 'disclaimer', d.disclaimer));
+    }
+    if(d.insufficient_reason){
+      resultsArea.appendChild(ce('div', 'disclaimer', d.insufficient_reason));
+    }
+    if(d.empty_message){
+      var wrap = ce('div');
+      wrap.appendChild(ce('div','empty-state', d.empty_message));
+      resultsArea.appendChild(wrap);
+      return;
+    }
+
+    var copyRow = ce('div', 'copy-row');
+    var copyBtn = ce('button', 'filter-clear-btn', d.status === 'generated' ? '复制回答与来源' : '复制问题与摘录');
+    copyBtn.addEventListener('click', function(){ copyPlainText(d); });
+    copyRow.appendChild(copyBtn);
+    copyRow.appendChild(document.createTextNode('　'));
+    copyRow.appendChild(ce('span', 'copy-hint ev-budget', ''));
+    resultsArea.appendChild(copyRow);
+
+    // Generated paragraphs with structural citations (E-ids locate evidence cards).
+    if(d.status === 'generated' && d.answer && d.answer.paragraphs){
+      var aCard = ce('div', 'answer-card');
+      d.answer.paragraphs.forEach(function(p){
+        var pEl = ce('p');
+        pEl.appendChild(document.createTextNode(p.text));
+        (p.evidence_ids || []).forEach(function(evId){
+          var chip = ce('a', 'cite-chip', evId);
+          chip.href = '#ev-' + evId;
+          chip.addEventListener('click', function(e){
+            if(e && e.preventDefault) e.preventDefault();
+            highlightEvidence(evId);
+          });
+          pEl.appendChild(chip);
+        });
+        aCard.appendChild(pEl);
+      });
+      resultsArea.appendChild(aCard);
+    }
+
+    if(d.budget && d.budget.skipped_items > 0){
+      resultsArea.appendChild(ce('div', 'disclaimer',
+        d.budget.skipped_items + ' 条命中因字符预算（' + d.budget.max_total_chars + ' 字符、最多 ' + d.budget.max_items + ' 条）整条略过，未截取或拼接原文。'));
+    }
+
+    (d.evidence || []).forEach(function(ev){
+      var card = ce('div', 'ev-card');
+      card.id = 'ev-' + ev.evidence_id;
+      var hdr = ce('div', 'ev-header');
+      hdr.appendChild(ce('span', 'ev-id', ev.evidence_id));
+      card.appendChild(hdr);
+      var titleEl = ce('div', 'ev-title');
+      titleEl.textContent = ev.title || ev.document_id;
+      if(ev.is_synthetic) titleEl.appendChild(ce('span', 'synthetic-badge', '合成测试资料'));
+      card.appendChild(titleEl);
+      var metaLine = [];
+      if(ev.version_label) metaLine.push('版本：' + ev.version_label);
+      if(ev.locator && ev.locator.type === 'pdf_page') metaLine.push('PDF 第 ' + ev.locator.page + ' 页');
+      if(metaLine.length) card.appendChild(ce('div', 'ev-meta', metaLine.join(' · ')));
+      var datesDiv = ce('div', 'ev-meta');
+      datesDiv.textContent = '适用范围（资料准入信息，非资格认证）：' + scopeText(ev.scope) + '　发布：' + formatDate(ev.published_at) + '　生效：' + formatDate(ev.effective_from) + '　失效：' + formatEndDate(ev.effective_to);
+      card.appendChild(datesDiv);
+      card.appendChild(ce('div', 'ev-text', ev.text));
+      if(ev.source_url && ev.source_url.match(/^https?:\/\//)){
+        var srcDiv = ce('div', 'ev-source');
+        var a = ce('a');
+        a.href = ev.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        a.textContent = '来源链接';
+        srcDiv.appendChild(a);
+        card.appendChild(srcDiv);
+      }
+      var actions = ce('div', 'ev-actions');
+      var previewA = ce('a');
+      previewA.href = ev.preview_url;
+      previewA.textContent = '查看原文';
+      actions.appendChild(previewA);
+      card.appendChild(actions);
+      resultsArea.appendChild(card);
+    });
+  }
+
+  // ---------- 语音输入（T020）：录音/上传 → 本地转写 → 编辑确认 → 用户手动提问 ----------
+  var recordBtn = document.getElementById('record-btn');
+  var recordStopBtn = document.getElementById('record-stop-btn');
+  var recordCancelBtn = document.getElementById('record-cancel-btn');
+  var audioFile = document.getElementById('audio-file');
+  var transcribeBtn = document.getElementById('transcribe-btn');
+  var voiceHintEl = document.getElementById('voice-hint');
+  var transcriptArea = document.getElementById('transcript-area');
+  var mediaStream = null;
+  var mediaRecorder = null;
+  var recordedBlob = null;
+  var recordTimer = null;
+
+  function voiceHint(msg){ if(voiceHintEl) voiceHintEl.textContent = msg; }
+
+  function stopTracks(){
+    if(recordTimer){ try { clearTimeout(recordTimer); } catch(e){} recordTimer = null; }
+    if(mediaStream){
+      try { mediaStream.getTracks().forEach(function(t){ t.stop(); }); } catch(e){}
+      mediaStream = null;
+    }
+    mediaRecorder = null;
+  }
+
+  function pickMimeType(){
+    try {
+      if(typeof MediaRecorder === 'undefined' || !MediaRecorder.isTypeSupported) return '';
+      var cands = ['audio/webm;codecs=opus', 'audio/webm', 'audio/ogg;codecs=opus', 'audio/mp4', 'audio/wav'];
+      for(var i = 0; i < cands.length; i++){
+        if(MediaRecorder.isTypeSupported(cands[i])) return cands[i];
+      }
+    } catch(e){}
+    return '';
+  }
+
+  async function startRecording(){
+    voiceHint('正在请求麦克风权限…');
+    try {
+      if(typeof navigator === 'undefined' || !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+        voiceHint('当前环境不支持麦克风（非安全上下文或浏览器限制）；可使用上传音频或文字提问。');
+        return;
+      }
+      mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      var mime = pickMimeType();
+      mediaRecorder = (mime && typeof MediaRecorder !== 'undefined')
+        ? new MediaRecorder(mediaStream, { mimeType: mime })
+        : new MediaRecorder(mediaStream);
+      var parts = [];
+      mediaRecorder.ondataavailable = function(e){ if(e && e.data) parts.push(e.data); };
+      mediaRecorder.onstop = function(){
+        try { recordedBlob = new Blob(parts, { type: (mediaRecorder && mediaRecorder.mimeType) || 'audio/webm' }); }
+        catch(e){ recordedBlob = parts[0] || null; }
+        stopTracks();
+        recordBtn.disabled = false;
+        recordStopBtn.disabled = true;
+        recordCancelBtn.disabled = true;
+        if(recordedBlob && recordedBlob.size){
+          transcribeBtn.disabled = false;
+          voiceHint('录音已停止（' + Math.round(recordedBlob.size / 1024) + ' KB）。点击“转写音频”。');
+        } else {
+          voiceHint('录音未取得音频数据；可重新录音或上传音频。原问题未被修改。');
+        }
+      };
+      mediaRecorder.onerror = function(){
+        stopTracks();
+        recordBtn.disabled = false;
+        recordStopBtn.disabled = true;
+        recordCancelBtn.disabled = true;
+        voiceHint('录音失败；原问题未被修改。可重试或上传音频。');
+      };
+      mediaRecorder.start();
+      recordBtn.disabled = true;
+      recordStopBtn.disabled = false;
+      recordCancelBtn.disabled = false;
+      recordTimer = setTimeout(function(){ stopRecording(); }, 30000);
+      voiceHint('录音中…（最长 30 秒）');
+    } catch(e){
+      stopTracks();
+      voiceHint('无法获取麦克风（权限被拒绝或无设备）；可使用上传音频或文字提问。原问题未被修改。');
+    }
+  }
+
+  function stopRecording(){
+    try {
+      if(mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
+    } catch(e){
+      stopTracks();
+      voiceHint('录音停止失败；原问题未被修改。');
+    }
+  }
+
+  function cancelRecording(){
+    try {
+      if(mediaRecorder && mediaRecorder.state !== 'inactive'){
+        mediaRecorder.onstop = null;
+        mediaRecorder.stop();
+      }
+    } catch(e){}
+    recordedBlob = null;
+    stopTracks();
+    recordBtn.disabled = false;
+    recordStopBtn.disabled = true;
+    recordCancelBtn.disabled = true;
+    transcribeBtn.disabled = true;
+    transcriptArea.innerHTML = '';
+    voiceHint('已取消并释放麦克风。原问题未被修改。');
+  }
+
+  function renderTranscriptError(msg){
+    transcriptArea.innerHTML = '';
+    transcriptArea.appendChild(ce('div', 'empty-state', msg));
+    voiceHint('转写未成功；原问题未被修改。');
+  }
+
+  function renderTranscriptEditor(d){
+    transcriptArea.innerHTML = '';
+    transcriptArea.appendChild(ce('div', 'ev-budget',
+      '识别结果（' + (d.provider || '') + ' / ' + (d.model || '') + '　时长 ' + d.duration_seconds +
+      ' 秒　耗时 ' + d.elapsed_ms + ' ms　置信度：未提供）。可编辑后确认；不会自动提问、生成或保存。'));
+    var ta = document.createElement('textarea');
+    ta.rows = 3;
+    ta.value = d.text || '';
+    transcriptArea.appendChild(ta);
+    var hasText = !!(input.value && input.value.trim());
+    var useBtn = ce('button', 'action-btn secondary', hasText ? '替换问题输入' : '使用此文本');
+    useBtn.addEventListener('click', function(){
+      if(!(ta.value || '').trim()){
+        voiceHint('识别文本为空，未修改问题输入。');
+        return;
+      }
+      input.value = ta.value;
+      voiceHint('已填入问题输入框；请手动点击「整理依据」或「生成答案」。');
+    });
+    transcriptArea.appendChild(useBtn);
+  }
+
+  async function doTranscribe(){
+    if(!recordedBlob) return;
+    transcribeBtn.disabled = true;
+    transcriptArea.innerHTML = '';
+    transcriptArea.appendChild(ce('div', 'loading', '本地转写中…'));
+    try {
+      var r = await fetch('/api/v1/asr/transcribe', {
+        method: 'POST',
+        headers: { 'Content-Type': recordedBlob.type || 'application/octet-stream' },
+        body: recordedBlob
+      });
+      var d = {};
+      try { d = await r.json(); } catch(e){}
+      if(r.status === 503){
+        renderTranscriptError('本地语音识别未配置（可继续使用文字提问）。');
+      } else if(!r.ok){
+        renderTranscriptError((d.message || ('HTTP ' + r.status)) + '（原问题未被修改）');
+      } else if(d.status === 'no_speech' || !(d.text || '').trim()){
+        // 空/空白转写结果：不显示成功编辑器，不覆盖已有问题
+        renderTranscriptError((d.message || '未识别到有效语音，请重录或重新选择音频') + '（原问题未被修改）');
+      } else {
+        renderTranscriptEditor(d);
+        voiceHint('转写完成；确认后请手动提问。');
+      }
+    } catch(e){
+      renderTranscriptError('转写失败：网络错误（原问题未被修改）。');
+    }
+    transcribeBtn.disabled = false;
+  }
+
+  // Mode selector
+  modeSelector.addEventListener('click', function(e){
+    var btn = e.target.closest('.mode-btn');
+    if(!btn || btn.disabled) return;
+    selectedMode = btn.getAttribute('data-mode');
+    updateModeButtons();
+  });
+
+  askBtn.addEventListener('click', function(){ doAsk('extractive'); });
+  generateBtn.addEventListener('click', function(){ if(generatorConfigured) doAsk('generated'); });
+  input.addEventListener('keydown', function(e){ if(e.key === 'Enter') doAsk('extractive'); });
+  clearBtn.addEventListener('click', function(){ clearFilters(); });
+  recordBtn.addEventListener('click', startRecording);
+  recordStopBtn.addEventListener('click', stopRecording);
+  recordCancelBtn.addEventListener('click', cancelRecording);
+  transcribeBtn.addEventListener('click', doTranscribe);
+  if(audioFile){
+    audioFile.addEventListener('change', function(){
+      var f = audioFile.files && audioFile.files[0];
+      if(!f) return;
+      recordedBlob = f;
+      transcribeBtn.disabled = false;
+      voiceHint('已选择音频：' + f.name + '（' + Math.round(f.size / 1024) + ' KB）。点击“转写音频”。');
+    });
+  }
+  // 离开页面释放麦克风
+  if(typeof window !== 'undefined' && window.addEventListener){
+    window.addEventListener('pagehide', function(){ stopTracks(); });
+  }
+  // 显式初始化禁用态（与 HTML 属性一致，避免依赖属性解析）
+  transcribeBtn.disabled = true;
+  recordStopBtn.disabled = true;
+  recordCancelBtn.disabled = true;
+
+  // T020-R1：录音前先展示本地识别可用性（未配置则禁用语音入口，文字入口保留）
+  async function loadAsrStatus(){
+    try {
+      var r = await fetch('/api/v1/asr/status');
+      if(!r.ok) return;
+      var d = await r.json();
+      if(d && d.configured){
+        voiceHint('本地识别可用（' + (d.provider || '') + ' / ' + (d.model || '') + '）；≤30 秒 / ≤5MB，音频不上传第三方。');
+      } else {
+        recordBtn.disabled = true;
+        transcribeBtn.disabled = true;
+        audioFile.disabled = true;
+        voiceHint('本地语音识别未配置；录音/转写不可用，可继续使用文字提问。');
+      }
+    } catch(e){ /* 状态失败不阻断文字提问 */ }
+  }
+  loadAsrStatus();
+  historyToggle.addEventListener('change', function(){ renderHistoryNote(); });
+  historyClearBtn.addEventListener('click', function(){
+    if(!storageOk) return;
+    persistHistory([]);
+    renderHistory();
+    renderHistoryNote();
+  });
+  // T015-R1: browser back/forward (bfcache) may restore the checkbox without
+  // re-running init — sync the hint with the actual toggle state.
+  if(typeof window !== 'undefined' && window.addEventListener){
+    window.addEventListener('pageshow', function(){ renderHistoryNote(); });
+  }
+  // T018: 首页演示问题带 query 参数时预填问题输入框
+  var initParams = parseQueryParams();
+  if(initParams.query){
+    input.value = initParams.query;
+  }
+  renderHistoryNote();
+  renderHistory();
+  loadStatus();
+  loadProceduresConfigured();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "task_id": "T014",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "partial",
+  "summary": "A 阶段本地准备完成：修正 T013-R1 四个记录问题（失败非零退出、审计完整保留仅答案预览截短且预览参数硬限 1—2000 非 token/费用限制、ask_requests 与 external_http_attempts 分开计数、首次技术失败立即停止）；两道合成问题（可回答：缓考审批/备案·年级2023；材料不足：宿舍门禁·不限）已就绪，dry-run 审查摘要与 loopback 成功/失败记录退出码验证通过。真实官方调用未授权未执行。",
+  "live_verified": false,
+  "external_model_calls": 0,
+  "phase_status": {
+    "A_local_preparation": "complete",
+    "B_external_calls": "waiting_authorization",
+    "C_manual_review": "waiting_after_B"
+  },
+  "remaining_conditions": [
+    "用户明确调用授权：批准向 https://api.deepseek.com（model=deepseek-flash）以上述两道合成问题发送最多两次 HTTP 尝试（max_tokens=1500、无重试、首次技术失败即停）",
+    "用户本地密钥配置：CAMPUS_GENERATOR=deepseek + DEEPSEEK_API_KEY（本地环境变量，不进聊天/报告；可另设费用上限）"
+  ],
+  "questions_prepared": ["smoke-01-answerable", "smoke-02-insufficient"],
+  "dry_run_summary": {
+    "smoke_01": {"evidence_state": "ok", "evidence_total_chars": 214},
+    "smoke_02": {"evidence_state": "no_hits", "evidence_total_chars": 0, "note": "本地短路分支已如实记录，不谎称验证了模型拒答"}
+  },
+  "test_results": {
+    "related_only": {"total": 15, "passed": 15, "note": "3 项冒烟脚本 + 12 项适配器契约回归；按任务未跑全量/JS/依赖/embedding"}
+  },
+  "not_claimed": ["DeepSeek 官方链路验证", "真实答案质量", "可靠拒答", "校园准确率"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

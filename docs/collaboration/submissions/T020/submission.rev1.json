@@ -1,0 +1,32 @@
+{
+  "task_id": "T020",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "local_asr_verified": true,
+  "summary": "本地语音输入与确认闭环完成：FunASR 1.4.16 + Paraformer（Windows CPU）本地离线识别（模型仅从本地目录加载、不自动下载）；/api/v1/asr/status+transcribe（WAV/WebM-Opus、5MB/30s 服务端硬限、单并发 409、清晰错误、无伪造置信度、零音频日志）；ask 页录音/上传→转写→编辑→明确填入（失败保原问题、取消释放音轨、替换需显式按钮、绝不自动提问）；统一演示 --asr-model-dir 显式注入；T019-R1 两处说明已校正（未知=用户尚未确认；演示年级 2022）。真实本地转写证据达成（合成 TTS 音频，原始错字保留）。",
+  "asr_evidence": {
+    "file": "asr-evidence.json / asr-evidence.md",
+    "reference": "缓考申请须经所在学院批准，并报教务处备案。",
+    "raw_recognition": "缓考申请需经所在学院批准并报教务处备案",
+    "note": "原始输出保留实际差异（须→需、无标点），未人工改正；合成 TTS 音频（Huihui zh-CN）标注非真人",
+    "model": "funasr-paraformer / paraformer-zh@paraformer-zh",
+    "duration_s": 5.718,
+    "elapsed_ms": 375
+  },
+  "dependencies": "funasr 1.4.16 + kaldi-native-fbank + av 18.1.0（venv 局部，dry-run 零覆盖既有包；torch 未动）；pip check 通过。详见 dependencies-model.md",
+  "model_download": {"model_id": "iic/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch", "bytes": 889147099, "files": 10, "provenance": ".cache/asr-models/paraformer-zh/PROVENANCE.json（逐文件 SHA-256）", "note": "文件下载单独记录，非推理调用"},
+  "verification": {
+    "test_asr": {"total": 10, "passed": 10},
+    "affected_regression": {"test_self_check": 11, "note": "T019-R1 说明改动后仍绿"},
+    "js_syntax": "7 files passed",
+    "js_behavior_ask": {"total": 22, "passed": 22, "new": 5},
+    "pip_check": "No broken requirements found",
+    "unified_demo": "12 路由全 200（含 --asr-model-dir 注入）"
+  },
+  "browser_check": "无浏览器工具，语音闭环（权限/录音/上传/确认）留待 Astra 补验（demo-notes 检查表 a—h）；stub 不冒充浏览器证据",
+  "t019_notes_fixed": ["未知项解释改“您尚未确认该项，请核实个人情况”", "依据被筛除演示改下拉可选 2022"],
+  "not_claimed": ["真人语音识别准确率", "云端 ASR 接入", "真实浏览器实测", "DeepSeek 调用"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

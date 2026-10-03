@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-09-12T14:00:00+08:00",
+  "files": [
+    {
+      "path": "step2_code/.gitignore",
+      "bytes": 355,
+      "sha256": "b8594b27838397d3b882c98c5f48761f4a1e091e95cd1f121721571c4ba3d923"
+    },
+    {
+      "path": "step2_code/README.md",
+      "bytes": 711,
+      "sha256": "ba9f8e8f0e82f011e5d00ee29e3ce8b55658c3fac7f61dee93af6f2587d3d917"
+    },
+    {
+      "path": "step2_code/backend/README.md",
+      "bytes": 2107,
+      "sha256": "6f8f27dd108245bf46f6143bf7b06bf64ef3321b3c6b412ed26a04b67494b94e"
+    },
+    {
+      "path": "step2_code/backend/pyproject.toml",
+      "bytes": 515,
+      "sha256": "dcf0b8163682ae06a37c7bd807fb7c4bc718b01232a2a76ca84aab7eafc36bbc"
+    },
+    {
+      "path": "step2_code/backend/requirements.in",
+      "bytes": 281,
+      "sha256": "65967bb171d1d7621e0212c910479241851e0246843b9e524d16d698a946aa34"
+    },
+    {
+      "path": "step2_code/backend/requirements.lock.txt",
+      "bytes": 697,
+      "sha256": "7f15699bd3c0cd5e1d53e240d8b6ddd8171014401c35d415b6ebcf8dac248321"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/api/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/api/health.py",
+      "bytes": 1946,
+      "sha256": "405c9e8a86d8875fd99d81bf52c15f12c179c17d08d83af4259fa9a73f76cae3"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/main.py",
+      "bytes": 1187,
+      "sha256": "3363d1820b744814db94968aa0cbdbfbcb24774d6373ab8a8b82e8a4ba69822f"
+    },
+    {
+      "path": "step2_code/backend/tests/test_health.py",
+      "bytes": 5108,
+      "sha256": "f14a3f6bafc91718aba1e3011902ff0a088a2ba379a34f53417a40447abad00c"
+    }
+  ]
+}

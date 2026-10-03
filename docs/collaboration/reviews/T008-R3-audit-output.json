@@ -1,0 +1,45 @@
+{
+  "healthy_chain": {
+    "documents": 2,
+    "chunks": 17,
+    "hits": 5,
+    "source_slices": "pass",
+    "api_equals_bm25": true
+  },
+  "malformed_docx_validation": {
+    "valid": true,
+    "document_count": 2,
+    "errors": []
+  },
+  "malformed_docx_parse": {
+    "uncaught": "InvalidXmlError",
+    "message": "required 'w:val' attribute not present on element {http://schemas.openxmlformats.org/wordprocessingml/2006/main}gridSpan"
+  },
+  "malformed_docx_factory": {
+    "uncaught": "InvalidXmlError",
+    "message": "required 'w:val' attribute not present on element {http://schemas.openxmlformats.org/wordprocessingml/2006/main}gridSpan"
+  },
+  "malformed_docx_cli": {
+    "exit": 1,
+    "stdout_bytes": 0,
+    "traceback": true
+  },
+  "newline_id_validation": {
+    "valid": true,
+    "document_count": 1,
+    "errors": []
+  },
+  "newline_id_http": {
+    "detail_http": 200,
+    "preview_url": "/preview#good%0A/f3fba6b763f096ed"
+  },
+  "lock_mismatches": [],
+  "wheel_non_source": {
+    "exit": 0,
+    "result": {
+      "module": "F:\\Collage Paper\\step2_code\\backend\\.cache\\astra-r3-probes-55f9bc7886c146aa8268ac1824d66733\\wheel\\campus_assistant\\main.py",
+      "search": 200,
+      "preview": 200
+    }
+  }
+}

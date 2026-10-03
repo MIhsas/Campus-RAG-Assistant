@@ -1,0 +1,3 @@
+# Preserve exact bytes: corpus, source and archived evidence have SHA-256 records.
+# Do not normalize line endings while committing or checking out this snapshot.
+* -text

@@ -1,0 +1,119 @@
+{
+  "note": "T026 离线回放：loopback mock 模拟模型动作（含 T025 第1轮原样坏动作），非真实模型输出；零外部调用。mock 不进入正常启动路径。",
+  "marking": "offline replay（loopback mock 模拟模型动作，非真实模型）",
+  "declaration_check": {
+    "source": "mock 捕获的实际出站请求 payload（第 1 次请求 system 消息）",
+    "param_bullet_filters_absent": true,
+    "param_bullet_procedure_id_absent": true,
+    "draft_declares_no_params": true,
+    "examples_present": true,
+    "mode_availability_present": true,
+    "no_write_note_present": true,
+    "all_ok": true
+  },
+  "run1_bad_action_replay": {
+    "status": "partial",
+    "stop_reason": "failed_actions",
+    "message": "必要产物已生成，但期间有失败/被拒动作，未全部完成。完成仅指生成可核对结果，不代表学校审批、办事已办妥或待办已保存。",
+    "bad_action": {
+      "type": "call",
+      "tool": "search_policy",
+      "args": {
+        "query": "缓考",
+        "filters": {
+          "年级": "2023"
+        }
+      }
+    },
+    "bad_action_rejected_before_business": true,
+    "rejection_error": "参数不合法：范围条件由服务端用户快照固定（不得放宽或改写），规划器不得传入 filters",
+    "snapshot_filters_kept": true,
+    "draft_matches_direct_service": true,
+    "events": [
+      {
+        "round": 1,
+        "kind": "plan_decision",
+        "tool": "search_policy",
+        "status": "ok",
+        "error": null
+      },
+      {
+        "round": 1,
+        "kind": "tool_rejected",
+        "tool": "search_policy",
+        "status": "rejected",
+        "error": "参数不合法：范围条件由服务端用户快照固定（不得放宽或改写），规划器不得传入 filters"
+      },
+      {
+        "round": 2,
+        "kind": "plan_decision",
+        "tool": "search_policy",
+        "status": "ok",
+        "error": null
+      },
+      {
+        "round": 2,
+        "kind": "tool_call",
+        "tool": "search_policy",
+        "status": "ok",
+        "error": null
+      },
+      {
+        "round": 3,
+        "kind": "plan_decision",
+        "tool": "build_checklist_draft",
+        "status": "ok",
+        "error": null
+      },
+      {
+        "round": 3,
+        "kind": "tool_call",
+        "tool": "build_checklist_draft",
+        "status": "ok",
+        "error": null
+      },
+      {
+        "round": 4,
+        "kind": "plan_decision",
+        "tool": null,
+        "status": "ok",
+        "error": null
+      },
+      {
+        "round": 4,
+        "kind": "finish",
+        "tool": null,
+        "status": "ok",
+        "error": null
+      }
+    ]
+  },
+  "run2_clean_chain": {
+    "status": "completed",
+    "stop_reason": "finished",
+    "tool_calls_used": 2,
+    "draft_matches_direct_service": true
+  },
+  "observation_completeness": {
+    "pending_items_listed_in_observation": 3,
+    "pending_items_total_in_observation": 4,
+    "pending_items_truncated": true,
+    "full_draft_unspecified_count": 4,
+    "consistent": true
+  },
+  "declared_tools": [
+    {
+      "name": "search_policy",
+      "parameters": [
+        "query",
+        "mode",
+        "top_k"
+      ]
+    },
+    {
+      "name": "build_checklist_draft",
+      "parameters": []
+    }
+  ],
+  "exit_ok": true
+}

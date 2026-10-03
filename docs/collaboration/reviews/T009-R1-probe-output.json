@@ -1,0 +1,296 @@
+{
+  "example_annotations": [
+    {
+      "question_id": "q01",
+      "evidence_id": "e01",
+      "block_length": 63,
+      "start": 33,
+      "end": 63,
+      "quote_matches": false,
+      "bounds_valid": true,
+      "actual_slice": "缓考申请。缓考申请须经所在学院批准，报教务处备案后方可生效。",
+      "quote_found_at": 38
+    },
+    {
+      "question_id": "q02",
+      "evidence_id": "e02",
+      "block_length": 63,
+      "start": 24,
+      "end": 35,
+      "quote_matches": false,
+      "bounds_valid": true,
+      "actual_slice": "后两周内申请补考。补考",
+      "quote_found_at": 33
+    },
+    {
+      "question_id": "q03",
+      "evidence_id": "e03",
+      "block_length": 76,
+      "start": 0,
+      "end": 76,
+      "quote_matches": true,
+      "bounds_valid": true,
+      "actual_slice": "第四条 下列情况之一者，取消补考资格：\n（一）考试违纪或作弊者；\n（二）缺课累计超过该课程教学时数三分之一者；\n（三）未完成课程实验、实习等实践环节者。",
+      "quote_found_at": 0
+    },
+    {
+      "question_id": "q04",
+      "evidence_id": "e04",
+      "block_length": 88,
+      "start": 0,
+      "end": 88,
+      "quote_matches": true,
+      "bounds_valid": true,
+      "actual_slice": "第五条 学生转专业应当在入学后第一学年末提出申请。转专业条件包括：\n1. 在读期间无违纪记录；\n2. 第一学年加权平均成绩排名在本专业前30%；\n3. 通过接收学院组织的考核。",
+      "quote_found_at": 0
+    },
+    {
+      "question_id": "q05",
+      "evidence_id": "e05a",
+      "block_length": 63,
+      "start": 0,
+      "end": 63,
+      "quote_matches": true,
+      "bounds_valid": true,
+      "actual_slice": "第二条 学生因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请。缓考申请须经所在学院批准，报教务处备案后方可生效。",
+      "quote_found_at": 0
+    },
+    {
+      "question_id": "q05",
+      "evidence_id": "e05b",
+      "block_length": 19,
+      "start": 0,
+      "end": 19,
+      "quote_matches": true,
+      "bounds_valid": true,
+      "actual_slice": "缓考申请\t考试前3个工作日\t需医院证明",
+      "quote_found_at": 0
+    },
+    {
+      "question_id": "q06",
+      "evidence_id": "e06",
+      "block_length": 21,
+      "start": 0,
+      "end": 21,
+      "quote_matches": true,
+      "bounds_valid": true,
+      "actual_slice": "20240001\t张三\t高等数学A1\t85",
+      "quote_found_at": 0
+    }
+  ],
+  "cases": {
+    "submitted_example": {
+      "exit": 0,
+      "valid": true,
+      "summary": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.9166666666666666,
+        "answerable_count": 6,
+        "unanswerable_count": 2,
+        "empty_result_rate": 0.0
+      },
+      "errors": [],
+      "split": "dev",
+      "is_synthetic": true
+    },
+    "valid_control": {
+      "exit": 0,
+      "valid": true,
+      "summary": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.5,
+        "answerable_count": 1,
+        "unanswerable_count": 0,
+        "empty_result_rate": null
+      },
+      "errors": [],
+      "split": "dev",
+      "is_synthetic": true
+    },
+    "bad_block_id": {
+      "exit": 0,
+      "valid": true,
+      "summary": {
+        "evidence_recall": 0.0,
+        "hit": 0.0,
+        "mrr": 0.0,
+        "answerable_count": 1,
+        "unanswerable_count": 0,
+        "empty_result_rate": null
+      },
+      "errors": [],
+      "split": "dev",
+      "is_synthetic": true
+    },
+    "bad_parser_version": {
+      "exit": 0,
+      "valid": true,
+      "summary": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.5,
+        "answerable_count": 1,
+        "unanswerable_count": 0,
+        "empty_result_rate": null
+      },
+      "errors": [],
+      "split": "dev",
+      "is_synthetic": true
+    },
+    "bad_char_end": {
+      "exit": 0,
+      "valid": true,
+      "summary": {
+        "evidence_recall": 0.0,
+        "hit": 1.0,
+        "mrr": 0.5,
+        "answerable_count": 1,
+        "unanswerable_count": 0,
+        "empty_result_rate": null
+      },
+      "errors": [],
+      "split": "dev",
+      "is_synthetic": true
+    },
+    "bad_quote": {
+      "exit": 0,
+      "valid": true,
+      "summary": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.5,
+        "answerable_count": 1,
+        "unanswerable_count": 0,
+        "empty_result_rate": null
+      },
+      "errors": [],
+      "split": "dev",
+      "is_synthetic": true
+    },
+    "duplicate_id": {
+      "exit": 0,
+      "valid": true,
+      "summary": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.5,
+        "answerable_count": 1,
+        "unanswerable_count": 0,
+        "empty_result_rate": null
+      },
+      "errors": [],
+      "split": "dev",
+      "is_synthetic": true
+    },
+    "duplicate_span": {
+      "exit": 0,
+      "valid": true,
+      "summary": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.5,
+        "answerable_count": 1,
+        "unanswerable_count": 0,
+        "empty_result_rate": null
+      },
+      "errors": [],
+      "split": "dev",
+      "is_synthetic": true
+    },
+    "synthetic_string": {
+      "exit": 0,
+      "valid": true,
+      "summary": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.5,
+        "answerable_count": 1,
+        "unanswerable_count": 0,
+        "empty_result_rate": null
+      },
+      "errors": [],
+      "split": "dev",
+      "is_synthetic": true
+    },
+    "synthetic_number": {
+      "exit": 0,
+      "valid": true,
+      "summary": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.5,
+        "answerable_count": 1,
+        "unanswerable_count": 0,
+        "empty_result_rate": null
+      },
+      "errors": [],
+      "split": "dev",
+      "is_synthetic": true
+    },
+    "test_split": {
+      "exit": 0,
+      "valid": true,
+      "summary": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.5,
+        "answerable_count": 1,
+        "unanswerable_count": 0,
+        "empty_result_rate": null
+      },
+      "errors": [],
+      "split": "test",
+      "is_synthetic": true
+    },
+    "root_list": {
+      "exit": 1,
+      "valid": false,
+      "summary": null,
+      "errors": [
+        {
+          "code": "EVALUATION_ERROR",
+          "question_id": null,
+          "evidence_id": null,
+          "field": "run",
+          "message": "评测异常: AttributeError"
+        }
+      ],
+      "split": null,
+      "is_synthetic": null
+    },
+    "root_null": {
+      "exit": 1,
+      "valid": false,
+      "summary": null,
+      "errors": [
+        {
+          "code": "EVALUATION_ERROR",
+          "question_id": null,
+          "evidence_id": null,
+          "field": "run",
+          "message": "评测异常: AttributeError"
+        }
+      ],
+      "split": null,
+      "is_synthetic": null
+    },
+    "root_number": {
+      "exit": 1,
+      "valid": false,
+      "summary": null,
+      "errors": [
+        {
+          "code": "EVALUATION_ERROR",
+          "question_id": null,
+          "evidence_id": null,
+          "field": "run",
+          "message": "评测异常: AttributeError"
+        }
+      ],
+      "split": null,
+      "is_synthetic": null
+    }
+  }
+}

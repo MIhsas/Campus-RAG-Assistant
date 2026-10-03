@@ -1,0 +1,571 @@
+{
+  "schema_version": "1.0",
+  "evaluator_version": "1.0",
+  "valid": true,
+  "dataset_id": "syn-dev-001",
+  "dataset_version": "1.2",
+  "split": "dev",
+  "is_synthetic": true,
+  "retriever_version": "1.0",
+  "tokenizer_version": "cjk_bigram_ascii_v1",
+  "chunker_version": "1.0",
+  "parser_version": "1.0",
+  "mode": "hybrid",
+  "model": "models/bge-small-zh-v1.5",
+  "embedding_model_id": "bge-small-zh-v1.5",
+  "embedding_model_revision": "7999e1d3359715c523056ef9478215996d62a620",
+  "truncated_chunk_count": 0,
+  "truncation_note": "超出模型 token 上限的长块在向量计算中可能仅部分参与；原文与 chunk 文本未被截短或覆盖。",
+  "embedding_normalization": "l2",
+  "query_prefix": "为这个句子生成表示以用于检索相关文章：",
+  "rrf_k": 60,
+  "parameters": {
+    "max_chars": 500,
+    "k1": 1.5,
+    "b": 0.75,
+    "top_k": 5
+  },
+  "question_count": 8,
+  "answerable_count": 6,
+  "unanswerable_count": 2,
+  "manifest_sha256": "b60255f3ac8776d1343674d72a9f180c7be508a232f8a6e5e8b7fc48d491ec3b",
+  "questions_sha256": "59f715f0ecd58a82cea538c41396bfd8fdf1215589559d553e4c32b486cb3360",
+  "corpus_documents": [
+    {
+      "document_id": "syn-parse-txt-001",
+      "sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07"
+    },
+    {
+      "document_id": "syn-parse-docx-001",
+      "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63"
+    }
+  ],
+  "summary": {
+    "evidence_recall": 1.0,
+    "hit": 1.0,
+    "mrr": 0.9166666666666666,
+    "answerable_count": 6,
+    "unanswerable_count": 2,
+    "empty_result_rate": 0.0
+  },
+  "per_question": [
+    {
+      "question_id": "q01",
+      "query": "缓考申请流程",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.03278688524590164,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "0a7595fda827d87e",
+          "chunk_id": "8726b8b809c996bce2710ba1126a63ac59a0556f084dad2f44d0e6cd02f82924",
+          "char_start": 0,
+          "char_end": 19,
+          "preview_url": "/preview#syn-parse-docx-001/0a7595fda827d87e"
+        },
+        {
+          "rank": 2,
+          "score": 0.03225806451612903,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "9df6bfbd98df733e",
+          "chunk_id": "1808dc49035170f32fe995017a4e13afa744ea421b1cb286b118412ba63d1c30",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+        },
+        {
+          "rank": 3,
+          "score": 0.031746031746031744,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "f28ee3e4c5372f7c",
+          "chunk_id": "28ef3f3e2bb91687eca70eaec02989d98239ad0df9edc09c5f0f19d342a7a9d8",
+          "char_start": 0,
+          "char_end": 54,
+          "preview_url": "/preview#syn-parse-docx-001/f28ee3e4c5372f7c"
+        },
+        {
+          "rank": 4,
+          "score": 0.03125,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "009121d9f2695116",
+          "chunk_id": "8571753b3134a37487ebaaa49d3c5b4d8fc881b9c49bbd48e94ad413eb2ecf28",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/009121d9f2695116"
+        },
+        {
+          "rank": 5,
+          "score": 0.03076923076923077,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "ce15747a6cdf597a",
+          "chunk_id": "da719a8c1b4ec06b9652eb831378cd62c9c36c3ffc42d1d5424e831c58d084f7",
+          "char_start": 0,
+          "char_end": 88,
+          "preview_url": "/preview#syn-parse-txt-001/ce15747a6cdf597a"
+        }
+      ],
+      "gold_count": 1,
+      "covered_evidence_ids": [
+        "e01"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.5,
+      "returned_count": 5
+    },
+    {
+      "question_id": "q02",
+      "query": "补考成绩最高多少分",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.03278688524590164,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "009121d9f2695116",
+          "chunk_id": "8571753b3134a37487ebaaa49d3c5b4d8fc881b9c49bbd48e94ad413eb2ecf28",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/009121d9f2695116"
+        },
+        {
+          "rank": 2,
+          "score": 0.03200204813108039,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "b8b8a0c2bf59b405",
+          "chunk_id": "4f47c2ed95414db4e6ef504a4bf7839991d9fabe1ffcc73c4e3ba8d2556931c0",
+          "char_start": 0,
+          "char_end": 76,
+          "preview_url": "/preview#syn-parse-txt-001/b8b8a0c2bf59b405"
+        },
+        {
+          "rank": 3,
+          "score": 0.03128054740957967,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "130cb47b1dec3f39",
+          "chunk_id": "148244e27a61d5203ab28f6921c5ca09c7564f88f4e1bbd271ef40170ad97866",
+          "char_start": 0,
+          "char_end": 11,
+          "preview_url": "/preview#syn-parse-docx-001/130cb47b1dec3f39"
+        },
+        {
+          "rank": 4,
+          "score": 0.031024531024531024,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "b304f406a03da01b",
+          "chunk_id": "a413b6fa539cd64672dbe48fd59ba13ae147d5c58175c42ab5b06b9badf29668",
+          "char_start": 0,
+          "char_end": 21,
+          "preview_url": "/preview#syn-parse-docx-001/b304f406a03da01b"
+        },
+        {
+          "rank": 5,
+          "score": 0.031009615384615385,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "f28ee3e4c5372f7c",
+          "chunk_id": "28ef3f3e2bb91687eca70eaec02989d98239ad0df9edc09c5f0f19d342a7a9d8",
+          "char_start": 0,
+          "char_end": 54,
+          "preview_url": "/preview#syn-parse-docx-001/f28ee3e4c5372f7c"
+        }
+      ],
+      "gold_count": 1,
+      "covered_evidence_ids": [
+        "e02"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5
+    },
+    {
+      "question_id": "q03",
+      "query": "取消补考资格的情况",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.03278688524590164,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "b8b8a0c2bf59b405",
+          "chunk_id": "4f47c2ed95414db4e6ef504a4bf7839991d9fabe1ffcc73c4e3ba8d2556931c0",
+          "char_start": 0,
+          "char_end": 76,
+          "preview_url": "/preview#syn-parse-txt-001/b8b8a0c2bf59b405"
+        },
+        {
+          "rank": 2,
+          "score": 0.03225806451612903,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "009121d9f2695116",
+          "chunk_id": "8571753b3134a37487ebaaa49d3c5b4d8fc881b9c49bbd48e94ad413eb2ecf28",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/009121d9f2695116"
+        },
+        {
+          "rank": 3,
+          "score": 0.015873015873015872,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "0a7595fda827d87e",
+          "chunk_id": "8726b8b809c996bce2710ba1126a63ac59a0556f084dad2f44d0e6cd02f82924",
+          "char_start": 0,
+          "char_end": 19,
+          "preview_url": "/preview#syn-parse-docx-001/0a7595fda827d87e"
+        },
+        {
+          "rank": 4,
+          "score": 0.015625,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "9df6bfbd98df733e",
+          "chunk_id": "1808dc49035170f32fe995017a4e13afa744ea421b1cb286b118412ba63d1c30",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+        },
+        {
+          "rank": 5,
+          "score": 0.015384615384615385,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "b304f406a03da01b",
+          "chunk_id": "a413b6fa539cd64672dbe48fd59ba13ae147d5c58175c42ab5b06b9badf29668",
+          "char_start": 0,
+          "char_end": 21,
+          "preview_url": "/preview#syn-parse-docx-001/b304f406a03da01b"
+        }
+      ],
+      "gold_count": 1,
+      "covered_evidence_ids": [
+        "e03"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5
+    },
+    {
+      "question_id": "q04",
+      "query": "转专业需要什么条件",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.03278688524590164,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "ce15747a6cdf597a",
+          "chunk_id": "da719a8c1b4ec06b9652eb831378cd62c9c36c3ffc42d1d5424e831c58d084f7",
+          "char_start": 0,
+          "char_end": 88,
+          "preview_url": "/preview#syn-parse-txt-001/ce15747a6cdf597a"
+        },
+        {
+          "rank": 2,
+          "score": 0.016129032258064516,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "542187ebbac5a4b2",
+          "chunk_id": "74d0cbd21e1fa05255cc00f6b8af52f1edc89ca97a1288470c27dd15a5b8fe42",
+          "char_start": 0,
+          "char_end": 71,
+          "preview_url": "/preview#syn-parse-txt-001/542187ebbac5a4b2"
+        },
+        {
+          "rank": 3,
+          "score": 0.015873015873015872,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "9df6bfbd98df733e",
+          "chunk_id": "1808dc49035170f32fe995017a4e13afa744ea421b1cb286b118412ba63d1c30",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+        },
+        {
+          "rank": 4,
+          "score": 0.015625,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "009121d9f2695116",
+          "chunk_id": "8571753b3134a37487ebaaa49d3c5b4d8fc881b9c49bbd48e94ad413eb2ecf28",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/009121d9f2695116"
+        },
+        {
+          "rank": 5,
+          "score": 0.015384615384615385,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "f28ee3e4c5372f7c",
+          "chunk_id": "28ef3f3e2bb91687eca70eaec02989d98239ad0df9edc09c5f0f19d342a7a9d8",
+          "char_start": 0,
+          "char_end": 54,
+          "preview_url": "/preview#syn-parse-docx-001/f28ee3e4c5372f7c"
+        }
+      ],
+      "gold_count": 1,
+      "covered_evidence_ids": [
+        "e04"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5
+    },
+    {
+      "question_id": "q05",
+      "query": "缓考申请的审批流程和证明材料",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.03278688524590164,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "0a7595fda827d87e",
+          "chunk_id": "8726b8b809c996bce2710ba1126a63ac59a0556f084dad2f44d0e6cd02f82924",
+          "char_start": 0,
+          "char_end": 19,
+          "preview_url": "/preview#syn-parse-docx-001/0a7595fda827d87e"
+        },
+        {
+          "rank": 2,
+          "score": 0.03225806451612903,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "9df6bfbd98df733e",
+          "chunk_id": "1808dc49035170f32fe995017a4e13afa744ea421b1cb286b118412ba63d1c30",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+        },
+        {
+          "rank": 3,
+          "score": 0.031746031746031744,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "f28ee3e4c5372f7c",
+          "chunk_id": "28ef3f3e2bb91687eca70eaec02989d98239ad0df9edc09c5f0f19d342a7a9d8",
+          "char_start": 0,
+          "char_end": 54,
+          "preview_url": "/preview#syn-parse-docx-001/f28ee3e4c5372f7c"
+        },
+        {
+          "rank": 4,
+          "score": 0.03125,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "009121d9f2695116",
+          "chunk_id": "8571753b3134a37487ebaaa49d3c5b4d8fc881b9c49bbd48e94ad413eb2ecf28",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/009121d9f2695116"
+        },
+        {
+          "rank": 5,
+          "score": 0.030536130536130537,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "ce15747a6cdf597a",
+          "chunk_id": "da719a8c1b4ec06b9652eb831378cd62c9c36c3ffc42d1d5424e831c58d084f7",
+          "char_start": 0,
+          "char_end": 88,
+          "preview_url": "/preview#syn-parse-txt-001/ce15747a6cdf597a"
+        }
+      ],
+      "gold_count": 2,
+      "covered_evidence_ids": [
+        "e05a",
+        "e05b"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5
+    },
+    {
+      "question_id": "q06",
+      "query": "张三的高等数学成绩",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.03278688524590164,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "239ba0ebfcf74591",
+          "chunk_id": "70cded090363e2f0fe33787fcb7a6834db1b14fb944152fe0133899e16436136",
+          "char_start": 0,
+          "char_end": 21,
+          "preview_url": "/preview#syn-parse-docx-001/239ba0ebfcf74591"
+        },
+        {
+          "rank": 2,
+          "score": 0.03225806451612903,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "96dc99aed4b4625f",
+          "chunk_id": "52004c371a62381c613496a64647f06ad3cfef915ea9a63ec95b0878024be49b",
+          "char_start": 0,
+          "char_end": 21,
+          "preview_url": "/preview#syn-parse-docx-001/96dc99aed4b4625f"
+        },
+        {
+          "rank": 3,
+          "score": 0.031746031746031744,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "10a8cb4e1dc9ac56",
+          "chunk_id": "57a59b686409902d96c3dbd1a2f1c38a904bfd70399494698268ced3b61f1fc2",
+          "char_start": 0,
+          "char_end": 21,
+          "preview_url": "/preview#syn-parse-docx-001/10a8cb4e1dc9ac56"
+        },
+        {
+          "rank": 4,
+          "score": 0.030776515151515152,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "130cb47b1dec3f39",
+          "chunk_id": "148244e27a61d5203ab28f6921c5ca09c7564f88f4e1bbd271ef40170ad97866",
+          "char_start": 0,
+          "char_end": 11,
+          "preview_url": "/preview#syn-parse-docx-001/130cb47b1dec3f39"
+        },
+        {
+          "rank": 5,
+          "score": 0.030330882352941176,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "8dc635d599805d44",
+          "chunk_id": "1ca7ebd1e6d058bf69c664fb7505629cbac7688acb48ea3220161dd59c51e1c0",
+          "char_start": 0,
+          "char_end": 21,
+          "preview_url": "/preview#syn-parse-docx-001/8dc635d599805d44"
+        }
+      ],
+      "gold_count": 1,
+      "covered_evidence_ids": [
+        "e06"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5
+    },
+    {
+      "question_id": "q07",
+      "query": "奖学金评定标准",
+      "answerable": false,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.03278688524590164,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "542187ebbac5a4b2",
+          "chunk_id": "74d0cbd21e1fa05255cc00f6b8af52f1edc89ca97a1288470c27dd15a5b8fe42",
+          "char_start": 0,
+          "char_end": 71,
+          "preview_url": "/preview#syn-parse-txt-001/542187ebbac5a4b2"
+        },
+        {
+          "rank": 2,
+          "score": 0.016129032258064516,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "e57ac232ebc1c1a5",
+          "chunk_id": "84ba3b4621e9a63dcf3c70e31381febfb3a8db962f9bb0af8b34e8fff5f307a8",
+          "char_start": 0,
+          "char_end": 26,
+          "preview_url": "/preview#syn-parse-docx-001/e57ac232ebc1c1a5"
+        },
+        {
+          "rank": 3,
+          "score": 0.015873015873015872,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "d3e1919af830143d",
+          "chunk_id": "b6d87f7b8e04d81963edd60c7bcfa5d9cbb0ba41d92f63ad237bce66f97075cd",
+          "char_start": 0,
+          "char_end": 26,
+          "preview_url": "/preview#syn-parse-txt-001/d3e1919af830143d"
+        },
+        {
+          "rank": 4,
+          "score": 0.015625,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "130cb47b1dec3f39",
+          "chunk_id": "148244e27a61d5203ab28f6921c5ca09c7564f88f4e1bbd271ef40170ad97866",
+          "char_start": 0,
+          "char_end": 11,
+          "preview_url": "/preview#syn-parse-docx-001/130cb47b1dec3f39"
+        },
+        {
+          "rank": 5,
+          "score": 0.015384615384615385,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "8dc635d599805d44",
+          "chunk_id": "1ca7ebd1e6d058bf69c664fb7505629cbac7688acb48ea3220161dd59c51e1c0",
+          "char_start": 0,
+          "char_end": 21,
+          "preview_url": "/preview#syn-parse-docx-001/8dc635d599805d44"
+        }
+      ],
+      "gold_count": 0,
+      "covered_evidence_ids": [],
+      "recall": null,
+      "hit": null,
+      "mrr": null,
+      "returned_count": 5
+    },
+    {
+      "question_id": "q08",
+      "query": "宿舍管理规定",
+      "answerable": false,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.03177805800756621,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "542187ebbac5a4b2",
+          "chunk_id": "74d0cbd21e1fa05255cc00f6b8af52f1edc89ca97a1288470c27dd15a5b8fe42",
+          "char_start": 0,
+          "char_end": 71,
+          "preview_url": "/preview#syn-parse-txt-001/542187ebbac5a4b2"
+        },
+        {
+          "rank": 2,
+          "score": 0.01639344262295082,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "e57ac232ebc1c1a5",
+          "chunk_id": "84ba3b4621e9a63dcf3c70e31381febfb3a8db962f9bb0af8b34e8fff5f307a8",
+          "char_start": 0,
+          "char_end": 26,
+          "preview_url": "/preview#syn-parse-docx-001/e57ac232ebc1c1a5"
+        },
+        {
+          "rank": 3,
+          "score": 0.016129032258064516,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "d3e1919af830143d",
+          "chunk_id": "b6d87f7b8e04d81963edd60c7bcfa5d9cbb0ba41d92f63ad237bce66f97075cd",
+          "char_start": 0,
+          "char_end": 26,
+          "preview_url": "/preview#syn-parse-txt-001/d3e1919af830143d"
+        },
+        {
+          "rank": 4,
+          "score": 0.015873015873015872,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "8dc635d599805d44",
+          "chunk_id": "1ca7ebd1e6d058bf69c664fb7505629cbac7688acb48ea3220161dd59c51e1c0",
+          "char_start": 0,
+          "char_end": 21,
+          "preview_url": "/preview#syn-parse-docx-001/8dc635d599805d44"
+        },
+        {
+          "rank": 5,
+          "score": 0.015625,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "b304f406a03da01b",
+          "chunk_id": "a413b6fa539cd64672dbe48fd59ba13ae147d5c58175c42ab5b06b9badf29668",
+          "char_start": 0,
+          "char_end": 21,
+          "preview_url": "/preview#syn-parse-docx-001/b304f406a03da01b"
+        }
+      ],
+      "gold_count": 0,
+      "covered_evidence_ids": [],
+      "recall": null,
+      "hit": null,
+      "mrr": null,
+      "returned_count": 5
+    }
+  ],
+  "errors": []
+}

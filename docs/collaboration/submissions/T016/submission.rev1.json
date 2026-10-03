@@ -1,0 +1,22 @@
+{
+  "task_id": "T016",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "办事清单与本机待办闭环完成：合成模板两事项（缓考申请/成绩复核，引用逐条绑定原文跨度与哈希）+ draft/verify API（复用 T011 筛选，必要来源不符合筛选/缺失/变化时 saveable=false 不冒充完整清单、不放宽筛选、缺失信息明确标注不编造）+ /procedures 页面（草稿→保存→进度/个人备注/个人步骤/提醒日期排序/删除/筛选→刷新恢复→核对当前依据，政策与个人内容区分，保存前零持久化、防重复、上限 20 不静默丢弃、存储容错、核对不覆盖进度）。合并 T015-R1 三项整理并实测。零外部模型调用。",
+  "external_model_calls": 0,
+  "verification": {
+    "new_pytest": {"total": 12, "passed": 12, "note": "含隔离夹具哈希变化/缺失与 verify 双分支；产品语料与 gold 未动"},
+    "api_demo": {"calls": 7, "saveable": {"defer_2023": true, "defer_2024": true, "grade_2024": true, "grade_2023": false}},
+    "js_syntax": "4 files passed",
+    "js_behavior": {"procedures": "7 scenarios passed", "ask": "13 scenarios passed", "search": "14 scenarios passed"},
+    "t015_r1_cleanups": "pageshow 同步、模拟不足题改“缓考申请模拟不足”并实测命中 mock 不足分支（5 条证据）、复制按钮按状态文案",
+    "full_pytest": "skipped — 无共享回归风险（按任务）"
+  },
+  "browser_check": "无浏览器工具，未执行真实浏览器闭环；demo-notes.md 提供 Astra 可运行入口与逐步核验表；stub/mock 不冒充真实浏览器证据",
+  "deliverables_extra": ["citation-crosscheck.md（原文→清单步骤引用核对表）", "api-demo.json（本地 API 演示输出）"],
+  "changed_files_new": ["examples/procedures/procedures.json", "src/campus_assistant/procedures/__init__.py", "src/campus_assistant/procedures/service.py", "src/campus_assistant/api/procedures.py", "src/campus_assistant/static/procedures.html", "tests/test_procedures.py", "scripts/check-procedures-behavior.cjs", "scripts/demo-procedures-api.py"],
+  "changed_files_modified": ["src/campus_assistant/main.py", "src/campus_assistant/demo.py", "src/campus_assistant/static/ask.html", "src/campus_assistant/static/search.html", "src/campus_assistant/static/preview.html", "scripts/demo-ask-page-mock.py", "README.md", "step2_code/README.md"],
+  "not_claimed": ["学校现行办事指南", "真实浏览器验证", "校园准确率", "跨设备同步"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

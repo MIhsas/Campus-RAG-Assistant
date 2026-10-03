@@ -1,0 +1,28 @@
+{
+  "task_id": "T017",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T017-R1",
+  "status": "ready_for_review",
+  "summary": "T017-R1 修复：无编号正文相似度前瞻分支方向对调——左当前更像右下一段时先记右当前新增并推进 j、保留左当前等候配对，反之记左当前删除并推进 i；相似度门槛保持，不强行配对不相关段落。Astra 独立探针正反向均符期望（exit 0）；新增 4 项正反向回归（修改项配对到正确原文、跨度逐字一致）。顺手整理：明确仅比较段落不含表格差异、重复条号其余直接归新增/删除（与实现一致）、demo-notes 跨组改 API 验证/页面用同文档/复制留待复验。零外部调用。",
+  "external_model_calls": 0,
+  "fix_scope": {
+    "modified": ["src/campus_assistant/comparison/service.py", "tests/test_comparison.py", "README.md", "demo-notes.md"],
+    "kept_unchanged": ["comparison 页面（说明由响应 limitations 动态呈现）", "工厂与旧页面", "旧语料与 gold", "相似度门槛与保守分类"]
+  },
+  "probe_evidence": {
+    "script": "docs/collaboration/reviews/T017-R1-probe.py（Astra 独立探针）",
+    "exit_code": 0,
+    "forward": {"added": 1, "deleted": 0, "modified": 1, "unchanged": 0},
+    "backward": {"added": 0, "deleted": 1, "modified": 1, "unchanged": 0}
+  },
+  "verification": {
+    "test_comparison": {"total": 14, "passed": 14, "note": "10 原有 + 4 T017-R1 回归（正反向/正确原文配对/跨度一致/不强行配对/说明一致）"},
+    "api_demo_regenerated": "5 calls；分类计数 1/1/1/3 不变；limitations 已含表格与重复条号说明",
+    "not_rerun": ["test_search_api 32 项与页面行为（未改工厂/旧页面，按返工单）"]
+  },
+  "doc_fixes": ["不含表格差异（段落-only）", "重复条号其余直接归新增/删除（与实现一致）", "demo-notes 跨组 API 验证 + 页面同文档演示 + 复制留待复验"],
+  "history": ["report.rev1.md", "verification.rev1.md", "submission.rev1.json", "changed-files.rev1.json", "comparison-demo.rev1.json", "comparison-expectations.rev1.md", "demo-notes.rev1.md"],
+  "not_claimed": ["版本适用性判断", "表格差异比较", "浏览器复制验证", "真实学校语料效果"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

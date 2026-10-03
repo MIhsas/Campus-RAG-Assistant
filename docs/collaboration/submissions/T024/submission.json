@@ -1,0 +1,24 @@
+{
+  "task_id": "T024",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T024-R1",
+  "status": "ready_for_review",
+  "tinyagent_integration_kind": "reference",
+  "planner_live_verified": false,
+  "external_model_calls": 0,
+  "summary": "T024-R1 两处定向修复完成：① 完成判定改由服务端按必要产物（查找依据+整理草稿）判定，模型 summary 不决定成功——直接 finish/search→finish 缺草稿不得 completed（partial 保留结果 / stopped 明确未完成，列缺失步骤、不补调用不重试）；模型结束语仅记录（planner_summary/事件标注不作结论）；saveable=false 草稿显式「依据不足暂不可保存」；完成文案固定注明「仅指生成可核对结果，不代表学校审批/办妥/待办已保存」；固定流程同一判定原则（搜索失败+草稿成功不再无提示 completed）。② 结果区按本次响应 workflow_kind 区分 fixed/simulated/deepseek，DeepSeek 结果不再误标「模拟规划」，保留「已配置≠已联调验证」；mock 标识来自服务端 label/模型身份显式标注。随单校正 api/agent.py「No remote planning」与 CANCEL_NOTE 过时说明。T023-R1 快照/年份拦截/失败清空/手动保存边界保持。原 T024 适配器/观察/预算/装配交付保持有效。",
+  "verification": {
+    "tests": {"total": 45, "passed": 45, "note": "planner + agent 聚焦（含 R1 产物判定 6 项）"},
+    "probe": {"result": "exit 0", "note": "Astra T024-R1-probe.py 原样运行未改：finish→stopped、search→finish→partial、draft null"},
+    "page_stub": {"scenarios": 5, "note": "check-workflow-behavior.cjs（vm stub 层级，非真实浏览器；结果区三模式标注对照）"},
+    "js_syntax": "9 files passed",
+    "mock_trace": "mock-planner-trace.json 8 runs（rev1 归档；direct_finish/缺产物按新判定 stopped）",
+    "scope_note": "未重跑全量/ASR/embedding/问答 provider（未改共享代码）；零外部调用、无下载、无安装"
+  },
+  "deliverables_extra": ["fix-report.md", "mock-planner-trace.json", "demo-notes.md", "live-smoke-plan.md（未变，仍未运行）", "rev1 归档 *.rev1.*"],
+  "r1_fixes": ["服务端必要产物判定（缺草稿不得 completed，不补调用）", "结果区按响应区分 fixed/simulated/deepseek", "模型结束语仅记录不作结论", "过时说明校正（remote planning/CANCEL_NOTE）"],
+  "browser_check": "无浏览器工具；结果区模式断言为 vm stub 层级，不冒充浏览器验证，交 Astra 补验",
+  "not_claimed": ["真实 DeepSeek 规划已联调验证（planner_live_verified=false）", "真实 Agent 效果", "浏览器交互已验证（仅 stub）", "办事已办妥/学校审批（完成仅指生成可核对结果）"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改；未改 Astra 文档/探针/语料 gold/已验收模板规则/qa 问答协议"
+}

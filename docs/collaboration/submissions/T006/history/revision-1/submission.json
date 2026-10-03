@@ -1,0 +1,31 @@
+{
+  "task_id": "T006",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "正文分块器完成：chunk_documents 纯函数（paragraph 固定字符窗口 + table_row 整行）+ CLI（UTF-8 JSON, 退出码）+ 45 项测试。chunk_id 确定性生成，metadata 深拷贝，TABLE_ROW_EXCEEDS_MAX_CHARS 警告。196 passed, 1 skipped, pip check, JS 语法均通过。",
+  "files": [
+    "docs/collaboration/submissions/T006/report.md",
+    "docs/collaboration/submissions/T006/verification.md",
+    "docs/collaboration/submissions/T006/submission.json",
+    "docs/collaboration/submissions/T006/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T006/changed-files.json",
+  "checks": [
+    {"item": "段落窗口切分（精确/边界/拼接=原文）", "result": "pass", "evidence_id": "V01"},
+    {"item": "表格行整行不拆分 + 超长警告", "result": "pass", "evidence_id": "V01"},
+    {"item": "chunk_id 确定性 + 变化区分", "result": "pass", "evidence_id": "V01"},
+    {"item": "metadata 深拷贝隔离", "result": "pass", "evidence_id": "V01"},
+    {"item": "参数校验（0/-1/10001/float/string/bool）", "result": "pass", "evidence_id": "V01"},
+    {"item": "未知 kind ValueError", "result": "pass", "evidence_id": "V01"},
+    {"item": "空 cells/text 异常", "result": "pass", "evidence_id": "V01"},
+    {"item": "CLI 成功/失败/用法/UTF-8", "result": "pass", "evidence_id": "V01"},
+    {"item": "CLI parse_manifest 单次调用", "result": "pass", "evidence_id": "V01"},
+    {"item": "部分失败保留 chunks", "result": "pass", "evidence_id": "V01"},
+    {"item": "示例 CLI 17 chunks", "result": "pass", "evidence_id": "V05"},
+    {"item": "全量 pytest 196 passed", "result": "pass", "evidence_id": "V02"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V03"},
+    {"item": "JS 语法检查", "result": "pass", "evidence_id": "V04"}
+  ],
+  "blockers": []
+}

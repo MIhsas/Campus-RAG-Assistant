@@ -1,0 +1,71 @@
+{
+  "task_id": "T014",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T014-R1",
+  "phase": "A-local-preparation-complete",
+  "corpus": "step2_code/backend/examples/parse-corpus（全部 is_synthetic=true）",
+  "questions": [
+    {
+      "question_id": "smoke-01-answerable",
+      "kind": "answerable",
+      "query": "缓考申请须由谁批准，之后还需要向哪个部门备案？",
+      "filters": {"admission_year": 2023},
+      "expected_check": "对照 parse-corpus TXT 第二条：所在学院批准、教务处备案；答案措辞可不同",
+      "dry_run_local_retrieval": {
+        "evidence_state": "ok",
+        "evidence": [{"evidence_id": "E1", "chars": 63}, {"evidence_id": "E2", "chars": 63}, {"evidence_id": "E3", "chars": 88}],
+        "evidence_total_chars": 214,
+        "within_char_budget": true
+      }
+    },
+    {
+      "question_id": "smoke-02-insufficient",
+      "kind": "insufficient",
+      "query": "宿舍门禁时间是几点？",
+      "filters": null,
+      "expected_check": "语料无此事实：应说明材料不足，不得用模型常识作答",
+      "dry_run_local_retrieval": {
+        "evidence_state": "no_hits",
+        "evidence": [],
+        "evidence_total_chars": 0,
+        "within_char_budget": true,
+        "note": "当前语料对该问题无检索候选：live 时本地短路（不调用生成器），真实 HTTP 次数记 0，不谎称验证了模型拒答"
+      }
+    }
+  ],
+  "preflight_rules": [
+    "任何请求之前：语料须解析有效、非空且所有文档 is_synthetic=true；无效/空/非合成语料退出非零，不触发 provider",
+    "--live 缺生成器配置：退出非零（不是成功的准备），不调用任何模型",
+    "调用前在 stderr 输出并 flush 审查摘要：区分「计划配置」（本任务授权官方值）与「已解析配置」（实际 provider 的 endpoint/model/max_tokens）",
+    "CLI --live 核对官方 endpoint=https://api.deepseek.com/chat/completions、model=deepseek-flash、max_tokens=1500；不符即拒绝，不向未授权地址发请求；显式测试注入仅跳过官方数值核对",
+    "ask_http_status_code 为本地 /ask 状态，非供应商原始状态；未知供应商状态不猜测"
+  ],
+  "request_plan": {
+    "endpoint": "https://api.deepseek.com/chat/completions",
+    "model": "deepseek-flash",
+    "mode": "bm25",
+    "answer_mode": "generated",
+    "max_tokens": 1500,
+    "timeout_seconds": 30,
+    "max_external_http_attempts": 2,
+    "retries": 0,
+    "stop_on_first_technical_failure": true,
+    "evidence_budget_chars_per_question": 6000,
+    "answer_preview_chars": "1—2000（仅预览，不是 token/费用限制）",
+    "full_answers_out": "live-answers-full.local.json（--full-answers-out，供人工核对）"
+  },
+  "recording_rules": [
+    "失败退出非零；HTTP 成功 / 生成成功 / 材料不足单独标明",
+    "status、generation_meta（model/request_id/usage/finish_reason/latency/max_tokens）与调用记录完整保留，仅答案预览截短；预览截断≠模型截断",
+    "ask_requests 与 external_http_attempts 分开计数；无证据短路的 /ask 不算模型调用",
+    "不预填成功或模拟 usage"
+  ],
+  "authorization_status": {
+    "authorized": false,
+    "requested_scope": "DeepSeek 官方 https://api.deepseek.com、model=deepseek-flash、以上合成资料、最多两次 HTTP 尝试、每次 max_tokens=1500、无重试",
+    "remaining_condition": "用户明确提供（1）调用授权与（2）本地密钥配置（可另设费用上限）后，方可执行 scripts/live-smoke-deepseek.py --live",
+    "current_external_model_calls": 0,
+    "live_verified": false
+  }
+}

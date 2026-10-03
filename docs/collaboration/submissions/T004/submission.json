@@ -1,0 +1,30 @@
+{
+  "task_id": "T004",
+  "task_revision": "v1",
+  "submission_revision": 3,
+  "responds_to": "T004-R2",
+  "status": "ready_for_review",
+  "summary": "R4 修复：合并检测路径修正为 w:tc/w:tcPr/w:gridSpan 和 w:vMerge；测试改用 cell.merge 真实合并；恢复内联图片检测；generate_docx.py 固定输出路径并诚实说明可复现性。127 passed, 1 skipped。",
+  "files": [
+    "docs/collaboration/submissions/T004/report.md",
+    "docs/collaboration/submissions/T004/verification.md",
+    "docs/collaboration/submissions/T004/submission.json",
+    "docs/collaboration/submissions/T004/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T004/changed-files.json",
+  "history": [
+    "docs/collaboration/submissions/T004/history/revision-1/",
+    "docs/collaboration/submissions/T004/history/revision-2/"
+  ],
+  "checks": [
+    {"item": "R4: 水平合并检测（cell.merge）", "result": "pass", "evidence_id": "V03"},
+    {"item": "R4: 垂直合并检测（cell.merge）", "result": "pass", "evidence_id": "V04"},
+    {"item": "R4: 内联图片检测", "result": "pass", "evidence_id": "V05"},
+    {"item": "R4: 简单文档无警告", "result": "pass", "evidence_id": "V06"},
+    {"item": "R1—R3 回归", "result": "pass", "evidence_id": "V08"},
+    {"item": "generate_docx.py 路径修正", "result": "pass", "evidence_id": "V09"},
+    {"item": "全量 pytest", "result": "pass - 127 passed, 1 skipped", "evidence_id": "V01"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V02"}
+  ],
+  "blockers": []
+}

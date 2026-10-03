@@ -1,0 +1,37 @@
+# Virtual environments
+.venv/
+.venv-verify/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# pip cache and logs
+.cache/
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Environment and secrets - never commit real values
+.env
+.env.*
+!.env.example
+
+# Model weights and index artifacts
+models/
+indices/
+faiss_index/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/

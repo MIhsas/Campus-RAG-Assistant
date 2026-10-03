@@ -1,0 +1,19 @@
+{
+  "submission_revision": 2,
+  "pytest": {"passed":151,"skipped":1,"exit_code":0},
+  "pip_check":"passed",
+  "hash_entries_verified":31,
+  "normal_detail":"TXT and DOCX render correctly",
+  "copied_link_refresh":"document and block identifiers preserved",
+  "wheel_preview":"resource included; extracted package imported from temporary directory; /preview returned 200",
+  "race_final_dom":{
+    "hash":"#syn-parse-docx-001",
+    "detailId":"syn-parse-txt-001",
+    "selected":"合成测试课程成绩登记表（正文解析示例）DOCX · 11 块 · 合成"
+  },
+  "http500_dom":{
+    "status":"状态：就绪　文档：2/2",
+    "list":"暂无文档",
+    "retry_button":false
+  }
+}

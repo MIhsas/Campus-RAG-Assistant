@@ -1,0 +1,30 @@
+{
+  "task_id": "T008",
+  "task_revision": "v1",
+  "submission_revision": 3,
+  "responds_to": "T008-R2",
+  "status": "ready_for_review",
+  "summary": "R1-R2 修复：doSearch 入口先 searchSeq++ 再判断空白（空白提交作废旧请求）；按钮 disabled 由 mySeq===searchSeq 守卫；test_repeated_request_no_rebuild 改为 monkeypatch 真实计数（parse/chunk/index 各 1 次，多次 HTTP 后不变）。283 passed, 1 skipped。",
+  "files": [
+    "docs/collaboration/submissions/T008/report.md",
+    "docs/collaboration/submissions/T008/verification.md",
+    "docs/collaboration/submissions/T008/submission.json",
+    "docs/collaboration/submissions/T008/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T008/changed-files.json",
+  "history": [
+    "docs/collaboration/submissions/T008/history/revision-1/",
+    "docs/collaboration/submissions/T008/history/revision-2/"
+  ],
+  "checks": [
+    {"item": "R1: searchSeq 先递增（源码确认）", "result": "pass", "evidence_id": "V04"},
+    {"item": "R1: 按钮守卫 mySeq===searchSeq（源码确认）", "result": "pass", "evidence_id": "V04"},
+    {"item": "R2: 真实计数 monkeypatch", "result": "pass", "evidence_id": "V05"},
+    {"item": "R2: 多次请求后计数不变", "result": "pass", "evidence_id": "V05"},
+    {"item": "全量 pytest 283 passed", "result": "pass", "evidence_id": "V01"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V02"},
+    {"item": "JS 语法", "result": "pass", "evidence_id": "V03"},
+    {"item": "浏览器交互", "result": "未验证", "evidence_id": "V06"}
+  ],
+  "blockers": []
+}

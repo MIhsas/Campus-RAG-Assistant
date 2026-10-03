@@ -1,0 +1,16 @@
+{"case": "baseline", "exit": 0, "valid": true, "document_count": 2, "errors": []}
+{"case": "boolean_string", "exit": 0, "valid": true, "document_count": 2, "errors": []}
+{"case": "impossible_date", "exit": 0, "valid": true, "document_count": 2, "errors": []}
+{"case": "non_leap_day", "exit": 0, "valid": true, "document_count": 2, "errors": []}
+{"case": "missing_scope", "exit": 0, "valid": true, "document_count": 2, "errors": []}
+{"case": "missing_date", "exit": 0, "valid": true, "document_count": 2, "errors": []}
+{"case": "empty_scope_object", "exit": 0, "valid": true, "document_count": 2, "errors": []}
+{"case": "bad_years", "exit": 0, "valid": true, "document_count": 2, "errors": []}
+{"case": "blank_campus", "exit": 0, "valid": true, "document_count": 2, "errors": []}
+{"case": "campus_string", "exit": 0, "valid": true, "document_count": 2, "errors": []}
+{"case": "no_url_host", "exit": 0, "valid": true, "document_count": 2, "errors": []}
+{"case": "null_campus", "exit": 1, "json_output": false, "stderr_last_line": ["AttributeError: 'TypeError' object has no attribute 'errors'"]}
+{"case": "invalid_utf8", "exit": 1, "json_output": false, "stderr_last_line": ["UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte"]}
+{"case": "bad_hash_count", "exit": 1, "valid": false, "document_count": 1, "errors": [{"code": "HASH_MISMATCH", "field": "sha256"}]}
+{"case": "duplicate_and_bad_hash", "exit": 1, "valid": false, "document_count": 0, "errors": [{"code": "DUPLICATE_DOCUMENT_ID", "field": "document_id"}]}
+{"case": "masked_boolean_test", "exit": 1, "valid": false, "document_count": 0, "errors": [{"code": "MANIFEST_SCHEMA_ERROR", "field": "documents.0.sha256"}]}

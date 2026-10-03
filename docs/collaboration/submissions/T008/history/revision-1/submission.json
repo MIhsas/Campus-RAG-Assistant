@@ -1,0 +1,35 @@
+{
+  "task_id": "T008",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "搜索接口与证据搜索页完成：工厂快照（parse+chunk+BM25Index 各 1 次）+ search API（status GET + search POST）+ /search 静态页 + 19 项 API 测试 + T007 测试修正。277 passed, 1 skipped, pip check, 两页 JS 语法通过, wheel 含新 HTML。浏览器交互未验证。",
+  "files": [
+    "docs/collaboration/submissions/T008/report.md",
+    "docs/collaboration/submissions/T008/verification.md",
+    "docs/collaboration/submissions/T008/submission.json",
+    "docs/collaboration/submissions/T008/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T008/changed-files.json",
+  "checks": [
+    {"item": "T007 chunk_manifest 真实调用修正", "result": "pass", "evidence_id": "V06"},
+    {"item": "工厂快照 parse+chunk+index 各 1 次", "result": "pass", "evidence_id": "V01"},
+    {"item": "search/status 200 响应模型", "result": "pass", "evidence_id": "V05"},
+    {"item": "search POST 成功命中", "result": "pass", "evidence_id": "V05"},
+    {"item": "unconfigured 503", "result": "pass", "evidence_id": "V01"},
+    {"item": "failed 503 SEARCH_UNAVAILABLE", "result": "pass", "evidence_id": "V01"},
+    {"item": "partial 保留可用命中", "result": "pass", "evidence_id": "V01"},
+    {"item": "纯标点查询 200+hits=[]", "result": "pass", "evidence_id": "V01"},
+    {"item": "严格参数拒绝 extra/空/越界", "result": "pass", "evidence_id": "V01"},
+    {"item": "请求 ID 一致性", "result": "pass", "evidence_id": "V01"},
+    {"item": "多 app 隔离", "result": "pass", "evidence_id": "V01"},
+    {"item": "初始化计数", "result": "pass", "evidence_id": "V01"},
+    {"item": "重复请求不重建", "result": "pass", "evidence_id": "V01"},
+    {"item": "两页 JS 语法", "result": "pass", "evidence_id": "V03"},
+    {"item": "wheel 含 search.html", "result": "pass", "evidence_id": "V04"},
+    {"item": "全量 pytest 277 passed", "result": "pass", "evidence_id": "V01"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V02"},
+    {"item": "浏览器交互", "result": "未验证", "evidence_id": "V07"}
+  ],
+  "blockers": []
+}

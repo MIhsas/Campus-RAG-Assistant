@@ -1,0 +1,97 @@
+{
+  "note": "T024 后端变更清单（相对 step2_code/backend），submission_revision=2（T024-R1）。sha256/size 为交付时实际文件；r1_touched 标注返工单触碰项。",
+  "new": [
+    {
+      "path": "src/campus_assistant/agent/deepseek_planner.py",
+      "sha256": "e441e2538af5d98df61c271bc0fd5726cd8026b50a428610babc9ad9a08fa62e",
+      "size": 14363,
+      "r1_touched": false
+    },
+    {
+      "path": "tests/test_deepseek_planner.py",
+      "sha256": "51f2f02ba3ee3386f2fe6038566906697a4894a8ee7a15602f94aa0254f0044f",
+      "size": 23583,
+      "r1_touched": true
+    },
+    {
+      "path": "scripts/trace-agent-planner.py",
+      "sha256": "766a63fc8a415492b67f35ec23c72a5a37e8f4b152e7dc4b1bb6d8a5cfc892ea",
+      "size": 11103,
+      "r1_touched": true
+    }
+  ],
+  "modified": [
+    {
+      "path": "src/campus_assistant/agent/__init__.py",
+      "sha256": "a99841264dfdc62a0a8306f22e9db19c06126d8ca5cb760096ab2b1a838501a4",
+      "size": 1582,
+      "r1_touched": false
+    },
+    {
+      "path": "src/campus_assistant/agent/planner.py",
+      "sha256": "c2d571f35cf361d88aebdadffb57dca70c0c9bc2b5ccb482e11a5a3694a2846f",
+      "size": 3843,
+      "r1_touched": false
+    },
+    {
+      "path": "src/campus_assistant/agent/workflow.py",
+      "sha256": "a37194ec44c7f70f3025faeb5ff792cbdd806d8da9dc2c8e6ad9d2ce5481dab7",
+      "size": 21549,
+      "r1_touched": true
+    },
+    {
+      "path": "src/campus_assistant/agent/tools.py",
+      "sha256": "8a3915171d0efce0ec420c097b876b0d507222f8beddf4bb3390bda0e488d308",
+      "size": 9649,
+      "r1_touched": false
+    },
+    {
+      "path": "src/campus_assistant/api/agent.py",
+      "sha256": "34ed98643264d1dae6cc297e11477251eeec7dd21b87df3207d0e5dda5daf775",
+      "size": 7367,
+      "r1_touched": true
+    },
+    {
+      "path": "src/campus_assistant/main.py",
+      "sha256": "0b5fb49e23ff65a940e45ae014418372a9c334c1009f0b1968172379a351bd8c",
+      "size": 12782,
+      "r1_touched": false
+    },
+    {
+      "path": "scripts/serve-corpus.py",
+      "sha256": "7df070056d6fc962c447bc7b22a71e36cfcee43df67c77a572d837f962783bc8",
+      "size": 10443,
+      "r1_touched": false
+    },
+    {
+      "path": "src/campus_assistant/static/workflow.html",
+      "sha256": "666a7c1013a917d3cb414a669366ce5449ba486754b5664b084008c6f013caac",
+      "size": 18585,
+      "r1_touched": true
+    },
+    {
+      "path": "scripts/check-workflow-behavior.cjs",
+      "sha256": "7a9758e78357042bf82ee628828e2dc469316f8adaa9d40834d15cf1d8a08bd9",
+      "size": 15212,
+      "r1_touched": true
+    },
+    {
+      "path": "tests/test_agent_workflow.py",
+      "sha256": "34bdd6da28826fd6a3145e54a71861fb14c0974e9b71128ed2de59bbebfc7c70",
+      "size": 16899,
+      "r1_touched": true
+    },
+    {
+      "path": "env.example",
+      "sha256": "aa59e051e0951bc2272e675d42b123dc19336cf17a290e682fed31e5bd46a422",
+      "size": 1247,
+      "r1_touched": false
+    },
+    {
+      "path": "README.md",
+      "sha256": "98af20ee064281aa0cc171ecb8260f4c1f7d57d54a007b0b63e3962ce5758d7f",
+      "size": 50745,
+      "r1_touched": false
+    }
+  ]
+}

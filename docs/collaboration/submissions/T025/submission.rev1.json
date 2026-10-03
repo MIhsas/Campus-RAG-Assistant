@@ -1,0 +1,23 @@
+{
+  "task_id": "T025",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "partial",
+  "stage": "A_ready_for_review",
+  "status_note": "partial 表示 B 阶段（真实调用）待用户授权，不代表 A 未做完；A 阶段任务书各项已完整实施并本地验证",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "tinyagent_integration_kind": "reference",
+  "summary": "T025 A 完成：live-smoke-planner.py 冒烟 CLI（默认 dry-run 零网络零密钥；固定合成题 查找缓考依据并整理办理草稿/proc-apply-defer/年级 2023 编译进脚本不接受改写）。调用前配置核对先于任何请求：live 只认官方 https://api.deepseek.com/deepseek-flash/max_tokens=300（任意 DEEPSEEK_BASE_URL 不当作已授权目标）、语料解析成功非空且全部 is_synthetic=true、模板含固定事项、密钥仅记存在性；不符零请求非零退出。实际 HTTP 在发送处计数并与循环计数交叉核对、零重试；完整审计（快照/语料模板哈希/配置不含密钥/逐轮 provider 审计缺失 null/工具结果引用/结束语仅记录）；非 completed/技术失败/前置失败均非零（argparse=2）。逐条核对表 6 项按实际动作生成不预写结论（引用与直接 build_draft 本地重算对照）。mock 示例生成器 loopback 显式联调、标注模拟、不静默作为 live 降级分支。复用真实执行层，不启用答案生成器，不另造框架。",
+  "verification": {
+    "tests": {"total": 9, "passed": 9, "note": "test_live_smoke_planner.py：dry-run 零网络 / loopback 发送处计数=服务端接收=循环计数 / 提前 finish 与 HTTP 500 非零保留证据 / 前置失败零请求 / argparse=2"},
+    "dry_run": "dry-run.json 实跑：前置 7/7、核对表不预写结论、exit 0",
+    "mock_sample": "mock-run.json 实跑：前置 8/8、completed、http 3=3=3、核对表全过、exit 0（loopback 模拟服务，标注非真实冒烟）",
+    "scope_note": "三类本地验证 + 前置一类；未跑 JS/全量/模型测试（未改 UI 与共享核心）；未执行 --live；零外部调用、无下载、无安装"
+  },
+  "deliverables": ["dry-run.json", "mock-run.json（本地 mock 示例）", "checklist-template.md（核对表模板）", "report.md（含简明 Windows 命令）", "verification.md", "submission.json", "changed-files.json"],
+  "stage_b_status": "未授权未执行：--live 待用户明确批准范围（固定一题、官方端点/模型、≤4 次 HTTP、max_tokens=300、零重试）并确认密钥配置后运行一次；本任务书/历史 T014 授权/本地配置存在均不构成 B 授权",
+  "cost_note": "max_tokens 只约束输出非费用上限；提示长度非 token 硬上限；连接失败不保证供应商未计费；A 阶段未查余额未发探测请求；NO_PROXY 经验仅在说明中列出，未改系统代理",
+  "not_claimed": ["真实模型规划能力已验证（planner_live_verified=false）", "--live 已执行（未授权）", "真实冒烟通过（真实运行核对表待 B 填写）"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改；未改语料/gold/产品模板/前端/共享执行层/Astra 文档"
+}

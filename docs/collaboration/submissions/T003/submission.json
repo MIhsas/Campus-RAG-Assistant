@@ -1,0 +1,38 @@
+{
+  "task_id": "T003",
+  "task_revision": "v1",
+  "submission_revision": 3,
+  "responds_to": "T003-R2",
+  "status": "ready_for_review",
+  "summary": "R2-A/B/C 全部修复：日期字段必需（移除默认值）+ 严格 YYYY-MM-DD 正则拒绝紧凑/周日期；NUL 路径拒绝 + resolve/exists/is_file 异常转 JSON；Pydantic 错误映射为中文 + 移除 broad except。符号链接 skip 记录 winerror=1314。86 passed, 1 skipped。",
+  "files": [
+    "docs/collaboration/submissions/T003/report.md",
+    "docs/collaboration/submissions/T003/verification.md",
+    "docs/collaboration/submissions/T003/submission.json",
+    "docs/collaboration/submissions/T003/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T003/changed-files.json",
+  "history": [
+    "docs/collaboration/submissions/T003/history/revision-1/",
+    "docs/collaboration/submissions/T003/history/revision-2/"
+  ],
+  "checks": [
+    {"item": "R2-A: 日期字段必需（缺字段拒绝）", "result": "pass", "evidence_id": "V04"},
+    {"item": "R2-A: 显式 null 日期通过", "result": "pass", "evidence_id": "V04"},
+    {"item": "R2-A: 紧凑格式 20240901 拒绝", "result": "pass", "evidence_id": "V04"},
+    {"item": "R2-A: 周日期 2024-W36-7 拒绝", "result": "pass", "evidence_id": "V04"},
+    {"item": "R2-A: 非法月份/闰年 拒绝", "result": "pass", "evidence_id": "V04"},
+    {"item": "R2-B: NUL 路径拒绝", "result": "pass", "evidence_id": "V05"},
+    {"item": "R2-B: NUL 路径 CLI JSON 输出", "result": "pass", "evidence_id": "V05"},
+    {"item": "R2-B: resolve/exists/is_file 异常转 JSON", "result": "pass", "evidence_id": "V05"},
+    {"item": "R2-C: 缺字段中文消息", "result": "pass", "evidence_id": "V06"},
+    {"item": "R2-C: 类型错误中文消息", "result": "pass", "evidence_id": "V06"},
+    {"item": "R2-C: 未知字段中文消息", "result": "pass", "evidence_id": "V06"},
+    {"item": "R2-C: broad except 已移除", "result": "pass", "evidence_id": "V01"},
+    {"item": "符号链接 skip 含 winerror", "result": "pass", "evidence_id": "V07"},
+    {"item": "全量 pytest", "result": "pass - 86 passed, 1 skipped", "evidence_id": "V01"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V02"},
+    {"item": "健康接口回归", "result": "pass", "evidence_id": "V08"}
+  ],
+  "blockers": []
+}

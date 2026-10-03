@@ -1,0 +1,97 @@
+{
+  "note": "T023 后端变更清单（相对 step2_code/backend），submission_revision=2（T023-R1）。sha256/size 为交付时实际文件；r1_touched 标注返工单触碰项。",
+  "new": [
+    {
+      "path": "src/campus_assistant/agent/__init__.py",
+      "sha256": "1e749c09725b97d21a6e760144eb5655cf2df70e129f6cc5a9c852b03ef9192d",
+      "size": 1449,
+      "r1_touched": false
+    },
+    {
+      "path": "src/campus_assistant/agent/tools.py",
+      "sha256": "920c33296aca7ccc74b40a994cb88d54c97e867dd6a29a25d8eb95bff9702be5",
+      "size": 9040,
+      "r1_touched": false
+    },
+    {
+      "path": "src/campus_assistant/agent/planner.py",
+      "sha256": "6f6171a7a07ff93bc30a0fe891fe0e2b430312ef31043fccd86a5884f20a269c",
+      "size": 3180,
+      "r1_touched": true
+    },
+    {
+      "path": "src/campus_assistant/agent/workflow.py",
+      "sha256": "3e0fb659f6ced4e6f869c3d92bc31dbc9cff1f31b10529207cf30230f74e8034",
+      "size": 12495,
+      "r1_touched": false
+    },
+    {
+      "path": "src/campus_assistant/api/agent.py",
+      "sha256": "0a9dc472a9532c3bbb1a9f3b0ce7f9309aa9b3ca423c733c7c72291b28d89489",
+      "size": 6055,
+      "r1_touched": false
+    },
+    {
+      "path": "src/campus_assistant/static/workflow.html",
+      "sha256": "03cfb331d8832d26f88c9617067044826279ca8ce89dbac82abbe76ae2554800",
+      "size": 16718,
+      "r1_touched": true
+    },
+    {
+      "path": "tests/test_agent_workflow.py",
+      "sha256": "74fd1ba9a66d314183e73c756670f70a12a8182891b805e7b29e99166d000082",
+      "size": 15482,
+      "r1_touched": true
+    },
+    {
+      "path": "scripts/trace-agent-run.py",
+      "sha256": "8e87a6017396bc7f71f868f626b5601025d08d129b9a8314cbf58e475e408bc6",
+      "size": 5623,
+      "r1_touched": true
+    },
+    {
+      "path": "scripts/check-workflow-behavior.cjs",
+      "sha256": "1dbcab501e597cb12aeb2b13db6fed8451d18e1870d1ac604e11042d169b43a1",
+      "size": 9811,
+      "r1_touched": true
+    }
+  ],
+  "modified": [
+    {
+      "path": "src/campus_assistant/main.py",
+      "sha256": "9319c6ff4f0cd5ed1beeed9ab5bc68390930342365a6f6c390969b3297c82391",
+      "size": 12383,
+      "r1_touched": false
+    },
+    {
+      "path": "scripts/demo-campus.py",
+      "sha256": "3b3a0009a038de9413b4e00211e1287577422509af673c283f62a3c0d9370e18",
+      "size": 11378,
+      "r1_touched": false
+    },
+    {
+      "path": "scripts/serve-corpus.py",
+      "sha256": "6e3ff1016b582e648779b1509f3f591fba0160c3e14eedb7df42847e21e06cf9",
+      "size": 8615,
+      "r1_touched": false
+    },
+    {
+      "path": "src/campus_assistant/static/home.html",
+      "sha256": "3d0735e6b000058a347a718aa4883ec61f1ac4fdf09321127f8237fe1e381f60",
+      "size": 7389,
+      "r1_touched": false
+    },
+    {
+      "path": "src/campus_assistant/static/ask.html",
+      "sha256": "631dd9bdc79908b61adc457ab0f2ee3a62e3745bfe67a70eba9c3d46e8db1e98",
+      "size": 46303,
+      "r1_touched": false
+    },
+    {
+      "path": "scripts/check-ask-behavior.cjs",
+      "sha256": "19bb739385367b4d516df4a9e71145c0dc38846438bef6ef12a32a0a1aa7b758",
+      "size": 35478,
+      "r1_touched": false
+    }
+  ]
+}

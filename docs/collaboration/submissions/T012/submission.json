@@ -1,0 +1,34 @@
+{
+  "task_id": "T012",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "交付 /ask 原文证据整理页面、E-编号证据包（整进整出 6000 字符/5 条预算）、POST /api/v1/ask（extractive 默认 + generated 可注入 AnswerProvider 契约与全量校验）、共享检索服务（与 /search 同管线同响应）。未调用外部模型；fake 仅证明协议，摘录不伪装成生成答案。",
+  "endpoints": ["GET /api/v1/ask/status", "POST /api/v1/ask", "GET /ask"],
+  "test_results": {
+    "new_tests": {"total": 25, "passed": 25, "skipped": 0},
+    "full_suite": {"total": 429, "passed": 429, "skipped": 1, "warnings": 2, "note": "跳过为既有 Windows 链接权限用例"},
+    "js_syntax": "3 files passed",
+    "js_behavior": {"search": "14 scenarios passed", "ask": "9 scenarios passed"}
+  },
+  "demo": {
+    "raw_output": "ask-demo.json",
+    "notes": "demo-notes.md",
+    "api_examples": "api-examples.md",
+    "external_model_calls": 0
+  },
+  "contract": {
+    "answer_modes": ["extractive", "generated"],
+    "default": "extractive",
+    "provider_protocol": "qa.providers.AnswerProvider",
+    "prompt_template": "qa.providers.PROMPT_TEMPLATE",
+    "not_configured_code": "GENERATOR_NOT_CONFIGURED",
+    "validation_failure_code": "GENERATOR_INVALID_OUTPUT"
+  },
+  "unverified": [
+    "真实浏览器 提问→摘录→出处→复制 闭环待 Astra 补验（无浏览器能力），步骤见 demo-notes.md",
+    "真实生成模型联调与答案质量人工评价不在本单范围"
+  ],
+  "not_claimed": ["真实 RAG 作答", "拒答可靠性", "校园问答准确率"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

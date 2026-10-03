@@ -1,0 +1,34 @@
+{
+  "task_id": "T014",
+  "task_revision": "v1",
+  "submission_revision": 3,
+  "status": "partial",
+  "summary": "B 阶段已按用户授权执行一次 live 冒烟（官方 deepseek-flash，两道合成题，≤2 次 HTTP、无重试）：调用前配置审查通过后发出请求，Q1 生成服务连接失败（请求未到达 DeepSeek，generation_meta=null 不伪造），首次技术失败立即停止，Q2 记 not_attempted 且本地检索 no_hits 已如实记录。实际 external_model_calls=1，退出码 1。C 阶段核对完成（无生成回答可核对、无任何编造产物）。按约定未重试、未修复重跑。B 未成功完成，整体保持 partial。",
+  "live_verified": false,
+  "live_verified_note": "由 Astra 验收认定，不自行改为 true；本次生成链路未成功，不能宣称真实问答验收通过",
+  "external_model_calls": 1,
+  "authorization_received": "用户 2026-09-27 明确授权：官方 deepseek-flash、两道合成题、最多 2 次 HTTP、max_tokens=1500、无重试",
+  "phase_status": {
+    "A_local_preparation": "complete (accepted, T014-R2)",
+    "B_external_calls": "executed_once_failed (technical_failure: 生成服务连接失败; Q2 not_attempted by stop-on-first-failure)",
+    "C_manual_review": "complete on available evidence (no generated answers to review; no fabrication)"
+  },
+  "run_facts": {
+    "config_resolved": {"endpoint": "https://api.deepseek.com/chat/completions", "model": "deepseek-flash", "max_tokens": 1500},
+    "ask_requests": 1,
+    "external_http_attempts": 1,
+    "q1": {"outcome": "technical_failure", "error": "生成服务连接失败", "generation_meta": null},
+    "q2": {"outcome": "not_attempted", "local_retrieval": "no_hits, 0 chars"},
+    "retries": 0,
+    "exit_code": 1
+  },
+  "new_files": ["live-results.json", "live-answers-full.json", "live-review-notes.md"],
+  "history": ["report.rev1.md", "verification.rev1.md", "submission.rev1.json", "changed-files.rev1.json", "smoke-plan.rev1.json", "report.rev2.md", "verification.rev2.md", "submission.rev2.json", "changed-files.rev2.json"],
+  "remaining_conditions": [
+    "B 阶段未成功：连接失败根因未诊断（疑似执行环境网络/代理可达性，未授权诊断请求）；重试属新外部调用，需用户另行授权后重跑既定冒烟",
+    "答案内容核对（Q1 审批/备案表述与引用支撑）待一次成功生成后补做"
+  ],
+  "not_claimed": ["DeepSeek 官方链路验证通过", "真实答案质量", "可靠拒答", "校园准确率"],
+  "key_safety": "密钥仅存本地 env.local，未进入命令记录/报告/日志/提交（含包含性检查：NONE）",
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

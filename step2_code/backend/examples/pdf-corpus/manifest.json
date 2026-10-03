@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "documents": [
+    {
+      "document_id": "syn-pdf-text-001",
+      "policy_group_id": "syn-pdf-group",
+      "title": "合成测试 PDF（两页文本示例）",
+      "source_url": "https://example.org/pdf/syn-pdf-text-001",
+      "source_site": "合成测试示例站",
+      "local_path": "sample-text.pdf",
+      "sha256": "66e0f6287aa365cfcc89f2cad15e4d9213f782c6303c86fb713b086aad71fa76",
+      "version_label": "合成演示 v1",
+      "published_at": "2025-01-01",
+      "effective_from": "2025-03-01",
+      "effective_to": null,
+      "scope": {
+        "campus": [
+          "成都校区"
+        ],
+        "student_type": [
+          "全日制本科"
+        ],
+        "admission_years": [
+          2023,
+          2024
+        ]
+      },
+      "is_synthetic": true
+    },
+    {
+      "document_id": "syn-pdf-notext-001",
+      "policy_group_id": "syn-pdf-group",
+      "title": "合成测试 PDF（无文本示例）",
+      "source_url": "https://example.org/pdf/syn-pdf-notext-001",
+      "source_site": "合成测试示例站",
+      "local_path": "sample-no-text.pdf",
+      "sha256": "0e8418a12109d8aa8c51cc51d68c9c3a227985a50e38d4b0192a3078755977f0",
+      "version_label": "合成演示 v1",
+      "published_at": "2025-01-01",
+      "effective_from": "2025-03-01",
+      "effective_to": null,
+      "scope": {
+        "campus": [
+          "成都校区"
+        ],
+        "student_type": [
+          "全日制本科"
+        ],
+        "admission_years": [
+          2023,
+          2024
+        ]
+      },
+      "is_synthetic": true
+    }
+  ]
+}

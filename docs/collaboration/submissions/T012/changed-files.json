@@ -1,0 +1,82 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "263d222ff13ae37f4934e9a63e09c66a4cf961f7308176656b12ad386dee8bef",
+    "size": 26981
+  },
+  {
+    "path": "..\\README.md",
+    "sha256": "d6a3d6532c249402cdf9b9c421c2abb8702f994aa26c3679c2ce135f5606ccdb",
+    "size": 3435
+  },
+  {
+    "path": "src\\campus_assistant\\api\\ask.py",
+    "sha256": "5c8a84f87ed4567fa241ad4c1883f6be3eaf7b864a44ff2e174272a2c9b44826",
+    "size": 11998
+  },
+  {
+    "path": "src\\campus_assistant\\api\\search.py",
+    "sha256": "f1f2cb00aafe8b9601e57a0a6901745a8a108d3d9ed32dab06fbafb6c78d2246",
+    "size": 11961
+  },
+  {
+    "path": "src\\campus_assistant\\main.py",
+    "sha256": "ebd085c261ca1047a125538020670b79028e3049bc94d3a23bc28c41f4fce1d5",
+    "size": 8059
+  },
+  {
+    "path": "src\\campus_assistant\\qa\\__init__.py",
+    "sha256": "99a77fe2645d75e3f21e1ddfc0d6c94bfed8c7c2217a0b34959b388c98b90d75",
+    "size": 340
+  },
+  {
+    "path": "src\\campus_assistant\\qa\\evidence.py",
+    "sha256": "d3abe4f4cdb75839b6108afcfb34a5ce34073f87fd5725033c2fcc5bd35d5484",
+    "size": 3705
+  },
+  {
+    "path": "src\\campus_assistant\\qa\\providers.py",
+    "sha256": "d30316fcb33a1686b4ae7fea2f753e11a3648d3ce9cf130e6dbdc1170abf908c",
+    "size": 5040
+  },
+  {
+    "path": "src\\campus_assistant\\retrieval\\service.py",
+    "sha256": "87a1dceae9ad229eebcd7f7625282606681fbfcf1e4c379f6bdc85349e1a4689",
+    "size": 3980
+  },
+  {
+    "path": "src\\campus_assistant\\static\\ask.html",
+    "sha256": "bcd80e8c920234eee213bc7e9584f2648bc3cc029815f128ae857c66df3655d9",
+    "size": 23980
+  },
+  {
+    "path": "src\\campus_assistant\\static\\search.html",
+    "sha256": "dda6bc5730357c0ce611d466447c4acc6a6c4e7c14a7706bcf315395affc2552",
+    "size": 25441
+  },
+  {
+    "path": "src\\campus_assistant\\static\\preview.html",
+    "sha256": "e0eb071d358122965b2dad6e11ce5e0d96507fd8d56c4e01dd8ff235dd4486ce",
+    "size": 21344
+  },
+  {
+    "path": "scripts\\check-ask-behavior.cjs",
+    "sha256": "2e3b965bc92859c6ed41352f09f7cdc9b8a03d27fdec6257a7da037a24fa92f7",
+    "size": 13836
+  },
+  {
+    "path": "scripts\\demo-ask.py",
+    "sha256": "932cfa0b713b9d0604e418af5ab3163293dadcbc897f5bb77eb19cda3973a8cc",
+    "size": 3726
+  },
+  {
+    "path": "tests\\test_ask_api.py",
+    "sha256": "0d951366cc915af3d936c43653ecfcac53ce834fe7701865d246631a9bfd3290",
+    "size": 11488
+  },
+  {
+    "path": "tests\\test_qa_evidence.py",
+    "sha256": "01dc6746ed4bcf044a5e99f2f14c60e231ca6e1f7df4d6fc2ffdbeaf5b9137c6",
+    "size": 7632
+  }
+]

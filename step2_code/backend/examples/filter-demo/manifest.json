@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "documents": [
+    {
+      "document_id": "fd-2024",
+      "policy_group_id": "fd-group",
+      "title": "缓考申请办法（2024 级）",
+      "source_url": "https://example.org/filter/fd-2024",
+      "source_site": "合成测试示例站",
+      "local_path": "filter-2024.txt",
+      "sha256": "131838cca37947cc960da8f0c25d21124006093f5643d85fe23b27e38ed1aa3f",
+      "version_label": "2024 版",
+      "published_at": "2024-08-01",
+      "effective_from": "2024-09-01",
+      "effective_to": "2025-08-31",
+      "scope": {
+        "campus": [
+          "成都校区"
+        ],
+        "student_type": [
+          "全日制本科"
+        ],
+        "admission_years": [
+          2024
+        ]
+      },
+      "is_synthetic": true
+    },
+    {
+      "document_id": "fd-2025",
+      "policy_group_id": "fd-group",
+      "title": "缓考申请办法（2025 级）",
+      "source_url": "https://example.org/filter/fd-2025",
+      "source_site": "合成测试示例站",
+      "local_path": "filter-2025.txt",
+      "sha256": "745e52eaab4c64fcbc66370b58e0934b46a8874d55dd261d0605905973921248",
+      "version_label": "2025 版",
+      "published_at": "2025-08-01",
+      "effective_from": "2025-09-01",
+      "effective_to": null,
+      "scope": {
+        "campus": [
+          "成都校区"
+        ],
+        "student_type": [
+          "全日制本科"
+        ],
+        "admission_years": [
+          2025
+        ]
+      },
+      "is_synthetic": true
+    },
+    {
+      "document_id": "fd-yjy",
+      "policy_group_id": "fd-group-yjy",
+      "title": "缓考申请办法（都江堰校区）",
+      "source_url": "https://example.org/filter/fd-yjy",
+      "source_site": "合成测试示例站",
+      "local_path": "filter-yjy.txt",
+      "sha256": "121ba90a3ee72b3ccd155bc645d363f873906395aeee54472ec5fb362b7c945b",
+      "version_label": "2024 版",
+      "published_at": "2024-08-01",
+      "effective_from": "2024-09-01",
+      "effective_to": null,
+      "scope": {
+        "campus": [
+          "都江堰校区"
+        ],
+        "student_type": [
+          "全日制本科"
+        ],
+        "admission_years": [
+          2024,
+          2025
+        ]
+      },
+      "is_synthetic": true
+    },
+    {
+      "document_id": "fd-unknown",
+      "policy_group_id": "fd-group-unknown",
+      "title": "缓考申请补充说明（未标注范围）",
+      "source_url": "https://example.org/filter/fd-unknown",
+      "source_site": "合成测试示例站",
+      "local_path": "filter-unknown.txt",
+      "sha256": "4425d3bd299f7dcdfa9b88d08c662da1f78356b11765d80071ea17857891089b",
+      "version_label": "未标注",
+      "published_at": null,
+      "effective_from": null,
+      "effective_to": null,
+      "scope": {
+        "campus": [],
+        "student_type": [],
+        "admission_years": []
+      },
+      "is_synthetic": true
+    },
+    {
+      "document_id": "fd-future",
+      "policy_group_id": "fd-group-future",
+      "title": "缓考申请办法（2026 级）",
+      "source_url": "https://example.org/filter/fd-future",
+      "source_site": "合成测试示例站",
+      "local_path": "filter-future.txt",
+      "sha256": "6835a4093590341d65f53a04c94f39d417577a11d5103d1e28dc342bcd61e2d2",
+      "version_label": "2026 版",
+      "published_at": "2026-08-01",
+      "effective_from": "2026-09-01",
+      "effective_to": null,
+      "scope": {
+        "campus": [
+          "成都校区"
+        ],
+        "student_type": [
+          "全日制本科"
+        ],
+        "admission_years": [
+          2026
+        ]
+      },
+      "is_synthetic": true
+    }
+  ]
+}

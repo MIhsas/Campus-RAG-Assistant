@@ -1,0 +1,19 @@
+{
+  "task_id": "T015",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "问答页体验与本机历史完成：模式表达与快照（整理依据/生成答案区别、等待态防重复提交、过时文案清理）、E 编号引用定位并高亮证据卡+原文跳转+含来源复制、生成失败可按失败请求快照转原文依据（不调模型、不丢条件、三态明确）、默认关闭的本机历史（localStorage ≤20 条，查看/删除/清空，恢复零请求，含保存时间与‘历史结果，资料可能已更新’标注，存储不可用容错）、README/env.example 的 Windows 启动与可选 NO_PROXY 说明。零后端变更；仅本地开发与模拟，external_model_calls=0。",
+  "external_model_calls": 0,
+  "verification": {
+    "js_syntax": "3 files passed",
+    "js_behavior_ask": {"scenarios": 13, "result": "passed", "new": ["引用高亮定位", "失败转摘录保快照", "历史保存/恢复零请求/删除/清空", "存储不可用容错"]},
+    "mock_demo_entry": "demo-ask-page-mock.py 实跑：/ask 200、mock 身份明示、模拟生成/模拟失败/无证据短路三路径通过；服务本会话启停",
+    "full_pytest": "skipped — 无后端变更（按任务）"
+  },
+  "browser_check": "无浏览器工具，未执行真实浏览器闭环；已提供 demo-notes.md 本地演示入口与逐步核验表交 Astra；stub/mock 不冒充真实浏览器证据",
+  "mock_disclosure": "模拟生成输出带【模拟输出，非真实 DeepSeek 回答】标记；fake 仅在 scripts/demo-ask-page-mock.py 入口，不进产品启动路径",
+  "changed_files": ["src/campus_assistant/static/ask.html", "scripts/check-ask-behavior.cjs", "scripts/demo-ask-page-mock.py", "README.md", "env.example"],
+  "not_claimed": ["真实浏览器验证", "真实 DeepSeek 页面闭环", "校园准确率", "云同步/导出"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

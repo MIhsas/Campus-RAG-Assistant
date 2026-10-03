@@ -1,0 +1,32 @@
+[
+  {
+    "path": "scripts\\check-ask-behavior.cjs",
+    "sha256": "2e226c03042c5d4303243565762a791dd50d7b08b21ed58ff55110064e508116",
+    "size": 33989
+  },
+  {
+    "path": "src\\campus_assistant\\api\\asr.py",
+    "sha256": "287f8e823ee59ba0c2deba2799d12277cf49aefa3764834972116c746d97e8c9",
+    "size": 5914
+  },
+  {
+    "path": "src\\campus_assistant\\asr\\adapter.py",
+    "sha256": "7a82413c492575b274058cdd7f3ba215d5d1fa6b0fb0e53c2a98a67f596c2c57",
+    "size": 6215
+  },
+  {
+    "path": "src\\campus_assistant\\asr\\audio.py",
+    "sha256": "475f0e96276a2d2e7fa8ac3dbbc568f6ea297af92f7744a30315da18e3bbb73d",
+    "size": 3131
+  },
+  {
+    "path": "src\\campus_assistant\\static\\ask.html",
+    "sha256": "776a2485aba86b8484ffd509e50f863a54d2b978db27effef711bda5af782f5a",
+    "size": 44605
+  },
+  {
+    "path": "tests\\test_asr.py",
+    "sha256": "be2fe781d9080503584398a827a32f4ccb43a14f578c5f7d29bd398afbcab010",
+    "size": 6477
+  }
+]

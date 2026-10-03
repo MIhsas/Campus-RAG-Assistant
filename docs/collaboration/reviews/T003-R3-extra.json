@@ -1,0 +1,123 @@
+[
+  {
+    "case": "missing_published",
+    "exit": 1,
+    "result": {
+      "valid": false,
+      "document_count": 0,
+      "errors": [
+        {
+          "code": "MANIFEST_SCHEMA_ERROR",
+          "document_id": null,
+          "field": "documents.0.published_at",
+          "message": "\u6b64\u5b57\u6bb5\u4e3a\u5fc5\u586b\u9879"
+        }
+      ]
+    }
+  },
+  {
+    "case": "missing_from",
+    "exit": 1,
+    "result": {
+      "valid": false,
+      "document_count": 0,
+      "errors": [
+        {
+          "code": "MANIFEST_SCHEMA_ERROR",
+          "document_id": null,
+          "field": "documents.0.effective_from",
+          "message": "\u6b64\u5b57\u6bb5\u4e3a\u5fc5\u586b\u9879"
+        }
+      ]
+    }
+  },
+  {
+    "case": "missing_to",
+    "exit": 1,
+    "result": {
+      "valid": false,
+      "document_count": 0,
+      "errors": [
+        {
+          "code": "MANIFEST_SCHEMA_ERROR",
+          "document_id": null,
+          "field": "documents.0.effective_to",
+          "message": "\u6b64\u5b57\u6bb5\u4e3a\u5fc5\u586b\u9879"
+        }
+      ]
+    }
+  },
+  {
+    "case": "explicit_null",
+    "exit": 0,
+    "result": {
+      "valid": true,
+      "document_count": 2,
+      "errors": []
+    }
+  },
+  {
+    "case": "compact_date",
+    "exit": 1,
+    "result": {
+      "valid": false,
+      "document_count": 0,
+      "errors": [
+        {
+          "code": "MANIFEST_SCHEMA_ERROR",
+          "document_id": null,
+          "field": "documents.0.published_at",
+          "message": "Value error, \u5fc5\u987b\u662f YYYY-MM-DD \u683c\u5f0f"
+        }
+      ]
+    }
+  },
+  {
+    "case": "week_date",
+    "exit": 1,
+    "result": {
+      "valid": false,
+      "document_count": 0,
+      "errors": [
+        {
+          "code": "MANIFEST_SCHEMA_ERROR",
+          "document_id": null,
+          "field": "documents.0.published_at",
+          "message": "Value error, \u5fc5\u987b\u662f YYYY-MM-DD \u683c\u5f0f"
+        }
+      ]
+    }
+  },
+  {
+    "case": "nul_path",
+    "exit": 1,
+    "result": {
+      "valid": false,
+      "document_count": 2,
+      "errors": [
+        {
+          "code": "UNSAFE_LOCAL_PATH",
+          "document_id": "syn-policy-abc-v1",
+          "field": "local_path",
+          "message": "local_path \u4e0d\u5f97\u5305\u542b\u7a7a\u5b57\u7b26"
+        }
+      ]
+    }
+  },
+  {
+    "case": "title_type",
+    "exit": 1,
+    "result": {
+      "valid": false,
+      "document_count": 0,
+      "errors": [
+        {
+          "code": "MANIFEST_SCHEMA_ERROR",
+          "document_id": null,
+          "field": "documents.0.title",
+          "message": "\u5fc5\u987b\u662f\u5b57\u7b26\u4e32"
+        }
+      ]
+    }
+  }
+]

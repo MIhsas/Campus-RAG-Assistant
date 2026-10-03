@@ -1,0 +1,32 @@
+{
+  "task_id": "T014",
+  "task_revision": "v1",
+  "submission_revision": 4,
+  "status": "ready_for_review",
+  "summary": "B/C 完成（用户授权重试轮）：调用前审查通过后一次真实生成成功——Q1 回答“缓考申请须经所在学院批准，报教务处备案后方可生效。”引用 E1（原文逐字支持、无附加条件）；Q2 本地 no_hits 短路如实记录（HTTP 0，未调用生成器，非模型拒答验证）。真实审计 request_id/usage(370/37/407)/latency 984ms/finish_reason=stop 已留存。C 阶段五项逐条核对合格。首轮连接失败证据存档于 rev3（根因：本机系统代理截断该域 TLS；本轮以 NO_PROXY 直连解决，零代码改动）。",
+  "live_verified": false,
+  "live_verified_note": "由 Astra 验收认定，不自行改为 true；本报告仅陈述实际执行与核对结果",
+  "external_model_calls": 1,
+  "external_model_calls_accounting": "本轮成功调用 1 次（external_http_attempts=1，Q2 短路不计）；累计外部尝试 2 次=rev3 首轮连接失败 1 次 + 本轮 1 次，各自在单轮 ≤2 授权内",
+  "authorization_received": "用户 2026-09-27：原 T014 授权范围 + 明确“重试测试”",
+  "phase_status": {
+    "A_local_preparation": "complete (accepted, T014-R2)",
+    "B_external_calls": "complete (1 successful generation after 1 archived connection failure)",
+    "C_manual_review": "complete (5/5 items passed on real output)"
+  },
+  "run_facts": {
+    "config_resolved": {"endpoint": "https://api.deepseek.com/chat/completions", "model": "deepseek-flash", "max_tokens": 1500},
+    "q1": {"outcome": "generated", "http_success": true, "generation_success": true, "citation": "E1", "request_id": "52f8d636-6ab2-44e4-8632-4bebebe6e68a", "usage": {"prompt_tokens": 370, "completion_tokens": 37, "total_tokens": 407}, "latency_ms": 984, "finish_reason": "stop"},
+    "q2": {"outcome": "short_circuit_no_evidence", "local_retrieval": "no_hits, 0 chars", "http": 0},
+    "ask_requests": 2,
+    "external_http_attempts": 1,
+    "retries": 0,
+    "exit_code": 0
+  },
+  "environment_note": "本轮以 NO_PROXY=api.deepseek.com 直连执行（本机系统代理截断该域 TLS，探针证据见 verification）；零代码改动，全部前置门保持。常态化运行需未来任务增加代理配置项。",
+  "new_or_updated_files": ["live-results.json", "live-answers-full.json", "live-review-notes.md", "report.md", "verification.md", "submission.json", "changed-files.json"],
+  "history": ["*.rev1.*", "*.rev2.*", "*.rev3.*（含首轮失败证据 live-results.rev3.json）"],
+  "not_claimed": ["校园准确率", "可靠拒答", "模型拒答验证（Q2 为本地短路）", "真实语料效果"],
+  "key_safety": "密钥仅存本地 env.local，未进入命令记录/报告/日志/提交（包含性检查：NONE）",
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

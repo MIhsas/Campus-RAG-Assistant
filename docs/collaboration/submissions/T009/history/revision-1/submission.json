@@ -1,0 +1,16 @@
+{
+  "task_id": "T009",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "新增离线评测模块（问题集校验、区间覆盖指标、CLI），8 道合成开发题（6 可答 + 2 不可答），异步行为回归脚本 7 场景通过。全量 349 passed，pip check，JS 语法检查，wheel 构建验证。",
+  "changed_files_ref": "changed-files.json",
+  "verification_ref": "verification.md",
+  "report_ref": "report.md",
+  "notes": [
+    "合成开发集验证评测流程，不代表论文准确率",
+    "金标准指向原文块字符区间，不绑定 chunk_id",
+    "异步行为回归基于 T008-R4-ui.cjs 模式纳入项目脚本",
+    "browser 交互验证未执行（无浏览器工具）"
+  ]
+}

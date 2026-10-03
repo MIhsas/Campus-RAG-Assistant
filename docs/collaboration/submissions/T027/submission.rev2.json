@@ -1,0 +1,25 @@
+{
+  "task_id": "T027",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T027-R1",
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "tinyagent_integration_kind": "reference",
+  "data_version": "2.0",
+  "metric_semantics": "fact_group_or_v1.1",
+  "data_note": "全部合成资料（13 文档/52 块/24 题），未经真实校园质量验证；合成管线实验记录，非校园准确率结论",
+  "summary": "T027-R1 金标准与口径修正完成：撤销 twin 排除约定，全量 24 题相关性复核（依据原文语义等价、先于重算冻结、未按检索结果定向）；引入可替代证据组（Evidence.fact_id：组内 OR、组间 AND，41 来源→23 必要事实组，重复来源不稀释分母）；修订 11 题（等价源补齐 q02/q04/q05/q08/q10/q15/q16/q18；q12 题面版本消歧、q20/q21 渠道消歧——题面变更重检索、干扰资料保留）；每条替代来源核对准入/块/跨度/quote，主题相关或冲突句不算。指标重算：K=5 BM25 0.950/0.950/0.925、Dense 0.875/0.900/0.739、Hybrid 0.950/0.950/0.892（R/H/M）——等价修正使 rev1 误记命中获承认（q05/q15 Dense MRR 0.5→1.0），q12 消歧后全模式未命中如实记录（Hit 1.0→0.95 唯一来源）；Hybrid 仍未显示整体优势。gold-only 变化用已存排名重计分、21 题×3 模式与全新重跑零偏差交叉核对；rev1 题集/gold/哈希/结果完整保留（题集逐字节重建核对一致）。观察与假设分离、RREF 笔误改正、夹具警示语读法说明。旧 8 题行为逐项验证不变。",
+  "verification": {
+    "tests": {"total": 81, "passed": 81, "note": "evaluation + cli + v2（含等价首位计分、多事实部分覆盖、分母不稀释、旧 8 题逐项一致）"},
+    "consistency": "21 题×3 模式 已存排名重计分 vs 全新重跑 零偏差；changed_for_rerun=[v2-q12,v2-q20,v2-q21] 按题面变化重跑",
+    "hand_check": "q10 事实组满分/部分覆盖 + q24 不足题，3 例与机器一致",
+    "old_set_compat": "旧 8 题 summary 与 rev1 逐项一致（R1.0/H1.0/M0.9167）；旧集零改动",
+    "scope_note": "仅聚焦验证；未跑 UI/ASR/Agent/全量；零外部调用、无下载、无安装；未调检索算法/参数/模型"
+  },
+  "results_summary": {"k5_v2": {"bm25": {"recall": 0.95, "hit": 0.95, "mrr": 0.925}, "dense": {"recall": 0.875, "hit": 0.9, "mrr": 0.7392}, "hybrid": {"recall": 0.95, "hit": 0.95, "mrr": 0.8917}}, "note": "rev1→v2 变化与案例见 evaluation-report；Hybrid 未显示整体优势；不外推真实校园"},
+  "deliverables": ["fix-report.md", "gold-revisions.md（标注修订清单）", "evaluation-report.md（rev2）", "gold-review.md（rev2）", "experiment-methods.md（rev2）", "results/（v2.0 逐题/聚合/三模式输出）", "rescore-from-rev1.json", "rev1/（题集/哈希/结果存档）", "dataset-hashes.json + dataset-hashes.rev1.json", "blocks-dump.json", "blocks-text.md", "report.md", "verification.md", "submission.json", "changed-files.json"],
+  "not_claimed": ["真实校园准确率（数据全合成）", "Hybrid 必须领先（实测未领先）", "q12 失分机理结论（待验证假设）", "统计显著性（单次小样本）", "为得分调参/调标注（修订先于重算冻结）"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改；未改旧 examples/evaluation、原语料、metrics 跨度/Hit/MRR 规则、产品检索算法、Astra 文档"
+}

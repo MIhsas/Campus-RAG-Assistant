@@ -1,0 +1,31 @@
+{
+  "task_id": "T007",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "离线 BM25 检索基线完成：cjk_bigram_ascii_v1 分词器 + BM25Index（正 IDF 变体）+ 检索 CLI。45 项检索测试（12 tokenize + 25 BM25 + 8 CLI）全部通过。250 passed, 1 skipped, pip check, JS 语法均通过。",
+  "files": [
+    "docs/collaboration/submissions/T007/report.md",
+    "docs/collaboration/submissions/T007/verification.md",
+    "docs/collaboration/submissions/T007/submission.json",
+    "docs/collaboration/submissions/T007/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T007/changed-files.json",
+  "checks": [
+    {"item": "分词手工用例", "result": "pass - 12 passed", "evidence_id": "V01"},
+    {"item": "BM25 算术金例 ln(1.2)", "result": "pass", "evidence_id": "V02"},
+    {"item": "词频饱和/长度归一化/去重查询/贡献加和", "result": "pass", "evidence_id": "V02"},
+    {"item": "重复 chunk_id 报错", "result": "pass", "evidence_id": "V02"},
+    {"item": "深拷贝隔离（输入/结果）", "result": "pass", "evidence_id": "V02"},
+    {"item": "参数校验（k1/b/top_k）", "result": "pass", "evidence_id": "V02"},
+    {"item": "CLI 成功命中", "result": "pass", "evidence_id": "V03"},
+    {"item": "CLI 无命中", "result": "pass", "evidence_id": "V03"},
+    {"item": "CLI 部分失败保留命中", "result": "pass", "evidence_id": "V03"},
+    {"item": "CLI 参数错误 exit 2", "result": "pass", "evidence_id": "V03"},
+    {"item": "CLI UTF-8 输出", "result": "pass", "evidence_id": "V03"},
+    {"item": "全量 pytest 250 passed", "result": "pass", "evidence_id": "V04"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V05"},
+    {"item": "JS 语法检查", "result": "pass", "evidence_id": "V06"}
+  ],
+  "blockers": []
+}

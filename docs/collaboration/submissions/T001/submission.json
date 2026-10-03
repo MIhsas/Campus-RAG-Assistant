@@ -1,0 +1,147 @@
+{
+  "task_id": "T001",
+  "task_revision": "v1",
+  "submission_revision": 3,
+  "responds_to": "T001-R2",
+  "status": "ready_for_review",
+  "summary": "R2 修订：实际重新计算记录范围内全部12个文件的字节数和 SHA-256，sync report 与 inventory；修正4个由 Astra 更新的文件哈希（01-系统方案、02-开发路线、README、STATUS）；V20 删除 CLAUDE.md 未变更错误断言，改为记录当前值并说明无历史基线；Docker Compose 新增 V11d 独立验证，evidence_id 改指 V11d 并补充可执行文件路径。",
+  "files": [
+    "docs/collaboration/submissions/T001/report.md",
+    "docs/collaboration/submissions/T001/verification.md",
+    "docs/collaboration/submissions/T001/inventory.json",
+    "docs/collaboration/submissions/T001/submission.json"
+  ],
+  "history": [
+    "docs/collaboration/submissions/T001/history/revision-1/",
+    "docs/collaboration/submissions/T001/history/revision-2/"
+  ],
+  "checks": [
+    {
+      "item": "工作区确认",
+      "result": "pass",
+      "evidence_id": "V01"
+    },
+    {
+      "item": "Git 状态（只读检查）",
+      "result": "pass - 未初始化，如实记录",
+      "evidence_id": "V02"
+    },
+    {
+      "item": "操作系统与资源",
+      "result": "pass",
+      "evidence_id": "V03-V06"
+    },
+    {
+      "item": "GPU 信息",
+      "result": "pass - nvidia-smi 可用，未验证 CUDA",
+      "evidence_id": "V07"
+    },
+    {
+      "item": "Python 环境",
+      "result": "pass - 3.12.7, pip, venv 均可用",
+      "evidence_id": "V08"
+    },
+    {
+      "item": "Git 客户端",
+      "result": "pass",
+      "evidence_id": "V09"
+    },
+    {
+      "item": "Node.js",
+      "result": "pass",
+      "evidence_id": "V10"
+    },
+    {
+      "item": "Docker 客户端（路径已修正）",
+      "result": "pass",
+      "evidence_id": "V11a, V11b"
+    },
+    {
+      "item": "Docker Compose（独立验证）",
+      "result": "pass - v2.39.2, docker-compose.exe 路径已记录",
+      "evidence_id": "V11d"
+    },
+    {
+      "item": "Docker 守护进程（改标 unknown）",
+      "result": "unknown - 命名管道不存在，当前上下文无法连接",
+      "evidence_id": "V11c"
+    },
+    {
+      "item": "WSL（Ubuntu 已安装，未启动）",
+      "result": "pass",
+      "evidence_id": "V12"
+    },
+    {
+      "item": "项目文件盘点与哈希（全部重新计算）",
+      "result": "pass - 12 项字节数和哈希均与 inventory 一致",
+      "evidence_id": "V15"
+    },
+    {
+      "item": "校园政策语料搜索",
+      "result": "pass - 目录范围内未发现",
+      "evidence_id": "V16"
+    },
+    {
+      "item": "敏感文件名检查（范围已收窄）",
+      "result": "pass - 按 .env 模式未发现，不代表全面审计",
+      "evidence_id": "V17"
+    },
+    {
+      "item": "JSON 解析验证",
+      "result": "pass - inventory 12 files 11 tools, submission revision=3",
+      "evidence_id": "V18"
+    },
+    {
+      "item": "交付文件完整性",
+      "result": "pass",
+      "evidence_id": "V19"
+    },
+    {
+      "item": "项目文件与协作文件当前状态",
+      "result": "pass - 记录当前值，CLAUDE.md 无历史基线可比",
+      "evidence_id": "V20"
+    },
+    {
+      "item": "report 与 inventory 交叉验证",
+      "result": "pass - 12 项全部匹配",
+      "evidence_id": "V21"
+    }
+  ],
+  "blockers": [
+    {
+      "description": "具体语料尚未由用户提供",
+      "impact": "M0 语料盘点的前置条件；学校已确认为四川农业大学"
+    }
+  ],
+  "change_log": [
+    {
+      "finding": "R2-1",
+      "description": "当前哈希与重新取哈希声明不一致",
+      "actions": [
+        "实际重新计算记录范围内全部12个文件的字节数和 SHA-256",
+        "修正4个文件哈希：01-系统方案(27048/7626bed1)、02-开发路线(19476/e5a7c781)、README(2521/42f4377c)、STATUS(948/3f9aa301)",
+        "同步 report.md 4.3 与 inventory.json project_files",
+        "V15 重写：记录实际计算命令、列出全部12项结果、标明与 revision-2 的差异及原因"
+      ]
+    },
+    {
+      "finding": "R2-2",
+      "description": "V20 基线声明缺乏依据",
+      "actions": [
+        "V20 删除 CLAUDE.md 与首次提交一致的错误断言",
+        "改为记录 CLAUDE.md 当前哈希(423d0c4b)和字节数(1618)，说明无历史基线可比",
+        "任务书和协议记录当前哈希并注明是否可与首次提交比对"
+      ]
+    },
+    {
+      "finding": "R2-2(Compose)",
+      "description": "Docker Compose evidence_id 指向无独立版本输出的 V11a",
+      "actions": [
+        "新增 V11d：独立运行 docker compose version，记录退出码0和版本 v2.39.2",
+        "新增 V11d Get-Command 定位：D:\\devSoft\\Docke\\resources\\bin\\docker-compose.exe",
+        "Docker Compose 的 evidence_id 从 V11a 改为 V11d",
+        "inventory Docker Compose executable 从 null 改为实际路径"
+      ]
+    }
+  ]
+}

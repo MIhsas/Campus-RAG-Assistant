@@ -1,0 +1,77 @@
+{
+  "note": "T024 后端变更清单（相对 step2_code/backend）。sha256/size 为交付时实际文件。",
+  "new": [
+    {
+      "path": "src/campus_assistant/agent/deepseek_planner.py",
+      "sha256": "e441e2538af5d98df61c271bc0fd5726cd8026b50a428610babc9ad9a08fa62e",
+      "size": 14363
+    },
+    {
+      "path": "tests/test_deepseek_planner.py",
+      "sha256": "be22ff35907fafa8e6e9088f10c071aa12eccd76e45431bde94b36a420862cbe",
+      "size": 19735
+    },
+    {
+      "path": "scripts/trace-agent-planner.py",
+      "sha256": "23b5abc615837bce325249c233370c92f178528d8d75e5ff3629dd01fec31481",
+      "size": 10492
+    }
+  ],
+  "modified": [
+    {
+      "path": "src/campus_assistant/agent/__init__.py",
+      "sha256": "a99841264dfdc62a0a8306f22e9db19c06126d8ca5cb760096ab2b1a838501a4",
+      "size": 1582
+    },
+    {
+      "path": "src/campus_assistant/agent/planner.py",
+      "sha256": "c2d571f35cf361d88aebdadffb57dca70c0c9bc2b5ccb482e11a5a3694a2846f",
+      "size": 3843
+    },
+    {
+      "path": "src/campus_assistant/agent/workflow.py",
+      "sha256": "36ca535610687149ad86c940d7600cde86c996b0fc4da074cfe468de8ba5bd36",
+      "size": 18551
+    },
+    {
+      "path": "src/campus_assistant/agent/tools.py",
+      "sha256": "8a3915171d0efce0ec420c097b876b0d507222f8beddf4bb3390bda0e488d308",
+      "size": 9649
+    },
+    {
+      "path": "src/campus_assistant/api/agent.py",
+      "sha256": "8db8d235cb1173b0025198f399681108f7503f43ce3303150915e0a064545d80",
+      "size": 7117
+    },
+    {
+      "path": "src/campus_assistant/main.py",
+      "sha256": "0b5fb49e23ff65a940e45ae014418372a9c334c1009f0b1968172379a351bd8c",
+      "size": 12782
+    },
+    {
+      "path": "scripts/serve-corpus.py",
+      "sha256": "7df070056d6fc962c447bc7b22a71e36cfcee43df67c77a572d837f962783bc8",
+      "size": 10443
+    },
+    {
+      "path": "src/campus_assistant/static/workflow.html",
+      "sha256": "48c2b1339c17f6839f0cafa57c0cc975983e90fd9aefde37142fc883ec862cf1",
+      "size": 17789
+    },
+    {
+      "path": "scripts/check-workflow-behavior.cjs",
+      "sha256": "173c0a3809f787e4b4b352d12d2105624e9ebd8c9107f282d66a15bb78b9fa87",
+      "size": 12530
+    },
+    {
+      "path": "env.example",
+      "sha256": "aa59e051e0951bc2272e675d42b123dc19336cf17a290e682fed31e5bd46a422",
+      "size": 1247
+    },
+    {
+      "path": "README.md",
+      "sha256": "98af20ee064281aa0cc171ecb8260f4c1f7d57d54a007b0b63e3962ce5758d7f",
+      "size": 50745
+    }
+  ]
+}

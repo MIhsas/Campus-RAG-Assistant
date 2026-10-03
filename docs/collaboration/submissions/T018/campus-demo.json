@@ -1,0 +1,1218 @@
+{
+  "demo": "T018 unified campus demo — local API record (combined corpus + marked mock generator)",
+  "evidence_kind": "本地统一服务 API 记录；生成回答均为标记 mock（非真实 DeepSeek 实时回答）；零外部调用",
+  "external_model_calls": 0,
+  "combined_corpus": ".cache\\demo-campus-corpus",
+  "sources_readonly": [
+    "examples\\parse-corpus",
+    "examples\\comparison-corpus"
+  ],
+  "calls": [
+    {
+      "name": "home",
+      "method": "GET",
+      "url": "/",
+      "request": null,
+      "status_code": 200,
+      "response": {
+        "_non_json": true
+      }
+    },
+    {
+      "name": "ask-status",
+      "method": "GET",
+      "url": "/api/v1/ask/status",
+      "request": null,
+      "status_code": 200,
+      "response": {
+        "corpus_status": "ready",
+        "answer_mode_default": "extractive",
+        "answer_modes_available": [
+          "extractive",
+          "generated"
+        ],
+        "generator_configured": true,
+        "generator_identity": "mock:campus-demo（模拟，非真实 DeepSeek）",
+        "available_modes": [
+          "bm25"
+        ],
+        "filter_options": {
+          "campus": [
+            "成都校区"
+          ],
+          "student_type": [
+            "全日制本科"
+          ],
+          "admission_year": [
+            2022,
+            2023,
+            2024
+          ]
+        },
+        "request_id": "925cc9e6-1b4c-466b-ab62-14cfe3db3e01"
+      }
+    },
+    {
+      "name": "search-status",
+      "method": "GET",
+      "url": "/api/v1/search/status",
+      "request": null,
+      "status_code": 200,
+      "response": {
+        "status": "ready",
+        "document_count": 5,
+        "parsed_count": 5,
+        "chunk_count": 30,
+        "indexed_chunk_count": 30,
+        "synthetic_count": 5,
+        "retriever_version": "1.1",
+        "tokenizer_version": "cjk_bigram_ascii_v1",
+        "chunker_version": "1.0",
+        "max_chars": 500,
+        "k1": 1.5,
+        "b": 0.75,
+        "available_modes": [
+          "bm25"
+        ],
+        "embedding_model": null,
+        "embedding_model_revision": null,
+        "embedding_max_seq_length": null,
+        "truncated_chunk_count": null,
+        "embedding_error": null,
+        "filter_options": {
+          "campus": [
+            "成都校区"
+          ],
+          "student_type": [
+            "全日制本科"
+          ],
+          "admission_year": [
+            2022,
+            2023,
+            2024
+          ]
+        },
+        "errors": [],
+        "request_id": "a5513afb-4cd0-4416-960e-dbaaaa90ae99"
+      }
+    },
+    {
+      "name": "procedures-list",
+      "method": "GET",
+      "url": "/api/v1/procedures",
+      "request": null,
+      "status_code": 200,
+      "response": {
+        "configured": true,
+        "is_synthetic": true,
+        "procedures": [
+          {
+            "procedure_id": "proc-apply-defer",
+            "title": "缓考申请（合成演示）",
+            "summary": "因病或其他特殊原因不能参加期末考试时的缓考申请流程（合成语料整理）。",
+            "template_version": "1.0",
+            "is_synthetic": true,
+            "step_count": 4
+          },
+          {
+            "procedure_id": "proc-review-grade",
+            "title": "成绩复核（合成演示）",
+            "summary": "对课程成绩有疑问时的复核流程（合成语料整理）。",
+            "template_version": "1.0",
+            "is_synthetic": true,
+            "step_count": 3
+          }
+        ],
+        "request_id": "4bfbde16-9648-4464-a1cb-b798e0e65086"
+      }
+    },
+    {
+      "name": "comparison-groups",
+      "method": "GET",
+      "url": "/api/v1/comparison/groups",
+      "request": null,
+      "status_code": 200,
+      "response": {
+        "groups": [
+          {
+            "policy_group_id": "syn-parse-group",
+            "versions": [
+              {
+                "document_id": "syn-parse-txt-001",
+                "policy_group_id": "syn-parse-group",
+                "title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "published_at": "2025-01-15",
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "is_synthetic": true,
+                "source_url": "https://example.org/policy/parse/txt",
+                "block_count": 6
+              },
+              {
+                "document_id": "syn-parse-docx-001",
+                "policy_group_id": "syn-parse-group",
+                "title": "合成测试课程成绩登记表（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "published_at": "2025-02-01",
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2024
+                  ]
+                },
+                "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+                "is_synthetic": true,
+                "source_url": "https://example.org/policy/parse/docx",
+                "block_count": 11
+              }
+            ]
+          },
+          {
+            "policy_group_id": "syn-cmp-defer",
+            "versions": [
+              {
+                "document_id": "cmp-defer-v1",
+                "policy_group_id": "syn-cmp-defer",
+                "title": "缓考申请办法（虚构测试）",
+                "version_label": "虚构 2024 版",
+                "published_at": "2024-01-01",
+                "effective_from": "2024-03-01",
+                "effective_to": "2025-02-28",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2022,
+                    2023
+                  ]
+                },
+                "document_sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+                "is_synthetic": true,
+                "source_url": "https://example.org/cmp/cmp-defer-v1",
+                "block_count": 5
+              },
+              {
+                "document_id": "cmp-defer-v2",
+                "policy_group_id": "syn-cmp-defer",
+                "title": "缓考申请办法（虚构测试）",
+                "version_label": "虚构 2025 版",
+                "published_at": "2025-01-01",
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "document_sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+                "is_synthetic": true,
+                "source_url": "https://example.org/cmp/cmp-defer-v2",
+                "block_count": 5
+              }
+            ]
+          },
+          {
+            "policy_group_id": "syn-cmp-grades",
+            "versions": [
+              {
+                "document_id": "cmp-grades-1",
+                "policy_group_id": "syn-cmp-grades",
+                "title": "成绩登记须知（虚构测试）",
+                "version_label": "虚构 v1",
+                "published_at": "2024-01-01",
+                "effective_from": "2024-03-01",
+                "effective_to": null,
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023
+                  ]
+                },
+                "document_sha256": "ea3f68c1b0abb3254b7e7792cd007a0a69bf23325e150bd416c4ea29a75e635b",
+                "is_synthetic": true,
+                "source_url": "https://example.org/cmp/cmp-grades-1",
+                "block_count": 3
+              }
+            ]
+          }
+        ],
+        "disclaimer": "文字差异对比：不判断版本适用性；日期较新不等于现行有效。",
+        "request_id": "41ffa51e-93a6-4069-a104-ea274db20a3c"
+      }
+    },
+    {
+      "name": "comparison",
+      "method": "POST",
+      "url": "/api/v1/comparison",
+      "request": {
+        "left_document_id": "cmp-defer-v1",
+        "right_document_id": "cmp-defer-v2"
+      },
+      "status_code": 200,
+      "response": {
+        "left": {
+          "document_id": "cmp-defer-v1",
+          "policy_group_id": "syn-cmp-defer",
+          "title": "缓考申请办法（虚构测试）",
+          "version_label": "虚构 2024 版",
+          "published_at": "2024-01-01",
+          "effective_from": "2024-03-01",
+          "effective_to": "2025-02-28",
+          "scope": {
+            "campus": [
+              "成都校区"
+            ],
+            "student_type": [
+              "全日制本科"
+            ],
+            "admission_years": [
+              2022,
+              2023
+            ]
+          },
+          "document_sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+          "is_synthetic": true,
+          "source_url": "https://example.org/cmp/cmp-defer-v1"
+        },
+        "right": {
+          "document_id": "cmp-defer-v2",
+          "policy_group_id": "syn-cmp-defer",
+          "title": "缓考申请办法（虚构测试）",
+          "version_label": "虚构 2025 版",
+          "published_at": "2025-01-01",
+          "effective_from": "2025-03-01",
+          "effective_to": null,
+          "scope": {
+            "campus": [
+              "成都校区"
+            ],
+            "student_type": [
+              "全日制本科"
+            ],
+            "admission_years": [
+              2023,
+              2024
+            ]
+          },
+          "document_sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+          "is_synthetic": true,
+          "source_url": "https://example.org/cmp/cmp-defer-v2"
+        },
+        "counts": {
+          "added": 1,
+          "deleted": 1,
+          "modified": 1,
+          "unchanged": 3
+        },
+        "entries": [
+          {
+            "change_type": "unchanged",
+            "clause_key": null,
+            "left": {
+              "document_id": "cmp-defer-v1",
+              "block_id": "b3200438a0747c6f",
+              "char_start": 0,
+              "char_end": 37,
+              "text": "【合成测试文件 — 虚构政策，仅用于版本对比演示，不代表任何真实学校规定】",
+              "kind": "paragraph",
+              "document_sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+              "preview_url": "/preview#cmp-defer-v1/b3200438a0747c6f"
+            },
+            "right": {
+              "document_id": "cmp-defer-v2",
+              "block_id": "2fb244a29d56b00a",
+              "char_start": 0,
+              "char_end": 37,
+              "text": "【合成测试文件 — 虚构政策，仅用于版本对比演示，不代表任何真实学校规定】",
+              "kind": "paragraph",
+              "document_sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+              "preview_url": "/preview#cmp-defer-v2/2fb244a29d56b00a"
+            },
+            "diff_segments": null,
+            "diff_id": "D1"
+          },
+          {
+            "change_type": "unchanged",
+            "clause_key": null,
+            "left": {
+              "document_id": "cmp-defer-v1",
+              "block_id": "fcbf298150240157",
+              "char_start": 0,
+              "char_end": 12,
+              "text": "缓考申请办法（虚构测试）",
+              "kind": "paragraph",
+              "document_sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+              "preview_url": "/preview#cmp-defer-v1/fcbf298150240157"
+            },
+            "right": {
+              "document_id": "cmp-defer-v2",
+              "block_id": "bc5f604c8fe5ba8d",
+              "char_start": 0,
+              "char_end": 12,
+              "text": "缓考申请办法（虚构测试）",
+              "kind": "paragraph",
+              "document_sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+              "preview_url": "/preview#cmp-defer-v2/bc5f604c8fe5ba8d"
+            },
+            "diff_segments": null,
+            "diff_id": "D2"
+          },
+          {
+            "change_type": "unchanged",
+            "clause_key": "第一条",
+            "left": {
+              "document_id": "cmp-defer-v1",
+              "block_id": "3d5e04669fbfe064",
+              "char_start": 0,
+              "char_end": 35,
+              "text": "第一条 本办法所称缓考，指学生因病因事不能参加期末考试而申请延期考核。",
+              "kind": "paragraph",
+              "document_sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+              "preview_url": "/preview#cmp-defer-v1/3d5e04669fbfe064"
+            },
+            "right": {
+              "document_id": "cmp-defer-v2",
+              "block_id": "5d10baf30aed29f6",
+              "char_start": 0,
+              "char_end": 35,
+              "text": "第一条 本办法所称缓考，指学生因病因事不能参加期末考试而申请延期考核。",
+              "kind": "paragraph",
+              "document_sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+              "preview_url": "/preview#cmp-defer-v2/5d10baf30aed29f6"
+            },
+            "diff_segments": null,
+            "diff_id": "D3"
+          },
+          {
+            "change_type": "modified",
+            "clause_key": "第二条",
+            "left": {
+              "document_id": "cmp-defer-v1",
+              "block_id": "285acc86e242ef04",
+              "char_start": 0,
+              "char_end": 23,
+              "text": "第二条 缓考申请须在考试前 5 个工作日提交。",
+              "kind": "paragraph",
+              "document_sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+              "preview_url": "/preview#cmp-defer-v1/285acc86e242ef04"
+            },
+            "right": {
+              "document_id": "cmp-defer-v2",
+              "block_id": "f5ca416480f4121e",
+              "char_start": 0,
+              "char_end": 23,
+              "text": "第二条 缓考申请须在考试前 3 个工作日提交。",
+              "kind": "paragraph",
+              "document_sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+              "preview_url": "/preview#cmp-defer-v2/f5ca416480f4121e"
+            },
+            "diff_segments": [
+              {
+                "op": "equal",
+                "text": "第二条 缓考申请须在考试前 "
+              },
+              {
+                "op": "delete",
+                "text": "5"
+              },
+              {
+                "op": "insert",
+                "text": "3"
+              },
+              {
+                "op": "equal",
+                "text": " 个工作日提交。"
+              }
+            ],
+            "diff_id": "D4"
+          },
+          {
+            "change_type": "deleted",
+            "clause_key": "第三条",
+            "left": {
+              "document_id": "cmp-defer-v1",
+              "block_id": "f35e800308f2c324",
+              "char_start": 0,
+              "char_end": 20,
+              "text": "第三条 申请缓考须同时提交书面情况说明。",
+              "kind": "paragraph",
+              "document_sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+              "preview_url": "/preview#cmp-defer-v1/f35e800308f2c324"
+            },
+            "right": null,
+            "diff_segments": null,
+            "diff_id": "D5"
+          },
+          {
+            "change_type": "added",
+            "clause_key": "第四条",
+            "left": null,
+            "right": {
+              "document_id": "cmp-defer-v2",
+              "block_id": "f9e36a3d2d505060",
+              "char_start": 0,
+              "char_end": 26,
+              "text": "第四条 学院应在收到申请后 3 个工作日内完成审批。",
+              "kind": "paragraph",
+              "document_sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+              "preview_url": "/preview#cmp-defer-v2/f9e36a3d2d505060"
+            },
+            "diff_segments": null,
+            "diff_id": "D6"
+          }
+        ],
+        "algorithm": {
+          "note": "对齐顺序：① 第X条标识优先配对（新增条款不会使后续条款错位）；② 未编号正文按保持顺序的精确文本匹配；③ 未编号剩余按保持顺序的相似度配对为修改；④ 其余为新增/删除。",
+          "limitations": [
+            "当前仅比较段落（paragraph）块，表格块不参与对比——不含表格差异；用于 DOCX 时请勿把未展示的表格变化当作无变化。",
+            "条款重编号（如第三条改为第四条）会被识别为删除+新增两条，而不是同一条款的修改。",
+            "条款跨位置移动可能被识别为删除+新增，而非移动。",
+            "同一文档内重复的条款标识仅首个参与标识配对，其余同号条款直接归入新增/删除，不做正文匹配。",
+            "文字差异不代表版本适用性；日期较新不等于现行有效。"
+          ]
+        },
+        "disclaimer": "文字差异对比：不判断哪个版本适用于某个学生；日期较新不等于现行有效；差异不构成资格或政策适用结论。",
+        "request_id": "a2ef6c94-2d8b-45dd-a3c9-cba592aaa3a5"
+      }
+    },
+    {
+      "name": "ask-extractive",
+      "method": "POST",
+      "url": "/api/v1/ask",
+      "request": {
+        "query": "缓考申请须由谁批准，之后还需要向哪个部门备案？",
+        "top_k": 5,
+        "mode": "bm25",
+        "answer_mode": "extractive",
+        "filters": {
+          "admission_year": 2023
+        }
+      },
+      "status_code": 200,
+      "response": {
+        "query": "缓考申请须由谁批准，之后还需要向哪个部门备案？",
+        "query_tokens": [
+          "缓考",
+          "考申",
+          "申请",
+          "请须",
+          "须由",
+          "由谁",
+          "谁批",
+          "批准",
+          "之后",
+          "后还",
+          "还需",
+          "需要",
+          "要向",
+          "向哪",
+          "哪个",
+          "个部",
+          "部门",
+          "门备",
+          "备案"
+        ],
+        "mode": "bm25",
+        "answer_mode": "extractive",
+        "status": "evidence_only",
+        "answer": null,
+        "answer_error": null,
+        "generation_meta": null,
+        "disclaimer": "以下是相关原文摘录，尚未生成答案，需核对适用条件。",
+        "evidence": [
+          {
+            "evidence_id": "E1",
+            "text": "第二条 学生因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请。缓考申请须经所在学院批准，报教务处备案后方可生效。",
+            "document_id": "syn-parse-txt-001",
+            "block_id": "9df6bfbd98df733e",
+            "chunk_id": "1808dc49035170f32fe995017a4e13afa744ea421b1cb286b118412ba63d1c30",
+            "char_start": 0,
+            "char_end": 63,
+            "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+            "title": "合成测试教务管理办法（正文解析示例）",
+            "source_url": "https://example.org/policy/parse/txt",
+            "version_label": "解析示例 v1",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2023,
+                2024
+              ]
+            },
+            "published_at": "2025-01-15",
+            "effective_from": "2025-03-01",
+            "effective_to": null,
+            "is_synthetic": true,
+            "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+          },
+          {
+            "evidence_id": "E2",
+            "text": "第二条 缓考申请须在考试前 5 个工作日提交。",
+            "document_id": "cmp-defer-v1",
+            "block_id": "285acc86e242ef04",
+            "chunk_id": "66561cee586157c4d44e2c00b7fb9e42d03574143fe727ad5a8947648d44e8e5",
+            "char_start": 0,
+            "char_end": 23,
+            "document_sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+            "title": "缓考申请办法（虚构测试）",
+            "source_url": "https://example.org/cmp/cmp-defer-v1",
+            "version_label": "虚构 2024 版",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2022,
+                2023
+              ]
+            },
+            "published_at": "2024-01-01",
+            "effective_from": "2024-03-01",
+            "effective_to": "2025-02-28",
+            "is_synthetic": true,
+            "preview_url": "/preview#cmp-defer-v1/285acc86e242ef04"
+          },
+          {
+            "evidence_id": "E3",
+            "text": "第二条 缓考申请须在考试前 3 个工作日提交。",
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "chunk_id": "8040438cb717d36a3024ac361aa0073a1cc02e14874290cd1207d8dde31d719f",
+            "char_start": 0,
+            "char_end": 23,
+            "document_sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+            "title": "缓考申请办法（虚构测试）",
+            "source_url": "https://example.org/cmp/cmp-defer-v2",
+            "version_label": "虚构 2025 版",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2023,
+                2024
+              ]
+            },
+            "published_at": "2025-01-01",
+            "effective_from": "2025-03-01",
+            "effective_to": null,
+            "is_synthetic": true,
+            "preview_url": "/preview#cmp-defer-v2/f5ca416480f4121e"
+          },
+          {
+            "evidence_id": "E4",
+            "text": "缓考申请办法（虚构测试）",
+            "document_id": "cmp-defer-v1",
+            "block_id": "fcbf298150240157",
+            "chunk_id": "93c28c4f6fb38f5e081269e47a44d75196811d5a78e74a2fd87340120982d75a",
+            "char_start": 0,
+            "char_end": 12,
+            "document_sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+            "title": "缓考申请办法（虚构测试）",
+            "source_url": "https://example.org/cmp/cmp-defer-v1",
+            "version_label": "虚构 2024 版",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2022,
+                2023
+              ]
+            },
+            "published_at": "2024-01-01",
+            "effective_from": "2024-03-01",
+            "effective_to": "2025-02-28",
+            "is_synthetic": true,
+            "preview_url": "/preview#cmp-defer-v1/fcbf298150240157"
+          },
+          {
+            "evidence_id": "E5",
+            "text": "缓考申请办法（虚构测试）",
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "chunk_id": "e681bf96b691144876bd1a33f591dd9b025ff297ca261e7299ad0993fdbb0546",
+            "char_start": 0,
+            "char_end": 12,
+            "document_sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+            "title": "缓考申请办法（虚构测试）",
+            "source_url": "https://example.org/cmp/cmp-defer-v2",
+            "version_label": "虚构 2025 版",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2023,
+                2024
+              ]
+            },
+            "published_at": "2025-01-01",
+            "effective_from": "2025-03-01",
+            "effective_to": null,
+            "is_synthetic": true,
+            "preview_url": "/preview#cmp-defer-v2/bc5f604c8fe5ba8d"
+          }
+        ],
+        "evidence_state": "ok",
+        "empty_message": null,
+        "insufficient_reason": null,
+        "budget": {
+          "max_items": 5,
+          "max_total_chars": 6000,
+          "included_items": 5,
+          "included_chars": 133,
+          "skipped_items": 0,
+          "duplicate_chunks": 0
+        },
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": 2023,
+          "as_of_date": null
+        },
+        "filter_summary": {
+          "active": true,
+          "document_total": 5,
+          "allowed_count": 4,
+          "excluded_counts": {
+            "scope_unknown": 0,
+            "scope_mismatch": 1,
+            "date_unknown_from": 0,
+            "not_yet_effective": 0,
+            "expired": 0
+          },
+          "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。",
+          "notes": []
+        },
+        "request_id": "22961cdf-2a4e-423e-93d3-80b91ccc604a"
+      }
+    },
+    {
+      "name": "ask-generated-mock",
+      "method": "POST",
+      "url": "/api/v1/ask",
+      "request": {
+        "query": "缓考申请须由谁批准，之后还需要向哪个部门备案？",
+        "top_k": 5,
+        "mode": "bm25",
+        "answer_mode": "generated",
+        "filters": {
+          "admission_year": 2023
+        }
+      },
+      "status_code": 200,
+      "response": {
+        "query": "缓考申请须由谁批准，之后还需要向哪个部门备案？",
+        "query_tokens": [
+          "缓考",
+          "考申",
+          "申请",
+          "请须",
+          "须由",
+          "由谁",
+          "谁批",
+          "批准",
+          "之后",
+          "后还",
+          "还需",
+          "需要",
+          "要向",
+          "向哪",
+          "哪个",
+          "个部",
+          "部门",
+          "门备",
+          "备案"
+        ],
+        "mode": "bm25",
+        "answer_mode": "generated",
+        "status": "generated",
+        "answer": {
+          "paragraphs": [
+            {
+              "text": "【模拟输出，非真实 DeepSeek 回答】根据原文摘录整理的相关内容见引用（本段由本地模拟生成器产生，仅用于演示）。",
+              "evidence_ids": [
+                "E1"
+              ],
+              "citations": [
+                {
+                  "evidence_id": "E1",
+                  "document_id": "syn-parse-txt-001",
+                  "block_id": "9df6bfbd98df733e",
+                  "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+                }
+              ]
+            }
+          ]
+        },
+        "answer_error": null,
+        "generation_meta": {
+          "provider": "mock",
+          "model": "mock-campus-demo",
+          "request_id": null,
+          "usage": null,
+          "latency_ms": 0,
+          "max_tokens": null,
+          "finish_reason": null
+        },
+        "disclaimer": "自动生成内容仅供参考，引用仅证明定位有效，需人工核对适用条件与语义支持。",
+        "evidence": [
+          {
+            "evidence_id": "E1",
+            "text": "第二条 学生因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请。缓考申请须经所在学院批准，报教务处备案后方可生效。",
+            "document_id": "syn-parse-txt-001",
+            "block_id": "9df6bfbd98df733e",
+            "chunk_id": "1808dc49035170f32fe995017a4e13afa744ea421b1cb286b118412ba63d1c30",
+            "char_start": 0,
+            "char_end": 63,
+            "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+            "title": "合成测试教务管理办法（正文解析示例）",
+            "source_url": "https://example.org/policy/parse/txt",
+            "version_label": "解析示例 v1",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2023,
+                2024
+              ]
+            },
+            "published_at": "2025-01-15",
+            "effective_from": "2025-03-01",
+            "effective_to": null,
+            "is_synthetic": true,
+            "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+          },
+          {
+            "evidence_id": "E2",
+            "text": "第二条 缓考申请须在考试前 5 个工作日提交。",
+            "document_id": "cmp-defer-v1",
+            "block_id": "285acc86e242ef04",
+            "chunk_id": "66561cee586157c4d44e2c00b7fb9e42d03574143fe727ad5a8947648d44e8e5",
+            "char_start": 0,
+            "char_end": 23,
+            "document_sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+            "title": "缓考申请办法（虚构测试）",
+            "source_url": "https://example.org/cmp/cmp-defer-v1",
+            "version_label": "虚构 2024 版",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2022,
+                2023
+              ]
+            },
+            "published_at": "2024-01-01",
+            "effective_from": "2024-03-01",
+            "effective_to": "2025-02-28",
+            "is_synthetic": true,
+            "preview_url": "/preview#cmp-defer-v1/285acc86e242ef04"
+          },
+          {
+            "evidence_id": "E3",
+            "text": "第二条 缓考申请须在考试前 3 个工作日提交。",
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "chunk_id": "8040438cb717d36a3024ac361aa0073a1cc02e14874290cd1207d8dde31d719f",
+            "char_start": 0,
+            "char_end": 23,
+            "document_sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+            "title": "缓考申请办法（虚构测试）",
+            "source_url": "https://example.org/cmp/cmp-defer-v2",
+            "version_label": "虚构 2025 版",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2023,
+                2024
+              ]
+            },
+            "published_at": "2025-01-01",
+            "effective_from": "2025-03-01",
+            "effective_to": null,
+            "is_synthetic": true,
+            "preview_url": "/preview#cmp-defer-v2/f5ca416480f4121e"
+          },
+          {
+            "evidence_id": "E4",
+            "text": "缓考申请办法（虚构测试）",
+            "document_id": "cmp-defer-v1",
+            "block_id": "fcbf298150240157",
+            "chunk_id": "93c28c4f6fb38f5e081269e47a44d75196811d5a78e74a2fd87340120982d75a",
+            "char_start": 0,
+            "char_end": 12,
+            "document_sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+            "title": "缓考申请办法（虚构测试）",
+            "source_url": "https://example.org/cmp/cmp-defer-v1",
+            "version_label": "虚构 2024 版",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2022,
+                2023
+              ]
+            },
+            "published_at": "2024-01-01",
+            "effective_from": "2024-03-01",
+            "effective_to": "2025-02-28",
+            "is_synthetic": true,
+            "preview_url": "/preview#cmp-defer-v1/fcbf298150240157"
+          },
+          {
+            "evidence_id": "E5",
+            "text": "缓考申请办法（虚构测试）",
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "chunk_id": "e681bf96b691144876bd1a33f591dd9b025ff297ca261e7299ad0993fdbb0546",
+            "char_start": 0,
+            "char_end": 12,
+            "document_sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+            "title": "缓考申请办法（虚构测试）",
+            "source_url": "https://example.org/cmp/cmp-defer-v2",
+            "version_label": "虚构 2025 版",
+            "scope": {
+              "campus": [
+                "成都校区"
+              ],
+              "student_type": [
+                "全日制本科"
+              ],
+              "admission_years": [
+                2023,
+                2024
+              ]
+            },
+            "published_at": "2025-01-01",
+            "effective_from": "2025-03-01",
+            "effective_to": null,
+            "is_synthetic": true,
+            "preview_url": "/preview#cmp-defer-v2/bc5f604c8fe5ba8d"
+          }
+        ],
+        "evidence_state": "ok",
+        "empty_message": null,
+        "insufficient_reason": null,
+        "budget": {
+          "max_items": 5,
+          "max_total_chars": 6000,
+          "included_items": 5,
+          "included_chars": 133,
+          "skipped_items": 0,
+          "duplicate_chunks": 0
+        },
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": 2023,
+          "as_of_date": null
+        },
+        "filter_summary": {
+          "active": true,
+          "document_total": 5,
+          "allowed_count": 4,
+          "excluded_counts": {
+            "scope_unknown": 0,
+            "scope_mismatch": 1,
+            "date_unknown_from": 0,
+            "not_yet_effective": 0,
+            "expired": 0
+          },
+          "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。",
+          "notes": []
+        },
+        "request_id": "71d011a0-96a7-477e-a97f-5c1d5c23eff5"
+      }
+    },
+    {
+      "name": "procedures-draft",
+      "method": "POST",
+      "url": "/api/v1/procedures/proc-apply-defer/draft",
+      "request": {
+        "filters": {
+          "admission_year": 2023
+        }
+      },
+      "status_code": 200,
+      "response": {
+        "procedure_id": "proc-apply-defer",
+        "title": "缓考申请（合成演示）",
+        "summary": "因病或其他特殊原因不能参加期末考试时的缓考申请流程（合成语料整理）。",
+        "template_version": "1.0",
+        "is_synthetic": true,
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": 2023,
+          "as_of_date": null
+        },
+        "filter_summary": {
+          "active": true,
+          "allowed_count": 4,
+          "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。"
+        },
+        "steps": [
+          {
+            "step_id": "d1",
+            "title": "考试前提出缓考申请",
+            "detail": "因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请（原文所载为相对期限“考试前”，未给出具体日期）。",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "9df6bfbd98df733e",
+                "char_start": 0,
+                "char_end": 38,
+                "quote": "第二条 学生因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请。",
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e",
+                "document_title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "申请入口与表格获取方式"
+            ],
+            "status": "ok",
+            "fallback": null
+          },
+          {
+            "step_id": "d2",
+            "title": "经所在学院批准",
+            "detail": "缓考申请须经所在学院批准。",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "9df6bfbd98df733e",
+                "char_start": 38,
+                "char_end": 50,
+                "quote": "缓考申请须经所在学院批准",
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e",
+                "document_title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "学院审批部门联系方式"
+            ],
+            "status": "ok",
+            "fallback": null
+          },
+          {
+            "step_id": "d3",
+            "title": "报教务处备案生效",
+            "detail": "报教务处备案后方可生效。",
+            "citations": [
+              {
+                "required": true,
+                "usable": true,
+                "status": "ok",
+                "document_id": "syn-parse-txt-001",
+                "block_id": "9df6bfbd98df733e",
+                "char_start": 51,
+                "char_end": 63,
+                "quote": "报教务处备案后方可生效。",
+                "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+                "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e",
+                "document_title": "合成测试教务管理办法（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2023,
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": null
+              }
+            ],
+            "unspecified": [
+              "备案办理地点与工作时间"
+            ],
+            "status": "ok",
+            "fallback": null
+          },
+          {
+            "step_id": "d4",
+            "title": "确认材料与办理时点",
+            "detail": "材料与时点以适用资料所载为准；未覆盖部分请向办理部门核实。",
+            "citations": [
+              {
+                "required": false,
+                "usable": false,
+                "status": "source_excluded",
+                "document_id": "syn-parse-docx-001",
+                "block_id": "0a7595fda827d87e",
+                "char_start": 0,
+                "char_end": 19,
+                "quote": null,
+                "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+                "preview_url": "/preview#syn-parse-docx-001/0a7595fda827d87e",
+                "document_title": "合成测试课程成绩登记表（正文解析示例）",
+                "version_label": "解析示例 v1",
+                "scope": {
+                  "campus": [
+                    "成都校区"
+                  ],
+                  "student_type": [
+                    "全日制本科"
+                  ],
+                  "admission_years": [
+                    2024
+                  ]
+                },
+                "effective_from": "2025-03-01",
+                "effective_to": null,
+                "is_synthetic": true,
+                "note": "来源不符合当前筛选条件（不放宽筛选）"
+              }
+            ],
+            "unspecified": [
+              "其他可能要求的材料"
+            ],
+            "status": "degraded",
+            "fallback": "资料未说明，请向办理部门核实。"
+          }
+        ],
+        "saveable": true,
+        "status": "ready",
+        "issues": [],
+        "disclaimer": "合成演示清单，不代表学校受理或资格认证；政策步骤来自原文引用，缺失信息不编造。"
+      }
+    },
+    {
+      "name": "preview-page",
+      "method": "GET",
+      "url": "/preview",
+      "request": null,
+      "status_code": 200,
+      "response": {
+        "_html": 20587
+      }
+    }
+  ],
+  "notes": [
+    "组合语料保留原文档 ID/内容/哈希；两份原始夹具与 gold 未修改。",
+    "ask-generated-mock 的回答带【模拟输出，非真实 DeepSeek 回答】标记。",
+    "组合语料扩大检索候选：演示按需使用清晰筛选条件，不伪造检索结果。"
+  ]
+}

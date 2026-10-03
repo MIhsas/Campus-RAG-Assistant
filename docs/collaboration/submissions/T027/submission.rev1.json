@@ -1,0 +1,23 @@
+{
+  "task_id": "T027",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "tinyagent_integration_kind": "reference",
+  "data_note": "全部合成资料（13 文档/52 块/24 题），未经真实校园质量验证；不是校园准确率结论",
+  "summary": "T027 检索对照评测与论文证据包完成：独立评测集 examples/evaluation-v2（24 题=20 可答+4 不足，七类题型，三组同题不同筛选对；13 文档含 2 份明显标注干扰资料，11 份既有夹具逐字节拷贝）；gold 按原文独立标注（模型辅助编写如实声明、跨度原文子串精确定位、未从检索结果反推）并评测前冻结哈希。扩展 evaluation（可选标注字段/按题应用产品同一 T011 筛选/题型与筛选分组聚合/分段计时），三模式同语料同题同条件同 top_k=5 各一次正式运行（本地 BGE 复用无下载）。K=5 结果：BM25 0.950/1.000/0.867、Dense 0.800/0.850/0.578、Hybrid 0.950/1.000/0.795（R/H/M）——Hybrid 未显示优势（MRR 反低）如实报告；多证据题三模式共同短板 recall 0.667；不足题单独分母且三模式空检索率 0（有命中≠有依据）。逐题 JSON/CSV+聚合+5 案例+2 例指标手算对照一致；gold-review 人工复核清单、experiment-methods 论文方法草稿（三类证据分开）齐备。旧 8 题与原语料/gold/指标口径零改动，产品算法未为得分调参。",
+  "verification": {
+    "hand_check": "多证据 v2-q11 与不足题 v2-q24 手算与机器输出一致（evaluation-report 第 5 节）",
+    "dataset_validation": "schema 24 题全过（不足题必有 missing）；23/23 跨度原文精确定位；运行内来源校验全过；哈希评测前冻结（dataset-hashes.json）",
+    "formal_run": "三模式各一次（EXIT 0/0/0）+ 合并（EXIT 0）；同 questions_sha256/manifest_sha256/top_k=5 断言一致",
+    "tests": {"total": 77, "passed": 77, "note": "evaluation + evaluation_cli + evaluation_v2（含旧 8 题兼容、筛选准入断言、不足题分母）"},
+    "old_set_compat": "旧 8 题运行 valid（6 可答+2 不足，R1.0/H1.0/M0.9167）；旧记录未篡改",
+    "scope_note": "仅评测适配聚焦回归；未跑前端/ASR/agent/全量；零外部调用、无下载、无安装"
+  },
+  "results_summary": {"k5": {"bm25": {"recall": 0.95, "hit": 1.0, "mrr": 0.8667}, "dense": {"recall": 0.8, "hit": 0.85, "mrr": 0.5783}, "hybrid": {"recall": 0.95, "hit": 1.0, "mrr": 0.795}}, "note": "完整逐题/分组结果见 results/；Hybrid 未显示优势，不外推真实校园"},
+  "deliverables": ["evaluation-report.md", "results/per-question.json", "results/per-question.csv", "results/aggregate.json", "results/{bm25,dense,hybrid}.json", "gold-review.md", "experiment-methods.md", "dataset-hashes.json", "blocks-dump.json", "blocks-text.md", "report.md", "verification.md", "submission.json", "changed-files.json"],
+  "not_claimed": ["真实校园准确率（数据全合成）", "Hybrid 必须领先（实测未领先，如实报告）", "统计显著性（单次运行小样本）", "生成/规划质量（证据类别分开）", "标注为教师/学生独立完成（模型辅助编写已声明）"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改；未改旧 examples/evaluation、原语料、模板、metrics 指标口径、产品检索算法、Astra 文档"
+}

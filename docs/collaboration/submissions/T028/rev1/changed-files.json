@@ -1,0 +1,47 @@
+{
+  "note": "T028 变更清单（相对项目根 F:/Collage Paper）。docs/delivery/ 六件为交付包正文；backend/README.md 仅增加交付入口一节。未改产品代码、语料、gold、docs/01—04、历史实验原始文件。",
+  "files": [
+    {
+      "path": "docs/delivery/README.md",
+      "kind": "new",
+      "sha256": "714c8daa8bec1b63daafafbb33ebb26b007d80b895b0ff9932c7ed6bd7c71c51",
+      "size": 4291
+    },
+    {
+      "path": "docs/delivery/system-design.md",
+      "kind": "new",
+      "sha256": "f94595702a5b9c4815cccc1e32279ca59c34d85ff737517cb0c8b86fffbdb7ad",
+      "size": 10845
+    },
+    {
+      "path": "docs/delivery/thesis-outline.md",
+      "kind": "new",
+      "sha256": "ff3e5bc6ad49e7212fc6dddff2098d2f2f9cf3c431cb5875545a1c1dbff768a5",
+      "size": 12708
+    },
+    {
+      "path": "docs/delivery/evidence-matrix.md",
+      "kind": "new",
+      "sha256": "dd2ffcca82dfe3de891a7763dffbe24e93270257d21f65e9560aa2a9c97cc790",
+      "size": 9185
+    },
+    {
+      "path": "docs/delivery/defense-script.md",
+      "kind": "new",
+      "sha256": "087e39e625415f90e59500dc98571f46f943d677d1d5966c9b1e1c58c6c0aa96",
+      "size": 8840
+    },
+    {
+      "path": "docs/delivery/windows-runbook.md",
+      "kind": "new",
+      "sha256": "ccf2eb92c63d60ca8de9307a57eca35988748c5b75d1e27c9925ef6a1fd96d07",
+      "size": 7695
+    },
+    {
+      "path": "step2_code/backend/README.md",
+      "kind": "modified",
+      "sha256": "809f9c84204b3a46557730ca8bf8d68f43171b7afc7466bcc22bf233c5d6c175",
+      "size": 52225
+    }
+  ]
+}

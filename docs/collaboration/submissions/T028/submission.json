@@ -1,0 +1,36 @@
+{
+  "task_id": "T028",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T028-R1",
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "tinyagent_integration_kind": "reference",
+  "summary": "T028-R1 文档定向返工完成：① 答辩脚本 v2 与实际界面/API 对齐——宿舍晚归原题实测为 5 条不相关命中（改述为命中≠答案），不足/失败改用 mock 分支实测（insufficient_evidence+【模拟输出】标注；失败=HTTP 502 GENERATOR_ERROR+提示用户显式转摘录），检索演示固定问答页、demo 首页按实际两读数表述（六面板归〔备选 A〕），办事降级给确定案例（成绩复核+2023 实测 insufficient/saveable=false），主线时长 ≈9 分 50 秒。② 引用口径收紧：结构校验（哈希/跨度/准入、引用 ID∈实发证据）≠语义正确性（validate_generation 实测不受支持文本+合法 E1 判 answer），删除可靠拒答/材料不足必然不生成等绝对表述。③ 数据边界：默认离线 vs DeepSeek 出站（生成=问题+选定证据+条件；规划=快照+工具/事项声明+有界观察，按实际 messages 构造核对），架构图补外部服务节点与出站边。④ 随单：asr 路径（api/asr.py）、路径审计（字面路径 17 条 0 缺失，范围限定）、比较=SequenceMatcher 顺序匹配（非严格 LCS）、冻结数据复现与 assemble 开发命令分列。实测证据/代码对照/参数核查见 verification.md；v1 文档与四件历史保留。",
+  "verification": {
+    "local_api_probes": "8 项 TestClient 实测（独立临时语料目录、零外部请求）：宿舍题 evidence_only+5 条不相关摘录；mock 不足/失败分支；成绩复核+2023 saveable=false 降级与缓考 2023 对照；demo 首页仅 2 状态接口；validate_generation 结构校验（不受支持文本判 answer）；规划出站字段（问题/条件/观察/工具声明）",
+    "code_to_statement": "四点修复逐条对照（答辩步骤/引用语义/出站边界/随单校正），见 verification §2",
+    "path_and_params": "文档引用代码/测试路径字面 17 条 0 缺失（范围限定：模块表括号写法未逐一展开，ASR 行已补正）；--help 五脚本参数一致；指标与 T027 机器值一致（沿用）",
+    "scope_note": "仅文档修订+本地核对；未跑全量/UI/ASR/embedding/实验；零外部调用、无下载/安装；未改产品代码、语料、gold"
+  },
+  "deliverables": [
+    "docs/delivery/（六件 revision 2）",
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "rev1/（v1 四件存档）",
+    "docs/delivery/rev1/（v1 文档存档）"
+  ],
+  "browser_note": "无浏览器能力未实操；defense-script 中返工涉及的指定 API 案例经本地实测，其余步骤来自代码/历史任务证据并注明；探针为本地 mock 核对（直接 finish 脚本，不代表标准 demo 规划流程）",
+  "not_claimed": [
+    "可靠拒答/语义正确性保证（结构校验≠语义蕴含，实测确认）",
+    "材料不足必然不生成（可靠性未验证）",
+    "真实校园效果",
+    "planner_live_verified=true（T025 partial 口径保持）",
+    "处理全程不出机（仅默认离线成立）"
+  ],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改；仅改 docs/delivery 与 submissions/T028；产品代码/语料/gold/docs/01—04/历史实验原始文件未动",
+  "submission_revision_note": "revision 2 含 T028-R2 非阻断收尾五项（架构图 LCS 措辞、ASR 路径与路径审计范围、实测声明范围、材料不足与必要引用表述、演示时长 590 秒）；历史 rev1/rev2 副本保留；未改产品代码/未重跑测试/无外部调用"
+}

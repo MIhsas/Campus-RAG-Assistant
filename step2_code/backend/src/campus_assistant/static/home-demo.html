@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>校园助手统一演示</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
+.notice{background:#e3f2fd;padding:8px 16px;font-size:13px;color:#1565c0}
+.container{max-width:900px;margin:0 auto;padding:20px}
+h1{font-size:20px;margin:12px 0}
+h2{font-size:16px;margin:18px 0 10px}
+.status-line{background:#fff;border:1px solid #ddd;border-radius:6px;padding:10px 14px;font-size:13px;color:#555;margin-bottom:14px}
+.cards{display:flex;gap:12px;flex-wrap:wrap}
+.card{flex:1;min-width:240px;background:#fff;border:1px solid #ddd;border-radius:8px;padding:16px;text-decoration:none;color:#333}
+.card:hover{border-color:#1976d2;box-shadow:0 0 0 2px #90caf9}
+.card h3{font-size:15px;color:#1976d2;margin:0 0 6px}
+.card p{font-size:12px;color:#666;margin:0}
+.q-item{background:#fff;border:1px solid #ddd;border-radius:6px;padding:12px 14px;margin-bottom:8px;display:block;text-decoration:none;color:#333;font-size:14px}
+.q-item:hover{border-color:#1976d2}
+.q-item .hint{display:block;font-size:12px;color:#888;margin-top:2px}
+.disclaimer{font-size:12px;color:#8a6d3b;background:#fcf8e3;border:1px solid #faebcc;border-radius:4px;padding:8px 12px;margin:14px 0}
+@media(max-width:600px){.container{padding:12px}.card{min-width:100%}}
+</style>
+</head>
+<body>
+<div class="notice">统一演示页面：以 demo-campus.py 启动时为合成语料 + 标记 mock 生成（非真实 DeepSeek 实时回答）；普通服务请以本页状态栏实时信息为准。不代表四川农业大学真实政策。</div>
+<div class="container">
+  <h1>校园助手统一演示</h1>
+  <div class="status-line" id="status-line">正在读取当前服务状态…</div>
+
+  <h2>功能入口</h2>
+  <div class="cards">
+    <a class="card" href="/ask"><h3>问答与证据</h3><p>提问 → 原文摘录 /（模拟）生成回答 → 引用定位与出处</p></a>
+    <a class="card" href="/search"><h3>证据搜索</h3><p>关键词 / 语义 / 混合三模式检索与原文定位</p></a>
+    <a class="card" href="/procedures"><h3>办事与待办</h3><p>带引用的办理步骤草稿 → 本机待办与进度</p></a>
+    <a class="card" href="/compare"><h3>版本对比</h3><p>同一政策两版本的新增 / 删除 / 修改 / 未变条款</p></a>
+    <a class="card" href="/self-check"><h3>条件自查</h3><p>转专业条件自查（合成演示）：逐项满足 / 不满足 / 待核实 + 原文依据</p></a>
+    <a class="card" href="/preview"><h3>语料预览</h3><p>浏览已加载合成语料与原文定位</p></a>
+  </div>
+
+  <h2>演示问题（点击进入问答页）</h2>
+  <a class="q-item" href="/ask?query=%E7%BC%93%E8%80%83%E7%94%B3%E8%AF%B7%E9%A1%BB%E7%94%B1%E8%B0%81%E6%89%B9%E5%87%86%EF%BC%8C%E4%B9%8B%E5%90%8E%E8%BF%98%E9%9C%80%E8%A6%81%E5%90%91%E5%93%AA%E4%B8%AA%E9%83%A8%E9%97%A8%E5%A4%87%E6%A1%88%EF%BC%9F">
+    缓考申请须由谁批准，之后还需要向哪个部门备案？
+    <span class="hint">可答问题：整理依据后可从结果进入“相关办事事项：缓考申请”</span>
+  </a>
+  <a class="q-item" href="/ask?query=%E6%88%90%E7%BB%A9%E5%A4%8D%E6%A0%B8%E6%80%8E%E4%B9%88%E7%94%B3%E8%AF%B7%EF%BC%9F">
+    成绩复核怎么申请？
+    <span class="hint">可答问题：结果可进入“相关办事事项：成绩复核”</span>
+  </a>
+  <a class="q-item" href="/ask?query=%E5%AE%BF%E8%88%8D%E9%97%A8%E7%A6%81%E6%97%B6%E9%97%B4%E6%98%AF%E5%87%A0%E7%82%B9%EF%BC%9F">
+    宿舍门禁时间是几点？
+    <span class="hint">诚实示例：语料无此事实时展示“材料不足 / 无检索命中”，不编造答案</span>
+  </a>
+
+  <div class="disclaimer" id="demo-note">
+    演示说明（demo-campus.py 启动方式）：问答“生成答案”使用本地模拟生成器，输出带【模拟输出，非真实 DeepSeek 回答】标记，不向真实服务发请求；
+    T014 曾有一次限定的真实 DeepSeek 冒烟（独立历史证据）。普通服务的生成器状态以本页状态栏实时信息为准。
+  </div>
+</div>
+<script>
+(function(){
+  var statusLine = document.getElementById('status-line');
+  async function load(){
+    try {
+      var rs = await fetch('/api/v1/search/status');
+      var ra = await fetch('/api/v1/ask/status');
+      var s = rs.ok ? await rs.json() : {};
+      var a = ra.ok ? await ra.json() : {};
+      var parts = [];
+      parts.push('语料状态：' + (s.status || '未知'));
+      parts.push('可用检索模式：' + ((s.available_modes || []).join('、') || '无'));
+      if(a.generator_configured){
+        parts.push('生成器：已配置（' + (a.generator_identity || '未标注身份') + '）');
+      } else {
+        parts.push('生成器：未配置（仅原文摘录可用）');
+      }
+      parts.push('说明：以上状态来自当前服务实时读取。');
+      statusLine.textContent = parts.join('　|　');
+    } catch(e){
+      statusLine.textContent = '无法读取服务状态（网络错误）';
+    }
+  }
+  load();
+})();
+</script>
+</body>
+</html>

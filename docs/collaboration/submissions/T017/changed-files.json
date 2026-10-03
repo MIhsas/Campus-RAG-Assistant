@@ -1,0 +1,92 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "0dc978ea12c7d9b22eaaa2334faca53349f91bcb4eadd917473a8a476d1bc761",
+    "size": 37372
+  },
+  {
+    "path": "examples\\comparison-corpus\\cmp-defer-v1.txt",
+    "sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+    "size": 374
+  },
+  {
+    "path": "examples\\comparison-corpus\\cmp-defer-v2.txt",
+    "sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+    "size": 386
+  },
+  {
+    "path": "examples\\comparison-corpus\\cmp-grades.txt",
+    "sha256": "ea3f68c1b0abb3254b7e7792cd007a0a69bf23325e150bd416c4ea29a75e635b",
+    "size": 194
+  },
+  {
+    "path": "examples\\comparison-corpus\\manifest.json",
+    "sha256": "c08c1490f4970ae001f500b34a0a9a73650c8c4c6defeb053207f88525de5006",
+    "size": 2413
+  },
+  {
+    "path": "scripts\\check-comparison-behavior.cjs",
+    "sha256": "ef6bfb5c8185d974b59b48409e516344036a4aeef552448b23cd96943b2adf78",
+    "size": 12687
+  },
+  {
+    "path": "scripts\\demo-comparison-api.py",
+    "sha256": "e7040acbabf5e9cdf2229f20c63fc293b256bdf474341f9f1503b1e408d88106",
+    "size": 6905
+  },
+  {
+    "path": "scripts\\demo-comparison-page.py",
+    "sha256": "37b3ff49d12050a90103d420fae9fbf89df312af90c99eb200551333e8ce9032",
+    "size": 1384
+  },
+  {
+    "path": "src\\campus_assistant\\api\\comparison.py",
+    "sha256": "72f532bb33013090f82f596e631d36eb761b3a37598d75de86c9e09706f0f704",
+    "size": 3744
+  },
+  {
+    "path": "src\\campus_assistant\\comparison\\__init__.py",
+    "sha256": "9008ab3668efb15e6bba2a09c855eb4cc2579378611be47a03d0d2e13995124a",
+    "size": 330
+  },
+  {
+    "path": "src\\campus_assistant\\comparison\\service.py",
+    "sha256": "34246f7989d32988d30320c978b9dd8f55cd1fdecabd4860583e07233cd7eaa1",
+    "size": 11741
+  },
+  {
+    "path": "src\\campus_assistant\\main.py",
+    "sha256": "09802fa356df44ee8aa6383dabb131c6422be5893b37c80c88dbc48f5785317c",
+    "size": 9592
+  },
+  {
+    "path": "src\\campus_assistant\\static\\ask.html",
+    "sha256": "39acedf428ab20430029b7251004dc3e74a787a0912cb1a3c29cef85037b9c9f",
+    "size": 32419
+  },
+  {
+    "path": "src\\campus_assistant\\static\\compare.html",
+    "sha256": "68fc5a0ad8f1e1e495a735f26fe64fd0642e126bf97113d7a5dea8a2358c8224",
+    "size": 16481
+  },
+  {
+    "path": "src\\campus_assistant\\static\\preview.html",
+    "sha256": "30bf80399b8734ac6fed000e4e0e9e26e8922913f42d360f8749a2cf55c5d2ed",
+    "size": 21423
+  },
+  {
+    "path": "src\\campus_assistant\\static\\procedures.html",
+    "sha256": "bc45714d59273bd7f33e297ba95211e3d5ec64e799cce7141675919844546e23",
+    "size": 30778
+  },
+  {
+    "path": "src\\campus_assistant\\static\\search.html",
+    "sha256": "81ac94c245f9c95dd06965c1cc1cdeeae4c21f82c98c188ffdbdfcb04b606b9a",
+    "size": 25516
+  },
+  {
+    "path": "tests\\test_comparison.py",
+    "sha256": "73c948207ce28154bee772eebbccca187f3ddb1b03289cd9c82d43aa9d8275f2",
+    "size": 11627
+  }
+]

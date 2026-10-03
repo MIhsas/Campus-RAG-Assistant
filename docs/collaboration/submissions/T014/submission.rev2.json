@@ -1,0 +1,39 @@
+{
+  "task_id": "T014",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T014-R1",
+  "status": "partial",
+  "summary": "T014-R1 定向修复完成：恢复合成语料前置门（无效/空/非合成语料在任何调用前退出非零、0 次 provider 调用）；调用前 stderr 输出并 flush 审查摘要，区分计划配置与已解析配置（取自实际 provider 只读属性），CLI --live 与授权官方值不符即拒绝；缺配置/无效语料前置失败退出非零；http_status_code 改名 ask_http_status_code 并注明本地口径。A 阶段本地准备完成，B/C 待授权。",
+  "live_verified": false,
+  "external_model_calls": 0,
+  "fix_scope": {
+    "files_modified": [
+      "scripts/live-smoke-deepseek.py",
+      "tests/test_live_smoke_script.py",
+      "src/campus_assistant/qa/deepseek.py",
+      "README.md"
+    ],
+    "kept_unchanged": ["预览/完整审计分离", "无重试", "首次技术失败停止", "两题与 no_hits 短路", "题集与 gold"]
+  },
+  "phase_status": {
+    "A_local_preparation": "complete (pending Astra acceptance of revision 2)",
+    "B_external_calls": "waiting_authorization",
+    "C_manual_review": "waiting_after_B"
+  },
+  "remaining_conditions": [
+    "用户明确调用授权：批准向 https://api.deepseek.com（model=deepseek-flash）以两道合成问题发送最多两次 HTTP 尝试（max_tokens=1500、无重试、首次技术失败即停）",
+    "用户本地密钥配置：CAMPUS_GENERATOR=deepseek + DEEPSEEK_API_KEY（本地环境变量，不进聊天/报告；可另设费用上限）"
+  ],
+  "test_results": {
+    "related_only": {"total": 21, "passed": 21, "note": "9 项冒烟脚本（含三条因果链）+ 12 项适配器契约；按返工单未跑全量/JS/embedding"}
+  },
+  "causal_chains_cli": {
+    "non_synthetic_corpus": "exit 1，0 次 provider 调用",
+    "missing_config": "exit 1，中文原因，0 次调用",
+    "mismatched_config": "exit 1，已拒绝调用并展示已解析配置，0 次调用"
+  },
+  "history": ["report.rev1.md", "verification.rev1.md", "submission.rev1.json", "changed-files.rev1.json", "smoke-plan.rev1.json"],
+  "not_claimed": ["DeepSeek 官方链路验证", "真实答案质量", "可靠拒答", "校园准确率"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

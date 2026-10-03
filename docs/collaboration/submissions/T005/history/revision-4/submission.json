@@ -1,0 +1,34 @@
+{
+  "task_id": "T005",
+  "task_revision": "v1",
+  "submission_revision": 4,
+  "responds_to": "T005-R3",
+  "status": "ready_for_review",
+  "summary": "R2 错误恢复完成：listState 状态管理（idle/loading/error/unconfigured/ready）；status/detail/list 三类错误均有重试按钮（showStatusError/showDetailError/showListError）；filterDocs 在 listState≠ready 时不操作保留错误显示；loadDocs 成功调用 clearOldErrors+renderListWithFilter 应用当前筛选；JSON/HTTP/网络错误区分。151 passed, 1 skipped。浏览器交互未验证。",
+  "files": [
+    "docs/collaboration/submissions/T005/report.md",
+    "docs/collaboration/submissions/T005/verification.md",
+    "docs/collaboration/submissions/T005/submission.json",
+    "docs/collaboration/submissions/T005/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T005/changed-files.json",
+  "history": [
+    "docs/collaboration/submissions/T005/history/revision-1/",
+    "docs/collaboration/submissions/T005/history/revision-2/",
+    "docs/collaboration/submissions/T005/history/revision-3/"
+  ],
+  "checks": [
+    {"item": "listState 状态管理", "result": "pass（源码确认）", "evidence_id": "V04"},
+    {"item": "状态错误重试按钮", "result": "pass（showStatusError）", "evidence_id": "V03"},
+    {"item": "详情错误重试按钮", "result": "pass（showDetailError）", "evidence_id": "V03"},
+    {"item": "列表错误重试按钮", "result": "pass（showListError）", "evidence_id": "V03"},
+    {"item": "filterDocs 在非 ready 时不操作", "result": "pass", "evidence_id": "V03"},
+    {"item": "成功后 clearOldErrors + renderListWithFilter", "result": "pass", "evidence_id": "V04"},
+    {"item": "JSON/HTTP/网络错误区分", "result": "pass", "evidence_id": "V04"},
+    {"item": "R1 快速切换回归", "result": "pass", "evidence_id": "V05"},
+    {"item": "全量 pytest", "result": "pass - 151 passed, 1 skipped", "evidence_id": "V01"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V02"},
+    {"item": "浏览器交互验证", "result": "未验证（Claude Code 无浏览器能力）", "evidence_id": "V06"}
+  ],
+  "blockers": []
+}

@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "dataset_id": "syn-dev-001",
+  "dataset_version": "1.2",
+  "split": "dev",
+  "is_synthetic": true,
+  "questions": [
+    {
+      "question_id": "q01",
+      "query": "缓考申请流程",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "e01",
+          "document_id": "syn-parse-txt-001",
+          "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+          "parser_version": "1.0",
+          "block_id": "9df6bfbd98df733e",
+          "char_start": 38,
+          "char_end": 63,
+          "quote": "缓考申请须经所在学院批准，报教务处备案后方可生效。"
+        }
+      ]
+    },
+    {
+      "question_id": "q02",
+      "query": "补考成绩最高多少分",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "e02",
+          "document_id": "syn-parse-txt-001",
+          "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+          "parser_version": "1.0",
+          "block_id": "009121d9f2695116",
+          "char_start": 33,
+          "char_end": 44,
+          "quote": "补考成绩最高记为60分"
+        }
+      ]
+    },
+    {
+      "question_id": "q03",
+      "query": "取消补考资格的情况",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "e03",
+          "document_id": "syn-parse-txt-001",
+          "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+          "parser_version": "1.0",
+          "block_id": "b8b8a0c2bf59b405",
+          "char_start": 0,
+          "char_end": 76,
+          "quote": "第四条 下列情况之一者，取消补考资格：\n（一）考试违纪或作弊者；\n（二）缺课累计超过该课程教学时数三分之一者；\n（三）未完成课程实验、实习等实践环节者。"
+        }
+      ]
+    },
+    {
+      "question_id": "q04",
+      "query": "转专业需要什么条件",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "e04",
+          "document_id": "syn-parse-txt-001",
+          "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+          "parser_version": "1.0",
+          "block_id": "ce15747a6cdf597a",
+          "char_start": 0,
+          "char_end": 88,
+          "quote": "第五条 学生转专业应当在入学后第一学年末提出申请。转专业条件包括：\n1. 在读期间无违纪记录；\n2. 第一学年加权平均成绩排名在本专业前30%；\n3. 通过接收学院组织的考核。"
+        }
+      ]
+    },
+    {
+      "question_id": "q05",
+      "query": "缓考申请的审批流程和证明材料",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "e05a",
+          "document_id": "syn-parse-txt-001",
+          "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+          "parser_version": "1.0",
+          "block_id": "9df6bfbd98df733e",
+          "char_start": 0,
+          "char_end": 63,
+          "quote": "第二条 学生因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请。缓考申请须经所在学院批准，报教务处备案后方可生效。"
+        },
+        {
+          "evidence_id": "e05b",
+          "document_id": "syn-parse-docx-001",
+          "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+          "parser_version": "1.0",
+          "block_id": "0a7595fda827d87e",
+          "char_start": 14,
+          "char_end": 19,
+          "quote": "需医院证明"
+        }
+      ]
+    },
+    {
+      "question_id": "q06",
+      "query": "张三的高等数学成绩",
+      "answerable": true,
+      "evidence": [
+        {
+          "evidence_id": "e06",
+          "document_id": "syn-parse-docx-001",
+          "document_sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+          "parser_version": "1.0",
+          "block_id": "239ba0ebfcf74591",
+          "char_start": 0,
+          "char_end": 21,
+          "quote": "20240001\t张三\t高等数学A1\t85"
+        }
+      ]
+    },
+    {
+      "question_id": "q07",
+      "query": "奖学金评定标准",
+      "answerable": false,
+      "evidence": []
+    },
+    {
+      "question_id": "q08",
+      "query": "宿舍管理规定",
+      "answerable": false,
+      "evidence": []
+    }
+  ]
+}

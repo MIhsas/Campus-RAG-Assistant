@@ -1,0 +1,27 @@
+{
+  "note": "T025 A 阶段后端变更清单（相对 step2_code/backend）。sha256/size 为交付时实际文件。",
+  "new": [
+    {
+      "path": "scripts/live-smoke-planner.py",
+      "sha256": "9e1bbb8ddf5d389044011f076886049fba303c96715f81c1ecbe195ddce48414",
+      "size": 23852
+    },
+    {
+      "path": "scripts/smoke-mock-sample.py",
+      "sha256": "0c6cb8d043cf39f2603ea1c55ad53745ed3820d6a67484728ff769913881fceb",
+      "size": 2238
+    },
+    {
+      "path": "tests/test_live_smoke_planner.py",
+      "sha256": "c769fff6d768ada2df83dd5689455e31bb40b7a7528268feb139b65f0f38b0bb",
+      "size": 9197
+    }
+  ],
+  "modified": [
+    {
+      "path": "README.md",
+      "sha256": "72da23e445db10e6d01fd76c232c57fbc3b084363e1491e1d96a6882be770d69",
+      "size": 52008
+    }
+  ]
+}

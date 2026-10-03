@@ -1,0 +1,6 @@
+{
+  "note": "T027 revision 1 正式评测前冻结的数据/标注哈希（dataset_version 1.0）。rev1 题集见 rev1/questions.rev1.json（逐字节重建并与此哈希核对一致）。",
+  "dataset_version": "1.0",
+  "questions.json": "0d58ed95fe86e9937945f60ce07f327942227411d92463700ea28e1cfcbd7a71",
+  "corpus/manifest.json": "4fa135dd0963dad4dfcf378b7fd8424241f33f0bf575dcfccd7974c954a43042"
+}

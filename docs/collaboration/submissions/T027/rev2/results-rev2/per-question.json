@@ -1,0 +1,5407 @@
+[
+  {
+    "question_id": "v2-q01",
+    "query": "补考成绩最高记为多少分",
+    "answerable": true,
+    "question_type": "direct",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "syn-parse-txt-001",
+        "block_id": "009121d9f2695116",
+        "char_start": 33,
+        "char_end": 44,
+        "quote": "补考成绩最高记为60分"
+      }
+    ],
+    "rationale": "直述：原文第三条直接给出补考成绩上限。语料无其他同事实来源。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 18.182314772518705,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "009121d9f2695116",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 2,
+            "score": 2.34397073795948,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "130cb47b1dec3f39",
+            "char_start": 0,
+            "char_end": 11
+          },
+          {
+            "rank": 3,
+            "score": 2.138164254526621,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "b8b8a0c2bf59b405",
+            "char_start": 0,
+            "char_end": 76
+          },
+          {
+            "rank": 4,
+            "score": 2.118312738781119,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "542187ebbac5a4b2",
+            "char_start": 0,
+            "char_end": 71
+          },
+          {
+            "rank": 5,
+            "score": 2.1163346505212073,
+            "document_id": "cmp-grades-1",
+            "block_id": "9a57744ef7ee55a8",
+            "char_start": 0,
+            "char_end": 12
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.5868313312530518,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "009121d9f2695116",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 2,
+            "score": 0.5591403841972351,
+            "document_id": "cmp-grades-1",
+            "block_id": "9a57744ef7ee55a8",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 3,
+            "score": 0.5495481491088867,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "b8b8a0c2bf59b405",
+            "char_start": 0,
+            "char_end": 76
+          },
+          {
+            "rank": 4,
+            "score": 0.5130810737609863,
+            "document_id": "dis-scholarship",
+            "block_id": "3dfa7d4a91e653e9",
+            "char_start": 0,
+            "char_end": 44
+          },
+          {
+            "rank": 5,
+            "score": 0.508944034576416,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "b304f406a03da01b",
+            "char_start": 0,
+            "char_end": 21
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03278688524590164,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "009121d9f2695116",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 2,
+            "score": 0.031746031746031744,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "b8b8a0c2bf59b405",
+            "char_start": 0,
+            "char_end": 76
+          },
+          {
+            "rank": 3,
+            "score": 0.0315136476426799,
+            "document_id": "cmp-grades-1",
+            "block_id": "9a57744ef7ee55a8",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 4,
+            "score": 0.030776515151515152,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "542187ebbac5a4b2",
+            "char_start": 0,
+            "char_end": 71
+          },
+          {
+            "rank": 5,
+            "score": 0.030090497737556562,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "b304f406a03da01b",
+            "char_start": 0,
+            "char_end": 21
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": true
+  },
+  {
+    "question_id": "v2-q02",
+    "query": "缓考申请须经哪个部门批准",
+    "answerable": true,
+    "question_type": "direct",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "syn-parse-txt-001",
+        "block_id": "9df6bfbd98df733e",
+        "char_start": 38,
+        "char_end": 63,
+        "quote": "缓考申请须经所在学院批准，报教务处备案后方可生效。"
+      },
+      {
+        "evidence_id": "ev2",
+        "document_id": "fd-2024",
+        "block_id": "773e8568327bac71",
+        "char_start": 50,
+        "char_end": 69,
+        "quote": "缓考申请经所在学院批准后报教务处备案。"
+      },
+      {
+        "evidence_id": "ev3",
+        "document_id": "fd-2025",
+        "block_id": "93d350b5c0fb8b15",
+        "char_start": 57,
+        "char_end": 75,
+        "quote": "缓考申请经所在学院批准后报教务处备案"
+      }
+    ],
+    "rationale": "直述：审批部门链（学院批准→教务处备案）。三处来源表述同一事实（可替代证据组 f1，任一满足）。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2",
+          "ev3"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2",
+              "ev3"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 9.770413255769538,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "9df6bfbd98df733e",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 2,
+            "score": 7.11359022343124,
+            "document_id": "cmp-defer-v1",
+            "block_id": "285acc86e242ef04",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 3,
+            "score": 7.11359022343124,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 4,
+            "score": 6.502038786794833,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 5,
+            "score": 5.880732691360344,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.25,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev2",
+          "ev3"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2",
+              "ev3"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.754542887210846,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          },
+          {
+            "rank": 2,
+            "score": 0.7417467832565308,
+            "document_id": "cmp-defer-v1",
+            "block_id": "fcbf298150240157",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 3,
+            "score": 0.7417467832565308,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 4,
+            "score": 0.7244110703468323,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 5,
+            "score": 0.7210031747817993,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          }
+        ],
+        "k3": {
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.5,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2",
+              "ev3"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03128054740957967,
+            "document_id": "cmp-defer-v1",
+            "block_id": "fcbf298150240157",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 2,
+            "score": 0.03125,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 3,
+            "score": 0.031099324975891997,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "9df6bfbd98df733e",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 4,
+            "score": 0.030886196246139225,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          },
+          {
+            "rank": 5,
+            "score": 0.030798389007344232,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": false
+  },
+  {
+    "question_id": "v2-q03",
+    "query": "都江堰校区学生的缓考申请交到哪里",
+    "answerable": true,
+    "question_type": "direct",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "fd-yjy",
+        "block_id": "692d28b992c6eff3",
+        "char_start": 18,
+        "char_end": 49,
+        "quote": "都江堰校区学生的缓考申请交校区教务办公室，不经过学院教学秘书。"
+      }
+    ],
+    "rationale": "直述：校区专名+受理部门；语料无其他同事实来源。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 30.930508829874103,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 2,
+            "score": 5.714607034713933,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 3,
+            "score": 5.19153749338657,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          },
+          {
+            "rank": 4,
+            "score": 4.882182454328554,
+            "document_id": "cmp-defer-v1",
+            "block_id": "fcbf298150240157",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 5,
+            "score": 4.882182454328554,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.8018127679824829,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 2,
+            "score": 0.6499077677726746,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "d897e41b44bfa468",
+            "char_start": 0,
+            "char_end": 53
+          },
+          {
+            "rank": 3,
+            "score": 0.6413133144378662,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          },
+          {
+            "rank": 4,
+            "score": 0.6403855681419373,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 5,
+            "score": 0.6399997472763062,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03278688524590164,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 2,
+            "score": 0.031754032258064516,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 3,
+            "score": 0.03125763125763126,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          },
+          {
+            "rank": 4,
+            "score": 0.031054405392392875,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "d897e41b44bfa468",
+            "char_start": 0,
+            "char_end": 53
+          },
+          {
+            "rank": 5,
+            "score": 0.03057889822595705,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": true
+  },
+  {
+    "question_id": "v2-q04",
+    "query": "成绩以什么为准",
+    "answerable": true,
+    "question_type": "direct",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "cmp-grades-1",
+        "block_id": "b475a4d00030292e",
+        "char_start": 4,
+        "char_end": 16,
+        "quote": "成绩以教务系统公布为准。"
+      },
+      {
+        "evidence_id": "ev2",
+        "document_id": "syn-parse-docx-001",
+        "block_id": "f28ee3e4c5372f7c",
+        "char_start": 9,
+        "char_end": 23,
+        "quote": "实际成绩以教务系统公布为准。"
+      }
+    ],
+    "rationale": "直述：成绩以教务系统公布为准。两处来源同一事实（组 f1，任一满足）。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 10.08532501724127,
+            "document_id": "cmp-grades-1",
+            "block_id": "b475a4d00030292e",
+            "char_start": 0,
+            "char_end": 16
+          },
+          {
+            "rank": 2,
+            "score": 6.85926945426276,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "f28ee3e4c5372f7c",
+            "char_start": 0,
+            "char_end": 54
+          },
+          {
+            "rank": 3,
+            "score": 2.34397073795948,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "130cb47b1dec3f39",
+            "char_start": 0,
+            "char_end": 11
+          },
+          {
+            "rank": 4,
+            "score": 2.118312738781119,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "542187ebbac5a4b2",
+            "char_start": 0,
+            "char_end": 71
+          },
+          {
+            "rank": 5,
+            "score": 2.1163346505212073,
+            "document_id": "cmp-grades-1",
+            "block_id": "9a57744ef7ee55a8",
+            "char_start": 0,
+            "char_end": 12
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.6141382455825806,
+            "document_id": "cmp-grades-1",
+            "block_id": "b475a4d00030292e",
+            "char_start": 0,
+            "char_end": 16
+          },
+          {
+            "rank": 2,
+            "score": 0.6026284098625183,
+            "document_id": "cmp-grades-1",
+            "block_id": "9a57744ef7ee55a8",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 3,
+            "score": 0.5860521793365479,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "f28ee3e4c5372f7c",
+            "char_start": 0,
+            "char_end": 54
+          },
+          {
+            "rank": 4,
+            "score": 0.5806642770767212,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "542187ebbac5a4b2",
+            "char_start": 0,
+            "char_end": 71
+          },
+          {
+            "rank": 5,
+            "score": 0.5704183578491211,
+            "document_id": "dis-scholarship",
+            "block_id": "3dfa7d4a91e653e9",
+            "char_start": 0,
+            "char_end": 44
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03278688524590164,
+            "document_id": "cmp-grades-1",
+            "block_id": "b475a4d00030292e",
+            "char_start": 0,
+            "char_end": 16
+          },
+          {
+            "rank": 2,
+            "score": 0.03200204813108039,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "f28ee3e4c5372f7c",
+            "char_start": 0,
+            "char_end": 54
+          },
+          {
+            "rank": 3,
+            "score": 0.0315136476426799,
+            "document_id": "cmp-grades-1",
+            "block_id": "9a57744ef7ee55a8",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 4,
+            "score": 0.03125,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "542187ebbac5a4b2",
+            "char_start": 0,
+            "char_end": 71
+          },
+          {
+            "rank": 5,
+            "score": 0.030798389007344232,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "130cb47b1dec3f39",
+            "char_start": 0,
+            "char_end": 11
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": true
+  },
+  {
+    "question_id": "v2-q05",
+    "query": "因病因事无法参加期末考试时如何延期考核",
+    "answerable": true,
+    "question_type": "paraphrase",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "cmp-defer-v1",
+        "block_id": "3d5e04669fbfe064",
+        "char_start": 4,
+        "char_end": 35,
+        "quote": "本办法所称缓考，指学生因病因事不能参加期末考试而申请延期考核。"
+      },
+      {
+        "evidence_id": "ev2",
+        "document_id": "cmp-defer-v2",
+        "block_id": "5d10baf30aed29f6",
+        "char_start": 4,
+        "char_end": 35,
+        "quote": "本办法所称缓考，指学生因病因事不能参加期末考试而申请延期考核。"
+      }
+    ],
+    "rationale": "同义改写：查询用「延期考核」对应「缓考」定义。两版本第一条逐字相同，均为有效替代来源（组 f1，任一满足）；文档身份仅用于定位，不作相关性判断。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 26.20675216572985,
+            "document_id": "cmp-defer-v1",
+            "block_id": "3d5e04669fbfe064",
+            "char_start": 0,
+            "char_end": 35
+          },
+          {
+            "rank": 2,
+            "score": 26.20675216572985,
+            "document_id": "cmp-defer-v2",
+            "block_id": "5d10baf30aed29f6",
+            "char_start": 0,
+            "char_end": 35
+          },
+          {
+            "rank": 3,
+            "score": 9.434300297205064,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "9df6bfbd98df733e",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 4,
+            "score": 8.11836093472266,
+            "document_id": "dis-graduate-defer",
+            "block_id": "292ef8b2ddf35040",
+            "char_start": 0,
+            "char_end": 61
+          },
+          {
+            "rank": 5,
+            "score": 5.191279531101491,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "542187ebbac5a4b2",
+            "char_start": 0,
+            "char_end": 71
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.7446469068527222,
+            "document_id": "cmp-defer-v2",
+            "block_id": "5d10baf30aed29f6",
+            "char_start": 0,
+            "char_end": 35
+          },
+          {
+            "rank": 2,
+            "score": 0.7446467876434326,
+            "document_id": "cmp-defer-v1",
+            "block_id": "3d5e04669fbfe064",
+            "char_start": 0,
+            "char_end": 35
+          },
+          {
+            "rank": 3,
+            "score": 0.6811538934707642,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "9df6bfbd98df733e",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 4,
+            "score": 0.6269168853759766,
+            "document_id": "dis-graduate-defer",
+            "block_id": "292ef8b2ddf35040",
+            "char_start": 0,
+            "char_end": 61
+          },
+          {
+            "rank": 5,
+            "score": 0.6151201725006104,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03252247488101534,
+            "document_id": "cmp-defer-v1",
+            "block_id": "3d5e04669fbfe064",
+            "char_start": 0,
+            "char_end": 35
+          },
+          {
+            "rank": 2,
+            "score": 0.03252247488101534,
+            "document_id": "cmp-defer-v2",
+            "block_id": "5d10baf30aed29f6",
+            "char_start": 0,
+            "char_end": 35
+          },
+          {
+            "rank": 3,
+            "score": 0.031746031746031744,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "9df6bfbd98df733e",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 4,
+            "score": 0.03125,
+            "document_id": "dis-graduate-defer",
+            "block_id": "292ef8b2ddf35040",
+            "char_start": 0,
+            "char_end": 61
+          },
+          {
+            "rank": 5,
+            "score": 0.030536130536130537,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": true
+  },
+  {
+    "question_id": "v2-q06",
+    "query": "补考没通过要怎么办",
+    "answerable": true,
+    "question_type": "paraphrase",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "syn-parse-txt-001",
+        "block_id": "009121d9f2695116",
+        "char_start": 45,
+        "char_end": 63,
+        "quote": "补考仍不合格的，应当重新学习该课程。"
+      }
+    ],
+    "rationale": "同义改写：「没通过」→「仍不合格」，答案为重修规定。语料无其他同事实来源。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 4,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 4.205431703266324,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "009121d9f2695116",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 2,
+            "score": 2.1889592226037,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 3,
+            "score": 2.138164254526621,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "b8b8a0c2bf59b405",
+            "char_start": 0,
+            "char_end": 76
+          },
+          {
+            "rank": 4,
+            "score": 1.8768496119991682,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "ce15747a6cdf597a",
+            "char_start": 0,
+            "char_end": 88
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.5,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.647830605506897,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "b8b8a0c2bf59b405",
+            "char_start": 0,
+            "char_end": 76
+          },
+          {
+            "rank": 2,
+            "score": 0.6306444406509399,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "009121d9f2695116",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 3,
+            "score": 0.6071723699569702,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          },
+          {
+            "rank": 4,
+            "score": 0.6000411510467529,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "d897e41b44bfa468",
+            "char_start": 0,
+            "char_end": 53
+          },
+          {
+            "rank": 5,
+            "score": 0.5982973575592041,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03252247488101534,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "009121d9f2695116",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 2,
+            "score": 0.032266458495966696,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "b8b8a0c2bf59b405",
+            "char_start": 0,
+            "char_end": 76
+          },
+          {
+            "rank": 3,
+            "score": 0.030834914611005692,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 4,
+            "score": 0.015873015873015872,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          },
+          {
+            "rank": 5,
+            "score": 0.015625,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "d897e41b44bfa468",
+            "char_start": 0,
+            "char_end": 53
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": false
+  },
+  {
+    "question_id": "v2-q07",
+    "query": "作弊被处分后还能补考吗",
+    "answerable": true,
+    "question_type": "paraphrase",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "syn-parse-txt-001",
+        "block_id": "b8b8a0c2bf59b405",
+        "char_start": 20,
+        "char_end": 32,
+        "quote": "（一）考试违纪或作弊者；"
+      }
+    ],
+    "rationale": "同义改写：疑问式命中取消补考资格清单首项（上下文为第四条标题行）。语料无其他同事实来源。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 2,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 4.633967234141291,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "b8b8a0c2bf59b405",
+            "char_start": 0,
+            "char_end": 76
+          },
+          {
+            "rank": 2,
+            "score": 4.205431703266324,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "009121d9f2695116",
+            "char_start": 0,
+            "char_end": 63
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 2
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.6798306703567505,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "b8b8a0c2bf59b405",
+            "char_start": 0,
+            "char_end": 76
+          },
+          {
+            "rank": 2,
+            "score": 0.5764532089233398,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "009121d9f2695116",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 3,
+            "score": 0.5513971447944641,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "9df6bfbd98df733e",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 4,
+            "score": 0.5291138291358948,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "d897e41b44bfa468",
+            "char_start": 0,
+            "char_end": 53
+          },
+          {
+            "rank": 5,
+            "score": 0.5265007019042969,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03278688524590164,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "b8b8a0c2bf59b405",
+            "char_start": 0,
+            "char_end": 76
+          },
+          {
+            "rank": 2,
+            "score": 0.03225806451612903,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "009121d9f2695116",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 3,
+            "score": 0.015873015873015872,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "9df6bfbd98df733e",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 4,
+            "score": 0.015625,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "d897e41b44bfa468",
+            "char_start": 0,
+            "char_end": 53
+          },
+          {
+            "rank": 5,
+            "score": 0.015384615384615385,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": true
+  },
+  {
+    "question_id": "v2-q08",
+    "query": "备案",
+    "answerable": true,
+    "question_type": "low_keyword",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "syn-parse-txt-001",
+        "block_id": "9df6bfbd98df733e",
+        "char_start": 51,
+        "char_end": 63,
+        "quote": "报教务处备案后方可生效。"
+      },
+      {
+        "evidence_id": "ev2",
+        "document_id": "fd-2024",
+        "block_id": "773e8568327bac71",
+        "char_start": 62,
+        "char_end": 69,
+        "quote": "报教务处备案。"
+      },
+      {
+        "evidence_id": "ev3",
+        "document_id": "fd-2025",
+        "block_id": "93d350b5c0fb8b15",
+        "char_start": 69,
+        "char_end": 75,
+        "quote": "报教务处备案"
+      }
+    ],
+    "rationale": "少关键词：低频词「备案」。三处缓考备案表述同一事实（组 f1，任一满足）。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 3,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2",
+          "ev3"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2",
+              "ev3"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 1.9477923200102216,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 2,
+            "score": 1.9025936485621462,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "9df6bfbd98df733e",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 3,
+            "score": 1.7047942377910683,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": 0.0,
+        "hit": 0.0,
+        "mrr": 0.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [],
+        "fact_count": 1,
+        "covered_fact_count": 0,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2",
+              "ev3"
+            ],
+            "covered": false
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.42361170053482056,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "3832e6101a04e1c4",
+            "char_start": 0,
+            "char_end": 10
+          },
+          {
+            "rank": 2,
+            "score": 0.3842929005622864,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "b304f406a03da01b",
+            "char_start": 0,
+            "char_end": 21
+          },
+          {
+            "rank": 3,
+            "score": 0.37940657138824463,
+            "document_id": "cmp-defer-v2",
+            "block_id": "2fb244a29d56b00a",
+            "char_start": 0,
+            "char_end": 37
+          },
+          {
+            "rank": 4,
+            "score": 0.37940657138824463,
+            "document_id": "cmp-defer-v1",
+            "block_id": "b3200438a0747c6f",
+            "char_start": 0,
+            "char_end": 37
+          },
+          {
+            "rank": 5,
+            "score": 0.37940654158592224,
+            "document_id": "cmp-grades-1",
+            "block_id": "c86b92c6922f1b3c",
+            "char_start": 0,
+            "char_end": 37
+          }
+        ],
+        "k3": {
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2",
+          "ev3"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2",
+              "ev3"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.02889344262295082,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 2,
+            "score": 0.01639344262295082,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "3832e6101a04e1c4",
+            "char_start": 0,
+            "char_end": 10
+          },
+          {
+            "rank": 3,
+            "score": 0.016129032258064516,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "9df6bfbd98df733e",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 4,
+            "score": 0.016129032258064516,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "b304f406a03da01b",
+            "char_start": 0,
+            "char_end": 21
+          },
+          {
+            "rank": 5,
+            "score": 0.015873015873015872,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": false
+  },
+  {
+    "question_id": "v2-q09",
+    "query": "三分之一",
+    "answerable": true,
+    "question_type": "low_keyword",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "syn-parse-txt-001",
+        "block_id": "b8b8a0c2bf59b405",
+        "char_start": 33,
+        "char_end": 55,
+        "quote": "（二）缺课累计超过该课程教学时数三分之一者；"
+      }
+    ],
+    "rationale": "少关键词：数字词仅第四条一处出现。语料无其他同事实来源。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 1,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 8.891153099984585,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "b8b8a0c2bf59b405",
+            "char_start": 0,
+            "char_end": 76
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 1
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.2,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.38548213243484497,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "b304f406a03da01b",
+            "char_start": 0,
+            "char_end": 21
+          },
+          {
+            "rank": 2,
+            "score": 0.37560251355171204,
+            "document_id": "dis-scholarship",
+            "block_id": "3dfa7d4a91e653e9",
+            "char_start": 0,
+            "char_end": 44
+          },
+          {
+            "rank": 3,
+            "score": 0.3707486689090729,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "542187ebbac5a4b2",
+            "char_start": 0,
+            "char_end": 71
+          },
+          {
+            "rank": 4,
+            "score": 0.357282817363739,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "239ba0ebfcf74591",
+            "char_start": 0,
+            "char_end": 21
+          },
+          {
+            "rank": 5,
+            "score": 0.3572314381599426,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "b8b8a0c2bf59b405",
+            "char_start": 0,
+            "char_end": 76
+          }
+        ],
+        "k3": {
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03177805800756621,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "b8b8a0c2bf59b405",
+            "char_start": 0,
+            "char_end": 76
+          },
+          {
+            "rank": 2,
+            "score": 0.01639344262295082,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "b304f406a03da01b",
+            "char_start": 0,
+            "char_end": 21
+          },
+          {
+            "rank": 3,
+            "score": 0.016129032258064516,
+            "document_id": "dis-scholarship",
+            "block_id": "3dfa7d4a91e653e9",
+            "char_start": 0,
+            "char_end": 44
+          },
+          {
+            "rank": 4,
+            "score": 0.015873015873015872,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "542187ebbac5a4b2",
+            "char_start": 0,
+            "char_end": 71
+          },
+          {
+            "rank": 5,
+            "score": 0.015625,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "239ba0ebfcf74591",
+            "char_start": 0,
+            "char_end": 21
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": false
+  },
+  {
+    "question_id": "v2-q10",
+    "query": "缓考申请的证明材料和审批流程分别是什么",
+    "answerable": true,
+    "question_type": "multi_evidence",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "syn-parse-txt-001",
+        "block_id": "9df6bfbd98df733e",
+        "char_start": 38,
+        "char_end": 63,
+        "quote": "缓考申请须经所在学院批准，报教务处备案后方可生效。"
+      },
+      {
+        "evidence_id": "ev2",
+        "document_id": "fd-2024",
+        "block_id": "773e8568327bac71",
+        "char_start": 50,
+        "char_end": 69,
+        "quote": "缓考申请经所在学院批准后报教务处备案。"
+      },
+      {
+        "evidence_id": "ev3",
+        "document_id": "fd-2025",
+        "block_id": "93d350b5c0fb8b15",
+        "char_start": 57,
+        "char_end": 75,
+        "quote": "缓考申请经所在学院批准后报教务处备案"
+      },
+      {
+        "evidence_id": "ev4",
+        "document_id": "syn-parse-docx-001",
+        "block_id": "0a7595fda827d87e",
+        "char_start": 14,
+        "char_end": 19,
+        "quote": "需医院证明"
+      },
+      {
+        "evidence_id": "ev5",
+        "document_id": "fd-2024",
+        "block_id": "773e8568327bac71",
+        "char_start": 43,
+        "char_end": 48,
+        "quote": "附医院证明"
+      },
+      {
+        "evidence_id": "ev6",
+        "document_id": "fd-2025",
+        "block_id": "93d350b5c0fb8b15",
+        "char_start": 50,
+        "char_end": 55,
+        "quote": "附医院证明"
+      },
+      {
+        "evidence_id": "ev7",
+        "document_id": "fd-unknown",
+        "block_id": "c6805c1892b77d82",
+        "char_start": 23,
+        "char_end": 46,
+        "quote": "缓考申请的证明材料包括医院证明或学院书面说明。"
+      },
+      {
+        "evidence_id": "ev8",
+        "document_id": "cmp-defer-v1",
+        "block_id": "f35e800308f2c324",
+        "char_start": 4,
+        "char_end": 20,
+        "quote": "申请缓考须同时提交书面情况说明。"
+      }
+    ],
+    "rationale": "多证据（两必要事实 AND）：f1=审批流程（三处等价表述 OR）、f2=申请材料要求（医院证明族/证明材料句/书面情况说明句 OR——各版本材料要求足以回答“证明材料”，fd-unknown 明示“医院证明或学院书面说明”的集合口径；仅主题相关的标题、时限句不计）。两组都覆盖才满分。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev2",
+          "ev3",
+          "ev4",
+          "ev5",
+          "ev6",
+          "ev7"
+        ],
+        "fact_count": 2,
+        "covered_fact_count": 2,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2",
+              "ev3"
+            ],
+            "covered": true
+          },
+          {
+            "fact_id": "f2",
+            "evidence_ids": [
+              "ev4",
+              "ev5",
+              "ev6",
+              "ev7",
+              "ev8"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 14.170081925327848,
+            "document_id": "fd-unknown",
+            "block_id": "c6805c1892b77d82",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 2,
+            "score": 7.575631335278827,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          },
+          {
+            "rank": 3,
+            "score": 6.321908851397554,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 4,
+            "score": 5.90163671154315,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 5,
+            "score": 5.723074981775913,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": 0.5,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev4",
+          "ev7",
+          "ev8"
+        ],
+        "fact_count": 2,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2",
+              "ev3"
+            ],
+            "covered": false
+          },
+          {
+            "fact_id": "f2",
+            "evidence_ids": [
+              "ev4",
+              "ev5",
+              "ev6",
+              "ev7",
+              "ev8"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.746387243270874,
+            "document_id": "fd-unknown",
+            "block_id": "c6805c1892b77d82",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 2,
+            "score": 0.7029165029525757,
+            "document_id": "cmp-defer-v1",
+            "block_id": "f35e800308f2c324",
+            "char_start": 0,
+            "char_end": 20
+          },
+          {
+            "rank": 3,
+            "score": 0.6951136589050293,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          },
+          {
+            "rank": 4,
+            "score": 0.6934455633163452,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 5,
+            "score": 0.6913919448852539,
+            "document_id": "cmp-defer-v1",
+            "block_id": "fcbf298150240157",
+            "char_start": 0,
+            "char_end": 12
+          }
+        ],
+        "k3": {
+          "recall": 0.5,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev2",
+          "ev3",
+          "ev4",
+          "ev5",
+          "ev6",
+          "ev7"
+        ],
+        "fact_count": 2,
+        "covered_fact_count": 2,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2",
+              "ev3"
+            ],
+            "covered": true
+          },
+          {
+            "fact_id": "f2",
+            "evidence_ids": [
+              "ev4",
+              "ev5",
+              "ev6",
+              "ev7",
+              "ev8"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03278688524590164,
+            "document_id": "fd-unknown",
+            "block_id": "c6805c1892b77d82",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 2,
+            "score": 0.03200204813108039,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          },
+          {
+            "rank": 3,
+            "score": 0.03125,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 4,
+            "score": 0.03036576949620428,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 5,
+            "score": 0.030309988518943745,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          }
+        ],
+        "k3": {
+          "recall": 0.5,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": false
+  },
+  {
+    "question_id": "v2-q11",
+    "query": "2025级学生缓考的申请时限和成绩如何记录",
+    "answerable": true,
+    "question_type": "multi_evidence",
+    "group_id": null,
+    "conditions": {
+      "campus": null,
+      "student_type": null,
+      "admission_year": 2025,
+      "as_of_date": null
+    },
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "fd-2025",
+        "block_id": "93d350b5c0fb8b15",
+        "char_start": 32,
+        "char_end": 49,
+        "quote": "须在考前 3 个工作日提交缓考申请"
+      },
+      {
+        "evidence_id": "ev2",
+        "document_id": "fd-2025",
+        "block_id": "93d350b5c0fb8b15",
+        "char_start": 76,
+        "char_end": 85,
+        "quote": "成绩按正常考试记录"
+      }
+    ],
+    "rationale": "多证据（两必要事实 AND）：条件 admission_year=2025 准入集内仅 fd-2025 同时给出时限与成绩记录；fd-yjy 无此两事实。无等价来源。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 2,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2"
+        ],
+        "fact_count": 2,
+        "covered_fact_count": 2,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          },
+          {
+            "fact_id": "f2",
+            "evidence_ids": [
+              "ev2"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 8.215756652422078,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          },
+          {
+            "rank": 2,
+            "score": 3.652046983250745,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 2
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 4,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2"
+        ],
+        "fact_count": 2,
+        "covered_fact_count": 2,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          },
+          {
+            "fact_id": "f2",
+            "evidence_ids": [
+              "ev2"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.7360981106758118,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          },
+          {
+            "rank": 2,
+            "score": 0.6598873138427734,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 3,
+            "score": 0.3420150876045227,
+            "document_id": "fd-2025",
+            "block_id": "d971961afd12e2c7",
+            "char_start": 0,
+            "char_end": 26
+          },
+          {
+            "rank": 4,
+            "score": 0.3420150876045227,
+            "document_id": "fd-yjy",
+            "block_id": "3135bc8c6e8b5ae4",
+            "char_start": 0,
+            "char_end": 26
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 4,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2"
+        ],
+        "fact_count": 2,
+        "covered_fact_count": 2,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          },
+          {
+            "fact_id": "f2",
+            "evidence_ids": [
+              "ev2"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03278688524590164,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          },
+          {
+            "rank": 2,
+            "score": 0.03225806451612903,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 3,
+            "score": 0.015873015873015872,
+            "document_id": "fd-2025",
+            "block_id": "d971961afd12e2c7",
+            "char_start": 0,
+            "char_end": 26
+          },
+          {
+            "rank": 4,
+            "score": 0.015625,
+            "document_id": "fd-yjy",
+            "block_id": "3135bc8c6e8b5ae4",
+            "char_start": 0,
+            "char_end": 26
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": true
+  },
+  {
+    "question_id": "v2-q12",
+    "query": "虚构2024版缓考申请办法规定的缓考申请的提交期限和附加材料是什么",
+    "answerable": true,
+    "question_type": "multi_evidence",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "cmp-defer-v1",
+        "block_id": "285acc86e242ef04",
+        "char_start": 4,
+        "char_end": 23,
+        "quote": "缓考申请须在考试前 5 个工作日提交。"
+      },
+      {
+        "evidence_id": "ev2",
+        "document_id": "cmp-defer-v1",
+        "block_id": "f35e800308f2c324",
+        "char_start": 4,
+        "char_end": 20,
+        "quote": "申请缓考须同时提交书面情况说明。"
+      }
+    ],
+    "rationale": "多证据（两必要事实 AND）：题面明确限定虚构 2024 版（cmp-defer-v1，版本标签「虚构 2024 版」）。f1=该版提交期限（考试前 5 个工作日）、f2=该版附加材料（书面情况说明）。虚构 2025 版的「3 个工作日」属其他版本规定（内容冲突），不算本题正确来源。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 0.0,
+        "hit": 0.0,
+        "mrr": 0.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [],
+        "fact_count": 2,
+        "covered_fact_count": 0,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": false
+          },
+          {
+            "fact_id": "f2",
+            "evidence_ids": [
+              "ev2"
+            ],
+            "covered": false
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 13.40266941751787,
+            "document_id": "cmp-defer-v1",
+            "block_id": "fcbf298150240157",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 2,
+            "score": 13.40266941751787,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 3,
+            "score": 10.719478068093983,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 4,
+            "score": 9.877909090248822,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 5,
+            "score": 9.229201167650047,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          }
+        ],
+        "k3": {
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": 0.0,
+        "hit": 0.0,
+        "mrr": 0.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [],
+        "fact_count": 2,
+        "covered_fact_count": 0,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": false
+          },
+          {
+            "fact_id": "f2",
+            "evidence_ids": [
+              "ev2"
+            ],
+            "covered": false
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.7919835448265076,
+            "document_id": "cmp-defer-v1",
+            "block_id": "fcbf298150240157",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 2,
+            "score": 0.7919835448265076,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 3,
+            "score": 0.7768136262893677,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 4,
+            "score": 0.7465144991874695,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "d897e41b44bfa468",
+            "char_start": 0,
+            "char_end": 53
+          },
+          {
+            "rank": 5,
+            "score": 0.7380362749099731,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          }
+        ],
+        "k3": {
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 0.0,
+        "hit": 0.0,
+        "mrr": 0.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [],
+        "fact_count": 2,
+        "covered_fact_count": 0,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": false
+          },
+          {
+            "fact_id": "f2",
+            "evidence_ids": [
+              "ev2"
+            ],
+            "covered": false
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03278688524590164,
+            "document_id": "cmp-defer-v1",
+            "block_id": "fcbf298150240157",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 2,
+            "score": 0.03225806451612903,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 3,
+            "score": 0.03149801587301587,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 4,
+            "score": 0.03125763125763126,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 5,
+            "score": 0.03007688828584351,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          }
+        ],
+        "k3": {
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": true
+  },
+  {
+    "question_id": "v2-q13",
+    "query": "研究生因科研任务不能参加考试如何申请缓考",
+    "answerable": true,
+    "question_type": "distractor",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "dis-graduate-defer",
+        "block_id": "292ef8b2ddf35040",
+        "char_start": 22,
+        "char_end": 61,
+        "quote": "应在考试前 7 个工作日内向研究生院提交缓考申请，并附导师签字的科研任务说明。"
+      }
+    ],
+    "rationale": "相似主题干扰：查询限定研究生；5 份本科生缓考资料同主题易误检但不适用于研究生（适用对象不同，不算等价来源）。语料无其他同事实来源。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 31.674370436253255,
+            "document_id": "dis-graduate-defer",
+            "block_id": "292ef8b2ddf35040",
+            "char_start": 0,
+            "char_end": 61
+          },
+          {
+            "rank": 2,
+            "score": 11.720840118330145,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 3,
+            "score": 11.17528153499657,
+            "document_id": "cmp-defer-v1",
+            "block_id": "3d5e04669fbfe064",
+            "char_start": 0,
+            "char_end": 35
+          },
+          {
+            "rank": 4,
+            "score": 11.17528153499657,
+            "document_id": "cmp-defer-v2",
+            "block_id": "5d10baf30aed29f6",
+            "char_start": 0,
+            "char_end": 35
+          },
+          {
+            "rank": 5,
+            "score": 10.913194522495683,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.807820200920105,
+            "document_id": "dis-graduate-defer",
+            "block_id": "292ef8b2ddf35040",
+            "char_start": 0,
+            "char_end": 61
+          },
+          {
+            "rank": 2,
+            "score": 0.7429788708686829,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 3,
+            "score": 0.7415311336517334,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "9df6bfbd98df733e",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 4,
+            "score": 0.7224501371383667,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          },
+          {
+            "rank": 5,
+            "score": 0.6948835849761963,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03278688524590164,
+            "document_id": "dis-graduate-defer",
+            "block_id": "292ef8b2ddf35040",
+            "char_start": 0,
+            "char_end": 61
+          },
+          {
+            "rank": 2,
+            "score": 0.03225806451612903,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 3,
+            "score": 0.031024531024531024,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "9df6bfbd98df733e",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 4,
+            "score": 0.031009615384615385,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          },
+          {
+            "rank": 5,
+            "score": 0.03036576949620428,
+            "document_id": "cmp-defer-v1",
+            "block_id": "3d5e04669fbfe064",
+            "char_start": 0,
+            "char_end": 35
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": true
+  },
+  {
+    "question_id": "v2-q14",
+    "query": "缓考申请可以由他人代办吗",
+    "answerable": true,
+    "question_type": "distractor",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "syn-pdf-text-001",
+        "block_id": "d897e41b44bfa468",
+        "char_start": 7,
+        "char_end": 23,
+        "quote": "第三条 缓考申请不得由他人代办。"
+      }
+    ],
+    "rationale": "相似主题干扰（PDF 来源）：其他缓考资料未提代办。语料无其他同事实来源。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 16.79939756974796,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "d897e41b44bfa468",
+            "char_start": 0,
+            "char_end": 53
+          },
+          {
+            "rank": 2,
+            "score": 4.882182454328554,
+            "document_id": "cmp-defer-v1",
+            "block_id": "fcbf298150240157",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 3,
+            "score": 4.882182454328554,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 4,
+            "score": 4.554246466784611,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 5,
+            "score": 4.356895786557278,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.7657291293144226,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "d897e41b44bfa468",
+            "char_start": 0,
+            "char_end": 53
+          },
+          {
+            "rank": 2,
+            "score": 0.7211334109306335,
+            "document_id": "cmp-defer-v1",
+            "block_id": "fcbf298150240157",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 3,
+            "score": 0.7211334109306335,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 4,
+            "score": 0.7100887298583984,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 5,
+            "score": 0.70279860496521,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03278688524590164,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "d897e41b44bfa468",
+            "char_start": 0,
+            "char_end": 53
+          },
+          {
+            "rank": 2,
+            "score": 0.03225806451612903,
+            "document_id": "cmp-defer-v1",
+            "block_id": "fcbf298150240157",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 3,
+            "score": 0.031746031746031744,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 4,
+            "score": 0.031009615384615385,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 5,
+            "score": 0.029910714285714284,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": true
+  },
+  {
+    "question_id": "v2-q15",
+    "query": "成绩复核申请须在多长时间内提出",
+    "answerable": true,
+    "question_type": "distractor",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "syn-pdf-text-001",
+        "block_id": "3428681d9af60ba3",
+        "char_start": 37,
+        "char_end": 66,
+        "quote": "第一条 成绩复核申请须在成绩公布后 10 个工作日内提出。"
+      },
+      {
+        "evidence_id": "ev2",
+        "document_id": "syn-parse-docx-001",
+        "block_id": "f28ee3e4c5372f7c",
+        "char_start": 23,
+        "char_end": 54,
+        "quote": "如有疑问，请在成绩公布后10个工作日内向所在学院提出复核申请。"
+      },
+      {
+        "evidence_id": "ev3",
+        "document_id": "syn-parse-docx-001",
+        "block_id": "b304f406a03da01b",
+        "char_start": 5,
+        "char_end": 14,
+        "quote": "公布后10个工作日"
+      }
+    ],
+    "rationale": "相似主题干扰：成绩主题噪声多。三处来源均给出同一期限事实「成绩公布后 10 个工作日内」（组 f1，任一满足）。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2",
+          "ev3"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2",
+              "ev3"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 16.60176483134487,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "3428681d9af60ba3",
+            "char_start": 0,
+            "char_end": 87
+          },
+          {
+            "rank": 2,
+            "score": 9.227607204421087,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "b304f406a03da01b",
+            "char_start": 0,
+            "char_end": 21
+          },
+          {
+            "rank": 3,
+            "score": 9.193985800685576,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "f28ee3e4c5372f7c",
+            "char_start": 0,
+            "char_end": 54
+          },
+          {
+            "rank": 4,
+            "score": 6.855787435893123,
+            "document_id": "cmp-defer-v1",
+            "block_id": "285acc86e242ef04",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 5,
+            "score": 6.855787435893123,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2",
+          "ev3"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2",
+              "ev3"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.7401834726333618,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "f28ee3e4c5372f7c",
+            "char_start": 0,
+            "char_end": 54
+          },
+          {
+            "rank": 2,
+            "score": 0.692219078540802,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "3428681d9af60ba3",
+            "char_start": 0,
+            "char_end": 87
+          },
+          {
+            "rank": 3,
+            "score": 0.6778607368469238,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "b304f406a03da01b",
+            "char_start": 0,
+            "char_end": 21
+          },
+          {
+            "rank": 4,
+            "score": 0.626209020614624,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "009121d9f2695116",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 5,
+            "score": 0.613091230392456,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2",
+          "ev3"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2",
+              "ev3"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03252247488101534,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "3428681d9af60ba3",
+            "char_start": 0,
+            "char_end": 87
+          },
+          {
+            "rank": 2,
+            "score": 0.032266458495966696,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "f28ee3e4c5372f7c",
+            "char_start": 0,
+            "char_end": 54
+          },
+          {
+            "rank": 3,
+            "score": 0.03200204813108039,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "b304f406a03da01b",
+            "char_start": 0,
+            "char_end": 21
+          },
+          {
+            "rank": 4,
+            "score": 0.03076923076923077,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 5,
+            "score": 0.03055037313432836,
+            "document_id": "cmp-defer-v1",
+            "block_id": "285acc86e242ef04",
+            "char_start": 0,
+            "char_end": 23
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": true
+  },
+  {
+    "question_id": "v2-q16",
+    "query": "缓考申请的提交时限是什么",
+    "answerable": true,
+    "question_type": "filtered",
+    "group_id": "g-year-defer",
+    "conditions": {
+      "campus": null,
+      "student_type": null,
+      "admission_year": 2024,
+      "as_of_date": null
+    },
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "fd-2024",
+        "block_id": "773e8568327bac71",
+        "char_start": 32,
+        "char_end": 42,
+        "quote": "须在考前提交缓考申请"
+      },
+      {
+        "evidence_id": "ev2",
+        "document_id": "syn-parse-txt-001",
+        "block_id": "9df6bfbd98df733e",
+        "char_start": 25,
+        "char_end": 37,
+        "quote": "应当在考试前提出缓考申请"
+      },
+      {
+        "evidence_id": "ev3",
+        "document_id": "syn-parse-docx-001",
+        "block_id": "0a7595fda827d87e",
+        "char_start": 5,
+        "char_end": 13,
+        "quote": "考试前3个工作日"
+      },
+      {
+        "evidence_id": "ev4",
+        "document_id": "cmp-defer-v2",
+        "block_id": "f5ca416480f4121e",
+        "char_start": 4,
+        "char_end": 23,
+        "quote": "缓考申请须在考试前 3 个工作日提交。"
+      }
+    ],
+    "rationale": "同题不同筛选组 g-year-defer（条件 admission_year=2024）：准入集内的提交时限表述为可替代来源（组 f1，任一满足）——「考前/考试前 3 个工作日」互相兼容（3 个工作日满足考前）。fd-yjy「受理时间考试周前两周」是受理窗口而非提交时限，不计；cmp-v1（5 个工作日）年级不准入且口径冲突，不计。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev3",
+          "ev4"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2",
+              "ev3",
+              "ev4"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 6.333385063910271,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 2,
+            "score": 5.866063095758652,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 3,
+            "score": 4.882182454328554,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 4,
+            "score": 4.356895786557278,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 5,
+            "score": 4.35367084519047,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev3",
+          "ev4"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2",
+              "ev3",
+              "ev4"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.7166405916213989,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 2,
+            "score": 0.7043576240539551,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 3,
+            "score": 0.6955076456069946,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          },
+          {
+            "rank": 4,
+            "score": 0.6843246221542358,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 5,
+            "score": 0.6699987649917603,
+            "document_id": "cmp-defer-v2",
+            "block_id": "5d10baf30aed29f6",
+            "char_start": 0,
+            "char_end": 35
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev3",
+          "ev4"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2",
+              "ev3",
+              "ev4"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03278688524590164,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 2,
+            "score": 0.03200204813108039,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 3,
+            "score": 0.03125763125763126,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          },
+          {
+            "rank": 4,
+            "score": 0.03125,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 5,
+            "score": 0.031054405392392875,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": true
+  },
+  {
+    "question_id": "v2-q17",
+    "query": "缓考申请的提交时限是什么",
+    "answerable": true,
+    "question_type": "filtered",
+    "group_id": "g-year-defer",
+    "conditions": {
+      "campus": null,
+      "student_type": null,
+      "admission_year": 2025,
+      "as_of_date": null
+    },
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "fd-2025",
+        "block_id": "93d350b5c0fb8b15",
+        "char_start": 32,
+        "char_end": 49,
+        "quote": "须在考前 3 个工作日提交缓考申请"
+      }
+    ],
+    "rationale": "同题不同筛选组 g-year-defer（条件 admission_year=2025）：准入集内仅 fd-2025 给出提交时限（fd-yjy 为受理窗口不计；cmp 各版年级不准入）。与 v2-q16 同题不同准入证据。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 2,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 5.324098556234489,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          },
+          {
+            "rank": 2,
+            "score": 4.356895786557278,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 2
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.5,
+        "returned_count": 4,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.6843246221542358,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 2,
+            "score": 0.6582138538360596,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          },
+          {
+            "rank": 3,
+            "score": 0.31043973565101624,
+            "document_id": "fd-2025",
+            "block_id": "d971961afd12e2c7",
+            "char_start": 0,
+            "char_end": 26
+          },
+          {
+            "rank": 4,
+            "score": 0.31043973565101624,
+            "document_id": "fd-yjy",
+            "block_id": "3135bc8c6e8b5ae4",
+            "char_start": 0,
+            "char_end": 26
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 4,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03252247488101534,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          },
+          {
+            "rank": 2,
+            "score": 0.03252247488101534,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 3,
+            "score": 0.015873015873015872,
+            "document_id": "fd-2025",
+            "block_id": "d971961afd12e2c7",
+            "char_start": 0,
+            "char_end": 26
+          },
+          {
+            "rank": 4,
+            "score": 0.015625,
+            "document_id": "fd-yjy",
+            "block_id": "3135bc8c6e8b5ae4",
+            "char_start": 0,
+            "char_end": 26
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": false
+  },
+  {
+    "question_id": "v2-q18",
+    "query": "缓考申请如何提交和审批",
+    "answerable": true,
+    "question_type": "filtered",
+    "group_id": "g-campus-defer",
+    "conditions": {
+      "campus": "成都校区",
+      "student_type": null,
+      "admission_year": 2024,
+      "as_of_date": null
+    },
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "fd-2024",
+        "block_id": "773e8568327bac71",
+        "char_start": 50,
+        "char_end": 69,
+        "quote": "缓考申请经所在学院批准后报教务处备案。"
+      },
+      {
+        "evidence_id": "ev2",
+        "document_id": "syn-parse-txt-001",
+        "block_id": "9df6bfbd98df733e",
+        "char_start": 38,
+        "char_end": 63,
+        "quote": "缓考申请须经所在学院批准，报教务处备案后方可生效。"
+      }
+    ],
+    "rationale": "同题不同筛选组 g-campus-defer（条件 campus=成都校区, admission_year=2024）：提交与审批途径（学院批准→教务处备案）两处等价表述（组 f1，任一满足）。cmp-v2「学院 3 个工作日完成审批」是审批时限、pdf「不得代办」是代理限制，均非途径表述，不计。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.5,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 6.333385063910271,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 2,
+            "score": 5.866063095758652,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 3,
+            "score": 5.1124336837679465,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f9e36a3d2d505060",
+            "char_start": 0,
+            "char_end": 26
+          },
+          {
+            "rank": 4,
+            "score": 4.882182454328554,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 5,
+            "score": 4.35367084519047,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.3333333333333333,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1",
+          "ev2"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.7608548402786255,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 2,
+            "score": 0.719801127910614,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 3,
+            "score": 0.7130506038665771,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 4,
+            "score": 0.706141471862793,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          },
+          {
+            "rank": 5,
+            "score": 0.7054311037063599,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "9df6bfbd98df733e",
+            "char_start": 0,
+            "char_end": 63
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.3333333333333333,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1",
+              "ev2"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03252247488101534,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 2,
+            "score": 0.032018442622950824,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 3,
+            "score": 0.03200204813108039,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 4,
+            "score": 0.031009615384615385,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          },
+          {
+            "rank": 5,
+            "score": 0.03057889822595705,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f9e36a3d2d505060",
+            "char_start": 0,
+            "char_end": 26
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": false
+  },
+  {
+    "question_id": "v2-q19",
+    "query": "缓考申请如何提交和审批",
+    "answerable": true,
+    "question_type": "filtered",
+    "group_id": "g-campus-defer",
+    "conditions": {
+      "campus": "都江堰校区",
+      "student_type": null,
+      "admission_year": 2024,
+      "as_of_date": null
+    },
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "fd-yjy",
+        "block_id": "692d28b992c6eff3",
+        "char_start": 18,
+        "char_end": 49,
+        "quote": "都江堰校区学生的缓考申请交校区教务办公室，不经过学院教学秘书。"
+      }
+    ],
+    "rationale": "同题不同筛选组 g-campus-defer（条件 campus=都江堰校区, admission_year=2024）：准入 fd-yjy（成都校区文档被筛除），提交与审批途径为校区教务办公室直收。与 v2-q18 同题不同准入证据。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 1,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 4.356895786557278,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 1
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 2,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.6948352456092834,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 2,
+            "score": 0.39236509799957275,
+            "document_id": "fd-yjy",
+            "block_id": "3135bc8c6e8b5ae4",
+            "char_start": 0,
+            "char_end": 26
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 2
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 2,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03278688524590164,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 2,
+            "score": 0.016129032258064516,
+            "document_id": "fd-yjy",
+            "block_id": "3135bc8c6e8b5ae4",
+            "char_start": 0,
+            "char_end": 26
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 2
+        }
+      }
+    },
+    "modes_agree": true
+  },
+  {
+    "question_id": "v2-q20",
+    "query": "缓考申请通过线上还是纸质方式提交",
+    "answerable": true,
+    "question_type": "filtered",
+    "group_id": "g-time-defer",
+    "conditions": {
+      "campus": null,
+      "student_type": null,
+      "admission_year": null,
+      "as_of_date": "2026-10-01"
+    },
+    "gold_evidence": [
+      {
+        "evidence_id": "ev1",
+        "document_id": "fd-future",
+        "block_id": "899b7d2b54e9a72e",
+        "char_start": 26,
+        "char_end": 51,
+        "quote": "缓考申请将通过线上教务系统提交，不再收取纸质材料。"
+      }
+    ],
+    "rationale": "同题不同筛选组 g-time-defer（条件 as_of_date=2026-10-01）：2026 版已生效，线上提交句作答（组 f1）。题面明确渠道维度（线上/纸质）。",
+    "missing": null,
+    "modes": {
+      "bm25": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 14.878735750598716,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 2,
+            "score": 6.333385063910271,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 3,
+            "score": 5.324098556234489,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          },
+          {
+            "rank": 4,
+            "score": 4.882182454328554,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 5,
+            "score": 4.356895786557278,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.7542930841445923,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 2,
+            "score": 0.6983826756477356,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 3,
+            "score": 0.6595996618270874,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 4,
+            "score": 0.6506139636039734,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          },
+          {
+            "rank": 5,
+            "score": 0.6335099935531616,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "returned_count": 5,
+        "covered_evidence_ids": [
+          "ev1"
+        ],
+        "fact_count": 1,
+        "covered_fact_count": 1,
+        "facts": [
+          {
+            "fact_id": "f1",
+            "evidence_ids": [
+              "ev1"
+            ],
+            "covered": true
+          }
+        ],
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03278688524590164,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 2,
+            "score": 0.03200204813108039,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 3,
+            "score": 0.031754032258064516,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 4,
+            "score": 0.030776515151515152,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          },
+          {
+            "rank": 5,
+            "score": 0.03076923076923077,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          }
+        ],
+        "k3": {
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": true
+  },
+  {
+    "question_id": "v2-q21",
+    "query": "缓考申请通过线上还是纸质方式提交",
+    "answerable": false,
+    "question_type": "unanswerable",
+    "group_id": "g-time-defer",
+    "conditions": {
+      "campus": null,
+      "student_type": null,
+      "admission_year": null,
+      "as_of_date": "2025-10-01"
+    },
+    "gold_evidence": [],
+    "rationale": "同题不同筛选组 g-time-defer（条件 as_of_date=2025-10-01）：2026 版未生效；准入资料均未说明线上/纸质渠道（交办公室、附证明等为受理途径/材料，非渠道）——答案可得性随筛选变化。",
+    "missing": "查询日期早于 2026 版办法生效日，现有生效资料未说明线上/纸质提交方式",
+    "modes": {
+      "bm25": {
+        "recall": null,
+        "hit": null,
+        "mrr": null,
+        "returned_count": 5,
+        "covered_evidence_ids": [],
+        "fact_count": null,
+        "covered_fact_count": null,
+        "facts": null,
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 6.333385063910271,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 2,
+            "score": 5.324098556234489,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          },
+          {
+            "rank": 3,
+            "score": 4.882182454328554,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 4,
+            "score": 4.356895786557278,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 5,
+            "score": 4.35367084519047,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          }
+        ],
+        "k3": {
+          "recall": null,
+          "hit": null,
+          "mrr": null,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": null,
+        "hit": null,
+        "mrr": null,
+        "returned_count": 5,
+        "covered_evidence_ids": [],
+        "fact_count": null,
+        "covered_fact_count": null,
+        "facts": null,
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.6983826756477356,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 2,
+            "score": 0.6595996618270874,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 3,
+            "score": 0.6506139636039734,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          },
+          {
+            "rank": 4,
+            "score": 0.6335099935531616,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 5,
+            "score": 0.6290794610977173,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "d897e41b44bfa468",
+            "char_start": 0,
+            "char_end": 53
+          }
+        ],
+        "k3": {
+          "recall": null,
+          "hit": null,
+          "mrr": null,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": null,
+        "hit": null,
+        "mrr": null,
+        "returned_count": 5,
+        "covered_evidence_ids": [],
+        "fact_count": null,
+        "covered_fact_count": null,
+        "facts": null,
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03252247488101534,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 2,
+            "score": 0.032266458495966696,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 3,
+            "score": 0.03125763125763126,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          },
+          {
+            "rank": 4,
+            "score": 0.03125,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 5,
+            "score": 0.030834914611005692,
+            "document_id": "fd-2025",
+            "block_id": "93d350b5c0fb8b15",
+            "char_start": 0,
+            "char_end": 86
+          }
+        ],
+        "k3": {
+          "recall": null,
+          "hit": null,
+          "mrr": null,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": true
+  },
+  {
+    "question_id": "v2-q22",
+    "query": "国家奖学金的评审条件是什么",
+    "answerable": false,
+    "question_type": "unanswerable",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [],
+    "rationale": "相似主题材料不足：语料仅含《学校奖学金评定细则》（不同奖项，内容不等价，不算替代来源）。",
+    "missing": "语料仅含学校奖学金评定细则，未收录国家奖学金评审规定",
+    "modes": {
+      "bm25": {
+        "recall": null,
+        "hit": null,
+        "mrr": null,
+        "returned_count": 5,
+        "covered_evidence_ids": [],
+        "fact_count": null,
+        "covered_fact_count": null,
+        "facts": null,
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 6.443920980176715,
+            "document_id": "dis-scholarship",
+            "block_id": "bfb251ec48d2198a",
+            "char_start": 0,
+            "char_end": 17
+          },
+          {
+            "rank": 2,
+            "score": 5.814484718129065,
+            "document_id": "dis-scholarship",
+            "block_id": "83f7605d589dbe36",
+            "char_start": 0,
+            "char_end": 22
+          },
+          {
+            "rank": 3,
+            "score": 5.595845890547159,
+            "document_id": "dis-scholarship",
+            "block_id": "37e56c8d646deb92",
+            "char_start": 0,
+            "char_end": 30
+          },
+          {
+            "rank": 4,
+            "score": 4.429837040691384,
+            "document_id": "dis-scholarship",
+            "block_id": "3dfa7d4a91e653e9",
+            "char_start": 0,
+            "char_end": 44
+          },
+          {
+            "rank": 5,
+            "score": 2.1907797045990893,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "ce15747a6cdf597a",
+            "char_start": 0,
+            "char_end": 88
+          }
+        ],
+        "k3": {
+          "recall": null,
+          "hit": null,
+          "mrr": null,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": null,
+        "hit": null,
+        "mrr": null,
+        "returned_count": 5,
+        "covered_evidence_ids": [],
+        "fact_count": null,
+        "covered_fact_count": null,
+        "facts": null,
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.6720690727233887,
+            "document_id": "dis-scholarship",
+            "block_id": "bfb251ec48d2198a",
+            "char_start": 0,
+            "char_end": 17
+          },
+          {
+            "rank": 2,
+            "score": 0.6300735473632812,
+            "document_id": "dis-scholarship",
+            "block_id": "3dfa7d4a91e653e9",
+            "char_start": 0,
+            "char_end": 44
+          },
+          {
+            "rank": 3,
+            "score": 0.6158388257026672,
+            "document_id": "dis-scholarship",
+            "block_id": "37e56c8d646deb92",
+            "char_start": 0,
+            "char_end": 30
+          },
+          {
+            "rank": 4,
+            "score": 0.5918964147567749,
+            "document_id": "dis-scholarship",
+            "block_id": "83f7605d589dbe36",
+            "char_start": 0,
+            "char_end": 22
+          },
+          {
+            "rank": 5,
+            "score": 0.5171842575073242,
+            "document_id": "fd-2025",
+            "block_id": "d971961afd12e2c7",
+            "char_start": 0,
+            "char_end": 26
+          }
+        ],
+        "k3": {
+          "recall": null,
+          "hit": null,
+          "mrr": null,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": null,
+        "hit": null,
+        "mrr": null,
+        "returned_count": 5,
+        "covered_evidence_ids": [],
+        "fact_count": null,
+        "covered_fact_count": null,
+        "facts": null,
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03278688524590164,
+            "document_id": "dis-scholarship",
+            "block_id": "bfb251ec48d2198a",
+            "char_start": 0,
+            "char_end": 17
+          },
+          {
+            "rank": 2,
+            "score": 0.031754032258064516,
+            "document_id": "dis-scholarship",
+            "block_id": "83f7605d589dbe36",
+            "char_start": 0,
+            "char_end": 22
+          },
+          {
+            "rank": 3,
+            "score": 0.031754032258064516,
+            "document_id": "dis-scholarship",
+            "block_id": "3dfa7d4a91e653e9",
+            "char_start": 0,
+            "char_end": 44
+          },
+          {
+            "rank": 4,
+            "score": 0.031746031746031744,
+            "document_id": "dis-scholarship",
+            "block_id": "37e56c8d646deb92",
+            "char_start": 0,
+            "char_end": 30
+          },
+          {
+            "rank": 5,
+            "score": 0.015384615384615385,
+            "document_id": "fd-2025",
+            "block_id": "d971961afd12e2c7",
+            "char_start": 0,
+            "char_end": 26
+          }
+        ],
+        "k3": {
+          "recall": null,
+          "hit": null,
+          "mrr": null,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": true
+  },
+  {
+    "question_id": "v2-q23",
+    "query": "学生宿舍晚归如何处理",
+    "answerable": false,
+    "question_type": "unanswerable",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [],
+    "rationale": "材料不足：全语料无宿舍管理主题。",
+    "missing": "语料无宿舍管理相关资料",
+    "modes": {
+      "bm25": {
+        "recall": null,
+        "hit": null,
+        "mrr": null,
+        "returned_count": 5,
+        "covered_evidence_ids": [],
+        "fact_count": null,
+        "covered_fact_count": null,
+        "facts": null,
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 1.5708564587828242,
+            "document_id": "cmp-defer-v1",
+            "block_id": "3d5e04669fbfe064",
+            "char_start": 0,
+            "char_end": 35
+          },
+          {
+            "rank": 2,
+            "score": 1.5708564587828242,
+            "document_id": "cmp-defer-v2",
+            "block_id": "5d10baf30aed29f6",
+            "char_start": 0,
+            "char_end": 35
+          },
+          {
+            "rank": 3,
+            "score": 1.5459964282569765,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "d897e41b44bfa468",
+            "char_start": 0,
+            "char_end": 53
+          },
+          {
+            "rank": 4,
+            "score": 1.1743092154632515,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "009121d9f2695116",
+            "char_start": 0,
+            "char_end": 63
+          },
+          {
+            "rank": 5,
+            "score": 1.1603605679293225,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          }
+        ],
+        "k3": {
+          "recall": null,
+          "hit": null,
+          "mrr": null,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": null,
+        "hit": null,
+        "mrr": null,
+        "returned_count": 5,
+        "covered_evidence_ids": [],
+        "fact_count": null,
+        "covered_fact_count": null,
+        "facts": null,
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.421700656414032,
+            "document_id": "dis-scholarship",
+            "block_id": "bfb251ec48d2198a",
+            "char_start": 0,
+            "char_end": 17
+          },
+          {
+            "rank": 2,
+            "score": 0.4192774295806885,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "542187ebbac5a4b2",
+            "char_start": 0,
+            "char_end": 71
+          },
+          {
+            "rank": 3,
+            "score": 0.4138721227645874,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "d897e41b44bfa468",
+            "char_start": 0,
+            "char_end": 53
+          },
+          {
+            "rank": 4,
+            "score": 0.40717482566833496,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f9e36a3d2d505060",
+            "char_start": 0,
+            "char_end": 26
+          },
+          {
+            "rank": 5,
+            "score": 0.39879336953163147,
+            "document_id": "dis-graduate-defer",
+            "block_id": "ca8441a4b57c3445",
+            "char_start": 0,
+            "char_end": 22
+          }
+        ],
+        "k3": {
+          "recall": null,
+          "hit": null,
+          "mrr": null,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": null,
+        "hit": null,
+        "mrr": null,
+        "returned_count": 5,
+        "covered_evidence_ids": [],
+        "fact_count": null,
+        "covered_fact_count": null,
+        "facts": null,
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.031746031746031744,
+            "document_id": "syn-pdf-text-001",
+            "block_id": "d897e41b44bfa468",
+            "char_start": 0,
+            "char_end": 53
+          },
+          {
+            "rank": 2,
+            "score": 0.03131881575727918,
+            "document_id": "cmp-defer-v1",
+            "block_id": "3d5e04669fbfe064",
+            "char_start": 0,
+            "char_end": 35
+          },
+          {
+            "rank": 3,
+            "score": 0.03128054740957967,
+            "document_id": "cmp-defer-v2",
+            "block_id": "5d10baf30aed29f6",
+            "char_start": 0,
+            "char_end": 35
+          },
+          {
+            "rank": 4,
+            "score": 0.030834914611005692,
+            "document_id": "syn-parse-txt-001",
+            "block_id": "542187ebbac5a4b2",
+            "char_start": 0,
+            "char_end": 71
+          },
+          {
+            "rank": 5,
+            "score": 0.029211087420042643,
+            "document_id": "fd-yjy",
+            "block_id": "692d28b992c6eff3",
+            "char_start": 0,
+            "char_end": 69
+          }
+        ],
+        "k3": {
+          "recall": null,
+          "hit": null,
+          "mrr": null,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": true
+  },
+  {
+    "question_id": "v2-q24",
+    "query": "缓考申请的线上提交入口网址是什么",
+    "answerable": false,
+    "question_type": "unanswerable",
+    "group_id": null,
+    "conditions": null,
+    "gold_evidence": [],
+    "rationale": "陷阱材料不足：fd-future 提及「线上教务系统」但未给网址/入口——主题相关不等于可作答。",
+    "missing": "资料提及线上教务系统但未给出网址或入口地址",
+    "modes": {
+      "bm25": {
+        "recall": null,
+        "hit": null,
+        "mrr": null,
+        "returned_count": 5,
+        "covered_evidence_ids": [],
+        "fact_count": null,
+        "covered_fact_count": null,
+        "facts": null,
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 7.579588254607333,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 2,
+            "score": 6.333385063910271,
+            "document_id": "cmp-defer-v1",
+            "block_id": "285acc86e242ef04",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 3,
+            "score": 6.333385063910271,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          },
+          {
+            "rank": 4,
+            "score": 5.866063095758652,
+            "document_id": "fd-2024",
+            "block_id": "773e8568327bac71",
+            "char_start": 0,
+            "char_end": 69
+          },
+          {
+            "rank": 5,
+            "score": 5.478543433974341,
+            "document_id": "fd-unknown",
+            "block_id": "c6805c1892b77d82",
+            "char_start": 0,
+            "char_end": 77
+          }
+        ],
+        "k3": {
+          "recall": null,
+          "hit": null,
+          "mrr": null,
+          "returned_count": 3
+        }
+      },
+      "dense": {
+        "recall": null,
+        "hit": null,
+        "mrr": null,
+        "returned_count": 5,
+        "covered_evidence_ids": [],
+        "fact_count": null,
+        "covered_fact_count": null,
+        "facts": null,
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.6708410382270813,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 2,
+            "score": 0.662769615650177,
+            "document_id": "cmp-defer-v1",
+            "block_id": "fcbf298150240157",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 3,
+            "score": 0.662769615650177,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 4,
+            "score": 0.6398492455482483,
+            "document_id": "fd-unknown",
+            "block_id": "c6805c1892b77d82",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 5,
+            "score": 0.6158580183982849,
+            "document_id": "syn-parse-docx-001",
+            "block_id": "0a7595fda827d87e",
+            "char_start": 0,
+            "char_end": 19
+          }
+        ],
+        "k3": {
+          "recall": null,
+          "hit": null,
+          "mrr": null,
+          "returned_count": 3
+        }
+      },
+      "hybrid": {
+        "recall": null,
+        "hit": null,
+        "mrr": null,
+        "returned_count": 5,
+        "covered_evidence_ids": [],
+        "fact_count": null,
+        "covered_fact_count": null,
+        "facts": null,
+        "ranking": [
+          {
+            "rank": 1,
+            "score": 0.03278688524590164,
+            "document_id": "fd-future",
+            "block_id": "899b7d2b54e9a72e",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 2,
+            "score": 0.031054405392392875,
+            "document_id": "cmp-defer-v1",
+            "block_id": "fcbf298150240157",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 3,
+            "score": 0.031009615384615385,
+            "document_id": "fd-unknown",
+            "block_id": "c6805c1892b77d82",
+            "char_start": 0,
+            "char_end": 77
+          },
+          {
+            "rank": 4,
+            "score": 0.03057889822595705,
+            "document_id": "cmp-defer-v2",
+            "block_id": "bc5f604c8fe5ba8d",
+            "char_start": 0,
+            "char_end": 12
+          },
+          {
+            "rank": 5,
+            "score": 0.03036576949620428,
+            "document_id": "cmp-defer-v2",
+            "block_id": "f5ca416480f4121e",
+            "char_start": 0,
+            "char_end": 23
+          }
+        ],
+        "k3": {
+          "recall": null,
+          "hit": null,
+          "mrr": null,
+          "returned_count": 3
+        }
+      }
+    },
+    "modes_agree": true
+  }
+]

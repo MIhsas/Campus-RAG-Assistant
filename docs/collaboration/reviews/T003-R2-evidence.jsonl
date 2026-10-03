@@ -1,0 +1,16 @@
+{"case": "baseline", "exit": 0, "valid": true, "document_count": 2, "errors": []}
+{"case": "boolean_string", "exit": 1, "valid": false, "document_count": 0, "errors": [{"code": "MANIFEST_SCHEMA_ERROR", "field": "documents.0.is_synthetic"}]}
+{"case": "impossible_date", "exit": 1, "valid": false, "document_count": 0, "errors": [{"code": "MANIFEST_SCHEMA_ERROR", "field": "documents.0.published_at"}]}
+{"case": "non_leap_day", "exit": 1, "valid": false, "document_count": 0, "errors": [{"code": "MANIFEST_SCHEMA_ERROR", "field": "documents.0.published_at"}]}
+{"case": "missing_scope", "exit": 1, "valid": false, "document_count": 0, "errors": [{"code": "MANIFEST_SCHEMA_ERROR", "field": "documents.0.scope"}]}
+{"case": "missing_date", "exit": 0, "valid": true, "document_count": 2, "errors": []}
+{"case": "empty_scope_object", "exit": 1, "valid": false, "document_count": 0, "errors": [{"code": "MANIFEST_SCHEMA_ERROR", "field": "documents.0.scope.campus"}, {"code": "MANIFEST_SCHEMA_ERROR", "field": "documents.0.scope.student_type"}, {"code": "MANIFEST_SCHEMA_ERROR", "field": "documents.0.scope.admission_years"}]}
+{"case": "bad_years", "exit": 1, "valid": false, "document_count": 0, "errors": [{"code": "MANIFEST_SCHEMA_ERROR", "field": "documents.0.scope.admission_years"}]}
+{"case": "blank_campus", "exit": 1, "valid": false, "document_count": 0, "errors": [{"code": "MANIFEST_SCHEMA_ERROR", "field": "documents.0.scope.campus"}]}
+{"case": "campus_string", "exit": 1, "valid": false, "document_count": 0, "errors": [{"code": "MANIFEST_SCHEMA_ERROR", "field": "documents.0.scope.campus"}]}
+{"case": "no_url_host", "exit": 1, "valid": false, "document_count": 0, "errors": [{"code": "MANIFEST_SCHEMA_ERROR", "field": "documents.0.source_url"}]}
+{"case": "null_campus", "exit": 1, "valid": false, "document_count": 0, "errors": [{"code": "MANIFEST_SCHEMA_ERROR", "field": "documents.0.scope.campus"}]}
+{"case": "invalid_utf8", "exit": 1, "valid": false, "document_count": 0, "errors": [{"code": "MANIFEST_READ_ERROR", "field": "manifest"}]}
+{"case": "bad_hash_count", "exit": 1, "valid": false, "document_count": 2, "errors": [{"code": "HASH_MISMATCH", "field": "sha256"}]}
+{"case": "duplicate_and_bad_hash", "exit": 1, "valid": false, "document_count": 2, "errors": [{"code": "DUPLICATE_DOCUMENT_ID", "field": "document_id"}, {"code": "HASH_MISMATCH", "field": "sha256"}]}
+{"case": "masked_boolean_test", "exit": 1, "valid": false, "document_count": 0, "errors": [{"code": "MANIFEST_SCHEMA_ERROR", "field": "documents.0.sha256"}, {"code": "MANIFEST_SCHEMA_ERROR", "field": "documents.0.is_synthetic"}]}

@@ -1,0 +1,181 @@
+{
+  "evidence_kind": "本地装配验证（合成语料/现有本地模型/测试桩），零外部调用",
+  "rows": [
+    {
+      "combo": "C1 最小（仅语料）",
+      "expected": "BM25、摘录可用；生成器/ASR/模板/规则未配置",
+      "actual": "检索模式=bm25；生成器=未配置；ASR=未配置；办事/自查=未配置",
+      "match": true
+    },
+    {
+      "combo": "C2 + embedding-model-dir",
+      "expected": "三模式可用（bm25、dense、hybrid）；dense 单查询可返回",
+      "actual": "检索模式=bm25、dense、hybrid；dense 查询 HTTP 200 命中 3 条",
+      "match": true
+    },
+    {
+      "combo": "C3 + asr-model-dir",
+      "expected": "ASR 状态为已配置（模型按需加载）",
+      "actual": "ASR=已配置（funasr-paraformer / paraformer-zh@provenance-8b449f3ba655）",
+      "match": true
+    },
+    {
+      "combo": "C4 + procedures + self-check",
+      "expected": "办事模板与自查规则接口可用",
+      "actual": "procedures=200；self-check=200",
+      "match": true
+    },
+    {
+      "combo": "C5 生成器（计数桩）",
+      "expected": "启动/状态/摘录零生成调用；显式生成可达（桩）",
+      "actual": "摘录后调用数=0；显式生成 HTTP 200，调用数=1",
+      "match": true
+    },
+    {
+      "combo": "C6 生成器缺配置",
+      "expected": "明确提示降级，摘录仍可用，不静默当成功启用",
+      "actual": "报告含「请求启用但配置不完整」=True；generator_configured=False",
+      "match": true
+    }
+  ],
+  "reports": [
+    {
+      "combo": "C1",
+      "report": [
+        [
+          "语料：文档 2，解析成功 2",
+          true
+        ],
+        [
+          "生成器：未启用（仅原文摘录；--generator deepseek 显式开启）",
+          true
+        ],
+        [
+          "办事模板：未配置（不代表学校事项无模板）",
+          true
+        ],
+        [
+          "自查规则：未配置（不代表学校事项无规则）",
+          true
+        ]
+      ]
+    },
+    {
+      "combo": "C2",
+      "report": [
+        [
+          "语料：文档 2，解析成功 2",
+          true
+        ],
+        [
+          "向量检索：已配置（本地模型目录 bge-small-zh-v1.5）",
+          true
+        ],
+        [
+          "生成器：未启用（仅原文摘录；--generator deepseek 显式开启）",
+          true
+        ],
+        [
+          "办事模板：未配置（不代表学校事项无模板）",
+          true
+        ],
+        [
+          "自查规则：未配置（不代表学校事项无规则）",
+          true
+        ],
+        [
+          "向量检索：模型加载完成（dense/hybrid 可用）",
+          true
+        ]
+      ]
+    },
+    {
+      "combo": "C3",
+      "report": [
+        [
+          "语料：文档 2，解析成功 2",
+          true
+        ],
+        [
+          "语音识别：已配置（paraformer-zh@provenance-8b449f3ba655；模型将在首次转写时加载）",
+          true
+        ],
+        [
+          "生成器：未启用（仅原文摘录；--generator deepseek 显式开启）",
+          true
+        ],
+        [
+          "办事模板：未配置（不代表学校事项无模板）",
+          true
+        ],
+        [
+          "自查规则：未配置（不代表学校事项无规则）",
+          true
+        ]
+      ]
+    },
+    {
+      "combo": "C4",
+      "report": [
+        [
+          "语料：文档 2，解析成功 2",
+          true
+        ],
+        [
+          "生成器：未启用（仅原文摘录；--generator deepseek 显式开启）",
+          true
+        ],
+        [
+          "办事模板：已配置（procedures.json）",
+          true
+        ],
+        [
+          "自查规则：已配置（rule.json）",
+          true
+        ]
+      ]
+    },
+    {
+      "combo": "C5",
+      "report": [
+        [
+          "语料：文档 2，解析成功 2",
+          true
+        ],
+        [
+          "生成器：已配置（counting-stub（测试桩，非真实生成）；未验证服务连接，启动不探测）",
+          true
+        ],
+        [
+          "办事模板：未配置（不代表学校事项无模板）",
+          true
+        ],
+        [
+          "自查规则：未配置（不代表学校事项无规则）",
+          true
+        ]
+      ]
+    },
+    {
+      "combo": "C6",
+      "report": [
+        [
+          "语料：文档 2，解析成功 2",
+          true
+        ],
+        [
+          "生成器：请求启用但配置不完整（需 CAMPUS_GENERATOR=deepseek 与 DEEPSEEK_API_KEY）——已降级，原文摘录仍可用",
+          false
+        ],
+        [
+          "办事模板：未配置（不代表学校事项无模板）",
+          true
+        ],
+        [
+          "自查规则：未配置（不代表学校事项无规则）",
+          true
+        ]
+      ]
+    }
+  ]
+}

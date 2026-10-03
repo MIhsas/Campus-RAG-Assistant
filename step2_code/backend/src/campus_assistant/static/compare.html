@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>政策版本对比</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
+.header{background:#fff;border-bottom:1px solid #ddd;padding:12px 20px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:10}
+.header h1{font-size:18px;font-weight:600}
+.header a{font-size:13px;color:#1976d2;text-decoration:none}
+.header a:hover{text-decoration:underline}
+.notice{background:#e3f2fd;padding:8px 16px;font-size:13px;color:#1565c0}
+.container{max-width:960px;margin:0 auto;padding:16px}
+.picker-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;padding:10px;background:#fff;border:1px solid #ddd;border-radius:6px}
+.picker-bar label{font-size:13px;color:#555}
+.picker-bar select{padding:6px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;background:#fff;max-width:260px}
+.action-btn{padding:8px 16px;background:#1976d2;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:14px}
+.action-btn:hover{background:#1565c0}
+.action-btn:disabled{background:#bbb;cursor:not-allowed}
+.action-btn.secondary{background:#fff;color:#1976d2;border:1px solid #1976d2}
+.action-btn.secondary:hover{background:#e3f2fd}
+.side-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.side-card{flex:1;min-width:260px;background:#fff;border:1px solid #ddd;border-radius:6px;padding:10px 12px;font-size:12px;color:#555}
+.side-card b{color:#333}
+.counts-bar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.count-tag{font-size:13px;padding:4px 12px;border-radius:4px;border:1px solid #ccc;background:#fff}
+.count-added{border-color:#a5d6a7;background:#e8f5e9;color:#2e7d32}
+.count-deleted{border-color:#ef9a9a;background:#ffebee;color:#c62828}
+.count-modified{border-color:#ffcc80;background:#fff3e0;color:#e65100}
+.count-unchanged{border-color:#ccc;color:#777}
+.diff-card{background:#fff;border:1px solid #ddd;border-radius:6px;padding:12px 14px;margin-bottom:10px}
+.diff-card.added{border-left:4px solid #43a047}
+.diff-card.deleted{border-left:4px solid #e53935}
+.diff-card.modified{border-left:4px solid #fb8c00}
+.diff-card.unchanged{border-left:4px solid #bdbdbd}
+.change-tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:3px;border:1px solid #ccc;margin-right:8px}
+.tag-added{background:#e8f5e9;color:#2e7d32;border-color:#a5d6a7}
+.tag-deleted{background:#ffebee;color:#c62828;border-color:#ef9a9a}
+.tag-modified{background:#fff3e0;color:#e65100;border-color:#ffcc80}
+.tag-unchanged{background:#f5f5f5;color:#757575}
+.clause-key{font-weight:600;font-size:14px}
+.pair{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.pair-side{flex:1;min-width:280px;border:1px solid #eee;border-radius:4px;padding:8px 10px;background:#fafafa}
+.pair-side h4{font-size:12px;color:#666;margin-bottom:4px}
+.pair-side .q{font-size:13px;white-space:pre-wrap;word-break:break-word}
+.pair-side a{font-size:12px;color:#1976d2;text-decoration:none}
+.pair-side a:hover{text-decoration:underline}
+.seg{margin:6px 0;font-size:12px}
+.seg .del{background:#ffcdd2;text-decoration:line-through}
+.seg .ins{background:#c8e6c9}
+.empty-state{text-align:center;color:#999;padding:32px 20px}
+.loading{color:#666;text-align:center;padding:20px}
+.disclaimer{font-size:13px;color:#8a6d3b;background:#fcf8e3;border:1px solid #faebcc;border-radius:4px;padding:8px 12px;margin:10px 0}
+.snapshot-line{font-size:13px;color:#666;margin-bottom:10px}
+.copy-row{margin:10px 0}
+.copy-hint{font-size:12px;color:#666;margin-left:8px}
+@media(max-width:600px){.container{padding:10px}.pair-side{min-width:100%}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>版本对比</h1>
+  <a href="/">首页</a>
+  <a href="/search">证据搜索</a>
+  <a href="/ask">证据整理</a>
+  <a href="/procedures">办事指南</a>
+  <a href="/preview">语料预览</a>
+</div>
+<div class="notice">合成资料演示：对比结果是条款文字差异，不判断哪个版本适用于某个学生；日期较新不等于现行有效，旧版本不等于失效版本。</div>
+<div class="container">
+  <div class="picker-bar" id="picker-bar">
+    <label for="group-select">政策分组</label>
+    <select id="group-select"><option value="">（加载中…）</option></select>
+    <label for="left-select">左侧版本</label>
+    <select id="left-select"></select>
+    <label for="right-select">右侧版本</label>
+    <select id="right-select"></select>
+    <button type="button" class="action-btn secondary" id="swap-btn">交换左右</button>
+    <button type="button" class="action-btn" id="compare-btn">对比</button>
+  </div>
+  <div class="picker-bar">
+    <label for="show-all-toggle"><input type="checkbox" id="show-all-toggle"> 显示全部条款（默认只看变化）</label>
+  </div>
+  <div id="result-area"></div>
+</div>
+<script>
+(function(){
+  var API = '/api/v1/comparison';
+  var groupSelect = document.getElementById('group-select');
+  var leftSelect = document.getElementById('left-select');
+  var rightSelect = document.getElementById('right-select');
+  var swapBtn = document.getElementById('swap-btn');
+  var compareBtn = document.getElementById('compare-btn');
+  var showAllToggle = document.getElementById('show-all-toggle');
+  var resultArea = document.getElementById('result-area');
+  var groups = [];
+  var busy = false;
+  var lastResult = null;
+
+  function ce(tag, cls, text){
+    var el = document.createElement(tag);
+    if(cls) el.className = cls;
+    if(text !== undefined) el.textContent = text;
+    return el;
+  }
+
+  function fmt(v){ return v || '未标注'; }
+
+  function sideText(s){
+    return (s.document_id || '') + '（' + (s.version_label || '未标注') + '）　发布：' + fmt(s.published_at) +
+      '　生效：' + fmt(s.effective_from) + '　失效：' + (s.effective_to || '未标注截止') +
+      '　适用范围：' + (function(scope){
+        if(!scope) return '未标注';
+        var parts = [];
+        if(scope.campus && scope.campus.length) parts.push('校区：' + scope.campus.join('、'));
+        if(scope.student_type && scope.student_type.length) parts.push('类型：' + scope.student_type.join('、'));
+        if(scope.admission_years && scope.admission_years.length) parts.push('年级：' + scope.admission_years.join('、'));
+        return parts.length ? parts.join('；') : '未标注';
+      })(s.scope);
+  }
+
+  function populateVersions(){
+    var gid = groupSelect.value;
+    var g = null;
+    groups.forEach(function(x){ if(x.policy_group_id === gid) g = x; });
+    [leftSelect, rightSelect].forEach(function(sel){
+      sel.innerHTML = '';
+      ((g && g.versions) || []).forEach(function(v){
+        var opt = document.createElement('option');
+        opt.value = v.document_id;
+        opt.textContent = v.document_id + '（' + (v.version_label || '未标注') + '）';
+        sel.appendChild(opt);
+      });
+    });
+    if(leftSelect.children.length >= 2){
+      leftSelect.value = leftSelect.children[0].value;
+      rightSelect.value = leftSelect.children[1].value;
+    }
+  }
+
+  async function loadGroups(){
+    try {
+      var r = await fetch(API + '/groups');
+      if(r.status === 503){
+        groupSelect.innerHTML = '';
+        resultArea.innerHTML = '';
+        resultArea.appendChild(ce('div','empty-state','语料未配置：版本对比仅显示服务器当前已加载语料。'));
+        return;
+      }
+      var d = await r.json();
+      groups = d.groups || [];
+      groupSelect.innerHTML = '';
+      groups.forEach(function(g){
+        var opt = document.createElement('option');
+        opt.value = g.policy_group_id;
+        opt.textContent = g.policy_group_id + '（' + g.versions.length + ' 个版本）';
+        groupSelect.appendChild(opt);
+      });
+      if(groupSelect.children.length){
+        groupSelect.value = groupSelect.children[0].value;
+      }
+      populateVersions();
+    } catch(e){
+      resultArea.innerHTML = '';
+      resultArea.appendChild(ce('div','empty-state','无法加载政策分组：网络错误'));
+    }
+  }
+
+  function changeTag(t){
+    return {added:'新增', deleted:'删除', modified:'修改', unchanged:'未变'}[t] || t;
+  }
+
+  function copySummary(){
+    if(!lastResult) return;
+    var d = lastResult;
+    var lines = [];
+    lines.push('版本对比摘要（合成演示，文字差异不代表适用性）');
+    lines.push('左：' + sideText(d.left));
+    lines.push('右：' + sideText(d.right));
+    lines.push('统计：新增 ' + d.counts.added + '、删除 ' + d.counts.deleted + '、修改 ' + d.counts.modified + '、未变 ' + d.counts.unchanged);
+    lines.push('');
+    (d.entries || []).forEach(function(e){
+      lines.push('【' + changeTag(e.change_type) + '】' + (e.clause_key ? e.clause_key + ' ' : ''));
+      if(e.left) lines.push('  左原文：' + e.left.text + '（' + e.left.document_id + '/' + e.left.block_id + ' [' + e.left.char_start + ',' + e.left.char_end + ')）');
+      if(e.right) lines.push('  右原文：' + e.right.text + '（' + e.right.document_id + '/' + e.right.block_id + ' [' + e.right.char_start + ',' + e.right.char_end + ')）');
+    });
+    lines.push('');
+    lines.push('说明：文字差异不代表资格或政策适用结论；日期较新不等于现行有效。');
+    var text = lines.join('\n');
+    function fail(){
+      resultArea.querySelectorAll('.copy-hint').forEach(function(n){ n.textContent = '复制失败，请手动选择文本复制'; });
+    }
+    try {
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){
+          resultArea.querySelectorAll('.copy-hint').forEach(function(n){ n.textContent = '已复制差异摘要'; });
+        }).catch(fail);
+      } else { fail(); }
+    } catch(e){ fail(); }
+  }
+
+  function renderSideCard(title, s){
+    var card = ce('div', 'side-card');
+    card.appendChild(ce('b', '', title + '：' + (s.title || s.document_id)));
+    card.appendChild(ce('div', '', '版本：' + fmt(s.version_label) + '　发布：' + fmt(s.published_at)));
+    card.appendChild(ce('div', '', '生效：' + fmt(s.effective_from) + '　失效：' + (s.effective_to || '未标注截止')));
+    card.appendChild(ce('div', '', '适用范围（非资格结论）：' + (function(scope){
+      if(!scope) return '未标注';
+      var parts = [];
+      if(scope.campus && scope.campus.length) parts.push('校区：' + scope.campus.join('、'));
+      if(scope.student_type && scope.student_type.length) parts.push('类型：' + scope.student_type.join('、'));
+      if(scope.admission_years && scope.admission_years.length) parts.push('年级：' + scope.admission_years.join('、'));
+      return parts.length ? parts.join('；') : '未标注';
+    })(s.scope)));
+    if(s.is_synthetic) card.appendChild(ce('div', '', '（合成测试资料）'));
+    return card;
+  }
+
+  function renderResult(d){
+    lastResult = d;
+    resultArea.innerHTML = '';
+    // 提交时版本快照——与响应一致，后续改控件不改写
+    var snap = ce('div', 'snapshot-line',
+      '对比快照：左 ' + d.left.document_id + '（' + fmt(d.left.version_label) + '） ↔ 右 ' + d.right.document_id + '（' + fmt(d.right.version_label) + '）');
+    resultArea.appendChild(snap);
+    var sides = ce('div', 'side-meta');
+    sides.appendChild(renderSideCard('左侧版本', d.left));
+    sides.appendChild(renderSideCard('右侧版本', d.right));
+    resultArea.appendChild(sides);
+
+    var counts = ce('div', 'counts-bar');
+    [['added','count-added'],['deleted','count-deleted'],['modified','count-modified'],['unchanged','count-unchanged']].forEach(function(pair){
+      counts.appendChild(ce('span', 'count-tag ' + pair[1], changeTag(pair[0]) + ' ' + d.counts[pair[0]] + ' 条'));
+    });
+    resultArea.appendChild(counts);
+
+    var copyRow = ce('div', 'copy-row');
+    var copyBtn = ce('button', 'action-btn secondary', '复制差异摘要');
+    copyBtn.addEventListener('click', copySummary);
+    copyRow.appendChild(copyBtn);
+    copyRow.appendChild(ce('span', 'copy-hint', ''));
+    resultArea.appendChild(copyRow);
+
+    var shown = 0;
+    (d.entries || []).forEach(function(e){
+      if(!showAllToggle.checked && e.change_type === 'unchanged') return;
+      shown++;
+      var card = ce('div', 'diff-card ' + e.change_type);
+      var head = ce('div');
+      head.appendChild(ce('span', 'change-tag tag-' + e.change_type, changeTag(e.change_type)));
+      head.appendChild(ce('span', 'clause-key', (e.clause_key ? e.clause_key + '　' : '') + e.diff_id));
+      card.appendChild(head);
+      var pair = ce('div', 'pair');
+      [['左', e.left], ['右', e.right]].forEach(function(p){
+        var side = ce('div', 'pair-side');
+        side.appendChild(ce('h4', '', p[0] + '侧原文'));
+        if(p[1]){
+          var det = document.createElement('details');
+          var summ = document.createElement('summary');
+          summ.textContent = '原文（完整，' + (p[1].char_end - p[1].char_start) + ' 字符）';
+          det.appendChild(summ);
+          var q = ce('div', 'q', p[1].text);
+          det.appendChild(q);
+          var wrap = ce('div'); wrap.appendChild(det); side.appendChild(wrap);
+          side.appendChild(ce('div', '', '身份：' + p[1].document_id + '/' + p[1].block_id + ' [' + p[1].char_start + ',' + p[1].char_end + ')'));
+          var a = ce('a');
+          a.href = p[1].preview_url;
+          a.textContent = '查看原文';
+          side.appendChild(a);
+        } else {
+          side.appendChild(ce('div', 'q', '（本侧无此条款）'));
+        }
+        pair.appendChild(side);
+      });
+      card.appendChild(pair);
+      if(e.change_type === 'modified' && e.diff_segments){
+        var seg = ce('div', 'seg', '句内差异：');
+        e.diff_segments.forEach(function(s){
+          if(s.op === 'equal') seg.appendChild(document.createTextNode(s.text));
+          else seg.appendChild(ce('span', s.op === 'delete' ? 'del' : 'ins', s.text));
+        });
+        card.appendChild(seg);
+      }
+      resultArea.appendChild(card);
+    });
+    if(!shown){
+      resultArea.appendChild(ce('div', 'empty-state', '当前筛选下没有可显示的条款（勾选“显示全部条款”可查看未变条款）。'));
+    }
+    if(d.algorithm && d.algorithm.limitations){
+      resultArea.appendChild(ce('div', 'disclaimer', '算法限制：' + d.algorithm.limitations.join(' ')));
+    }
+    resultArea.appendChild(ce('div', 'disclaimer', d.disclaimer || ''));
+  }
+
+  async function doCompare(){
+    if(busy) return;
+    if(!leftSelect.value || !rightSelect.value) return;
+    busy = true;
+    compareBtn.disabled = true;
+    swapBtn.disabled = true;
+    lastResult = null;
+    resultArea.innerHTML = '';
+    resultArea.appendChild(ce('div', 'loading', '对比中…'));
+    try {
+      var body = {left_document_id: leftSelect.value, right_document_id: rightSelect.value};
+      var r = await fetch(API, {
+        method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)
+      });
+      if(r.status === 400 || r.status === 404 || r.status === 503){
+        var err = {};
+        try { err = await r.json(); } catch(e){}
+        resultArea.innerHTML = '';
+        resultArea.appendChild(ce('div', 'empty-state', (err.message || ('HTTP ' + r.status)) + '（未生成新比较结果）'));
+      } else if(!r.ok){
+        resultArea.innerHTML = '';
+        resultArea.appendChild(ce('div', 'empty-state', '对比失败：HTTP ' + r.status + '（未生成新比较结果）'));
+      } else {
+        renderResult(await r.json());
+      }
+    } catch(e){
+      resultArea.innerHTML = '';
+      resultArea.appendChild(ce('div', 'empty-state', '对比失败：网络错误（未生成新比较结果）'));
+    }
+    busy = false;
+    compareBtn.disabled = false;
+    swapBtn.disabled = false;
+  }
+
+  groupSelect.addEventListener('change', populateVersions);
+  swapBtn.addEventListener('click', function(){
+    var tmp = leftSelect.value;
+    leftSelect.value = rightSelect.value;
+    rightSelect.value = tmp;
+  });
+  compareBtn.addEventListener('click', doCompare);
+  showAllToggle.addEventListener('change', function(){
+    if(lastResult) renderResult(lastResult);
+  });
+
+  loadGroups();
+})();
+</script>
+</body>
+</html>

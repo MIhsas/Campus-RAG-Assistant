@@ -1,0 +1,29 @@
+{
+  "task_id": "T007",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T007-R1",
+  "status": "ready_for_review",
+  "summary": "R1 修复：BM25Index 新增 valid_chunk_count 只读属性返回有效索引数 N；search.py 使用 index.valid_chunk_count 替代 len(chunks)；README 说明两类计数区别。新增8项测试（4 valid_chunk_count + 3 CLI indexed_chunk_count + 1 chunk_manifest 单次调用）。258 passed, 1 skipped。",
+  "files": [
+    "docs/collaboration/submissions/T007/report.md",
+    "docs/collaboration/submissions/T007/verification.md",
+    "docs/collaboration/submissions/T007/submission.json",
+    "docs/collaboration/submissions/T007/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T007/changed-files.json",
+  "history": [
+    "docs/collaboration/submissions/T007/history/revision-1/"
+  ],
+  "checks": [
+    {"item": "R1: valid_chunk_count 属性", "result": "pass", "evidence_id": "V04"},
+    {"item": "R1: CLI 有效+标点 indexed < total", "result": "pass", "evidence_id": "V05"},
+    {"item": "R1: CLI 全标点 indexed=0 valid=true exit 0", "result": "pass", "evidence_id": "V05"},
+    {"item": "R1: CLI 空文件 parse error exit 1", "result": "pass", "evidence_id": "V05"},
+    {"item": "chunk_manifest 单次调用", "result": "pass", "evidence_id": "V06"},
+    {"item": "全量 pytest 258 passed", "result": "pass", "evidence_id": "V01"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V02"},
+    {"item": "JS 语法检查", "result": "pass", "evidence_id": "V03"}
+  ],
+  "blockers": []
+}

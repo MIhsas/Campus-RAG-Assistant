@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>办事指南与我的待办</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
+.header{background:#fff;border-bottom:1px solid #ddd;padding:12px 20px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:10}
+.header h1{font-size:18px;font-weight:600}
+.header a{font-size:13px;color:#1976d2;text-decoration:none}
+.header a:hover{text-decoration:underline}
+.notice{background:#e3f2fd;padding:8px 16px;font-size:13px;color:#1565c0}
+.container{max-width:960px;margin:0 auto;padding:16px}
+.section-title{font-size:16px;font-weight:600;margin:18px 0 10px}
+.item-cards{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.item-card{border:1px solid #ccc;background:#fff;border-radius:6px;padding:12px 14px;cursor:pointer;min-width:220px}
+.item-card:hover{border-color:#1976d2}
+.item-card.selected{border-color:#1976d2;box-shadow:0 0 0 2px #90caf9}
+.item-card h3{font-size:15px;margin-bottom:4px}
+.item-card p{font-size:12px;color:#666}
+.synthetic-badge{font-size:11px;background:#fff3cd;color:#856404;padding:1px 6px;border-radius:3px;margin-left:4px}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;padding:10px;background:#fff;border:1px solid #ddd;border-radius:6px}
+.filter-bar label{font-size:13px;color:#555}
+.filter-bar select,.filter-bar input[type="date"]{padding:6px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;background:#fff}
+.filter-clear-btn{padding:6px 14px;border:1px solid #999;background:#fff;color:#555;border-radius:4px;cursor:pointer;font-size:13px}
+.filter-clear-btn:hover{background:#f0f0f0}
+.action-btn{padding:10px 20px;background:#1976d2;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:15px}
+.action-btn:hover{background:#1565c0}
+.action-btn:disabled{background:#bbb;cursor:not-allowed}
+.action-btn.secondary{background:#fff;color:#1976d2;border:1px solid #1976d2}
+.action-btn.secondary:hover{background:#e3f2fd}
+.action-btn.secondary:disabled{color:#bbb;border-color:#ccc;background:#fff}
+.status-bar{padding:8px 16px;font-size:13px;border-radius:4px;margin-bottom:12px}
+.status-ready{background:#e8f5e9;color:#2e7d32}
+.status-partial{background:#fff3e0;color:#e65100}
+.status-failed{background:#ffebee;color:#c62828}
+.status-unconfigured{background:#f5f5f5;color:#757575}
+.draft-banner{font-size:13px;padding:8px 12px;border-radius:4px;margin-bottom:10px}
+.draft-ok{background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7}
+.draft-bad{background:#ffebee;color:#c62828;border:1px solid #ef9a9a}
+.step-card{background:#fff;border:1px solid #ddd;border-radius:6px;padding:14px;margin-bottom:10px}
+.step-card.failed{border-color:#ef9a9a;background:#fffafa}
+.step-card.degraded{border-color:#ffcc80}
+.step-title{font-weight:600;font-size:14px;margin-bottom:4px}
+.step-detail{font-size:14px;margin-bottom:6px}
+.step-fallback{font-size:13px;color:#8a6d3b;background:#fcf8e3;border:1px solid #faebcc;border-radius:4px;padding:6px 10px;margin:6px 0}
+.cite-box{font-size:12px;color:#555;background:#fafafa;border-left:3px solid #90caf9;padding:8px 10px;margin:6px 0}
+.cite-box .q{white-space:pre-wrap;word-break:break-word;color:#333}
+.cite-box a{color:#1976d2;text-decoration:none}
+.cite-note{color:#c62828}
+.unspecified{font-size:12px;color:#8a6d3b}
+.disclaimer{font-size:13px;color:#8a6d3b;background:#fcf8e3;border:1px solid #faebcc;border-radius:4px;padding:8px 12px;margin:10px 0}
+.todo-list-card{background:#fff;border:1px solid #ddd;border-radius:6px;padding:14px;margin-bottom:12px}
+.todo-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:8px}
+.todo-head .t-title{font-weight:600;font-size:14px}
+.todo-head .t-meta{font-size:12px;color:#666}
+.todo-item{border-top:1px solid #eee;padding:8px 0;display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start}
+.todo-item.done .t-item-title{text-decoration:line-through;color:#888}
+.kind-tag{font-size:11px;padding:1px 6px;border-radius:3px;border:1px solid #ccc;color:#555;white-space:nowrap}
+.kind-policy{background:#e3f2fd;color:#1565c0;border-color:#90caf9}
+.kind-personal{background:#f3e5f5;color:#6a1b9a;border-color:#ce93d8}
+.t-item-title{font-size:14px;font-weight:500;flex:1;min-width:180px}
+.t-item-note{width:100%;font-size:12px;padding:6px 8px;border:1px solid #ddd;border-radius:4px}
+.t-item-reminder{display:flex;gap:6px;align-items:center;font-size:12px;color:#666}
+.date-mark{font-size:11px;padding:1px 6px;border-radius:3px;border:1px solid #ccc}
+.mark-expired{background:#ffebee;color:#c62828;border-color:#ef9a9a}
+.mark-today{background:#fff3e0;color:#e65100;border-color:#ffcc80}
+.mark-future{background:#e8f5e9;color:#2e7d32;border-color:#a5d6a7}
+.mini-btn{padding:3px 10px;font-size:12px;border:1px solid #999;background:#fff;border-radius:4px;cursor:pointer;color:#555}
+.mini-btn:hover{background:#f0f0f0}
+.verify-banner{font-size:12px;padding:6px 10px;border-radius:4px;margin:6px 0}
+.verify-changed{background:#ffebee;color:#c62828;border:1px solid #ef9a9a}
+.verify-ok{background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7}
+.empty-state{text-align:center;color:#999;padding:24px 20px}
+.loading{color:#666;text-align:center;padding:16px}
+.mode-hint{font-size:12px;color:#666;margin-bottom:10px}
+@media(max-width:600px){.container{padding:10px}.item-card{min-width:100%}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>办事指南</h1>
+  <a href="/">首页</a>
+  <a href="/search">证据搜索</a>
+  <a href="/ask">证据整理</a>
+  <a href="/preview">语料预览</a>
+  <a href="/compare">版本对比</a>
+</div>
+<div class="notice">合成资料演示：步骤均绑定原文引用，不代表四川农业大学现行办事指南、学校受理或资格认证。个人待办仅保存在本机浏览器，不上传、不提交申请。</div>
+<div class="container">
+  <div class="section-title">① 选择事项与适用范围</div>
+  <div class="item-cards" id="item-cards"></div>
+  <div class="filter-bar" id="filter-bar">
+    <label for="filter-campus">校区</label>
+    <select id="filter-campus" aria-label="校区"><option value="">不限</option></select>
+    <label for="filter-student-type">学生类型</label>
+    <select id="filter-student-type" aria-label="学生类型"><option value="">不限</option></select>
+    <label for="filter-admission-year">入学年份</label>
+    <select id="filter-admission-year" aria-label="入学年份"><option value="">不限</option></select>
+    <label for="filter-as-of-date">查询日期</label>
+    <input type="date" id="filter-as-of-date" aria-label="查询日期">
+    <button type="button" class="filter-clear-btn" id="clear-filters-btn">清除条件</button>
+  </div>
+  <div class="mode-hint">依据按当前语料与筛选条件逐条核对：来源不符合筛选、缺失或内容变化时，不会给出可保存的“完整清单”。</div>
+  <div id="import-note"></div>
+  <div>
+    <button type="button" class="action-btn" id="draft-btn">生成办理步骤草稿</button>
+    <button type="button" class="action-btn secondary" id="save-btn" disabled>保存到我的待办</button>
+  </div>
+  <div id="draft-area"></div>
+
+  <div class="section-title">② 我的待办（本机保存）</div>
+  <div class="filter-bar">
+    <label for="todo-filter">显示</label>
+    <select id="todo-filter">
+      <option value="all">全部步骤</option>
+      <option value="undone">未完成</option>
+      <option value="done">已完成</option>
+    </select>
+    <span class="unspecified" id="todo-storage-note"></span>
+  </div>
+  <div id="todo-area"></div>
+</div>
+<script>
+(function(){
+  var API_P = '/api/v1/procedures';
+  var API_S = '/api/v1/search/status';
+  var TODO_KEY = 'campus_procedures_todos_v1';
+  var TODO_MAX = 20;
+  var itemCards = document.getElementById('item-cards');
+  var draftArea = document.getElementById('draft-area');
+  var todoArea = document.getElementById('todo-area');
+  var todoFilter = document.getElementById('todo-filter');
+  var storageNote = document.getElementById('todo-storage-note');
+  var campusSel = document.getElementById('filter-campus');
+  var typeSel = document.getElementById('filter-student-type');
+  var yearSel = document.getElementById('filter-admission-year');
+  var dateInput = document.getElementById('filter-as-of-date');
+  var clearBtn = document.getElementById('clear-filters-btn');
+  var draftBtn = document.getElementById('draft-btn');
+  var saveBtn = document.getElementById('save-btn');
+  var storageOk = true;
+  var busy = false;
+  var selectedProcedureId = null;
+  var currentDraft = null;
+  var lastFilterOptionsJson = '';
+  var savedDraftFingerprint = null;
+
+  function ce(tag, cls, text){
+    var el = document.createElement(tag);
+    if(cls) el.className = cls;
+    if(text !== undefined) el.textContent = text;
+    return el;
+  }
+
+  // T018: 问答页跳转带入的问题/条件快照（URL 参数，不含答案原文与密钥）
+  function parseQueryParams(){
+    var out = {};
+    try {
+      var qs = (typeof location !== 'undefined' && location.search) ? String(location.search).replace(/^\?/, '') : '';
+      qs.split('&').forEach(function(pair){
+        if(!pair) return;
+        var kv = pair.split('=');
+        out[decodeURIComponent(kv[0])] = decodeURIComponent((kv[1] || '').replace(/\+/g, ' '));
+      });
+    } catch(e){}
+    return out;
+  }
+  var initParams = parseQueryParams();
+  var importFiltersDone = false;
+  var importProcedureDone = false;
+
+  function hasImport(){
+    return !!(initParams && (initParams.procedure_id || initParams.query ||
+      initParams.campus || initParams.student_type || initParams.admission_year || initParams.as_of_date));
+  }
+
+  function setSelectValue(sel, val, fieldName, notices){
+    if(val === null || val === undefined || val === '') return;
+    var sval = String(val);
+    // 原生 HTMLCollection 无 forEach——用索引遍历（T018-R1）
+    var exists = false;
+    for(var i = 0; i < sel.children.length; i++){
+      if(String(sel.children[i].value) === sval){ exists = true; break; }
+    }
+    if(!exists){
+      var ghost = document.createElement('option');
+      ghost.value = sval;
+      ghost.textContent = sval + '（已不在当前选项）';
+      sel.appendChild(ghost);
+      notices.push(fieldName + '=' + sval + ' 不在当前选项中，已保留该条件（可手动更改或清除）');
+    }
+    sel.value = sval;
+  }
+
+  function renderImportNote(extraNotices){
+    var note = document.getElementById('import-note');
+    if(!note) return;
+    note.innerHTML = '';
+    if(!hasImport()) return;
+    note.appendChild(ce('div', 'draft-banner draft-ok',
+      '已带入条件（来自问答结果快照）：' + (initParams.query ? '参考问题「' + initParams.query + '」；' : '') +
+      '条件：' + filtersText(currentFilters()) +
+      '。请点击「生成办理步骤草稿」——本页不会自动保存待办，也不会调用模型；指南按当前加载资料生成（资料可能已更新）。'));
+    (extraNotices || []).forEach(function(n){
+      note.appendChild(ce('div', 'draft-banner draft-bad', n));
+    });
+  }
+
+  function applyImportFiltersOnce(){
+    if(importFiltersDone || !hasImport()) return;
+    var notices = [];
+    try {
+      setSelectValue(campusSel, initParams.campus, '校区', notices);
+      setSelectValue(typeSel, initParams.student_type, '学生类型', notices);
+      setSelectValue(yearSel, initParams.admission_year, '入学年份', notices);
+      if(initParams.as_of_date){ dateInput.value = initParams.as_of_date; }
+    } catch(e){
+      // 恢复失败不标记完成、不悄悄放宽条件
+      renderImportNote(['带入条件恢复失败，请手动设置条件（原条件未被取消）']);
+      return;
+    }
+    importFiltersDone = true; // 完整恢复成功后才标记完成（T018-R1）
+    renderImportNote(notices);
+  }
+
+  // 事项选择：卡片点击与 URL 带入共用（不依赖测试桩内部属性）
+  function selectProcedure(procedureId){
+    var cards = itemCards.querySelectorAll('.item-card');
+    var found = false;
+    cards.forEach(function(c){
+      if(c.getAttribute('data-procedure-id') === procedureId){
+        selectedProcedureId = procedureId;
+        found = true;
+      }
+    });
+    cards.forEach(function(c){
+      c.classList.toggle('selected', c.getAttribute('data-procedure-id') === procedureId);
+    });
+    return found;
+  }
+
+  function applyImportProcedureOnce(){
+    if(importProcedureDone || !initParams || !initParams.procedure_id) return;
+    if(!selectProcedure(initParams.procedure_id)){
+      renderImportNote(['事项 ' + initParams.procedure_id + ' 不存在于当前清单，未自动选择']);
+      return;
+    }
+    importProcedureDone = true; // 仅预选卡片；不自动草稿/保存/调模型
+  }
+
+  function nowText(){
+    var d = new Date();
+    function p(n){ return (n < 10 ? '0' : '') + n; }
+    return d.getFullYear() + '-' + p(d.getMonth()+1) + '-' + p(d.getDate()) + ' ' + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+  }
+
+  function todayStr(){
+    var d = new Date();
+    function p(n){ return (n < 10 ? '0' : '') + n; }
+    return d.getFullYear() + '-' + p(d.getMonth()+1) + '-' + p(d.getDate());
+  }
+
+  function scopeText(scope){
+    if(!scope) return '未标注';
+    var parts = [];
+    if(scope.campus && scope.campus.length) parts.push('校区：' + scope.campus.join('、'));
+    if(scope.student_type && scope.student_type.length) parts.push('类型：' + scope.student_type.join('、'));
+    if(scope.admission_years && scope.admission_years.length) parts.push('年级：' + scope.admission_years.join('、'));
+    return parts.length ? parts.join('；') : '未标注';
+  }
+
+  function currentFilters(){
+    return {
+      campus: campusSel.value ? campusSel.value : null,
+      student_type: typeSel.value ? typeSel.value : null,
+      admission_year: yearSel.value ? parseInt(yearSel.value, 10) : null,
+      as_of_date: dateInput.value ? dateInput.value : null
+    };
+  }
+
+  function hasFilter(f){
+    return !!f && (f.campus !== null || f.student_type !== null || f.admission_year !== null || f.as_of_date !== null);
+  }
+
+  function filtersText(f){
+    if(!hasFilter(f)) return '不限条件';
+    var parts = [];
+    if(f.campus) parts.push('校区=' + f.campus);
+    if(f.student_type) parts.push('类型=' + f.student_type);
+    if(f.admission_year !== null && f.admission_year !== undefined) parts.push('年级=' + f.admission_year);
+    if(f.as_of_date) parts.push('查询日期=' + f.as_of_date);
+    return parts.join('　');
+  }
+
+  // T011-R1 rule: preserve selections across option rebuilds.
+  function fillSelect(sel, values, fieldName){
+    var prev = sel.value;
+    var vals = [];
+    (values || []).forEach(function(v){ vals.push(String(v)); });
+    sel.innerHTML = '';
+    var optAll = document.createElement('option');
+    optAll.value = '';
+    optAll.textContent = '不限';
+    sel.appendChild(optAll);
+    vals.forEach(function(v){
+      var opt = document.createElement('option');
+      opt.value = v; opt.textContent = v;
+      sel.appendChild(opt);
+    });
+    var vanished = [];
+    if(prev && vals.indexOf(prev) < 0){
+      var ghost = document.createElement('option');
+      ghost.value = prev; ghost.textContent = prev + '（已不在当前选项）';
+      sel.appendChild(ghost);
+      sel.value = prev;
+      vanished.push(fieldName + '=' + prev);
+      return vanished;
+    }
+    sel.value = prev || '';
+    return vanished;
+  }
+
+  // ---------- 本机待办存储 ----------
+  function loadTodos(){
+    try {
+      var raw = localStorage.getItem(TODO_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch(e){ storageOk = false; return []; }
+  }
+
+  function persistTodos(list){
+    try {
+      localStorage.setItem(TODO_KEY, JSON.stringify(list));
+      return true;
+    } catch(e){
+      storageOk = false;
+      renderStorageNote();
+      return false;
+    }
+  }
+
+  function renderStorageNote(){
+    storageNote.textContent = storageOk
+      ? '仅保存在此浏览器本机，不是学校账户记录；最多 ' + TODO_MAX + ' 份清单。'
+      : '本机存储不可用：无法保存待办，草稿仍可查看。';
+  }
+
+  // ---------- 状态与选项加载 ----------
+  async function loadStatus(){
+    try {
+      var r = await fetch(API_S);
+      if(!r.ok) return;
+      var d = await r.json();
+      var opts = d.filter_options || {};
+      var optsJson = JSON.stringify(opts);
+      if(optsJson !== lastFilterOptionsJson){
+        fillSelect(campusSel, opts.campus, '校区');
+        fillSelect(typeSel, opts.student_type, '学生类型');
+        fillSelect(yearSel, opts.admission_year, '入学年份');
+        lastFilterOptionsJson = optsJson;
+      }
+      // T018: 等筛选选项加载后再恢复带入值（缺失选项保留并提示）
+      applyImportFiltersOnce();
+    } catch(e){ /* 状态失败不阻断页面 */ }
+  }
+
+  async function loadProcedures(){
+    itemCards.innerHTML = '';
+    try {
+      var r = await fetch(API_P);
+      if(r.status === 503){
+        itemCards.appendChild(ce('div','empty-state','办事模板未配置（合成模板仅由测试/演示显式启用）。'));
+        return;
+      }
+      var d = await r.json();
+      (d.procedures || []).forEach(function(p){
+        var card = ce('div', 'item-card');
+        card.setAttribute('data-procedure-id', p.procedure_id);
+        var h = ce('h3');
+        h.textContent = p.title || p.procedure_id;
+        if(p.is_synthetic) h.appendChild(ce('span','synthetic-badge','合成演示'));
+        card.appendChild(h);
+        card.appendChild(ce('p', '', p.summary || ''));
+        card.appendChild(ce('p', '', '模板版本 ' + p.template_version + '　步骤 ' + p.step_count));
+        card.addEventListener('click', function(){
+          selectProcedure(p.procedure_id);
+        });
+        itemCards.appendChild(card);
+      });
+      // T018: 事项列表加载后再选中带入的事项（不自动生成草稿/待办）
+      applyImportProcedureOnce();
+    } catch(e){
+      itemCards.appendChild(ce('div','empty-state','无法加载事项列表：网络错误'));
+    }
+  }
+
+  // ---------- 草稿 ----------
+  function citeBlock(c){
+    var box = ce('div', 'cite-box');
+    var usable = c.usable !== false && !!c.quote;
+    var head = ce('div', '', '引用 ' + c.document_id + '/' + c.block_id + ' [' + c.char_start + ',' + c.char_end + ')　' + (c.document_title || '') + (c.version_label ? '（' + c.version_label + '）' : ''));
+    box.appendChild(head);
+    if(usable){
+      box.appendChild(ce('div', 'q', '原文：“' + c.quote + '”'));
+    } else {
+      // 不准入/失效引用仅保留核查状态与来源标识作诊断，不渲染为清单依据
+      box.appendChild(ce('div', 'cite-note', '⚠ ' + (c.note || '未通过核对') + '（未作为可用办理依据，原文内容不列入清单）'));
+    }
+    box.appendChild(ce('div', '', '适用范围（资料准入信息，非资格认证）：' + scopeText(c.scope) + '　生效：' + (c.effective_from || '未标注') + '　失效：' + (c.effective_to || '未标注截止')));
+    var a = ce('a');
+    a.href = c.preview_url; a.textContent = '查看原文';
+    box.appendChild(a);
+    return box;
+  }
+
+  function renderDraft(d){
+    draftArea.innerHTML = '';
+    currentDraft = d;
+    var banner = ce('div', 'draft-banner ' + (d.saveable ? 'draft-ok' : 'draft-bad'));
+    var degradedCount = (d.steps || []).filter(function(s){ return s.status === 'degraded'; }).length;
+    if(d.saveable){
+      if(degradedCount > 0){
+        banner.textContent = '模板 ' + d.template_version + '　条件：' + filtersText(d.filters) + '　可保存到我的待办；' + degradedCount + ' 个步骤存在待核实/未说明项（资料未说明，请向办理部门核实），不含未准入来源的原文要求。';
+      } else {
+        banner.textContent = '模板 ' + d.template_version + '　条件：' + filtersText(d.filters) + '　依据已逐条核对（' + d.steps.length + ' 个步骤），可保存到我的待办。';
+      }
+    } else {
+      banner.textContent = '模板 ' + d.template_version + '　条件：' + filtersText(d.filters) + '　资料不足/依据需更新：' + (d.issues || []).join('；') + '。未提供可保存清单（不放宽筛选、不编造内容）。';
+    }
+    draftArea.appendChild(banner);
+    d.steps.forEach(function(s){
+      var card = ce('div', 'step-card ' + (s.status === 'ok' ? '' : s.status));
+      card.appendChild(ce('div', 'step-title', '步骤 ' + (s.step_id || '') + '：' + (s.title || '')));
+      card.appendChild(ce('div', 'step-detail', s.detail || ''));
+      (s.citations || []).forEach(function(c){ card.appendChild(citeBlock(c)); });
+      if(s.fallback) card.appendChild(ce('div', 'step-fallback', s.fallback));
+      if(s.unspecified && s.unspecified.length){
+        card.appendChild(ce('div', 'unspecified', '资料未说明：' + s.unspecified.join('、') + '。请向办理部门核实。'));
+      }
+      draftArea.appendChild(card);
+    });
+    draftArea.appendChild(ce('div', 'disclaimer', d.disclaimer || ''));
+    saveBtn.disabled = !d.saveable || busy;
+    savedDraftFingerprint = null;
+  }
+
+  async function doDraft(){
+    if(busy || !selectedProcedureId) return;
+    busy = true;
+    // T016-R1：新请求开始即令旧草稿失效——失败后不得重新启用旧草稿的保存
+    currentDraft = null;
+    savedDraftFingerprint = null;
+    draftBtn.disabled = true;
+    saveBtn.disabled = true;
+    draftArea.innerHTML = '';
+    draftArea.appendChild(ce('div','loading','核对来源中…'));
+    try {
+      var body = {filters: currentFilters()};
+      var r = await fetch(API_P + '/' + selectedProcedureId + '/draft', {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)
+      });
+      if(!r.ok){
+        draftArea.innerHTML = '';
+        draftArea.appendChild(ce('div','draft-banner draft-bad','草稿请求失败：HTTP ' + r.status + '（旧草稿已失效，不可保存）'));
+      } else {
+        renderDraft(await r.json());
+      }
+    } catch(e){
+      draftArea.innerHTML = '';
+      draftArea.appendChild(ce('div','draft-banner draft-bad','草稿请求失败：网络错误（旧草稿已失效，不可保存）'));
+    }
+    busy = false;
+    draftBtn.disabled = false;
+    saveBtn.disabled = !(currentDraft && currentDraft.saveable);
+  }
+
+  // ---------- 保存 ----------
+  function draftFingerprint(d){
+    return d.procedure_id + '|' + d.template_version + '|' + filtersText(d.filters);
+  }
+
+  function usableCitations(citations){
+    // 只有核对通过的引用才是可用办理依据；被筛除/失效引用只在草稿诊断区出现
+    return (citations || []).filter(function(c){ return c.usable !== false && !!c.quote; });
+  }
+
+  function saveDraftAsList(explicitNew){
+    if(busy || !currentDraft || !currentDraft.saveable) return;
+    if(savedDraftFingerprint && !explicitNew) return; // 防重复提交
+    var todos = loadTodos();
+    if(todos.length >= TODO_MAX){
+      draftArea.appendChild(ce('div','draft-banner draft-bad','已达到 ' + TODO_MAX + ' 份上限，请先删除旧清单再保存。'));
+      return;
+    }
+    if(!storageOk){
+      draftArea.appendChild(ce('div','draft-banner draft-bad','保存失败：本机存储不可用。草稿仍可查看。'));
+      return;
+    }
+    var list = {
+      id: nowText() + '-' + String(todos.length),
+      saved_at: nowText(),
+      procedure_id: currentDraft.procedure_id,
+      procedure_title: currentDraft.title,
+      template_version: currentDraft.template_version,
+      is_synthetic: currentDraft.is_synthetic,
+      filters: currentDraft.filters,
+      // 快照只含保存时实际采用（核对通过）的引用——可选引用一经采用同样被跟踪
+      steps_snapshot: currentDraft.steps.map(function(s){
+        return {step_id: s.step_id, title: s.title, citations: usableCitations(s.citations)};
+      }),
+      verify_state: 'unchecked',
+      items: currentDraft.steps.map(function(s, i){
+        return {
+          item_id: 'policy-' + s.step_id + '-' + i,
+          kind: 'policy',
+          step_id: s.step_id,
+          title: s.title,
+          detail: s.detail,
+          basis_status: s.status,
+          citations: usableCitations(s.citations),
+          pending_note: s.fallback || null,
+          pending_fields: s.unspecified || [],
+          done: false,
+          note: '',
+          reminder_date: ''
+        };
+      })
+    };
+    todos.unshift(list);
+    if(!persistTodos(todos.slice(0, TODO_MAX))){
+      draftArea.appendChild(ce('div','draft-banner draft-bad','保存失败：本机存储不可用。草稿仍可查看。'));
+      return;
+    }
+    savedDraftFingerprint = draftFingerprint(currentDraft);
+    saveBtn.disabled = true;
+    renderTodos();
+    draftArea.appendChild(ce('div','draft-banner draft-ok','已保存到我的待办（本机）。如需再存一份，请点“另存为新清单”。'));
+    var again = ce('button', 'action-btn secondary', '另存为新清单');
+    again.addEventListener('click', function(){ saveDraftAsList(true); });
+    draftArea.appendChild(again);
+  }
+
+  // ---------- 待办渲染与修改 ----------
+  // All mutations re-load fresh storage state and edit by id — render
+  // closures never carry stale list/item objects into writes.
+  function mutateList(listId, fn){
+    var todos = loadTodos();
+    var list = null;
+    for(var i = 0; i < todos.length; i++){
+      if(todos[i].id === listId){ list = todos[i]; break; }
+    }
+    if(!list) return;
+    fn(list);
+    persistTodos(todos);
+    renderTodos();
+  }
+
+  function dateMarkClass(dateStr){
+    if(!dateStr) return null;
+    var t = todayStr();
+    if(dateStr < t) return ['mark-expired', '已过期'];
+    if(dateStr === t) return ['mark-today', '今日'];
+    return ['mark-future', '以后'];
+  }
+
+  function renderTodos(){
+    todoArea.innerHTML = '';
+    var todos = loadTodos();
+    if(!todos.length){
+      todoArea.appendChild(ce('div','empty-state','暂无待办。生成草稿并点击“保存到我的待办”后，清单会保存在本机浏览器。'));
+      return;
+    }
+    todos.forEach(function(list){
+      var card = ce('div', 'todo-list-card');
+      var head = ce('div', 'todo-head');
+      var title = ce('span', 't-title');
+      title.textContent = (list.procedure_title || list.procedure_id);
+      if(list.is_synthetic) title.appendChild(ce('span','synthetic-badge','合成演示'));
+      head.appendChild(title);
+      var doneCount = list.items.filter(function(i){ return i.done; }).length;
+      head.appendChild(ce('span', 't-meta', '进度 ' + doneCount + '/' + list.items.length + '　保存于 ' + list.saved_at + '　条件：' + filtersText(list.filters) + '　模板 ' + list.template_version));
+      card.appendChild(head);
+      card.appendChild(ce('div', 'unspecified', '保存时的依据，可能已更新；勾选与备注不会被自动覆盖。'));
+
+      if(list.verify_state === 'changed'){
+        card.appendChild(ce('div', 'verify-banner verify-changed', '依据已变化或不可用，请复核：可查看新草稿并明确另存新清单（不静默覆盖本清单）。'));
+      } else if(list.verify_state === 'ok'){
+        card.appendChild(ce('div', 'verify-banner verify-ok', '已核对当前依据：与保存时一致（政策内容仍以原文为准）。'));
+      }
+      var verifyBtn = ce('button', 'mini-btn', '核对当前依据');
+      verifyBtn.addEventListener('click', function(){ verifyList(list.id); });
+      card.appendChild(verifyBtn);
+
+      var sortBtn = ce('button', 'mini-btn', '按提醒日期排序');
+      sortBtn.addEventListener('click', function(){
+        mutateList(list.id, function(l){
+          l.items.sort(function(a, b){
+            var da = a.reminder_date || '9999-99-99';
+            var db = b.reminder_date || '9999-99-99';
+            return da < db ? -1 : (da > db ? 1 : 0);
+          });
+        });
+      });
+      card.appendChild(sortBtn);
+
+      var delListBtn = ce('button', 'mini-btn', '删除本清单');
+      delListBtn.addEventListener('click', function(){
+        var t = loadTodos().filter(function(x){ return x.id !== list.id; });
+        persistTodos(t);
+        renderTodos();
+      });
+      card.appendChild(delListBtn);
+
+      var filterVal = todoFilter.value;
+      list.items.forEach(function(item, idx){
+        if(filterVal === 'done' && !item.done) return;
+        if(filterVal === 'undone' && item.done) return;
+        var row = ce('div', 'todo-item' + (item.done ? ' done' : ''));
+        var cb = ce('input');
+        cb.type = 'checkbox';
+        cb.checked = !!item.done;
+        cb.addEventListener('change', function(){
+          mutateList(list.id, function(l){
+            l.items.forEach(function(x){ if(x.item_id === item.item_id) x.done = cb.checked; });
+          });
+        });
+        row.appendChild(cb);
+        row.appendChild(ce('span', 'kind-tag ' + (item.kind === 'policy' ? 'kind-policy' : 'kind-personal'),
+          item.kind === 'policy' ? '政策步骤' : '个人步骤'));
+        var tDiv = ce('div', 't-item-title');
+        tDiv.textContent = item.title;
+        row.appendChild(tDiv);
+        if(item.kind === 'policy' && (item.pending_note || (item.pending_fields && item.pending_fields.length))){
+          var pend = ce('div', 'step-fallback');
+          pend.textContent = '待核实：' + (item.pending_note || '资料未说明，请向办理部门核实。') +
+            (item.pending_fields && item.pending_fields.length ? '（资料未说明：' + item.pending_fields.join('、') + '）' : '');
+          row.appendChild(pend);
+        }
+        if(item.kind === 'policy' && item.citations && item.citations.length){
+          var det = document.createElement('details');
+          var summ = document.createElement('summary');
+          summ.textContent = '依据（政策原文）';
+          det.appendChild(summ);
+          item.citations.forEach(function(c){ det.appendChild(citeBlock(c)); });
+          var w = ce('div'); w.appendChild(det); row.appendChild(w);
+        }
+        var note = ce('input', 't-item-note');
+        note.placeholder = '个人备注（仅本机保存）';
+        note.value = item.note || '';
+        note.addEventListener('change', function(){
+          mutateList(list.id, function(l){
+            l.items.forEach(function(x){ if(x.item_id === item.item_id) x.note = note.value; });
+          });
+        });
+        row.appendChild(note);
+        var rem = ce('div', 't-item-reminder');
+        rem.appendChild(ce('span', '', '个人提醒'));
+        var date = ce('input');
+        date.type = 'date';
+        date.value = item.reminder_date || '';
+        date.addEventListener('change', function(){
+          mutateList(list.id, function(l){
+            l.items.forEach(function(x){ if(x.item_id === item.item_id) x.reminder_date = date.value; });
+          });
+        });
+        rem.appendChild(date);
+        var mark = dateMarkClass(item.reminder_date);
+        if(mark) rem.appendChild(ce('span', 'date-mark ' + mark[0], mark[1]));
+        row.appendChild(rem);
+        var up = ce('button', 'mini-btn', '↑');
+        up.addEventListener('click', function(){
+          mutateList(list.id, function(l){
+            var i2 = l.items.findIndex(function(x){ return x.item_id === item.item_id; });
+            if(i2 > 0){
+              var tmp = l.items[i2 - 1];
+              l.items[i2 - 1] = l.items[i2];
+              l.items[i2] = tmp;
+            }
+          });
+        });
+        var down = ce('button', 'mini-btn', '↓');
+        down.addEventListener('click', function(){
+          mutateList(list.id, function(l){
+            var i2 = l.items.findIndex(function(x){ return x.item_id === item.item_id; });
+            if(i2 >= 0 && i2 < l.items.length - 1){
+              var tmp = l.items[i2 + 1];
+              l.items[i2 + 1] = l.items[i2];
+              l.items[i2] = tmp;
+            }
+          });
+        });
+        row.appendChild(up);
+        row.appendChild(down);
+        if(item.kind === 'personal'){
+          var del = ce('button', 'mini-btn', '删除');
+          del.addEventListener('click', function(){
+            mutateList(list.id, function(l){
+              l.items = l.items.filter(function(x){ return x.item_id !== item.item_id; });
+            });
+          });
+          row.appendChild(del);
+        }
+        card.appendChild(row);
+      });
+
+      var addBtn = ce('button', 'mini-btn', '+ 添加个人步骤');
+      addBtn.addEventListener('click', function(){
+        var titleStr = prompt('个人步骤标题（个人内容，非政策依据）');
+        if(!titleStr) return;
+        mutateList(list.id, function(l){
+          l.items.push({
+            item_id: 'personal-' + nowText(),
+            kind: 'personal',
+            step_id: null,
+            title: titleStr,
+            detail: '',
+            citations: [],
+            done: false,
+            note: '',
+            reminder_date: ''
+          });
+        });
+      });
+      card.appendChild(addBtn);
+      todoArea.appendChild(card);
+    });
+  }
+
+  async function verifyList(listId){
+    var todos = loadTodos();
+    var list = null;
+    for(var i = 0; i < todos.length; i++){
+      if(todos[i].id === listId){ list = todos[i]; break; }
+    }
+    if(!list) return;
+    try {
+      var body = {
+        template_version: list.template_version,
+        filters: list.filters,
+        steps: list.steps_snapshot
+      };
+      var r = await fetch(API_P + '/' + list.procedure_id + '/verify', {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)
+      });
+      var verdict = 'changed';
+      if(r.ok){
+        var d = await r.json();
+        verdict = d.status === 'unchanged' ? 'ok' : 'changed';
+      }
+      // 只更新核对标记，不改动勾选/备注/步骤
+      mutateList(listId, function(l){ l.verify_state = verdict; });
+    } catch(e){
+      mutateList(listId, function(l){ l.verify_state = 'changed'; });
+    }
+  }
+
+  // ---------- 事件绑定 ----------
+  draftBtn.addEventListener('click', doDraft);
+  saveBtn.addEventListener('click', function(){ saveDraftAsList(false); });
+  clearBtn.addEventListener('click', function(){
+    campusSel.value = ''; typeSel.value = ''; yearSel.value = ''; dateInput.value = '';
+  });
+  todoFilter.addEventListener('change', renderTodos);
+
+  renderStorageNote();
+  renderTodos();
+  loadProcedures();
+  loadStatus();
+})();
+</script>
+</body>
+</html>

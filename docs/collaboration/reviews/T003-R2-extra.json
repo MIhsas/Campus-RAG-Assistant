@@ -1,0 +1,55 @@
+[
+  {
+    "case": "missing_dates",
+    "exit": 0,
+    "result": {
+      "valid": true,
+      "document_count": 2,
+      "errors": []
+    }
+  },
+  {
+    "case": "compact_date",
+    "exit": 0,
+    "result": {
+      "valid": true,
+      "document_count": 2,
+      "errors": []
+    }
+  },
+  {
+    "case": "week_date",
+    "exit": 0,
+    "result": {
+      "valid": true,
+      "document_count": 2,
+      "errors": []
+    }
+  },
+  {
+    "case": "invalid_path",
+    "exit": 1,
+    "result": {
+      "json_output": false,
+      "stderr_last_line": [
+        "ValueError: stat: embedded null character in path"
+      ]
+    }
+  },
+  {
+    "case": "missing_title",
+    "exit": 1,
+    "result": {
+      "valid": false,
+      "document_count": 0,
+      "errors": [
+        {
+          "code": "MANIFEST_SCHEMA_ERROR",
+          "document_id": null,
+          "field": "documents.0.title",
+          "message": "Input should be a valid string"
+        }
+      ]
+    }
+  }
+]

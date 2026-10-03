@@ -1,0 +1,106 @@
+{
+  "healthy_chain": {
+    "documents": 2,
+    "chunks": 17,
+    "hits": 5,
+    "source_slices": "pass",
+    "api_equals_bm25": true
+  },
+  "malformed_docx_validation": {
+    "valid": true,
+    "document_count": 2,
+    "errors": []
+  },
+  "malformed_docx_parse": {
+    "schema_version": "1.0",
+    "valid": false,
+    "document_count": 2,
+    "documents": [
+      {
+        "document_id": "good",
+        "metadata": {
+          "document_id": "good",
+          "policy_group_id": "syn-parse-group",
+          "title": "合成测试教务管理办法（正文解析示例）",
+          "source_url": "https://example.org/policy/parse/txt",
+          "source_site": "合成测试示例站",
+          "local_path": "good.txt",
+          "sha256": "bb053c54bfdb1fb5cf21b96c064950dd2387d904e89fcb8ec42251c995c381c1",
+          "version_label": "解析示例 v1",
+          "published_at": "2025-01-15",
+          "effective_from": "2025-03-01",
+          "effective_to": null,
+          "scope": {
+            "campus": [
+              "成都校区"
+            ],
+            "student_type": [
+              "全日制本科"
+            ],
+            "admission_years": [
+              2023,
+              2024
+            ]
+          },
+          "is_synthetic": true
+        },
+        "parser_version": "1.0",
+        "blocks": [
+          {
+            "block_id": "e2d1fd05947b915d",
+            "ordinal": 1,
+            "kind": "paragraph",
+            "text": "合成测试 缓考申请",
+            "locator": {
+              "type": "lines",
+              "line_start": 1,
+              "line_end": 1
+            }
+          }
+        ],
+        "warnings": []
+      }
+    ],
+    "errors": [
+      {
+        "code": "DOCUMENT_PARSE_ERROR",
+        "document_id": "bad",
+        "field": "local_path",
+        "message": "DOCX 解析异常: InvalidXmlError"
+      }
+    ]
+  },
+  "malformed_docx_factory": {
+    "status": "partial"
+  },
+  "malformed_docx_cli": {
+    "exit": 1,
+    "stdout_bytes": 1568,
+    "traceback": false
+  },
+  "newline_id_validation": {
+    "valid": false,
+    "document_count": 0,
+    "errors": [
+      {
+        "code": "MANIFEST_SCHEMA_ERROR",
+        "document_id": null,
+        "field": "documents.0.document_id",
+        "message": "必须匹配 [A-Za-z0-9][A-Za-z0-9_-]{0,63}"
+      }
+    ]
+  },
+  "newline_id_http": {
+    "detail_http": 404,
+    "preview_url": null
+  },
+  "lock_mismatches": [],
+  "wheel_non_source": {
+    "exit": 0,
+    "result": {
+      "module": "F:\\Collage Paper\\step2_code\\backend\\.cache\\astra-r3-probes-3c4b888f31e04c2bab113e9c4c5991a3\\wheel\\campus_assistant\\main.py",
+      "search": 200,
+      "preview": 200
+    }
+  }
+}

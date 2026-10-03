@@ -1,0 +1,36 @@
+{
+  "task_id": "T004",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "文档正文解析基线完成：TXT（UTF-8/BOM/CRLF/空行分段/行号定位）和 DOCX（段落-表格交错/表格行+cells/空段占位）解析器 + 确定性 block_id + 错误码 + 29 项测试。python-docx 安装并锁定。T003 清理：移除 broad except、corpus_root.resolve 异常处理、中文消息前缀修复。115 passed, 1 skipped。",
+  "files": [
+    "docs/collaboration/submissions/T004/report.md",
+    "docs/collaboration/submissions/T004/verification.md",
+    "docs/collaboration/submissions/T004/submission.json",
+    "docs/collaboration/submissions/T004/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T004/changed-files.json",
+  "checks": [
+    {"item": "TXT 中文多段解析", "result": "pass", "evidence_id": "V03"},
+    {"item": "TXT BOM 支持", "result": "pass", "evidence_id": "V03"},
+    {"item": "TXT CRLF 统一", "result": "pass", "evidence_id": "V03"},
+    {"item": "TXT 行号定位", "result": "pass", "evidence_id": "V03"},
+    {"item": "DOCX 交错顺序", "result": "pass", "evidence_id": "V03"},
+    {"item": "DOCX 表格行列+cells", "result": "pass", "evidence_id": "V03"},
+    {"item": "DOCX 空段占位", "result": "pass", "evidence_id": "V03"},
+    {"item": "空文件 EMPTY_DOCUMENT", "result": "pass", "evidence_id": "V04"},
+    {"item": "损坏 DOCX DOCUMENT_PARSE_ERROR", "result": "pass", "evidence_id": "V05"},
+    {"item": "不支持格式 UNSUPPORTED_FORMAT", "result": "pass", "evidence_id": "V06"},
+    {"item": "哈希不符时不解析", "result": "pass", "evidence_id": "V07"},
+    {"item": "批次部分失败", "result": "pass", "evidence_id": "V08"},
+    {"item": "Block ID 确定性", "result": "pass", "evidence_id": "V09"},
+    {"item": "不修改源文件", "result": "pass", "evidence_id": "V10"},
+    {"item": "T003 清理：broad except 移除", "result": "pass", "evidence_id": "V12"},
+    {"item": "T003 清理：中文消息", "result": "pass", "evidence_id": "V12"},
+    {"item": "全量 pytest", "result": "pass - 115 passed, 1 skipped", "evidence_id": "V01"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V02"},
+    {"item": "复现验证", "result": "pass - .venv-verify 115 passed", "evidence_id": "V11"}
+  ],
+  "blockers": []
+}

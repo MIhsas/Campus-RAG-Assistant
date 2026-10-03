@@ -1,0 +1,721 @@
+{
+  "note": "T024 mock 调用轨迹：真实 DeepSeekPlanner 适配器 × 本地 loopback chat-completions mock（模拟输出，非真实 DeepSeek；trust_env=False；零外部调用）。对照组为 T023 脚本化模拟规划器（无 HTTP）。attempts=规划 HTTP 尝试次数（零自动重试）；audit 缺失写 null。",
+  "runs": [
+    {
+      "name": "adapter_loopback_full_chain",
+      "transport": "DeepSeek 适配器 × loopback mock HTTP",
+      "planner_kind": "deepseek",
+      "workflow_label": "DeepSeek 规划（mock-model，结构化动作；未联调验证）",
+      "status": "completed",
+      "stop_reason": "finished",
+      "message": "mock 完成：已检索并整理草稿",
+      "plan_rounds_used": 3,
+      "planner_http_attempts": 3,
+      "tool_calls_used": 2,
+      "snapshot": {
+        "procedure_id": "proc-apply-defer",
+        "query": "缓考申请的条件",
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": 2023,
+          "as_of_date": null
+        }
+      },
+      "results_summary": {
+        "search_hit_count": 0,
+        "draft_procedure_id": "proc-apply-defer",
+        "draft_saveable": true
+      },
+      "events": [
+        {
+          "round": 1,
+          "kind": "plan_decision",
+          "tool": "search_policy",
+          "status": "ok",
+          "summary": "动作 call",
+          "error": null,
+          "audit": {
+            "provider": "deepseek",
+            "model": "mock-planner（模拟，非真实 DeepSeek）",
+            "request_id": "mock-1",
+            "usage": {
+              "prompt_tokens": 1,
+              "completion_tokens": 1,
+              "total_tokens": 2
+            },
+            "latency_ms": 203,
+            "max_tokens": 300,
+            "finish_reason": "stop"
+          },
+          "action": {
+            "type": "call",
+            "tool": "search_policy",
+            "args": {
+              "query": "缓考"
+            }
+          }
+        },
+        {
+          "round": 1,
+          "kind": "tool_call",
+          "tool": "search_policy",
+          "status": "ok",
+          "summary": "命中 0 条",
+          "error": null,
+          "audit": null
+        },
+        {
+          "round": 2,
+          "kind": "plan_decision",
+          "tool": "build_checklist_draft",
+          "status": "ok",
+          "summary": "动作 call",
+          "error": null,
+          "audit": {
+            "provider": "deepseek",
+            "model": "mock-planner（模拟，非真实 DeepSeek）",
+            "request_id": "mock-2",
+            "usage": {
+              "prompt_tokens": 1,
+              "completion_tokens": 1,
+              "total_tokens": 2
+            },
+            "latency_ms": 171,
+            "max_tokens": 300,
+            "finish_reason": "stop"
+          },
+          "action": {
+            "type": "call",
+            "tool": "build_checklist_draft",
+            "args": {}
+          }
+        },
+        {
+          "round": 2,
+          "kind": "tool_call",
+          "tool": "build_checklist_draft",
+          "status": "ok",
+          "summary": "草稿 saveable=True，步骤 4 个",
+          "error": null,
+          "audit": null
+        },
+        {
+          "round": 3,
+          "kind": "plan_decision",
+          "tool": null,
+          "status": "ok",
+          "summary": "动作 finish",
+          "error": null,
+          "audit": {
+            "provider": "deepseek",
+            "model": "mock-planner（模拟，非真实 DeepSeek）",
+            "request_id": "mock-3",
+            "usage": {
+              "prompt_tokens": 1,
+              "completion_tokens": 1,
+              "total_tokens": 2
+            },
+            "latency_ms": 171,
+            "max_tokens": 300,
+            "finish_reason": "stop"
+          },
+          "action": {
+            "type": "finish",
+            "tool": null,
+            "args": null
+          }
+        }
+      ],
+      "mock_http_requests": 3,
+      "round2_input_contains_round1_observation": false
+    },
+    {
+      "name": "adapter_isolation_run_1_defer",
+      "transport": "DeepSeek 适配器 × loopback mock HTTP",
+      "planner_kind": "deepseek",
+      "workflow_label": "DeepSeek 规划（mock-model，结构化动作；未联调验证）",
+      "status": "completed",
+      "stop_reason": "finished",
+      "message": "run1",
+      "plan_rounds_used": 3,
+      "planner_http_attempts": 3,
+      "tool_calls_used": 2,
+      "snapshot": {
+        "procedure_id": "proc-apply-defer",
+        "query": "缓考申请的条件",
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": 2023,
+          "as_of_date": null
+        }
+      },
+      "results_summary": {
+        "search_hit_count": 0,
+        "draft_procedure_id": "proc-apply-defer",
+        "draft_saveable": true
+      },
+      "events": [
+        {
+          "round": 1,
+          "kind": "plan_decision",
+          "tool": "search_policy",
+          "status": "ok",
+          "summary": "动作 call",
+          "error": null,
+          "audit": {
+            "provider": "deepseek",
+            "model": "mock-planner（模拟，非真实 DeepSeek）",
+            "request_id": "mock-1",
+            "usage": {
+              "prompt_tokens": 1,
+              "completion_tokens": 1,
+              "total_tokens": 2
+            },
+            "latency_ms": 156,
+            "max_tokens": 300,
+            "finish_reason": "stop"
+          },
+          "action": {
+            "type": "call",
+            "tool": "search_policy",
+            "args": {}
+          }
+        },
+        {
+          "round": 1,
+          "kind": "tool_call",
+          "tool": "search_policy",
+          "status": "ok",
+          "summary": "命中 0 条",
+          "error": null,
+          "audit": null
+        },
+        {
+          "round": 2,
+          "kind": "plan_decision",
+          "tool": "build_checklist_draft",
+          "status": "ok",
+          "summary": "动作 call",
+          "error": null,
+          "audit": {
+            "provider": "deepseek",
+            "model": "mock-planner（模拟，非真实 DeepSeek）",
+            "request_id": "mock-2",
+            "usage": {
+              "prompt_tokens": 1,
+              "completion_tokens": 1,
+              "total_tokens": 2
+            },
+            "latency_ms": 171,
+            "max_tokens": 300,
+            "finish_reason": "stop"
+          },
+          "action": {
+            "type": "call",
+            "tool": "build_checklist_draft",
+            "args": {}
+          }
+        },
+        {
+          "round": 2,
+          "kind": "tool_call",
+          "tool": "build_checklist_draft",
+          "status": "ok",
+          "summary": "草稿 saveable=True，步骤 4 个",
+          "error": null,
+          "audit": null
+        },
+        {
+          "round": 3,
+          "kind": "plan_decision",
+          "tool": null,
+          "status": "ok",
+          "summary": "动作 finish",
+          "error": null,
+          "audit": {
+            "provider": "deepseek",
+            "model": "mock-planner（模拟，非真实 DeepSeek）",
+            "request_id": "mock-3",
+            "usage": {
+              "prompt_tokens": 1,
+              "completion_tokens": 1,
+              "total_tokens": 2
+            },
+            "latency_ms": 171,
+            "max_tokens": 300,
+            "finish_reason": "stop"
+          },
+          "action": {
+            "type": "finish",
+            "tool": null,
+            "args": null
+          }
+        }
+      ],
+      "mock_http_requests": 6
+    },
+    {
+      "name": "adapter_isolation_run_2_grade_review",
+      "transport": "DeepSeek 适配器 × loopback mock HTTP",
+      "planner_kind": "deepseek",
+      "workflow_label": "DeepSeek 规划（mock-model，结构化动作；未联调验证）",
+      "status": "completed",
+      "stop_reason": "finished",
+      "message": "run2",
+      "plan_rounds_used": 3,
+      "planner_http_attempts": 3,
+      "tool_calls_used": 2,
+      "snapshot": {
+        "procedure_id": "proc-review-grade",
+        "query": "成绩复核的流程",
+        "filters": null
+      },
+      "results_summary": {
+        "search_hit_count": 0,
+        "draft_procedure_id": "proc-review-grade",
+        "draft_saveable": true
+      },
+      "events": [
+        {
+          "round": 1,
+          "kind": "plan_decision",
+          "tool": "search_policy",
+          "status": "ok",
+          "summary": "动作 call",
+          "error": null,
+          "audit": {
+            "provider": "deepseek",
+            "model": "mock-planner（模拟，非真实 DeepSeek）",
+            "request_id": "mock-4",
+            "usage": {
+              "prompt_tokens": 1,
+              "completion_tokens": 1,
+              "total_tokens": 2
+            },
+            "latency_ms": 171,
+            "max_tokens": 300,
+            "finish_reason": "stop"
+          },
+          "action": {
+            "type": "call",
+            "tool": "search_policy",
+            "args": {}
+          }
+        },
+        {
+          "round": 1,
+          "kind": "tool_call",
+          "tool": "search_policy",
+          "status": "ok",
+          "summary": "命中 0 条",
+          "error": null,
+          "audit": null
+        },
+        {
+          "round": 2,
+          "kind": "plan_decision",
+          "tool": "build_checklist_draft",
+          "status": "ok",
+          "summary": "动作 call",
+          "error": null,
+          "audit": {
+            "provider": "deepseek",
+            "model": "mock-planner（模拟，非真实 DeepSeek）",
+            "request_id": "mock-5",
+            "usage": {
+              "prompt_tokens": 1,
+              "completion_tokens": 1,
+              "total_tokens": 2
+            },
+            "latency_ms": 203,
+            "max_tokens": 300,
+            "finish_reason": "stop"
+          },
+          "action": {
+            "type": "call",
+            "tool": "build_checklist_draft",
+            "args": {}
+          }
+        },
+        {
+          "round": 2,
+          "kind": "tool_call",
+          "tool": "build_checklist_draft",
+          "status": "ok",
+          "summary": "草稿 saveable=True，步骤 3 个",
+          "error": null,
+          "audit": null
+        },
+        {
+          "round": 3,
+          "kind": "plan_decision",
+          "tool": null,
+          "status": "ok",
+          "summary": "动作 finish",
+          "error": null,
+          "audit": {
+            "provider": "deepseek",
+            "model": "mock-planner（模拟，非真实 DeepSeek）",
+            "request_id": "mock-6",
+            "usage": {
+              "prompt_tokens": 1,
+              "completion_tokens": 1,
+              "total_tokens": 2
+            },
+            "latency_ms": 188,
+            "max_tokens": 300,
+            "finish_reason": "stop"
+          },
+          "action": {
+            "type": "finish",
+            "tool": null,
+            "args": null
+          }
+        }
+      ],
+      "mock_http_requests": 6
+    },
+    {
+      "name": "adapter_reject_relax_and_swap",
+      "transport": "DeepSeek 适配器 × loopback mock HTTP",
+      "planner_kind": "deepseek",
+      "workflow_label": "DeepSeek 规划（mock-model，结构化动作；未联调验证）",
+      "status": "partial",
+      "stop_reason": "finished",
+      "message": "试图改条件与事项（期间有失败/被拒动作，未全部完成，已保留已完成部分的结果）",
+      "plan_rounds_used": 3,
+      "planner_http_attempts": 3,
+      "tool_calls_used": 0,
+      "snapshot": {
+        "procedure_id": "proc-apply-defer",
+        "query": "缓考申请的条件",
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": 2023,
+          "as_of_date": null
+        }
+      },
+      "results_summary": {
+        "search_hit_count": null,
+        "draft_procedure_id": null,
+        "draft_saveable": null
+      },
+      "events": [
+        {
+          "round": 1,
+          "kind": "plan_decision",
+          "tool": "search_policy",
+          "status": "ok",
+          "summary": "动作 call",
+          "error": null,
+          "audit": {
+            "provider": "deepseek",
+            "model": "mock-planner（模拟，非真实 DeepSeek）",
+            "request_id": "mock-1",
+            "usage": {
+              "prompt_tokens": 1,
+              "completion_tokens": 1,
+              "total_tokens": 2
+            },
+            "latency_ms": 171,
+            "max_tokens": 300,
+            "finish_reason": "stop"
+          },
+          "action": {
+            "type": "call",
+            "tool": "search_policy",
+            "args": {
+              "query": "缓考",
+              "filters": {
+                "campus": null,
+                "student_type": null,
+                "admission_year": null,
+                "as_of_date": null
+              }
+            }
+          }
+        },
+        {
+          "round": 1,
+          "kind": "tool_rejected",
+          "tool": "search_policy",
+          "status": "rejected",
+          "summary": null,
+          "error": "参数不合法：范围条件以用户提交的快照为准，不得放宽或改写（省略 filters 即使用快照条件）",
+          "audit": null
+        },
+        {
+          "round": 2,
+          "kind": "plan_decision",
+          "tool": "build_checklist_draft",
+          "status": "ok",
+          "summary": "动作 call",
+          "error": null,
+          "audit": {
+            "provider": "deepseek",
+            "model": "mock-planner（模拟，非真实 DeepSeek）",
+            "request_id": "mock-2",
+            "usage": {
+              "prompt_tokens": 1,
+              "completion_tokens": 1,
+              "total_tokens": 2
+            },
+            "latency_ms": 171,
+            "max_tokens": 300,
+            "finish_reason": "stop"
+          },
+          "action": {
+            "type": "call",
+            "tool": "build_checklist_draft",
+            "args": {
+              "procedure_id": "proc-review-grade"
+            }
+          }
+        },
+        {
+          "round": 2,
+          "kind": "tool_rejected",
+          "tool": "build_checklist_draft",
+          "status": "rejected",
+          "summary": null,
+          "error": "不得擅自更换事项：用户已选「proc-apply-defer」，请求的是「proc-review-grade」。确需更换请返回 awaiting_input 请求用户确认，不要直接换。",
+          "audit": null
+        },
+        {
+          "round": 3,
+          "kind": "plan_decision",
+          "tool": null,
+          "status": "ok",
+          "summary": "动作 finish",
+          "error": null,
+          "audit": {
+            "provider": "deepseek",
+            "model": "mock-planner（模拟，非真实 DeepSeek）",
+            "request_id": "mock-3",
+            "usage": {
+              "prompt_tokens": 1,
+              "completion_tokens": 1,
+              "total_tokens": 2
+            },
+            "latency_ms": 172,
+            "max_tokens": 300,
+            "finish_reason": "stop"
+          },
+          "action": {
+            "type": "finish",
+            "tool": null,
+            "args": null
+          }
+        }
+      ],
+      "mock_http_requests": 3
+    },
+    {
+      "name": "adapter_success_then_http_500",
+      "transport": "DeepSeek 适配器 × loopback mock HTTP",
+      "planner_kind": "deepseek",
+      "workflow_label": "DeepSeek 规划（mock-model，结构化动作；未联调验证）",
+      "status": "partial",
+      "stop_reason": "planner_error",
+      "message": "规划服务请求失败（HTTP 500） 已保留已完成部分的结果。",
+      "plan_rounds_used": 2,
+      "planner_http_attempts": 2,
+      "tool_calls_used": 1,
+      "snapshot": {
+        "procedure_id": "proc-apply-defer",
+        "query": "缓考申请的条件",
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": 2023,
+          "as_of_date": null
+        }
+      },
+      "results_summary": {
+        "search_hit_count": 0,
+        "draft_procedure_id": null,
+        "draft_saveable": null
+      },
+      "events": [
+        {
+          "round": 1,
+          "kind": "plan_decision",
+          "tool": "search_policy",
+          "status": "ok",
+          "summary": "动作 call",
+          "error": null,
+          "audit": {
+            "provider": "deepseek",
+            "model": "mock-planner（模拟，非真实 DeepSeek）",
+            "request_id": "mock-1",
+            "usage": {
+              "prompt_tokens": 1,
+              "completion_tokens": 1,
+              "total_tokens": 2
+            },
+            "latency_ms": 155,
+            "max_tokens": 300,
+            "finish_reason": "stop"
+          },
+          "action": {
+            "type": "call",
+            "tool": "search_policy",
+            "args": {
+              "query": "缓考"
+            }
+          }
+        },
+        {
+          "round": 1,
+          "kind": "tool_call",
+          "tool": "search_policy",
+          "status": "ok",
+          "summary": "命中 0 条",
+          "error": null,
+          "audit": null
+        },
+        {
+          "round": 2,
+          "kind": "plan_error",
+          "tool": null,
+          "status": "failed",
+          "summary": null,
+          "error": "规划服务请求失败（HTTP 500）",
+          "audit": null
+        }
+      ],
+      "mock_http_requests": 2
+    },
+    {
+      "name": "adapter_illegal_json",
+      "transport": "DeepSeek 适配器 × loopback mock HTTP",
+      "planner_kind": "deepseek",
+      "workflow_label": "DeepSeek 规划（mock-model，结构化动作；未联调验证）",
+      "status": "stopped",
+      "stop_reason": "planner_error",
+      "message": "规划结果不是合法 JSON 动作，未执行",
+      "plan_rounds_used": 1,
+      "planner_http_attempts": 1,
+      "tool_calls_used": 0,
+      "snapshot": {
+        "procedure_id": "proc-apply-defer",
+        "query": "缓考申请的条件",
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": 2023,
+          "as_of_date": null
+        }
+      },
+      "results_summary": {
+        "search_hit_count": null,
+        "draft_procedure_id": null,
+        "draft_saveable": null
+      },
+      "events": [
+        {
+          "round": 1,
+          "kind": "plan_error",
+          "tool": null,
+          "status": "failed",
+          "summary": null,
+          "error": "规划结果不是合法 JSON 动作，未执行",
+          "audit": null
+        }
+      ],
+      "mock_http_requests": 1
+    },
+    {
+      "name": "scripted_planner_contrast",
+      "transport": "脚本化模拟规划器（无 HTTP）",
+      "planner_kind": "simulated",
+      "workflow_label": "模拟规划，非DeepSeek实时规划",
+      "status": "completed",
+      "stop_reason": "finished",
+      "message": "脚本完成（对照组）",
+      "plan_rounds_used": 3,
+      "planner_http_attempts": 0,
+      "tool_calls_used": 2,
+      "snapshot": {
+        "procedure_id": "proc-apply-defer",
+        "query": "缓考申请的条件",
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": 2023,
+          "as_of_date": null
+        }
+      },
+      "results_summary": {
+        "search_hit_count": 0,
+        "draft_procedure_id": "proc-apply-defer",
+        "draft_saveable": true
+      },
+      "events": [
+        {
+          "round": 1,
+          "kind": "plan_decision",
+          "tool": "search_policy",
+          "status": "ok",
+          "summary": "动作 call",
+          "error": null,
+          "audit": null,
+          "action": {
+            "type": "call",
+            "tool": "search_policy",
+            "args": {}
+          }
+        },
+        {
+          "round": 1,
+          "kind": "tool_call",
+          "tool": "search_policy",
+          "status": "ok",
+          "summary": "命中 0 条",
+          "error": null,
+          "audit": null
+        },
+        {
+          "round": 2,
+          "kind": "plan_decision",
+          "tool": "build_checklist_draft",
+          "status": "ok",
+          "summary": "动作 call",
+          "error": null,
+          "audit": null,
+          "action": {
+            "type": "call",
+            "tool": "build_checklist_draft",
+            "args": {}
+          }
+        },
+        {
+          "round": 2,
+          "kind": "tool_call",
+          "tool": "build_checklist_draft",
+          "status": "ok",
+          "summary": "草稿 saveable=True，步骤 4 个",
+          "error": null,
+          "audit": null
+        },
+        {
+          "round": 3,
+          "kind": "plan_decision",
+          "tool": null,
+          "status": "ok",
+          "summary": "动作 finish",
+          "error": null,
+          "audit": null,
+          "action": {
+            "type": "finish",
+            "tool": null,
+            "args": null
+          }
+        }
+      ]
+    }
+  ]
+}

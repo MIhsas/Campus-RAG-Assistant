@@ -1,0 +1,92 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "8309317ef418ba26221f1dc95a1c61a394101ff5da94b1fb3ef6e9fbc41d9f02",
+    "size": 46754
+  },
+  {
+    "path": "examples\\pdf-corpus\\README.txt",
+    "sha256": "1ebf9656ceeae7b16dab312cf3ffde59982ab7bba0db4a3f01ff3d085af8e226",
+    "size": 501
+  },
+  {
+    "path": "examples\\pdf-corpus\\manifest.json",
+    "sha256": "90ebb00166a0d382cef38315318aaee09c36a3cc60a523049129e23f92f08c21",
+    "size": 1664
+  },
+  {
+    "path": "examples\\pdf-corpus\\sample-no-text.pdf",
+    "sha256": "0e8418a12109d8aa8c51cc51d68c9c3a227985a50e38d4b0192a3078755977f0",
+    "size": 857
+  },
+  {
+    "path": "examples\\pdf-corpus\\sample-text.pdf",
+    "sha256": "66e0f6287aa365cfcc89f2cad15e4d9213f782c6303c86fb713b086aad71fa76",
+    "size": 15880
+  },
+  {
+    "path": "requirements.in",
+    "sha256": "a2ab718d0f79a346bbb68aee85b973f8c1d5cfdfaf38383d353850b47675d47f",
+    "size": 576
+  },
+  {
+    "path": "scripts\\demo-pdf-intake.py",
+    "sha256": "600fdbf9bd0128170910524abef2921b7f6b64fb03514868fb4d49e1860b0e58",
+    "size": 6040
+  },
+  {
+    "path": "scripts\\make-pdf-fixtures.py",
+    "sha256": "79416df3891d1a5f1e946b210dbb1cab5ee779c8454707fd0a9f9f1ffaabf796",
+    "size": 5058
+  },
+  {
+    "path": "scripts\\register-corpus.py",
+    "sha256": "b0904b76755639cb01c2bc72b23d394d68a33f1e409f41e38ad69e931c04e3a3",
+    "size": 6546
+  },
+  {
+    "path": "scripts\\serve-corpus.py",
+    "sha256": "546846c1f2e31d7329d6d13513cdb0f0d2307c222e3ebb40ed1f1f01ab8b925b",
+    "size": 1703
+  },
+  {
+    "path": "src\\campus_assistant\\api\\ask.py",
+    "sha256": "8ae6bd4bb2eba9dbac6e544727391b4c608afecc048224f14e4e3bccab614d4a",
+    "size": 13049
+  },
+  {
+    "path": "src\\campus_assistant\\corpus\\parse.py",
+    "sha256": "7f999e9b6c69eb5a116971e9b952b1a111ad65bc2aab7dc4f4399b05cfb710f3",
+    "size": 21030
+  },
+  {
+    "path": "src\\campus_assistant\\qa\\evidence.py",
+    "sha256": "42730351885d979717c45818cff853f109b53d0247f7504efb6d63d026482adc",
+    "size": 3750
+  },
+  {
+    "path": "src\\campus_assistant\\static\\ask.html",
+    "sha256": "b0796bfe25d5c0599571bb81fb17aaa5e52620e383fe4fef6816a56e88aed809",
+    "size": 44714
+  },
+  {
+    "path": "src\\campus_assistant\\static\\preview.html",
+    "sha256": "cb19ada2898f466598876954d6e6bbe27847b74c883970a9d430da096526e37f",
+    "size": 21538
+  },
+  {
+    "path": "src\\campus_assistant\\static\\search.html",
+    "sha256": "cbd4379cbbdbf7bd25c4bfae1aa94c5a75b3efa605359df9d0aee85845445f4f",
+    "size": 25659
+  },
+  {
+    "path": "tests\\test_corpus_parse.py",
+    "sha256": "c1b355e2ccd7a0c78be1d3b48dccab85b19b5b65f0a937558f97e073c300c54b",
+    "size": 40569
+  },
+  {
+    "path": "tests\\test_pdf_corpus.py",
+    "sha256": "331c978c9fd2103d96ad2cbc5d2e5ebbd08c5020943e62a32884c0885af48f3f",
+    "size": 9188
+  }
+]

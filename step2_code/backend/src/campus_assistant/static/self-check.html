@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>转专业条件自查（合成演示）</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
+.header{background:#fff;border-bottom:1px solid #ddd;padding:12px 20px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:10}
+.header h1{font-size:18px;font-weight:600}
+.header a{font-size:13px;color:#1976d2;text-decoration:none}
+.header a:hover{text-decoration:underline}
+.notice{background:#e3f2fd;padding:8px 16px;font-size:13px;color:#1565c0}
+.container{max-width:900px;margin:0 auto;padding:16px}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;padding:10px;background:#fff;border:1px solid #ddd;border-radius:6px}
+.filter-bar label{font-size:13px;color:#555}
+.filter-bar select{padding:6px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;background:#fff}
+.filter-clear-btn{padding:6px 14px;border:1px solid #999;background:#fff;color:#555;border-radius:4px;cursor:pointer;font-size:13px}
+.filter-clear-btn:hover{background:#f0f0f0}
+.action-btn{padding:10px 20px;background:#1976d2;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:15px}
+.action-btn:hover{background:#1565c0}
+.action-btn:disabled{background:#bbb;cursor:not-allowed}
+.action-btn.secondary{background:#fff;color:#1976d2;border:1px solid #1976d2}
+.item-card{background:#fff;border:1px solid #ddd;border-radius:6px;padding:12px 14px;margin-bottom:10px}
+.item-q{font-size:14px;font-weight:500;margin-bottom:6px}
+.item-answer select{padding:6px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px}
+.snapshot-line{font-size:13px;color:#666;margin:12px 0 8px}
+.sum-banner{font-size:14px;font-weight:600;padding:10px 14px;border-radius:6px;margin-bottom:10px}
+.sum-all{background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7}
+.sum-unsat{background:#ffebee;color:#c62828;border:1px solid #ef9a9a}
+.sum-unknown{background:#fff3e0;color:#e65100;border:1px solid #ffcc80}
+.sum-basis{background:#fce4ec;color:#ad1457;border:1px solid #f48fb1}
+.res-item{background:#fff;border:1px solid #ddd;border-radius:6px;padding:12px 14px;margin-bottom:10px}
+.res-head{font-size:14px;font-weight:500;margin-bottom:4px}
+.state-tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:3px;border:1px solid #ccc;margin-right:8px}
+.st-satisfied{background:#e8f5e9;color:#2e7d32;border-color:#a5d6a7}
+.st-unsatisfied{background:#ffebee;color:#c62828;border-color:#ef9a9a}
+.st-unknown{background:#fff3e0;color:#e65100;border-color:#ffcc80}
+.st-basis{background:#f5f5f5;color:#757575}
+.res-note{font-size:13px;color:#555;margin:4px 0}
+.cite-box{font-size:12px;color:#555;background:#fafafa;border-left:3px solid #90caf9;padding:8px 10px;margin:6px 0}
+.cite-box .q{white-space:pre-wrap;word-break:break-word;color:#333}
+.cite-box a{color:#1976d2;text-decoration:none}
+.cite-note{color:#c62828}
+.disclaimer{font-size:13px;color:#8a6d3b;background:#fcf8e3;border:1px solid #faebcc;border-radius:4px;padding:8px 12px;margin:10px 0}
+.empty-state{text-align:center;color:#999;padding:28px 20px}
+.loading{color:#666;text-align:center;padding:16px}
+@media(max-width:600px){.container{padding:10px}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>转专业条件自查</h1>
+  <a href="/">首页</a>
+  <a href="/ask">证据整理</a>
+  <a href="/procedures">办事指南</a>
+  <a href="/compare">版本对比</a>
+  <a href="/preview">语料预览</a>
+</div>
+<div class="notice">合成演示的个人条件自查：确定性规则 + 原文引用，不代表学校审核结果，不受理申请。不收集姓名、学号或违纪详情；填报内容仅本次请求处理，不保存。</div>
+<div class="container">
+  <div class="filter-bar" id="filter-bar">
+    <label for="filter-campus">校区</label>
+    <select id="filter-campus" aria-label="校区"><option value="">不限</option></select>
+    <label for="filter-student-type">学生类型</label>
+    <select id="filter-student-type" aria-label="学生类型"><option value="">不限</option></select>
+    <label for="filter-admission-year">入学年份</label>
+    <select id="filter-admission-year" aria-label="入学年份"><option value="">不限</option></select>
+    <label for="filter-as-of-date">查询日期</label>
+    <input type="date" id="filter-as-of-date" aria-label="查询日期">
+    <button type="button" class="filter-clear-btn" id="clear-filters-btn">清除条件</button>
+  </div>
+  <div id="form-area"></div>
+  <div>
+    <button type="button" class="action-btn" id="check-btn">手动自查</button>
+    <button type="button" class="action-btn secondary" id="reset-btn">清空表单</button>
+  </div>
+  <div id="result-area"></div>
+</div>
+<script>
+(function(){
+  var API = '/api/v1/self-check';
+  var formArea = document.getElementById('form-area');
+  var resultArea = document.getElementById('result-area');
+  var checkBtn = document.getElementById('check-btn');
+  var resetBtn = document.getElementById('reset-btn');
+  var campusSel = document.getElementById('filter-campus');
+  var typeSel = document.getElementById('filter-student-type');
+  var yearSel = document.getElementById('filter-admission-year');
+  var dateInput = document.getElementById('filter-as-of-date');
+  var clearBtn = document.getElementById('clear-filters-btn');
+  var items = [];
+  var answerSelects = {};
+  var busy = false;
+  var lastFilterOptionsJson = '';
+
+  function ce(tag, cls, text){
+    var el = document.createElement(tag);
+    if(cls) el.className = cls;
+    if(text !== undefined) el.textContent = text;
+    return el;
+  }
+
+  function fmt(v){ return v || '未标注'; }
+
+  function scopeText(scope){
+    if(!scope) return '未标注';
+    var parts = [];
+    if(scope.campus && scope.campus.length) parts.push('校区：' + scope.campus.join('、'));
+    if(scope.student_type && scope.student_type.length) parts.push('类型：' + scope.student_type.join('、'));
+    if(scope.admission_years && scope.admission_years.length) parts.push('年级：' + scope.admission_years.join('、'));
+    return parts.length ? parts.join('；') : '未标注';
+  }
+
+  function currentFilters(){
+    return {
+      campus: campusSel.value ? campusSel.value : null,
+      student_type: typeSel.value ? typeSel.value : null,
+      admission_year: yearSel.value ? parseInt(yearSel.value, 10) : null,
+      as_of_date: dateInput.value ? dateInput.value : null
+    };
+  }
+
+  function hasFilter(f){
+    return !!f && (f.campus !== null || f.student_type !== null ||
+      f.admission_year !== null || f.as_of_date !== null);
+  }
+
+  function filtersText(f){
+    if(!hasFilter(f)) return '不限条件';
+    var parts = [];
+    if(f.campus) parts.push('校区=' + f.campus);
+    if(f.student_type) parts.push('类型=' + f.student_type);
+    if(f.admission_year !== null && f.admission_year !== undefined) parts.push('年级=' + f.admission_year);
+    if(f.as_of_date) parts.push('查询日期=' + f.as_of_date);
+    return parts.join('　');
+  }
+
+  // T011-R1 规则：选项重建保留当前选择；缺失值保留并提示（索引遍历，兼容 HTMLCollection）
+  function fillSelect(sel, values, fieldName){
+    var prev = sel.value;
+    var vals = [];
+    (values || []).forEach(function(v){ vals.push(String(v)); });
+    sel.innerHTML = '';
+    var optAll = document.createElement('option');
+    optAll.value = '';
+    optAll.textContent = '不限';
+    sel.appendChild(optAll);
+    vals.forEach(function(v){
+      var opt = document.createElement('option');
+      opt.value = v; opt.textContent = v;
+      sel.appendChild(opt);
+    });
+    var vanished = [];
+    if(prev && vals.indexOf(prev) < 0){
+      var ghost = document.createElement('option');
+      ghost.value = prev; ghost.textContent = prev + '（已不在当前选项）';
+      sel.appendChild(ghost);
+      sel.value = prev;
+      vanished.push(fieldName + '=' + prev);
+      return vanished;
+    }
+    sel.value = prev || '';
+    return vanished;
+  }
+
+  async function loadStatus(){
+    try {
+      var r = await fetch('/api/v1/search/status');
+      if(!r.ok) return;
+      var d = await r.json();
+      var opts = d.filter_options || {};
+      var optsJson = JSON.stringify(opts);
+      if(optsJson !== lastFilterOptionsJson){
+        fillSelect(campusSel, opts.campus, '校区');
+        fillSelect(typeSel, opts.student_type, '学生类型');
+        fillSelect(yearSel, opts.admission_year, '入学年份');
+        lastFilterOptionsJson = optsJson;
+      }
+    } catch(e){ /* 状态失败不阻断表单 */ }
+  }
+
+  function answerLabel(v){
+    return {yes: '是', no: '否', unknown: '不确定 / 未填写'}[v] || '（未填）';
+  }
+
+  function renderForm(rule){
+    formArea.innerHTML = '';
+    items = rule.items || [];
+    answerSelects = {};
+    formArea.appendChild(ce('div', 'disclaimer',
+      '规则 ' + rule.rule_id + '（版本 ' + rule.rule_version + '，合成演示）：' + (rule.summary || '') +
+      '　不收集：' + (rule.not_collected || []).join('、') + '。'));
+    items.forEach(function(it){
+      var card = ce('div', 'item-card');
+      card.appendChild(ce('div', 'item-q', it.question));
+      var wrap = ce('div', 'item-answer');
+      var sel = document.createElement('select');
+      sel.setAttribute('aria-label', it.title);
+      (rule.answer_options || [{value:'', label:'（请选择）'}]).forEach(function(o){
+        var opt = document.createElement('option');
+        opt.value = o.value;
+        opt.textContent = o.label;
+        sel.appendChild(opt);
+      });
+      sel.value = '';
+      wrap.appendChild(sel);
+      card.appendChild(wrap);
+      formArea.appendChild(card);
+      answerSelects[it.answer_field] = sel;
+    });
+    checkBtn.disabled = false;
+  }
+
+  async function loadRule(){
+    formArea.innerHTML = '';
+    formArea.appendChild(ce('div', 'loading', '加载规则中…'));
+    try {
+      var r = await fetch(API + '/rule');
+      if(r.status === 503){
+        formArea.innerHTML = '';
+        formArea.appendChild(ce('div', 'empty-state', '自查规则未配置（合成规则仅由演示/测试显式注入）。'));
+        checkBtn.disabled = true;
+        return;
+      }
+      renderForm(await r.json());
+    } catch(e){
+      formArea.innerHTML = '';
+      formArea.appendChild(ce('div', 'empty-state', '规则加载失败：网络错误'));
+    }
+  }
+
+  function stateTag(status){
+    var map = {
+      satisfied: ['st-satisfied', '满足'],
+      unsatisfied: ['st-unsatisfied', '不满足'],
+      unknown: ['st-unknown', '待核实'],
+      basis_unavailable: ['st-basis', '依据不可用'],
+    };
+    var m = map[status] || ['st-basis', status];
+    return ce('span', 'state-tag ' + m[0], m[1]);
+  }
+
+  function renderResult(d){
+    resultArea.innerHTML = '';
+    // 提交时快照：已填输入 + 条件（改表单不改写旧结果）
+    var submitted = [];
+    items.forEach(function(it){
+      submitted.push(it.title + '=' + answerLabel((d.answers || {})[it.answer_field]));
+    });
+    resultArea.appendChild(ce('div', 'snapshot-line',
+      '本次自查快照（结果绑定此快照）：' + submitted.join('；') + '　条件：' + filtersText(d.filters)));
+    var sumCls = {all_satisfied: 'sum-all', has_unsatisfied: 'sum-unsat', has_unknown: 'sum-unknown', insufficient_basis: 'sum-basis'}[d.summary_status] || 'sum-unknown';
+    resultArea.appendChild(ce('div', 'sum-banner ' + sumCls, d.summary_text));
+    (d.items || []).forEach(function(it){
+      var card = ce('div', 'res-item');
+      var head = ce('div', 'res-head');
+      head.appendChild(stateTag(it.status));
+      head.appendChild(document.createTextNode(it.title + '（已填：' + answerLabel(it.answer) + '）'));
+      card.appendChild(head);
+      card.appendChild(ce('div', 'res-note', it.explanation));
+      var c = it.citation;
+      if(c){
+        var box = ce('div', 'cite-box');
+        box.appendChild(ce('div', '', '依据：' + (c.document_id || '') + '/' + (c.block_id || '') + ' [' + c.char_start + ',' + c.char_end + ')'));
+        if(c.usable && c.quote){
+          box.appendChild(ce('div', 'q', '原文：“' + c.quote + '”'));
+        } else {
+          box.appendChild(ce('div', 'cite-note', '⚠ ' + (c.note || '未通过核对') + '（不作为自查依据）'));
+        }
+        var a = ce('a');
+        a.href = c.preview_url;
+        a.textContent = '查看原文';
+        box.appendChild(a);
+        card.appendChild(box);
+      }
+      resultArea.appendChild(card);
+    });
+    resultArea.appendChild(ce('div', 'disclaimer', d.disclaimer || ''));
+  }
+
+  async function doCheck(){
+    if(busy) return;
+    busy = true;
+    checkBtn.disabled = true;
+    resultArea.innerHTML = '';
+    resultArea.appendChild(ce('div', 'loading', '自查中…'));
+    var answers = {};
+    items.forEach(function(it){
+      var sel = answerSelects[it.answer_field];
+      answers[it.answer_field] = sel && sel.value ? sel.value : null;
+    });
+    try {
+      var body = {filters: currentFilters(), answers: answers};
+      var r = await fetch(API, {
+        method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)
+      });
+      if(r.status === 503){
+        resultArea.innerHTML = '';
+        resultArea.appendChild(ce('div', 'empty-state', '自查规则未配置（未生成新结果）。'));
+      } else if(!r.ok){
+        resultArea.innerHTML = '';
+        resultArea.appendChild(ce('div', 'empty-state', '自查失败：HTTP ' + r.status + '（未生成新结果）'));
+      } else {
+        renderResult(await r.json());
+      }
+    } catch(e){
+      resultArea.innerHTML = '';
+      resultArea.appendChild(ce('div', 'empty-state', '自查失败：网络错误（未生成新结果）'));
+    }
+    busy = false;
+    checkBtn.disabled = false;
+  }
+
+  checkBtn.addEventListener('click', doCheck);
+  resetBtn.addEventListener('click', function(){
+    // 仅清空表单；已出结果保持快照不变
+    items.forEach(function(it){
+      var sel = answerSelects[it.answer_field];
+      if(sel) sel.value = '';
+    });
+  });
+  clearBtn.addEventListener('click', function(){
+    campusSel.value = ''; typeSel.value = ''; yearSel.value = ''; dateInput.value = '';
+  });
+
+  loadRule();
+  loadStatus();
+})();
+</script>
+</body>
+</html>

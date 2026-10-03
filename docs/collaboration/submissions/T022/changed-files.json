@@ -1,0 +1,52 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "e90a5a57bab92a00fbc4499af3cc7b4b74a8222657b9dd8235284fe9880cf1c2",
+    "size": 49927
+  },
+  {
+    "path": "scripts\\demo-campus.py",
+    "sha256": "dcdbd0ed7f48dcd40524e5cd009143419f5689fe4c12b844e0774bc054a3c11d",
+    "size": 10784
+  },
+  {
+    "path": "scripts\\demo-run-configs.py",
+    "sha256": "a406cfacddbead8a415bad61b2aed51d5a1bed990175166aa46f308019fa2484",
+    "size": 9399
+  },
+  {
+    "path": "scripts\\register-corpus.py",
+    "sha256": "19946f35961fe2fc2f0954bd3b217841f7750e96faa34725519fb4ae820c5f82",
+    "size": 6903
+  },
+  {
+    "path": "scripts\\serve-corpus.py",
+    "sha256": "ccb387faec0174c521af676eeba19eb91ef0fb7317ab895215df93457a26ee5f",
+    "size": 8572
+  },
+  {
+    "path": "src\\campus_assistant\\main.py",
+    "sha256": "9f93442bb39c891b7c782b4d34f3f03d13db0d3f1bf894f8f41b08292c077740",
+    "size": 11609
+  },
+  {
+    "path": "src\\campus_assistant\\static\\home-demo.html",
+    "sha256": "e8554294f617e62ff109477c15750f52497f6eda36a23b07acded1b1a45c43c1",
+    "size": 5235
+  },
+  {
+    "path": "src\\campus_assistant\\static\\home.html",
+    "sha256": "b7a68f9f1567bc2f52c896919bb6520cfc0ac56d6d9918895b2011e219628bfe",
+    "size": 5954
+  },
+  {
+    "path": "tests\\test_pdf_corpus.py",
+    "sha256": "f363ec80aa8dd9b54cc76d909d46b9c7c203ec3e411b02732f85e1bb41ce0c55",
+    "size": 9633
+  },
+  {
+    "path": "tests\\test_run_entry.py",
+    "sha256": "5aa3d53ba5e1d9cfa9fab951ce005743a39646aa615805ec0f3fbf6837bd52fd",
+    "size": 7960
+  }
+]

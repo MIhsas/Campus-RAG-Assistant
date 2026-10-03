@@ -1,0 +1,145 @@
+﻿question_id,query,answerable,question_type,group_id,conditions,mode,k,recall,hit,mrr,returned_count,covered_evidence_ids,modes_agree
+v2-q01,补考成绩最高记为多少分,True,direct,,null,bm25,5,1.0,1.0,1.0,5,ev1,True
+v2-q01,补考成绩最高记为多少分,True,direct,,null,bm25,3,1.0,1.0,1.0,3,,True
+v2-q01,补考成绩最高记为多少分,True,direct,,null,dense,5,1.0,1.0,1.0,5,ev1,True
+v2-q01,补考成绩最高记为多少分,True,direct,,null,dense,3,1.0,1.0,1.0,3,,True
+v2-q01,补考成绩最高记为多少分,True,direct,,null,hybrid,5,1.0,1.0,1.0,5,ev1,True
+v2-q01,补考成绩最高记为多少分,True,direct,,null,hybrid,3,1.0,1.0,1.0,3,,True
+v2-q02,缓考申请须经哪个部门批准,True,direct,,null,bm25,5,1.0,1.0,1.0,5,ev1,False
+v2-q02,缓考申请须经哪个部门批准,True,direct,,null,bm25,3,1.0,1.0,1.0,3,,False
+v2-q02,缓考申请须经哪个部门批准,True,direct,,null,dense,5,0.0,0.0,0.0,5,,False
+v2-q02,缓考申请须经哪个部门批准,True,direct,,null,dense,3,0.0,0.0,0.0,3,,False
+v2-q02,缓考申请须经哪个部门批准,True,direct,,null,hybrid,5,1.0,1.0,0.3333333333333333,5,ev1,False
+v2-q02,缓考申请须经哪个部门批准,True,direct,,null,hybrid,3,1.0,1.0,0.3333333333333333,3,,False
+v2-q03,都江堰校区学生的缓考申请交到哪里,True,direct,,null,bm25,5,1.0,1.0,1.0,5,ev1,True
+v2-q03,都江堰校区学生的缓考申请交到哪里,True,direct,,null,bm25,3,1.0,1.0,1.0,3,,True
+v2-q03,都江堰校区学生的缓考申请交到哪里,True,direct,,null,dense,5,1.0,1.0,1.0,5,ev1,True
+v2-q03,都江堰校区学生的缓考申请交到哪里,True,direct,,null,dense,3,1.0,1.0,1.0,3,,True
+v2-q03,都江堰校区学生的缓考申请交到哪里,True,direct,,null,hybrid,5,1.0,1.0,1.0,5,ev1,True
+v2-q03,都江堰校区学生的缓考申请交到哪里,True,direct,,null,hybrid,3,1.0,1.0,1.0,3,,True
+v2-q04,成绩以什么为准,True,direct,,null,bm25,5,1.0,1.0,1.0,5,ev1,True
+v2-q04,成绩以什么为准,True,direct,,null,bm25,3,1.0,1.0,1.0,3,,True
+v2-q04,成绩以什么为准,True,direct,,null,dense,5,1.0,1.0,1.0,5,ev1,True
+v2-q04,成绩以什么为准,True,direct,,null,dense,3,1.0,1.0,1.0,3,,True
+v2-q04,成绩以什么为准,True,direct,,null,hybrid,5,1.0,1.0,1.0,5,ev1,True
+v2-q04,成绩以什么为准,True,direct,,null,hybrid,3,1.0,1.0,1.0,3,,True
+v2-q05,因病因事无法参加期末考试时如何延期考核,True,paraphrase,g-defer-def-twin,null,bm25,5,1.0,1.0,1.0,5,ev1,False
+v2-q05,因病因事无法参加期末考试时如何延期考核,True,paraphrase,g-defer-def-twin,null,bm25,3,1.0,1.0,1.0,3,,False
+v2-q05,因病因事无法参加期末考试时如何延期考核,True,paraphrase,g-defer-def-twin,null,dense,5,1.0,1.0,0.5,5,ev1,False
+v2-q05,因病因事无法参加期末考试时如何延期考核,True,paraphrase,g-defer-def-twin,null,dense,3,1.0,1.0,0.5,3,,False
+v2-q05,因病因事无法参加期末考试时如何延期考核,True,paraphrase,g-defer-def-twin,null,hybrid,5,1.0,1.0,1.0,5,ev1,False
+v2-q05,因病因事无法参加期末考试时如何延期考核,True,paraphrase,g-defer-def-twin,null,hybrid,3,1.0,1.0,1.0,3,,False
+v2-q06,补考没通过要怎么办,True,paraphrase,,null,bm25,5,1.0,1.0,1.0,4,ev1,False
+v2-q06,补考没通过要怎么办,True,paraphrase,,null,bm25,3,1.0,1.0,1.0,3,,False
+v2-q06,补考没通过要怎么办,True,paraphrase,,null,dense,5,1.0,1.0,0.5,5,ev1,False
+v2-q06,补考没通过要怎么办,True,paraphrase,,null,dense,3,1.0,1.0,0.5,3,,False
+v2-q06,补考没通过要怎么办,True,paraphrase,,null,hybrid,5,1.0,1.0,1.0,5,ev1,False
+v2-q06,补考没通过要怎么办,True,paraphrase,,null,hybrid,3,1.0,1.0,1.0,3,,False
+v2-q07,作弊被处分后还能补考吗,True,paraphrase,,null,bm25,5,1.0,1.0,1.0,2,ev1,True
+v2-q07,作弊被处分后还能补考吗,True,paraphrase,,null,bm25,3,1.0,1.0,1.0,2,,True
+v2-q07,作弊被处分后还能补考吗,True,paraphrase,,null,dense,5,1.0,1.0,1.0,5,ev1,True
+v2-q07,作弊被处分后还能补考吗,True,paraphrase,,null,dense,3,1.0,1.0,1.0,3,,True
+v2-q07,作弊被处分后还能补考吗,True,paraphrase,,null,hybrid,5,1.0,1.0,1.0,5,ev1,True
+v2-q07,作弊被处分后还能补考吗,True,paraphrase,,null,hybrid,3,1.0,1.0,1.0,3,,True
+v2-q08,备案,True,low_keyword,,null,bm25,5,1.0,1.0,0.5,3,ev1,False
+v2-q08,备案,True,low_keyword,,null,bm25,3,1.0,1.0,0.5,3,,False
+v2-q08,备案,True,low_keyword,,null,dense,5,0.0,0.0,0.0,5,,False
+v2-q08,备案,True,low_keyword,,null,dense,3,0.0,0.0,0.0,3,,False
+v2-q08,备案,True,low_keyword,,null,hybrid,5,1.0,1.0,0.3333333333333333,5,ev1,False
+v2-q08,备案,True,low_keyword,,null,hybrid,3,1.0,1.0,0.3333333333333333,3,,False
+v2-q09,三分之一,True,low_keyword,,null,bm25,5,1.0,1.0,1.0,1,ev1,False
+v2-q09,三分之一,True,low_keyword,,null,bm25,3,1.0,1.0,1.0,1,,False
+v2-q09,三分之一,True,low_keyword,,null,dense,5,1.0,1.0,0.2,5,ev1,False
+v2-q09,三分之一,True,low_keyword,,null,dense,3,0.0,0.0,0.0,3,,False
+v2-q09,三分之一,True,low_keyword,,null,hybrid,5,1.0,1.0,1.0,5,ev1,False
+v2-q09,三分之一,True,low_keyword,,null,hybrid,3,1.0,1.0,1.0,3,,False
+v2-q10,缓考申请的证明材料和审批流程分别是什么,True,multi_evidence,,null,bm25,5,0.5,1.0,0.5,5,ev2,False
+v2-q10,缓考申请的证明材料和审批流程分别是什么,True,multi_evidence,,null,bm25,3,0.5,1.0,0.5,3,,False
+v2-q10,缓考申请的证明材料和审批流程分别是什么,True,multi_evidence,,null,dense,5,0.5,1.0,0.3333333333333333,5,ev2,False
+v2-q10,缓考申请的证明材料和审批流程分别是什么,True,multi_evidence,,null,dense,3,0.5,1.0,0.3333333333333333,3,,False
+v2-q10,缓考申请的证明材料和审批流程分别是什么,True,multi_evidence,,null,hybrid,5,0.5,1.0,0.5,5,ev2,False
+v2-q10,缓考申请的证明材料和审批流程分别是什么,True,multi_evidence,,null,hybrid,3,0.5,1.0,0.5,3,,False
+v2-q11,2025级学生缓考的申请时限和成绩如何记录,True,multi_evidence,,"{""campus"": null, ""student_type"": null, ""admission_year"": 2025, ""as_of_date"": null}",bm25,5,1.0,1.0,1.0,2,ev1;ev2,True
+v2-q11,2025级学生缓考的申请时限和成绩如何记录,True,multi_evidence,,"{""campus"": null, ""student_type"": null, ""admission_year"": 2025, ""as_of_date"": null}",bm25,3,1.0,1.0,1.0,2,,True
+v2-q11,2025级学生缓考的申请时限和成绩如何记录,True,multi_evidence,,"{""campus"": null, ""student_type"": null, ""admission_year"": 2025, ""as_of_date"": null}",dense,5,1.0,1.0,1.0,4,ev1;ev2,True
+v2-q11,2025级学生缓考的申请时限和成绩如何记录,True,multi_evidence,,"{""campus"": null, ""student_type"": null, ""admission_year"": 2025, ""as_of_date"": null}",dense,3,1.0,1.0,1.0,3,,True
+v2-q11,2025级学生缓考的申请时限和成绩如何记录,True,multi_evidence,,"{""campus"": null, ""student_type"": null, ""admission_year"": 2025, ""as_of_date"": null}",hybrid,5,1.0,1.0,1.0,4,ev1;ev2,True
+v2-q11,2025级学生缓考的申请时限和成绩如何记录,True,multi_evidence,,"{""campus"": null, ""student_type"": null, ""admission_year"": 2025, ""as_of_date"": null}",hybrid,3,1.0,1.0,1.0,3,,True
+v2-q12,缓考申请的提交期限和附加材料是什么,True,multi_evidence,,null,bm25,5,0.5,1.0,0.3333333333333333,5,ev1,False
+v2-q12,缓考申请的提交期限和附加材料是什么,True,multi_evidence,,null,bm25,3,0.5,1.0,0.3333333333333333,3,,False
+v2-q12,缓考申请的提交期限和附加材料是什么,True,multi_evidence,,null,dense,5,0.5,1.0,0.2,5,ev2,False
+v2-q12,缓考申请的提交期限和附加材料是什么,True,multi_evidence,,null,dense,3,0.0,0.0,0.0,3,,False
+v2-q12,缓考申请的提交期限和附加材料是什么,True,multi_evidence,,null,hybrid,5,0.5,1.0,0.2,5,ev1,False
+v2-q12,缓考申请的提交期限和附加材料是什么,True,multi_evidence,,null,hybrid,3,0.0,0.0,0.0,3,,False
+v2-q13,研究生因科研任务不能参加考试如何申请缓考,True,distractor,,null,bm25,5,1.0,1.0,1.0,5,ev1,True
+v2-q13,研究生因科研任务不能参加考试如何申请缓考,True,distractor,,null,bm25,3,1.0,1.0,1.0,3,,True
+v2-q13,研究生因科研任务不能参加考试如何申请缓考,True,distractor,,null,dense,5,1.0,1.0,1.0,5,ev1,True
+v2-q13,研究生因科研任务不能参加考试如何申请缓考,True,distractor,,null,dense,3,1.0,1.0,1.0,3,,True
+v2-q13,研究生因科研任务不能参加考试如何申请缓考,True,distractor,,null,hybrid,5,1.0,1.0,1.0,5,ev1,True
+v2-q13,研究生因科研任务不能参加考试如何申请缓考,True,distractor,,null,hybrid,3,1.0,1.0,1.0,3,,True
+v2-q14,缓考申请可以由他人代办吗,True,distractor,,null,bm25,5,1.0,1.0,1.0,5,ev1,True
+v2-q14,缓考申请可以由他人代办吗,True,distractor,,null,bm25,3,1.0,1.0,1.0,3,,True
+v2-q14,缓考申请可以由他人代办吗,True,distractor,,null,dense,5,1.0,1.0,1.0,5,ev1,True
+v2-q14,缓考申请可以由他人代办吗,True,distractor,,null,dense,3,1.0,1.0,1.0,3,,True
+v2-q14,缓考申请可以由他人代办吗,True,distractor,,null,hybrid,5,1.0,1.0,1.0,5,ev1,True
+v2-q14,缓考申请可以由他人代办吗,True,distractor,,null,hybrid,3,1.0,1.0,1.0,3,,True
+v2-q15,成绩复核申请须在多长时间内提出,True,distractor,,null,bm25,5,1.0,1.0,1.0,5,ev1,False
+v2-q15,成绩复核申请须在多长时间内提出,True,distractor,,null,bm25,3,1.0,1.0,1.0,3,,False
+v2-q15,成绩复核申请须在多长时间内提出,True,distractor,,null,dense,5,1.0,1.0,0.5,5,ev1,False
+v2-q15,成绩复核申请须在多长时间内提出,True,distractor,,null,dense,3,1.0,1.0,0.5,3,,False
+v2-q15,成绩复核申请须在多长时间内提出,True,distractor,,null,hybrid,5,1.0,1.0,1.0,5,ev1,False
+v2-q15,成绩复核申请须在多长时间内提出,True,distractor,,null,hybrid,3,1.0,1.0,1.0,3,,False
+v2-q16,缓考申请的提交时限是什么,True,filtered,g-year-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",bm25,5,1.0,1.0,0.5,5,ev1,False
+v2-q16,缓考申请的提交时限是什么,True,filtered,g-year-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",bm25,3,1.0,1.0,0.5,3,,False
+v2-q16,缓考申请的提交时限是什么,True,filtered,g-year-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",dense,5,0.0,0.0,0.0,5,,False
+v2-q16,缓考申请的提交时限是什么,True,filtered,g-year-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",dense,3,0.0,0.0,0.0,3,,False
+v2-q16,缓考申请的提交时限是什么,True,filtered,g-year-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",hybrid,5,1.0,1.0,0.2,5,ev1,False
+v2-q16,缓考申请的提交时限是什么,True,filtered,g-year-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",hybrid,3,0.0,0.0,0.0,3,,False
+v2-q17,缓考申请的提交时限是什么,True,filtered,g-year-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": 2025, ""as_of_date"": null}",bm25,5,1.0,1.0,1.0,2,ev1,False
+v2-q17,缓考申请的提交时限是什么,True,filtered,g-year-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": 2025, ""as_of_date"": null}",bm25,3,1.0,1.0,1.0,2,,False
+v2-q17,缓考申请的提交时限是什么,True,filtered,g-year-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": 2025, ""as_of_date"": null}",dense,5,1.0,1.0,0.5,4,ev1,False
+v2-q17,缓考申请的提交时限是什么,True,filtered,g-year-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": 2025, ""as_of_date"": null}",dense,3,1.0,1.0,0.5,3,,False
+v2-q17,缓考申请的提交时限是什么,True,filtered,g-year-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": 2025, ""as_of_date"": null}",hybrid,5,1.0,1.0,1.0,4,ev1,False
+v2-q17,缓考申请的提交时限是什么,True,filtered,g-year-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": 2025, ""as_of_date"": null}",hybrid,3,1.0,1.0,1.0,3,,False
+v2-q18,缓考申请如何提交和审批,True,filtered,g-campus-defer,"{""campus"": ""成都校区"", ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",bm25,5,1.0,1.0,0.5,5,ev1,False
+v2-q18,缓考申请如何提交和审批,True,filtered,g-campus-defer,"{""campus"": ""成都校区"", ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",bm25,3,1.0,1.0,0.5,3,,False
+v2-q18,缓考申请如何提交和审批,True,filtered,g-campus-defer,"{""campus"": ""成都校区"", ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",dense,5,1.0,1.0,0.3333333333333333,5,ev1,False
+v2-q18,缓考申请如何提交和审批,True,filtered,g-campus-defer,"{""campus"": ""成都校区"", ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",dense,3,1.0,1.0,0.3333333333333333,3,,False
+v2-q18,缓考申请如何提交和审批,True,filtered,g-campus-defer,"{""campus"": ""成都校区"", ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",hybrid,5,1.0,1.0,0.3333333333333333,5,ev1,False
+v2-q18,缓考申请如何提交和审批,True,filtered,g-campus-defer,"{""campus"": ""成都校区"", ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",hybrid,3,1.0,1.0,0.3333333333333333,3,,False
+v2-q19,缓考申请如何提交和审批,True,filtered,g-campus-defer,"{""campus"": ""都江堰校区"", ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",bm25,5,1.0,1.0,1.0,1,ev1,True
+v2-q19,缓考申请如何提交和审批,True,filtered,g-campus-defer,"{""campus"": ""都江堰校区"", ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",bm25,3,1.0,1.0,1.0,1,,True
+v2-q19,缓考申请如何提交和审批,True,filtered,g-campus-defer,"{""campus"": ""都江堰校区"", ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",dense,5,1.0,1.0,1.0,2,ev1,True
+v2-q19,缓考申请如何提交和审批,True,filtered,g-campus-defer,"{""campus"": ""都江堰校区"", ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",dense,3,1.0,1.0,1.0,2,,True
+v2-q19,缓考申请如何提交和审批,True,filtered,g-campus-defer,"{""campus"": ""都江堰校区"", ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",hybrid,5,1.0,1.0,1.0,2,ev1,True
+v2-q19,缓考申请如何提交和审批,True,filtered,g-campus-defer,"{""campus"": ""都江堰校区"", ""student_type"": null, ""admission_year"": 2024, ""as_of_date"": null}",hybrid,3,1.0,1.0,1.0,2,,True
+v2-q20,缓考申请通过什么方式提交,True,filtered,g-time-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": null, ""as_of_date"": ""2026-10-01""}",bm25,5,1.0,1.0,1.0,5,ev1,False
+v2-q20,缓考申请通过什么方式提交,True,filtered,g-time-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": null, ""as_of_date"": ""2026-10-01""}",bm25,3,1.0,1.0,1.0,3,,False
+v2-q20,缓考申请通过什么方式提交,True,filtered,g-time-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": null, ""as_of_date"": ""2026-10-01""}",dense,5,1.0,1.0,0.5,5,ev1,False
+v2-q20,缓考申请通过什么方式提交,True,filtered,g-time-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": null, ""as_of_date"": ""2026-10-01""}",dense,3,1.0,1.0,0.5,3,,False
+v2-q20,缓考申请通过什么方式提交,True,filtered,g-time-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": null, ""as_of_date"": ""2026-10-01""}",hybrid,5,1.0,1.0,1.0,5,ev1,False
+v2-q20,缓考申请通过什么方式提交,True,filtered,g-time-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": null, ""as_of_date"": ""2026-10-01""}",hybrid,3,1.0,1.0,1.0,3,,False
+v2-q21,缓考申请通过什么方式提交,False,unanswerable,g-time-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": null, ""as_of_date"": ""2025-10-01""}",bm25,5,,,,5,,True
+v2-q21,缓考申请通过什么方式提交,False,unanswerable,g-time-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": null, ""as_of_date"": ""2025-10-01""}",bm25,3,,,,3,,True
+v2-q21,缓考申请通过什么方式提交,False,unanswerable,g-time-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": null, ""as_of_date"": ""2025-10-01""}",dense,5,,,,5,,True
+v2-q21,缓考申请通过什么方式提交,False,unanswerable,g-time-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": null, ""as_of_date"": ""2025-10-01""}",dense,3,,,,3,,True
+v2-q21,缓考申请通过什么方式提交,False,unanswerable,g-time-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": null, ""as_of_date"": ""2025-10-01""}",hybrid,5,,,,5,,True
+v2-q21,缓考申请通过什么方式提交,False,unanswerable,g-time-defer,"{""campus"": null, ""student_type"": null, ""admission_year"": null, ""as_of_date"": ""2025-10-01""}",hybrid,3,,,,3,,True
+v2-q22,国家奖学金的评审条件是什么,False,unanswerable,,null,bm25,5,,,,5,,True
+v2-q22,国家奖学金的评审条件是什么,False,unanswerable,,null,bm25,3,,,,3,,True
+v2-q22,国家奖学金的评审条件是什么,False,unanswerable,,null,dense,5,,,,5,,True
+v2-q22,国家奖学金的评审条件是什么,False,unanswerable,,null,dense,3,,,,3,,True
+v2-q22,国家奖学金的评审条件是什么,False,unanswerable,,null,hybrid,5,,,,5,,True
+v2-q22,国家奖学金的评审条件是什么,False,unanswerable,,null,hybrid,3,,,,3,,True
+v2-q23,学生宿舍晚归如何处理,False,unanswerable,,null,bm25,5,,,,5,,True
+v2-q23,学生宿舍晚归如何处理,False,unanswerable,,null,bm25,3,,,,3,,True
+v2-q23,学生宿舍晚归如何处理,False,unanswerable,,null,dense,5,,,,5,,True
+v2-q23,学生宿舍晚归如何处理,False,unanswerable,,null,dense,3,,,,3,,True
+v2-q23,学生宿舍晚归如何处理,False,unanswerable,,null,hybrid,5,,,,5,,True
+v2-q23,学生宿舍晚归如何处理,False,unanswerable,,null,hybrid,3,,,,3,,True
+v2-q24,缓考申请的线上提交入口网址是什么,False,unanswerable,,null,bm25,5,,,,5,,True
+v2-q24,缓考申请的线上提交入口网址是什么,False,unanswerable,,null,bm25,3,,,,3,,True
+v2-q24,缓考申请的线上提交入口网址是什么,False,unanswerable,,null,dense,5,,,,5,,True
+v2-q24,缓考申请的线上提交入口网址是什么,False,unanswerable,,null,dense,3,,,,3,,True
+v2-q24,缓考申请的线上提交入口网址是什么,False,unanswerable,,null,hybrid,5,,,,5,,True
+v2-q24,缓考申请的线上提交入口网址是什么,False,unanswerable,,null,hybrid,3,,,,3,,True

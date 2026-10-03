@@ -1,0 +1,42 @@
+{
+  "note": "T026 后端变更清单（相对 step2_code/backend）。sha256/size 为交付时实际文件。未改 UI/语料/gold/模板/完成判定/HTTP 预算；未改 T025 原始 live-run.json。",
+  "new": [
+    {
+      "path": "scripts/t026-offline-replay.py",
+      "sha256": "f7de613e4ebd69812d44cc2773a3c9a4042417749a0cb33b5bc424682ccf772a",
+      "size": 9563
+    }
+  ],
+  "modified": [
+    {
+      "path": "src/campus_assistant/agent/tools.py",
+      "sha256": "9158daf5b197d40a90c5265626dad12e6bad2d4bc0034f41c3f41419eed70d06",
+      "size": 10020
+    },
+    {
+      "path": "src/campus_assistant/agent/deepseek_planner.py",
+      "sha256": "a5cbedc15e654fef496d44b464e3e883ebcb9cfeaebfc8294e1ea880e5550a62",
+      "size": 17066
+    },
+    {
+      "path": "src/campus_assistant/agent/workflow.py",
+      "sha256": "07677ad419648f6eef735648b3329a9a490e797eab53f04e864493f00eae6479",
+      "size": 22382
+    },
+    {
+      "path": "src/campus_assistant/agent/planner.py",
+      "sha256": "770604682034049ddd76d495cb694bb0e4144ac10e3b026c430b424d3a1081f2",
+      "size": 3938
+    },
+    {
+      "path": "tests/test_agent_workflow.py",
+      "sha256": "ad06022b4a54258598603d48f24f38e244f54ec315cc4d34603b45fc71b5427f",
+      "size": 19629
+    },
+    {
+      "path": "tests/test_deepseek_planner.py",
+      "sha256": "bab0fe091676555bd653eb855d374a949743b5b5713b90c1dd1a616233a4cb91",
+      "size": 27089
+    }
+  ]
+}

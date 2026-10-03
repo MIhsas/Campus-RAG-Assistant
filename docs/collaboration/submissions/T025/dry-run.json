@@ -1,0 +1,152 @@
+{
+  "generated_at": "2026-09-28T12:36:40",
+  "mode": "dry-run",
+  "marking": "dry-run 配置计划（零网络、零请求；不冒充真实模型结果）",
+  "input_snapshot": {
+    "question": "查找缓考依据并整理办理草稿",
+    "procedure_id": "proc-apply-defer",
+    "filters": {
+      "campus": null,
+      "student_type": null,
+      "admission_year": 2023,
+      "as_of_date": null
+    },
+    "source": "T025 任务固定合成题（编译进脚本，不接受改写）"
+  },
+  "corpus_identity": {
+    "manifest_path": "F:\\Collage Paper\\step2_code\\backend\\examples\\parse-corpus\\manifest.json",
+    "documents": [
+      {
+        "document_id": "syn-parse-txt-001",
+        "title": "合成测试教务管理办法（正文解析示例）",
+        "sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+        "is_synthetic": true
+      },
+      {
+        "document_id": "syn-parse-docx-001",
+        "title": "合成测试课程成绩登记表（正文解析示例）",
+        "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+        "is_synthetic": true
+      }
+    ],
+    "manifest_sha256": "b60255f3ac8776d1343674d72a9f180c7be508a232f8a6e5e8b7fc48d491ec3b",
+    "document_count": 2,
+    "all_synthetic": true,
+    "template": {
+      "path": "F:\\Collage Paper\\step2_code\\backend\\examples\\procedures\\procedures.json",
+      "sha256": "70d35d7875f98e92df33b62bfe180f812ea8bd0f4697525f0d1d645f53f4ca11",
+      "procedure_id": "proc-apply-defer",
+      "template_version": "1.0",
+      "is_synthetic": true
+    }
+  },
+  "config": {
+    "base_url": null,
+    "model": "mock（loopback）",
+    "max_tokens": 300,
+    "call_timeout_s": 20.0,
+    "deadline_s": 30.0,
+    "max_planning_http": 4,
+    "auto_retries": 0,
+    "answer_generator": "未启用（本脚本不构造任何答案生成器）",
+    "key_present": false,
+    "key_note": "密钥仅经现有环境变量加载；值不记录、不打印"
+  },
+  "preflight": [
+    {
+      "check": "配置：目标端点",
+      "expected": "dry-run 零请求（无网络目标）",
+      "observed": "dry-run（不发起任何请求）",
+      "pass": true
+    },
+    {
+      "check": "配置：max_tokens",
+      "expected": "300",
+      "observed": "300",
+      "pass": true
+    },
+    {
+      "check": "配置：预算",
+      "expected": "≤4 次规划 HTTP、零重试、单次 20s/总 30s",
+      "observed": "max_http=4, auto_retries=0",
+      "pass": true
+    },
+    {
+      "check": "语料：解析成功且非空",
+      "expected": "valid 且 ≥1 文档",
+      "observed": "valid=True，文档 2",
+      "pass": true
+    },
+    {
+      "check": "语料：全部 is_synthetic=true",
+      "expected": "全部 true",
+      "observed": "全部 2 篇 is_synthetic=True",
+      "pass": true
+    },
+    {
+      "check": "模板：含固定事项",
+      "expected": "proc-apply-defer",
+      "observed": "proc-apply-defer",
+      "pass": true
+    },
+    {
+      "check": "题目：固定合成题",
+      "expected": "查找缓考依据并整理办理草稿 / proc-apply-defer / 年级 2023",
+      "observed": "查找缓考依据并整理办理草稿 / proc-apply-defer / 年级 2023",
+      "pass": true
+    }
+  ],
+  "budget": {
+    "max_plan_rounds": 4,
+    "max_tool_calls": 6,
+    "planning_http_per_round": 1,
+    "auto_retries": 0,
+    "max_tokens_per_call": 300
+  },
+  "run": null,
+  "checklist": [
+    {
+      "item": "是否实际搜索",
+      "expected": "search_policy 至少一次成功并返回命中",
+      "observed": "待实际运行核对",
+      "pass": null
+    },
+    {
+      "item": "草稿是否存在且事项/条件正确",
+      "expected": "草稿存在、procedure_id=proc-apply-defer、条件=年级 2023",
+      "observed": "待实际运行核对",
+      "pass": null
+    },
+    {
+      "item": "引用是否与直接 service 相同",
+      "expected": "草稿引用与本地 build_draft 直接结果逐条一致",
+      "observed": "待实际运行核对",
+      "pass": null
+    },
+    {
+      "item": "是否需人工核实",
+      "expected": "saveable=false/待核实项如实标注",
+      "observed": "待实际运行核对",
+      "pass": null
+    },
+    {
+      "item": "是否有失败/提前 finish",
+      "expected": "无失败动作、无缺产物提前结束",
+      "observed": "待实际运行核对",
+      "pass": null
+    },
+    {
+      "item": "是否零自动保存",
+      "expected": "零自动保存（不写待办/localStorage/任何存储）",
+      "observed": "静态实现判断（非运行时监控）：脚本仅写 --out 运行记录，代码路径无其他写入",
+      "pass": true
+    }
+  ],
+  "exit_ok": true,
+  "notes": [
+    "B 阶段真实调用尚未授权；--live 不因本脚本存在而获得授权。",
+    "mock 模式仅为 loopback 显式联调，不静默作为 live 的降级分支。",
+    "计数在 HTTP 发送处观察（CountingHTTPClient.sent），不按 plan_rounds 推算。",
+    "dry-run 成功：未发起任何网络请求，未运行 planner。"
+  ]
+}

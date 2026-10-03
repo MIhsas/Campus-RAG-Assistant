@@ -1,0 +1,17 @@
+{
+  "task_id": "T009",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T009-R1",
+  "status": "ready_for_review",
+  "summary": "R1-R4 全部修正：完整证据校验（block_id/parser_version/char_range/quote）、修正金标准标注、模型约束（StrictBool/split=dev/题内ID唯一/来源区间唯一）、非对象JSON安全处理。368 passed，评测 valid=true。",
+  "changed_files_ref": "changed-files.json",
+  "verification_ref": "verification.md",
+  "report_ref": "report.md",
+  "notes": [
+    "合成开发集验证评测流程，不代表论文准确率",
+    "金标准指向原文块字符区间，不绑定 chunk_id",
+    "浏览器交互验证未执行（无浏览器工具）",
+    "wheel 非源码导入验证通过"
+  ]
+}

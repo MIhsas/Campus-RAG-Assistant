@@ -1,0 +1,23 @@
+{
+  "task_id": "T024",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "tinyagent_integration_kind": "reference",
+  "planner_live_verified": false,
+  "external_model_calls": 0,
+  "summary": "DeepSeek 结构化规划适配与离线联调完成：DeepSeekPlanner 实现 Planner 契约（真实 HTTP 协议，沿用 T013/T014 连接参数/URL 规则/错误惯例），严格 JSON 动作 call/finish/awaiting_input、执行前验证、不解析 ReAct/不索取 Thought、只决策不答政策。有效观察：命中数+≤3 条来源标识、草稿 saveable/待核实/实际 procedure_id，有界字符预算+截断标记，语料为数据非指令，不发全库/历史/密钥，提示词含工具声明与配置事项列表（禁猜 ID）。生命周期：每运行独立、≤4 轮 ≤6 工具、每轮至多一次规划 HTTP、零自动重试、单次超时+单调总时限、异常→可解释失败/partial 保留结果、finish 不伪装成功、attempts 与工具计数分离、run_in_threadpool。条件锁（不得放宽）+ 事项身份锁（不得擅自换事项→awaiting_input 确认）。正常入口 --planner deepseek 独立显式开关默认关；启动/status/固定流程零规划请求；状态三态 off/simulated/deepseek + 已配置≠已联调验证；demo 恒模拟。页面按模式区分按钮/提示，保持快照/严格年份/失败清空/手动保存。loopback mock 串通全链（第二轮含第一轮真实观察、结果对照直接 service）。真实冒烟仅计划未运行。",
+  "verification": {
+    "tests": {"total": 19, "passed": 19, "note": "test_deepseek_planner.py（loopback mock 串通真实适配器）"},
+    "regression": {"total": 60, "passed": 60, "note": "agent 20 + run_entry + deepseek_provider + planner 19"},
+    "page_stub": {"scenarios": 4, "note": "check-workflow-behavior.cjs（vm stub 层级，非真实浏览器）"},
+    "js_syntax": "9 files passed",
+    "mock_trace": "mock-planner-trace.json 7 runs（适配器×loopback mock 6 + 脚本对照 1；attempts/audit 齐备，缺失 null）",
+    "scope_note": "未重跑全量/ASR/embedding；未安装依赖、未下载模型、零外部调用"
+  },
+  "deliverables_extra": ["mock-planner-trace.json", "demo-notes.md", "live-smoke-plan.md（真实冒烟仅计划，未运行）"],
+  "boundaries_kept": ["用户筛选不可改写（业务前拒）", "事项身份不可被规划器悄悄更换", "每次运行独立（同一 app 两次不串）", "草稿手动保存（页面不写 localStorage）"],
+  "browser_check": "无浏览器工具；页面证据为 vm stub 层级（4 场景），不冒充浏览器验证，交 Astra 补验",
+  "not_claimed": ["真实 DeepSeek 规划已联调验证（planner_live_verified=false）", "真实 Agent 效果", "浏览器交互已验证（仅 stub）", "真实学校语料效果"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改；未改 Astra 文档/语料 gold/已验收模板规则/qa 问答协议"
+}

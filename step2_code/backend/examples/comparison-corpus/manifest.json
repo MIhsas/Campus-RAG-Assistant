@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "documents": [
+    {
+      "document_id": "cmp-defer-v1",
+      "policy_group_id": "syn-cmp-defer",
+      "title": "缓考申请办法（虚构测试）",
+      "source_url": "https://example.org/cmp/cmp-defer-v1",
+      "source_site": "合成测试示例站",
+      "local_path": "cmp-defer-v1.txt",
+      "sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+      "version_label": "虚构 2024 版",
+      "published_at": "2024-01-01",
+      "effective_from": "2024-03-01",
+      "effective_to": "2025-02-28",
+      "scope": {
+        "campus": [
+          "成都校区"
+        ],
+        "student_type": [
+          "全日制本科"
+        ],
+        "admission_years": [
+          2022,
+          2023
+        ]
+      },
+      "is_synthetic": true
+    },
+    {
+      "document_id": "cmp-defer-v2",
+      "policy_group_id": "syn-cmp-defer",
+      "title": "缓考申请办法（虚构测试）",
+      "source_url": "https://example.org/cmp/cmp-defer-v2",
+      "source_site": "合成测试示例站",
+      "local_path": "cmp-defer-v2.txt",
+      "sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+      "version_label": "虚构 2025 版",
+      "published_at": "2025-01-01",
+      "effective_from": "2025-03-01",
+      "effective_to": null,
+      "scope": {
+        "campus": [
+          "成都校区"
+        ],
+        "student_type": [
+          "全日制本科"
+        ],
+        "admission_years": [
+          2023,
+          2024
+        ]
+      },
+      "is_synthetic": true
+    },
+    {
+      "document_id": "cmp-grades-1",
+      "policy_group_id": "syn-cmp-grades",
+      "title": "成绩登记须知（虚构测试）",
+      "source_url": "https://example.org/cmp/cmp-grades-1",
+      "source_site": "合成测试示例站",
+      "local_path": "cmp-grades.txt",
+      "sha256": "ea3f68c1b0abb3254b7e7792cd007a0a69bf23325e150bd416c4ea29a75e635b",
+      "version_label": "虚构 v1",
+      "published_at": "2024-01-01",
+      "effective_from": "2024-03-01",
+      "effective_to": null,
+      "scope": {
+        "campus": [
+          "成都校区"
+        ],
+        "student_type": [
+          "全日制本科"
+        ],
+        "admission_years": [
+          2023
+        ]
+      },
+      "is_synthetic": true
+    }
+  ]
+}

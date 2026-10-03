@@ -1,0 +1,82 @@
+{
+  "task_id": "T003",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "语料登记校验模块完成：Pydantic 数据模型 + 离线校验命令 + 合成测试语料（2 文件）+ 34 项测试。T002 遗留整理：中间件统一 request ID、.gitignore 补充、README 缓存目录。全量 50 项测试通过，pip check 通过。",
+  "files": [
+    "docs/collaboration/submissions/T003/report.md",
+    "docs/collaboration/submissions/T003/verification.md",
+    "docs/collaboration/submissions/T003/submission.json",
+    "docs/collaboration/submissions/T003/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T003/changed-files.json",
+  "checks": [
+    {
+      "item": "全量 pytest（50 passed）",
+      "result": "pass",
+      "evidence_id": "V01"
+    },
+    {
+      "item": "pip check",
+      "result": "pass",
+      "evidence_id": "V02"
+    },
+    {
+      "item": "示例 CLI 成功（valid=true, 2 文档）",
+      "result": "pass",
+      "evidence_id": "V03"
+    },
+    {
+      "item": "损坏哈希 CLI 失败（HASH_MISMATCH）",
+      "result": "pass",
+      "evidence_id": "V04"
+    },
+    {
+      "item": "健康接口回归（live 200, ready 503）",
+      "result": "pass",
+      "evidence_id": "V05"
+    },
+    {
+      "item": "合法清单含中文路径与未知范围",
+      "result": "pass",
+      "evidence_id": "V07"
+    },
+    {
+      "item": "缺字段/未知字段/非法 URL/布尔/日期",
+      "result": "pass - 全部拒绝",
+      "evidence_id": "V07"
+    },
+    {
+      "item": "重复 document_id",
+      "result": "pass",
+      "evidence_id": "V07"
+    },
+    {
+      "item": "路径安全（绝对/盘符/UNC/穿越/ADS）",
+      "result": "pass - 全部拒绝",
+      "evidence_id": "V07"
+    },
+    {
+      "item": "文件检查（缺失/目录/哈希不符）",
+      "result": "pass",
+      "evidence_id": "V07"
+    },
+    {
+      "item": "多错误同时收集",
+      "result": "pass",
+      "evidence_id": "V07"
+    },
+    {
+      "item": "校验不改写输入",
+      "result": "pass",
+      "evidence_id": "V07"
+    },
+    {
+      "item": "CLI 退出码（0/1/2）",
+      "result": "pass",
+      "evidence_id": "V07"
+    }
+  ],
+  "blockers": []
+}

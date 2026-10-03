@@ -1,0 +1,211 @@
+{
+  "mode": "live",
+  "live_verified": false,
+  "live_verified_note": "仅 Part C 逐条人工核对后由验收认定；进程退出 0 不等于 live_verified。",
+  "external_model_calls": 1,
+  "config_planned": {
+    "target": "https://api.deepseek.com/chat/completions",
+    "model": "deepseek-flash",
+    "max_tokens": 1500
+  },
+  "config_resolved": {
+    "endpoint": "https://api.deepseek.com/chat/completions",
+    "model": "deepseek-flash",
+    "max_tokens": 1500,
+    "provider_identity": "deepseek:deepseek-flash"
+  },
+  "max_external_http_attempts": 2,
+  "retries": 0,
+  "stop_on_first_technical_failure": true,
+  "answer_preview_chars_limit": 400,
+  "answer_preview_note": "仅答案预览截短；status/generation_meta/调用记录完整保留。预览截断≠模型截断。本参数不是 token/费用限制。",
+  "preflight": {
+    "corpus_check": {
+      "path": "examples\\parse-corpus",
+      "document_count": 2,
+      "synthetic_count": 2,
+      "all_synthetic": true,
+      "ok": true,
+      "reason": null
+    },
+    "generator_check": {
+      "ok": true,
+      "reason": null
+    },
+    "config_check": {
+      "ok": true,
+      "reason": null
+    }
+  },
+  "review_summary": {
+    "config_planned": {
+      "target": "https://api.deepseek.com/chat/completions",
+      "model": "deepseek-flash",
+      "max_tokens": 1500
+    },
+    "config_resolved": {
+      "endpoint": "https://api.deepseek.com/chat/completions",
+      "model": "deepseek-flash",
+      "max_tokens": 1500,
+      "provider_identity": "deepseek:deepseek-flash"
+    },
+    "config_note": "已解析配置来自实际 provider（可为测试注入）；计划配置为本任务授权的官方数值。",
+    "corpus": {
+      "path": "examples\\parse-corpus",
+      "document_count": 2,
+      "synthetic_count": 2,
+      "all_synthetic": true,
+      "ok": true,
+      "reason": null
+    },
+    "questions": [
+      {
+        "question_id": "smoke-01-answerable",
+        "query": "缓考申请须由谁批准，之后还需要向哪个部门备案？",
+        "filters": {
+          "admission_year": 2023
+        },
+        "evidence": [
+          {
+            "evidence_id": "E1",
+            "chars": 63
+          },
+          {
+            "evidence_id": "E2",
+            "chars": 63
+          },
+          {
+            "evidence_id": "E3",
+            "chars": 88
+          }
+        ],
+        "evidence_total_chars": 214
+      },
+      {
+        "question_id": "smoke-02-insufficient",
+        "query": "宿舍门禁时间是几点？",
+        "filters": null,
+        "evidence": [],
+        "evidence_total_chars": 0
+      }
+    ],
+    "planned_max_external_http_attempts": 2,
+    "max_tokens_planned": 1500
+  },
+  "counters": {
+    "local_retrieval_calls": 2,
+    "ask_requests": 2,
+    "external_http_attempts": 1
+  },
+  "records": [
+    {
+      "question_id": "smoke-01-answerable",
+      "kind": "answerable",
+      "query": "缓考申请须由谁批准，之后还需要向哪个部门备案？",
+      "filters": {
+        "admission_year": 2023
+      },
+      "expectation": "对照 parse-corpus TXT 第二条：所在学院批准、教务处备案（答案措辞可不同）",
+      "local_retrieval": {
+        "ask_status": "evidence_only",
+        "evidence_state": "ok",
+        "evidence": [
+          {
+            "evidence_id": "E1",
+            "chars": 63
+          },
+          {
+            "evidence_id": "E2",
+            "chars": 63
+          },
+          {
+            "evidence_id": "E3",
+            "chars": 88
+          }
+        ],
+        "evidence_total_chars": 214,
+        "within_char_budget": true
+      },
+      "live_call": {
+        "request": {
+          "query": "缓考申请须由谁批准，之后还需要向哪个部门备案？",
+          "top_k": 5,
+          "mode": "bm25",
+          "answer_mode": "generated",
+          "filters": {
+            "admission_year": 2023
+          }
+        },
+        "http_attempted": true,
+        "ask_http_status_code": 200,
+        "ask_http_status_code_note": "本地 /ask 接口状态，非供应商原始 HTTP 状态；未知供应商状态不猜测",
+        "outcome_kind": "generated",
+        "http_success": true,
+        "generation_success": true,
+        "ask_status": "generated",
+        "generation_meta": {
+          "provider": "deepseek",
+          "model": "deepseek-flash",
+          "request_id": "52f8d636-6ab2-44e4-8632-4bebebe6e68a",
+          "usage": {
+            "prompt_tokens": 370,
+            "completion_tokens": 37,
+            "total_tokens": 407,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 370
+          },
+          "latency_ms": 984,
+          "max_tokens": 1500,
+          "finish_reason": "stop"
+        },
+        "answer_preview": {
+          "text": "缓考申请须经所在学院批准，报教务处备案后方可生效。",
+          "truncated": false,
+          "limit": 400
+        }
+      }
+    },
+    {
+      "question_id": "smoke-02-insufficient",
+      "kind": "insufficient",
+      "query": "宿舍门禁时间是几点？",
+      "filters": null,
+      "expectation": "语料无此事实：应说明材料不足，不得用模型常识作答；若无候选则本地短路，真实 HTTP 次数为 0",
+      "local_retrieval": {
+        "ask_status": "evidence_only",
+        "evidence_state": "no_hits",
+        "evidence": [],
+        "evidence_total_chars": 0,
+        "within_char_budget": true
+      },
+      "live_call": {
+        "request": {
+          "query": "宿舍门禁时间是几点？",
+          "top_k": 5,
+          "mode": "bm25",
+          "answer_mode": "generated"
+        },
+        "http_attempted": false,
+        "ask_http_status_code": 200,
+        "ask_http_status_code_note": "本地 /ask 接口状态，非供应商原始 HTTP 状态；未知供应商状态不猜测",
+        "outcome_kind": "short_circuit_no_evidence",
+        "http_success": null,
+        "generation_success": false,
+        "ask_status": "insufficient_evidence",
+        "generation_meta": null,
+        "insufficient_reason": "无可用证据，未调用生成器。",
+        "answer_preview": {
+          "text": null,
+          "truncated": false,
+          "limit": 400
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "exit_ok": true,
+  "full_answers_file": "F:\\Collage Paper\\docs\\collaboration\\submissions\\T014\\live-answers-full.json"
+}

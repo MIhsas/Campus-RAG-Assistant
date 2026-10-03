@@ -1,0 +1,32 @@
+{
+  "task_id": "T010",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "一次交付 BM25、向量、混合三种检索模式，搜索页支持模式切换，评测 CLI 支持三模式对比。",
+  "dependencies_added": [
+    "torch==2.14.0+cpu (from PyTorch CPU wheel)",
+    "sentence-transformers==6.1.0",
+    "numpy==2.5.3",
+    "transformers==5.17.0",
+    "safetensors==0.8.0",
+    "huggingface-hub==1.32.0",
+    "tokenizers==0.23.2"
+  ],
+  "model_downloaded": {
+    "name": "BAAI/bge-small-zh-v1.5",
+    "local_path": "models/bge-small-zh-v1.5",
+    "source": "Hugging Face official"
+  },
+  "test_results": {
+    "total": 374,
+    "passed": 374,
+    "skipped": 1,
+    "warnings": 2
+  },
+  "evaluation_comparison": {
+    "bm25": {"evidence_recall": 1.0, "hit": 1.0, "mrr": 0.917},
+    "dense": {"evidence_recall": 1.0, "hit": 1.0, "mrr": 0.917},
+    "hybrid": {"evidence_recall": 1.0, "hit": 1.0, "mrr": 0.917}
+  }
+}

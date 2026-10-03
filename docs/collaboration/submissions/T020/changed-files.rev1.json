@@ -1,0 +1,72 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "cda7930087a5bc03bff5e1d1034f7b1a254095703370f488f54a25d32cfe2fdb",
+    "size": 43455
+  },
+  {
+    "path": "scripts\\check-ask-behavior.cjs",
+    "sha256": "68392315728813ee1772e90b505ed2c28326e676ba1757bf7e4b346630dd645d",
+    "size": 31175
+  },
+  {
+    "path": "scripts\\demo-asr-transcribe.py",
+    "sha256": "ba5da576f31412cd4a82ebd95e1657953ac626cb18a0c0666509ee25cf08925a",
+    "size": 3617
+  },
+  {
+    "path": "scripts\\demo-campus.py",
+    "sha256": "4bd142ce2ac69037c881d982c08e75c17e6457d1684d4557093de19d0c3b3b76",
+    "size": 10670
+  },
+  {
+    "path": "scripts\\download-asr-model.py",
+    "sha256": "a41f58dcf1656d78f5dde768cd10bf5e24bf88d7bb968662c9d2e4e9162b6623",
+    "size": 2154
+  },
+  {
+    "path": "src\\campus_assistant\\api\\asr.py",
+    "sha256": "de77b03f2f847f51e655df413c5f569467c8592b3838eeac507905d4b11352fe",
+    "size": 5109
+  },
+  {
+    "path": "src\\campus_assistant\\asr\\__init__.py",
+    "sha256": "6b2d8271a33429a76f7cffbdf06b50333a48f6da85478a47257fc7f50cb1c1b8",
+    "size": 320
+  },
+  {
+    "path": "src\\campus_assistant\\asr\\adapter.py",
+    "sha256": "ca25bb8ec2091286d51a9f5c79c777d95a95fd036812859c10af5f440d0716d8",
+    "size": 5719
+  },
+  {
+    "path": "src\\campus_assistant\\asr\\audio.py",
+    "sha256": "5717b242176392c4a666a963edd9b0c9cf0cfedb8597dbf91dc1d5c6dc1886d1",
+    "size": 2599
+  },
+  {
+    "path": "src\\campus_assistant\\main.py",
+    "sha256": "a1464fceb08350a180dec0f1f3caad289359b81bcda690c8b4bf6e1215e2876e",
+    "size": 11348
+  },
+  {
+    "path": "src\\campus_assistant\\selfcheck\\service.py",
+    "sha256": "257652c906f3f40e66d4b1e93b5a31dfd544d7693a8001d120545aef2640d77b",
+    "size": 8190
+  },
+  {
+    "path": "src\\campus_assistant\\static\\ask.html",
+    "sha256": "126739d6fdf6acf29c1eddadf10eb165a60c42b302fdf9f8c20de3756d3809c4",
+    "size": 43424
+  },
+  {
+    "path": "tests\\test_asr.py",
+    "sha256": "4fa94b4d673a601883d1a660aaf5ea788956566ca36480363514f6f3bb3e8ecc",
+    "size": 4888
+  },
+  {
+    "path": "..\\..\\docs\\collaboration\\submissions\\T019\\demo-notes.md",
+    "sha256": "e0221bf1ae7072704b9264e983acaa23d6adccac3222743935495ed564e620f0",
+    "size": 3009
+  }
+]

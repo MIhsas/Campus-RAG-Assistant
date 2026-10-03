@@ -1,0 +1,401 @@
+{
+  "schema_version": "1.0",
+  "evaluator_version": "1.0",
+  "valid": true,
+  "dataset_id": "eval-v2-synthetic",
+  "dataset_version": "2.1",
+  "split": "dev",
+  "is_synthetic": true,
+  "retriever_version": "1.0",
+  "tokenizer_version": "cjk_bigram_ascii_v1",
+  "chunker_version": "1.0",
+  "parser_version": "1.0",
+  "mode": "bm25",
+  "model": null,
+  "embedding_model_id": null,
+  "embedding_model_revision": null,
+  "truncated_chunk_count": null,
+  "truncation_note": null,
+  "embedding_normalization": null,
+  "query_prefix": null,
+  "rrf_k": null,
+  "parameters": {
+    "max_chars": 500,
+    "k1": 1.5,
+    "b": 0.75,
+    "top_k": 5
+  },
+  "question_count": 3,
+  "answerable_count": 3,
+  "unanswerable_count": 0,
+  "manifest_sha256": "4fa135dd0963dad4dfcf378b7fd8424241f33f0bf575dcfccd7974c954a43042",
+  "questions_sha256": "1d0be5dd938b0fe105cc58adec49bad16bf63f3e4a9afceb68be1f4b9adcb92a",
+  "corpus_documents": [
+    {
+      "document_id": "syn-parse-txt-001",
+      "sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07"
+    },
+    {
+      "document_id": "syn-parse-docx-001",
+      "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63"
+    },
+    {
+      "document_id": "fd-2024",
+      "sha256": "131838cca37947cc960da8f0c25d21124006093f5643d85fe23b27e38ed1aa3f"
+    },
+    {
+      "document_id": "fd-2025",
+      "sha256": "745e52eaab4c64fcbc66370b58e0934b46a8874d55dd261d0605905973921248"
+    },
+    {
+      "document_id": "fd-yjy",
+      "sha256": "121ba90a3ee72b3ccd155bc645d363f873906395aeee54472ec5fb362b7c945b"
+    },
+    {
+      "document_id": "fd-unknown",
+      "sha256": "4425d3bd299f7dcdfa9b88d08c662da1f78356b11765d80071ea17857891089b"
+    },
+    {
+      "document_id": "fd-future",
+      "sha256": "6835a4093590341d65f53a04c94f39d417577a11d5103d1e28dc342bcd61e2d2"
+    },
+    {
+      "document_id": "cmp-defer-v1",
+      "sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85"
+    },
+    {
+      "document_id": "cmp-defer-v2",
+      "sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3"
+    },
+    {
+      "document_id": "cmp-grades-1",
+      "sha256": "ea3f68c1b0abb3254b7e7792cd007a0a69bf23325e150bd416c4ea29a75e635b"
+    },
+    {
+      "document_id": "syn-pdf-text-001",
+      "sha256": "66e0f6287aa365cfcc89f2cad15e4d9213f782c6303c86fb713b086aad71fa76"
+    },
+    {
+      "document_id": "dis-graduate-defer",
+      "sha256": "25f67d9d62217448738f061fb53ea90e2a50989aa5d0c96b6fece003c13cf6bc"
+    },
+    {
+      "document_id": "dis-scholarship",
+      "sha256": "35073428d5fd09cac4113786a008c95340d232cc5e26d06e4372512e8aed0576"
+    }
+  ],
+  "authoring_note": "题目与标注由 MiMo（Claude Code 执行模型）直接阅读合成语料原文块后辅助编写；跨度由 scripts/build-eval-v2.py fill-spans 按原文子串精确定位并校验；金标准未从任何检索结果反推。v2.1 为 T027-R2 限定修订（q10 适用范围限定、q16/q17 来源系列限定与跨精度拆分），修订理由见 revision_note 与 gold-revisions.md。全部为合成资料，不代表真实学校政策。",
+  "metrics_semantics": "fact_group_or_v1.1",
+  "recall_definition": "evidence_recall = 被完整覆盖的必要事实数 / 必要事实总数（同 fact_id 的可替代来源组内 OR；不同 fact_id 组间 AND；未标 fact_id 的旧数据等价于逐证据口径）",
+  "summary": {
+    "evidence_recall": 1.0,
+    "hit": 1.0,
+    "mrr": 1.0,
+    "answerable_count": 3,
+    "unanswerable_count": 0,
+    "empty_result_rate": null
+  },
+  "summary_by_type": {
+    "multi_evidence": {
+      "evidence_recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "answerable_count": 1,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 1,
+      "question_ids": [
+        "v2-q10"
+      ]
+    },
+    "filtered": {
+      "evidence_recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "answerable_count": 2,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 2,
+      "question_ids": [
+        "v2-q16",
+        "v2-q17"
+      ]
+    }
+  },
+  "summary_by_filter_group": {
+    "filtered": {
+      "evidence_recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "answerable_count": 1,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 1,
+      "question_ids": [
+        "v2-q10"
+      ]
+    },
+    "g-year-defer|filtered": {
+      "evidence_recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "answerable_count": 2,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 2,
+      "question_ids": [
+        "v2-q16",
+        "v2-q17"
+      ]
+    }
+  },
+  "timing_seconds": {
+    "note": "仅记录本轮单次运行的分段耗时（索引构建/查询），非统计稳定性能，不作速度结论",
+    "index_build_bm25": 0.0078,
+    "index_build_dense": null,
+    "query_total": 0.0021,
+    "query_scope": "3 题串行查询（含编码查询向量的耗时）"
+  },
+  "per_question": [
+    {
+      "question_id": "v2-q10",
+      "query": "2024级本科生缓考申请的证明材料和审批流程分别是什么",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 8.510868074001253,
+          "document_id": "fd-2024",
+          "block_id": "773e8568327bac71",
+          "chunk_id": "bd819ec90cb0ace35247aaaf5ea4d3ccc88f13e15ea1c8d78f7ba40643bb0a8c",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-2024/773e8568327bac71"
+        },
+        {
+          "rank": 2,
+          "score": 7.575631335278827,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "0a7595fda827d87e",
+          "chunk_id": "8726b8b809c996bce2710ba1126a63ac59a0556f084dad2f44d0e6cd02f82924",
+          "char_start": 0,
+          "char_end": 19,
+          "preview_url": "/preview#syn-parse-docx-001/0a7595fda827d87e"
+        },
+        {
+          "rank": 3,
+          "score": 6.098807735703469,
+          "document_id": "syn-pdf-text-001",
+          "block_id": "d897e41b44bfa468",
+          "chunk_id": "61c7aea28ae2e578a71d108644e43499ac7b8f8066a10b110f6c6357108ffef1",
+          "char_start": 0,
+          "char_end": 53,
+          "preview_url": "/preview#syn-pdf-text-001/d897e41b44bfa468"
+        },
+        {
+          "rank": 4,
+          "score": 5.1124336837679465,
+          "document_id": "cmp-defer-v2",
+          "block_id": "f9e36a3d2d505060",
+          "chunk_id": "76560db7b0eeb7769dd438983cdc76ae106d1774cffd35987aa45cfa3215f1d7",
+          "char_start": 0,
+          "char_end": 26,
+          "preview_url": "/preview#cmp-defer-v2/f9e36a3d2d505060"
+        },
+        {
+          "rank": 5,
+          "score": 4.882182454328554,
+          "document_id": "cmp-defer-v2",
+          "block_id": "bc5f604c8fe5ba8d",
+          "chunk_id": "e681bf96b691144876bd1a33f591dd9b025ff297ca261e7299ad0993fdbb0546",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#cmp-defer-v2/bc5f604c8fe5ba8d"
+        }
+      ],
+      "gold_count": 4,
+      "fact_count": 2,
+      "covered_fact_count": 2,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1",
+            "ev2"
+          ],
+          "covered": true
+        },
+        {
+          "fact_id": "f2",
+          "evidence_ids": [
+            "ev3",
+            "ev4"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1",
+        "ev3",
+        "ev4"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "multi_evidence",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": 2024,
+        "as_of_date": null
+      },
+      "rationale": "多证据（两必要事实 AND）。题面限定适用范围=2024 级本科生（条件 admission_year=2024，产品筛选同口径）：f1=审批流程（fd-2024 与学籍规定两处完整审批链表述等价，OR）；f2=证明材料要求（医院证明——fd-2024「附医院证明」与登记表「需医院证明」各自完整支持该要求，OR）。材料要求因范围限定而确定：fd-unknown「医院证明或学院书面说明」为未标注范围文件的合取口径、虚构 2024 版「须同时提交书面情况说明」属另一来源系列的不同材料要求——均不算 f2 替代来源（医院证明≠书面说明，须同时≠二选一；不同文件各自存在≠互为替代）。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q16",
+      "query": "按入学年级适用的缓考申请办法规定的缓考申请提交时限是什么",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 11.982406347302813,
+          "document_id": "fd-2024",
+          "block_id": "773e8568327bac71",
+          "chunk_id": "bd819ec90cb0ace35247aaaf5ea4d3ccc88f13e15ea1c8d78f7ba40643bb0a8c",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-2024/773e8568327bac71"
+        },
+        {
+          "rank": 2,
+          "score": 10.328310102151042,
+          "document_id": "cmp-defer-v2",
+          "block_id": "bc5f604c8fe5ba8d",
+          "chunk_id": "e681bf96b691144876bd1a33f591dd9b025ff297ca261e7299ad0993fdbb0546",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#cmp-defer-v2/bc5f604c8fe5ba8d"
+        },
+        {
+          "rank": 3,
+          "score": 9.229201167650047,
+          "document_id": "fd-yjy",
+          "block_id": "692d28b992c6eff3",
+          "chunk_id": "205a878849a44d390e3d273b6e8e325b8947f0872cce5b2549034db21c9aa483",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-yjy/692d28b992c6eff3"
+        },
+        {
+          "rank": 4,
+          "score": 6.333385063910271,
+          "document_id": "cmp-defer-v2",
+          "block_id": "f5ca416480f4121e",
+          "chunk_id": "8040438cb717d36a3024ac361aa0073a1cc02e14874290cd1207d8dde31d719f",
+          "char_start": 0,
+          "char_end": 23,
+          "preview_url": "/preview#cmp-defer-v2/f5ca416480f4121e"
+        },
+        {
+          "rank": 5,
+          "score": 5.398387901983898,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "ce15747a6cdf597a",
+          "chunk_id": "da719a8c1b4ec06b9652eb831378cd62c9c36c3ffc42d1d5424e831c58d084f7",
+          "char_start": 0,
+          "char_end": 88,
+          "preview_url": "/preview#syn-parse-txt-001/ce15747a6cdf597a"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "filtered",
+      "group_id": "g-year-defer",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": 2024,
+        "as_of_date": null
+      },
+      "rationale": "同题不同筛选组 g-year-defer（条件 admission_year=2024）。题面限定来源系列=按入学年级适用的缓考申请办法（fd-20XX 系列）：f1=2024 级办法的提交时限规定，其完整规定即「考前提交」（该版未给精确天数）。学籍规定/登记表/虚构版本的时限表述属其他来源系列，不作替代；宽泛「考前」不替代「考前 3 个工作日」（见 v2-q17，反向不蕴含）。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q17",
+      "query": "按入学年级适用的缓考申请办法规定的缓考申请提交时限是什么",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 10.67739347605944,
+          "document_id": "fd-2025",
+          "block_id": "93d350b5c0fb8b15",
+          "chunk_id": "0ae7db7e5999c514534039374a33f5853797e30ccd424f5bc2ab2334effa8b1c",
+          "char_start": 0,
+          "char_end": 86,
+          "preview_url": "/preview#fd-2025/93d350b5c0fb8b15"
+        },
+        {
+          "rank": 2,
+          "score": 9.229201167650047,
+          "document_id": "fd-yjy",
+          "block_id": "692d28b992c6eff3",
+          "chunk_id": "205a878849a44d390e3d273b6e8e325b8947f0872cce5b2549034db21c9aa483",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-yjy/692d28b992c6eff3"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 2,
+      "question_type": "filtered",
+      "group_id": "g-year-defer",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": 2025,
+        "as_of_date": null
+      },
+      "rationale": "同题不同筛选组 g-year-defer（条件 admission_year=2025）。来源系列=按入学年级适用的缓考申请办法：f1=2025 级办法的完整提交时限规定「考前 3 个工作日提交」。宽泛「考前」句不满足该完整要求（蕴含方向：3 个工作日⇒考前，反之不成立），不算替代来源；与 v2-q16 构成同题不同准入、不同精确度的对照。",
+      "missing": null
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "documents": [
+    {
+      "document_id": "syn-parse-txt-001",
+      "policy_group_id": "syn-parse-group",
+      "title": "合成测试教务管理办法（正文解析示例）",
+      "source_url": "https://example.org/policy/parse/txt",
+      "source_site": "合成测试示例站",
+      "local_path": "sample.txt",
+      "sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+      "version_label": "解析示例 v1",
+      "published_at": "2025-01-15",
+      "effective_from": "2025-03-01",
+      "effective_to": null,
+      "scope": {
+        "campus": ["成都校区"],
+        "student_type": ["全日制本科"],
+        "admission_years": [2023, 2024]
+      },
+      "is_synthetic": true
+    },
+    {
+      "document_id": "syn-parse-docx-001",
+      "policy_group_id": "syn-parse-group",
+      "title": "合成测试课程成绩登记表（正文解析示例）",
+      "source_url": "https://example.org/policy/parse/docx",
+      "source_site": "合成测试示例站",
+      "local_path": "sample.docx",
+      "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+      "version_label": "解析示例 v1",
+      "published_at": "2025-02-01",
+      "effective_from": "2025-03-01",
+      "effective_to": null,
+      "scope": {
+        "campus": ["成都校区"],
+        "student_type": ["全日制本科"],
+        "admission_years": [2024]
+      },
+      "is_synthetic": true
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "f267ae9bd16dbf716c4e661ba293df72aaf0788cc91c3331d48a8abfa09f74ab",
+    "size": 39158
+  },
+  {
+    "path": "scripts\\check-ask-behavior.cjs",
+    "sha256": "2c797e40939c65c6686b3e8dea875d605d65c630c48eb788a225e21849ea5eb9",
+    "size": 24651
+  },
+  {
+    "path": "scripts\\check-procedures-behavior.cjs",
+    "sha256": "0fd71e5f12ab15d880502c1aaed0cd2ac6ebad51b1b57819e0bc12d5a8314c24",
+    "size": 23867
+  },
+  {
+    "path": "scripts\\demo-campus.py",
+    "sha256": "f0a1ba66b30a6373239426ea1f65eeb5f7274cfadd6fdfa847da4591237379e4",
+    "size": 9277
+  },
+  {
+    "path": "src\\campus_assistant\\main.py",
+    "sha256": "34b916aad7d917ac308ac4cce0c8722669f661737de064803d0e8fcf4f7db649",
+    "size": 9793
+  },
+  {
+    "path": "src\\campus_assistant\\static\\ask.html",
+    "sha256": "44e9825ce6d9b33165c9510667eb5bea5ee0bcd8b03a73c764c956e6d1d75dbb",
+    "size": 35102
+  },
+  {
+    "path": "src\\campus_assistant\\static\\compare.html",
+    "sha256": "d8fe94cac242b211c93f5d0a731f146ca880d054d9d275a8a4ab601bb9267297",
+    "size": 16506
+  },
+  {
+    "path": "src\\campus_assistant\\static\\home.html",
+    "sha256": "4c3e695fc5c66cb04ab185f6aa16532535c210fccd964a995409460f031d9fcc",
+    "size": 4928
+  },
+  {
+    "path": "src\\campus_assistant\\static\\preview.html",
+    "sha256": "ef166be7875b2a21930970771862674e0450f3ace82d4e1dfc5f1cddad32e758",
+    "size": 21448
+  },
+  {
+    "path": "src\\campus_assistant\\static\\procedures.html",
+    "sha256": "687b8c62be2f453f4c6b5b5419ae88f6cbbd06b94bf331915a552db00f7326ad",
+    "size": 34321
+  },
+  {
+    "path": "src\\campus_assistant\\static\\search.html",
+    "sha256": "cdf4359a51b85240d90e8b3cd6189831e618e693c0c594ef1a041a29318a0533",
+    "size": 25541
+  },
+  {
+    "path": "tests\\test_demo_campus.py",
+    "sha256": "afc6f9bbcda6499ea28904b519b729355cc192f13c693cb827950c5b585f942e",
+    "size": 5260
+  }
+]

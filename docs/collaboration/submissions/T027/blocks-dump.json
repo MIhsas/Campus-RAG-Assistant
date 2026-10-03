@@ -1,0 +1,622 @@
+[
+  {
+    "document_id": "syn-parse-txt-001",
+    "sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+    "parser_version": "1.0",
+    "block_id": "d3e1919af830143d",
+    "locator": {
+      "type": "lines",
+      "line_start": 1,
+      "line_end": 1
+    },
+    "text": "【合成测试文件 — 不得用于论文评测或真实校园问答】"
+  },
+  {
+    "document_id": "syn-parse-txt-001",
+    "sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+    "parser_version": "1.0",
+    "block_id": "542187ebbac5a4b2",
+    "locator": {
+      "type": "lines",
+      "line_start": 3,
+      "line_end": 3
+    },
+    "text": "第一条 学生应当按照教学计划参加课程学习，完成规定的学时和学分。每门课程的成绩由平时成绩和期末考试成绩综合评定，其中平时成绩占比不超过40%。"
+  },
+  {
+    "document_id": "syn-parse-txt-001",
+    "sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+    "parser_version": "1.0",
+    "block_id": "9df6bfbd98df733e",
+    "locator": {
+      "type": "lines",
+      "line_start": 5,
+      "line_end": 5
+    },
+    "text": "第二条 学生因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请。缓考申请须经所在学院批准，报教务处备案后方可生效。"
+  },
+  {
+    "document_id": "syn-parse-txt-001",
+    "sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+    "parser_version": "1.0",
+    "block_id": "009121d9f2695116",
+    "locator": {
+      "type": "lines",
+      "line_start": 7,
+      "line_end": 7
+    },
+    "text": "第三条 课程考核不合格的学生，可以在下一学期开学后两周内申请补考。补考成绩最高记为60分。补考仍不合格的，应当重新学习该课程。"
+  },
+  {
+    "document_id": "syn-parse-txt-001",
+    "sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+    "parser_version": "1.0",
+    "block_id": "b8b8a0c2bf59b405",
+    "locator": {
+      "type": "lines",
+      "line_start": 9,
+      "line_end": 12
+    },
+    "text": "第四条 下列情况之一者，取消补考资格：\n（一）考试违纪或作弊者；\n（二）缺课累计超过该课程教学时数三分之一者；\n（三）未完成课程实验、实习等实践环节者。"
+  },
+  {
+    "document_id": "syn-parse-txt-001",
+    "sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+    "parser_version": "1.0",
+    "block_id": "ce15747a6cdf597a",
+    "locator": {
+      "type": "lines",
+      "line_start": 14,
+      "line_end": 17
+    },
+    "text": "第五条 学生转专业应当在入学后第一学年末提出申请。转专业条件包括：\n1. 在读期间无违纪记录；\n2. 第一学年加权平均成绩排名在本专业前30%；\n3. 通过接收学院组织的考核。"
+  },
+  {
+    "document_id": "syn-parse-docx-001",
+    "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+    "parser_version": "1.0",
+    "block_id": "e57ac232ebc1c1a5",
+    "locator": {
+      "type": "paragraph",
+      "paragraph_index": 1
+    },
+    "text": "【合成测试文件 — 不得用于论文评测或真实校园问答】"
+  },
+  {
+    "document_id": "syn-parse-docx-001",
+    "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+    "parser_version": "1.0",
+    "block_id": "8dc635d599805d44",
+    "locator": {
+      "type": "paragraph",
+      "paragraph_index": 2
+    },
+    "text": "四川农业大学合成测试课程成绩登记表（样例）"
+  },
+  {
+    "document_id": "syn-parse-docx-001",
+    "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+    "parser_version": "1.0",
+    "block_id": "130cb47b1dec3f39",
+    "locator": {
+      "type": "table_row",
+      "table_index": 1,
+      "row_index": 1
+    },
+    "text": "学号\t姓名\t课程\t成绩"
+  },
+  {
+    "document_id": "syn-parse-docx-001",
+    "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+    "parser_version": "1.0",
+    "block_id": "239ba0ebfcf74591",
+    "locator": {
+      "type": "table_row",
+      "table_index": 1,
+      "row_index": 2
+    },
+    "text": "20240001\t张三\t高等数学A1\t85"
+  },
+  {
+    "document_id": "syn-parse-docx-001",
+    "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+    "parser_version": "1.0",
+    "block_id": "96dc99aed4b4625f",
+    "locator": {
+      "type": "table_row",
+      "table_index": 1,
+      "row_index": 3
+    },
+    "text": "20240002\t李四\t高等数学A1\t92"
+  },
+  {
+    "document_id": "syn-parse-docx-001",
+    "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+    "parser_version": "1.0",
+    "block_id": "10a8cb4e1dc9ac56",
+    "locator": {
+      "type": "table_row",
+      "table_index": 1,
+      "row_index": 4
+    },
+    "text": "20240003\t王五\t高等数学A1\t78"
+  },
+  {
+    "document_id": "syn-parse-docx-001",
+    "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+    "parser_version": "1.0",
+    "block_id": "f28ee3e4c5372f7c",
+    "locator": {
+      "type": "paragraph",
+      "paragraph_index": 4
+    },
+    "text": "以上成绩仅供参考。实际成绩以教务系统公布为准。如有疑问，请在成绩公布后10个工作日内向所在学院提出复核申请。"
+  },
+  {
+    "document_id": "syn-parse-docx-001",
+    "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+    "parser_version": "1.0",
+    "block_id": "3832e6101a04e1c4",
+    "locator": {
+      "type": "table_row",
+      "table_index": 2,
+      "row_index": 1
+    },
+    "text": "项目\t截止日期\t备注"
+  },
+  {
+    "document_id": "syn-parse-docx-001",
+    "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+    "parser_version": "1.0",
+    "block_id": "0a7595fda827d87e",
+    "locator": {
+      "type": "table_row",
+      "table_index": 2,
+      "row_index": 2
+    },
+    "text": "缓考申请\t考试前3个工作日\t需医院证明"
+  },
+  {
+    "document_id": "syn-parse-docx-001",
+    "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+    "parser_version": "1.0",
+    "block_id": "b304f406a03da01b",
+    "locator": {
+      "type": "table_row",
+      "table_index": 2,
+      "row_index": 3
+    },
+    "text": "成绩复核\t公布后10个工作日\t仅查分不查卷"
+  },
+  {
+    "document_id": "syn-parse-docx-001",
+    "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63",
+    "parser_version": "1.0",
+    "block_id": "317c6bc7d57df699",
+    "locator": {
+      "type": "paragraph",
+      "paragraph_index": 5
+    },
+    "text": "本文件为合成测试数据，不代表真实教务政策。"
+  },
+  {
+    "document_id": "fd-2024",
+    "sha256": "131838cca37947cc960da8f0c25d21124006093f5643d85fe23b27e38ed1aa3f",
+    "parser_version": "1.0",
+    "block_id": "da87529115ed23d8",
+    "locator": {
+      "type": "lines",
+      "line_start": 1,
+      "line_end": 1
+    },
+    "text": "【合成测试文件 — 不得用于论文评测或真实校园问答】"
+  },
+  {
+    "document_id": "fd-2024",
+    "sha256": "131838cca37947cc960da8f0c25d21124006093f5643d85fe23b27e38ed1aa3f",
+    "parser_version": "1.0",
+    "block_id": "773e8568327bac71",
+    "locator": {
+      "type": "lines",
+      "line_start": 3,
+      "line_end": 5
+    },
+    "text": "缓考申请办法（2024 级适用合成示例）\n学生因病不能参加考试，须在考前提交缓考申请，附医院证明。\n缓考申请经所在学院批准后报教务处备案。"
+  },
+  {
+    "document_id": "fd-2025",
+    "sha256": "745e52eaab4c64fcbc66370b58e0934b46a8874d55dd261d0605905973921248",
+    "parser_version": "1.0",
+    "block_id": "d971961afd12e2c7",
+    "locator": {
+      "type": "lines",
+      "line_start": 1,
+      "line_end": 1
+    },
+    "text": "【合成测试文件 — 不得用于论文评测或真实校园问答】"
+  },
+  {
+    "document_id": "fd-2025",
+    "sha256": "745e52eaab4c64fcbc66370b58e0934b46a8874d55dd261d0605905973921248",
+    "parser_version": "1.0",
+    "block_id": "93d350b5c0fb8b15",
+    "locator": {
+      "type": "lines",
+      "line_start": 3,
+      "line_end": 5
+    },
+    "text": "缓考申请办法（2025 级适用合成示例）\n学生因病不能参加考试，须在考前 3 个工作日提交缓考申请，附医院证明。\n缓考申请经所在学院批准后报教务处备案，成绩按正常考试记录。"
+  },
+  {
+    "document_id": "fd-yjy",
+    "sha256": "121ba90a3ee72b3ccd155bc645d363f873906395aeee54472ec5fb362b7c945b",
+    "parser_version": "1.0",
+    "block_id": "3135bc8c6e8b5ae4",
+    "locator": {
+      "type": "lines",
+      "line_start": 1,
+      "line_end": 1
+    },
+    "text": "【合成测试文件 — 不得用于论文评测或真实校园问答】"
+  },
+  {
+    "document_id": "fd-yjy",
+    "sha256": "121ba90a3ee72b3ccd155bc645d363f873906395aeee54472ec5fb362b7c945b",
+    "parser_version": "1.0",
+    "block_id": "692d28b992c6eff3",
+    "locator": {
+      "type": "lines",
+      "line_start": 3,
+      "line_end": 5
+    },
+    "text": "缓考申请办法（都江堰校区合成示例）\n都江堰校区学生的缓考申请交校区教务办公室，不经过学院教学秘书。\n缓考申请受理时间为每学期考试周前两周。"
+  },
+  {
+    "document_id": "fd-unknown",
+    "sha256": "4425d3bd299f7dcdfa9b88d08c662da1f78356b11765d80071ea17857891089b",
+    "parser_version": "1.0",
+    "block_id": "f0d05c2e269bd355",
+    "locator": {
+      "type": "lines",
+      "line_start": 1,
+      "line_end": 1
+    },
+    "text": "【合成测试文件 — 不得用于论文评测或真实校园问答】"
+  },
+  {
+    "document_id": "fd-unknown",
+    "sha256": "4425d3bd299f7dcdfa9b88d08c662da1f78356b11765d80071ea17857891089b",
+    "parser_version": "1.0",
+    "block_id": "c6805c1892b77d82",
+    "locator": {
+      "type": "lines",
+      "line_start": 3,
+      "line_end": 5
+    },
+    "text": "缓考申请补充说明（适用范围未标注的合成示例）\n缓考申请的证明材料包括医院证明或学院书面说明。\n本文件适用范围与生效日期均未标注，筛选时不能视为适用所有人。"
+  },
+  {
+    "document_id": "fd-future",
+    "sha256": "6835a4093590341d65f53a04c94f39d417577a11d5103d1e28dc342bcd61e2d2",
+    "parser_version": "1.0",
+    "block_id": "90451f121af2110a",
+    "locator": {
+      "type": "lines",
+      "line_start": 1,
+      "line_end": 1
+    },
+    "text": "【合成测试文件 — 不得用于论文评测或真实校园问答】"
+  },
+  {
+    "document_id": "fd-future",
+    "sha256": "6835a4093590341d65f53a04c94f39d417577a11d5103d1e28dc342bcd61e2d2",
+    "parser_version": "1.0",
+    "block_id": "899b7d2b54e9a72e",
+    "locator": {
+      "type": "lines",
+      "line_start": 3,
+      "line_end": 5
+    },
+    "text": "缓考申请办法（2026 级适用合成示例，尚未生效）\n缓考申请将通过线上教务系统提交，不再收取纸质材料。\n本文件 2026 年起生效，此前查询日期不应命中。"
+  },
+  {
+    "document_id": "cmp-defer-v1",
+    "sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+    "parser_version": "1.0",
+    "block_id": "b3200438a0747c6f",
+    "locator": {
+      "type": "lines",
+      "line_start": 1,
+      "line_end": 1
+    },
+    "text": "【合成测试文件 — 虚构政策，仅用于版本对比演示，不代表任何真实学校规定】"
+  },
+  {
+    "document_id": "cmp-defer-v1",
+    "sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+    "parser_version": "1.0",
+    "block_id": "fcbf298150240157",
+    "locator": {
+      "type": "lines",
+      "line_start": 3,
+      "line_end": 3
+    },
+    "text": "缓考申请办法（虚构测试）"
+  },
+  {
+    "document_id": "cmp-defer-v1",
+    "sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+    "parser_version": "1.0",
+    "block_id": "3d5e04669fbfe064",
+    "locator": {
+      "type": "lines",
+      "line_start": 5,
+      "line_end": 5
+    },
+    "text": "第一条 本办法所称缓考，指学生因病因事不能参加期末考试而申请延期考核。"
+  },
+  {
+    "document_id": "cmp-defer-v1",
+    "sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+    "parser_version": "1.0",
+    "block_id": "285acc86e242ef04",
+    "locator": {
+      "type": "lines",
+      "line_start": 7,
+      "line_end": 7
+    },
+    "text": "第二条 缓考申请须在考试前 5 个工作日提交。"
+  },
+  {
+    "document_id": "cmp-defer-v1",
+    "sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85",
+    "parser_version": "1.0",
+    "block_id": "f35e800308f2c324",
+    "locator": {
+      "type": "lines",
+      "line_start": 9,
+      "line_end": 9
+    },
+    "text": "第三条 申请缓考须同时提交书面情况说明。"
+  },
+  {
+    "document_id": "cmp-defer-v2",
+    "sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+    "parser_version": "1.0",
+    "block_id": "2fb244a29d56b00a",
+    "locator": {
+      "type": "lines",
+      "line_start": 1,
+      "line_end": 1
+    },
+    "text": "【合成测试文件 — 虚构政策，仅用于版本对比演示，不代表任何真实学校规定】"
+  },
+  {
+    "document_id": "cmp-defer-v2",
+    "sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+    "parser_version": "1.0",
+    "block_id": "bc5f604c8fe5ba8d",
+    "locator": {
+      "type": "lines",
+      "line_start": 3,
+      "line_end": 3
+    },
+    "text": "缓考申请办法（虚构测试）"
+  },
+  {
+    "document_id": "cmp-defer-v2",
+    "sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+    "parser_version": "1.0",
+    "block_id": "5d10baf30aed29f6",
+    "locator": {
+      "type": "lines",
+      "line_start": 5,
+      "line_end": 5
+    },
+    "text": "第一条 本办法所称缓考，指学生因病因事不能参加期末考试而申请延期考核。"
+  },
+  {
+    "document_id": "cmp-defer-v2",
+    "sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+    "parser_version": "1.0",
+    "block_id": "f5ca416480f4121e",
+    "locator": {
+      "type": "lines",
+      "line_start": 7,
+      "line_end": 7
+    },
+    "text": "第二条 缓考申请须在考试前 3 个工作日提交。"
+  },
+  {
+    "document_id": "cmp-defer-v2",
+    "sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3",
+    "parser_version": "1.0",
+    "block_id": "f9e36a3d2d505060",
+    "locator": {
+      "type": "lines",
+      "line_start": 9,
+      "line_end": 9
+    },
+    "text": "第四条 学院应在收到申请后 3 个工作日内完成审批。"
+  },
+  {
+    "document_id": "cmp-grades-1",
+    "sha256": "ea3f68c1b0abb3254b7e7792cd007a0a69bf23325e150bd416c4ea29a75e635b",
+    "parser_version": "1.0",
+    "block_id": "c86b92c6922f1b3c",
+    "locator": {
+      "type": "lines",
+      "line_start": 1,
+      "line_end": 1
+    },
+    "text": "【合成测试文件 — 虚构政策，仅用于版本对比演示，不代表任何真实学校规定】"
+  },
+  {
+    "document_id": "cmp-grades-1",
+    "sha256": "ea3f68c1b0abb3254b7e7792cd007a0a69bf23325e150bd416c4ea29a75e635b",
+    "parser_version": "1.0",
+    "block_id": "9a57744ef7ee55a8",
+    "locator": {
+      "type": "lines",
+      "line_start": 3,
+      "line_end": 3
+    },
+    "text": "成绩登记须知（虚构测试）"
+  },
+  {
+    "document_id": "cmp-grades-1",
+    "sha256": "ea3f68c1b0abb3254b7e7792cd007a0a69bf23325e150bd416c4ea29a75e635b",
+    "parser_version": "1.0",
+    "block_id": "b475a4d00030292e",
+    "locator": {
+      "type": "lines",
+      "line_start": 5,
+      "line_end": 5
+    },
+    "text": "第一条 成绩以教务系统公布为准。"
+  },
+  {
+    "document_id": "syn-pdf-text-001",
+    "sha256": "66e0f6287aa365cfcc89f2cad15e4d9213f782c6303c86fb713b086aad71fa76",
+    "parser_version": "pdf-1.0",
+    "block_id": "3428681d9af60ba3",
+    "locator": {
+      "type": "pdf_page",
+      "page": 1,
+      "part": 1
+    },
+    "text": "【合成测试 PDF — 仅供解析演示，不代表真实学校规定】\n第一章 总则\n第一条 成绩复核申请须在成绩公布后 10 个工作日内提出。\n第二条 复核仅核对分数，不重新评阅试卷。"
+  },
+  {
+    "document_id": "syn-pdf-text-001",
+    "sha256": "66e0f6287aa365cfcc89f2cad15e4d9213f782c6303c86fb713b086aad71fa76",
+    "parser_version": "pdf-1.0",
+    "block_id": "d897e41b44bfa468",
+    "locator": {
+      "type": "pdf_page",
+      "page": 2,
+      "part": 1
+    },
+    "text": "第二章 补充\n第三条 缓考申请不得由他人代办。\n第四条 2024 级学生适用本示例，2025 级另行通知。"
+  },
+  {
+    "document_id": "dis-graduate-defer",
+    "sha256": "25f67d9d62217448738f061fb53ea90e2a50989aa5d0c96b6fece003c13cf6bc",
+    "parser_version": "1.0",
+    "block_id": "4bddfe14cd6fe253",
+    "locator": {
+      "type": "lines",
+      "line_start": 1,
+      "line_end": 1
+    },
+    "text": "【合成测试文件 — 干扰资料，明显标注的合成示例，不代表任何真实学校规定】"
+  },
+  {
+    "document_id": "dis-graduate-defer",
+    "sha256": "25f67d9d62217448738f061fb53ea90e2a50989aa5d0c96b6fece003c13cf6bc",
+    "parser_version": "1.0",
+    "block_id": "ca8441a4b57c3445",
+    "locator": {
+      "type": "lines",
+      "line_start": 3,
+      "line_end": 3
+    },
+    "text": "研究生缓考与创新基金管理办法（合成干扰示例）"
+  },
+  {
+    "document_id": "dis-graduate-defer",
+    "sha256": "25f67d9d62217448738f061fb53ea90e2a50989aa5d0c96b6fece003c13cf6bc",
+    "parser_version": "1.0",
+    "block_id": "bd8bd19f9da798a5",
+    "locator": {
+      "type": "lines",
+      "line_start": 5,
+      "line_end": 5
+    },
+    "text": "第一条 本办法适用于全日制研究生，不适用于本科生。"
+  },
+  {
+    "document_id": "dis-graduate-defer",
+    "sha256": "25f67d9d62217448738f061fb53ea90e2a50989aa5d0c96b6fece003c13cf6bc",
+    "parser_version": "1.0",
+    "block_id": "292ef8b2ddf35040",
+    "locator": {
+      "type": "lines",
+      "line_start": 7,
+      "line_end": 7
+    },
+    "text": "第二条 研究生因科研任务不能参加期末考试的，应在考试前 7 个工作日内向研究生院提交缓考申请，并附导师签字的科研任务说明。"
+  },
+  {
+    "document_id": "dis-graduate-defer",
+    "sha256": "25f67d9d62217448738f061fb53ea90e2a50989aa5d0c96b6fece003c13cf6bc",
+    "parser_version": "1.0",
+    "block_id": "089ff10bd5ffc6c6",
+    "locator": {
+      "type": "lines",
+      "line_start": 9,
+      "line_end": 9
+    },
+    "text": "第三条 研究生创新基金每年 4 月受理申请，申请人须提交研究计划书一式两份。"
+  },
+  {
+    "document_id": "dis-scholarship",
+    "sha256": "35073428d5fd09cac4113786a008c95340d232cc5e26d06e4372512e8aed0576",
+    "parser_version": "1.0",
+    "block_id": "4603fccd6fec417b",
+    "locator": {
+      "type": "lines",
+      "line_start": 1,
+      "line_end": 1
+    },
+    "text": "【合成测试文件 — 干扰资料，明显标注的合成示例，不代表任何真实学校规定】"
+  },
+  {
+    "document_id": "dis-scholarship",
+    "sha256": "35073428d5fd09cac4113786a008c95340d232cc5e26d06e4372512e8aed0576",
+    "parser_version": "1.0",
+    "block_id": "bfb251ec48d2198a",
+    "locator": {
+      "type": "lines",
+      "line_start": 3,
+      "line_end": 3
+    },
+    "text": "学校奖学金评定细则（合成干扰示例）"
+  },
+  {
+    "document_id": "dis-scholarship",
+    "sha256": "35073428d5fd09cac4113786a008c95340d232cc5e26d06e4372512e8aed0576",
+    "parser_version": "1.0",
+    "block_id": "83f7605d589dbe36",
+    "locator": {
+      "type": "lines",
+      "line_start": 5,
+      "line_end": 5
+    },
+    "text": "第一条 学校奖学金用于奖励品学兼优的本科生。"
+  },
+  {
+    "document_id": "dis-scholarship",
+    "sha256": "35073428d5fd09cac4113786a008c95340d232cc5e26d06e4372512e8aed0576",
+    "parser_version": "1.0",
+    "block_id": "3dfa7d4a91e653e9",
+    "locator": {
+      "type": "lines",
+      "line_start": 7,
+      "line_end": 7
+    },
+    "text": "第二条 学校奖学金评定的学分绩点要求为加权平均成绩 85 分以上，且当学年无课程不合格。"
+  },
+  {
+    "document_id": "dis-scholarship",
+    "sha256": "35073428d5fd09cac4113786a008c95340d232cc5e26d06e4372512e8aed0576",
+    "parser_version": "1.0",
+    "block_id": "37e56c8d646deb92",
+    "locator": {
+      "type": "lines",
+      "line_start": 9,
+      "line_end": 9
+    },
+    "text": "第三条 学校奖学金每学年评定一次，于每年 10 月公布名单。"
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "task_id": "T008",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T008-R1",
+  "status": "ready_for_review",
+  "summary": "R1-R4 修复：严格输入（mode=before 拒绝 bool/float/string top_k + 全空白 query）；索引构建捕获 Exception 降级 + synthetic_count 先算；页面重试用捕获参数 + status 独立序号；来源展示全/部分合成提示 + 三组日期 + 无有效词元/索引/匹配区分。283 passed, 1 skipped。",
+  "files": [
+    "docs/collaboration/submissions/T008/report.md",
+    "docs/collaboration/submissions/T008/verification.md",
+    "docs/collaboration/submissions/T008/submission.json",
+    "docs/collaboration/submissions/T008/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T008/changed-files.json",
+  "history": [
+    "docs/collaboration/submissions/T008/history/revision-1/"
+  ],
+  "checks": [
+    {"item": "R1: bool/float/string top_k → 422", "result": "pass", "evidence_id": "V04"},
+    {"item": "R1: blank query → 422", "result": "pass", "evidence_id": "V04"},
+    {"item": "R1: query 不 strip", "result": "pass", "evidence_id": "V04"},
+    {"item": "R2: RuntimeError chunk → failed + preview ok", "result": "pass", "evidence_id": "V05"},
+    {"item": "R2: synthetic_count 先算", "result": "pass", "evidence_id": "V05"},
+    {"item": "R2: message 不含异常路径", "result": "pass", "evidence_id": "V05"},
+    {"item": "R3: 重试用捕获参数（源码确认）", "result": "pass", "evidence_id": "V06"},
+    {"item": "R3: status 独立序号（源码确认）", "result": "pass", "evidence_id": "V06"},
+    {"item": "R4: 全/部分合成提示（源码确认）", "result": "pass", "evidence_id": "V07"},
+    {"item": "R4: 三组日期展示（源码确认）", "result": "pass", "evidence_id": "V07"},
+    {"item": "R4: 无有效词元/索引/匹配区分（源码确认）", "result": "pass", "evidence_id": "V07"},
+    {"item": "全量 pytest 283 passed", "result": "pass", "evidence_id": "V01"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V02"},
+    {"item": "JS 语法（两页）", "result": "pass", "evidence_id": "V03"},
+    {"item": "浏览器交互", "result": "未验证", "evidence_id": "V08"}
+  ],
+  "blockers": []
+}

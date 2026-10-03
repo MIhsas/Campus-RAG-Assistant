@@ -1,0 +1,161 @@
+{
+  "generated_at": "2026-09-13T05:30:00+08:00",
+  "file_count": 31,
+  "files": [
+    {
+      "path": "step2_code/.gitignore",
+      "bytes": 384,
+      "sha256": "6f7b2ea1c6a81ec414ca3de12a65698abe9d461ca5cb23978e842a84a129d922"
+    },
+    {
+      "path": "step2_code/README.md",
+      "bytes": 711,
+      "sha256": "ba9f8e8f0e82f011e5d00ee29e3ce8b55658c3fac7f61dee93af6f2587d3d917"
+    },
+    {
+      "path": "step2_code/backend/pyproject.toml",
+      "bytes": 637,
+      "sha256": "940099448e7f7793f57485ba2d02e1b0ba9ee83538f32a32feccdbca81b16bee"
+    },
+    {
+      "path": "step2_code/backend/requirements.in",
+      "bytes": 415,
+      "sha256": "1850ff8f5ea3e9e049f93c64e38fd10d1370e49288cef8d13d9d6e37fb9985b2"
+    },
+    {
+      "path": "step2_code/backend/requirements.lock.txt",
+      "bytes": 728,
+      "sha256": "aad74ff9bad98d8ed07efc10246146344d300a1a359c6b6382487e21b51c559d"
+    },
+    {
+      "path": "step2_code/backend/README.md",
+      "bytes": 8679,
+      "sha256": "e448c0c560872b0f2b63a077faeabe3bc382cd41deb890e898c8c58b80e6c492"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/main.py",
+      "bytes": 2940,
+      "sha256": "cc6fa39b4dc222402f2d43344b857e84db0af93620a128f6a92c6448c5bda727"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/demo.py",
+      "bytes": 468,
+      "sha256": "359a3f14c65d2ee19cad59ad37adbbdd0f671fb91613ff71775b2867e72b2ef6"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/api/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/api/health.py",
+      "bytes": 1815,
+      "sha256": "20a07bc87e8fab2413c709d5239c41576ef209c27be5a1e681aa07220ea670b9"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/api/corpus.py",
+      "bytes": 4399,
+      "sha256": "01d16a6f086d1c65bb1c98d1fdf1a275f52f6d1d7ad40267f46e6cc094ebb960"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/corpus/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/corpus/models.py",
+      "bytes": 5553,
+      "sha256": "7ae776a6465dbc335071f0258aaeafbc3290784d086e1c76304a7f62d403d367"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/corpus/validate.py",
+      "bytes": 10818,
+      "sha256": "9eab1b29e4f2c2482493f143e8dd2774a4b7be3caeda9933f66aaf9ea84d3111"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/corpus/__main__.py",
+      "bytes": 175,
+      "sha256": "27e2e9f17bb7ce2b5ca555d644653cf20dc5179e4494be532340fbe367ae1901"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/corpus/parse.py",
+      "bytes": 16515,
+      "sha256": "90ca51536561c442c71bb27c42f146dc4190baec89a0183dbca65eeb905bd433"
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/static/preview.html",
+      "bytes": 22179,
+      "sha256": "8f3096ba5c4a14e96412c320f2da62c0a1be4031bb09df8f12a4ea42581b5588"
+    },
+    {
+      "path": "step2_code/backend/tests/test_health.py",
+      "bytes": 5108,
+      "sha256": "f14a3f6bafc91718aba1e3011902ff0a088a2ba379a34f53417a40447abad00c"
+    },
+    {
+      "path": "step2_code/backend/tests/test_corpus_validate.py",
+      "bytes": 30077,
+      "sha256": "f7d4b16903e140d4e3edb2d0f47dff8f9330a3fbd516a2d936e9a2855b0580c2"
+    },
+    {
+      "path": "step2_code/backend/tests/test_corpus_parse.py",
+      "bytes": 36658,
+      "sha256": "e17d4fc1f652ab0b093fa4f33320cc5159a8f274538b032b2874da74025a2ae5"
+    },
+    {
+      "path": "step2_code/backend/tests/test_corpus_preview.py",
+      "bytes": 13017,
+      "sha256": "d6c74ead287f3f9b4d249afff9687016a5ca59b1375df403a2175dd7bee4a32c"
+    },
+    {
+      "path": "step2_code/backend/examples/synthetic-corpus/manifest.json",
+      "bytes": 1461,
+      "sha256": "94a6a0414e18532e7a7d01f44e83cbcb5483a5c7adeb7a2992345a1bcab71043"
+    },
+    {
+      "path": "step2_code/backend/examples/synthetic-corpus/policy-abc-v1.txt",
+      "bytes": 372,
+      "sha256": "a46b66f0e3cca8a66ca54b086f0e386ba6fb928026c68c054425fd3d877238fa"
+    },
+    {
+      "path": "step2_code/backend/examples/synthetic-corpus/policy-abc-v2.txt",
+      "bytes": 470,
+      "sha256": "3ee8963233ebb2395de93635bdd320d3def212af9464083177825daeba668b7b"
+    },
+    {
+      "path": "step2_code/backend/examples/synthetic-corpus/README.txt",
+      "bytes": 311,
+      "sha256": "a5231a9d94298cb13537e18e3e103047fe3f647c5f84ebb37081cf914efe150a"
+    },
+    {
+      "path": "step2_code/backend/examples/parse-corpus/manifest.json",
+      "bytes": 1479,
+      "sha256": "b60255f3ac8776d1343674d72a9f180c7be508a232f8a6e5e8b7fc48d491ec3b"
+    },
+    {
+      "path": "step2_code/backend/examples/parse-corpus/sample.txt",
+      "bytes": 1112,
+      "sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07"
+    },
+    {
+      "path": "step2_code/backend/examples/parse-corpus/sample.docx",
+      "bytes": 37304,
+      "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63"
+    },
+    {
+      "path": "step2_code/backend/examples/parse-corpus/generate_docx.py",
+      "bytes": 2283,
+      "sha256": "21a6c2c5809080d131a161b3249b2542581d8d3c18bb932c9ed0528257d48d5e"
+    },
+    {
+      "path": "step2_code/backend/examples/parse-corpus/README.txt",
+      "bytes": 622,
+      "sha256": "5cc11b8b8c5d4d08ae62ef4c3bf416601d747d672c0cbbce72f3de3dffc479a5"
+    }
+  ]
+}

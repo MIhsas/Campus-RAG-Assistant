@@ -1,0 +1,19 @@
+{
+  "task_id": "T019",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "转专业条件自查（合成演示）完成：规则配置显式绑定第五条原文（文档/块/跨度/哈希+rule_version，工厂显式注入、普通服务不自动启用）；四项三态确定性判断（未知不计满足；否→存在未满足项；未知→仍有待核实项；全是→按自填信息满足仍需学校审核；依据失效→依据不足无法完成自查、失效引用不带原文）；rule/evaluate API（filters 复用四项、引用服务器绑定、未配置 503、非法答案 422、填报零持久化）；/self-check 页面（表单→手动自查→快照+逐项解释+原文跳转→改重查/清空；失败不冒充；依据不足与个人不满足区分）；首页第六入口与统一演示注入；四场景演示说明与规则原文对照。零外部模型调用，不代表学校审核/资格结论。",
+  "external_model_calls": 0,
+  "verification": {
+    "test_self_check": {"total": 11, "passed": 11},
+    "affected_focus": {"test_procedures": 14, "test_demo_campus": 5, "note": "共享核查复用与工厂加参的受影响回归"},
+    "js_syntax": "7 files passed（self-check.html 新增）",
+    "js_behavior_self_check": {"total": 6, "passed": 6},
+    "api_demo_verdicts": {"all_satisfied": "all_satisfied", "assessment_unknown": "has_unknown", "one_unsatisfied": "has_unsatisfied", "basis_excluded": "insufficient_basis"}
+  },
+  "browser_check": "无浏览器工具，页面闭环未实测；demo-notes.md 提供 Astra 可运行入口、四场景与检查表（a—f）；stub 不冒充浏览器证据",
+  "deliverables_extra": ["selfcheck-api-demo.json（本地 API 示例）", "rule-text-crosscheck.md（规则原文对照）"],
+  "not_claimed": ["学校审核结果", "录取/批准/申请成功", "真实校园资格准确率", "真实浏览器验证"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

@@ -1,0 +1,24 @@
+{
+  "task_id": "T023",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "tinyagent_integration_kind": "reference",
+  "tinyagent_integration_note": "参考 TinyAgent（Datawhale tiny-universe/content/TinyAgent）的工具声明式注册与动作→工具→观察循环思路，自研受限编排；无运行时代码复用、未导入其模块、未运行其示例、未接入真实 Agent。源码快照仅留档评估（无明确开源许可，不进 src/）。",
+  "planner_live_verified": false,
+  "external_model_calls": 0,
+  "summary": "受限任务编排完成：可替换 Planner 契约 + 只读工具注册表（仅 search_policy / build_checklist_draft，直接调既有 service，不 HTTP 自调、不触生成问答）；固定流程（选事项→查找依据→整理草稿，非大模型 Agent）与显式注入的模拟规划器共用工具，模拟规划全程标注“模拟规划，非DeepSeek实时规划”；范围条件只来自用户快照、规划器不得放宽（传异条件先拒）；事项 ID 须来自当前已配置列表；不暴露待办保存/删除、Shell/eval/URL/文件读取/登录。预算 ≤4 轮 ≤6 工具、单调时钟时限、无进展重复停止、缺输入返回 awaiting_input；事件只记工具名/状态/次数，不输出模型 Thought。工作流页展示真实步骤与引用，草稿保留手动保存、不写 localStorage。T022-R1 四处整理完成。",
+  "verification": {
+    "tests": {"total": 18, "passed": 18, "note": "test_agent_workflow.py"},
+    "regression": {"total": 41, "passed": 41, "note": "run_entry + procedures + agent"},
+    "js_syntax": "9 files passed（workflow.html 新增）",
+    "ask_behavior": "26 scenarios passed（含 T022-R1 双分支）",
+    "call_trace": "4 类运行真实产出 call-trace.json（脚本化模拟规划器，零外部调用）",
+    "deps": "无变化，无需 pip check"
+  },
+  "deliverables_extra": ["tinyagent-assessment.md（来源/许可/适配决策）", "tinyagent-snapshot/（5 文件留档，含 commit 与 sha256）", "call-trace.json（本地调用轨迹）"],
+  "t022r1_fixes": ["ask 相关事项依当前配置（未配置明确说明，无死入口）", "生成器文案改显式 --generator 开启要求", "首页 关键词恒可用→语料索引就绪后可用", "状态接口非预期失败显示读取失败/未知"],
+  "browser_check": "无浏览器工具，浏览器主路径留待 Astra（demo-notes 检查表 a—h）；stub 不冒充浏览器证据",
+  "not_claimed": ["真实 Agent/真实 DeepSeek 规划已接入或已验证", "已集成 TinyAgent（仅参考）", "自然语言规划效果已验证", "Windows CPU+DeepSeek 据 TinyAgent 已兼容", "真实学校语料效果"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改；未改 Astra 文档/旧语料/gold/既有 service 判断算法"
+}

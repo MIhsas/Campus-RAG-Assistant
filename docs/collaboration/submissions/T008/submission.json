@@ -1,0 +1,30 @@
+{
+  "task_id": "T008",
+  "task_revision": "v1",
+  "submission_revision": 4,
+  "responds_to": "T008-R3",
+  "status": "ready_for_review",
+  "summary": "R1-R3 修复：DOCX 迭代边界捕获 Exception 隔离 InvalidXmlError；空白提交恢复按钮；ID 正则 $→\\Z 拒绝尾换行。295 passed, 1 skipped。",
+  "files": [
+    "docs/collaboration/submissions/T008/report.md",
+    "docs/collaboration/submissions/T008/verification.md",
+    "docs/collaboration/submissions/T008/submission.json",
+    "docs/collaboration/submissions/T008/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T008/changed-files.json",
+  "history": [
+    "docs/collaboration/submissions/T008/history/revision-1/",
+    "docs/collaboration/submissions/T008/history/revision-2/",
+    "docs/collaboration/submissions/T008/history/revision-3/"
+  ],
+  "checks": [
+    {"item": "R1: InvalidXmlError 隔离（parse）", "result": "pass", "evidence_id": "V04"},
+    {"item": "R1: 工厂集成 partial/failed", "result": "pass", "evidence_id": "V04"},
+    {"item": "R2: 空白提交按钮恢复", "result": "pass（源码确认）", "evidence_id": "V05"},
+    {"item": "R3: ID \\Z 严格匹配", "result": "pass", "evidence_id": "V06"},
+    {"item": "全量 pytest 295 passed", "result": "pass", "evidence_id": "V01"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V02"},
+    {"item": "JS 语法", "result": "pass", "evidence_id": "V03"}
+  ],
+  "blockers": []
+}

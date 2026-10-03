@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "is_synthetic": true,
+  "rule_id": "rule-transfer-major",
+  "rule_version": "1.0",
+  "title": "转专业条件自查（合成演示）",
+  "summary": "依据合成语料第五条的四项条件做个人自查演示；不代表学校审核结果。",
+  "answer_options": [
+    {
+      "value": "yes",
+      "label": "是"
+    },
+    {
+      "value": "no",
+      "label": "否"
+    },
+    {
+      "value": "unknown",
+      "label": "不确定 / 未填写"
+    }
+  ],
+  "not_collected": [
+    "姓名",
+    "学号",
+    "违纪详情"
+  ],
+  "citations": [
+    {
+      "document_id": "syn-parse-txt-001",
+      "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+      "block_id": "ce15747a6cdf597a",
+      "char_start": 0,
+      "char_end": 25,
+      "quote": "第五条 学生转专业应当在入学后第一学年末提出申请。"
+    },
+    {
+      "document_id": "syn-parse-txt-001",
+      "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+      "block_id": "ce15747a6cdf597a",
+      "char_start": 34,
+      "char_end": 47,
+      "quote": "1. 在读期间无违纪记录；"
+    },
+    {
+      "document_id": "syn-parse-txt-001",
+      "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+      "block_id": "ce15747a6cdf597a",
+      "char_start": 48,
+      "char_end": 72,
+      "quote": "2. 第一学年加权平均成绩排名在本专业前30%；"
+    },
+    {
+      "document_id": "syn-parse-txt-001",
+      "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+      "block_id": "ce15747a6cdf597a",
+      "char_start": 73,
+      "char_end": 88,
+      "quote": "3. 通过接收学院组织的考核。"
+    }
+  ],
+  "items": [
+    {
+      "item_id": "t1",
+      "title": "是否在入学后第一学年末提出申请",
+      "question": "您是否在入学后第一学年末提出转专业申请？",
+      "answer_field": "apply_at_first_year_end",
+      "satisfied_when": "yes",
+      "explanation": "原文要求：转专业应当在入学后第一学年末提出申请。",
+      "citation_index": 0
+    },
+    {
+      "item_id": "t2",
+      "title": "在读期间是否无违纪记录",
+      "question": "您在读期间是否无违纪记录？",
+      "answer_field": "no_discipline_record",
+      "satisfied_when": "yes",
+      "explanation": "原文条件：在读期间无违纪记录。",
+      "citation_index": 1
+    },
+    {
+      "item_id": "t3",
+      "title": "第一学年加权平均成绩排名是否在本专业前 30%",
+      "question": "您的第一学年加权平均成绩排名是否在本专业前 30%？（请按本人已知情况自报；系统不做并列名次或取整换算）",
+      "answer_field": "rank_top_30",
+      "satisfied_when": "yes",
+      "explanation": "原文条件：第一学年加权平均成绩排名在本专业前30%。",
+      "citation_index": 2
+    },
+    {
+      "item_id": "t4",
+      "title": "是否通过接收学院组织的考核",
+      "question": "您是否通过接收学院组织的考核？（未参加考核请选“不确定 / 未填写”，与明确未通过相区分）",
+      "answer_field": "passed_assessment",
+      "satisfied_when": "yes",
+      "explanation": "原文条件：通过接收学院组织的考核。未参加考核记为待核实，与明确未通过区分。",
+      "citation_index": 3
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "task_id": "T005",
+  "task_revision": "v1",
+  "submission_revision": 6,
+  "responds_to": "T005-R5",
+  "status": "ready_for_review",
+  "summary": "R1 修复：handleHash 中 allDocs.length===0 分支增加 listState 判断——error/loading 时存储 pendingDocId/pendingBlockId 等待重试恢复，unconfigured 显示'语料未配置'，ready 空列表显示'暂无文档'。列表失败→重试成功后自动恢复 URL 指定的文档详情和块高亮。JS 语法检查通过，151 passed, 1 skipped。浏览器交互未验证。",
+  "files": [
+    "docs/collaboration/submissions/T005/report.md",
+    "docs/collaboration/submissions/T005/verification.md",
+    "docs/collaboration/submissions/T005/submission.json",
+    "docs/collaboration/submissions/T005/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T005/changed-files.json",
+  "history": [
+    "docs/collaboration/submissions/T005/history/revision-1/",
+    "docs/collaboration/submissions/T005/history/revision-2/",
+    "docs/collaboration/submissions/T005/history/revision-3/",
+    "docs/collaboration/submissions/T005/history/revision-4/",
+    "docs/collaboration/submissions/T005/history/revision-5/"
+  ],
+  "checks": [
+    {"item": "JS 语法检查", "result": "pass - syntax OK, exit 0", "evidence_id": "V01"},
+    {"item": "handleHash error/loading 保留 pending", "result": "pass（源码确认）", "evidence_id": "V04"},
+    {"item": "handleHash unconfigured 正确提示", "result": "pass（源码确认）", "evidence_id": "V04"},
+    {"item": "handleHash ready 空列表正确提示", "result": "pass（源码确认）", "evidence_id": "V04"},
+    {"item": "列表重试成功后恢复定位链", "result": "pass（源码确认）", "evidence_id": "V05"},
+    {"item": "全量 pytest", "result": "pass - 151 passed, 1 skipped", "evidence_id": "V02"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V03"},
+    {"item": "浏览器交互验证", "result": "未验证（Claude Code 无浏览器能力）", "evidence_id": "V06"}
+  ],
+  "blockers": []
+}

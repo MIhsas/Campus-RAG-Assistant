@@ -1,0 +1,205 @@
+[
+  {
+    "case": "empty-row",
+    "exit": 0,
+    "valid": true,
+    "documents": [
+      {
+        "document_id": "empty-row",
+        "metadata": {
+          "document_id": "empty-row",
+          "policy_group_id": "syn-parse-group",
+          "title": "\u5408\u6210\u6d4b\u8bd5\u6559\u52a1\u7ba1\u7406\u529e\u6cd5\uff08\u6b63\u6587\u89e3\u6790\u793a\u4f8b\uff09",
+          "source_url": "https://example.org/policy/parse/txt",
+          "source_site": "\u5408\u6210\u6d4b\u8bd5\u793a\u4f8b\u7ad9",
+          "local_path": "empty-row.docx",
+          "sha256": "0b7205c19cf09e7dab2eb049615c9ab347b4c2e5a400bc759bf2424ee5461fde",
+          "version_label": "\u89e3\u6790\u793a\u4f8b v1",
+          "published_at": "2025-01-15",
+          "effective_from": "2025-03-01",
+          "effective_to": null,
+          "scope": {
+            "campus": [
+              "\u6210\u90fd\u6821\u533a"
+            ],
+            "student_type": [
+              "\u5168\u65e5\u5236\u672c\u79d1"
+            ],
+            "admission_years": [
+              2023,
+              2024
+            ]
+          },
+          "is_synthetic": true
+        },
+        "parser_version": "1.0",
+        "blocks": [
+          {
+            "block_id": "8a746c1c36ae794b",
+            "ordinal": 1,
+            "kind": "table_row",
+            "text": "first",
+            "locator": {
+              "type": "table_row",
+              "table_index": 1,
+              "row_index": 1
+            },
+            "cells": [
+              "first"
+            ]
+          },
+          {
+            "block_id": "ecaf2e99411a1350",
+            "ordinal": 2,
+            "kind": "table_row",
+            "text": "third",
+            "locator": {
+              "type": "table_row",
+              "table_index": 1,
+              "row_index": 2
+            },
+            "cells": [
+              "third"
+            ]
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "complex",
+    "exit": 0,
+    "valid": true,
+    "documents": [
+      {
+        "document_id": "complex",
+        "metadata": {
+          "document_id": "complex",
+          "policy_group_id": "syn-parse-group",
+          "title": "\u5408\u6210\u6d4b\u8bd5\u6559\u52a1\u7ba1\u7406\u529e\u6cd5\uff08\u6b63\u6587\u89e3\u6790\u793a\u4f8b\uff09",
+          "source_url": "https://example.org/policy/parse/txt",
+          "source_site": "\u5408\u6210\u6d4b\u8bd5\u793a\u4f8b\u7ad9",
+          "local_path": "complex.docx",
+          "sha256": "704734a23d33908220a416d2bee971778d1540b0b2a1aea56b876d1960c37206",
+          "version_label": "\u89e3\u6790\u793a\u4f8b v1",
+          "published_at": "2025-01-15",
+          "effective_from": "2025-03-01",
+          "effective_to": null,
+          "scope": {
+            "campus": [
+              "\u6210\u90fd\u6821\u533a"
+            ],
+            "student_type": [
+              "\u5168\u65e5\u5236\u672c\u79d1"
+            ],
+            "admission_years": [
+              2023,
+              2024
+            ]
+          },
+          "is_synthetic": true
+        },
+        "parser_version": "1.0",
+        "blocks": [
+          {
+            "block_id": "63e4929b5f6d15aa",
+            "ordinal": 1,
+            "kind": "paragraph",
+            "text": "body",
+            "locator": {
+              "type": "paragraph",
+              "paragraph_index": 1
+            }
+          },
+          {
+            "block_id": "7a7fbea442d7f991",
+            "ordinal": 2,
+            "kind": "table_row",
+            "text": "merged\tmerged",
+            "locator": {
+              "type": "table_row",
+              "table_index": 1,
+              "row_index": 1
+            },
+            "cells": [
+              "merged",
+              "merged"
+            ]
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "broken-grid",
+    "exit": 0,
+    "valid": true,
+    "documents": [
+      {
+        "document_id": "broken-grid",
+        "metadata": {
+          "document_id": "broken-grid",
+          "policy_group_id": "syn-parse-group",
+          "title": "\u5408\u6210\u6d4b\u8bd5\u6559\u52a1\u7ba1\u7406\u529e\u6cd5\uff08\u6b63\u6587\u89e3\u6790\u793a\u4f8b\uff09",
+          "source_url": "https://example.org/policy/parse/txt",
+          "source_site": "\u5408\u6210\u6d4b\u8bd5\u793a\u4f8b\u7ad9",
+          "local_path": "broken-grid.docx",
+          "sha256": "143fbb09e7bba23b239b07228cf23fe5ed26d1c073d36b3b3fa3ab808a10f35b",
+          "version_label": "\u89e3\u6790\u793a\u4f8b v1",
+          "published_at": "2025-01-15",
+          "effective_from": "2025-03-01",
+          "effective_to": null,
+          "scope": {
+            "campus": [
+              "\u6210\u90fd\u6821\u533a"
+            ],
+            "student_type": [
+              "\u5168\u65e5\u5236\u672c\u79d1"
+            ],
+            "admission_years": [
+              2023,
+              2024
+            ]
+          },
+          "is_synthetic": true
+        },
+        "parser_version": "1.0",
+        "blocks": [
+          {
+            "block_id": "7f246752fc2a6019",
+            "ordinal": 1,
+            "kind": "table_row",
+            "text": "broken-grid",
+            "locator": {
+              "type": "table_row",
+              "table_index": 1,
+              "row_index": 1
+            },
+            "cells": [
+              "broken-grid"
+            ]
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "bad-span",
+    "exit": 1,
+    "utf8_json": false,
+    "decode_error": "JSONDecodeError",
+    "stderr_last_line": [
+      "ValueError: invalid literal for int() with base 10: 'not-an-integer'"
+    ]
+  },
+  {
+    "case": "default-encoding",
+    "exit": 0,
+    "utf8_json": false,
+    "decode_error": "UnicodeDecodeError",
+    "stderr_last_line": []
+  }
+]

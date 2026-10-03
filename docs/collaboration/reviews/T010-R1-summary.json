@@ -1,0 +1,41 @@
+{
+  "bm25": {
+    "valid": true,
+    "summary": {
+      "evidence_recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.9166666666666666,
+      "answerable_count": 6,
+      "unanswerable_count": 2,
+      "empty_result_rate": 0.0
+    },
+    "errors": [],
+    "seconds": 0.279
+  },
+  "dense": {
+    "valid": true,
+    "summary": {
+      "evidence_recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.9166666666666666,
+      "answerable_count": 6,
+      "unanswerable_count": 2,
+      "empty_result_rate": 0.0
+    },
+    "errors": [],
+    "seconds": 8.555
+  },
+  "hybrid": {
+    "valid": true,
+    "summary": {
+      "evidence_recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.9166666666666666,
+      "answerable_count": 6,
+      "unanswerable_count": 2,
+      "empty_result_rate": 0.0
+    },
+    "errors": [],
+    "seconds": 0.432
+  }
+}

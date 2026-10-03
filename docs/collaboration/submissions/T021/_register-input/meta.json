@@ -1,0 +1,17 @@
+{
+  "document_id": "candidate-pdf-001",
+  "policy_group_id": "candidate-group",
+  "title": "候选登记示例（合成 PDF）",
+  "source_url": "https://example.org/candidate",
+  "source_site": "合成测试示例站",
+  "version_label": "候选 v1",
+  "published_at": null,
+  "effective_from": null,
+  "effective_to": null,
+  "scope": {
+    "campus": [],
+    "student_type": [],
+    "admission_years": []
+  },
+  "is_synthetic": true
+}

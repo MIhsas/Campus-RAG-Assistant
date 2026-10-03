@@ -1,0 +1,24 @@
+{
+  "task_id": "T018",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T018-R1",
+  "status": "ready_for_review",
+  "summary": "T018-R1 定向修复：(1) 条件恢复改 HTMLCollection 兼容索引遍历、完整恢复成功才标记完成（失败提示不放宽条件）；(2) 事项预选抽出公共 selectProcedure（卡片点击与 URL 恢复共用，不依赖测试桩属性），仅预选不自动草稿/保存/调模型；(3) 测试桩校正——children 为无 forEach 的 HTMLCollection 形态、事件入桩外 WeakMap（trigger 辅助），因果链回归：带入 2023+成绩复核→预选→手动生成提交正确 procedure_id/filters、加载零请求、缺失选项保留；(4) 模拟生成器隔离与首页说明校正为“演示 app 显式 mock、不向真实服务发请求”，源码字符串检查标明非运行时隔离证明。零外部调用。",
+  "external_model_calls": 0,
+  "fix_scope": {
+    "modified": ["src/campus_assistant/static/procedures.html", "scripts/check-procedures-behavior.cjs", "scripts/demo-campus.py", "src/campus_assistant/static/home.html", "tests/test_demo_campus.py"],
+    "kept_unchanged": ["ask 页面与后端", "T016-R1/T018 结果与历史快照语义", "缺失选项保留提示", "已验收算法"]
+  },
+  "verification": {
+    "js_syntax": "6 files passed",
+    "js_behavior_procedures": {"total": 11, "passed": 11, "note": "含强化因果链（2023+成绩复核→预选→正确草稿、加载零请求）与严格桩"},
+    "test_demo_campus": {"total": 5, "passed": 5, "note": "改名用例标明非运行时隔离证明"},
+    "not_rerun": ["ask/后端/全量测试（未改相关代码，按返工单）"]
+  },
+  "browser_check": "真实浏览器复验留待 Astra（复现路径见 fix-report/verification）；stub 不冒充浏览器证据",
+  "detail": "fix-report.md",
+  "history": ["report.rev1.md", "verification.rev1.md", "submission.rev1.json", "changed-files.rev1.json"],
+  "not_claimed": ["运行时隔离证明（源码字符串检查仅文档性）", "DeepSeek 实时回答", "真实浏览器验证"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

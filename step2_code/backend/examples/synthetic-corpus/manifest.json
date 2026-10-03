@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "documents": [
+    {
+      "document_id": "syn-policy-abc-v1",
+      "policy_group_id": "syn-policy-abc",
+      "title": "合成测试教务管理办法（v1）",
+      "source_url": "https://example.org/policy/abc/v1",
+      "source_site": "合成测试示例站",
+      "local_path": "policy-abc-v1.txt",
+      "sha256": "a46b66f0e3cca8a66ca54b086f0e386ba6fb928026c68c054425fd3d877238fa",
+      "version_label": "2024 版",
+      "published_at": "2024-09-01",
+      "effective_from": "2024-09-01",
+      "effective_to": null,
+      "scope": {
+        "campus": ["成都校区"],
+        "student_type": ["全日制本科"],
+        "admission_years": [2022, 2023, 2024]
+      },
+      "is_synthetic": true
+    },
+    {
+      "document_id": "syn-policy-abc-v2",
+      "policy_group_id": "syn-policy-abc",
+      "title": "合成测试教务管理办法（v2）",
+      "source_url": "https://example.org/policy/abc/v2",
+      "source_site": "合成测试示例站",
+      "local_path": "policy-abc-v2.txt",
+      "sha256": "3ee8963233ebb2395de93635bdd320d3def212af9464083177825daeba668b7b",
+      "version_label": "2025 版",
+      "published_at": "2025-06-15",
+      "effective_from": "2025-09-01",
+      "effective_to": null,
+      "scope": {
+        "campus": ["成都校区"],
+        "student_type": ["全日制本科", "预科"],
+        "admission_years": [2023, 2024, 2025]
+      },
+      "is_synthetic": true
+    }
+  ]
+}

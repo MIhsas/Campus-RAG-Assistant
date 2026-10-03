@@ -1,0 +1,37 @@
+{
+  "task_id": "T005",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T005-R1",
+  "status": "ready_for_review",
+  "summary": "R1-R5 全部修复：preview.html 全面重写为安全 DOM（createElement+textContent+addEventListener）；节点生命周期修正（R1）；hash 定位保留 block_id + processPending（R2）；banner/错误明细/空状态/键盘 button（R3）；移除 innerHTML 数据拼接（R4）；Pydantic 响应模型 + wheel 包含静态资源 + 单次 parse 调用（R5）。151 passed, 1 skipped。浏览器交互未验证。",
+  "files": [
+    "docs/collaboration/submissions/T005/report.md",
+    "docs/collaboration/submissions/T005/verification.md",
+    "docs/collaboration/submissions/T005/submission.json",
+    "docs/collaboration/submissions/T005/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T005/changed-files.json",
+  "history": [
+    "docs/collaboration/submissions/T005/history/revision-1/"
+  ],
+  "checks": [
+    {"item": "R1: 节点生命周期（无旧节点访问）", "result": "pass（源码确认）", "evidence_id": "V07"},
+    {"item": "R2: block_id 通过 selectDoc 传递", "result": "pass（源码确认）", "evidence_id": "V07"},
+    {"item": "R2: processPending 无无限轮询", "result": "pass（源码确认）", "evidence_id": "V07"},
+    {"item": "R3: banner 动态 is_synthetic", "result": "pass（源码确认）", "evidence_id": "V07"},
+    {"item": "R3: 错误明细/空状态/重试", "result": "pass（源码确认）", "evidence_id": "V07"},
+    {"item": "R3: 键盘 button 元素", "result": "pass（源码确认）", "evidence_id": "V07"},
+    {"item": "R4: 无 innerHTML 数据拼接", "result": "pass（源码确认）", "evidence_id": "V07"},
+    {"item": "R4: URL .href 属性赋值", "result": "pass（源码确认）", "evidence_id": "V07"},
+    {"item": "R4: addEventListener 替代 onclick", "result": "pass（源码确认）", "evidence_id": "V07"},
+    {"item": "R5: Pydantic 响应模型", "result": "pass", "evidence_id": "V06"},
+    {"item": "R5: wheel 包含 preview.html", "result": "pass", "evidence_id": "V03"},
+    {"item": "R5: 单次 parse 调用", "result": "pass", "evidence_id": "V05"},
+    {"item": "API 冒烟", "result": "pass", "evidence_id": "V04"},
+    {"item": "全量 pytest", "result": "pass - 151 passed, 1 skipped", "evidence_id": "V01"},
+    {"item": "pip check", "result": "pass", "evidence_id": "V02"},
+    {"item": "浏览器交互验证", "result": "未验证（Claude Code 无浏览器能力）", "evidence_id": "V08"}
+  ],
+  "blockers": []
+}

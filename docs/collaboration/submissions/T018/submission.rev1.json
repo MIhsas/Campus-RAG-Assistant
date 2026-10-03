@@ -1,0 +1,18 @@
+{
+  "task_id": "T018",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "统一离线演示入口与问答办事联动完成：demo-campus.py 单条命令服务五功能+统一首页（组合语料保留原文档 ID/内容/哈希、源夹具只读、ID 冲突显式报错；显式标记 mock 生成器不读真实配置）；首页三可点击演示问题与实时状态；问答结果“相关事项入口”（显式关键词映射，稳定 procedure_id）携带该结果问题/条件快照进入办事页（等选项加载后恢复、缺失选项保留提示、不自动草稿/保存/调模型）；历史结果用历史条件不误用当前控件；Windows 单条启动与 5—8 分钟答辩演示脚本（逐步标注确定性/模拟/T014 历史证据）。零外部模型调用，mock 不冒充 DeepSeek 实时回答。",
+  "external_model_calls": 0,
+  "verification": {
+    "test_demo_campus": {"total": 5, "passed": 5, "note": "组合语料 ID/哈希/冲突 + 统一路由/模板引用/标记 mock/不读真实配置"},
+    "js_syntax": "6 files passed（home 新增）",
+    "js_behavior": {"ask": "17 scenarios（+4 快照链接/历史条件/无匹配/预填）", "procedures": "11 scenarios（+2 带入恢复零自动请求/缺失选项保留）"},
+    "api_demo": {"calls": 10, "all_routes_ok": true}
+  },
+  "browser_check": "无浏览器工具，跨页闭环未实测；demo-notes.md 提供 Astra 可运行入口、5—8 分钟演示脚本与检查表（a—g）；stub 不冒充浏览器证据",
+  "mock_disclosure": "生成段落带【模拟输出，非真实 DeepSeek 回答】；T014 一次限定真实冒烟为独立历史证据",
+  "not_claimed": ["DeepSeek 实时回答", "Agent 推理择事", "真实浏览器验证", "学校政策准确性"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

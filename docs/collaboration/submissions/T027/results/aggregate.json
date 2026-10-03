@@ -1,0 +1,374 @@
+{
+  "note": "T027 三模式对照聚合（合成评测；K=5 主口径，K=3 为同命中补充口径，非参数搜索）",
+  "dataset_id": "eval-v2-synthetic",
+  "dataset_version": "2.1",
+  "questions_sha256": "afdedadf380e9fac2d8e39fcf1b34b4b7ecfcbce17029c2ab38c21145c7126c4",
+  "manifest_sha256": "4fa135dd0963dad4dfcf378b7fd8424241f33f0bf575dcfccd7974c954a43042",
+  "embedding_model_id": "bge-small-zh-v1.5",
+  "embedding_model_revision": "7999e1d3359715c523056ef9478215996d62a620",
+  "parameters": {
+    "max_chars": 500,
+    "k1": 1.5,
+    "b": 0.75,
+    "top_k": 5,
+    "rrf_k": 60
+  },
+  "retriever_version": "1.0",
+  "commands": "subset rerun (q10/q16/q17): python -m campus_assistant.evaluation.run ... --questions .cache/t027/questions-rerun-subset.json --top-k 5 --mode {bm25|dense|hybrid} | merge via scripts/eval-v2-rescore.py（21 题复用 rev2 排名计分）",
+  "result_files": {
+    "bm25": {
+      "path": "F:\\Collage Paper\\docs\\collaboration\\submissions\\T027\\results\\bm25.json",
+      "sha256": "808177eed2a74752954905d0b52ce698e41c1e83459556f7f2ea6d756c6b4f92"
+    },
+    "dense": {
+      "path": "F:\\Collage Paper\\docs\\collaboration\\submissions\\T027\\results\\dense.json",
+      "sha256": "8162541f06dfcac8b7acfd289921a42b47a0ea9632222011db3dfd3ea748196b"
+    },
+    "hybrid": {
+      "path": "F:\\Collage Paper\\docs\\collaboration\\submissions\\T027\\results\\hybrid.json",
+      "sha256": "41d5b9c5c9cb20e3a306973b64d09b8eeed0db2609c2f1bb539feec73898bbe5"
+    }
+  },
+  "overall_k5": {
+    "question_count": 24,
+    "answerable_count": 20,
+    "unanswerable_count": 4,
+    "denominator_note": "recall/hit/mrr 仅在可回答题上平均；材料不足题单独分母，不计入 recall 稀释",
+    "bm25": {
+      "evidence_recall": 0.95,
+      "hit": 0.95,
+      "mrr": 0.925,
+      "unanswerable_empty_rate": 0.0,
+      "unanswerable_with_results_count": 4
+    },
+    "dense": {
+      "evidence_recall": 0.9,
+      "hit": 0.9,
+      "mrr": 0.7058333333333333,
+      "unanswerable_empty_rate": 0.0,
+      "unanswerable_with_results_count": 4
+    },
+    "hybrid": {
+      "evidence_recall": 0.95,
+      "hit": 0.95,
+      "mrr": 0.8916666666666666,
+      "unanswerable_empty_rate": 0.0,
+      "unanswerable_with_results_count": 4
+    },
+    "unanswerable_note": "有命中不等于有依据、空检索不等于模型可靠拒答"
+  },
+  "overall_k3_supplement": {
+    "question_count": 24,
+    "answerable_count": 20,
+    "unanswerable_count": 4,
+    "denominator_note": "recall/hit/mrr 仅在可回答题上平均；材料不足题单独分母，不计入 recall 稀释",
+    "bm25": {
+      "evidence_recall": 0.95,
+      "hit": 0.95,
+      "mrr": 0.925,
+      "unanswerable_empty_rate": 0.0,
+      "unanswerable_with_results_count": 4
+    },
+    "dense": {
+      "evidence_recall": 0.8,
+      "hit": 0.8,
+      "mrr": 0.6833333333333333,
+      "unanswerable_empty_rate": 0.0,
+      "unanswerable_with_results_count": 4
+    },
+    "hybrid": {
+      "evidence_recall": 0.95,
+      "hit": 0.95,
+      "mrr": 0.8916666666666666,
+      "unanswerable_empty_rate": 0.0,
+      "unanswerable_with_results_count": 4
+    },
+    "unanswerable_note": "有命中不等于有依据、空检索不等于模型可靠拒答"
+  },
+  "by_type_k5": {
+    "direct": {
+      "question_count": 4,
+      "answerable_count": 4,
+      "unanswerable_count": 0,
+      "denominator_note": "recall/hit/mrr 仅在可回答题上平均；材料不足题单独分母，不计入 recall 稀释",
+      "bm25": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0
+      },
+      "dense": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.8125
+      },
+      "hybrid": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.875
+      },
+      "unanswerable_note": "有命中不等于有依据、空检索不等于模型可靠拒答"
+    },
+    "distractor": {
+      "question_count": 3,
+      "answerable_count": 3,
+      "unanswerable_count": 0,
+      "denominator_note": "recall/hit/mrr 仅在可回答题上平均；材料不足题单独分母，不计入 recall 稀释",
+      "bm25": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0
+      },
+      "dense": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0
+      },
+      "hybrid": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0
+      },
+      "unanswerable_note": "有命中不等于有依据、空检索不等于模型可靠拒答"
+    },
+    "filtered": {
+      "question_count": 5,
+      "answerable_count": 5,
+      "unanswerable_count": 0,
+      "denominator_note": "recall/hit/mrr 仅在可回答题上平均；材料不足题单独分母，不计入 recall 稀释",
+      "bm25": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.9
+      },
+      "dense": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.7333333333333333
+      },
+      "hybrid": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.8666666666666666
+      },
+      "unanswerable_note": "有命中不等于有依据、空检索不等于模型可靠拒答"
+    },
+    "low_keyword": {
+      "question_count": 2,
+      "answerable_count": 2,
+      "unanswerable_count": 0,
+      "denominator_note": "recall/hit/mrr 仅在可回答题上平均；材料不足题单独分母，不计入 recall 稀释",
+      "bm25": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0
+      },
+      "dense": {
+        "evidence_recall": 0.5,
+        "hit": 0.5,
+        "mrr": 0.1
+      },
+      "hybrid": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0
+      },
+      "unanswerable_note": "有命中不等于有依据、空检索不等于模型可靠拒答"
+    },
+    "multi_evidence": {
+      "question_count": 3,
+      "answerable_count": 3,
+      "unanswerable_count": 0,
+      "denominator_note": "recall/hit/mrr 仅在可回答题上平均；材料不足题单独分母，不计入 recall 稀释",
+      "bm25": {
+        "evidence_recall": 0.6666666666666666,
+        "hit": 0.6666666666666666,
+        "mrr": 0.6666666666666666
+      },
+      "dense": {
+        "evidence_recall": 0.6666666666666666,
+        "hit": 0.6666666666666666,
+        "mrr": 0.5
+      },
+      "hybrid": {
+        "evidence_recall": 0.6666666666666666,
+        "hit": 0.6666666666666666,
+        "mrr": 0.6666666666666666
+      },
+      "unanswerable_note": "有命中不等于有依据、空检索不等于模型可靠拒答"
+    },
+    "paraphrase": {
+      "question_count": 3,
+      "answerable_count": 3,
+      "unanswerable_count": 0,
+      "denominator_note": "recall/hit/mrr 仅在可回答题上平均；材料不足题单独分母，不计入 recall 稀释",
+      "bm25": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0
+      },
+      "dense": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.8333333333333334
+      },
+      "hybrid": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0
+      },
+      "unanswerable_note": "有命中不等于有依据、空检索不等于模型可靠拒答"
+    },
+    "unanswerable": {
+      "question_count": 4,
+      "answerable_count": 0,
+      "unanswerable_count": 4,
+      "denominator_note": "recall/hit/mrr 仅在可回答题上平均；材料不足题单独分母，不计入 recall 稀释",
+      "bm25": {
+        "evidence_recall": null,
+        "hit": null,
+        "mrr": null,
+        "unanswerable_empty_rate": 0.0,
+        "unanswerable_with_results_count": 4
+      },
+      "dense": {
+        "evidence_recall": null,
+        "hit": null,
+        "mrr": null,
+        "unanswerable_empty_rate": 0.0,
+        "unanswerable_with_results_count": 4
+      },
+      "hybrid": {
+        "evidence_recall": null,
+        "hit": null,
+        "mrr": null,
+        "unanswerable_empty_rate": 0.0,
+        "unanswerable_with_results_count": 4
+      },
+      "unanswerable_note": "有命中不等于有依据、空检索不等于模型可靠拒答"
+    }
+  },
+  "by_filter_group_k5": {
+    "filtered": {
+      "question_count": 2,
+      "answerable_count": 2,
+      "unanswerable_count": 0,
+      "denominator_note": "recall/hit/mrr 仅在可回答题上平均；材料不足题单独分母，不计入 recall 稀释",
+      "bm25": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0
+      },
+      "dense": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.75
+      },
+      "hybrid": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0
+      },
+      "unanswerable_note": "有命中不等于有依据、空检索不等于模型可靠拒答"
+    },
+    "g-campus-defer|filtered": {
+      "question_count": 2,
+      "answerable_count": 2,
+      "unanswerable_count": 0,
+      "denominator_note": "recall/hit/mrr 仅在可回答题上平均；材料不足题单独分母，不计入 recall 稀释",
+      "bm25": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.75
+      },
+      "dense": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.6666666666666666
+      },
+      "hybrid": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.6666666666666666
+      },
+      "unanswerable_note": "有命中不等于有依据、空检索不等于模型可靠拒答"
+    },
+    "g-time-defer|filtered": {
+      "question_count": 2,
+      "answerable_count": 1,
+      "unanswerable_count": 1,
+      "denominator_note": "recall/hit/mrr 仅在可回答题上平均；材料不足题单独分母，不计入 recall 稀释",
+      "bm25": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "unanswerable_empty_rate": 0.0,
+        "unanswerable_with_results_count": 1
+      },
+      "dense": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "unanswerable_empty_rate": 0.0,
+        "unanswerable_with_results_count": 1
+      },
+      "hybrid": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "unanswerable_empty_rate": 0.0,
+        "unanswerable_with_results_count": 1
+      },
+      "unanswerable_note": "有命中不等于有依据、空检索不等于模型可靠拒答"
+    },
+    "g-year-defer|filtered": {
+      "question_count": 2,
+      "answerable_count": 2,
+      "unanswerable_count": 0,
+      "denominator_note": "recall/hit/mrr 仅在可回答题上平均；材料不足题单独分母，不计入 recall 稀释",
+      "bm25": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0
+      },
+      "dense": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.6666666666666666
+      },
+      "hybrid": {
+        "evidence_recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0
+      },
+      "unanswerable_note": "有命中不等于有依据、空检索不等于模型可靠拒答"
+    },
+    "no_filter": {
+      "question_count": 16,
+      "answerable_count": 13,
+      "unanswerable_count": 3,
+      "denominator_note": "recall/hit/mrr 仅在可回答题上平均；材料不足题单独分母，不计入 recall 稀释",
+      "bm25": {
+        "evidence_recall": 0.9230769230769231,
+        "hit": 0.9230769230769231,
+        "mrr": 0.9230769230769231,
+        "unanswerable_empty_rate": 0.0,
+        "unanswerable_with_results_count": 3
+      },
+      "dense": {
+        "evidence_recall": 0.8461538461538461,
+        "hit": 0.8461538461538461,
+        "mrr": 0.6884615384615385,
+        "unanswerable_empty_rate": 0.0,
+        "unanswerable_with_results_count": 3
+      },
+      "hybrid": {
+        "evidence_recall": 0.9230769230769231,
+        "hit": 0.9230769230769231,
+        "mrr": 0.8846153846153846,
+        "unanswerable_empty_rate": 0.0,
+        "unanswerable_with_results_count": 3
+      },
+      "unanswerable_note": "有命中不等于有依据、空检索不等于模型可靠拒答"
+    }
+  }
+}

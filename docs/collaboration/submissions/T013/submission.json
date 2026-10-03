@@ -1,0 +1,41 @@
+{
+  "task_id": "T013",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "DeepSeekAnswerProvider（model=deepseek-flash，POST /chat/completions，json_object 输出、thinking=disabled、非流式、max_tokens=1500、超时 30s、无重试）对接 T012 协议；loopback mock 完成 /ask→provider→HTTP→JSON→引用→响应全链路联调；live 冒烟脚本默认 dry-run 已备未执行。生成失败/截断/空内容安全映射，审计字段 generation_meta 不伪造。mock 结果不是真实 DeepSeek 回答。",
+  "live_verified": false,
+  "external_model_calls": 0,
+  "provider": {
+    "class": "qa.deepseek.DeepSeekAnswerProvider",
+    "model": "deepseek-flash",
+    "model_note": "alias，非固定权重 revision",
+    "base_url_default": "https://api.deepseek.com",
+    "path_rule": "base_url.rstrip('/') + '/chat/completions'",
+    "response_format": {"type": "json_object"},
+    "thinking": {"type": "disabled"},
+    "stream": false,
+    "max_tokens": 1500,
+    "timeout_seconds": 30,
+    "retries": 0
+  },
+  "config": {
+    "enable": "CAMPUS_GENERATOR=deepseek",
+    "key_var": "DEEPSEEK_API_KEY（本地配置，占位示例见 env.example，不进入报告）",
+    "optional": ["DEEPSEEK_BASE_URL", "DEEPSEEK_MODEL"],
+    "default_enabled": false,
+    "probe_requests_at_startup": 0
+  },
+  "test_results": {
+    "new_tests": {"total": 12, "passed": 12},
+    "full_suite": {"total": 441, "passed": 441, "skipped": 1, "warnings": 2},
+    "js_checks": "skipped — 本轮无页面变更",
+    "mock_integration_checks": {"total": 7, "passed": 7}
+  },
+  "evidence_distinction": {
+    "mock_integration.json": "loopback 模拟全链路（模拟输出带标记，不是真实 DeepSeek 回答）",
+    "live_smoke": "脚本已备（dry-run 已跑），真实调用未执行"
+  },
+  "not_claimed": ["真实 RAG 作答质量", "拒答可靠性", "校园问答准确率", "DeepSeek 服务联调通过"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}

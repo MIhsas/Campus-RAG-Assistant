@@ -1,0 +1,19 @@
+{
+  "task_id": "T026",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "tinyagent_integration_kind": "reference",
+  "summary": "T026 离线收敛完成：① 规划专用声明只暴露模型可写参数——search_policy 仅 query/mode/top_k（模式限本次可用项默认 bm25）、build_checklist_draft 无参数，固定筛选与已选事项由服务端快照注入；越权参数（filters/procedure_id，哪怕与快照一致）明确拒绝不静默执行（保留 不得放宽或改写/不得擅自更换事项 措辞与 handler 锁），status 展示 catalog 与校验同源，既有搜索/办理 API 契约未动。② 提示词含正确 JSON call 示例（省略固定条件/事项）与模式可用性行。③ 有界观察补总数/已列数/截断标记：实测待核实 4 项列 3 → total=4/listed=3/truncated=true，完整草稿仍 4 项。④ T025 事件顺序勘误（命中在第 2 轮供第 3 轮用；live-run 未保存出站 messages，不声称日志已记录请求内容）。完成判定/HTTP 预算/原始 live-run 均未改；零外部调用、未执行 live（T025 B 授权已结束）。",
+  "verification": {
+    "offline_replay": "offline-replay.json（loopback mock 明确标记）exit 0：出站声明无 filters/procedure_id 参数条目、T025 原样坏动作仍被拒且快照 2023 未放宽、draft 与直接 service 全等、同服务二次独立运行 completed、观察 4/3/true 一致",
+    "tests": {"total": 62, "passed": 62, "note": "agent + planner + smoke 聚焦（含声明/越权/回放/观察透明新增；T024 短语断言零回归）"},
+    "scope_note": "仅本地回放/loopback mock/受影响聚焦回归；未改 UI 不跑页面；未跑全量；未执行 live；零外部调用、无下载、无安装"
+  },
+  "deliverables": ["offline-replay.json（坏动作与正确契约对照，mock 明确标记）", "T025-evidence-errata.md（事件顺序勘误与证据层级）", "report.md（含简明后续计划）", "verification.md", "submission.json", "changed-files.json"],
+  "not_claimed": ["真实模型改进/错误率降低（改进未经真实模型验证）", "planner_live_verified=true（保持 false）", "T025 完整冒烟已通过（含一次拒绝，partial 如实保留）", "真实学校资料效果"],
+  "unchanged": ["完成判定 _finish_verdict", "HTTP 预算（≤4/max_tokens=300/零重试）", "T025 原始 live-run.json 与全部历史归档", "UI/语料/gold/模板/既有 API 契约"],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改；未改 Astra 文档；密钥零落盘"
+}

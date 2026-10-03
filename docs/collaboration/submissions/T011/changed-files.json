@@ -1,0 +1,107 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "9400b8de2abddfa8909e7b4061f4dc1f1514bc9d3a2c2a1ad60e81aa88f81067",
+    "size": 22798
+  },
+  {
+    "path": "..\\README.md",
+    "sha256": "46e6e10ff517b38f89eb0f2b68997d6f8f4cb9dc581121b8c5af21cf1ef3fcb3",
+    "size": 2699
+  },
+  {
+    "path": "src\\campus_assistant\\api\\search.py",
+    "sha256": "5744eb8c1e6bdb4b8a1705727c9ca07768a39057545e2b72c406df48ecf31d27",
+    "size": 14742
+  },
+  {
+    "path": "src\\campus_assistant\\evaluation\\run.py",
+    "sha256": "3f59f34582b26f33b165e29dfd1c097d02c15d351e0d5675c4ecd9fc7793938d",
+    "size": 15695
+  },
+  {
+    "path": "src\\campus_assistant\\main.py",
+    "sha256": "09603da708fd7c35a4eff7f419c5e3fb8956cf7eaf8a46c32b3db7b108d084f3",
+    "size": 7336
+  },
+  {
+    "path": "src\\campus_assistant\\retrieval\\bm25.py",
+    "sha256": "2e1a3ec25104e0dcdf465b74b4a785d75f930d119083d5d337f9e1acc4e8f9b9",
+    "size": 7489
+  },
+  {
+    "path": "src\\campus_assistant\\retrieval\\dense.py",
+    "sha256": "b1673ad735e54bd351f041bb59f62b84753fdbca55e4c390889d24f553b834dc",
+    "size": 3215
+  },
+  {
+    "path": "src\\campus_assistant\\retrieval\\embedding.py",
+    "sha256": "c8f2943ac1efd7d9664854657f9b6c97cd49b2a117eeed1bd5200f72824306e4",
+    "size": 4808
+  },
+  {
+    "path": "src\\campus_assistant\\retrieval\\filters.py",
+    "sha256": "6d2377597cb63d06f1fffbd0d02ac3ff7731b21fceb3e1216fab4d86a1d5f391",
+    "size": 6223
+  },
+  {
+    "path": "src\\campus_assistant\\static\\search.html",
+    "sha256": "d33745c1815d2ac54eb5cc9a1a252accc7de3adcbf1b2f40e454a1333e37ca57",
+    "size": 25403
+  },
+  {
+    "path": "scripts\\check-search-behavior.cjs",
+    "sha256": "91c749c71d9d982c1015b393b1cd97919e6a9fc97920eceebba1bdd52d1099c2",
+    "size": 17917
+  },
+  {
+    "path": "scripts\\download-embedding-model.py",
+    "sha256": "7e181f16b809aa3ce064d994efda448483ee5bcb4cb2945d31093bcbe7985276",
+    "size": 1343
+  },
+  {
+    "path": "scripts\\demo-filter-search.py",
+    "sha256": "87df058abcd4a9a97b0725b19700ce606c45339d7ae2b24ce7eb00a93aaee912",
+    "size": 5795
+  },
+  {
+    "path": "tests\\test_search_filters.py",
+    "sha256": "d6d1919d5ac3602ed852d0f7a8577c9bb19bf08654785734264c693544af8d07",
+    "size": 16764
+  },
+  {
+    "path": "examples\\filter-demo\\README.txt",
+    "sha256": "cfa2a44bbb5ef8dd6f82b306e336055daf60ff0897620f4c9e66986c6365fd4c",
+    "size": 871
+  },
+  {
+    "path": "examples\\filter-demo\\manifest.json",
+    "sha256": "21d4a6a9c55cbe5b368fd941226871b604e1570915e9279a2599274d141577ec",
+    "size": 3769
+  },
+  {
+    "path": "examples\\filter-demo\\filter-2024.txt",
+    "sha256": "131838cca37947cc960da8f0c25d21124006093f5643d85fe23b27e38ed1aa3f",
+    "size": 270
+  },
+  {
+    "path": "examples\\filter-demo\\filter-2025.txt",
+    "sha256": "745e52eaab4c64fcbc66370b58e0934b46a8874d55dd261d0605905973921248",
+    "size": 315
+  },
+  {
+    "path": "examples\\filter-demo\\filter-yjy.txt",
+    "sha256": "121ba90a3ee72b3ccd155bc645d363f873906395aeee54472ec5fb362b7c945b",
+    "size": 280
+  },
+  {
+    "path": "examples\\filter-demo\\filter-unknown.txt",
+    "sha256": "4425d3bd299f7dcdfa9b88d08c662da1f78356b11765d80071ea17857891089b",
+    "size": 304
+  },
+  {
+    "path": "examples\\filter-demo\\filter-future.txt",
+    "sha256": "6835a4093590341d65f53a04c94f39d417577a11d5103d1e28dc342bcd61e2d2",
+    "size": 282
+  }
+]

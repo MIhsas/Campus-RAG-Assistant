@@ -1,0 +1,62 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "ee10c1c5bb5cb419658a753c4151de51214c33426cea9e978c833abad9114dbe",
+    "size": 41456
+  },
+  {
+    "path": "examples\\self-check\\rule.json",
+    "sha256": "ad7358e0cb1eaae91598e02e3738dcdef4beac3a0d516a160e690fb0ee385513",
+    "size": 3576
+  },
+  {
+    "path": "scripts\\check-self-check-behavior.cjs",
+    "sha256": "d82c8890b2d14de135abc9031036e88db889f269c27fa6bcb6d7bbdc0267a37d",
+    "size": 14507
+  },
+  {
+    "path": "scripts\\demo-campus.py",
+    "sha256": "59a605c017ba6a46f1686ac441328368ab631bc401043043d363cf033641834c",
+    "size": 10102
+  },
+  {
+    "path": "scripts\\demo-selfcheck-api.py",
+    "sha256": "b9b8cf8771ca6050165ad4c7fffd0335889e49af68ce851b5b1ea43bcd302624",
+    "size": 6047
+  },
+  {
+    "path": "src\\campus_assistant\\api\\selfcheck.py",
+    "sha256": "e59387cddec72975f844450ea47fddaeff792cd7156c3d80268fcd9519f8a4d2",
+    "size": 4099
+  },
+  {
+    "path": "src\\campus_assistant\\main.py",
+    "sha256": "4b2e3f7b9e5fda8be42411f73b08af0013baa2daf21860b8b7c1367d492a7690",
+    "size": 10643
+  },
+  {
+    "path": "src\\campus_assistant\\selfcheck\\__init__.py",
+    "sha256": "f20c5c170497d9ef0fff633f95be2744611b67121276ce8f7dc75360c679824e",
+    "size": 289
+  },
+  {
+    "path": "src\\campus_assistant\\selfcheck\\service.py",
+    "sha256": "c1ff1f3e95e65d59438c51b280f2bc1d87232b32b3f1c9d0ab1f569b81be8bbc",
+    "size": 8082
+  },
+  {
+    "path": "src\\campus_assistant\\static\\home.html",
+    "sha256": "e8554294f617e62ff109477c15750f52497f6eda36a23b07acded1b1a45c43c1",
+    "size": 5235
+  },
+  {
+    "path": "src\\campus_assistant\\static\\self-check.html",
+    "sha256": "7f5480e3cba73c42b6b4268b23ad9c2cadb55a5140bf71e344ceb66edbc8ebf8",
+    "size": 14508
+  },
+  {
+    "path": "tests\\test_self_check.py",
+    "sha256": "b36ae0332edfc3b5ef4c6612c1c83df77f3252218cfb5f88a1bea9a8879e3bdd",
+    "size": 8110
+  }
+]

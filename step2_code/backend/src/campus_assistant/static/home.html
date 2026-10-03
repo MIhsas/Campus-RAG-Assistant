@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>校园助手</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
+.notice{background:#e3f2fd;padding:8px 16px;font-size:13px;color:#1565c0}
+.container{max-width:900px;margin:0 auto;padding:20px}
+h1{font-size:20px;margin:12px 0}
+h2{font-size:16px;margin:18px 0 10px}
+.status-block{background:#fff;border:1px solid #ddd;border-radius:6px;padding:12px 16px;font-size:13px;color:#444;margin-bottom:14px}
+.status-block .row{margin:3px 0}
+.status-block .cap{color:#1976d2;font-weight:600}
+.status-block .off{color:#999}
+.cards{display:flex;gap:12px;flex-wrap:wrap}
+.card{flex:1;min-width:240px;background:#fff;border:1px solid #ddd;border-radius:8px;padding:16px;text-decoration:none;color:#333}
+.card:hover{border-color:#1976d2;box-shadow:0 0 0 2px #90caf9}
+.card h3{font-size:15px;color:#1976d2;margin:0 0 6px}
+.card p{font-size:12px;color:#666;margin:0}
+.disclaimer{font-size:12px;color:#8a6d3b;background:#fcf8e3;border:1px solid #faebcc;border-radius:4px;padding:8px 12px;margin:14px 0}
+@media(max-width:600px){.container{padding:12px}.card{min-width:100%}}
+</style>
+</head>
+<body>
+<div class="notice">本页能力状态由当前服务的实时接口读取（非硬编码）；“未配置”仅表示本次运行未启用该功能。</div>
+<div class="container">
+  <h1>校园助手</h1>
+  <div class="status-block" id="capability-status">正在读取当前服务状态…</div>
+
+  <h2>功能入口</h2>
+  <div class="cards">
+    <a class="card" href="/ask"><h3>问答与证据</h3><p>提问 → 原文摘录；生成答案仅在生成器已配置且用户点击时调用。未配置生成器时摘录功能不受影响。</p></a>
+    <a class="card" href="/search"><h3>证据搜索</h3><p>检索与原文定位。关键词在语料索引就绪后可用；语义/混合需配置本地向量模型。</p></a>
+    <a class="card" href="/workflow"><h3>受限任务流程</h3><p>选事项→查找依据→整理草稿的固定流程（非大模型 Agent），展示实际步骤与引用。草稿需进入办事页手动保存。</p></a>
+    <a class="card" href="/procedures"><h3>办事与待办</h3><p>带引用的办理步骤草稿与本机待办。未配置模板时不可用——这不代表学校真实事项没有对应模板。</p></a>
+    <a class="card" href="/self-check"><h3>条件自查</h3><p>逐项满足/不满足/待核实 + 原文依据。未配置规则时不可用——不代表学校事项无规则。</p></a>
+    <a class="card" href="/compare"><h3>版本对比</h3><p>同一政策两版本的新增/删除/修改/未变条款。仅当语料中存在同组多版本时可用。</p></a>
+    <a class="card" href="/preview"><h3>语料预览</h3><p>浏览当前已加载语料与原文定位。</p></a>
+  </div>
+
+  <div class="disclaimer">
+    以上状态与功能以当前加载语料与配置为准；文字差异与条件自查不构成资格或政策适用结论。
+  </div>
+</div>
+<script>
+(function(){
+  var box = document.getElementById('capability-status');
+  function row(label, value, ok){
+    var d = document.createElement('div');
+    d.className = 'row';
+    var c = document.createElement('span');
+    c.className = ok ? 'cap' : 'off';
+    c.textContent = label + '：';
+    d.appendChild(c);
+    d.appendChild(document.createTextNode(value));
+    return d;
+  }
+  async function load(){
+    try {
+      var rs = await fetch('/api/v1/search/status');
+      var ra = await fetch('/api/v1/ask/status');
+      var rv = await fetch('/api/v1/asr/status');
+      var rp = await fetch('/api/v1/procedures');
+      var rsc = await fetch('/api/v1/self-check/rule');
+      var rc = await fetch('/api/v1/comparison/groups');
+      var s = rs.ok ? await rs.json() : null;
+      var a = ra.ok ? await ra.json() : null;
+      var v = rv.ok ? await rv.json() : null;
+      var p = rp.ok ? await rp.json() : null;
+      var sc = rsc.ok ? await rsc.json() : null;
+      var grp = rc.ok ? await rc.json() : null;
+
+      box.innerHTML = '';
+      // 读取失败/未知 与 未配置 分开表述：非预期失败不当作未配置。
+      if(s === null){
+        box.appendChild(row('语料', '读取失败/未知（状态接口 HTTP ' + rs.status + '）', false));
+        box.appendChild(row('检索模式', '读取失败/未知', false));
+      } else {
+        var syn = s.synthetic_count || 0;
+        var parsed = s.parsed_count || 0;
+        var nature = parsed === 0 ? '无已解析资料' : (syn === 0 ? '真实资料' : (syn >= parsed ? '合成资料' : '混合（合成 ' + syn + '/' + parsed + '）'));
+        box.appendChild(row('语料', '文档 ' + (s.document_count || 0) + '，解析成功 ' + parsed +
+          (s.errors && s.errors.length ? '，错误 ' + s.errors.length : '') + '；资料性质：' + nature, parsed > 0));
+        box.appendChild(row('检索模式', (s.available_modes || []).join('、') || '无' +
+          (s.status === 'ready' || s.status === 'partial' ? '' : '（索引未就绪，检索暂不可用）'),
+          (s.available_modes || []).indexOf('bm25') >= 0 && (s.status === 'ready' || s.status === 'partial')));
+      }
+      box.appendChild(row('生成器', a === null
+        ? '读取失败/未知（状态接口 HTTP ' + ra.status + '）'
+        : (a.generator_configured
+          ? '已配置（' + (a.generator_identity || '未标注身份') + '；连接未验证）'
+          : '未配置（问答仅原文摘录）'), a !== null && !!a.generator_configured));
+      box.appendChild(row('语音识别', v === null
+        ? '读取失败/未知（状态接口 HTTP ' + rv.status + '）'
+        : (v.configured
+          ? '已配置（' + (v.provider || '') + ' / ' + (v.model || '') + '）'
+          : '未配置（文字提问不受影响）'), v !== null && !!v.configured));
+      box.appendChild(row('办事模板', p !== null
+        ? '已配置'
+        : (rp.status === 503 ? '未配置（不代表学校事项无模板）' : '读取失败/未知（状态接口 HTTP ' + rp.status + '）'),
+        p !== null));
+      box.appendChild(row('自查规则', sc !== null
+        ? '已配置'
+        : (rsc.status === 503 ? '未配置（不代表学校事项无规则）' : '读取失败/未知（状态接口 HTTP ' + rsc.status + '）'),
+        sc !== null));
+      var comparable = grp === null ? -1 : (grp.groups || []).filter(function(g){ return (g.versions || []).length >= 2; }).length;
+      box.appendChild(row('版本对比', comparable < 0
+        ? '读取失败/未知（状态接口 HTTP ' + rc.status + '）'
+        : (comparable > 0
+          ? '有 ' + comparable + ' 组同政策多版本可比较'
+          : '当前语料无同组多版本'), comparable > 0));
+      var src = document.createElement('div');
+      src.className = 'row off';
+      src.textContent = '以上为当前服务实时状态（非固定文案）；“已配置”不代表连接/模型已验证；接口异常显示为读取失败/未知。';
+      box.appendChild(src);
+    } catch(e){
+      box.textContent = '无法读取服务状态（网络错误）；请稍后刷新。';
+    }
+  }
+  load();
+})();
+</script>
+</body>
+</html>

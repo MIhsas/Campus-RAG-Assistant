@@ -1,0 +1,82 @@
+{
+  "task_id": "T002",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "最小后端工程完成：FastAPI 应用工厂 + 健康检查接口（live 200 / ready 503）+ 请求追踪 + 16 项 pytest + 隔离 venv + 锁文件 + 复现验证。无数据库、RAG、模型或前端。",
+  "files": [
+    "docs/collaboration/submissions/T002/report.md",
+    "docs/collaboration/submissions/T002/verification.md",
+    "docs/collaboration/submissions/T002/submission.json",
+    "docs/collaboration/submissions/T002/changed-files.json"
+  ],
+  "changed_files": "docs/collaboration/submissions/T002/changed-files.json",
+  "checks": [
+    {
+      "item": "venv 隔离（prefix != base_prefix）",
+      "result": "pass",
+      "evidence_id": "V02"
+    },
+    {
+      "item": "依赖安装（仅必要包）",
+      "result": "pass",
+      "evidence_id": "V03"
+    },
+    {
+      "item": "可编辑安装",
+      "result": "pass",
+      "evidence_id": "V04"
+    },
+    {
+      "item": "pytest 16 passed",
+      "result": "pass",
+      "evidence_id": "V05"
+    },
+    {
+      "item": "pip check",
+      "result": "pass",
+      "evidence_id": "V06"
+    },
+    {
+      "item": "锁文件生成",
+      "result": "pass",
+      "evidence_id": "V07"
+    },
+    {
+      "item": "HTTP live 200",
+      "result": "pass",
+      "evidence_id": "V08a"
+    },
+    {
+      "item": "HTTP ready 503",
+      "result": "pass",
+      "evidence_id": "V08b"
+    },
+    {
+      "item": "HTTP 404 + 追踪头",
+      "result": "pass",
+      "evidence_id": "V08c"
+    },
+    {
+      "item": "客户端 X-Request-ID 不回显",
+      "result": "pass",
+      "evidence_id": "V08d"
+    },
+    {
+      "item": "OpenAPI 包含两端点 + 503 声明",
+      "result": "pass",
+      "evidence_id": "V09"
+    },
+    {
+      "item": "create_app() 多实例化 + 无外部依赖",
+      "result": "pass",
+      "evidence_id": "V10"
+    },
+    {
+      "item": "复现验证（.venv-verify）",
+      "result": "pass - 16 passed",
+      "evidence_id": "V11"
+    }
+  ],
+  "blockers": []
+}

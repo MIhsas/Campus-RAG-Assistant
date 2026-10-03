@@ -1,0 +1,82 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "72218a18ca41dd9892426449c69e4b211c83593b4dc51e304bc32c8ffdf59126",
+    "size": 35144
+  },
+  {
+    "path": "..\\README.md",
+    "sha256": "535ccd8738fe5a60ee4027b312f31bf197bc405ede50b8005562cbd09bd63e56",
+    "size": 3847
+  },
+  {
+    "path": "examples\\procedures\\procedures.json",
+    "sha256": "70d35d7875f98e92df33b62bfe180f812ea8bd0f4697525f0d1d645f53f4ca11",
+    "size": 6328
+  },
+  {
+    "path": "scripts\\check-procedures-behavior.cjs",
+    "sha256": "caadd0e70394bd1fe3246373f96be271ea832bc08f361773db969c268a59fa5d",
+    "size": 22008
+  },
+  {
+    "path": "scripts\\demo-ask-page-mock.py",
+    "sha256": "4a8cd0e920f8142c2360acadb13f0bbe8ab2ec72ac5e9db03ea1534d16e45d08",
+    "size": 3598
+  },
+  {
+    "path": "scripts\\demo-procedures-api.py",
+    "sha256": "0f68e2dcba623cde3cef24dda9e15c12ef821b91da1f9dd213871dc5f825de84",
+    "size": 6883
+  },
+  {
+    "path": "src\\campus_assistant\\api\\procedures.py",
+    "sha256": "66137afd3b4b1890e66cac7711c01b1ac8ab0ac6f8bb20a17893f30a5a09cd50",
+    "size": 5644
+  },
+  {
+    "path": "src\\campus_assistant\\demo.py",
+    "sha256": "42ef904f8832c52d51d0bdeaee238c97b4d525b94455423132f32c42dc0b06c9",
+    "size": 1129
+  },
+  {
+    "path": "src\\campus_assistant\\main.py",
+    "sha256": "654e17eeb918bd6549d2a8c9eb7696dbf29e194265392f8aee022ac8ce446cc3",
+    "size": 9246
+  },
+  {
+    "path": "src\\campus_assistant\\procedures\\__init__.py",
+    "sha256": "657bb5c51f5b4ec5dd8ab90a1a2c9919c1fb2ee5d2a4adcaa8ba69ce05d7a0ce",
+    "size": 335
+  },
+  {
+    "path": "src\\campus_assistant\\procedures\\service.py",
+    "sha256": "3bc26d117150163800389424ca3b5d1ee69b4e605b445559b2bf0cfaf68a58b1",
+    "size": 10929
+  },
+  {
+    "path": "src\\campus_assistant\\static\\ask.html",
+    "sha256": "beacbb4b88863fc594e0ec159dccbda4010e4286682a23602f32f91aad11bac6",
+    "size": 32381
+  },
+  {
+    "path": "src\\campus_assistant\\static\\preview.html",
+    "sha256": "45831fa80857569f5ca709dfd0a1b99c898fc824e5e21ec5659c0d7dedabda1f",
+    "size": 21385
+  },
+  {
+    "path": "src\\campus_assistant\\static\\procedures.html",
+    "sha256": "d1ad27cb39d398bf773b1f08458c2d660d0996d13c94bfd278e61d07eaac6996",
+    "size": 30740
+  },
+  {
+    "path": "src\\campus_assistant\\static\\search.html",
+    "sha256": "8059ecff811a683ebd78bd161464a2a6ced3f889f643a789c23a56cc78ba3dda",
+    "size": 25478
+  },
+  {
+    "path": "tests\\test_procedures.py",
+    "sha256": "72a1a704ecbede9bb86598f5d782ff508e508663b027a0418fa30eaed3515d8c",
+    "size": 17850
+  }
+]

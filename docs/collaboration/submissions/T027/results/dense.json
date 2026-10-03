@@ -1,0 +1,2225 @@
+{
+  "schema_version": "1.0",
+  "evaluator_version": "1.0",
+  "valid": true,
+  "dataset_id": "eval-v2-synthetic",
+  "dataset_version": "2.0",
+  "split": "dev",
+  "is_synthetic": true,
+  "retriever_version": "1.0",
+  "tokenizer_version": "cjk_bigram_ascii_v1",
+  "chunker_version": "1.0",
+  "parser_version": "1.0",
+  "mode": "dense",
+  "model": "models/bge-small-zh-v1.5",
+  "embedding_model_id": "bge-small-zh-v1.5",
+  "embedding_model_revision": "7999e1d3359715c523056ef9478215996d62a620",
+  "truncated_chunk_count": 0,
+  "truncation_note": "超出模型 token 上限的长块在向量计算中可能仅部分参与；原文与 chunk 文本未被截短或覆盖。",
+  "embedding_normalization": "l2",
+  "query_prefix": "为这个句子生成表示以用于检索相关文章：",
+  "rrf_k": null,
+  "parameters": {
+    "max_chars": 500,
+    "k1": 1.5,
+    "b": 0.75,
+    "top_k": 5
+  },
+  "question_count": 24,
+  "answerable_count": 20,
+  "unanswerable_count": 4,
+  "manifest_sha256": "4fa135dd0963dad4dfcf378b7fd8424241f33f0bf575dcfccd7974c954a43042",
+  "questions_sha256": "afdedadf380e9fac2d8e39fcf1b34b4b7ecfcbce17029c2ab38c21145c7126c4",
+  "corpus_documents": [
+    {
+      "document_id": "syn-parse-txt-001",
+      "sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07"
+    },
+    {
+      "document_id": "syn-parse-docx-001",
+      "sha256": "cd73ea5546189d402b021200e873e61a227d5d37fa9c18c4bd2908e465b72c63"
+    },
+    {
+      "document_id": "fd-2024",
+      "sha256": "131838cca37947cc960da8f0c25d21124006093f5643d85fe23b27e38ed1aa3f"
+    },
+    {
+      "document_id": "fd-2025",
+      "sha256": "745e52eaab4c64fcbc66370b58e0934b46a8874d55dd261d0605905973921248"
+    },
+    {
+      "document_id": "fd-yjy",
+      "sha256": "121ba90a3ee72b3ccd155bc645d363f873906395aeee54472ec5fb362b7c945b"
+    },
+    {
+      "document_id": "fd-unknown",
+      "sha256": "4425d3bd299f7dcdfa9b88d08c662da1f78356b11765d80071ea17857891089b"
+    },
+    {
+      "document_id": "fd-future",
+      "sha256": "6835a4093590341d65f53a04c94f39d417577a11d5103d1e28dc342bcd61e2d2"
+    },
+    {
+      "document_id": "cmp-defer-v1",
+      "sha256": "d646bb13a47f3e5c4f60abb5d006c7a0d678fe64c1be1fb304fa6a446de19f85"
+    },
+    {
+      "document_id": "cmp-defer-v2",
+      "sha256": "102195eace0b22c65a98811cfdcadeb7bca89dc4e9b6a32bc7d356a99057cbc3"
+    },
+    {
+      "document_id": "cmp-grades-1",
+      "sha256": "ea3f68c1b0abb3254b7e7792cd007a0a69bf23325e150bd416c4ea29a75e635b"
+    },
+    {
+      "document_id": "syn-pdf-text-001",
+      "sha256": "66e0f6287aa365cfcc89f2cad15e4d9213f782c6303c86fb713b086aad71fa76"
+    },
+    {
+      "document_id": "dis-graduate-defer",
+      "sha256": "25f67d9d62217448738f061fb53ea90e2a50989aa5d0c96b6fece003c13cf6bc"
+    },
+    {
+      "document_id": "dis-scholarship",
+      "sha256": "35073428d5fd09cac4113786a008c95340d232cc5e26d06e4372512e8aed0576"
+    }
+  ],
+  "authoring_note": "题目与标注由 MiMo（Claude Code 执行模型）直接阅读合成语料原文块后辅助编写；跨度由 scripts/build-eval-v2.py fill-spans 按原文子串精确定位并校验；金标准未从任何检索结果反推。v2.0 为 T027-R1 相关性复核修订版（可替代证据组 + 题面消歧），修订理由见各题 revision_note 与 gold-revisions.md。全部为合成资料，不代表真实学校政策。",
+  "metrics_semantics": "fact_group_or_v1.1",
+  "recall_definition": "evidence_recall = 被完整覆盖的必要事实数 / 必要事实总数（同 fact_id 的可替代来源组内 OR；不同 fact_id 组间 AND；未标 fact_id 的旧数据等价于逐证据口径）",
+  "summary": {
+    "evidence_recall": 0.9,
+    "hit": 0.9,
+    "mrr": 0.7058333333333333,
+    "answerable_count": 20,
+    "unanswerable_count": 4,
+    "empty_result_rate": 0.0
+  },
+  "summary_by_type": {
+    "direct": {
+      "evidence_recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.8125,
+      "answerable_count": 4,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 4,
+      "question_ids": [
+        "v2-q01",
+        "v2-q02",
+        "v2-q03",
+        "v2-q04"
+      ]
+    },
+    "paraphrase": {
+      "evidence_recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.8333333333333334,
+      "answerable_count": 3,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 3,
+      "question_ids": [
+        "v2-q05",
+        "v2-q06",
+        "v2-q07"
+      ]
+    },
+    "low_keyword": {
+      "evidence_recall": 0.5,
+      "hit": 0.5,
+      "mrr": 0.1,
+      "answerable_count": 2,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 2,
+      "question_ids": [
+        "v2-q08",
+        "v2-q09"
+      ]
+    },
+    "multi_evidence": {
+      "evidence_recall": 0.5,
+      "hit": 0.6666666666666666,
+      "mrr": 0.6666666666666666,
+      "answerable_count": 3,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 3,
+      "question_ids": [
+        "v2-q10",
+        "v2-q11",
+        "v2-q12"
+      ]
+    },
+    "distractor": {
+      "evidence_recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "answerable_count": 3,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 3,
+      "question_ids": [
+        "v2-q13",
+        "v2-q14",
+        "v2-q15"
+      ]
+    },
+    "filtered": {
+      "evidence_recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.7666666666666667,
+      "answerable_count": 5,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 5,
+      "question_ids": [
+        "v2-q16",
+        "v2-q17",
+        "v2-q18",
+        "v2-q19",
+        "v2-q20"
+      ]
+    },
+    "unanswerable": {
+      "evidence_recall": null,
+      "hit": null,
+      "mrr": null,
+      "answerable_count": 0,
+      "unanswerable_count": 4,
+      "empty_result_rate": 0.0,
+      "question_count": 4,
+      "question_ids": [
+        "v2-q21",
+        "v2-q22",
+        "v2-q23",
+        "v2-q24"
+      ]
+    }
+  },
+  "summary_by_filter_group": {
+    "no_filter": {
+      "evidence_recall": 0.8214285714285714,
+      "hit": 0.8571428571428571,
+      "mrr": 0.7107142857142856,
+      "answerable_count": 14,
+      "unanswerable_count": 3,
+      "empty_result_rate": 0.0,
+      "question_count": 17,
+      "question_ids": [
+        "v2-q01",
+        "v2-q02",
+        "v2-q03",
+        "v2-q04",
+        "v2-q05",
+        "v2-q06",
+        "v2-q07",
+        "v2-q08",
+        "v2-q09",
+        "v2-q10",
+        "v2-q12",
+        "v2-q13",
+        "v2-q14",
+        "v2-q15",
+        "v2-q22",
+        "v2-q23",
+        "v2-q24"
+      ]
+    },
+    "filtered": {
+      "evidence_recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "answerable_count": 1,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 1,
+      "question_ids": [
+        "v2-q11"
+      ]
+    },
+    "g-year-defer|filtered": {
+      "evidence_recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.75,
+      "answerable_count": 2,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 2,
+      "question_ids": [
+        "v2-q16",
+        "v2-q17"
+      ]
+    },
+    "g-campus-defer|filtered": {
+      "evidence_recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.6666666666666666,
+      "answerable_count": 2,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 2,
+      "question_ids": [
+        "v2-q18",
+        "v2-q19"
+      ]
+    },
+    "g-time-defer|filtered": {
+      "evidence_recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "answerable_count": 1,
+      "unanswerable_count": 1,
+      "empty_result_rate": 0.0,
+      "question_count": 2,
+      "question_ids": [
+        "v2-q20",
+        "v2-q21"
+      ]
+    }
+  },
+  "timing_seconds": {
+    "note": "仅记录本轮单次运行的分段耗时（索引构建/查询），非统计稳定性能，不作速度结论",
+    "index_build_bm25": 0.0046,
+    "index_build_dense": 8.7733,
+    "query_total": 0.2261,
+    "query_scope": "24 题串行查询（含编码查询向量的耗时）"
+  },
+  "per_question": [
+    {
+      "question_id": "v2-q01",
+      "query": "补考成绩最高记为多少分",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.5868313312530518,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "009121d9f2695116",
+          "chunk_id": "8571753b3134a37487ebaaa49d3c5b4d8fc881b9c49bbd48e94ad413eb2ecf28",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/009121d9f2695116"
+        },
+        {
+          "rank": 2,
+          "score": 0.5591403841972351,
+          "document_id": "cmp-grades-1",
+          "block_id": "9a57744ef7ee55a8",
+          "chunk_id": "802f7c543bc0141ded24ce095b4856820b66f63474cf5d022c5d2c2ffe84b30f",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#cmp-grades-1/9a57744ef7ee55a8"
+        },
+        {
+          "rank": 3,
+          "score": 0.5495481491088867,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "b8b8a0c2bf59b405",
+          "chunk_id": "4f47c2ed95414db4e6ef504a4bf7839991d9fabe1ffcc73c4e3ba8d2556931c0",
+          "char_start": 0,
+          "char_end": 76,
+          "preview_url": "/preview#syn-parse-txt-001/b8b8a0c2bf59b405"
+        },
+        {
+          "rank": 4,
+          "score": 0.5130810737609863,
+          "document_id": "dis-scholarship",
+          "block_id": "3dfa7d4a91e653e9",
+          "chunk_id": "d42d9af9eb20d06c0aef41f8e8351bde961c9e0702b8273c8dbd8cd78923012d",
+          "char_start": 0,
+          "char_end": 44,
+          "preview_url": "/preview#dis-scholarship/3dfa7d4a91e653e9"
+        },
+        {
+          "rank": 5,
+          "score": 0.508944034576416,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "b304f406a03da01b",
+          "chunk_id": "a413b6fa539cd64672dbe48fd59ba13ae147d5c58175c42ab5b06b9badf29668",
+          "char_start": 0,
+          "char_end": 21,
+          "preview_url": "/preview#syn-parse-docx-001/b304f406a03da01b"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "direct",
+      "group_id": null,
+      "conditions": null,
+      "rationale": "直述：原文第三条直接给出补考成绩上限。语料无其他同事实来源。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q02",
+      "query": "缓考申请须经哪个部门批准",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.754542887210846,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "0a7595fda827d87e",
+          "chunk_id": "8726b8b809c996bce2710ba1126a63ac59a0556f084dad2f44d0e6cd02f82924",
+          "char_start": 0,
+          "char_end": 19,
+          "preview_url": "/preview#syn-parse-docx-001/0a7595fda827d87e"
+        },
+        {
+          "rank": 2,
+          "score": 0.7417467832565308,
+          "document_id": "cmp-defer-v1",
+          "block_id": "fcbf298150240157",
+          "chunk_id": "93c28c4f6fb38f5e081269e47a44d75196811d5a78e74a2fd87340120982d75a",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#cmp-defer-v1/fcbf298150240157"
+        },
+        {
+          "rank": 3,
+          "score": 0.7417467832565308,
+          "document_id": "cmp-defer-v2",
+          "block_id": "bc5f604c8fe5ba8d",
+          "chunk_id": "e681bf96b691144876bd1a33f591dd9b025ff297ca261e7299ad0993fdbb0546",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#cmp-defer-v2/bc5f604c8fe5ba8d"
+        },
+        {
+          "rank": 4,
+          "score": 0.7244110703468323,
+          "document_id": "fd-2024",
+          "block_id": "773e8568327bac71",
+          "chunk_id": "bd819ec90cb0ace35247aaaf5ea4d3ccc88f13e15ea1c8d78f7ba40643bb0a8c",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-2024/773e8568327bac71"
+        },
+        {
+          "rank": 5,
+          "score": 0.7210031747817993,
+          "document_id": "fd-2025",
+          "block_id": "93d350b5c0fb8b15",
+          "chunk_id": "0ae7db7e5999c514534039374a33f5853797e30ccd424f5bc2ab2334effa8b1c",
+          "char_start": 0,
+          "char_end": 86,
+          "preview_url": "/preview#fd-2025/93d350b5c0fb8b15"
+        }
+      ],
+      "gold_count": 3,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1",
+            "ev2",
+            "ev3"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev2",
+        "ev3"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.25,
+      "returned_count": 5,
+      "question_type": "direct",
+      "group_id": null,
+      "conditions": null,
+      "rationale": "直述：审批部门链（学院批准→教务处备案）。三处来源表述同一事实（可替代证据组 f1，任一满足）。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q03",
+      "query": "都江堰校区学生的缓考申请交到哪里",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.8018127679824829,
+          "document_id": "fd-yjy",
+          "block_id": "692d28b992c6eff3",
+          "chunk_id": "205a878849a44d390e3d273b6e8e325b8947f0872cce5b2549034db21c9aa483",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-yjy/692d28b992c6eff3"
+        },
+        {
+          "rank": 2,
+          "score": 0.6499077677726746,
+          "document_id": "syn-pdf-text-001",
+          "block_id": "d897e41b44bfa468",
+          "chunk_id": "61c7aea28ae2e578a71d108644e43499ac7b8f8066a10b110f6c6357108ffef1",
+          "char_start": 0,
+          "char_end": 53,
+          "preview_url": "/preview#syn-pdf-text-001/d897e41b44bfa468"
+        },
+        {
+          "rank": 3,
+          "score": 0.6413133144378662,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "0a7595fda827d87e",
+          "chunk_id": "8726b8b809c996bce2710ba1126a63ac59a0556f084dad2f44d0e6cd02f82924",
+          "char_start": 0,
+          "char_end": 19,
+          "preview_url": "/preview#syn-parse-docx-001/0a7595fda827d87e"
+        },
+        {
+          "rank": 4,
+          "score": 0.6403855681419373,
+          "document_id": "fd-2024",
+          "block_id": "773e8568327bac71",
+          "chunk_id": "bd819ec90cb0ace35247aaaf5ea4d3ccc88f13e15ea1c8d78f7ba40643bb0a8c",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-2024/773e8568327bac71"
+        },
+        {
+          "rank": 5,
+          "score": 0.6399997472763062,
+          "document_id": "fd-2025",
+          "block_id": "93d350b5c0fb8b15",
+          "chunk_id": "0ae7db7e5999c514534039374a33f5853797e30ccd424f5bc2ab2334effa8b1c",
+          "char_start": 0,
+          "char_end": 86,
+          "preview_url": "/preview#fd-2025/93d350b5c0fb8b15"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "direct",
+      "group_id": null,
+      "conditions": null,
+      "rationale": "直述：校区专名+受理部门；语料无其他同事实来源。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q04",
+      "query": "成绩以什么为准",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.6141382455825806,
+          "document_id": "cmp-grades-1",
+          "block_id": "b475a4d00030292e",
+          "chunk_id": "cc6d805c851cb76f8826ef725449a937142f3df8d5a183aaf1581e2918c0aed9",
+          "char_start": 0,
+          "char_end": 16,
+          "preview_url": "/preview#cmp-grades-1/b475a4d00030292e"
+        },
+        {
+          "rank": 2,
+          "score": 0.6026284098625183,
+          "document_id": "cmp-grades-1",
+          "block_id": "9a57744ef7ee55a8",
+          "chunk_id": "802f7c543bc0141ded24ce095b4856820b66f63474cf5d022c5d2c2ffe84b30f",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#cmp-grades-1/9a57744ef7ee55a8"
+        },
+        {
+          "rank": 3,
+          "score": 0.5860521793365479,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "f28ee3e4c5372f7c",
+          "chunk_id": "28ef3f3e2bb91687eca70eaec02989d98239ad0df9edc09c5f0f19d342a7a9d8",
+          "char_start": 0,
+          "char_end": 54,
+          "preview_url": "/preview#syn-parse-docx-001/f28ee3e4c5372f7c"
+        },
+        {
+          "rank": 4,
+          "score": 0.5806642770767212,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "542187ebbac5a4b2",
+          "chunk_id": "74d0cbd21e1fa05255cc00f6b8af52f1edc89ca97a1288470c27dd15a5b8fe42",
+          "char_start": 0,
+          "char_end": 71,
+          "preview_url": "/preview#syn-parse-txt-001/542187ebbac5a4b2"
+        },
+        {
+          "rank": 5,
+          "score": 0.5704183578491211,
+          "document_id": "dis-scholarship",
+          "block_id": "3dfa7d4a91e653e9",
+          "chunk_id": "d42d9af9eb20d06c0aef41f8e8351bde961c9e0702b8273c8dbd8cd78923012d",
+          "char_start": 0,
+          "char_end": 44,
+          "preview_url": "/preview#dis-scholarship/3dfa7d4a91e653e9"
+        }
+      ],
+      "gold_count": 2,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1",
+            "ev2"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1",
+        "ev2"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "direct",
+      "group_id": null,
+      "conditions": null,
+      "rationale": "直述：成绩以教务系统公布为准。两处来源同一事实（组 f1，任一满足）。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q05",
+      "query": "因病因事无法参加期末考试时如何延期考核",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.7446469068527222,
+          "document_id": "cmp-defer-v2",
+          "block_id": "5d10baf30aed29f6",
+          "chunk_id": "e2414d710d0a22ff4885c07fc24e28efbdef3d4b2b95e7b32b3586b87344ba2a",
+          "char_start": 0,
+          "char_end": 35,
+          "preview_url": "/preview#cmp-defer-v2/5d10baf30aed29f6"
+        },
+        {
+          "rank": 2,
+          "score": 0.7446467876434326,
+          "document_id": "cmp-defer-v1",
+          "block_id": "3d5e04669fbfe064",
+          "chunk_id": "c5ba58e04580e6ec507e00446c83dc90c9fee68ffe5d8db0a93aae2efe3b1043",
+          "char_start": 0,
+          "char_end": 35,
+          "preview_url": "/preview#cmp-defer-v1/3d5e04669fbfe064"
+        },
+        {
+          "rank": 3,
+          "score": 0.6811538934707642,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "9df6bfbd98df733e",
+          "chunk_id": "1808dc49035170f32fe995017a4e13afa744ea421b1cb286b118412ba63d1c30",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+        },
+        {
+          "rank": 4,
+          "score": 0.6269168853759766,
+          "document_id": "dis-graduate-defer",
+          "block_id": "292ef8b2ddf35040",
+          "chunk_id": "85c118333f8e6d7ddf8bb1f54789d83b1b1fdf34f7a04a29d3a2bf4d67915942",
+          "char_start": 0,
+          "char_end": 61,
+          "preview_url": "/preview#dis-graduate-defer/292ef8b2ddf35040"
+        },
+        {
+          "rank": 5,
+          "score": 0.6151201725006104,
+          "document_id": "fd-2025",
+          "block_id": "93d350b5c0fb8b15",
+          "chunk_id": "0ae7db7e5999c514534039374a33f5853797e30ccd424f5bc2ab2334effa8b1c",
+          "char_start": 0,
+          "char_end": 86,
+          "preview_url": "/preview#fd-2025/93d350b5c0fb8b15"
+        }
+      ],
+      "gold_count": 2,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1",
+            "ev2"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1",
+        "ev2"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "paraphrase",
+      "group_id": null,
+      "conditions": null,
+      "rationale": "同义改写：查询用「延期考核」对应「缓考」定义。两版本第一条逐字相同，均为有效替代来源（组 f1，任一满足）；文档身份仅用于定位，不作相关性判断。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q06",
+      "query": "补考没通过要怎么办",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.647830605506897,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "b8b8a0c2bf59b405",
+          "chunk_id": "4f47c2ed95414db4e6ef504a4bf7839991d9fabe1ffcc73c4e3ba8d2556931c0",
+          "char_start": 0,
+          "char_end": 76,
+          "preview_url": "/preview#syn-parse-txt-001/b8b8a0c2bf59b405"
+        },
+        {
+          "rank": 2,
+          "score": 0.6306444406509399,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "009121d9f2695116",
+          "chunk_id": "8571753b3134a37487ebaaa49d3c5b4d8fc881b9c49bbd48e94ad413eb2ecf28",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/009121d9f2695116"
+        },
+        {
+          "rank": 3,
+          "score": 0.6071723699569702,
+          "document_id": "fd-2025",
+          "block_id": "93d350b5c0fb8b15",
+          "chunk_id": "0ae7db7e5999c514534039374a33f5853797e30ccd424f5bc2ab2334effa8b1c",
+          "char_start": 0,
+          "char_end": 86,
+          "preview_url": "/preview#fd-2025/93d350b5c0fb8b15"
+        },
+        {
+          "rank": 4,
+          "score": 0.6000411510467529,
+          "document_id": "syn-pdf-text-001",
+          "block_id": "d897e41b44bfa468",
+          "chunk_id": "61c7aea28ae2e578a71d108644e43499ac7b8f8066a10b110f6c6357108ffef1",
+          "char_start": 0,
+          "char_end": 53,
+          "preview_url": "/preview#syn-pdf-text-001/d897e41b44bfa468"
+        },
+        {
+          "rank": 5,
+          "score": 0.5982973575592041,
+          "document_id": "fd-2024",
+          "block_id": "773e8568327bac71",
+          "chunk_id": "bd819ec90cb0ace35247aaaf5ea4d3ccc88f13e15ea1c8d78f7ba40643bb0a8c",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-2024/773e8568327bac71"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.5,
+      "returned_count": 5,
+      "question_type": "paraphrase",
+      "group_id": null,
+      "conditions": null,
+      "rationale": "同义改写：「没通过」→「仍不合格」，答案为重修规定。语料无其他同事实来源。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q07",
+      "query": "作弊被处分后还能补考吗",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.6798306703567505,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "b8b8a0c2bf59b405",
+          "chunk_id": "4f47c2ed95414db4e6ef504a4bf7839991d9fabe1ffcc73c4e3ba8d2556931c0",
+          "char_start": 0,
+          "char_end": 76,
+          "preview_url": "/preview#syn-parse-txt-001/b8b8a0c2bf59b405"
+        },
+        {
+          "rank": 2,
+          "score": 0.5764532089233398,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "009121d9f2695116",
+          "chunk_id": "8571753b3134a37487ebaaa49d3c5b4d8fc881b9c49bbd48e94ad413eb2ecf28",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/009121d9f2695116"
+        },
+        {
+          "rank": 3,
+          "score": 0.5513971447944641,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "9df6bfbd98df733e",
+          "chunk_id": "1808dc49035170f32fe995017a4e13afa744ea421b1cb286b118412ba63d1c30",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+        },
+        {
+          "rank": 4,
+          "score": 0.5291138291358948,
+          "document_id": "syn-pdf-text-001",
+          "block_id": "d897e41b44bfa468",
+          "chunk_id": "61c7aea28ae2e578a71d108644e43499ac7b8f8066a10b110f6c6357108ffef1",
+          "char_start": 0,
+          "char_end": 53,
+          "preview_url": "/preview#syn-pdf-text-001/d897e41b44bfa468"
+        },
+        {
+          "rank": 5,
+          "score": 0.5265007019042969,
+          "document_id": "fd-2025",
+          "block_id": "93d350b5c0fb8b15",
+          "chunk_id": "0ae7db7e5999c514534039374a33f5853797e30ccd424f5bc2ab2334effa8b1c",
+          "char_start": 0,
+          "char_end": 86,
+          "preview_url": "/preview#fd-2025/93d350b5c0fb8b15"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "paraphrase",
+      "group_id": null,
+      "conditions": null,
+      "rationale": "同义改写：疑问式命中取消补考资格清单首项（上下文为第四条标题行）。语料无其他同事实来源。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q08",
+      "query": "备案",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.42361170053482056,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "3832e6101a04e1c4",
+          "chunk_id": "7051c898d266fea27225880e5d78541316b4fb64d29964f72c816207892abcdc",
+          "char_start": 0,
+          "char_end": 10,
+          "preview_url": "/preview#syn-parse-docx-001/3832e6101a04e1c4"
+        },
+        {
+          "rank": 2,
+          "score": 0.3842929005622864,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "b304f406a03da01b",
+          "chunk_id": "a413b6fa539cd64672dbe48fd59ba13ae147d5c58175c42ab5b06b9badf29668",
+          "char_start": 0,
+          "char_end": 21,
+          "preview_url": "/preview#syn-parse-docx-001/b304f406a03da01b"
+        },
+        {
+          "rank": 3,
+          "score": 0.37940657138824463,
+          "document_id": "cmp-defer-v2",
+          "block_id": "2fb244a29d56b00a",
+          "chunk_id": "33888da6905ccce5ddf984902570bd3d3cbfe8bcbd22a1348cb161d02cb243d8",
+          "char_start": 0,
+          "char_end": 37,
+          "preview_url": "/preview#cmp-defer-v2/2fb244a29d56b00a"
+        },
+        {
+          "rank": 4,
+          "score": 0.37940657138824463,
+          "document_id": "cmp-defer-v1",
+          "block_id": "b3200438a0747c6f",
+          "chunk_id": "a93e53fa35016f1011fc47048bac048de4a91e926017228051abb9f53b273727",
+          "char_start": 0,
+          "char_end": 37,
+          "preview_url": "/preview#cmp-defer-v1/b3200438a0747c6f"
+        },
+        {
+          "rank": 5,
+          "score": 0.37940654158592224,
+          "document_id": "cmp-grades-1",
+          "block_id": "c86b92c6922f1b3c",
+          "chunk_id": "6510e02b665b631c0f0cb46d65f9b22667e2aec1c0f78b23d4d7356aa4b63f1f",
+          "char_start": 0,
+          "char_end": 37,
+          "preview_url": "/preview#cmp-grades-1/c86b92c6922f1b3c"
+        }
+      ],
+      "gold_count": 3,
+      "fact_count": 1,
+      "covered_fact_count": 0,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1",
+            "ev2",
+            "ev3"
+          ],
+          "covered": false
+        }
+      ],
+      "covered_evidence_ids": [],
+      "recall": 0.0,
+      "hit": 0.0,
+      "mrr": 0.0,
+      "returned_count": 5,
+      "question_type": "low_keyword",
+      "group_id": null,
+      "conditions": null,
+      "rationale": "少关键词：低频词「备案」。三处缓考备案表述同一事实（组 f1，任一满足）。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q09",
+      "query": "三分之一",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.38548213243484497,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "b304f406a03da01b",
+          "chunk_id": "a413b6fa539cd64672dbe48fd59ba13ae147d5c58175c42ab5b06b9badf29668",
+          "char_start": 0,
+          "char_end": 21,
+          "preview_url": "/preview#syn-parse-docx-001/b304f406a03da01b"
+        },
+        {
+          "rank": 2,
+          "score": 0.37560251355171204,
+          "document_id": "dis-scholarship",
+          "block_id": "3dfa7d4a91e653e9",
+          "chunk_id": "d42d9af9eb20d06c0aef41f8e8351bde961c9e0702b8273c8dbd8cd78923012d",
+          "char_start": 0,
+          "char_end": 44,
+          "preview_url": "/preview#dis-scholarship/3dfa7d4a91e653e9"
+        },
+        {
+          "rank": 3,
+          "score": 0.3707486689090729,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "542187ebbac5a4b2",
+          "chunk_id": "74d0cbd21e1fa05255cc00f6b8af52f1edc89ca97a1288470c27dd15a5b8fe42",
+          "char_start": 0,
+          "char_end": 71,
+          "preview_url": "/preview#syn-parse-txt-001/542187ebbac5a4b2"
+        },
+        {
+          "rank": 4,
+          "score": 0.357282817363739,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "239ba0ebfcf74591",
+          "chunk_id": "70cded090363e2f0fe33787fcb7a6834db1b14fb944152fe0133899e16436136",
+          "char_start": 0,
+          "char_end": 21,
+          "preview_url": "/preview#syn-parse-docx-001/239ba0ebfcf74591"
+        },
+        {
+          "rank": 5,
+          "score": 0.3572314381599426,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "b8b8a0c2bf59b405",
+          "chunk_id": "4f47c2ed95414db4e6ef504a4bf7839991d9fabe1ffcc73c4e3ba8d2556931c0",
+          "char_start": 0,
+          "char_end": 76,
+          "preview_url": "/preview#syn-parse-txt-001/b8b8a0c2bf59b405"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.2,
+      "returned_count": 5,
+      "question_type": "low_keyword",
+      "group_id": null,
+      "conditions": null,
+      "rationale": "少关键词：数字词仅第四条一处出现。语料无其他同事实来源。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q10",
+      "query": "2024级本科生缓考申请的证明材料和审批流程分别是什么",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.7527880668640137,
+          "document_id": "syn-pdf-text-001",
+          "block_id": "d897e41b44bfa468",
+          "chunk_id": "61c7aea28ae2e578a71d108644e43499ac7b8f8066a10b110f6c6357108ffef1",
+          "char_start": 0,
+          "char_end": 53,
+          "preview_url": "/preview#syn-pdf-text-001/d897e41b44bfa468"
+        },
+        {
+          "rank": 2,
+          "score": 0.7438583374023438,
+          "document_id": "fd-2024",
+          "block_id": "773e8568327bac71",
+          "chunk_id": "bd819ec90cb0ace35247aaaf5ea4d3ccc88f13e15ea1c8d78f7ba40643bb0a8c",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-2024/773e8568327bac71"
+        },
+        {
+          "rank": 3,
+          "score": 0.6874732375144958,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "0a7595fda827d87e",
+          "chunk_id": "8726b8b809c996bce2710ba1126a63ac59a0556f084dad2f44d0e6cd02f82924",
+          "char_start": 0,
+          "char_end": 19,
+          "preview_url": "/preview#syn-parse-docx-001/0a7595fda827d87e"
+        },
+        {
+          "rank": 4,
+          "score": 0.6847537755966187,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "9df6bfbd98df733e",
+          "chunk_id": "1808dc49035170f32fe995017a4e13afa744ea421b1cb286b118412ba63d1c30",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+        },
+        {
+          "rank": 5,
+          "score": 0.6749165058135986,
+          "document_id": "fd-yjy",
+          "block_id": "692d28b992c6eff3",
+          "chunk_id": "205a878849a44d390e3d273b6e8e325b8947f0872cce5b2549034db21c9aa483",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-yjy/692d28b992c6eff3"
+        }
+      ],
+      "gold_count": 4,
+      "fact_count": 2,
+      "covered_fact_count": 2,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1",
+            "ev2"
+          ],
+          "covered": true
+        },
+        {
+          "fact_id": "f2",
+          "evidence_ids": [
+            "ev3",
+            "ev4"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1",
+        "ev2",
+        "ev3",
+        "ev4"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.5,
+      "returned_count": 5,
+      "question_type": "multi_evidence",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": 2024,
+        "as_of_date": null
+      },
+      "rationale": "多证据（两必要事实 AND）。题面限定适用范围=2024 级本科生（条件 admission_year=2024，产品筛选同口径）：f1=审批流程（fd-2024 与学籍规定两处完整审批链表述等价，OR）；f2=证明材料要求（医院证明——fd-2024「附医院证明」与登记表「需医院证明」各自完整支持该要求，OR）。材料要求因范围限定而确定：fd-unknown「医院证明或学院书面说明」为未标注范围文件的合取口径、虚构 2024 版「须同时提交书面情况说明」属另一来源系列的不同材料要求——均不算 f2 替代来源（医院证明≠书面说明，须同时≠二选一；不同文件各自存在≠互为替代）。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q11",
+      "query": "2025级学生缓考的申请时限和成绩如何记录",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.7360981106758118,
+          "document_id": "fd-2025",
+          "block_id": "93d350b5c0fb8b15",
+          "chunk_id": "0ae7db7e5999c514534039374a33f5853797e30ccd424f5bc2ab2334effa8b1c",
+          "char_start": 0,
+          "char_end": 86,
+          "preview_url": "/preview#fd-2025/93d350b5c0fb8b15"
+        },
+        {
+          "rank": 2,
+          "score": 0.6598873138427734,
+          "document_id": "fd-yjy",
+          "block_id": "692d28b992c6eff3",
+          "chunk_id": "205a878849a44d390e3d273b6e8e325b8947f0872cce5b2549034db21c9aa483",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-yjy/692d28b992c6eff3"
+        },
+        {
+          "rank": 3,
+          "score": 0.3420150876045227,
+          "document_id": "fd-2025",
+          "block_id": "d971961afd12e2c7",
+          "chunk_id": "16fdae9e584e54d5306c74841c0578e6fc27b37d1162a4216da9070fdaac46e3",
+          "char_start": 0,
+          "char_end": 26,
+          "preview_url": "/preview#fd-2025/d971961afd12e2c7"
+        },
+        {
+          "rank": 4,
+          "score": 0.3420150876045227,
+          "document_id": "fd-yjy",
+          "block_id": "3135bc8c6e8b5ae4",
+          "chunk_id": "8025c19c60d501cd6c4b184aa40a3efcd7ad9d7c3845a82b374ba00f24f618a0",
+          "char_start": 0,
+          "char_end": 26,
+          "preview_url": "/preview#fd-yjy/3135bc8c6e8b5ae4"
+        }
+      ],
+      "gold_count": 2,
+      "fact_count": 2,
+      "covered_fact_count": 2,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1"
+          ],
+          "covered": true
+        },
+        {
+          "fact_id": "f2",
+          "evidence_ids": [
+            "ev2"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1",
+        "ev2"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 4,
+      "question_type": "multi_evidence",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": 2025,
+        "as_of_date": null
+      },
+      "rationale": "多证据（两必要事实 AND）：条件 admission_year=2025 准入集内仅 fd-2025 同时给出时限与成绩记录；fd-yjy 无此两事实。无等价来源。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q12",
+      "query": "虚构2024版缓考申请办法规定的缓考申请的提交期限和附加材料是什么",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.7919835448265076,
+          "document_id": "cmp-defer-v1",
+          "block_id": "fcbf298150240157",
+          "chunk_id": "93c28c4f6fb38f5e081269e47a44d75196811d5a78e74a2fd87340120982d75a",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#cmp-defer-v1/fcbf298150240157"
+        },
+        {
+          "rank": 2,
+          "score": 0.7919835448265076,
+          "document_id": "cmp-defer-v2",
+          "block_id": "bc5f604c8fe5ba8d",
+          "chunk_id": "e681bf96b691144876bd1a33f591dd9b025ff297ca261e7299ad0993fdbb0546",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#cmp-defer-v2/bc5f604c8fe5ba8d"
+        },
+        {
+          "rank": 3,
+          "score": 0.7768136262893677,
+          "document_id": "fd-future",
+          "block_id": "899b7d2b54e9a72e",
+          "chunk_id": "db472cad0d449736e2cd7db2fc9241f2deca9728414f459073d26aa83fc109d5",
+          "char_start": 0,
+          "char_end": 77,
+          "preview_url": "/preview#fd-future/899b7d2b54e9a72e"
+        },
+        {
+          "rank": 4,
+          "score": 0.7465144991874695,
+          "document_id": "syn-pdf-text-001",
+          "block_id": "d897e41b44bfa468",
+          "chunk_id": "61c7aea28ae2e578a71d108644e43499ac7b8f8066a10b110f6c6357108ffef1",
+          "char_start": 0,
+          "char_end": 53,
+          "preview_url": "/preview#syn-pdf-text-001/d897e41b44bfa468"
+        },
+        {
+          "rank": 5,
+          "score": 0.7380362749099731,
+          "document_id": "fd-2024",
+          "block_id": "773e8568327bac71",
+          "chunk_id": "bd819ec90cb0ace35247aaaf5ea4d3ccc88f13e15ea1c8d78f7ba40643bb0a8c",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-2024/773e8568327bac71"
+        }
+      ],
+      "gold_count": 2,
+      "fact_count": 2,
+      "covered_fact_count": 0,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1"
+          ],
+          "covered": false
+        },
+        {
+          "fact_id": "f2",
+          "evidence_ids": [
+            "ev2"
+          ],
+          "covered": false
+        }
+      ],
+      "covered_evidence_ids": [],
+      "recall": 0.0,
+      "hit": 0.0,
+      "mrr": 0.0,
+      "returned_count": 5,
+      "question_type": "multi_evidence",
+      "group_id": null,
+      "conditions": null,
+      "rationale": "多证据（两必要事实 AND）：题面明确限定虚构 2024 版（cmp-defer-v1，版本标签「虚构 2024 版」）。f1=该版提交期限（考试前 5 个工作日）、f2=该版附加材料（书面情况说明）。虚构 2025 版的「3 个工作日」属其他版本规定（内容冲突），不算本题正确来源。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q13",
+      "query": "研究生因科研任务不能参加考试如何申请缓考",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.807820200920105,
+          "document_id": "dis-graduate-defer",
+          "block_id": "292ef8b2ddf35040",
+          "chunk_id": "85c118333f8e6d7ddf8bb1f54789d83b1b1fdf34f7a04a29d3a2bf4d67915942",
+          "char_start": 0,
+          "char_end": 61,
+          "preview_url": "/preview#dis-graduate-defer/292ef8b2ddf35040"
+        },
+        {
+          "rank": 2,
+          "score": 0.7429788708686829,
+          "document_id": "fd-2024",
+          "block_id": "773e8568327bac71",
+          "chunk_id": "bd819ec90cb0ace35247aaaf5ea4d3ccc88f13e15ea1c8d78f7ba40643bb0a8c",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-2024/773e8568327bac71"
+        },
+        {
+          "rank": 3,
+          "score": 0.7415311336517334,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "9df6bfbd98df733e",
+          "chunk_id": "1808dc49035170f32fe995017a4e13afa744ea421b1cb286b118412ba63d1c30",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+        },
+        {
+          "rank": 4,
+          "score": 0.7224501371383667,
+          "document_id": "fd-2025",
+          "block_id": "93d350b5c0fb8b15",
+          "chunk_id": "0ae7db7e5999c514534039374a33f5853797e30ccd424f5bc2ab2334effa8b1c",
+          "char_start": 0,
+          "char_end": 86,
+          "preview_url": "/preview#fd-2025/93d350b5c0fb8b15"
+        },
+        {
+          "rank": 5,
+          "score": 0.6948835849761963,
+          "document_id": "fd-future",
+          "block_id": "899b7d2b54e9a72e",
+          "chunk_id": "db472cad0d449736e2cd7db2fc9241f2deca9728414f459073d26aa83fc109d5",
+          "char_start": 0,
+          "char_end": 77,
+          "preview_url": "/preview#fd-future/899b7d2b54e9a72e"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "distractor",
+      "group_id": null,
+      "conditions": null,
+      "rationale": "相似主题干扰：查询限定研究生；5 份本科生缓考资料同主题易误检但不适用于研究生（适用对象不同，不算等价来源）。语料无其他同事实来源。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q14",
+      "query": "缓考申请可以由他人代办吗",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.7657291293144226,
+          "document_id": "syn-pdf-text-001",
+          "block_id": "d897e41b44bfa468",
+          "chunk_id": "61c7aea28ae2e578a71d108644e43499ac7b8f8066a10b110f6c6357108ffef1",
+          "char_start": 0,
+          "char_end": 53,
+          "preview_url": "/preview#syn-pdf-text-001/d897e41b44bfa468"
+        },
+        {
+          "rank": 2,
+          "score": 0.7211334109306335,
+          "document_id": "cmp-defer-v1",
+          "block_id": "fcbf298150240157",
+          "chunk_id": "93c28c4f6fb38f5e081269e47a44d75196811d5a78e74a2fd87340120982d75a",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#cmp-defer-v1/fcbf298150240157"
+        },
+        {
+          "rank": 3,
+          "score": 0.7211334109306335,
+          "document_id": "cmp-defer-v2",
+          "block_id": "bc5f604c8fe5ba8d",
+          "chunk_id": "e681bf96b691144876bd1a33f591dd9b025ff297ca261e7299ad0993fdbb0546",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#cmp-defer-v2/bc5f604c8fe5ba8d"
+        },
+        {
+          "rank": 4,
+          "score": 0.7100887298583984,
+          "document_id": "fd-future",
+          "block_id": "899b7d2b54e9a72e",
+          "chunk_id": "db472cad0d449736e2cd7db2fc9241f2deca9728414f459073d26aa83fc109d5",
+          "char_start": 0,
+          "char_end": 77,
+          "preview_url": "/preview#fd-future/899b7d2b54e9a72e"
+        },
+        {
+          "rank": 5,
+          "score": 0.70279860496521,
+          "document_id": "fd-2024",
+          "block_id": "773e8568327bac71",
+          "chunk_id": "bd819ec90cb0ace35247aaaf5ea4d3ccc88f13e15ea1c8d78f7ba40643bb0a8c",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-2024/773e8568327bac71"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "distractor",
+      "group_id": null,
+      "conditions": null,
+      "rationale": "相似主题干扰（PDF 来源）：其他缓考资料未提代办。语料无其他同事实来源。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q15",
+      "query": "成绩复核申请须在多长时间内提出",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.7401834726333618,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "f28ee3e4c5372f7c",
+          "chunk_id": "28ef3f3e2bb91687eca70eaec02989d98239ad0df9edc09c5f0f19d342a7a9d8",
+          "char_start": 0,
+          "char_end": 54,
+          "preview_url": "/preview#syn-parse-docx-001/f28ee3e4c5372f7c"
+        },
+        {
+          "rank": 2,
+          "score": 0.692219078540802,
+          "document_id": "syn-pdf-text-001",
+          "block_id": "3428681d9af60ba3",
+          "chunk_id": "d58c7ba77f835f59995a5a53c02e5e2fcbd2ccff83fb4796923d872aabe859c7",
+          "char_start": 0,
+          "char_end": 87,
+          "preview_url": "/preview#syn-pdf-text-001/3428681d9af60ba3"
+        },
+        {
+          "rank": 3,
+          "score": 0.6778607368469238,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "b304f406a03da01b",
+          "chunk_id": "a413b6fa539cd64672dbe48fd59ba13ae147d5c58175c42ab5b06b9badf29668",
+          "char_start": 0,
+          "char_end": 21,
+          "preview_url": "/preview#syn-parse-docx-001/b304f406a03da01b"
+        },
+        {
+          "rank": 4,
+          "score": 0.626209020614624,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "009121d9f2695116",
+          "chunk_id": "8571753b3134a37487ebaaa49d3c5b4d8fc881b9c49bbd48e94ad413eb2ecf28",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/009121d9f2695116"
+        },
+        {
+          "rank": 5,
+          "score": 0.613091230392456,
+          "document_id": "cmp-defer-v2",
+          "block_id": "f5ca416480f4121e",
+          "chunk_id": "8040438cb717d36a3024ac361aa0073a1cc02e14874290cd1207d8dde31d719f",
+          "char_start": 0,
+          "char_end": 23,
+          "preview_url": "/preview#cmp-defer-v2/f5ca416480f4121e"
+        }
+      ],
+      "gold_count": 3,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1",
+            "ev2",
+            "ev3"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1",
+        "ev2",
+        "ev3"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "distractor",
+      "group_id": null,
+      "conditions": null,
+      "rationale": "相似主题干扰：成绩主题噪声多。三处来源均给出同一期限事实「成绩公布后 10 个工作日内」（组 f1，任一满足）。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q16",
+      "query": "按入学年级适用的缓考申请办法规定的缓考申请提交时限是什么",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.7278233766555786,
+          "document_id": "cmp-defer-v2",
+          "block_id": "5d10baf30aed29f6",
+          "chunk_id": "e2414d710d0a22ff4885c07fc24e28efbdef3d4b2b95e7b32b3586b87344ba2a",
+          "char_start": 0,
+          "char_end": 35,
+          "preview_url": "/preview#cmp-defer-v2/5d10baf30aed29f6"
+        },
+        {
+          "rank": 2,
+          "score": 0.7275676727294922,
+          "document_id": "fd-yjy",
+          "block_id": "692d28b992c6eff3",
+          "chunk_id": "205a878849a44d390e3d273b6e8e325b8947f0872cce5b2549034db21c9aa483",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-yjy/692d28b992c6eff3"
+        },
+        {
+          "rank": 3,
+          "score": 0.7230287790298462,
+          "document_id": "fd-2024",
+          "block_id": "773e8568327bac71",
+          "chunk_id": "bd819ec90cb0ace35247aaaf5ea4d3ccc88f13e15ea1c8d78f7ba40643bb0a8c",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-2024/773e8568327bac71"
+        },
+        {
+          "rank": 4,
+          "score": 0.7199125289916992,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "9df6bfbd98df733e",
+          "chunk_id": "1808dc49035170f32fe995017a4e13afa744ea421b1cb286b118412ba63d1c30",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+        },
+        {
+          "rank": 5,
+          "score": 0.716453492641449,
+          "document_id": "cmp-defer-v2",
+          "block_id": "f5ca416480f4121e",
+          "chunk_id": "8040438cb717d36a3024ac361aa0073a1cc02e14874290cd1207d8dde31d719f",
+          "char_start": 0,
+          "char_end": 23,
+          "preview_url": "/preview#cmp-defer-v2/f5ca416480f4121e"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.3333333333333333,
+      "returned_count": 5,
+      "question_type": "filtered",
+      "group_id": "g-year-defer",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": 2024,
+        "as_of_date": null
+      },
+      "rationale": "同题不同筛选组 g-year-defer（条件 admission_year=2024）。题面限定来源系列=按入学年级适用的缓考申请办法（fd-20XX 系列）：f1=2024 级办法的提交时限规定，其完整规定即「考前提交」（该版未给精确天数）。学籍规定/登记表/虚构版本的时限表述属其他来源系列，不作替代；宽泛「考前」不替代「考前 3 个工作日」（见 v2-q17，反向不蕴含）。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q17",
+      "query": "按入学年级适用的缓考申请办法规定的缓考申请提交时限是什么",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.7284961938858032,
+          "document_id": "fd-2025",
+          "block_id": "93d350b5c0fb8b15",
+          "chunk_id": "0ae7db7e5999c514534039374a33f5853797e30ccd424f5bc2ab2334effa8b1c",
+          "char_start": 0,
+          "char_end": 86,
+          "preview_url": "/preview#fd-2025/93d350b5c0fb8b15"
+        },
+        {
+          "rank": 2,
+          "score": 0.7275676727294922,
+          "document_id": "fd-yjy",
+          "block_id": "692d28b992c6eff3",
+          "chunk_id": "205a878849a44d390e3d273b6e8e325b8947f0872cce5b2549034db21c9aa483",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-yjy/692d28b992c6eff3"
+        },
+        {
+          "rank": 3,
+          "score": 0.37329164147377014,
+          "document_id": "fd-2025",
+          "block_id": "d971961afd12e2c7",
+          "chunk_id": "16fdae9e584e54d5306c74841c0578e6fc27b37d1162a4216da9070fdaac46e3",
+          "char_start": 0,
+          "char_end": 26,
+          "preview_url": "/preview#fd-2025/d971961afd12e2c7"
+        },
+        {
+          "rank": 4,
+          "score": 0.37329164147377014,
+          "document_id": "fd-yjy",
+          "block_id": "3135bc8c6e8b5ae4",
+          "chunk_id": "8025c19c60d501cd6c4b184aa40a3efcd7ad9d7c3845a82b374ba00f24f618a0",
+          "char_start": 0,
+          "char_end": 26,
+          "preview_url": "/preview#fd-yjy/3135bc8c6e8b5ae4"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 4,
+      "question_type": "filtered",
+      "group_id": "g-year-defer",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": 2025,
+        "as_of_date": null
+      },
+      "rationale": "同题不同筛选组 g-year-defer（条件 admission_year=2025）。来源系列=按入学年级适用的缓考申请办法：f1=2025 级办法的完整提交时限规定「考前 3 个工作日提交」。宽泛「考前」句不满足该完整要求（蕴含方向：3 个工作日⇒考前，反之不成立），不算替代来源；与 v2-q16 构成同题不同准入、不同精确度的对照。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q18",
+      "query": "缓考申请如何提交和审批",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.7608548402786255,
+          "document_id": "cmp-defer-v2",
+          "block_id": "bc5f604c8fe5ba8d",
+          "chunk_id": "e681bf96b691144876bd1a33f591dd9b025ff297ca261e7299ad0993fdbb0546",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#cmp-defer-v2/bc5f604c8fe5ba8d"
+        },
+        {
+          "rank": 2,
+          "score": 0.719801127910614,
+          "document_id": "cmp-defer-v2",
+          "block_id": "f5ca416480f4121e",
+          "chunk_id": "8040438cb717d36a3024ac361aa0073a1cc02e14874290cd1207d8dde31d719f",
+          "char_start": 0,
+          "char_end": 23,
+          "preview_url": "/preview#cmp-defer-v2/f5ca416480f4121e"
+        },
+        {
+          "rank": 3,
+          "score": 0.7130506038665771,
+          "document_id": "fd-2024",
+          "block_id": "773e8568327bac71",
+          "chunk_id": "bd819ec90cb0ace35247aaaf5ea4d3ccc88f13e15ea1c8d78f7ba40643bb0a8c",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-2024/773e8568327bac71"
+        },
+        {
+          "rank": 4,
+          "score": 0.706141471862793,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "0a7595fda827d87e",
+          "chunk_id": "8726b8b809c996bce2710ba1126a63ac59a0556f084dad2f44d0e6cd02f82924",
+          "char_start": 0,
+          "char_end": 19,
+          "preview_url": "/preview#syn-parse-docx-001/0a7595fda827d87e"
+        },
+        {
+          "rank": 5,
+          "score": 0.7054311037063599,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "9df6bfbd98df733e",
+          "chunk_id": "1808dc49035170f32fe995017a4e13afa744ea421b1cb286b118412ba63d1c30",
+          "char_start": 0,
+          "char_end": 63,
+          "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+        }
+      ],
+      "gold_count": 2,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1",
+            "ev2"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1",
+        "ev2"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.3333333333333333,
+      "returned_count": 5,
+      "question_type": "filtered",
+      "group_id": "g-campus-defer",
+      "conditions": {
+        "campus": "成都校区",
+        "student_type": null,
+        "admission_year": 2024,
+        "as_of_date": null
+      },
+      "rationale": "同题不同筛选组 g-campus-defer（条件 campus=成都校区, admission_year=2024）：提交与审批途径（学院批准→教务处备案）两处等价表述（组 f1，任一满足）。cmp-v2「学院 3 个工作日完成审批」是审批时限、pdf「不得代办」是代理限制，均非途径表述，不计。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q19",
+      "query": "缓考申请如何提交和审批",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.6948352456092834,
+          "document_id": "fd-yjy",
+          "block_id": "692d28b992c6eff3",
+          "chunk_id": "205a878849a44d390e3d273b6e8e325b8947f0872cce5b2549034db21c9aa483",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-yjy/692d28b992c6eff3"
+        },
+        {
+          "rank": 2,
+          "score": 0.39236509799957275,
+          "document_id": "fd-yjy",
+          "block_id": "3135bc8c6e8b5ae4",
+          "chunk_id": "8025c19c60d501cd6c4b184aa40a3efcd7ad9d7c3845a82b374ba00f24f618a0",
+          "char_start": 0,
+          "char_end": 26,
+          "preview_url": "/preview#fd-yjy/3135bc8c6e8b5ae4"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 2,
+      "question_type": "filtered",
+      "group_id": "g-campus-defer",
+      "conditions": {
+        "campus": "都江堰校区",
+        "student_type": null,
+        "admission_year": 2024,
+        "as_of_date": null
+      },
+      "rationale": "同题不同筛选组 g-campus-defer（条件 campus=都江堰校区, admission_year=2024）：准入 fd-yjy（成都校区文档被筛除），提交与审批途径为校区教务办公室直收。与 v2-q18 同题不同准入证据。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q20",
+      "query": "缓考申请通过线上还是纸质方式提交",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.7542930841445923,
+          "document_id": "fd-future",
+          "block_id": "899b7d2b54e9a72e",
+          "chunk_id": "db472cad0d449736e2cd7db2fc9241f2deca9728414f459073d26aa83fc109d5",
+          "char_start": 0,
+          "char_end": 77,
+          "preview_url": "/preview#fd-future/899b7d2b54e9a72e"
+        },
+        {
+          "rank": 2,
+          "score": 0.6983826756477356,
+          "document_id": "cmp-defer-v2",
+          "block_id": "bc5f604c8fe5ba8d",
+          "chunk_id": "e681bf96b691144876bd1a33f591dd9b025ff297ca261e7299ad0993fdbb0546",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#cmp-defer-v2/bc5f604c8fe5ba8d"
+        },
+        {
+          "rank": 3,
+          "score": 0.6595996618270874,
+          "document_id": "cmp-defer-v2",
+          "block_id": "f5ca416480f4121e",
+          "chunk_id": "8040438cb717d36a3024ac361aa0073a1cc02e14874290cd1207d8dde31d719f",
+          "char_start": 0,
+          "char_end": 23,
+          "preview_url": "/preview#cmp-defer-v2/f5ca416480f4121e"
+        },
+        {
+          "rank": 4,
+          "score": 0.6506139636039734,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "0a7595fda827d87e",
+          "chunk_id": "8726b8b809c996bce2710ba1126a63ac59a0556f084dad2f44d0e6cd02f82924",
+          "char_start": 0,
+          "char_end": 19,
+          "preview_url": "/preview#syn-parse-docx-001/0a7595fda827d87e"
+        },
+        {
+          "rank": 5,
+          "score": 0.6335099935531616,
+          "document_id": "fd-yjy",
+          "block_id": "692d28b992c6eff3",
+          "chunk_id": "205a878849a44d390e3d273b6e8e325b8947f0872cce5b2549034db21c9aa483",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-yjy/692d28b992c6eff3"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "ev1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "ev1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "filtered",
+      "group_id": "g-time-defer",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": "2026-10-01"
+      },
+      "rationale": "同题不同筛选组 g-time-defer（条件 as_of_date=2026-10-01）：2026 版已生效，线上提交句作答（组 f1）。题面明确渠道维度（线上/纸质）。",
+      "missing": null
+    },
+    {
+      "question_id": "v2-q21",
+      "query": "缓考申请通过线上还是纸质方式提交",
+      "answerable": false,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.6983826756477356,
+          "document_id": "cmp-defer-v2",
+          "block_id": "bc5f604c8fe5ba8d",
+          "chunk_id": "e681bf96b691144876bd1a33f591dd9b025ff297ca261e7299ad0993fdbb0546",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#cmp-defer-v2/bc5f604c8fe5ba8d"
+        },
+        {
+          "rank": 2,
+          "score": 0.6595996618270874,
+          "document_id": "cmp-defer-v2",
+          "block_id": "f5ca416480f4121e",
+          "chunk_id": "8040438cb717d36a3024ac361aa0073a1cc02e14874290cd1207d8dde31d719f",
+          "char_start": 0,
+          "char_end": 23,
+          "preview_url": "/preview#cmp-defer-v2/f5ca416480f4121e"
+        },
+        {
+          "rank": 3,
+          "score": 0.6506139636039734,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "0a7595fda827d87e",
+          "chunk_id": "8726b8b809c996bce2710ba1126a63ac59a0556f084dad2f44d0e6cd02f82924",
+          "char_start": 0,
+          "char_end": 19,
+          "preview_url": "/preview#syn-parse-docx-001/0a7595fda827d87e"
+        },
+        {
+          "rank": 4,
+          "score": 0.6335099935531616,
+          "document_id": "fd-yjy",
+          "block_id": "692d28b992c6eff3",
+          "chunk_id": "205a878849a44d390e3d273b6e8e325b8947f0872cce5b2549034db21c9aa483",
+          "char_start": 0,
+          "char_end": 69,
+          "preview_url": "/preview#fd-yjy/692d28b992c6eff3"
+        },
+        {
+          "rank": 5,
+          "score": 0.6290794610977173,
+          "document_id": "syn-pdf-text-001",
+          "block_id": "d897e41b44bfa468",
+          "chunk_id": "61c7aea28ae2e578a71d108644e43499ac7b8f8066a10b110f6c6357108ffef1",
+          "char_start": 0,
+          "char_end": 53,
+          "preview_url": "/preview#syn-pdf-text-001/d897e41b44bfa468"
+        }
+      ],
+      "gold_count": 0,
+      "covered_evidence_ids": [],
+      "recall": null,
+      "hit": null,
+      "mrr": null,
+      "returned_count": 5,
+      "question_type": "unanswerable",
+      "group_id": "g-time-defer",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": "2025-10-01"
+      },
+      "rationale": "同题不同筛选组 g-time-defer（条件 as_of_date=2025-10-01）：2026 版未生效；准入资料均未说明线上/纸质渠道（交办公室、附证明等为受理途径/材料，非渠道）——答案可得性随筛选变化。",
+      "missing": "查询日期早于 2026 版办法生效日，现有生效资料未说明线上/纸质提交方式",
+      "fact_count": null,
+      "covered_fact_count": null,
+      "facts": null
+    },
+    {
+      "question_id": "v2-q22",
+      "query": "国家奖学金的评审条件是什么",
+      "answerable": false,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.6720690727233887,
+          "document_id": "dis-scholarship",
+          "block_id": "bfb251ec48d2198a",
+          "chunk_id": "a9715722f1b5253ed96b18eaba6b9fd109b1e46878a65fbcead27b9c3395b974",
+          "char_start": 0,
+          "char_end": 17,
+          "preview_url": "/preview#dis-scholarship/bfb251ec48d2198a"
+        },
+        {
+          "rank": 2,
+          "score": 0.6300735473632812,
+          "document_id": "dis-scholarship",
+          "block_id": "3dfa7d4a91e653e9",
+          "chunk_id": "d42d9af9eb20d06c0aef41f8e8351bde961c9e0702b8273c8dbd8cd78923012d",
+          "char_start": 0,
+          "char_end": 44,
+          "preview_url": "/preview#dis-scholarship/3dfa7d4a91e653e9"
+        },
+        {
+          "rank": 3,
+          "score": 0.6158388257026672,
+          "document_id": "dis-scholarship",
+          "block_id": "37e56c8d646deb92",
+          "chunk_id": "e2ba3af01cfd01f6ed4cc61db4484e24aa1dbeb48f3df2bad8eb49386c127686",
+          "char_start": 0,
+          "char_end": 30,
+          "preview_url": "/preview#dis-scholarship/37e56c8d646deb92"
+        },
+        {
+          "rank": 4,
+          "score": 0.5918964147567749,
+          "document_id": "dis-scholarship",
+          "block_id": "83f7605d589dbe36",
+          "chunk_id": "94b05593bd9c2993ccef3f09d406cfec5a64e45831c33ba864be9945cea16e52",
+          "char_start": 0,
+          "char_end": 22,
+          "preview_url": "/preview#dis-scholarship/83f7605d589dbe36"
+        },
+        {
+          "rank": 5,
+          "score": 0.5171842575073242,
+          "document_id": "fd-2025",
+          "block_id": "d971961afd12e2c7",
+          "chunk_id": "16fdae9e584e54d5306c74841c0578e6fc27b37d1162a4216da9070fdaac46e3",
+          "char_start": 0,
+          "char_end": 26,
+          "preview_url": "/preview#fd-2025/d971961afd12e2c7"
+        }
+      ],
+      "gold_count": 0,
+      "covered_evidence_ids": [],
+      "recall": null,
+      "hit": null,
+      "mrr": null,
+      "returned_count": 5,
+      "question_type": "unanswerable",
+      "group_id": null,
+      "conditions": null,
+      "rationale": "相似主题材料不足：语料仅含《学校奖学金评定细则》（不同奖项，内容不等价，不算替代来源）。",
+      "missing": "语料仅含学校奖学金评定细则，未收录国家奖学金评审规定",
+      "fact_count": null,
+      "covered_fact_count": null,
+      "facts": null
+    },
+    {
+      "question_id": "v2-q23",
+      "query": "学生宿舍晚归如何处理",
+      "answerable": false,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.421700656414032,
+          "document_id": "dis-scholarship",
+          "block_id": "bfb251ec48d2198a",
+          "chunk_id": "a9715722f1b5253ed96b18eaba6b9fd109b1e46878a65fbcead27b9c3395b974",
+          "char_start": 0,
+          "char_end": 17,
+          "preview_url": "/preview#dis-scholarship/bfb251ec48d2198a"
+        },
+        {
+          "rank": 2,
+          "score": 0.4192774295806885,
+          "document_id": "syn-parse-txt-001",
+          "block_id": "542187ebbac5a4b2",
+          "chunk_id": "74d0cbd21e1fa05255cc00f6b8af52f1edc89ca97a1288470c27dd15a5b8fe42",
+          "char_start": 0,
+          "char_end": 71,
+          "preview_url": "/preview#syn-parse-txt-001/542187ebbac5a4b2"
+        },
+        {
+          "rank": 3,
+          "score": 0.4138721227645874,
+          "document_id": "syn-pdf-text-001",
+          "block_id": "d897e41b44bfa468",
+          "chunk_id": "61c7aea28ae2e578a71d108644e43499ac7b8f8066a10b110f6c6357108ffef1",
+          "char_start": 0,
+          "char_end": 53,
+          "preview_url": "/preview#syn-pdf-text-001/d897e41b44bfa468"
+        },
+        {
+          "rank": 4,
+          "score": 0.40717482566833496,
+          "document_id": "cmp-defer-v2",
+          "block_id": "f9e36a3d2d505060",
+          "chunk_id": "76560db7b0eeb7769dd438983cdc76ae106d1774cffd35987aa45cfa3215f1d7",
+          "char_start": 0,
+          "char_end": 26,
+          "preview_url": "/preview#cmp-defer-v2/f9e36a3d2d505060"
+        },
+        {
+          "rank": 5,
+          "score": 0.39879336953163147,
+          "document_id": "dis-graduate-defer",
+          "block_id": "ca8441a4b57c3445",
+          "chunk_id": "13a4f22e600c7c7f193b1cb2543bddb703d3aaaa921cdc61c8069500ad213def",
+          "char_start": 0,
+          "char_end": 22,
+          "preview_url": "/preview#dis-graduate-defer/ca8441a4b57c3445"
+        }
+      ],
+      "gold_count": 0,
+      "covered_evidence_ids": [],
+      "recall": null,
+      "hit": null,
+      "mrr": null,
+      "returned_count": 5,
+      "question_type": "unanswerable",
+      "group_id": null,
+      "conditions": null,
+      "rationale": "材料不足：全语料无宿舍管理主题。",
+      "missing": "语料无宿舍管理相关资料",
+      "fact_count": null,
+      "covered_fact_count": null,
+      "facts": null
+    },
+    {
+      "question_id": "v2-q24",
+      "query": "缓考申请的线上提交入口网址是什么",
+      "answerable": false,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 0.6708410382270813,
+          "document_id": "fd-future",
+          "block_id": "899b7d2b54e9a72e",
+          "chunk_id": "db472cad0d449736e2cd7db2fc9241f2deca9728414f459073d26aa83fc109d5",
+          "char_start": 0,
+          "char_end": 77,
+          "preview_url": "/preview#fd-future/899b7d2b54e9a72e"
+        },
+        {
+          "rank": 2,
+          "score": 0.662769615650177,
+          "document_id": "cmp-defer-v1",
+          "block_id": "fcbf298150240157",
+          "chunk_id": "93c28c4f6fb38f5e081269e47a44d75196811d5a78e74a2fd87340120982d75a",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#cmp-defer-v1/fcbf298150240157"
+        },
+        {
+          "rank": 3,
+          "score": 0.662769615650177,
+          "document_id": "cmp-defer-v2",
+          "block_id": "bc5f604c8fe5ba8d",
+          "chunk_id": "e681bf96b691144876bd1a33f591dd9b025ff297ca261e7299ad0993fdbb0546",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#cmp-defer-v2/bc5f604c8fe5ba8d"
+        },
+        {
+          "rank": 4,
+          "score": 0.6398492455482483,
+          "document_id": "fd-unknown",
+          "block_id": "c6805c1892b77d82",
+          "chunk_id": "ef522b1a92950e6dfbe0528e9909adb48b13967b08aeecf1501383f8b92c0244",
+          "char_start": 0,
+          "char_end": 77,
+          "preview_url": "/preview#fd-unknown/c6805c1892b77d82"
+        },
+        {
+          "rank": 5,
+          "score": 0.6158580183982849,
+          "document_id": "syn-parse-docx-001",
+          "block_id": "0a7595fda827d87e",
+          "chunk_id": "8726b8b809c996bce2710ba1126a63ac59a0556f084dad2f44d0e6cd02f82924",
+          "char_start": 0,
+          "char_end": 19,
+          "preview_url": "/preview#syn-parse-docx-001/0a7595fda827d87e"
+        }
+      ],
+      "gold_count": 0,
+      "covered_evidence_ids": [],
+      "recall": null,
+      "hit": null,
+      "mrr": null,
+      "returned_count": 5,
+      "question_type": "unanswerable",
+      "group_id": null,
+      "conditions": null,
+      "rationale": "陷阱材料不足：fd-future 提及「线上教务系统」但未给网址/入口——主题相关不等于可作答。",
+      "missing": "资料提及线上教务系统但未给出网址或入口地址",
+      "fact_count": null,
+      "covered_fact_count": null,
+      "facts": null
+    }
+  ],
+  "errors": [],
+  "merge_note": "T027-R2 合并结果：未变化题=上一版已存排名重计分；受影响重检索题=['v2-q10', 'v2-q16', 'v2-q17']（子集重跑）"
+}

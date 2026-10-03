@@ -1,0 +1,261 @@
+{
+  "demo": "T013 DeepSeek adapter loopback-mock integration (ONE full chain)",
+  "evidence_kind": "loopback mock — NOT a real DeepSeek answer; mock exists only in this script entry",
+  "external_model_calls": 0,
+  "live_verified": false,
+  "corpus": "examples/parse-corpus",
+  "chain": "/ask → DeepSeekAnswerProvider → local HTTP → JSON parse → citation validation → response",
+  "provider_identity": "deepseek:deepseek-flash",
+  "mock_request_summary": {
+    "path": "/chat/completions",
+    "model": "deepseek-flash",
+    "stream": false,
+    "response_format": {
+      "type": "json_object"
+    },
+    "thinking": {
+      "type": "disabled"
+    },
+    "max_tokens": 1500,
+    "auth_header_present": true,
+    "messages": [
+      {
+        "role": "system",
+        "content_chars": 354
+      },
+      {
+        "role": "user",
+        "content_chars": 292
+      }
+    ]
+  },
+  "ask_request": {
+    "query": "缓考申请需要什么材料",
+    "top_k": 5,
+    "mode": "bm25",
+    "answer_mode": "generated",
+    "filters": {
+      "campus": "成都校区",
+      "admission_year": 2023,
+      "as_of_date": "2026-09-22"
+    }
+  },
+  "ask_response": {
+    "query": "缓考申请需要什么材料",
+    "query_tokens": [
+      "缓考",
+      "考申",
+      "申请",
+      "请需",
+      "需要",
+      "要什",
+      "什么",
+      "么材",
+      "材料"
+    ],
+    "mode": "bm25",
+    "answer_mode": "generated",
+    "status": "generated",
+    "answer": {
+      "paragraphs": [
+        {
+          "text": "【模拟输出，非真实 DeepSeek 回答】原文摘录显示缓考申请须经所在学院批准并附证明。",
+          "evidence_ids": [
+            "E1"
+          ],
+          "citations": [
+            {
+              "evidence_id": "E1",
+              "document_id": "syn-parse-txt-001",
+              "block_id": "9df6bfbd98df733e",
+              "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+            }
+          ]
+        }
+      ]
+    },
+    "answer_error": null,
+    "generation_meta": {
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "request_id": "mock-req-001",
+      "usage": {
+        "prompt_tokens": 210,
+        "completion_tokens": 42,
+        "total_tokens": 252
+      },
+      "latency_ms": 202,
+      "max_tokens": 1500,
+      "finish_reason": "stop"
+    },
+    "disclaimer": "自动生成内容仅供参考，引用仅证明定位有效，需人工核对适用条件与语义支持。",
+    "evidence": [
+      {
+        "evidence_id": "E1",
+        "text": "第二条 学生因病或其他特殊原因不能参加期末考试的，应当在考试前提出缓考申请。缓考申请须经所在学院批准，报教务处备案后方可生效。",
+        "document_id": "syn-parse-txt-001",
+        "block_id": "9df6bfbd98df733e",
+        "chunk_id": "1808dc49035170f32fe995017a4e13afa744ea421b1cb286b118412ba63d1c30",
+        "char_start": 0,
+        "char_end": 63,
+        "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+        "title": "合成测试教务管理办法（正文解析示例）",
+        "source_url": "https://example.org/policy/parse/txt",
+        "version_label": "解析示例 v1",
+        "scope": {
+          "campus": [
+            "成都校区"
+          ],
+          "student_type": [
+            "全日制本科"
+          ],
+          "admission_years": [
+            2023,
+            2024
+          ]
+        },
+        "published_at": "2025-01-15",
+        "effective_from": "2025-03-01",
+        "effective_to": null,
+        "is_synthetic": true,
+        "preview_url": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+      },
+      {
+        "evidence_id": "E2",
+        "text": "第三条 课程考核不合格的学生，可以在下一学期开学后两周内申请补考。补考成绩最高记为60分。补考仍不合格的，应当重新学习该课程。",
+        "document_id": "syn-parse-txt-001",
+        "block_id": "009121d9f2695116",
+        "chunk_id": "8571753b3134a37487ebaaa49d3c5b4d8fc881b9c49bbd48e94ad413eb2ecf28",
+        "char_start": 0,
+        "char_end": 63,
+        "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+        "title": "合成测试教务管理办法（正文解析示例）",
+        "source_url": "https://example.org/policy/parse/txt",
+        "version_label": "解析示例 v1",
+        "scope": {
+          "campus": [
+            "成都校区"
+          ],
+          "student_type": [
+            "全日制本科"
+          ],
+          "admission_years": [
+            2023,
+            2024
+          ]
+        },
+        "published_at": "2025-01-15",
+        "effective_from": "2025-03-01",
+        "effective_to": null,
+        "is_synthetic": true,
+        "preview_url": "/preview#syn-parse-txt-001/009121d9f2695116"
+      },
+      {
+        "evidence_id": "E3",
+        "text": "第五条 学生转专业应当在入学后第一学年末提出申请。转专业条件包括：\n1. 在读期间无违纪记录；\n2. 第一学年加权平均成绩排名在本专业前30%；\n3. 通过接收学院组织的考核。",
+        "document_id": "syn-parse-txt-001",
+        "block_id": "ce15747a6cdf597a",
+        "chunk_id": "da719a8c1b4ec06b9652eb831378cd62c9c36c3ffc42d1d5424e831c58d084f7",
+        "char_start": 0,
+        "char_end": 88,
+        "document_sha256": "ea716fadda710f98910bc0e14113baf5655091f10f8eece6db15e61563613d07",
+        "title": "合成测试教务管理办法（正文解析示例）",
+        "source_url": "https://example.org/policy/parse/txt",
+        "version_label": "解析示例 v1",
+        "scope": {
+          "campus": [
+            "成都校区"
+          ],
+          "student_type": [
+            "全日制本科"
+          ],
+          "admission_years": [
+            2023,
+            2024
+          ]
+        },
+        "published_at": "2025-01-15",
+        "effective_from": "2025-03-01",
+        "effective_to": null,
+        "is_synthetic": true,
+        "preview_url": "/preview#syn-parse-txt-001/ce15747a6cdf597a"
+      }
+    ],
+    "evidence_state": "ok",
+    "empty_message": null,
+    "insufficient_reason": null,
+    "budget": {
+      "max_items": 5,
+      "max_total_chars": 6000,
+      "included_items": 3,
+      "included_chars": 214,
+      "skipped_items": 0,
+      "duplicate_chunks": 0
+    },
+    "filters": {
+      "campus": "成都校区",
+      "student_type": null,
+      "admission_year": 2023,
+      "as_of_date": "2026-09-22"
+    },
+    "filter_summary": {
+      "active": true,
+      "document_total": 2,
+      "allowed_count": 1,
+      "excluded_counts": {
+        "scope_unknown": 0,
+        "scope_mismatch": 1,
+        "date_unknown_from": 0,
+        "not_yet_effective": 0,
+        "expired": 0
+      },
+      "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。",
+      "notes": [
+        "1 份适用文档未标注截止日期（effective_to=null），不证明永久有效。"
+      ]
+    },
+    "request_id": "20f11ba6-96b6-48b3-b7d0-a1833b6790ec"
+  },
+  "checks": [
+    {
+      "check": "http_status_200",
+      "passed": true,
+      "detail": "status=200"
+    },
+    {
+      "check": "status_generated",
+      "passed": true,
+      "detail": "generated"
+    },
+    {
+      "check": "citation_within_sent_evidence",
+      "passed": true,
+      "detail": "para=['E1'] sent=['E1', 'E2', 'E3']"
+    },
+    {
+      "check": "citation_resolved_by_service",
+      "passed": true,
+      "detail": "/preview#syn-parse-txt-001/9df6bfbd98df733e"
+    },
+    {
+      "check": "audit_metadata_present",
+      "passed": true,
+      "detail": "{\"model\": \"deepseek-flash\", \"request_id\": \"mock-req-001\", \"usage\": {\"prompt_tokens\": 210, \"completion_tokens\": 42, \"total_tokens\": 252}, \"latency_ms\": 202, \"max_tokens\": 1500}"
+    },
+    {
+      "check": "request_model_json_mode",
+      "passed": true,
+      "detail": "model/stream/response_format/thinking"
+    },
+    {
+      "check": "single_http_call",
+      "passed": true,
+      "detail": "calls=1"
+    }
+  ],
+  "notes": [
+    "模拟回答文本带“【模拟输出】”标记，不得当作真实 DeepSeek 回答。",
+    "trust_env=False 仅用于 loopback 直连（本机系统代理会拦截 127.0.0.1）；真实调用默认尊重系统代理。",
+    "密钥为占位值，未发送任何外部请求。"
+  ]
+}

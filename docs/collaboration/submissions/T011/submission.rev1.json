@@ -1,0 +1,37 @@
+{
+  "task_id": "T011",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "summary": "POST /api/v1/search 支持 campus/student_type/admission_year/as_of_date 筛选（先准入后截断、三模式同集合、回显规范化条件与排除原因计数口径）；/search 页面四项筛选+清除条件闭环；完成 T010-R1 五项收尾（行为脚本 stub、仅本地加载与中文原因、token 截断统计与 revision 核实、完整评测 CLI 原始输出、语义文案修正）。",
+  "test_results": {
+    "new_filter_tests": {"total": 30, "passed": 30, "skipped": 0},
+    "full_suite": {"total": 404, "passed": 404, "skipped": 1, "warnings": 2, "note": "跳过为既有 Windows 链接权限用例"},
+    "pip_check": "No broken requirements found",
+    "js_syntax": "2 files passed",
+    "js_behavior": {"scenarios": 12, "result": "passed"}
+  },
+  "evaluation_comparison": {
+    "bm25": {"evidence_recall": 1.0, "hit": 1.0, "mrr": 0.9166666666666666, "empty_result_rate": 0.0},
+    "dense": {"evidence_recall": 1.0, "hit": 1.0, "mrr": 0.9166666666666666, "empty_result_rate": 0.0},
+    "hybrid": {"evidence_recall": 1.0, "hit": 1.0, "mrr": 0.9166666666666666, "empty_result_rate": 0.0},
+    "note": "8 题合成集 gold 未改，默认无筛选，与 T010 可比；小合成集不代表真实效果"
+  },
+  "filter_demo": {
+    "encode_documents_calls": 1,
+    "scenarios": 6,
+    "raw_output": "filter-demo.json",
+    "notes": "filter-demo-notes.md"
+  },
+  "model_identity": {
+    "id": "bge-small-zh-v1.5",
+    "revision": "7999e1d3359715c523056ef9478215996d62a620",
+    "revision_source": "models/bge-small-zh-v1.5/.cache/huggingface/download/*.metadata 首行核实",
+    "max_seq_length": 512
+  },
+  "dependencies_added": [],
+  "unverified": [
+    "真实浏览器页面闭环（筛选→搜索→原文→清除条件、错误重试）待 Astra 补验，步骤见 verification.md 第 8 节"
+  ],
+  "workspace_note": "工作区非 Git 仓库，未初始化未重置；未覆盖用户修改"
+}
