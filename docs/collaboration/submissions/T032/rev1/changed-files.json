@@ -1,0 +1,59 @@
+{
+  "note": "T032 变更清单（submission_revision=1）。范围=真实转专业模板 + 来源核对 + 引用核对/演示脚本 + 两处免责文案最小修正 + 提交材料。原语料、manifest、T030/T031 数据只读未动。",
+  "new_data": [
+    {
+      "path": "data/procedures/sicau-transfer-2026-v1/procedures.json",
+      "change": "sicau-transfer-2026 真实模板（13 步/20 引，引用逐字绑定 document_id/SHA/block_id/跨度）",
+      "sha256": "f1f1f5bb4140876096abaeaa60e93a76b642aaadcf87d0d67107be8f376c21d8",
+      "size": 22721
+    },
+    {
+      "path": "data/procedures/sicau-transfer-2026-v1/SOURCE-CHECK.md",
+      "change": "来源核对说明（身份核实/整理口径/边界）",
+      "sha256": "91b8879d60fa98271565ae76f2d05d935bc044fdc61ff6aead23e1de9bc6a82c",
+      "size": 2679
+    }
+  ],
+  "new_scripts": [
+    {
+      "path": "step2_code/backend/scripts/verify-procedures-citations.py",
+      "change": "模板全部引用程序化核对（真实包新解析 + procedures.service 校验）",
+      "sha256": "b4a7931c829067ead56641b135cee13aed3398a5a3b86b51115873410741144f",
+      "size": 3159
+    },
+    {
+      "path": "step2_code/backend/scripts/demo-t032-procedures.py",
+      "change": "本地 API 演示（模板列出/草稿/排除不保存不泄漏/保存快照 verify=unchanged）",
+      "sha256": "a8783179a5e6f8d1e0f7ad4bb59d0b56f39b9f408ca8d9cd242274f161285afe",
+      "size": 5507
+    }
+  ],
+  "minimal_fixes": [
+    {
+      "path": "step2_code/backend/src/campus_assistant/procedures/service.py",
+      "change": "免责语按 is_synthetic 分支（真实模板不再自称合成演示清单）；校验/保存/核对逻辑未改",
+      "sha256": "b024e78751852993d3a01b68912957b0a9070dae3628c71c082d15dd5886bbda",
+      "size": 11327
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/static/procedures.html",
+      "change": "顶部提示去掉「合成资料演示」硬编码（区分真实/合成模板的中性表述）；功能逻辑未改",
+      "sha256": "98b9f611e04463aab73c6cdd56a39589a00a59bc5c2cfb15378ae7c7290038cc",
+      "size": 34965
+    }
+  ],
+  "source_readonly": {
+    "source_pdf": "data/corpora/sicau-rag-pilot-v1.1/5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76.pdf（sha256 5cb2ac21…e76 复算一致，未修改）",
+    "note": "语料包/manifest、T030 gold/冻结、T031 selection-map/experiment 全部只读未动"
+  },
+  "submissions": [
+    "docs/collaboration/submissions/T032/report.md",
+    "docs/collaboration/submissions/T032/verification.md",
+    "docs/collaboration/submissions/T032/submission.json",
+    "docs/collaboration/submissions/T032/changed-files.json",
+    "docs/collaboration/submissions/T032/citation-crosscheck.md",
+    "docs/collaboration/submissions/T032/api-demo.json",
+    "docs/collaboration/submissions/T032/demo-notes.md"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值。"
+}

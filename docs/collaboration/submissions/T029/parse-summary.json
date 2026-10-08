@@ -1,0 +1,271 @@
+{
+  "note": "T029 首批真实语料解析摘要（产品 parse 管线）；'有文本'不等于页页完整；warnings 逐份保留",
+  "pack": "F:\\Collage Paper\\data\\corpora\\sicau-rag-pilot-v1",
+  "corpus_valid": true,
+  "errors": [],
+  "docs": [
+    {
+      "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+      "title": "本科生转专业实施办法（校教发[2026]1号）",
+      "parser_version": "pdf-1.0",
+      "block_count": 5,
+      "locator_counts": {
+        "pdf_page": 5
+      },
+      "warnings": [],
+      "pages_hint": 5
+    },
+    {
+      "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+      "title": "本科生转专业实施办法（校教发[2023]1号）",
+      "parser_version": "pdf-1.0",
+      "block_count": 9,
+      "locator_counts": {
+        "pdf_page": 9
+      },
+      "warnings": [],
+      "pages_hint": 4
+    },
+    {
+      "document_id": "d4d3092195ed4cf325b57d76d70e674dc9989293116a58e4694579a07f09b2cc",
+      "title": "本科生转专业实施办法",
+      "parser_version": "pdf-1.0",
+      "block_count": 9,
+      "locator_counts": {
+        "pdf_page": 9
+      },
+      "warnings": [],
+      "pages_hint": 3
+    },
+    {
+      "document_id": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6",
+      "title": "本科教学管理办法",
+      "parser_version": "pdf-1.0",
+      "block_count": 200,
+      "locator_counts": {
+        "pdf_page": 200
+      },
+      "warnings": [],
+      "pages_hint": 87
+    },
+    {
+      "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+      "title": "7.本科教学管理办法（校教发〔2020〕6号）",
+      "parser_version": "pdf-1.0",
+      "block_count": 81,
+      "locator_counts": {
+        "pdf_page": 81
+      },
+      "warnings": [],
+      "pages_hint": 74
+    },
+    {
+      "document_id": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9",
+      "title": "本科教学管理办法-校教发【2022】12号",
+      "parser_version": "pdf-1.0",
+      "block_count": 80,
+      "locator_counts": {
+        "pdf_page": 80
+      },
+      "warnings": [],
+      "pages_hint": 73
+    },
+    {
+      "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+      "title": "本科教学管理办法（校教发[2025]14号）",
+      "parser_version": "pdf-1.0",
+      "block_count": 75,
+      "locator_counts": {
+        "pdf_page": 75
+      },
+      "warnings": [],
+      "pages_hint": 75
+    },
+    {
+      "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+      "title": "四川农业大学学生学业管理办法",
+      "parser_version": "1.0",
+      "block_count": 370,
+      "locator_counts": {
+        "paragraph": 274,
+        "table_row": 96
+      },
+      "warnings": [
+        "表格包含水平合并单元格（第 1 行第 1 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 2 行第 1 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 2 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 2 行第 5 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 5 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 8 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 14 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 16 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 18 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 20 行第 1 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 22 行第 5 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 27 行第 1 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 27 行第 5 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 30 行第 1 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 30 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 30 行第 5 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 34 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 38 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 38 行第 5 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 42 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 42 行第 5 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 47 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 47 行第 5 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 51 行第 1 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 51 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 51 行第 5 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 54 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 57 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 60 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 63 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 66 行第 1 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 66 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 69 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 71 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 76 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 81 行第 2 列），文本可能不完整",
+        "表格包含水平合并单元格（第 84 行第 2 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 84 行第 3 列），文本可能不完整",
+        "表格包含垂直合并单元格（第 84 行第 4 列），文本可能不完整",
+        "表格包含水平合并单元格（第 85 行第 2 列），文本可能不完整",
+        "表格包含水平合并单元格（第 86 行第 2 列），文本可能不完整"
+      ],
+      "pages_hint": 0
+    },
+    {
+      "document_id": "83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31",
+      "title": "附件1：新生学籍信息查询核对操作指南 (1)",
+      "parser_version": "pdf-1.0",
+      "block_count": 4,
+      "locator_counts": {
+        "pdf_page": 4
+      },
+      "warnings": [],
+      "pages_hint": 4
+    },
+    {
+      "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+      "title": "本科课程考试管理办法（2019）7号",
+      "parser_version": "pdf-1.0",
+      "block_count": 19,
+      "locator_counts": {
+        "pdf_page": 19
+      },
+      "warnings": [],
+      "pages_hint": 13
+    },
+    {
+      "document_id": "68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06",
+      "title": "关于本科课程缓（补）考成绩评定的补充规定（教发[2018]10号）",
+      "parser_version": "pdf-1.0",
+      "block_count": 3,
+      "locator_counts": {
+        "pdf_page": 3
+      },
+      "warnings": [],
+      "pages_hint": 2
+    },
+    {
+      "document_id": "db05e0cab194beeee9d4017458f26df2c14aefb8e250293d0e539c350477dc75",
+      "title": "附件2.四川农业大学考场规则",
+      "parser_version": "1.0",
+      "block_count": 2,
+      "locator_counts": {
+        "paragraph": 2
+      },
+      "warnings": [],
+      "pages_hint": 0
+    },
+    {
+      "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+      "title": "《国家教育考试违规处理办法》",
+      "parser_version": "pdf-1.0",
+      "block_count": 13,
+      "locator_counts": {
+        "pdf_page": 13
+      },
+      "warnings": [],
+      "pages_hint": 11
+    },
+    {
+      "document_id": "06815fdadca1dca19c65295667f712a4288876139dfc9493d2deb55cb826f2d8",
+      "title": "四川农业大学本科课程考核管理规范（试行）（教发[2016]11号 ）",
+      "parser_version": "pdf-1.0",
+      "block_count": 38,
+      "locator_counts": {
+        "pdf_page": 38
+      },
+      "warnings": [],
+      "pages_hint": 10
+    },
+    {
+      "document_id": "df04ebec20b8bfe7a4ff062b4b51233f13f73ed457d8997a5ce3c4a40e8de5da",
+      "title": "本科课程试卷评阅规范（试行）2017_21",
+      "parser_version": "pdf-1.0",
+      "block_count": 4,
+      "locator_counts": {
+        "pdf_page": 4
+      },
+      "warnings": [],
+      "pages_hint": 2
+    },
+    {
+      "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+      "title": "本科毕业论文（设计）管理规范（试行） 》 （教发[2016]10 号）",
+      "parser_version": "pdf-1.0",
+      "block_count": 64,
+      "locator_counts": {
+        "pdf_page": 64
+      },
+      "warnings": [],
+      "pages_hint": 29
+    },
+    {
+      "document_id": "858406369942a287d8042aa9f2ef1383ea26f4f61ef25e362a191e78f706d17f",
+      "title": "【置顶】教育部《关于印发〈本科毕业论文（设计）抽检办法（试行）〉的通知》",
+      "parser_version": "pdf-1.0",
+      "block_count": 11,
+      "locator_counts": {
+        "pdf_page": 11
+      },
+      "warnings": [],
+      "pages_hint": 6
+    },
+    {
+      "document_id": "57c0945c4b4ff808ed989667c658d9b8eb5b8ed62b8f2bbd2411374329d80959",
+      "title": "《学位论文作假行为处理办法》 - 中华人民共和国教育部政府门户网站",
+      "parser_version": "pdf-1.0",
+      "block_count": 3,
+      "locator_counts": {
+        "pdf_page": 3
+      },
+      "warnings": [],
+      "pages_hint": 3
+    },
+    {
+      "document_id": "55e0ddd6861b91a76b28245dab4325ec779435affa05f2807304f6832158ab92",
+      "title": "2025版普通本科专业人才培养方案修(制）订指导意见（校教发[2026]4号）",
+      "parser_version": "pdf-1.0",
+      "block_count": 28,
+      "locator_counts": {
+        "pdf_page": 28
+      },
+      "warnings": [],
+      "pages_hint": 28
+    },
+    {
+      "document_id": "92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719",
+      "title": "本科生赴境外学校修读课程学分及成绩认定管理办法（教发[2024]2号）",
+      "parser_version": "pdf-1.0",
+      "block_count": 13,
+      "locator_counts": {
+        "pdf_page": 13
+      },
+      "warnings": [],
+      "pages_hint": 7
+    }
+  ]
+}

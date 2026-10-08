@@ -93,7 +93,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 <div class="header">
   <h1>证据整理</h1>
   <a href="/">首页</a>
-  <a href="/search">证据搜索</a>
+  <a href="/search" id="nav-search">证据搜索</a>
   <a href="/preview">语料预览</a>
   <a href="/procedures">办事指南</a>
   <a href="/compare">版本对比</a>
@@ -115,6 +115,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     <label for="filter-as-of-date">查询日期</label>
     <input type="date" id="filter-as-of-date" aria-label="查询日期">
     <button type="button" class="filter-clear-btn" id="clear-filters-btn">清除条件</button>
+  </div>
+  <div class="filter-bar" id="source-bar">
+    <label for="source-mode">资料范围</label>
+    <select id="source-mode" aria-label="资料范围">
+      <option value="all">全部资料</option>
+      <option value="doc">指定文件</option>
+    </select>
+    <select id="source-doc" aria-label="指定文件" disabled><option value="">（请选择文件）</option></select>
+    <button type="button" class="filter-clear-btn" id="clear-source-btn">清除选择</button>
+    <span class="ev-budget" id="source-hint">未选择指定文件：检索范围为全部资料。</span>
   </div>
   <div class="search-form" id="search-form">
     <label for="query-input" class="sr-only" style="position:absolute;left:-9999px">问题</label>
@@ -163,6 +173,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
   var historyClearBtn = document.getElementById('history-clear-btn');
   var historyNote = document.getElementById('history-note');
   var historyList = document.getElementById('history-list');
+  var sourceModeSel = document.getElementById('source-mode');
+  var sourceDocSel = document.getElementById('source-doc');
+  var clearSourceBtn = document.getElementById('clear-source-btn');
+  var sourceHint = document.getElementById('source-hint');
+  var searchNav = document.getElementById('nav-search');
   var askSeq = 0;
   var statusSeq = 0;
   var busy = false;
@@ -172,9 +187,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
   var lastSubmittedMode = 'bm25';
   var lastSubmittedFilters = null;
   var lastSubmittedAnswerMode = 'extractive';
+  var lastSubmittedDocumentId = null;
   var selectedMode = 'bm25';
   var availableModes = [];
   var lastFilterOptionsJson = '';
+  var sourceCatalog = [];
+  var lastCatalogJson = '';
   var generatorConfigured = false;
 
   function ce(tag, cls, text){
@@ -198,27 +216,40 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     return out;
   }
 
-  // T018: 相关办事事项——显式关键词/事项映射（非 Agent 推理）
-  var PROCEDURE_LINKS = [
-    { procedure_id: 'proc-apply-defer', title: '缓考申请', keywords: ['缓考'] },
-    { procedure_id: 'proc-review-grade', title: '成绩复核', keywords: ['复核'] }
-  ];
-  // T022-R1: 仅推荐当前已配置的事项；未配置对应指南时明确说明，不给死入口。
-  var configuredProcedureIds = null; // null=未知(尚未读取)；数组=当前已配置列表
+  // T033: 相关办事事项——按当前配置模板的 related_keywords 做确定性主题匹配
+  //（非 Agent 推理/自动版本判断/资格判定）。来源集合约束入口：本次结果指定
+  // document_id 时只给来源集合含该 ID 的模板入口；主题匹配但来源不同则提示且
+  // 不给入口、不自动取消文件条件。多个匹配全部列出，不擅自选一个。
+  var configuredProcedures = null; // null=未加载；[]=未配置/加载失败
+  var lastResultView = null;       // 最近渲染结果视图（目录晚到时补入口，不重复问答请求）
+  var relatedHost = null;
 
-  function relatedProcedure(q){
-    for(var i = 0; i < PROCEDURE_LINKS.length; i++){
-      var p = PROCEDURE_LINKS[i];
-      for(var j = 0; j < p.keywords.length; j++){
-        if(String(q || '').indexOf(p.keywords[j]) >= 0) return p;
+  function relatedCandidates(q, documentId){
+    var out = { matched: [], sourceMismatch: [] };
+    if(!configuredProcedures) return out;
+    configuredProcedures.forEach(function(p){
+      var kws = p.related_keywords || [];
+      var hit = false;
+      for(var i = 0; i < kws.length; i++){
+        if(String(q || '').indexOf(kws[i]) >= 0){ hit = true; break; }
       }
-    }
-    return null;
+      if(!hit) return;
+      if(documentId){
+        var srcs = p.source_document_ids || [];
+        if(srcs.indexOf(documentId) >= 0) out.matched.push(p);
+        else out.sourceMismatch.push(p);
+      } else {
+        out.matched.push(p);
+      }
+    });
+    return out;
   }
 
-  function proceduresLinkFor(rel, query, f){
+  function proceduresLinkFor(entry, query, f){
     f = f || {};
-    return '/procedures?procedure_id=' + encodeURIComponent(rel.procedure_id) +
+    // 链接携带本条结果的四条件快照与 procedure_id；document_id 不进入办事
+    // 参数——所选文件只界定本次问答范围，办事页按模板绑定原文重新核对。
+    return '/procedures?procedure_id=' + encodeURIComponent(entry.procedure_id) +
       '&query=' + encodeURIComponent(query || '') +
       '&campus=' + encodeURIComponent(f.campus || '') +
       '&student_type=' + encodeURIComponent(f.student_type || '') +
@@ -273,6 +304,178 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     typeSel.value = '';
     yearSel.value = '';
     dateInput.value = '';
+  }
+
+  // ---- 资料范围（T031）：用户显式选择单份文件；未选=全部资料 ----
+  // T031-R1：URL 参数进入「待恢复快照」，等选项/目录就绪后再一次性应用——
+  // 原生 select 在选项尚不存在时写 value 会丢值；失效 ID 保留原始值
+  // （提交携带原 ID 由服务端 422 校验），绝不静默转 null 执行全库检索。
+  var restorePending = {
+    filters: null,
+    documentId: null,
+    filtersApplied: false,
+    documentApplied: false,
+    catalogFailed: false,
+    filterWarnings: []
+  };
+
+  function currentDocumentId(){
+    return (sourceModeSel.value === 'doc' && sourceDocSel.value) ? sourceDocSel.value : null;
+  }
+
+  function sourceSelectionError(){
+    if(sourceModeSel.value === 'doc' && !sourceDocSel.value){
+      return '「指定文件」模式下还没有选择文件：请选择文件，或显式切换回「全部资料」；不会自动按全部资料执行。';
+    }
+    return null;
+  }
+
+  function restoreBlockMessage(){
+    if(restorePending.filters && !restorePending.filtersApplied){
+      return '正在恢复链接中的筛选条件（等待语料状态/选项加载），暂不提交以免丢失条件。';
+    }
+    if(restorePending.documentId && !restorePending.documentApplied){
+      return '正在恢复链接中的来源文件（等待目录确认），暂不提交以免丢失或放宽条件。';
+    }
+    return null;
+  }
+
+  function addSelectValue(sel, value, labelText){
+    // Native semantics: values stick only via an existing/added option.
+    var opt = document.createElement('option');
+    opt.value = value;
+    opt.textContent = labelText;
+    sel.appendChild(opt);
+    sel.value = value;
+  }
+
+  function tryApplyRestoreFilters(){
+    if(restorePending.filtersApplied || !restorePending.filters) return;
+    var f = restorePending.filters;
+    function applyOne(sel, value, fieldName){
+      if(value === null || value === undefined || value === '') return;
+      var vals = [];
+      for(var i = 0; i < sel.children.length; i++) vals.push(String(sel.children[i].value));
+      if(vals.indexOf(String(value)) >= 0){
+        sel.value = String(value);
+      } else {
+        addSelectValue(sel, String(value), String(value) + '（已不在当前选项）');
+        restorePending.filterWarnings.push(fieldName + '=' + value);
+      }
+    }
+    applyOne(campusSel, f.campus, '校区');
+    applyOne(typeSel, f.student_type, '学生类型');
+    applyOne(yearSel, f.admission_year, '入学年份');
+    if(f.as_of_date){ dateInput.value = f.as_of_date; }
+    restorePending.filtersApplied = true;
+  }
+
+  function tryApplyRestoreDocument(){
+    if(restorePending.documentApplied || !restorePending.documentId) return;
+    var id = restorePending.documentId;
+    sourceModeSel.value = 'doc';
+    sourceDocSel.disabled = false;
+    var known = sourceCatalog.some(function(e){ return e.document_id === id; });
+    if(known){
+      sourceDocSel.value = id;
+    } else {
+      // 失效或目录未确认：保留原始 ID 为明确不可用选项（提交携带原值，服务端 422 校验）
+      addSelectValue(sourceDocSel, id, id + (restorePending.catalogFailed ? '（目录未确认）' : '（已失效/不在当前目录）'));
+    }
+    restorePending.documentApplied = true;
+    updateSourceHint();
+  }
+
+  function docLabel(e, withShortId){
+    var t = e.title || e.document_id;
+    var v = e.version_label ? '（' + e.version_label + '）' : '（无版本标注）';
+    return t + v + (withShortId ? ' · ' + String(e.document_id).slice(0, 8) : '');
+  }
+
+  function fillSourceSelect(){
+    var prev = sourceDocSel.value;
+    var labels = {};
+    sourceCatalog.forEach(function(e){
+      var k = docLabel(e, false);
+      labels[k] = (labels[k] || 0) + 1;
+    });
+    sourceDocSel.innerHTML = '';
+    var ph = document.createElement('option');
+    ph.value = '';
+    ph.textContent = '（请选择文件）';
+    sourceDocSel.appendChild(ph);
+    sourceCatalog.forEach(function(e){
+      var opt = document.createElement('option');
+      opt.value = e.document_id;
+      opt.textContent = docLabel(e, labels[docLabel(e, false)] > 1);
+      sourceDocSel.appendChild(opt);
+    });
+    if(prev && sourceCatalog.some(function(e){ return e.document_id === prev; })){
+      sourceDocSel.value = prev;
+    } else if(prev){
+      addSelectValue(sourceDocSel, prev, prev + '（已不在当前目录）');
+    }
+    updateSourceHint();
+  }
+
+  function updateSourceHint(){
+    if(sourceModeSel.value !== 'doc'){
+      sourceHint.textContent = '未选择指定文件：检索范围为全部资料。';
+      return;
+    }
+    var id = sourceDocSel.value;
+    if(!id){
+      sourceHint.textContent = '「指定文件」模式：请选择文件，或显式切换回「全部资料」；不会自动按全部资料执行。';
+      return;
+    }
+    var entry = sourceCatalog.filter(function(e){ return e.document_id === id; })[0];
+    if(entry){
+      sourceHint.textContent = '仅在所选文件内检索（' + (entry.title || id) +
+        (entry.version_label ? ' · ' + entry.version_label : ' · 无版本标注') +
+        '）；不代表该版本现行有效。';
+    } else if(restorePending.catalogFailed){
+      sourceHint.textContent = '目录未确认（加载失败/未配置）：保留所选文件 ' + id +
+        '，提交将携带该 ID 由服务端校验；不会默认为全部资料。';
+    } else {
+      sourceHint.textContent = '所选文件已不在当前目录（' + id + '）：保留该选择（提交携带原 ID 由服务端校验，' +
+        '不会默认为全部资料）；请重新选择，或显式切换回「全部资料」。';
+    }
+  }
+
+  function sourceScopeText(d){
+    var ss = d.source_selection || {};
+    if(ss.selected){
+      var t = ss.title || ss.document_id || d.document_id;
+      var v = ss.version_label ? '（' + ss.version_label + '）' : '（无版本标注）';
+      return '指定文件：' + t + v;
+    }
+    // 旧历史缺来源字段：按未选择处理，并如实标注
+    if(!('source_selection' in d) && !('document_id' in d)){
+      return '全部资料（旧记录未含来源选择）';
+    }
+    return '全部资料';
+  }
+
+  async function loadSourceCatalog(){
+    try {
+      var r = await fetch('/api/v1/search/documents');
+      if(r.ok){
+        var d = await r.json();
+        var docs = d.documents || [];
+        var json = JSON.stringify(docs.map(function(e){ return e.document_id; }));
+        if(json !== lastCatalogJson){
+          lastCatalogJson = json;
+          sourceCatalog = docs;
+          fillSourceSelect();
+        }
+      } else {
+        restorePending.catalogFailed = true;
+      }
+    } catch(e){
+      restorePending.catalogFailed = true; // 目录失败不得静默取消待恢复 ID
+    }
+    tryApplyRestoreDocument();
+    updateSourceHint();
   }
 
   // Preserve the user's selection across option rebuilds (T011-R1 rule).
@@ -366,7 +569,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
       var item = ce('div', 'history-item');
       item.appendChild(ce('span', 'h-tag', statusTag(entry.status)));
       item.appendChild(ce('span', 'h-query', entry.query));
-      item.appendChild(ce('span', 'h-meta', '保存于 ' + entry.saved_at + '　条件：' + filtersText(entry.filters)));
+      var srcLabel = entry.document_id
+        ? ('指定文件：' + entry.document_id)
+        : (('source_selection' in (entry.result || {}) || 'document_id' in (entry.result || {})) ? '全部资料' : '全部资料（旧记录未含来源选择）');
+      item.appendChild(ce('span', 'h-meta', '保存于 ' + entry.saved_at + '　条件：' + filtersText(entry.filters) + '　来源：' + srcLabel));
+      if(entry.document_id && sourceCatalog.length &&
+         !sourceCatalog.some(function(e){ return e.document_id === entry.document_id; })){
+        item.appendChild(ce('span', 'h-tag', '所选来源已不在当前目录（失效提示；恢复仅本地显示，不会按全部资料执行）'));
+      }
       var viewBtn = ce('button', '', '查看');
       viewBtn.addEventListener('click', function(){
         // 本地恢复：仅渲染，不发任何请求，不调用模型
@@ -394,6 +604,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
       query: query,
       mode: mode,
       filters: d.filters || null,
+      document_id: (d.source_selection && d.source_selection.selected) ? d.source_selection.document_id : (d.document_id || null),
       answer_mode: answerMode,
       status: d.status,
       result: d
@@ -406,18 +617,34 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
   }
 
   async function loadProceduresConfigured(){
-    // T022-R1: 读取当前已配置事项列表，仅推荐真实存在的事项。
+    // T033: 读取当前已配置模板目录（含 related_keywords/source_document_ids），
+    // 入口候选完全由目录决定；未配置/失败=不给死入口。
     try {
       var r = await fetch('/api/v1/procedures');
       if(r.status === 200){
         var d = await r.json();
-        configuredProcedureIds = (d.procedures || []).map(function(p){ return p.procedure_id; });
+        configuredProcedures = (d.procedures || []).map(function(p){
+          return {
+            procedure_id: p.procedure_id,
+            title: p.title,
+            summary: p.summary,
+            template_version: p.template_version,
+            is_synthetic: p.is_synthetic,
+            related_keywords: p.related_keywords || [],
+            source_document_ids: p.source_document_ids || []
+          };
+        });
       } else {
-        // 未配置或读取失败：不推荐任何入口（在渲染处给清楚说明）
-        configuredProcedureIds = [];
+        configuredProcedures = [];
       }
     } catch(e){
-      configuredProcedureIds = [];
+      configuredProcedures = [];
+    }
+    // 目录晚到：为已渲染结果补入口，不重复问答请求
+    if(lastResultView && relatedHost){
+      relatedHost.innerHTML = '';
+      var relNode = renderRelatedEntry(lastResultView.d, lastResultView.query, lastResultView.opts);
+      if(relNode) relatedHost.appendChild(relNode);
     }
   }
 
@@ -457,6 +684,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
       var labels = {ready:'就绪',partial:'部分成功',failed:'失败',unconfigured:'未配置'};
       bar.textContent = '语料状态：' + (labels[d.corpus_status]||d.corpus_status) + '　可用操作：整理依据' + (generatorConfigured ? '、生成答案' : '（生成答案未启用）');
       statusArea.appendChild(bar);
+      // T031-R1：选项就绪后一次性应用待恢复条件；缺失项保留并提示（不放宽）
+      tryApplyRestoreFilters();
+      if(restorePending.filterWarnings.length){
+        var rw = ce('div', 'notice', '链接携带的筛选条件已不在当前选项，仍按该条件提交（仅手动更改或清除会取消）：' + restorePending.filterWarnings.join('、'));
+        rw.style.marginTop = '4px';
+        statusArea.appendChild(rw);
+      }
       if(!generatorConfigured){
         var genNotice = ce('div', 'notice', '自动作答未配置：本次运行未显式开启生成器（需以 --generator deepseek 显式开启并配置密钥，见 README；仅配置密钥不会自动启用）。原文整理不受影响。');
         genNotice.style.marginTop = '4px';
@@ -481,6 +715,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     retryBtn.addEventListener('click', loadStatus);
     wrap.appendChild(retryBtn);
     statusArea.appendChild(wrap);
+    // T031-R1：状态加载失败也要完成待恢复条件应用（以 ghost 保留值），不得永久卡住提交
+    tryApplyRestoreFilters();
+    if(restorePending.filterWarnings.length){
+      statusArea.appendChild(ce('div', 'notice',
+        '链接携带的筛选条件按原值保留（当前选项未知，仍按该条件提交）：' + restorePending.filterWarnings.join('、')));
+    }
   }
 
   function busyText(answerMode){
@@ -494,13 +734,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     input.disabled = on;
   }
 
-  async function doAsk(answerMode, query, topK, mode, filters){
+  async function doAsk(answerMode, query, topK, mode, filters, documentId){
     if(busy) return;
     if(query === undefined) query = input.value;
     if(topK === undefined) topK = 5;
     if(mode === undefined) mode = selectedMode;
     if(filters === undefined) filters = currentFilters();
     if(answerMode === undefined) answerMode = 'extractive';
+    if(documentId === undefined) documentId = currentDocumentId();
     askSeq++;
     var mySeq = askSeq;
     if(!query.trim()){
@@ -508,16 +749,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
       resultsArea.appendChild(ce('div','empty-state','请输入问题'));
       return;
     }
-    // Submit-time snapshot: query/mode/filters/answer_mode.
+    // T031-R1：链接条件恢复未完成/指定文件模式未选文件 → 不发请求（不丢条件、不静默全库）
+    var blocked = restoreBlockMessage() || sourceSelectionError();
+    if(blocked){
+      resultsArea.innerHTML = '';
+      resultsArea.appendChild(ce('div','empty-state', blocked));
+      return;
+    }
+    // Submit-time snapshot: query/mode/filters/answer_mode/document_id.
     lastSubmittedQuery = query;
     lastSubmittedMode = mode;
     lastSubmittedFilters = filters;
     lastSubmittedAnswerMode = answerMode;
+    lastSubmittedDocumentId = documentId;
     setBusy(true);
     resultsArea.innerHTML = '';
     resultsArea.appendChild(ce('div','loading', busyText(answerMode)));
-    await executeAsk(query, topK, mode, filters, answerMode, mySeq);
+    await executeAsk(query, topK, mode, filters, answerMode, mySeq, lastSubmittedDocumentId);
     if(mySeq === askSeq) setBusy(false);
+    updateNavLinks();
   }
 
   function retryParams(){
@@ -527,38 +777,35 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     setBusy(true);
     resultsArea.innerHTML = '';
     resultsArea.appendChild(ce('div','loading', busyText(lastSubmittedAnswerMode)));
-    // Retry uses the submitted snapshot — never the edited controls.
-    executeAsk(lastSubmittedQuery, 5, lastSubmittedMode, lastSubmittedFilters, lastSubmittedAnswerMode, mySeq).then(function(){
+    // Retry uses the submitted snapshot (incl. source selection) — never the edited controls.
+    executeAsk(lastSubmittedQuery, 5, lastSubmittedMode, lastSubmittedFilters, lastSubmittedAnswerMode, mySeq, lastSubmittedDocumentId).then(function(){
       if(mySeq === askSeq) setBusy(false);
     });
   }
 
-  // 生成失败后：用失败请求的查询/筛选快照走 extractive，不调用模型、不丢条件。
+  // 生成失败后：用失败请求的查询/筛选/来源快照走 extractive，不调用模型、不丢条件。
   function viewEvidenceForLastRequest(){
     if(busy) return;
-    doAsk('extractive', lastSubmittedQuery, 5, lastSubmittedMode, lastSubmittedFilters);
+    doAsk('extractive', lastSubmittedQuery, 5, lastSubmittedMode, lastSubmittedFilters, lastSubmittedDocumentId);
   }
 
-  async function executeAsk(query, topK, mode, filters, answerMode, mySeq){
+  async function executeAsk(query, topK, mode, filters, answerMode, mySeq, documentId){
     try {
       var body = {query: query, top_k: topK, mode: mode, answer_mode: answerMode};
       if(hasFilter(filters)) body.filters = filters;
+      if(documentId) body.document_id = documentId;
       var r = await fetch(ASK_API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
       if(mySeq !== askSeq) return;
-      if(r.status === 503 || r.status === 502){
-        var err;
-        try { err = await r.json(); } catch(je){
-          if(mySeq !== askSeq) return;
-          renderErrorState('接口返回无效 JSON', answerMode);
-          return;
-        }
-        if(mySeq !== askSeq) return;
-        renderErrorState(err.message || '请求不可用', answerMode);
-        return;
-      }
       if(!r.ok){
+        // T031-R1：422/502/503 等失败都要把服务端 message 展示出来
+        //（如失效 document_id 的 SOURCE_DOCUMENT_NOT_FOUND），不吞原因。
+        var errMsg = '接口错误：HTTP ' + r.status;
+        try {
+          var err = await r.json();
+          if(err && err.message) errMsg = err.message;
+        } catch(je){ /* keep HTTP status text */ }
         if(mySeq !== askSeq) return;
-        renderErrorState('接口错误：HTTP ' + r.status, answerMode);
+        renderErrorState(errMsg, answerMode);
         return;
       }
       var d;
@@ -599,6 +846,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     var lines = [];
     lines.push('问题：' + d.query);
     lines.push('条件：' + filtersText(d.filters));
+    lines.push('来源：' + sourceScopeText(d));
     if(d.status === 'generated' && d.answer && d.answer.paragraphs){
       lines.push('说明：' + (d.disclaimer || ''));
       d.answer.paragraphs.forEach(function(p){
@@ -652,6 +900,67 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     card.classList.add('highlight');
   }
 
+  // T033: 相关事项入口渲染（候选=配置模板关键词∩本结果 query；来源集合约束）
+  function renderRelatedEntry(d, query, opts){
+    opts = opts || {};
+    if(configuredProcedures === null){
+      var wait = ce('div', 'disclaimer');
+      wait.appendChild(ce('b', '', '相关事项入口'));
+      wait.appendChild(document.createTextNode(
+        '：正在确认当前配置的办事模板，入口稍后自动出现（无需重新提问）。'));
+      return wait;
+    }
+    if(!configuredProcedures.length){
+      // 未配置/加载失败：明确说明且不给死入口（保留既有行为）
+      var none = ce('div', 'disclaimer');
+      none.appendChild(ce('b', '', '相关事项入口'));
+      none.appendChild(document.createTextNode(
+        '：本次运行未配置对应指南（或模板目录不可用），暂不提供入口。'));
+      return none;
+    }
+    var docId = (d.source_selection && d.source_selection.selected && d.source_selection.document_id)
+      || d.document_id || null;
+    var cands = relatedCandidates(query, docId);
+    if(!cands.matched.length && !cands.sourceMismatch.length) return null;
+    var card = ce('div', 'disclaimer');
+    card.appendChild(ce('b', '', '相关事项入口'));
+    if(cands.matched.length){
+      card.appendChild(document.createTextNode(
+        '（关键词匹配，非资格判断，不代表系统判断您符合办理条件或对您适用的建议）：'));
+      cands.matched.forEach(function(p){
+        var row = ce('div');
+        row.appendChild(document.createTextNode(
+          '· ' + (p.title || p.procedure_id) + '　模板 ' + (p.template_version || '') +
+          '　' + (p.summary || '')));
+        card.appendChild(row);
+        var linkRow = ce('div');
+        var relA = ce('a');
+        relA.href = proceduresLinkFor(p, query, d.filters);
+        relA.textContent = '进入办事页（只预选本事项并恢复本次问题与四条件快照，不自动草稿/保存）';
+        linkRow.appendChild(relA);
+        linkRow.appendChild(document.createTextNode(
+          '　关键词匹配，办理依据将在办事页按模板绑定原文重新核对。'));
+        card.appendChild(linkRow);
+      });
+      if(docId){
+        card.appendChild(ce('div', '',
+          '所选文件仅用于本次问答范围；资料范围选择不属于办事模板规则，不会作为办事筛选条件，也不代表已按所选文件生成草稿。'));
+      } else {
+        card.appendChild(ce('div', '',
+          '适用范围以模板绑定原文为准（标题/摘要含版本与年级信息）；办理依据将在办事页重新核对。'));
+      }
+    }
+    cands.sourceMismatch.forEach(function(p){
+      card.appendChild(ce('div', '',
+        '当前已配置指南的依据与本次指定文件不同：' + (p.title || p.procedure_id) +
+        '（模板 ' + (p.template_version || '') + '）——不提供入口；本次文件条件保留（不自动取消）。'));
+    });
+    if(opts.fromHistory){
+      card.appendChild(ce('div', '', '历史结果：办事页将按当前加载资料重新生成指南，并使用本条历史条件（非当前控件值）。'));
+    }
+    return card;
+  }
+
   function renderResult(d, query, mode, answerMode, opts){
     opts = opts || {};
     resultsArea.innerHTML = '';
@@ -660,41 +969,29 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     var ql = ce('div', 'query-label',
       '问题：' + query + '　模式：' + ({bm25:'关键词',dense:'语义',hybrid:'混合'}[mode]||mode) +
       '　方式：' + (answerMode === 'generated' ? '生成答案' : '原文摘录') +
-      '　条件：' + filtersText(d.filters) + '　证据：' + hitCount + ' 条');
+      '　条件：' + filtersText(d.filters) + '　来源：' + sourceScopeText(d) + '　证据：' + hitCount + ' 条');
     resultsArea.appendChild(ql);
+
+    if(d.source_selection && d.source_selection.selected){
+      var ssN = (d.source_selection.notes || []).slice();
+      if(d.source_selection.is_admitted === false){
+        ssN.push('来源选择与适用条件求交后无准入依据（不取消筛选、不回退其他文件）。');
+      }
+      if(ssN.length) resultsArea.appendChild(ce('div', 'disclaimer', ssN.join('　')));
+    }
 
     if(opts.fromHistory){
       resultsArea.appendChild(ce('div', 'history-banner',
         '历史结果，资料可能已更新（保存于 ' + opts.fromHistory + '）。如需最新结果请重新提问；查看历史不会发出任何请求。'));
     }
 
-    // T018: 相关办事事项入口——链接携带本条结果的问题/条件快照（非当前控件）
-    // T022-R1: 仅推荐当前已配置的事项；否则明确“本次运行未配置对应指南”。
-    var rel = relatedProcedure(query);
-    if(rel){
-      var relCard = ce('div', 'disclaimer');
-      relCard.appendChild(ce('b', '', '相关事项入口'));
-      var relConfigured = configuredProcedureIds !== null &&
-        configuredProcedureIds.indexOf(rel.procedure_id) >= 0;
-      if(relConfigured){
-        relCard.appendChild(document.createTextNode(
-          '（关键词映射，不代表系统判断您符合办理条件）：' + rel.title + '　'));
-        var relA = ce('a');
-        relA.href = proceduresLinkFor(rel, query, d.filters);
-        relA.textContent = '进入办事页（带入本次问题与条件快照）';
-        relCard.appendChild(relA);
-      } else if(configuredProcedureIds === null){
-        relCard.appendChild(document.createTextNode(
-          '（关键词映射）命中「' + rel.title + '」，正在确认当前配置，稍后刷新可见入口。'));
-      } else {
-        relCard.appendChild(document.createTextNode(
-          '（关键词映射）命中「' + rel.title + '」，但本次运行未配置对应指南，暂不提供入口。'));
-      }
-      if(opts.fromHistory){
-        relCard.appendChild(ce('div', '', '历史结果：办事页将按当前加载资料重新生成指南，并使用本条历史条件（非当前控件值）。'));
-      }
-      resultsArea.appendChild(relCard);
-    }
+    // T033: 相关办事事项入口——按配置模板关键词+来源集合确定；链接携带本条
+    // 结果的问题/四条件快照（非当前控件）；目录晚到由 loadProceduresConfigured 补渲染。
+    relatedHost = ce('div');
+    resultsArea.appendChild(relatedHost);
+    lastResultView = { d: d, query: query, opts: opts || {} };
+    var relNode = renderRelatedEntry(d, query, opts);
+    if(relNode) relatedHost.appendChild(relNode);
 
     if(d.status === 'generated'){
       resultsArea.appendChild(ce('div', 'answer-mode-label label-generated', '自动生成（需人工核对适用条件与语义支持）'));
@@ -712,7 +1009,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     }
     if(d.empty_message){
       var wrap = ce('div');
-      wrap.appendChild(ce('div','empty-state', d.empty_message));
+      var ss = d.source_selection || {};
+      var emptyText = d.empty_message;
+      if(ss.selected && ss.is_admitted === false){
+        emptyText = '所选文件被适用条件排除，无准入资料（不是“文件内无命中”，也不是学校无规定）；可清除条件或更换文件后重试。';
+      } else if(ss.selected && ss.allowed_after_selection === 0){
+        emptyText = '所选文件无准入资料（不是学校无规定）；可清除条件或更换文件后重试。';
+      } else if(ss.selected){
+        emptyText = '所选文件内没有检索命中（不代表学校无规定）；可更换文件或清除选择后重试。';
+      }
+      wrap.appendChild(ce('div','empty-state', emptyText));
       resultsArea.appendChild(wrap);
       return;
     }
@@ -1003,6 +1309,33 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     } catch(e){ /* 状态失败不阻断文字提问 */ }
   }
   loadAsrStatus();
+  // ---- 资料范围控件：编辑不触发搜索/生成；状态刷新不清空当前选择 ----
+  sourceModeSel.addEventListener('change', function(){
+    sourceDocSel.disabled = sourceModeSel.value !== 'doc';
+    if(sourceModeSel.value !== 'doc') sourceDocSel.value = '';
+    updateSourceHint();
+  });
+  sourceDocSel.addEventListener('change', updateSourceHint);
+  clearSourceBtn.addEventListener('click', function(){
+    sourceModeSel.value = 'all';
+    sourceDocSel.value = '';
+    sourceDocSel.disabled = true;
+    updateSourceHint();
+  });
+  // /ask→/search 互跳携带查询条件时，来源选择一并一致（用提交快照）
+  function updateNavLinks(){
+    if(!searchNav) return;
+    var parts = [];
+    if(lastSubmittedQuery) parts.push('query=' + encodeURIComponent(lastSubmittedQuery));
+    if(lastSubmittedFilters && hasFilter(lastSubmittedFilters)){
+      if(lastSubmittedFilters.campus) parts.push('campus=' + encodeURIComponent(lastSubmittedFilters.campus));
+      if(lastSubmittedFilters.student_type) parts.push('student_type=' + encodeURIComponent(lastSubmittedFilters.student_type));
+      if(lastSubmittedFilters.admission_year !== null && lastSubmittedFilters.admission_year !== undefined) parts.push('admission_year=' + encodeURIComponent(lastSubmittedFilters.admission_year));
+      if(lastSubmittedFilters.as_of_date) parts.push('as_of_date=' + encodeURIComponent(lastSubmittedFilters.as_of_date));
+    }
+    if(lastSubmittedDocumentId) parts.push('document_id=' + encodeURIComponent(lastSubmittedDocumentId));
+    searchNav.href = '/search' + (parts.length ? '?' + parts.join('&') : '');
+  }
   historyToggle.addEventListener('change', function(){ renderHistoryNote(); });
   historyClearBtn.addEventListener('click', function(){
     if(!storageOk) return;
@@ -1016,14 +1349,34 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     window.addEventListener('pageshow', function(){ renderHistoryNote(); });
   }
   // T018: 首页演示问题带 query 参数时预填问题输入框
+  // T031/T031-R1: 互跳携带条件/来源参数——select 值只进待恢复快照，
+  // 选项就绪后一次性应用（原生 select 早写丢值）；失效 ID 保留原值不转 null
   var initParams = parseQueryParams();
   if(initParams.query){
     input.value = initParams.query;
+  }
+  if(initParams.as_of_date){ dateInput.value = initParams.as_of_date; }
+  restorePending.filters = {
+    campus: initParams.campus || null,
+    student_type: initParams.student_type || null,
+    admission_year: initParams.admission_year || null,
+    as_of_date: initParams.as_of_date || null
+  };
+  if(!restorePending.filters.campus && !restorePending.filters.student_type &&
+     !restorePending.filters.admission_year && !restorePending.filters.as_of_date){
+    restorePending.filters = null;
+  }
+  if(initParams.document_id){
+    restorePending.documentId = initParams.document_id;
+    sourceModeSel.value = 'doc'; // source-mode 的 option 在静态 HTML 中，安全
+    sourceDocSel.disabled = false;
+    updateSourceHint();
   }
   renderHistoryNote();
   renderHistory();
   loadStatus();
   loadProceduresConfigured();
+  loadSourceCatalog().then(function(){ renderHistory(); });
 })();
 </script>
 </body>

@@ -79,7 +79,7 @@ summary:hover{text-decoration:underline}
   <h1>证据搜索</h1>
   <a href="/">首页</a>
   <a href="/preview">← 语料预览</a>
-  <a href="/ask">证据整理</a>
+  <a href="/ask" id="nav-ask">证据整理</a>
   <a href="/procedures">办事指南</a>
   <a href="/compare">版本对比</a>
 </div>
@@ -100,6 +100,16 @@ summary:hover{text-decoration:underline}
     <label for="filter-as-of-date">查询日期</label>
     <input type="date" id="filter-as-of-date" aria-label="查询日期">
     <button type="button" class="filter-clear-btn" id="clear-filters-btn">清除条件</button>
+  </div>
+  <div class="filter-bar" id="source-bar">
+    <label for="source-mode">资料范围</label>
+    <select id="source-mode" aria-label="资料范围">
+      <option value="all">全部资料</option>
+      <option value="doc">指定文件</option>
+    </select>
+    <select id="source-doc" aria-label="指定文件" disabled><option value="">（请选择文件）</option></select>
+    <button type="button" class="filter-clear-btn" id="clear-source-btn">清除选择</button>
+    <span class="ev-budget" id="source-hint">未选择指定文件：检索范围为全部资料。</span>
   </div>
   <div class="search-form" id="search-form">
     <label for="query-input" class="sr-only" style="position:absolute;left:-9999px">搜索关键词</label>
@@ -122,15 +132,23 @@ summary:hover{text-decoration:underline}
   var yearSel = document.getElementById('filter-admission-year');
   var dateInput = document.getElementById('filter-as-of-date');
   var clearBtn = document.getElementById('clear-filters-btn');
+  var sourceModeSel = document.getElementById('source-mode');
+  var sourceDocSel = document.getElementById('source-doc');
+  var clearSourceBtn = document.getElementById('clear-source-btn');
+  var sourceHint = document.getElementById('source-hint');
+  var askNav = document.getElementById('nav-ask');
   var searchSeq = 0;
   var statusSeq = 0;
   var lastSubmittedQuery = '';
   var lastSubmittedTopK = 5;
   var lastSubmittedMode = 'bm25';
   var lastSubmittedFilters = null;
+  var lastSubmittedDocumentId = null;
   var selectedMode = 'bm25';
   var availableModes = [];
   var lastFilterOptionsJson = '';
+  var sourceCatalog = [];
+  var lastCatalogJson = '';
 
   function ce(tag, cls, text){
     var el = document.createElement(tag);
@@ -187,6 +205,183 @@ summary:hover{text-decoration:underline}
     typeSel.value = '';
     yearSel.value = '';
     dateInput.value = '';
+  }
+
+  // ---- 资料范围（T031）：用户显式选择单份文件；未选=全部资料 ----
+  // T031-R1：URL 参数进入「待恢复快照」，等选项/目录就绪后再一次性应用——
+  // 原生 select 在选项尚不存在时写 value 会丢值；失效 ID 保留原始值
+  // （提交携带原 ID 由服务端 422 校验），绝不静默转 null 执行全库检索。
+  var restorePending = {
+    filters: null,
+    documentId: null,
+    filtersApplied: false,
+    documentApplied: false,
+    catalogFailed: false,
+    filterWarnings: []
+  };
+
+  function currentDocumentId(){
+    return (sourceModeSel.value === 'doc' && sourceDocSel.value) ? sourceDocSel.value : null;
+  }
+
+  function sourceSelectionError(){
+    if(sourceModeSel.value === 'doc' && !sourceDocSel.value){
+      return '「指定文件」模式下还没有选择文件：请选择文件，或显式切换回「全部资料」；不会自动按全部资料执行。';
+    }
+    return null;
+  }
+
+  function applyRestoreAfterStatusFailure(){
+    // T031-R1：状态加载失败也要完成待恢复条件应用（以 ghost 保留值），不得永久卡住提交
+    tryApplyRestoreFilters();
+    if(restorePending.filterWarnings.length){
+      statusArea.appendChild(ce('div', 'notice',
+        '链接携带的筛选条件按原值保留（当前选项未知，仍按该条件提交）：' + restorePending.filterWarnings.join('、')));
+    }
+    updateSourceHint();
+  }
+
+  function restoreBlockMessage(){
+    if(restorePending.filters && !restorePending.filtersApplied){
+      return '正在恢复链接中的筛选条件（等待语料状态/选项加载），暂不提交以免丢失条件。';
+    }
+    if(restorePending.documentId && !restorePending.documentApplied){
+      return '正在恢复链接中的来源文件（等待目录确认），暂不提交以免丢失或放宽条件。';
+    }
+    return null;
+  }
+
+  function addSelectValue(sel, value, labelText){
+    // Native semantics: values stick only via an existing/added option.
+    var opt = document.createElement('option');
+    opt.value = value;
+    opt.textContent = labelText;
+    sel.appendChild(opt);
+    sel.value = value;
+  }
+
+  function tryApplyRestoreFilters(){
+    if(restorePending.filtersApplied || !restorePending.filters) return;
+    var f = restorePending.filters;
+    function applyOne(sel, value, fieldName){
+      if(value === null || value === undefined || value === '') return;
+      var vals = [];
+      for(var i = 0; i < sel.children.length; i++) vals.push(String(sel.children[i].value));
+      if(vals.indexOf(String(value)) >= 0){
+        sel.value = String(value);
+      } else {
+        addSelectValue(sel, String(value), String(value) + '（已不在当前选项）');
+        restorePending.filterWarnings.push(fieldName + '=' + value);
+      }
+    }
+    applyOne(campusSel, f.campus, '校区');
+    applyOne(typeSel, f.student_type, '学生类型');
+    applyOne(yearSel, f.admission_year, '入学年份');
+    if(f.as_of_date){ dateInput.value = f.as_of_date; }
+    restorePending.filtersApplied = true;
+  }
+
+  function tryApplyRestoreDocument(){
+    if(restorePending.documentApplied || !restorePending.documentId) return;
+    var id = restorePending.documentId;
+    sourceModeSel.value = 'doc';
+    sourceDocSel.disabled = false;
+    var known = sourceCatalog.some(function(e){ return e.document_id === id; });
+    if(known){
+      sourceDocSel.value = id; // 目录中的 option 已存在，原生语义保留
+    } else {
+      // 失效或目录未确认：保留原始 ID 为明确不可用选项（提交携带原值，服务端 422 校验）
+      addSelectValue(sourceDocSel, id, id + (restorePending.catalogFailed ? '（目录未确认）' : '（已失效/不在当前目录）'));
+    }
+    restorePending.documentApplied = true;
+    updateSourceHint();
+  }
+
+  function docLabel(e, withShortId){
+    var t = e.title || e.document_id;
+    var v = e.version_label ? '（' + e.version_label + '）' : '（无版本标注）';
+    return t + v + (withShortId ? ' · ' + String(e.document_id).slice(0, 8) : '');
+  }
+
+  function fillSourceSelect(){
+    var prev = sourceDocSel.value;
+    var labels = {};
+    sourceCatalog.forEach(function(e){
+      var k = docLabel(e, false);
+      labels[k] = (labels[k] || 0) + 1;
+    });
+    sourceDocSel.innerHTML = '';
+    var ph = document.createElement('option');
+    ph.value = '';
+    ph.textContent = '（请选择文件）';
+    sourceDocSel.appendChild(ph);
+    sourceCatalog.forEach(function(e){
+      var opt = document.createElement('option');
+      opt.value = e.document_id;
+      opt.textContent = docLabel(e, labels[docLabel(e, false)] > 1);
+      sourceDocSel.appendChild(opt);
+    });
+    if(prev && sourceCatalog.some(function(e){ return e.document_id === prev; })){
+      sourceDocSel.value = prev;
+    } else if(prev){
+      // Keep the constraint: ghost entry, never silently dropped to "all".
+      addSelectValue(sourceDocSel, prev, prev + '（已不在当前目录）');
+    }
+    updateSourceHint();
+  }
+
+  function updateSourceHint(){
+    if(sourceModeSel.value !== 'doc'){
+      sourceHint.textContent = '未选择指定文件：检索范围为全部资料。';
+      return;
+    }
+    var id = sourceDocSel.value;
+    if(!id){
+      sourceHint.textContent = '「指定文件」模式：请选择文件，或显式切换回「全部资料」；不会自动按全部资料执行。';
+      return;
+    }
+    var entry = sourceCatalog.filter(function(e){ return e.document_id === id; })[0];
+    if(entry){
+      sourceHint.textContent = '仅在所选文件内检索（' + (entry.title || id) +
+        (entry.version_label ? ' · ' + entry.version_label : ' · 无版本标注') +
+        '）；不代表该版本现行有效。';
+    } else if(restorePending.catalogFailed){
+      sourceHint.textContent = '目录未确认（加载失败/未配置）：保留所选文件 ' + id +
+        '，提交将携带该 ID 由服务端校验；不会默认为全部资料。';
+    } else {
+      sourceHint.textContent = '所选文件已不在当前目录（' + id + '）：保留该选择（提交携带原 ID 由服务端校验，' +
+        '不会默认为全部资料）；请重新选择，或显式切换回「全部资料」。';
+    }
+  }
+
+  function sourceScopeText(d){
+    var ss = d.source_selection || {};
+    if(!ss.selected) return '全部资料';
+    var t = ss.title || ss.document_id || d.document_id;
+    var v = ss.version_label ? '（' + ss.version_label + '）' : '（无版本标注）';
+    return '指定文件：' + t + v;
+  }
+
+  async function loadSourceCatalog(){
+    try {
+      var r = await fetch(API + '/documents');
+      if(r.ok){
+        var d = await r.json();
+        var docs = d.documents || [];
+        var json = JSON.stringify(docs.map(function(e){ return e.document_id; }));
+        if(json !== lastCatalogJson){ // keep in-flight edits
+          lastCatalogJson = json;
+          sourceCatalog = docs;
+          fillSourceSelect();
+        }
+      } else {
+        restorePending.catalogFailed = true;
+      }
+    } catch(e){
+      restorePending.catalogFailed = true; // 目录失败不得静默取消待恢复 ID
+    }
+    tryApplyRestoreDocument();
+    updateSourceHint();
   }
 
   // Rebuild one filter select from status options, preserving the user's
@@ -246,6 +441,7 @@ summary:hover{text-decoration:underline}
         retryBtn.addEventListener('click', loadStatus);
         wrap.appendChild(retryBtn);
         statusArea.appendChild(wrap);
+        applyRestoreAfterStatusFailure();
         return;
       }
       var d;
@@ -258,6 +454,7 @@ summary:hover{text-decoration:underline}
         retryBtn.addEventListener('click', loadStatus);
         wrap.appendChild(retryBtn);
         statusArea.appendChild(wrap);
+        applyRestoreAfterStatusFailure();
         return;
       }
       if(mySeq !== statusSeq) return;
@@ -286,6 +483,13 @@ summary:hover{text-decoration:underline}
       if(d.truncated_chunk_count > 0) txt += '　截断块：' + d.truncated_chunk_count;
       bar.textContent = txt;
       statusArea.appendChild(bar);
+      // T031-R1：选项就绪后一次性应用待恢复条件；缺失项保留并提示（不放宽）
+      tryApplyRestoreFilters();
+      if(restorePending.filterWarnings.length){
+        var rw = ce('div', 'notice', '链接携带的筛选条件已不在当前选项，仍按该条件提交（仅手动更改或清除会取消）：' + restorePending.filterWarnings.join('、'));
+        rw.style.marginTop = '4px';
+        statusArea.appendChild(rw);
+      }
       if(vanished.length){
         var vanishNotice = ce('div', 'notice', '以下筛选条件已不在当前语料选项中，仍按该条件筛选（仅手动更改或清除条件会取消）：' + vanished.join('、'));
         vanishNotice.style.marginTop = '4px';
@@ -328,6 +532,7 @@ summary:hover{text-decoration:underline}
       retryBtn.addEventListener('click', loadStatus);
       wrap.appendChild(retryBtn);
       statusArea.appendChild(wrap);
+      applyRestoreAfterStatusFailure();
     }
   }
 
@@ -345,15 +550,25 @@ summary:hover{text-decoration:underline}
       btn.disabled = false;
       return;
     }
+    // T031-R1：链接条件恢复未完成/指定文件模式未选文件 → 不发请求（不丢条件、不静默全库）
+    var blocked = restoreBlockMessage() || sourceSelectionError();
+    if(blocked){
+      resultsArea.innerHTML = '';
+      resultsArea.appendChild(ce('div','empty-state', blocked));
+      btn.disabled = false;
+      return;
+    }
     lastSubmittedQuery = query;
     lastSubmittedTopK = topK;
     lastSubmittedMode = mode;
     lastSubmittedFilters = filters;
+    lastSubmittedDocumentId = currentDocumentId();
     btn.disabled = true;
     resultsArea.innerHTML = '';
     resultsArea.appendChild(ce('div','loading','搜索中…'));
-    await executeSearch(query, topK, mode, filters, mySeq);
+    await executeSearch(query, topK, mode, filters, mySeq, lastSubmittedDocumentId);
     if(mySeq === searchSeq) btn.disabled = false;
+    updateNavLinks();
   }
 
   function retrySearchParams(){
@@ -362,15 +577,17 @@ summary:hover{text-decoration:underline}
     btn.disabled = true;
     resultsArea.innerHTML = '';
     resultsArea.appendChild(ce('div','loading','搜索中…'));
-    executeSearch(lastSubmittedQuery, lastSubmittedTopK, lastSubmittedMode, lastSubmittedFilters, mySeq).then(function(){
+    // Retry uses the submitted snapshot (incl. source selection) — never the edited controls.
+    executeSearch(lastSubmittedQuery, lastSubmittedTopK, lastSubmittedMode, lastSubmittedFilters, mySeq, lastSubmittedDocumentId).then(function(){
       if(mySeq === searchSeq) btn.disabled = false;
     });
   }
 
-  async function executeSearch(query, topK, mode, filters, mySeq){
+  async function executeSearch(query, topK, mode, filters, mySeq, documentId){
     try {
       var body = {query: query, top_k: topK, mode: mode};
       if(hasFilter(filters)) body.filters = filters;
+      if(documentId) body.document_id = documentId;
       var r = await fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
       if(mySeq !== searchSeq) return;
       if(r.status === 503){
@@ -398,9 +615,15 @@ summary:hover{text-decoration:underline}
       }
       if(!r.ok){
         if(mySeq !== searchSeq) return;
+        var msg = '接口错误：HTTP ' + r.status;
+        try {
+          var ej = await r.json();
+          if(ej && ej.message) msg = ej.message;
+        } catch(je2){ /* keep HTTP status text */ }
+        if(mySeq !== searchSeq) return;
         resultsArea.innerHTML = '';
         var wrap = ce('div');
-        wrap.appendChild(ce('div','empty-state','接口错误：HTTP ' + r.status));
+        wrap.appendChild(ce('div','empty-state', msg));
         var retryBtn = ce('button','retry-btn','重试');
         retryBtn.addEventListener('click', retrySearchParams);
         wrap.appendChild(retryBtn);
@@ -447,17 +670,44 @@ summary:hover{text-decoration:underline}
     // not the current control values — later edits must not rewrite it.
     var ql = ce('div', 'query-label',
       '查询：' + query + '　模式：' + ({bm25:'关键词',dense:'语义',hybrid:'混合'}[mode]||mode) +
-      '　条件：' + filtersText(d.filters) + '　结果：' + hitCount + ' 条');
+      '　条件：' + filtersText(d.filters) + '　来源：' + sourceScopeText(d) + '　结果：' + hitCount + ' 条');
     resultsArea.appendChild(ql);
 
     if(d.filter_summary && d.filter_summary.notes && d.filter_summary.notes.length){
       var notesDiv = ce('div', 'filter-notes', d.filter_summary.notes.join('　'));
       resultsArea.appendChild(notesDiv);
     }
+    if(d.source_selection && d.source_selection.selected){
+      var ss = d.source_selection;
+      var ssNotes = (ss.notes || []).slice();
+      if(ss.is_admitted === false){
+        ssNotes.push('来源选择与适用条件求交后无准入依据（不取消筛选、不回退其他文件）。');
+      }
+      if(ssNotes.length){
+        resultsArea.appendChild(ce('div', 'filter-notes', ssNotes.join('　')));
+      }
+    }
 
     if(!d.hits || d.hits.length === 0){
       var wrap = ce('div');
-      if(d.filter_summary && d.filter_summary.active && d.filter_summary.allowed_count === 0){
+      var ss = d.source_selection || {};
+      if(ss.selected && ss.is_admitted === false){
+        wrap.appendChild(ce('div','empty-state','所选文件被适用条件排除，无准入资料（不是“文件内无命中”，也不是学校无规定）'));
+        appendClearAction(wrap);
+        var clearSrc = ce('button', 'filter-clear-btn', '清除选择');
+        clearSrc.addEventListener('click', function(){
+          sourceModeSel.value = 'all';
+          sourceDocSel.value = '';
+          sourceDocSel.disabled = true;
+          updateSourceHint();
+        });
+        wrap.appendChild(clearSrc);
+      } else if(ss.selected && ss.allowed_after_selection === 0){
+        wrap.appendChild(ce('div','empty-state','所选文件无准入资料（不是学校无规定）'));
+        appendClearAction(wrap);
+      } else if(ss.selected){
+        wrap.appendChild(ce('div','empty-state','所选文件内没有检索命中（不代表学校无规定）'));
+      } else if(d.filter_summary && d.filter_summary.active && d.filter_summary.allowed_count === 0){
         wrap.appendChild(ce('div','empty-state','没有满足所选条件的资料'));
         appendClearAction(wrap);
       } else if(d.filter_summary && d.filter_summary.active){
@@ -563,6 +813,68 @@ summary:hover{text-decoration:underline}
   btn.addEventListener('click', function(){ doSearch(); });
   input.addEventListener('keydown', function(e){ if(e.key === 'Enter') doSearch(); });
   clearBtn.addEventListener('click', function(){ clearFilters(); });
+  // 资料范围控件：编辑不触发搜索/生成；状态刷新不清空当前选择
+  sourceModeSel.addEventListener('change', function(){
+    sourceDocSel.disabled = sourceModeSel.value !== 'doc';
+    if(sourceModeSel.value !== 'doc') sourceDocSel.value = '';
+    updateSourceHint();
+  });
+  sourceDocSel.addEventListener('change', updateSourceHint);
+  clearSourceBtn.addEventListener('click', function(){
+    sourceModeSel.value = 'all';
+    sourceDocSel.value = '';
+    sourceDocSel.disabled = true;
+    updateSourceHint();
+  });
+  // /search→/ask 互跳携带查询条件时，来源选择一并一致（用提交快照）
+  function updateNavLinks(){
+    if(!askNav) return;
+    var parts = [];
+    if(lastSubmittedQuery) parts.push('query=' + encodeURIComponent(lastSubmittedQuery));
+    if(lastSubmittedFilters && hasFilter(lastSubmittedFilters)){
+      if(lastSubmittedFilters.campus) parts.push('campus=' + encodeURIComponent(lastSubmittedFilters.campus));
+      if(lastSubmittedFilters.student_type) parts.push('student_type=' + encodeURIComponent(lastSubmittedFilters.student_type));
+      if(lastSubmittedFilters.admission_year !== null && lastSubmittedFilters.admission_year !== undefined) parts.push('admission_year=' + encodeURIComponent(lastSubmittedFilters.admission_year));
+      if(lastSubmittedFilters.as_of_date) parts.push('as_of_date=' + encodeURIComponent(lastSubmittedFilters.as_of_date));
+    }
+    if(lastSubmittedDocumentId) parts.push('document_id=' + encodeURIComponent(lastSubmittedDocumentId));
+    askNav.href = '/ask' + (parts.length ? '?' + parts.join('&') : '');
+  }
+  // T031: 互跳携带条件/来源参数时一并预填（query/filters/document_id 保持一致）
+  // T031-R1：select 值只进待恢复快照，选项就绪后一次性应用（原生 select 早写丢值）
+  function parseQueryParams(){
+    var out = {};
+    try {
+      var qs = (typeof location !== 'undefined' && location.search) ? String(location.search).replace(/^\?/, '') : '';
+      qs.split('&').forEach(function(pair){
+        if(!pair) return;
+        var kv = pair.split('=');
+        out[decodeURIComponent(kv[0])] = decodeURIComponent((kv[1] || '').replace(/\+/g, ' '));
+      });
+    } catch(e){}
+    return out;
+  }
+  var initParams = parseQueryParams();
+  if(initParams.query){ input.value = initParams.query; }
+  if(initParams.as_of_date){ dateInput.value = initParams.as_of_date; }
+  restorePending.filters = {
+    campus: initParams.campus || null,
+    student_type: initParams.student_type || null,
+    admission_year: initParams.admission_year || null,
+    as_of_date: initParams.as_of_date || null
+  };
+  if(!restorePending.filters.campus && !restorePending.filters.student_type &&
+     !restorePending.filters.admission_year && !restorePending.filters.as_of_date){
+    restorePending.filters = null;
+  }
+  if(initParams.document_id){
+    // 保留原始 ID；失效/目录失败都不转 null——由 tryApplyRestoreDocument 应用
+    restorePending.documentId = initParams.document_id;
+    sourceModeSel.value = 'doc'; // source-mode 的 option 在静态 HTML 中，安全
+    sourceDocSel.disabled = false;
+    updateSourceHint();
+  }
+  loadSourceCatalog();
   loadStatus();
 })();
 </script>

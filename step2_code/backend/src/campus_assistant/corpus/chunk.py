@@ -17,6 +17,7 @@ from typing import Any
 
 CHUNKER_VERSION = "1.0"
 STRATEGY = "block_window_v1"
+STRATEGY_OVERLAP = "block_window_overlap_v1"
 TABLE_ROW_EXCEEDS_MAX_CHARS = "TABLE_ROW_EXCEEDS_MAX_CHARS"
 
 
@@ -29,11 +30,22 @@ def _make_chunk_id(
     char_start: int,
     char_end: int,
     text: str,
+    *,
+    strategy: str = STRATEGY,
+    overlap_chars: int = 0,
 ) -> str:
-    """Deterministic chunk ID from content and configuration."""
+    """Deterministic chunk ID from content and configuration.
+
+    T034: the overlap strategy/params carry an explicit identity in the key —
+    but only for overlap runs. The default (overlap=0) key is byte-identical
+    to the historical one, so legacy chunk IDs never change.
+    """
+    key_items = [document_id, sha256, parser_version, block_id,
+                 CHUNKER_VERSION, strategy, max_chars, char_start, char_end, text]
+    if overlap_chars:
+        key_items.append(overlap_chars)
     key = json.dumps(
-        [document_id, sha256, parser_version, block_id,
-         CHUNKER_VERSION, STRATEGY, max_chars, char_start, char_end, text],
+        key_items,
         ensure_ascii=False,
         separators=(",", ":"),
     ).encode("utf-8")
@@ -48,20 +60,43 @@ def _validate_max_chars(max_chars: int) -> None:
         raise ValueError("max_chars 必须在 1—10000 之间")
 
 
-def chunk_documents(documents: list[dict], *, max_chars: int = 500) -> list[dict]:
+def _validate_overlap_chars(overlap_chars: int, max_chars: int) -> None:
+    """Validate overlap_chars parameter (0 = historical behaviour)."""
+    if not isinstance(overlap_chars, int) or isinstance(overlap_chars, bool):
+        raise ValueError("overlap_chars 必须是整数")
+    if overlap_chars < 0:
+        raise ValueError("overlap_chars 不能为负数")
+    if overlap_chars >= max_chars:
+        raise ValueError("overlap_chars 必须小于 max_chars")
+
+
+def chunk_documents(
+    documents: list[dict], *, max_chars: int = 500, overlap_chars: int = 0
+) -> list[dict]:
     """Chunk parsed documents into retrieval candidates.
 
     Args:
         documents: Output of parse_manifest['documents'].
         max_chars: Maximum characters per paragraph chunk (1-10000).
+        overlap_chars: T034 optional window overlap for paragraph blocks
+            (0 = historical behaviour, byte/ID identical). Must be in
+            [0, max_chars); window step = max_chars - overlap_chars. Applies
+            only to in-block paragraph windows — table_row chunks and parsed
+            blocks are untouched. The last window ends at the block tail and
+            the loop stops there (no redundant extra tail window).
 
     Returns:
         Ordered list of chunk dicts. Each chunk's metadata, locator, cells,
         and warnings are independent deep copies — modifying one chunk does
-        not affect its siblings or the input documents.
+        not affect its siblings or the input documents. Chunks keep the
+        original document_id/block_id and the true in-block [char_start,
+        char_end); text equals the block slice verbatim.
     """
     _validate_max_chars(max_chars)
+    _validate_overlap_chars(overlap_chars, max_chars)
 
+    step = max_chars - overlap_chars
+    strategy = STRATEGY_OVERLAP if overlap_chars else STRATEGY
     all_chunks: list[dict] = []
 
     for doc in documents:
@@ -100,6 +135,7 @@ def chunk_documents(documents: list[dict], *, max_chars: int = 500) -> list[dict
                         "chunk_id": _make_chunk_id(
                             doc_id, sha256, parser_version, block_id,
                             max_chars, pos, end, chunk_text,
+                            strategy=strategy, overlap_chars=overlap_chars,
                         ),
                         "document_id": doc_id,
                         "block_id": block_id,
@@ -113,12 +149,18 @@ def chunk_documents(documents: list[dict], *, max_chars: int = 500) -> list[dict
                         "metadata": copy.deepcopy(meta),
                         "parser_version": parser_version,
                         "chunker_version": CHUNKER_VERSION,
-                        "strategy": STRATEGY,
+                        "strategy": strategy,
                         "max_chars": max_chars,
                         "warnings": chunk_warnings,
                     }
+                    if overlap_chars:
+                        # identity field only on overlap runs — default dicts
+                        # stay byte-identical to the historical schema
+                        chunk["overlap_chars"] = overlap_chars
                     all_chunks.append(chunk)
-                    pos = end
+                    if end >= len(text):
+                        break  # tail window reached block end — stop, no extra window
+                    pos = end - overlap_chars
 
             elif kind == "table_row":
                 cells = block.get("cells")
@@ -171,14 +213,15 @@ def _get_parse_result(manifest_path: Path, corpus_root: Path) -> dict:
 
 
 def chunk_manifest(
-    manifest_path: Path, corpus_root: Path, *, max_chars: int = 500
+    manifest_path: Path, corpus_root: Path, *, max_chars: int = 500, overlap_chars: int = 0
 ) -> dict:
     """Validate, parse, then chunk all documents.
 
-    Validates max_chars before calling parse_manifest to avoid
+    Validates max_chars/overlap_chars before calling parse_manifest to avoid
     inconsistent behavior with different document counts.
     """
     _validate_max_chars(max_chars)
+    _validate_overlap_chars(overlap_chars, max_chars)
 
     parse_result = _get_parse_result(manifest_path, corpus_root)
 
@@ -192,7 +235,9 @@ def chunk_manifest(
 
     for doc in documents:
         try:
-            doc_chunks = chunk_documents([doc], max_chars=max_chars)
+            doc_chunks = chunk_documents(
+                [doc], max_chars=max_chars, overlap_chars=overlap_chars
+            )
             all_chunks.extend(doc_chunks)
         except ValueError as e:
             chunk_errors.append({
@@ -207,8 +252,9 @@ def chunk_manifest(
     return {
         "schema_version": "1.0",
         "chunker_version": CHUNKER_VERSION,
-        "strategy": STRATEGY,
+        "strategy": STRATEGY_OVERLAP if overlap_chars else STRATEGY,
         "max_chars": max_chars,
+        "overlap_chars": overlap_chars,
         "valid": valid,
         "document_count": document_count,
         "parsed_count": parsed_count,
@@ -238,11 +284,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--manifest", required=True, help="manifest.json 路径")
     parser.add_argument("--corpus-root", required=True, help="语料文件根目录")
     parser.add_argument("--max-chars", type=int, default=500, help="段落块最大字符数 (1-10000)")
+    parser.add_argument("--overlap-chars", type=int, default=0,
+                        help="段落块窗口重叠字符数（0=默认无重叠；须小于 max-chars）")
     args = parser.parse_args(argv)
 
     # R2: Validate max_chars before any path resolution or parse_manifest
     try:
         _validate_max_chars(args.max_chars)
+        _validate_overlap_chars(args.overlap_chars, args.max_chars)
     except ValueError as e:
         parser.error(str(e))  # exits with code 2, stderr message, no stdout JSON
 
@@ -254,8 +303,9 @@ def main(argv: list[str] | None = None) -> int:
         result = {
             "schema_version": "1.0",
             "chunker_version": CHUNKER_VERSION,
-            "strategy": STRATEGY,
+            "strategy": STRATEGY_OVERLAP if args.overlap_chars else STRATEGY,
             "max_chars": args.max_chars,
+            "overlap_chars": args.overlap_chars,
             "valid": False,
             "document_count": 0,
             "parsed_count": 0,
@@ -268,13 +318,17 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     try:
-        result = chunk_manifest(manifest_path, corpus_root, max_chars=args.max_chars)
+        result = chunk_manifest(
+            manifest_path, corpus_root,
+            max_chars=args.max_chars, overlap_chars=args.overlap_chars,
+        )
     except ValueError as e:
         result = {
             "schema_version": "1.0",
             "chunker_version": CHUNKER_VERSION,
-            "strategy": STRATEGY,
+            "strategy": STRATEGY_OVERLAP if args.overlap_chars else STRATEGY,
             "max_chars": args.max_chars,
+            "overlap_chars": args.overlap_chars,
             "valid": False,
             "document_count": 0,
             "parsed_count": 0,

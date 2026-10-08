@@ -1,0 +1,10 @@
+{
+  "fresh_parse_refs_matched": 77,
+  "original_question_fields_preserved": 24,
+  "template_steps_preserved": 13,
+  "full_blocks_and_neighbors_matched": 77,
+  "submitted_hashes_matched": 6,
+  "pack_human_review_status": "unreviewed",
+  "browser_note": "file URL denied by browser security policy; no browser operation/export verified",
+  "filter_probe": "T036-filter-probe.json records false positives; see T036-R1"
+}

@@ -1,0 +1,59 @@
+{
+  "task_id": "T032",
+  "task_revision": "v1+T032-R1",
+  "submission_revision": 2,
+  "responds_to": "T032-R1",
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "summary": "T032-R1 定向返工完成（仅修模板与说明）：补齐 t2/t8/t12 三条前页引用的页尾漏字——5c3a798d 260→271（按照必修课初修加权平均）、10ea5893 505→507（或后）、bb74305a 457→463（必须遵守学校），quote/char_end 由脚本从真实解析块切片生成非手写；下一页必要引用保留，t12 次引去页码前缀，t8 detail 明确排序规则展开见 t2。模板版本 1.0→1.1；citation-crosscheck 更正旧摘要误称并附修订对照；SOURCE-CHECK/API 示例同步。revision 1 七件与 v1.0 模板快照归档（9/9 字节核验）。验证：原引用跨度校验 20/20 ok、saveable、exit 0；Astra T032-span-probe.py 三项全过 exit 0；正常草稿/verify 示例 exit 0（verify=unchanged）。未改解析器/校验口径/页面/算法；原语料、gold、历史实验只读。人工复核状态：未复核（保留声明）。",
+  "verification": {
+    "citation_verify": "scripts/verify-procedures-citations.py（原口径未改）：20/20 ok、draft saveable，exit 0",
+    "astra_span_probe": "docs/collaboration/reviews/T032-span-probe.py（原样运行）：t2/t8/t12 页尾短语 present_in_citations=true，passed=true，exit 0",
+    "business_demo": "scripts/demo-t032-procedures.py exit 0：正常草稿 20/20 saveable；排除条件不可保存且 failed_quotes_are_null=true；保存快照 verify=unchanged；篡改快照 verify=changed",
+    "scope_note": "仅模板引用/说明/API 示例变更；未重复页面回归、全量 pytest、检索实验；未改解析器、开发通用语义校验器或修改 verify-procedures-citations.py 口径；Astra 探针/评审/STATUS/CLAUDE 未改"
+  },
+  "template": {
+    "path": "data/procedures/sicau-transfer-2026-v1/procedures.json",
+    "procedure_id": "sicau-transfer-2026",
+    "template_version": "1.1",
+    "is_synthetic": false,
+    "steps": 13,
+    "citations": 20,
+    "sha256": "6039d1c941881b63e50394ee28f4243121ce470776cf66edb6b2238338ea4d18",
+    "fixed_spans": {
+      "t2": "5c3a798d [151:271]（页尾含「按照必修课初修加权平均」）",
+      "t8": "10ea5893 [393:507]（页尾含「或后」）",
+      "t12": "bb74305a [274:463]（页尾含「必须遵守学校」）；d64f4351 [6:34]（去页码前缀）"
+    },
+    "source_document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+    "source_sha256": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "citation-crosscheck.md",
+    "api-demo.json",
+    "demo-notes.md",
+    "rev1/"
+  ],
+  "archives": [
+    "docs/collaboration/submissions/T032/rev1/（revision 1 七件，字节核验一致）",
+    "data/procedures/sicau-transfer-2026-v1/archive-v1.0/（v1.0 模板快照 + 旧 SOURCE-CHECK）"
+  ],
+  "known_gaps": [
+    "真实浏览器复验仍属 Astra 已测范围（revision 1 记录）；本轮仅模板/说明变更未重复页面验证",
+    "模板语义是否符合学校实际办理属人工复核事项（人工复核状态：未复核）",
+    "原文未写明的入口/材料清单/联系方式/日历日期全部标注「资料未说明」，未补齐",
+    "2024 年及之前入学学生按〔2023〕1号执行，不在本模板范围（原文自述例外）"
+  ],
+  "not_claimed": [
+    "模板语义审定或校园准确率已通过",
+    "该版本必然现行有效",
+    "用户符合资格或申请成功",
+    "人工复核已通过（保留未复核声明）"
+  ],
+  "workspace_note": "原语料/manifest、T030 gold/冻结、T031 实验只读未改；Astra 探针与评审文件未改；零外部调用、无下载/安装/commit/push"
+}

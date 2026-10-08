@@ -1,0 +1,29 @@
+{
+  "note": "T036-R1 变更清单（submission_revision=2）。仅离线 HTML 模板、行为检查脚本与提交说明；构建器未改；gold/模板/历史/Astra 文件未改。T036-v1 包与旧模拟示例保留。",
+  "modified": [
+    {"path": "step2_code/backend/scripts/human-review-pack.html", "change": "意见筛选按本卡片意见行 select 当前值（_opinionSelects 绑定；不扫全局 state/短 ID/正文/跨度猜归属）；改意见同步重刷；select 显式初值；摘要卡不计入匹配", "sha256": "1b760de8b2959764cf03617906c74b88c59d669b08fa74f73cf1f7cf3b1d9e05", "size": 20252},
+    {"path": "step2_code/backend/scripts/check-review-pack.cjs", "change": "新增 --pack-dir；筛选因果链 9 项（q01 只显示/同名不误入/未复核与空筛选/模板引用不误带/同步重刷）；原 15 项保持", "sha256": "0bcd3921912e6ab9054acd31e9ece34e3c1fcd2c4d8028551fc201dab4a146cf", "size": 10697}
+  ],
+  "generated_outputs": {
+    "pack_v2": "step2_code/backend/.cache/human-review/T036-v2/（review.html 7c82cf0d…、pack.json 53dccd30…、README.md 66bc59f4…；全部意见未复核）",
+    "simulated_export_v2": "step2_code/backend/.cache/human-review/T036-v2-simulated-export.json（55ce174b…）",
+    "kept_v1": "T036-v1/ 与 T036-v1-simulated-export.json 原样；非空拒覆盖规则保持"
+  },
+  "updated_submissions": [
+    "docs/collaboration/submissions/T036/report.md",
+    "docs/collaboration/submissions/T036/verification.md",
+    "docs/collaboration/submissions/T036/submission.json",
+    "docs/collaboration/submissions/T036/changed-files.json",
+    "docs/collaboration/submissions/T036/demo-notes.md"
+  ],
+  "new": [
+    {"path": "docs/collaboration/submissions/T036/fix-report.md", "change": "筛选归属修复说明、因果链回归表、新输出与证据层级"}
+  ],
+  "archived": [
+    "docs/collaboration/submissions/T036/rev1/（revision 1 五件原字节归档，5/5 核验）"
+  ],
+  "unchanged": [
+    "build-human-review-pack.py（构建器未改）、human-review-pack.html 之外的产品页面、gold、模板、语料、T027—T035 历史产物、Astra 探针/评审文件"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值。"
+}

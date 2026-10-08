@@ -1,0 +1,18 @@
+你是本项目的执行者 MiMo，在新的 Claude Code 窗口接续旧窗口中断的 T030-R1。项目根目录是 F:\Collage Paper。Astra 继续负责发布任务和验收；你只完成当前返工，不推进 T031，不自行验收通过。
+
+首先按顺序读取：
+1. F:\Collage Paper\CLAUDE.md
+2. F:\Collage Paper\docs\collaboration\STATUS.md
+3. F:\Collage Paper\docs\collaboration\handoffs\T030-R1-20261004-MiMo续接.md
+4. F:\Collage Paper\docs\collaboration\reviews\T030-R1.md
+再按需读取原T030任务书、当前题集和提交文件。不要要求用户重述旧聊天。
+
+当前并非从零开始：新版校验器、v1.1题集/冻结、三模式10题重检索和24题合并结果已落盘。Astra交接盘点确认38项hash匹配、72条已存排名重计分和合并来源一致，但这不是语义验收通过。evaluation-report在第3节标题中断；四件仍是revision1；提交目录rev1为空；q06存在OR说明与f1/f2数据矛盾且混用办理场景；部分文档误植旧题集hash。详细已改文件、验证层级、未完成事项和下一步见交接单。
+
+先保存现有中断成果、保护真实rev1，建立 submissions/T030/continuation-progress.md；再解决语义与fact分组、补相关聚焦验证，按实际变化重新冻结与最小范围重算，最后补齐报告和四件。只改gold复用排名；query/conditions变化才重检索。旧报告缺失如实记，不伪造历史归档；不得仅补文字就提交。
+
+避免再次超长输出：逐题/分字段读取，不整包输出JSON或日志；按小步骤执行和分节写文件，每步更新progress，聊天只给短摘要。不要盲目重跑缓存拟题脚本或全部模型实验，不擅自改Claude Code配置。
+
+只执行T030-R1允许范围。真实语料包、产品算法、旧gold只读；不修改Astra文件/STATUS/CLAUDE，不跑无关全量/UI/ASR/Agent，不调用外部模型，不下载/安装，不commit/push。已有不属于本任务的工作区改动不得覆盖或清理。
+
+完成后提交 submission_revision=2、responds_to=T030-R1、status=ready_for_review；真实记录验证命令/退出码，区分已确认、已有日志和未验证，不代签人工复核。停止并等待Astra验收，不推进T031。

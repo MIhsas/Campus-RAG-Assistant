@@ -1,0 +1,50 @@
+{
+  "task_id": "T035",
+  "task_revision": "v1+T035-R1",
+  "submission_revision": 2,
+  "responds_to": "T035-R1",
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "summary": "T035-R1 文档返工四项完成（revision 1 原字节归档 13/13，仅改当前交付文档与提交说明）：①实验复现说明按源码写入点更正——evaluate-source-selection.py 的 freeze.json 固定写既有目录（--out 不保护冻结）、evaluate-overlap-chunks.py 固定覆盖 frozen-config/experiment（无输出参数）；删除“写新目录不覆盖冻结”错误承诺，两脚本标开发用途/禁止在当前冻结工作区例行执行，复现仅限独立完整项目副本并先核对输出路径；不虚构参数、不改脚本、未运行。②答辩主线裁剪至 560 秒（预算区间 480—600）+秒数合计表+超时裁剪顺序；明确相关事项入口只在 /ask：2023 搜索结果→证据整理→改选 2026/清 2023→显式整理依据→查看入口，2023 对照在问答页重提；备选注明演示装配前提（主线 BM25+模板命令不自带生成/规划/自查/语音）。③证据按历史评审实际范围逐操作标注（浏览器验证带评审文件与覆盖范围；提醒日期、模板逐条原文跳转等 T032-R1 未复验项改标代码/桩或现场待核验；实验数字标已存产物核对）；README/evidence-matrix 宽泛表述同步。④残留接入前状态清除：thesis 摘要改当前真实阶段（首批 20/1182、真实基线、T031/T034 已完成检索对照、模板闭环；分清已完成检索实验 vs 未完成生成/规划质量评测与人工审定）；system-design 边界改已接入；「默认关闭」收窄为可选组件；表 6-4/experiment-index 明示分母（全题 24=可答 20+不足 4，R/H/M 分母 n=20）。",
+  "verification": {
+    "links": "交付包 8 md 相对链接 10/10 存在，exit 0",
+    "seconds": "defense-script 秒数表 [30,20,140,120,130,50,50,20]=560 ∈ [480,600]，与正文一致，exit 0",
+    "stored_values": "T030/T031/T034 已存机器数值 6 项逐值在表（未重算），exit 0",
+    "source_writepoints": "只读核对两脚本写入点（--out 不保护 freeze.json；overlap 无输出参数）与修复后文档一致，exit 0",
+    "evidence_scope": "defense-script 逐操作标注与 T029-R2/T031-R1/T031-R2/T032-R1/T033-R1 评审范围一致；未复验项如实标注",
+    "scope_note": "未运行实验脚本/浏览器/模型/全量测试；产品/模板/语料/gold/冻结/实验产物/Astra 文件只读"
+  },
+  "fix_items": {
+    "P1-repro-doc": "windows-runbook §4 + evidence-matrix：按源码写入点如实说明覆盖行为，禁止当前工作区例行执行",
+    "P2-defense": "560 秒预算表 + /ask 显式整理依据入口路径 + 备选装配前提",
+    "P2-evidence": "逐操作证据标注（评审范围限定），README/evidence-matrix 同步",
+    "P2-stale-state": "thesis 摘要/system-design 边界/默认关闭范围/表 6-4 分母，八件全扫无残留"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "fix-report.md",
+    "T034-doc-errata.md",
+    "rev1/"
+  ],
+  "archives": [
+    "docs/delivery/archive-t035-rev1/（revision 1 交付八件，字节核验一致）",
+    "docs/collaboration/submissions/T035/rev1/（revision 1 提交五件，字节核验一致）",
+    "docs/delivery/archive-t028-delivery/、docs/delivery/rev1/（历史，未覆盖）"
+  ],
+  "known_gaps": [
+    "两实验脚本在当前工作区重跑不安全（无统一安全输出参数）——复现仅限独立副本",
+    "defense-script [现场待核验] 步骤未现场执行；本轮无浏览器补测",
+    "人工审定（24 题 gold、模板语义/现行性）未完成（human-review-pending.md，不代签）"
+  ],
+  "not_claimed": [
+    "本轮重跑实验/浏览器/模型（仅文档核对）",
+    "人工复核已通过",
+    "校园准确率/答案质量结论",
+    "验收通过（待 Astra）"
+  ],
+  "workspace_note": "产品/模板/语料/gold/冻结与实验产物（T027—T034）/Astra 文件只读未改；零外部调用、无下载/安装/commit/push"
+}

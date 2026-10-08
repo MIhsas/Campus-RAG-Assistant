@@ -1,0 +1,55 @@
+{
+  "note": "T030-R2 变更清单（相对项目根，submission_revision=3）。本轮范围=q10/q13 两处标注、v1.3 冻结、q13 子集结果、探针断言与提交材料；check-real-eval.py 本轮未改（哈希与 rev2 相同）。未改产品算法、真实语料、其他旧 gold、Astra 文件。工作区其他未提交改动非本任务成果，未触碰。",
+  "code_unchanged": [
+    {
+      "path": "step2_code/backend/scripts/check-real-eval.py",
+      "note": "T030-R1 冻结校验修复版，本轮未改",
+      "sha256": "b395a9f2b221b153d89c1db19054dd15dcf85203c4c813f169e914254ca5ae3f",
+      "size": 9903
+    }
+  ],
+  "checks_updated": [
+    {
+      "path": "docs/collaboration/submissions/T030/fix-checks/focused-probe.py",
+      "change": "T030-R2：全场景期望断言（失败 exit 1）+ q10 半事实断言（第5节）+ --skip-matrix",
+      "sha256": "6f732761c8486f0071370f6a956ace32d2bc4d7ccc0efe78efaf5add90e95e75",
+      "size": 7471
+    },
+    {
+      "path": "docs/collaboration/submissions/T030/fix-checks/focused-probe-r2-output.txt",
+      "sha256": "efdf2e19e76e81a90a666a7217cb6852936ddc54290ff733e65c67182380597a",
+      "size": 1763
+    },
+    {
+      "path": "docs/collaboration/submissions/T030/fix-checks/focused-probe-output.txt",
+      "note": "R1 矩阵日志，本轮未动（结果仍有效）"
+    },
+    {
+      "path": "docs/collaboration/submissions/T030/fix-checks/astra-probe-rerun.txt",
+      "note": "R1 探针复跑日志，本轮未动"
+    }
+  ],
+  "submissions_updated": [
+    "docs/collaboration/submissions/T030/report.md",
+    "docs/collaboration/submissions/T030/evaluation-report.md",
+    "docs/collaboration/submissions/T030/gold-revisions.md",
+    "docs/collaboration/submissions/T030/human-review.md",
+    "docs/collaboration/submissions/T030/verification.md",
+    "docs/collaboration/submissions/T030/submission.json",
+    "docs/collaboration/submissions/T030/changed-files.json",
+    "docs/collaboration/submissions/T030/continuation-progress.md"
+  ],
+  "archives_new": [
+    "data/evaluations/sicau-rag-pilot-eval-v1/archive-v1_2-rev2base/（v1.2 基线原样归档+README）",
+    "docs/collaboration/submissions/T030/rev2/（revision 2 七件原字节归档）"
+  ],
+  "data_products": {
+    "questions": "data/evaluations/sicau-rag-pilot-eval-v1/questions.json（v1.3，sha256 5fde70a332744b642e48014abc82902009abc1a106a84e6241b3c460e4faed5c；q10 f1-s6/f1-s7 跨度+q13 query 变更）",
+    "freeze": "data/evaluations/sicau-rag-pilot-eval-v1/freeze.json（v1.3，38 项）",
+    "annotation_check": "data/evaluations/sicau-rag-pilot-eval-v1/annotation-check.md（v1.3）",
+    "results_merged": "data/evaluations/sicau-rag-pilot-eval-v1/results/{bm25,dense,hybrid}.json + rescore-v13.json",
+    "results_rerun_v13": "data/evaluations/sicau-rag-pilot-eval-v1/results/rerun-v13/（q13 三模式子集三件套，均 exit 0）",
+    "results_rerun_prev": "results/rerun/、results/rerun-v12/（历史子集运行，本轮复用未重跑）"
+  },
+  "hash_note": "本清单哈希为落盘后实测全值。"
+}

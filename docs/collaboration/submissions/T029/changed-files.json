@@ -1,0 +1,32 @@
+{
+  "note": "T029 revision 2（T029-R1）变更清单（相对项目根）。R1 触碰：适配脚本（VERIFY 六项比对+source_site URL 主机）、新增精简回归、compare 一处静态文案、README v1.1 指向。数据产物：data/corpora/sicau-rag-pilot-v1.1/（20 份同字节+元数据补正；v1 包保留）。未改检索/筛选算法、旧 gold、原数据集、Astra 探针/评论/STATUS/CLAUDE。",
+  "new": [
+    {
+      "path": "step2_code/backend/tests/test_prepare_real_corpus.py",
+      "sha256": "0e74d9b13b020160f0d6136d162e1d33fe374deb8f58602eacabf28da9ef4e3b",
+      "size": 3769
+    }
+  ],
+  "modified": [
+    {
+      "path": "step2_code/backend/scripts/prepare-real-corpus.py",
+      "sha256": "ea2002739a6a91310e82dcce21ec1630664b41815de2a18d992e205dd684f14d",
+      "size": 11912
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/static/compare.html",
+      "sha256": "a059fd73795ae3920dacd68a532f8a4a7f3a38808d6327d9ee109263d437e691",
+      "size": 16506
+    },
+    {
+      "path": "step2_code/backend/README.md",
+      "sha256": "9818dff35701c5fc3f8a2e8dd3300e00e0e64b027c5f845c5af6b061fb14e048",
+      "size": 53609
+    }
+  ],
+  "data_products": {
+    "pack_v1_1": "data/corpora/sicau-rag-pilot-v1.1/（manifest+20 原文件+provenance.jsonl+selection.json）",
+    "pack_v1_kept": "data/corpora/sicau-rag-pilot-v1/（历史证据，未覆盖）",
+    "dataset_manifest_sha256": "6a41ff3cdf3eebfe78ad6a555b1b288242d71dff34751a597dc70288e8c4e514"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "note": "T033 变更清单（submission_revision=1）。范围=模板入口元数据 + 列表字段 + ask 入口目录驱动改造 + 受影响测试/桩 + 本地证据与提交材料。原语料/gold/T030-T032 实验与归档只读。",
+  "templates": [
+    {
+      "path": "data/procedures/sicau-transfer-2026-v1/procedures.json",
+      "change": "v1.1→v1.2：仅新增 related_keywords=[\"转专业\"]；政策正文与 20 条引用未改（引用哈希核对 20/20）",
+      "sha256": "78f1c1d9f839c41da2fc5b13fdb67014826bdde93d57a5f872c33a79f47b7cfa",
+      "size": 23211
+    },
+    {
+      "path": "step2_code/backend/examples/procedures/procedures.json",
+      "change": "两合成事项显式加 related_keywords（[\"缓考\"]/[\"复核\"]）；政策正文/引用未改",
+      "sha256": "aff80b9e6e1b240f8c185056514a93718a305c64b88d582da2691cc1eb54aec2",
+      "size": 6406
+    }
+  ],
+  "backend_minimal": [
+    {
+      "path": "step2_code/backend/src/campus_assistant/procedures/service.py",
+      "change": "loader 可选 related_keywords 校验（类型/空白）；无字段模板加载不变",
+      "sha256": "a038b2b3f2e744d2419f3d540b1fc78eb4bc3dc3830be21cec860d539c5b6e01",
+      "size": 11705
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/api/procedures.py",
+      "change": "GET 列表增加 related_keywords 与 source_document_ids（模板引用去重推导；仅身份字段）",
+      "sha256": "8e75c44f90a01500dd90fbe8fd8054efe5fc1fb0872dcd13eb7e1e32494d8775",
+      "size": 6255
+    }
+  ],
+  "page": [
+    {
+      "path": "step2_code/backend/src/campus_assistant/static/ask.html",
+      "change": "相关入口目录驱动（关键词∩来源集合、快照链接、目录晚到补渲染、失效/无匹配无死链、删除固定 ID 逻辑）；T031 行为保留",
+      "sha256": "ba29bd8a2f7cf4635d7f861eae59c6942037984fdce9064e07a1aa2aa561d91b",
+      "size": 63635
+    }
+  ],
+  "tests_and_evidence": [
+    {
+      "path": "step2_code/backend/tests/test_procedures.py",
+      "change": "+TestEntryMetadata 2 项（列表字段/引用推导/loader 校验）",
+      "sha256": "91d354373cbc907aaadc5e211170a74c613841bb848b7761f67845fc93f7b7bb",
+      "size": 20022
+    },
+    {
+      "path": "step2_code/backend/scripts/check-ask-behavior.cjs",
+      "change": "目录桩含 related_keywords/source_document_ids + deferProcedures；T033 五链场景（38 场景）",
+      "sha256": "1f31e91844f8d9ce0ffa91cd0625d4308a3db77e2079ee0f7db919929b21f05d",
+      "size": 53709
+    },
+    {
+      "path": "step2_code/backend/scripts/demo-t033-entry.py",
+      "change": "入口元数据与确定性判定本地证据脚本",
+      "sha256": "1dc9da257fe6e501070225554110d84008f8cff7698cf7b1d520f5bd9b3f1ca2",
+      "size": 3549
+    }
+  ],
+  "archives_preserved": [
+    "data/procedures/sicau-transfer-2026-v1/archive-v1.0/、archive-v1.1/（模板历史快照，sha256 6039d1c9… 与 T032-R2 记录一致）",
+    "docs/collaboration/submissions/T032/（历史提交与 rev1 归档，未改）"
+  ],
+  "submissions": [
+    "docs/collaboration/submissions/T033/report.md",
+    "docs/collaboration/submissions/T033/verification.md",
+    "docs/collaboration/submissions/T033/submission.json",
+    "docs/collaboration/submissions/T033/changed-files.json",
+    "docs/collaboration/submissions/T033/demo-notes.md",
+    "docs/collaboration/submissions/T033/entry-api-demo.json"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值。"
+}

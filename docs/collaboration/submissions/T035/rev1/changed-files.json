@@ -1,0 +1,33 @@
+{
+  "note": "T035 变更清单（submission_revision=1）。纯文档收尾：归档 T028 六件、更新 docs/delivery 六件、新增实验索引与人工待复核清单、T034 勘误单与提交四件。产品/模板/语料/gold/历史实验/Astra 文件未改。",
+  "archived": [
+    {
+      "path": "docs/delivery/archive-t028-delivery/",
+      "change": "T028 阶段原六件原字节归档（README/system-design/thesis-outline/evidence-matrix/defense-script/windows-runbook），6/6 SHA-256 核验一致；docs/delivery/rev1/ 保留只读"
+    }
+  ],
+  "updated": [
+    {"path": "docs/delivery/README.md", "sha256": "276c19f58c4862ae89bb3b476daf72896ca72a7989a8374b77fb52ad43d6d2ac", "size": 6617},
+    {"path": "docs/delivery/system-design.md", "sha256": "8469e1ce4b2d2e65cbaa0e576482bdc1cf80b2ef33eb4061aa3250c8cf97f02c", "size": 14121},
+    {"path": "docs/delivery/thesis-outline.md", "sha256": "a0fd3663dc9285d906c2130a2b7a1c49abe5730a3aac283c84358cfb6001c71b", "size": 15847},
+    {"path": "docs/delivery/evidence-matrix.md", "sha256": "ba319a066923a23f3bf0482528e1cf00412ce4579965b830fde1101a4cfad2d1", "size": 11745},
+    {"path": "docs/delivery/defense-script.md", "sha256": "2b1eecc08a2a959368a7ee75dd86b11a5a548b18130f1685ee0d85dd23e90b10", "size": 7439},
+    {"path": "docs/delivery/windows-runbook.md", "sha256": "d33faa4c548e4d4eadc1d028dce745cfd911451536336b6b02ba664e88536952", "size": 10217}
+  ],
+  "new": [
+    {"path": "docs/delivery/experiment-index.md", "sha256": "eaf9b583046b1c5b5eabcd06112f97a0b0161a96e2c51e6143d197eda1a1f782", "size": 5152},
+    {"path": "docs/delivery/human-review-pending.md", "sha256": "036d2eac88ebffbd47bd872c8b69fdfaadc9c7a5c4ca51d5b9d7e0de8e8ffd00", "size": 4104},
+    {"path": "docs/collaboration/submissions/T035/T034-doc-errata.md", "change": "T034-R1 四项非阻断说明（实际窗口/回退归因/兼容范围/旧元字段），引用不覆盖历史", "sha256": "35ee50669d129e3e1415c76d55ca30179582cf5ca560acdb6bdb26b38673e3b8", "size": 3197}
+  ],
+  "unchanged": [
+    "产品代码、模板（sicau-transfer-2026 v1.2）、语料、T030 gold/冻结、T031/T034 实验产物、Astra 任务/评审/STATUS/CLAUDE"
+  ],
+  "submissions": [
+    "docs/collaboration/submissions/T035/report.md",
+    "docs/collaboration/submissions/T035/verification.md",
+    "docs/collaboration/submissions/T035/submission.json",
+    "docs/collaboration/submissions/T035/changed-files.json",
+    "docs/collaboration/submissions/T035/T034-doc-errata.md"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值。"
+}

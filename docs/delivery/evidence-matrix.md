@@ -11,7 +11,7 @@
 | TXT/DOCX 逐块解析、块 ID 稳定 | `corpus/parse.py`（`PDF_PARSER_VERSION`/块 ID 派生） | [实现] | `tests/test_corpus_parse.py`、`test_corpus_chunk.py` | 仅简体中文合成/样例文本 |
 | 文本型 PDF 逐页解析、页码定位 | `corpus/parse.py::parse_pdf`（pdf_page locator） | [实现] | `tests/test_pdf_corpus.py`（11 项） | 无文本/扫描 PDF 明确报错不冒充成功；未做 OCR |
 | 无文本/加密 PDF 显式失败 | 同上 | [实现] | `tests/test_pdf_corpus.py` | — |
-| 元数据登记不猜测 | `scripts/register-corpus.py`（is_synthetic 严格 JSON 布尔） | [实现] | `tests/test_run_entry.py::TestT021R1Fixes` | 真实学校元数据待用户提供 |
+| 元数据登记不猜测 | `scripts/register-corpus.py`（is_synthetic 严格 JSON 布尔） | [实现] | `tests/test_run_entry.py::TestT021R1Fixes` | 首批真实资料已入库（20/1182，manifest 元数据如实）；**新增资料**元数据仍由用户提供登记，未知字段不猜 |
 | 语料哈希与来源核对 | manifest `sha256`、run 输出 `corpus_documents` | [实现][合成实验] | T027 `dataset-hashes.json`（rev1/2/3 冻结） | — |
 
 ## 2. 检索与筛选
@@ -64,19 +64,27 @@
 | 本地 ASR（FunASR/Paraformer，静音/空转写拦截） | `asr/{adapter,audio}.py` + 路由 `api/asr.py` | [实现][模拟] | `tests/test_asr.py`；T020 真实本地转写证据（历史） | 未做识别质量评测 |
 | 密钥仅本地环境变量、零落盘 | provider/planner from_env；smoke CLI 断言 | [实现] | 各 smoke/测试不泄密断言 | — |
 
-## 7. 实验与评测
+## 7. 实验与评测（**分表，不合并**）
 
 | 主张 | 实现 | 验证层级 | 证据 | 局限 |
 |---|---|---|---|---|
-| 合成检索评测集 v2.1（24 题/13 文档/事实组语义） | `examples/evaluation-v2/`、`evaluation/*` | **[合成实验]** | `submissions/T027/`（gold-revisions、dataset-hashes、results） | 全合成；模型辅助标注（非教师/盲评） |
-| 三模式对照指标（最终） | T027 revision 3 | **[合成实验]** | K=5：BM25 0.950/0.950/0.925、Dense 0.900/0.900/0.705833、Hybrid 0.950/0.950/0.891667（R/H/M，20 可答）；4 不足题空检索率 0 | 小样本、无显著性检验；不外推真实校园 |
-| 评测管线可复现（命令/哈希/版本） | `evaluation/run.py` + `eval-v2-*.py` | [实现][合成实验] | evaluation-report 第 8 节命令；21 题排名复用+3 题重检索零偏差核对 | — |
+| 合成检索评测集 v2.1（24 题/13 文档/事实组语义） | `examples/evaluation-v2/`、`evaluation/*` | **[合成实验]** | `submissions/T027/`（gold-revisions、dataset-hashes、results） | 全合成；模型辅助标注；历史对照用 |
+| T027 三模式指标（历史对照） | T027 revision 3 | **[合成实验]** | K=5：BM25 0.950/0.950/0.925、Dense 0.900/0.900/0.705833、Hybrid 0.950/0.950/0.891667（n=20）；不足 4 空检索率 0 | 不与真实指标合并比较 |
+| **T030 v1.3 真实 24 题基线** | `data/evaluations/sicau-rag-pilot-eval-v1/` | **[真实实验]** | K=5：BM25 0.725/0.750/0.6、Dense 0.7/0.7/0.44333333333333336、Hybrid 0.7/0.7/0.5416666666666667（n=20）；题集 SHA `5fde70a3…`；Astra 独立重计分一致 | gold 模型辅助、**人工未复核**；R/H/M≠答对率 |
+| **T031 文件选择对照** | `data/evaluations/sicau-rag-source-selection-v1/` | **[真实实验]** | n=10：无选择 0.55/0.5/0.4（R 均值）→选择后 R/H 0.9（三模式）；baseline 与 T030 排名 30/30 一致；q19 不改善 | **增加用户条件，非算法提升**；不选择时混排仍在 |
+| **T034 重叠分块消融** | `data/evaluations/sicau-rag-overlap-v1/` | **[真实实验]** | baseline=表 6-2；candidate BM25 0.725/0.75/0.5958333333333333、Dense 0.675/0.7/0.4666666666666667、Hybrid 0.7/0.7/0.5833333333333333；边界案例/回退/重复命中全录 | 结果混合、**默认不采用**；勘误四则见 docs/collaboration/submissions/T035/T034-doc-errata.md |
+| 评测管线可复现（命令/哈希/版本） | `evaluation/run.py` + 各实验脚本 | [实现][真实实验] | 各实验 frozen-config/SHA 记录；T030 排名复用零漂移、T031/T034 基线兼容 30/30、24/24 | **两实验脚本会覆盖既有实验/冻结文件**（无统一安全输出参数）：source-selection 的 freeze.json 固定写入既有目录（--out 不保护冻结），overlap 无输出参数——当前冻结工作区禁止例行执行，复现仅限独立完整项目副本（见 windows-runbook §4） |
 
 ## 8. 明确未验证（论文与答辩不得写成已完成）
 
 | 事项 | 状态 | 说明 |
 |---|---|---|
-| 真实学校语料效果 | [未验证] | 四川农业大学公开资料待用户提供；不爬站、不猜元数据 |
+| 真实 24 题 gold 人工审定 | [未验证] | 模型辅助标注；技术验收≠学校政策语义审定（见 human-review-pending.md） |
+| 校园准确率/答案质量 | [未验证] | 实验只评检索指标（Recall/Hit/MRR）；已见开发集不外推 |
+| 可靠拒答 | [未验证] | 不足题空检索率≠拒答率；非空不相关证据不保证识别不足 |
+| 重叠分块默认采用 | [明确不采用] | T034 结果混合；默认 overlap=0，参数保留显式选项 |
+| planner_live_verified | false | T025 真实规划 partial（完整无失败流程未通过） |
+| RAGFlow/TinyAgent 运行时集成 | [reference] | 参考资料，未引入运行时 |
 | planner_live_verified | **false** | T025 真实链路已通但完整运行 partial；不升级口径 |
 | 生成/规划质量 | [未验证] | T014/T025 仅为链路冒烟，非质量评测 |
 | 可靠拒答/空检索保证 | [未验证] | T027 实测三模式对不足题全部有命中（有命中≠有依据） |

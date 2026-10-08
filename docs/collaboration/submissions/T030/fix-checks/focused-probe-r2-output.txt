@@ -1,0 +1,30 @@
+== 1. real schema (positive, expected exit 0) ==
+[real-freeze] exit=0 | CHECK OK: 24 题 / 57 条证据（契约、引句、准入、事实分组）；冻结哈希核对 38 项（dataset/corpus/implementation/model/annotation）
+  [real-freeze-exit] expected=0 actual=0 -> OK
+== 2-3. matrix skipped (--skip-matrix; prior results remain valid) ==
+== 4. q05 alternative-source scoring regression (same saved rankings) ==
+q05 gold: rev1 2 源 -> 当前 5 源
+q05 [bm25] 同一排名 | rev1 gold mrr=1.0 || 当前 gold mrr=1.0
+  [q05-bm25-mrr-rev1gold] expected=1.0 actual=1.0 -> OK
+  [q05-bm25-mrr-currgold] expected=1.0 actual=1.0 -> OK
+q05 [dense] 同一排名 | rev1 gold mrr=0.2 || 当前 gold mrr=0.5
+  [q05-dense-mrr-rev1gold] expected=0.2 actual=0.2 -> OK
+  [q05-dense-mrr-currgold] expected=0.5 actual=0.5 -> OK
+q05 [hybrid] 同一排名 | rev1 gold mrr=0.3333333333333333 || 当前 gold mrr=1.0
+  [q05-hybrid-mrr-rev1gold] expected=0.3333 actual=0.3333 -> OK
+  [q05-hybrid-mrr-currgold] expected=1.0 actual=1.0 -> OK
+== 5. q10 half-fact assertions (导师50% alone must NOT cover full f1) ==
+q10 f1-s6: half span (503,526) full span (503,536)
+  [q10-f1-s6-half-recall] expected=0.0 actual=0.0 -> OK
+  [q10-f1-s6-half-f1-covered] expected=False actual=False -> OK
+  [q10-f1-s6-full-recall] expected=0.5 actual=0.5 -> OK
+  [q10-f1-s6-full-f1-covered] expected=True actual=True -> OK
+q10 f1-s7: half span (470,493) full span (470,503)
+  [q10-f1-s7-half-recall] expected=0.0 actual=0.0 -> OK
+  [q10-f1-s7-half-f1-covered] expected=False actual=False -> OK
+  [q10-f1-s7-full-recall] expected=0.5 actual=0.5 -> OK
+  [q10-f1-s7-full-f1-covered] expected=True actual=True -> OK
+
+== SUMMARY: 15 checks, 0 failures ==
+PROBE OK
+EXITCODE=0

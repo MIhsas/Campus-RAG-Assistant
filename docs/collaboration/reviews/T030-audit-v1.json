@@ -1,0 +1,204 @@
+{
+  "kind": "independent local audit; saved-rank rescoring, not new retrieval",
+  "hash_checks": [
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\questions.json",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\manifest.json",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\06815fdadca1dca19c65295667f712a4288876139dfc9493d2deb55cb826f2d8.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\55e0ddd6861b91a76b28245dab4325ec779435affa05f2807304f6832158ab92.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\57c0945c4b4ff808ed989667c658d9b8eb5b8ed62b8f2bbd2411374329d80959.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\858406369942a287d8042aa9f2ef1383ea26f4f61ef25e362a191e78f706d17f.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd.docx",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\d4d3092195ed4cf325b57d76d70e674dc9989293116a58e4694579a07f09b2cc.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\db05e0cab194beeee9d4017458f26df2c14aefb8e250293d0e539c350477dc75.docx",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\df04ebec20b8bfe7a4ff062b4b51233f13f73ed457d8997a5ce3c4a40e8de5da.pdf",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\evaluation\\models.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\evaluation\\metrics.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\evaluation\\run.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\corpus\\parse.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\corpus\\chunk.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\retrieval\\bm25.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\retrieval\\dense.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\retrieval\\hybrid.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\retrieval\\filters.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\retrieval\\embedding.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\retrieval\\tokenize.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\models\\bge-small-zh-v1.5\\config.json",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\models\\bge-small-zh-v1.5\\sentence_bert_config.json",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\models\\bge-small-zh-v1.5\\tokenizer.json",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\models\\bge-small-zh-v1.5\\tokenizer_config.json",
+      "matches": true
+    }
+  ],
+  "rescoring": {
+    "bm25": {
+      "count": 24,
+      "mismatches": [],
+      "summary": {
+        "evidence_recall": 0.6333333333333333,
+        "hit": 0.65,
+        "mrr": 0.4833333333333333,
+        "answerable_count": 20,
+        "unanswerable_count": 4,
+        "empty_result_rate": 0.0
+      }
+    },
+    "dense": {
+      "count": 24,
+      "mismatches": [],
+      "summary": {
+        "evidence_recall": 0.6333333333333333,
+        "hit": 0.65,
+        "mrr": 0.3908333333333333,
+        "answerable_count": 20,
+        "unanswerable_count": 4,
+        "empty_result_rate": 0.0
+      }
+    },
+    "hybrid": {
+      "count": 24,
+      "mismatches": [],
+      "summary": {
+        "evidence_recall": 0.6833333333333333,
+        "hit": 0.7,
+        "mrr": 0.4208333333333333,
+        "answerable_count": 20,
+        "unanswerable_count": 4,
+        "empty_result_rate": 0.0
+      }
+    }
+  },
+  "actual_checker_cli": {
+    "submitted": {
+      "exit_code": 0,
+      "stdout": "CHECK OK: 24 题 / 37 条证据（契约、引句、准入、事实分组、冻结哈希）\n",
+      "stderr": "Ignoring wrong pointing object 24 0 (offset 0)\nIgnoring wrong pointing object 55 0 (offset 0)\nIgnoring wrong pointing object 108 0 (offset 0)\nIgnoring wrong pointing object 109 0 (offset 0)\n"
+    },
+    "wrong_questions_hash": {
+      "exit_code": 0,
+      "stdout": "CHECK OK: 24 题 / 37 条证据（契约、引句、准入、事实分组、冻结哈希）\n",
+      "stderr": "Ignoring wrong pointing object 24 0 (offset 0)\nIgnoring wrong pointing object 55 0 (offset 0)\nIgnoring wrong pointing object 108 0 (offset 0)\nIgnoring wrong pointing object 109 0 (offset 0)\n"
+    }
+  },
+  "wrong_hash_rejected": false
+}

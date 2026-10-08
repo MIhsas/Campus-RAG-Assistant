@@ -1,0 +1,51 @@
+{
+  "note": "T030-R1 变更清单（相对项目根，submission_revision=2）。任务范围内改动=校验脚本（冻结校验修复）+ T030 提交材料 + 聚焦探针 + 归档；未改产品算法（parser/chunker/retriever/filters/metrics/run）、旧 gold、已验收包 v1.1、Astra 文件。题集/标注/冻结/结果在被忽略的 data/ 下（路径与哈希见 report/verification）。工作区原有的 README/compare/STATUS/CLAUDE 等未提交改动非本任务成果，未触碰。",
+  "new_or_modified_code": [
+    {
+      "path": "step2_code/backend/scripts/check-real-eval.py",
+      "change": "T030-R1 必修一：按真实 freeze schema 校验（dataset/corpus_pack/implementation/model/annotation），拒绝零项通过，缺结构/空清单/哈希漂移非零退出，记录核对数量",
+      "sha256": "b395a9f2b221b153d89c1db19054dd15dcf85203c4c813f169e914254ca5ae3f",
+      "size": 9903
+    }
+  ],
+  "new_checks": [
+    {
+      "path": "docs/collaboration/submissions/T030/fix-checks/focused-probe.py",
+      "sha256": "7744969ff06fb9ef679432d5b71e4f3f7c072784b1a5ef73633821537ada1ed7",
+      "size": 4745
+    },
+    {
+      "path": "docs/collaboration/submissions/T030/fix-checks/focused-probe-output.txt",
+      "sha256": "f3ca896836f0d7a37725b2ae61f54b73b9548b497856fed2f2e2eb811fbe3b1a",
+      "size": 2304
+    },
+    {
+      "path": "docs/collaboration/submissions/T030/fix-checks/astra-probe-rerun.txt",
+      "sha256": "c8d76363f98010fdffa56a3e2ada117b74caf9e19a360118f89a87ab6ebdaf28",
+      "size": 424
+    }
+  ],
+  "submissions_updated": [
+    "docs/collaboration/submissions/T030/report.md",
+    "docs/collaboration/submissions/T030/evaluation-report.md",
+    "docs/collaboration/submissions/T030/gold-revisions.md",
+    "docs/collaboration/submissions/T030/human-review.md",
+    "docs/collaboration/submissions/T030/verification.md",
+    "docs/collaboration/submissions/T030/submission.json",
+    "docs/collaboration/submissions/T030/changed-files.json",
+    "docs/collaboration/submissions/T030/continuation-progress.md"
+  ],
+  "archives_new": [
+    "docs/collaboration/submissions/T030/rev1/（rev1 四件+human-review 原字节归档，逐一 SHA-256 核验一致）",
+    "data/evaluations/sicau-rag-pilot-eval-v1/midway-20261004-v1_1-draft/（v1.1 中断现场+README 说明）"
+  ],
+  "data_products": {
+    "questions": "data/evaluations/sicau-rag-pilot-eval-v1/questions.json（v1.2，sha256 799ed1c112d0b89f12491087677d8b33c01d3105498cafaa061c878b198ca1a7）",
+    "freeze": "data/evaluations/sicau-rag-pilot-eval-v1/freeze.json（v1.2，38 项）",
+    "annotation_check": "data/evaluations/sicau-rag-pilot-eval-v1/annotation-check.md（v1.2）",
+    "results_merged": "data/evaluations/sicau-rag-pilot-eval-v1/results/{bm25,dense,hybrid}.json（合并重计分）+ rescore-v12.json（逐题来源）",
+    "results_rerun_v12": "data/evaluations/sicau-rag-pilot-eval-v1/results/rerun-v12/（q06/q13/q18/u04 三模式子集 CLI 三件套，均 exit 0）",
+    "results_rerun_v11": "data/evaluations/sicau-rag-pilot-eval-v1/results/rerun/（v1.1 十题子集，旧窗口产物，本轮复用未重跑）"
+  },
+  "hash_note": "fix-checks 输出的 sha256 以本清单落盘时为准；如后续编辑须同步更新本清单。"
+}

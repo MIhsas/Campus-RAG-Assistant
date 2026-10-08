@@ -366,3 +366,46 @@ class TestRoutesAndFactory:
         assert r3.status_code == 404
         # other endpoints unaffected
         assert c.get("/api/v1/search/status").status_code == 200
+
+
+class TestEntryMetadata:
+    """T033: listing exposes entry metadata derived from the template itself."""
+
+    def test_list_includes_keywords_and_source_ids(self, tmp_path):
+        c = TestRoutesAndFactory()._client(tmp_path, with_procedures=True)
+        d = c.get("/api/v1/procedures").json()
+        by_id = {p["procedure_id"]: p for p in d["procedures"]}
+        defer = by_id["proc-apply-defer"]
+        assert defer["related_keywords"] == ["缓考"]
+        grade = by_id["proc-review-grade"]
+        assert grade["related_keywords"] == ["复核"]
+        # source ids derived from template citations (never guessed)
+        for p in (defer, grade):
+            assert isinstance(p["source_document_ids"], list) and p["source_document_ids"]
+            for did in p["source_document_ids"]:
+                assert did.startswith("syn-") or len(did) > 0
+        # identity fields only — no local paths or full text
+        for p in d["procedures"]:
+            assert "local_path" not in p and "quote" not in p
+
+    def test_loader_accepts_missing_keywords_and_validates(self, tmp_path):
+        from campus_assistant.procedures.service import load_procedures
+
+        def write_and_load(proc):
+            data = {"schema_version": "1.0", "is_synthetic": True, "procedures": [proc]}
+            p = tmp_path / "t.json"
+            p.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+            return load_procedures(p)
+
+        base = {
+            "procedure_id": "p1", "title": "t", "template_version": "1.0",
+            "steps": [{"step_id": "s1", "title": "a", "citations": []}],
+        }
+        # no related_keywords -> loads unchanged
+        assert write_and_load(base)["procedures"][0].get("related_keywords") is None
+        ok = dict(base, related_keywords=["转专业"])
+        assert write_and_load(ok)["procedures"][0]["related_keywords"] == ["转专业"]
+        for bad in (dict(base, related_keywords="转专业"), dict(base, related_keywords=[""]),
+                    dict(base, related_keywords=[1]), dict(base, related_keywords=["  "])):
+            with pytest.raises(ValueError):
+                write_and_load(bad)

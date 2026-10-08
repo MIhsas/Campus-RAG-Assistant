@@ -1,0 +1,43 @@
+{
+  "task_id": "T033",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "summary": "T033 真实问答与办事入口联动完成：ask 页「相关事项入口」由硬编码两个合成事项 ID 改为读取当前配置模板的 related_keywords 与 source_document_ids（由模板引用去重推导）做确定性主题匹配。模板支持可选 related_keywords（无字段历史模板正常加载）；真实模板 sicau-transfer-2026 配置「转专业」并递增 v1.2（仅入口元数据，正文/20 条引用未改，引用哈希 20/20）；合成模板显式配置「缓考」「复核」（正文未改）。入口判定=本次结果快照 query∩关键词：多匹配全列不擅自选一；来源约束——指定 2026 来源显示对应模板入口，指定 2023 来源不推荐 2026 模板（提示「依据与本次指定文件不同」、不给入口、不自动取消文件条件）；未指定来源显示版本/适用范围摘要与「关键词匹配，办理依据将在办事页重新核对」、不称适用建议；无模板/失败/无匹配均无死链接。链接带四条件快照+procedure_id（历史用历史快照、控件后改不篡改），document_id 不进入办事参数；进入办事页只预选与恢复条件、不自动草稿/保存/调模型；目录晚到补入口不重复问答请求。T031 行为与合成演示保留。验证：test_procedures 16 passed、JS 语法 9 页、ask 行为 38 场景（含五条因果链）、procedures 行为 11 场景、引用哈希 20/20、本地证据 entry-api-demo.json 全绿。口径：确定性关键词+来源集合入口，不宣称用户符合政策/完成审批/真实 Agent 验证。",
+  "verification": {
+    "backend": "tests/test_procedures.py 16 passed（含入口元数据 2 项：列表字段/引用推导/loader 可选字段校验）；verify-procedures-citations 20/20 ok（引用未变仅核对哈希），均 exit 0",
+    "pages": "check-js-syntax 9 页 exit 0；check-ask-behavior 38 场景 exit 0（33 既有 + T033 五链：2026 入口/2023 不误导/无来源版本提示/目录晚到零重复请求/无关键词无死链）；check-procedures-behavior 11 场景 exit 0；桩保持原生 select 语义",
+    "local_evidence": "entry-api-demo.json（scripts/demo-t033-entry.py exit 0）：2026→matched、2023→source_mismatch、无来源→matched、无关→空；document_id 不进入办事链接",
+    "scope_note": "最小改动（模板元数据/loader 校验/列表字段/ask 入口/测试桩）；未改检索/生成/Planner/ASR/资格自查、procedures 页预选恢复行为；原语料/gold/T030-T032 实验与归档只读；T032 归档与模板 v1.0/v1.1 快照保留"
+  },
+  "entry_contract": {
+    "matching": "确定性主题匹配（结果快照 query ∩ 模板 related_keywords），非 Agent 推理/自动版本判断/资格判定",
+    "source_constraint": "结果指定 document_id 时仅来源集合含该 ID 的模板给入口；主题匹配但来源不同→提示且不给入口、不自动取消文件条件",
+    "link": "procedure_id + 四条件快照（历史用历史快照）；document_id 不进入办事参数",
+    "procedures_page": "只预选事项/恢复四条件；显式操作前零 draft/保存/模型调用",
+    "async_catalog": "目录晚到自动补入口，不重复问答请求；无模板/失败/无匹配无死链接"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "demo-notes.md",
+    "entry-api-demo.json"
+  ],
+  "known_gaps": [
+    "真实浏览器复验未运行（本环境无浏览器工具）——短清单交 Astra（端口 8010），不代签",
+    "模板语义/政策现行性人工复核仍未完成；入口仅为关键词+来源集合匹配",
+    "相关入口仅覆盖已配置模板关键词；未配置关键词的模板不出现入口（可后续按需增补元数据）"
+  ],
+  "not_claimed": [
+    "用户符合政策或办理条件",
+    "完成审批或申请成功",
+    "真实 Agent 验证（本任务非 Agent 推理）",
+    "自动版本判断或资格判定",
+    "真实浏览器已验证（仅 API/桩证据）"
+  ],
+  "workspace_note": "原语料/manifest、T030 gold/冻结、T031/T032 实验与归档只读未改；零外部调用、无下载/安装/commit/push；未改 Astra 文件/STATUS/CLAUDE"
+}

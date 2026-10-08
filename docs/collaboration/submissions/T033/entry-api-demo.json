@@ -1,0 +1,43 @@
+{
+  "note": "T033 本地证据：配置目录的入口元数据 + ask 页确定性入口判定（关键词∩来源集合）；零外部调用",
+  "list_http": 200,
+  "entries": [
+    {
+      "procedure_id": "sicau-transfer-2026",
+      "title": "本科生转专业办理清单（校教发〔2026〕1号·2026版）",
+      "template_version": "1.2",
+      "is_synthetic": false,
+      "related_keywords": [
+        "转专业"
+      ],
+      "source_document_ids": [
+        "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76"
+      ]
+    }
+  ],
+  "decisions": {
+    "query=转专业, source=2026版": {
+      "matched": [
+        "sicau-transfer-2026"
+      ],
+      "source_mismatch": []
+    },
+    "query=转专业, source=2023版": {
+      "matched": [],
+      "source_mismatch": [
+        "sicau-transfer-2026"
+      ]
+    },
+    "query=转专业, source=未指定": {
+      "matched": [
+        "sicau-transfer-2026"
+      ],
+      "source_mismatch": []
+    },
+    "query=无关问题, source=未指定": {
+      "matched": [],
+      "source_mismatch": []
+    }
+  },
+  "link_contract": "办事链接带 procedure_id+四条件快照；document_id 不进入办事参数（所选文件仅界定本次问答范围）"
+}

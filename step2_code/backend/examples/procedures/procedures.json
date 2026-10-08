@@ -8,6 +8,7 @@
       "title": "缓考申请（合成演示）",
       "template_version": "1.0",
       "is_synthetic": true,
+      "related_keywords": ["缓考"],
       "summary": "因病或其他特殊原因不能参加期末考试时的缓考申请流程（合成语料整理）。",
       "steps": [
         {
@@ -93,6 +94,7 @@
       "title": "成绩复核（合成演示）",
       "template_version": "1.0",
       "is_synthetic": true,
+      "related_keywords": ["复核"],
       "summary": "对课程成绩有疑问时的复核流程（合成语料整理）。",
       "steps": [
         {

@@ -126,6 +126,13 @@ class AskResponse(BaseModel):
     budget: BudgetSummary
     filters: SearchFilters | None = None
     filter_summary: dict[str, Any] | None = None
+    document_id: str | None = Field(
+        default=None, description="回显的来源文件选择（T031；null=全部资料）"
+    )
+    source_selection: dict[str, Any] | None = Field(
+        default=None,
+        description="来源选择摘要（与 filter_summary 四条件口径分开；同 /search）",
+    )
     request_id: str
 
 
@@ -199,7 +206,26 @@ def create_ask_router() -> APIRouter:
             )
 
         from campus_assistant.qa.evidence import build_evidence_pack
+        from campus_assistant.retrieval.source_selection import (
+            SourceSelectionError,
+            resolve_document_id,
+        )
         from campus_assistant.retrieval.service import execute_search
+
+        # T031: same validation and pipeline as /search — one implementation.
+        try:
+            document_id = resolve_document_id(
+                body.document_id, request.app.state.corpus_data or []
+            )
+        except SourceSelectionError as e:
+            return JSONResponse(
+                status_code=422,
+                content={
+                    "code": e.code,
+                    "message": str(e),
+                    "request_id": request_id,
+                },
+            )
 
         filters_norm = body.filters.normalized() if body.filters else None
         result = execute_search(
@@ -211,8 +237,13 @@ def create_ask_router() -> APIRouter:
             bm25_index=request.app.state.search_index,
             dense_index=request.app.state.dense_index,
             embedding_service=request.app.state.embedding_service,
+            document_id=document_id,
         )
-        pack = build_evidence_pack(result["hits"], filter_summary=result["filter_summary"])
+        pack = build_evidence_pack(
+            result["hits"],
+            filter_summary=result["filter_summary"],
+            source_selection=result["source_selection"],
+        )
 
         base = {
             "query": body.query,
@@ -224,6 +255,8 @@ def create_ask_router() -> APIRouter:
             "budget": pack["budget"],
             "filters": body.filters,
             "filter_summary": result["filter_summary"],
+            "document_id": document_id,
+            "source_selection": result["source_selection"],
             "request_id": request_id,
         }
 

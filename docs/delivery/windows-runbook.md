@@ -20,7 +20,24 @@ Set-Location 'F:\Collage Paper\step2_code\backend'
 - 演示内容：合成组合语料 + **标记 mock 生成器**（输出含“【模拟输出，非真实 DeepSeek 回答】”）+ **模拟规划器**（“模拟规划，非DeepSeek实时规划”）+ 演示问题首页。
 - 状态口径：demo 的生成/规划是**模拟**；不代表真实模型能力。
 
-## 2. 正常运行入口（指定语料包；功能全部默认关闭）
+## 2. 正常运行入口（指定语料包后 BM25/摘录/预览即用；可选组件默认不启用）
+
+**2a. 真实资料主线（答辩/演示推荐；BM25 + 真实模板，零外部请求）**——整段可复制，含空格路径用单引号包裹：
+
+```powershell
+# 在 step2_code\backend 目录下执行（路径含空格已用引号；PowerShell 反引号续行）
+& .\.venv\Scripts\python.exe scripts\serve-corpus.py `
+  --manifest 'F:\Collage Paper\data\corpora\sicau-rag-pilot-v1.1\manifest.json' `
+  --corpus-root 'F:\Collage Paper\data\corpora\sicau-rag-pilot-v1.1' `
+  --procedures 'F:\Collage Paper\data\procedures\sicau-transfer-2026-v1\procedures.json' `
+  --port 8010
+# 浏览器打开 http://127.0.0.1:8010/  （search / ask / procedures / preview）
+```
+
+- 该命令**只开 BM25+模板**；向量/ASR/生成器/规划器均为独立可选开关（见 2b），**不默认隐式开启**。
+- `data/corpora/` 与 `models/` **不在 Git 仓库**：克隆仓库≠完整可运行——需本机另有真实包目录（20 份文件+manifest）与 `models\bge-small-zh-v1.5`（仅向量模式需要）。演示机准备清单见本文 §0。
+
+**2b. 最小与完整可选组合**：
 
 ```powershell
 # 最小运行（仅 BM25 检索 + 摘录 + 预览；零外部请求）
@@ -28,7 +45,7 @@ Set-Location 'F:\Collage Paper\step2_code\backend'
   --manifest 'F:\Collage Paper\step2_code\backend\examples\parse-corpus\manifest.json' `
   --corpus-root 'F:\Collage Paper\step2_code\backend\examples\parse-corpus'
 
-# 完整可选组合（按需删减；全部默认关闭）
+# 完整可选组合（按需删减；可选组件默认不启用，BM25/摘录/预览无需开关）
 & .\.venv\Scripts\python.exe scripts\serve-corpus.py `
   --manifest '<语料包>\manifest.json' --corpus-root '<语料包>' `
   --embedding-model-dir 'F:\Collage Paper\step2_code\backend\models\bge-small-zh-v1.5' `
@@ -56,6 +73,23 @@ Set-Location 'F:\Collage Paper\step2_code\backend'
 - 页面需用户点击录音/上传；静音与空转写显式提示（“未识别到有效语音”），不覆盖已有问题输入。
 
 ## 4. 评测与冒烟工具（离线；外部调用均需显式授权）
+
+**实验复现边界（T035-R1 更正）——两个实验脚本会覆盖既有实验/冻结文件，当前冻结工作区禁止例行执行**：
+
+- `scripts/evaluate-source-selection.py`：默认直接覆盖既有 `data/evaluations/sicau-rag-source-selection-v1/experiment.json`；虽支持 `--out` 改实验 JSON 输出位置，但 **freeze.json 仍固定写入该既有目录**（源码写入点：EXP_DIR/freeze.json）——**只传 --out 也不能保护历史冻结**；selection-map.json 为读取输入。
+- `scripts/evaluate-overlap-chunks.py`：固定覆盖既有 `data/evaluations/sicau-rag-overlap-v1/frozen-config.json` 与 `experiment.json`；**没有输出目录参数**。
+- 两脚本**没有统一的安全输出参数**；本文不虚构参数、不修改脚本。日常核对**只读已保存结果**（`experiment-index.md` 列出产物路径与输入哈希）。
+- 如确需复现（开发用途）：**仅在独立的完整项目副本中执行**，运行前先核对脚本源码解析出的全部输出路径（含冻结文件写入点）落在副本内，确认原工作区历史证据为只读；否则不得执行。**prepare/assemble 同样禁止在冻结数据上例行执行**（assemble 会重写语料/manifest，仅开发重建夹具用）。
+
+（下列命令为**开发用途、禁止在当前冻结工作区例行执行**，仅供独立副本中参照：）
+
+```powershell
+# 禁止在当前工作区直接运行——会覆盖既有 experiment.json/freeze.json
+& .\.venv\Scripts\python.exe scripts\evaluate-source-selection.py
+# 禁止在当前工作区直接运行——会覆盖既有 frozen-config.json/experiment.json
+& .\.venv\Scripts\python.exe scripts\evaluate-overlap-chunks.py
+```
+
 
 ```powershell
 # 评测复现（推荐路径：直接读取现成冻结数据 examples/evaluation-v2/；零外部调用）

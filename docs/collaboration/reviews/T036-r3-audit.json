@@ -1,0 +1,25 @@
+{
+  "pack_data_equal_versions": [
+    1,
+    2,
+    3
+  ],
+  "builder_unchanged": true,
+  "modified_declared_hashes_matched": 2,
+  "historical_html_hashes_matched": 2,
+  "generated_v3_matches_template_and_pack": true,
+  "input_shas_match": true,
+  "counts": {
+    "questions": 24,
+    "answerable": 20,
+    "unanswerable": 4,
+    "evidence": 57,
+    "template_steps": 13,
+    "template_citations": 20,
+    "verified_refs": 77
+  },
+  "human_review_status": "unreviewed",
+  "current_doc_entry": "T036-v3",
+  "review_html_sha256": "aefcbdd20f2a21f3bb9c42ca7cf4db8be1e11686945010348e592d929cc0fd33",
+  "scope": "read-only identity audit; no browser/model/parser/experiment rerun"
+}

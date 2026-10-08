@@ -1,0 +1,438 @@
+{
+  "date": "2026-10-04 Asia/Shanghai",
+  "purpose": "handoff snapshot, not acceptance",
+  "dataset_version": "1.1",
+  "questions_sha256": "55dec5ebabfd925bbade15922b52e22d6e708ca7defb9d6d3064100a1313e56f",
+  "rev1_questions_sha256": "a9f284b01029954902600ef359bafc1a5742e060a0bad5daa34ae82e47de3c8c",
+  "changed_query_or_conditions": [
+    "q01",
+    "q02",
+    "q03",
+    "q04",
+    "q06",
+    "q11",
+    "q12",
+    "q14",
+    "q15",
+    "u04"
+  ],
+  "freeze_checks": [
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\questions.json",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\manifest.json",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\06815fdadca1dca19c65295667f712a4288876139dfc9493d2deb55cb826f2d8.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\55e0ddd6861b91a76b28245dab4325ec779435affa05f2807304f6832158ab92.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\57c0945c4b4ff808ed989667c658d9b8eb5b8ed62b8f2bbd2411374329d80959.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\858406369942a287d8042aa9f2ef1383ea26f4f61ef25e362a191e78f706d17f.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd.docx",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\d4d3092195ed4cf325b57d76d70e674dc9989293116a58e4694579a07f09b2cc.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\db05e0cab194beeee9d4017458f26df2c14aefb8e250293d0e539c350477dc75.docx",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f.pdf",
+      "matches": true
+    },
+    {
+      "path": "data\\corpora\\sicau-rag-pilot-v1.1\\df04ebec20b8bfe7a4ff062b4b51233f13f73ed457d8997a5ce3c4a40e8de5da.pdf",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\evaluation\\models.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\evaluation\\metrics.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\evaluation\\run.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\corpus\\parse.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\corpus\\chunk.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\retrieval\\bm25.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\retrieval\\dense.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\retrieval\\hybrid.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\retrieval\\filters.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\retrieval\\embedding.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\src\\campus_assistant\\retrieval\\tokenize.py",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\models\\bge-small-zh-v1.5\\config.json",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\models\\bge-small-zh-v1.5\\sentence_bert_config.json",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\models\\bge-small-zh-v1.5\\tokenizer.json",
+      "matches": true
+    },
+    {
+      "path": "step2_code\\backend\\models\\bge-small-zh-v1.5\\tokenizer_config.json",
+      "matches": true
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\annotation-check.md",
+      "matches": true
+    }
+  ],
+  "runs": {
+    "bm25": {
+      "count": 24,
+      "rerun_count": 10,
+      "score_mismatches": [],
+      "merged_rank_mismatches": [],
+      "summary_matches": true,
+      "summary": {
+        "evidence_recall": 0.725,
+        "hit": 0.75,
+        "mrr": 0.55,
+        "answerable_count": 20,
+        "unanswerable_count": 4,
+        "empty_result_rate": 0.0
+      },
+      "recorded_rerun_exitcode": "0"
+    },
+    "dense": {
+      "count": 24,
+      "rerun_count": 10,
+      "score_mismatches": [],
+      "merged_rank_mismatches": [],
+      "summary_matches": true,
+      "summary": {
+        "evidence_recall": 0.7,
+        "hit": 0.7,
+        "mrr": 0.41833333333333333,
+        "answerable_count": 20,
+        "unanswerable_count": 4,
+        "empty_result_rate": 0.0
+      },
+      "recorded_rerun_exitcode": "0"
+    },
+    "hybrid": {
+      "count": 24,
+      "rerun_count": 10,
+      "score_mismatches": [],
+      "merged_rank_mismatches": [],
+      "summary_matches": true,
+      "summary": {
+        "evidence_recall": 0.7,
+        "hit": 0.7,
+        "mrr": 0.4916666666666667,
+        "answerable_count": 20,
+        "unanswerable_count": 4,
+        "empty_result_rate": 0.0
+      },
+      "recorded_rerun_exitcode": "0"
+    }
+  },
+  "submission_revision": 1,
+  "submission_rev1_archive_files": [],
+  "inventory": [
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\annotation-check.md",
+      "bytes": 5476,
+      "sha256": "9ee89d31d6c97c438d3d737ff58b50357274a4ab3f71c24cd46c063a10a909f7"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\freeze.json",
+      "bytes": 6560,
+      "sha256": "236d065ecb0b9cb4f80cc3f9f4069199c1b9518c20b310691aa17ef03ecbb4a6"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\questions.json",
+      "bytes": 47284,
+      "sha256": "55dec5ebabfd925bbade15922b52e22d6e708ca7defb9d6d3064100a1313e56f"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\bm25.exitcode.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\bm25.json",
+      "bytes": 109415,
+      "sha256": "7f689fde22a7e511b09a6f37eeb01e730659b70e721af8165904c5d455bdccdb"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\bm25.stderr.log",
+      "bytes": 194,
+      "sha256": "4d0128dc8558599c7f7dbc49ae812fc5d0f44099d515166bb737c76e456f4120"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\dense.exitcode.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\dense.json",
+      "bytes": 109598,
+      "sha256": "8532ce4c4038e0a792263852d4fc6f35dbc6682f91b2345a27963b7cae272eda"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\dense.stderr.log",
+      "bytes": 328,
+      "sha256": "cc3f3c59d34dfdb5038f06baa9641044cb9ff4e270576ffc8bb4fb43c2b41ae7"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\hybrid.exitcode.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\hybrid.json",
+      "bytes": 109913,
+      "sha256": "e075dbb49ceaf21397be3339fb5df761a7abd4993b162f911ec35aa33a6904df"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\hybrid.stderr.log",
+      "bytes": 329,
+      "sha256": "6a4265df398a98474b145e0d1caee0eb4ca3c065816e2c34bbf3b2d30a8c6817"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\rerun\\bm25.exitcode.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\rerun\\bm25.json",
+      "bytes": 45761,
+      "sha256": "07ae702a708cfa9c829bdf7fa71c5cd25ebae022b18361bd1cc53e3ba90967d4"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\rerun\\bm25.stderr.log",
+      "bytes": 194,
+      "sha256": "4d0128dc8558599c7f7dbc49ae812fc5d0f44099d515166bb737c76e456f4120"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\rerun\\dense.exitcode.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\rerun\\dense.json",
+      "bytes": 45942,
+      "sha256": "ca35129b890a9934a09a2992ce7915311793402741b3d3b51230aa8c9cbc2358"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\rerun\\dense.stderr.log",
+      "bytes": 329,
+      "sha256": "ad12b92f8f39148ab900595f7201c719642ea0dc9bfb58b0f9f6ca7d52fcd057"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\rerun\\hybrid.exitcode.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\rerun\\hybrid.json",
+      "bytes": 46022,
+      "sha256": "31ed751ee9901f132a3f5f1c763acf1484e041cde897a0aaaa98c61c21fdf8c1"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\results\\rerun\\hybrid.stderr.log",
+      "bytes": 329,
+      "sha256": "75c3d428697ad030084961b78bcc32da6e39c3bfaed7fd66f5164fef31c012b5"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\rev1\\annotation-check.md",
+      "bytes": 4232,
+      "sha256": "71c96a0615b731e78573452797ec9051acbfa8c0c771b7c43be5772abc4737da"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\rev1\\freeze.json",
+      "bytes": 6419,
+      "sha256": "ee1defaa712057da76fc6d5970a35d79a70139dd8d5b582c9ecff176b613f7db"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\rev1\\questions.json",
+      "bytes": 35817,
+      "sha256": "a9f284b01029954902600ef359bafc1a5742e060a0bad5daa34ae82e47de3c8c"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\rev1\\results\\bm25.exitcode.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\rev1\\results\\bm25.json",
+      "bytes": 92468,
+      "sha256": "9c1fd70ed4cc7c9ebe284a95644a458d214c27cde5edb4e6abbf6494edeea0b2"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\rev1\\results\\bm25.stderr.log",
+      "bytes": 194,
+      "sha256": "4d0128dc8558599c7f7dbc49ae812fc5d0f44099d515166bb737c76e456f4120"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\rev1\\results\\dense.exitcode.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\rev1\\results\\dense.json",
+      "bytes": 92657,
+      "sha256": "cd4b55908d923c38aa04e7d42eaa9ec7ffec303d7013a1d0e3e81cbaf92d0b5f"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\rev1\\results\\dense.stderr.log",
+      "bytes": 328,
+      "sha256": "cc3f3c59d34dfdb5038f06baa9641044cb9ff4e270576ffc8bb4fb43c2b41ae7"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\rev1\\results\\hybrid.exitcode.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\rev1\\results\\hybrid.json",
+      "bytes": 92985,
+      "sha256": "6d4566b6f2c0fadb083d51311e51a4b35d698c5167dc81bebd375a58ad354d7e"
+    },
+    {
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v1\\rev1\\results\\hybrid.stderr.log",
+      "bytes": 329,
+      "sha256": "6a4265df398a98474b145e0d1caee0eb4ca3c065816e2c34bbf3b2d30a8c6817"
+    },
+    {
+      "path": "docs\\collaboration\\submissions\\T030\\changed-files.json",
+      "bytes": 934,
+      "sha256": "55db8e63e89af8c4f2f679335958d08f1dfa1f536c73ae8067f29ec3d447c183"
+    },
+    {
+      "path": "docs\\collaboration\\submissions\\T030\\evaluation-report.md",
+      "bytes": 2647,
+      "sha256": "77e5a5f78304836c136f28a0c389f7918676e40cc0759bb9f270cfc9abd9dd34"
+    },
+    {
+      "path": "docs\\collaboration\\submissions\\T030\\gold-revisions.md",
+      "bytes": 7109,
+      "sha256": "fa4b60e46b87153cb10786dffde31cb8734f9be214aaad7273b9a86d8b709007"
+    },
+    {
+      "path": "docs\\collaboration\\submissions\\T030\\human-review.md",
+      "bytes": 12815,
+      "sha256": "c88345cb03c36f8a1dc2b4687f147a4382cf233095c74d8ba51d8deabf41a308"
+    },
+    {
+      "path": "docs\\collaboration\\submissions\\T030\\report.md",
+      "bytes": 3407,
+      "sha256": "f54b4cf02315d6d92f3541c1fd9b787653e0f67459b692aded1d0e482bd3645f"
+    },
+    {
+      "path": "docs\\collaboration\\submissions\\T030\\submission.json",
+      "bytes": 3603,
+      "sha256": "f9a760a4964800c3b72213b8194bf056661e23e23cf3a8c7160efb6872df176d"
+    },
+    {
+      "path": "docs\\collaboration\\submissions\\T030\\verification.md",
+      "bytes": 3342,
+      "sha256": "0dbcb0c32da46186b216bc1982631233a9e98efdafb6b75a10fcd2842c10c070"
+    },
+    {
+      "path": "step2_code\\backend\\scripts\\check-real-eval.py",
+      "bytes": 9903,
+      "sha256": "b395a9f2b221b153d89c1db19054dd15dcf85203c4c813f169e914254ca5ae3f"
+    }
+  ],
+  "not_verified": [
+    "checker CLI/tests not rerun this turn",
+    "semantic acceptance of revised gold",
+    "chronology or previous execution count",
+    "fresh dense/hybrid retrieval"
+  ]
+}

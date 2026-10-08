@@ -1,0 +1,42 @@
+{
+  "task_id": "T036",
+  "task_revision": "v1+T036-R1",
+  "submission_revision": 2,
+  "responds_to": "T036-R1",
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "human_review_status": "unreviewed",
+  "summary": "T036-R1 意见筛选归属修复完成（仅改离线模板/行为检查/提交说明）：applyFilter() 不再用全局短证据 ID/正文/跨度数字猜归属（f1-s1 跨题重复曾致仅 q01 需修订却显示 20 题）——改为只读本卡片实际拥有的意见行 select 当前值（渲染绑定 _opinionSelects），本卡片任一行匹配才展示；文字与意见条件求交；无意见行卡片（模板摘要卡）不计入匹配步骤；改意见即同步重刷筛选；意见 select 显式设初值（未复核）。新增因果链回归 9 项+原有 15 项保持=24 checks passed（DOM/JS 桩）：仅 q01/f1-s1 需修订→只显示 q01、同名 f1-s1 的 q02 不误入、未复核/空筛选符合本卡片状态、模板一条引用只显示所属步骤（共享块末步与摘要卡不误入）。Astra 探针原样核对 pass=true exit 0。构建 T036-v2 新包（77 条引用逐字核对 exit 0、全部意见未复核）+独立模拟示例（仅 1 项需修订，标注模拟操作测试）；T036-v1 包与旧示例原样保留、非空拒覆盖保持。人工状态仍为 unreviewed，未代填结论。",
+  "verification": {
+    "build_v2": "build-human-review-pack.py exit 0：77 条引用逐字/跨度/哈希核对；24 题(20+4)/57/13/20 齐备；新包全部未复核",
+    "filter_chain": "check-review-pack.cjs --pack-dir T036-v2：24 checks passed（原 15 项保持 + 9 项筛选因果链），exit 0",
+    "astra_probe": "reviews/T036-filter-probe.cjs --pack-dir T036-v2 原样运行：expected/actual=[q01]，pass=true，exit 0",
+    "scope_note": "未重复无关 pytest/模型/实验/浏览器；gold/模板/历史/Astra 文件只读；T036-v1 与旧模拟示例保留"
+  },
+  "outputs": {
+    "pack_v2": "step2_code/backend/.cache/human-review/T036-v2/（review.html 7c82cf0d…、pack.json 53dccd30…、README.md 66bc59f4…）",
+    "simulated_export_v2": "step2_code/backend/.cache/human-review/T036-v2-simulated-export.json（55ce174b…，模拟操作测试）",
+    "kept_v1": "step2_code/backend/.cache/human-review/T036-v1/ 与 T036-v1-simulated-export.json 原样"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "demo-notes.md",
+    "fix-report.md",
+    "rev1/"
+  ],
+  "known_gaps": [
+    "无真实浏览器证据（file:// 被安全策略拒绝，未绕过）——筛选/导出为 DOM/JS 桩层级",
+    "人工语义审定仍未复核（unreviewed）；模拟导出示例非真实结论",
+    "pack.json 本地原件为相对工作区路径（从 F:\\Collage Paper 解析即可；未改构建器）"
+  ],
+  "not_claimed": [
+    "真实浏览器已验证（仅桩+探针）",
+    "人工复核已通过或已代填结论",
+    "意见筛选修复=语义审定"
+  ],
+  "workspace_note": "gold/模板/历史产物（T027—T035）/Astra 文件只读未改；零外部调用、无下载/安装/commit/push"
+}

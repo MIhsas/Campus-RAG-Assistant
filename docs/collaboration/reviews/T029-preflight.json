@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-03",
+  "reviewer": "Astra",
+  "dataset_root": "data\\datasets\\sicau-rag-v1",
+  "document_count_observed": 1182,
+  "bytes_observed": 1418462387,
+  "extensions_observed": {
+    ".docx": 281,
+    ".pdf": 734,
+    ".doc": 142,
+    ".xlsx": 18,
+    ".ppt": 1,
+    ".jpg": 2,
+    ".png": 1,
+    ".wps": 2,
+    ".xls": 1
+  },
+  "manifest_rows": 1182,
+  "manifest_sha256": "6a41ff3cdf3eebfe78ad6a555b1b288242d71dff34751a597dc70288e8c4e514",
+  "file_set_matches_manifest": true,
+  "processing_labels_from_manifest_not_full_parse": {
+    "可提取文本": 955,
+    "政策表格需解析": 19,
+    "需要OCR": 63,
+    "旧版Office需转换": 144,
+    "演示文稿需解析": 1
+  },
+  "selected_file_hash_probes": [
+    {
+      "doc_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+      "relative_path": "documents/01_制度类/教学教务与学籍毕业/本科生转专业实施办法（校教发[2026]1号）__5cb2ac21497c.pdf",
+      "title": "本科生转专业实施办法（校教发[2026]1号）",
+      "sha256_matches": true
+    },
+    {
+      "doc_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+      "relative_path": "documents/01_制度类/教学教务与学籍毕业/本科生转专业实施办法（校教发[2023]1号）__d1fe991c4137.pdf",
+      "title": "本科生转专业实施办法（校教发[2023]1号）",
+      "sha256_matches": true
+    },
+    {
+      "doc_id": "31c7c88a9a7e1a5aada9e1f4e9879f5162792f7c2734d19806d005e9e6b6529b",
+      "relative_path": "documents/03_方案类/教学教务与学籍毕业/管理学院 2025 年本科生转专业 工作方案__31c7c88a9a7e.pdf",
+      "title": "管理学院 2025 年本科生转专业 工作方案",
+      "sha256_matches": true
+    }
+  ],
+  "scope": "Directory and metadata inventory; first-page extraction of three PDFs, not full-corpus parsing or policy validity review. No network or model calls."
+}

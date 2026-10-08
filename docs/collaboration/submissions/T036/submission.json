@@ -1,0 +1,43 @@
+{
+  "task_id": "T036",
+  "task_revision": "v1+T036-R1+T036-R2",
+  "submission_revision": 3,
+  "responds_to": "T036-R2",
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "human_review_status": "unreviewed",
+  "summary": "T036-R2 最小修复完成：①P1 NodeList 兼容——意见筛选消费处改 Array.from(本卡意见行).some(...)（真实 DOM 的 querySelectorAll 返回 NodeList，无 Array.some，原直写 .some 在任何非空意见筛选抛错）；卡片归属逻辑（R1）全部保留：只读本卡意见行、文字∩意见条件、改意见同步重刷、摘要卡不计入匹配。②行为桩强化为 NodeListLike（非 Array、可索引/迭代、有 forEach/item、无 some/map/flatMap）+4 项形态断言，页面若退回 .some 直写即失败（真实守护、非字符串断言）。③构建 T036-v3（77 条引用逐字核对 exit 0，全部意见未复核，pack.json 与 v1/v2 逐字节相同）+模拟示例；T036-v1/v2 保留；human-review-pending §0 与 demo-notes 当前入口同步指向 v3。验证：check-review-pack 28 checks（15+9+4）exit 0；两份 Astra 探针原样运行均 exit 0（filter-probe/nodelist-probe：expected/actual=[q01]）。无真实浏览器证据（file:// 安全策略拒绝未绕过）；人工状态保持 unreviewed。",
+  "verification": {
+    "build_v3": "build-human-review-pack.py exit 0：77 条引用逐字/跨度/哈希核对；24 题(20+4)/57/13/20；全部意见未复核",
+    "behavior": "check-review-pack.cjs --pack-dir T036-v3：28 checks passed（原 15+归属 9+NodeList 形态 4），exit 0",
+    "probes": "T036-filter-probe.cjs 与 T036-nodelist-probe.cjs 原样 --pack-dir T036-v3：均 pass=true、actual=[q01]、exit 0",
+    "scope_note": "仅改离线模板/行为桩/工具入口文档/提交说明；构建器/gold/模板/产品页面/历史/Astra 文件未改；未重复 pytest/模型/实验/浏览器"
+  },
+  "outputs": {
+    "pack_v3": "step2_code/backend/.cache/human-review/T036-v3/（review.html aefcbdd2…、pack.json 53dccd30…、README.md 66bc59f4…）",
+    "simulated_export_v3": "step2_code/backend/.cache/human-review/T036-v3-simulated-export.json（f11eab84…，模拟操作测试）",
+    "kept": "T036-v1/v2 包与旧模拟示例原样保留；非空拒覆盖保持"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "demo-notes.md",
+    "fix-report.md",
+    "fix-report-r2.md",
+    "rev1/",
+    "rev2/"
+  ],
+  "known_gaps": [
+    "无真实浏览器证据（file:// 安全策略拒绝，未绕过）——形态/功能证据为 DOM/JS 桩 + 两份 Astra 探针",
+    "人工语义审定仍未复核（unreviewed）；模拟导出示例非真实结论"
+  ],
+  "not_claimed": [
+    "真实浏览器已验证（仅桩+探针）",
+    "人工复核已通过或已代填结论",
+    "NodeList 修复=语义审定"
+  ],
+  "workspace_note": "构建器/gold/模板/历史产物/Astra 文件只读未改；零外部调用、无下载/安装/commit/push"
+}

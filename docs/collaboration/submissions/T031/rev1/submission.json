@@ -1,0 +1,58 @@
+{
+  "task_id": "T031",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "summary": "T031 指定文件/版本检索与页面闭环完成：用户显式选择单份文件作为独立可选条件，与四项适用条件求交（先准入后 TopK），search/ask 共用实现，未选择兼容旧行为（baseline 与 T030 存储排名 30/30 逐项一致），条件冲突不放宽（所选文件被排除→无准入、无回退）。GET /api/v1/search/documents 目录（身份/元数据、稳定排序、无路径/全文/密钥）；document_id 空串/非法/未知→显式 422；source_selection 摘要与 filter_summary 四条件口径分开计数。前台闭环：资料范围选择器（标题+版本标签、重名短 ID）、提交快照含 document_id、结果行来源快照不可被控件改动篡改、重试/生成失败转摘录/复制/历史恢复均用原快照、旧历史缺字段按未选择并标注、来源失效保留提示、/search↔/ask 互跳携带 query/filters/document_id、办事入口明确来源选择不属于办事模板规则、空态区分被排除/无命中且不宣称学校无规定。聚焦验证：test_source_selection.py 20 项（含 encode_documents 计数=1、generated mock 证据范围）、既有 87 项回归、页面行为 17+29 场景、JS 语法 9 文件、真实包 API 演示（2023 vs 2026 对照/排除/422）。独立对照实验（10 题指定版本、selection-map 跑前冻结、题面文号→目录人工唯一匹配）：增加用户文件选择条件后三模式 R/H=0.900（MRR 0.500-0.548）vs 无选择 0.400-0.550；q19 不改善如实记录；口径为「增加用户条件后的辅助检索对照」，不宣称算法提升。顺带提交 T030 文档勘误 4 项（不改 T030 已验收数据）。",
+  "verification": {
+    "tests": "test_source_selection.py 20 passed；与 search/ask/filters/evidence 回归合计 107 passed；exit 0",
+    "pages": "check-js-syntax 9 文件全过；check-search-behavior 17 场景；check-ask-behavior 29 场景；均 exit 0（DOM/fetch 桩，非浏览器实证）",
+    "api_demo": "scripts/demo-source-selection.py exit 0：真实包 2023/2026 各自三模式命中与 preview 一致、文件+日期排除无回退、未知 ID 422、/ask 证据范围正确",
+    "experiment": "scripts/evaluate-source-selection.py exit 0：baseline 与 T030 排名 30/30 一致；selection 分支 R/H 0.900；映射冻结 42d63bc4…；实验冻结含实现/模型身份；T030 冻结未改（5fde70a3…/fd2f2476… 复核不变）",
+    "scope_note": "未改产品检索/解析/筛选/计分算法（分词/BM25/Dense/RRF/切块不变；BM25 全库 IDF 保持）；T030 数据/旧 gold/真实包只读；无外部调用/下载/安装/commit/push；未改 Astra 文件/STATUS/CLAUDE"
+  },
+  "experiment_summary": {
+    "framing": "增加用户文件选择条件后的辅助检索对照（非纯算法提升；未选择时混排仍可能存在）",
+    "questions": "T030 v1.3 指定版本 10 题（q03/q04/q11/q12/q14/q15/q16/q17/q18/q19）",
+    "k5": {
+      "bm25": {"baseline": {"recall": 0.55, "hit": 0.6, "mrr": 0.35}, "selection": {"recall": 0.9, "hit": 0.9, "mrr": 0.503}},
+      "dense": {"baseline": {"recall": 0.5, "hit": 0.5, "mrr": 0.233}, "selection": {"recall": 0.9, "hit": 0.9, "mrr": 0.548}},
+      "hybrid": {"baseline": {"recall": 0.4, "hit": 0.4, "mrr": 0.283}, "selection": {"recall": 0.9, "hit": 0.9, "mrr": 0.5}}
+    },
+    "not_improved": "q19 全模式 0→0（文件内排序问题，gold 块未进 top5）",
+    "baseline_identity": "与 T030 存储排名 30/30 逐项一致"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "experiment-report.md",
+    "api-demo.json",
+    "demo-notes.md",
+    "T030-doc-errata.md",
+    "continuation-progress.md"
+  ],
+  "data_paths": {
+    "selection_map": "data/evaluations/sicau-rag-source-selection-v1/selection-map.json",
+    "experiment_freeze": "data/evaluations/sicau-rag-source-selection-v1/freeze.json",
+    "experiment_rows": "data/evaluations/sicau-rag-source-selection-v1/experiment.json"
+  },
+  "known_gaps": [
+    "真实浏览器人工核对未运行（本环境无浏览器工具）；已交付可运行命令/端口/11 项检查表（demo-notes.md），不代签",
+    "q19 对照不改善（文件内排序问题，本任务不调优）",
+    "仅单文件单选；不支持多选/搜索词自动猜 ID/查询年份自动推断版本",
+    "页面行为脚本为 DOM/fetch 桩，非浏览器实证"
+  ],
+  "not_claimed": [
+    "无额外输入的检索算法提升（本对照含用户文件选择条件）",
+    "系统自动理解版本的能力",
+    "全校准确率或可靠拒答",
+    "统计显著性（n=10 单次运行）",
+    "真实浏览器已验证（仅自动化桩与 API 演示）",
+    "办事页已按所选文件生成草稿（明确不属办事模板规则）"
+  ],
+  "workspace_note": "工作区原有用户/Astra 未提交改动未触碰；T030 v1.3 及其历史归档只读（收尾哈希复核未变）"
+}

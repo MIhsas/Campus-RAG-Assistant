@@ -7,14 +7,15 @@
 **目标**：面向学生的校园教务助手（本地 Windows 运行）：政策原文检索与摘录、带引用的生成问答（可选）、办事清单草稿、条件自查、政策版本对比、语音输入（可选）、受限任务编排（固定流程 + 可替换规划器）。
 
 **典型用户流程**：
-1. **查依据**：输入问题 → 选检索模式（关键词/语义/混合）与适用条件（校区/类型/年级/查询日期）→ 返回原文摘录与引用（文档/块/跨度/原文链接）。
+1. **查依据**：输入问题 → 选检索模式（关键词/语义/混合）与适用条件（校区/类型/年级/查询日期）→ **可选指定单份来源文件**（资料范围：全部/指定文件）→ 返回原文摘录与引用（文档/块/跨度/原文链接）。**文件选择与四条件求交**（先准入后 TopK，交集为空=无准入依据，不放宽、不回退其他文件）；未选文件=全部资料（旧行为）。
 2. **生成答案（可选、显式开启）**：在同一结果上点击“生成答案”→ 生成段落逐条挂证据 ID；**无证据短路或生成器返回不足状态时**明确“不足/未生成”（非空不相关证据不保证识别不足，见 §8）。
 3. **办事草稿**：选定事项（当前配置模板内）→ 生成带引用核对的办理步骤草稿 → 进入办理页人工核对 → **手动**保存待办；依据不足时草稿标记“暂不可保存”。
+3b. **问答→办事入口（T033）**：问答结果区按**本结果快照 query ∩ 配置模板关键词**（确定性匹配，非 Agent/资格判断）给候选入口；结果指定文件时**只给来源集合含该文件的模板**（2023 来源不推荐 2026 模板，提示依据不同、不自动取消文件条件）；链接只带**结果快照的四条件+事项 ID**（document_id 不进入办事参数；所选文件仅界定本次问答范围）；进入办事页**只预选事项/恢复条件**，草稿/保存均为显式手动操作；模板目录异步加载后入口自动补上（不重复问答请求）。
 4. **条件自查**：逐项 是/否/待核实 → 输出满足情况与原文依据（待核实不计为满足）。
 5. **版本对比**：同一政策多版本 → 新增/删除/修改/未变条款对照（明确“旧版本≠失效”）。
 6. **受限流程**：选事项→查找依据→整理草稿（固定流程，非 LLM Agent）；或（显式演示/显式配置时）规划器驱动同一对工具。
 
-**边界**：**默认离线**——无任何外部请求；无账户体系；不爬取学校网站；合成/模拟内容显式标注；真实学校资料待用户提供。**开启 DeepSeek 可选组件后存在数据出站**（范围见 §2 与 §6）：本地存储不等于处理全程不出机。
+**边界**：**默认离线**——无任何外部请求；无账户体系；不爬取学校网站；合成/模拟内容显式标注；**真实资料已接入首批 20 份（原始 1182 文件，未知范围/日期保守排除）**，后续扩充与人工复核待处理。**开启 DeepSeek 可选组件后存在数据出站**（范围见 §2 与 §6）：本地存储不等于处理全程不出机。
 
 ## 2. 总体架构
 
@@ -37,9 +38,9 @@ flowchart TB
         R4["api/agent（固定流程/规划器）"]
     end
     subgraph SVC["服务层（进程内）"]
-        RET["retrieval：BM25/Dense/RRF + filters(T011)"]
+        RET["retrieval：BM25/Dense/RRF + filters(T011) + source_selection(T031)"]
         QA["qa：摘录证据 / DeepSeek provider（可选）"]
-        PR["procedures：草稿+引用核对+saveable 门"]
+        PR["procedures：草稿+引用核对+saveable 门（模板含 related_keywords/来源集合）"]
         SC["selfcheck：三态规则"]
         CMP2["comparison：条号对齐+SequenceMatcher顺序匹配"]
         AG["agent：工具注册表 + 固定流程 + Planner 契约"]
@@ -64,7 +65,7 @@ flowchart TB
     AG ==>|"出站：用户快照+工具/事项声明+有界观察（用户点击规划）"| EXT
 ```
 
-**装配原则**（`main.py::create_app`）：语料/向量/生成器/模板/规则/ASR/规划器全部**显式参数注入**，默认关闭；`serve-corpus.py` 为唯一推荐正常入口（T022），`demo-campus.py` 为明确模拟演示入口。启动不做任何模型服务探测；缺配置在状态与报告中显式“已降级/未配置”（已配置≠已验证）。
+**装配原则**（`main.py::create_app`）：语料与全部组件**显式参数注入**——用户指定语料后普通服务即提供 **BM25 检索/原文摘录/预览**（无需其他开关）；**向量检索、生成器、ASR、模板/规则、规划器等可选组件默认不启用**，需显式参数开启（答辩主线另行显式装配真实模板 `--procedures`）。`serve-corpus.py` 为唯一推荐正常入口（T022），`demo-campus.py` 为明确模拟演示入口。启动不做任何模型服务探测；缺配置在状态与报告中显式“已降级/未配置”（已配置≠已验证）。
 
 ## 3. 关键数据流时序
 
@@ -145,9 +146,10 @@ sequenceDiagram
 
 | API | 代码 | 说明 |
 |---|---|---|
-| `POST /api/v1/search` | `api/search.py` → `retrieval/service.execute_search` | 模式/筛选/TopK；准入先于截断 |
-| `POST /api/v1/ask`（extractive/generated） | `api/ask.py` → `qa/*` | 生成仅显式点击；失败→摘录可回退 |
-| `GET /api/v1/procedures` `POST …/{id}/draft` `POST …/{id}/verify` | `api/procedures.py` → `procedures/service` | 模板显式注入；404/503 明确 |
+| `POST /api/v1/search` | `api/search.py` → `retrieval/service.execute_search` | 模式/筛选/TopK；准入先于截断；**可选 `document_id`**（单文件∩四条件，未知 ID 显式 422，响应含 `source_selection` 摘要） |
+| `GET /api/v1/search/documents` | `api/search.py` → `retrieval/source_selection.build_document_catalog` | 文件选择目录（身份/元数据字段，稳定排序；无路径/全文/密钥） |
+| `POST /api/v1/ask`（extractive/generated） | `api/ask.py` → `qa/*` | 生成仅显式点击；失败→摘录可回退；与 /search 同一 source_selection 契约 |
+| `GET /api/v1/procedures` `POST …/{id}/draft` `POST …/{id}/verify` | `api/procedures.py` → `procedures/service` | 模板显式注入；404/503 明确；列表含 `related_keywords`/`source_document_ids`（引用推导） |
 | `GET /api/v1/agent/status` `POST /agent/workflow/run` `POST /agent/plan/run` | `api/agent.py` → `agent/workflow` | status 区分 off/simulated/deepseek + 已配置≠已联调验证 |
 | `GET /api/v1/search/status` 等 6 状态接口 | 各 api 模块 | 首页能力状态聚合来源（读取失败显示“读取失败/未知”） |
 
@@ -158,7 +160,7 @@ sequenceDiagram
 | 语料原文 + manifest | 磁盘语料包目录（用户指定） | 用户管理；解析在启动时完成 |
 | 检索索引 | **进程内存**（BM25/Dense 启动构建） | 进程退出即失；不落盘、无数据库 |
 | 问答历史 | 浏览器 localStorage（**用户开关**，≤20 条，仅本机） | 用户可清空；不上传、不含密钥 |
-| 办理待办 | 浏览器 localStorage（**手动保存**） | 同上；草稿不自动保存 |
+| 办理待办 | 浏览器 localStorage（**手动保存**；含步骤勾选/备注/提醒与依据快照，刷新恢复） | 同上；草稿不自动保存；「核对当前依据」只读比对（verify=unchanged/changed），不改用户进度 |
 | 生成/规划密钥 | 本地环境变量 | 仅进程内读取；不进日志/报告/前端 |
 | **出站数据（仅显式开启对应功能且用户点击时）** | 发往 api.deepseek.com | **生成**：问题 + 选定证据摘录 + 适用条件；**规划**：用户快照（事项/问题/条件）+ 工具与事项声明 + 有界工具观察（含来源标识与短摘录）。请求头含 Authorization（密钥值不落本地记录）。**本地存储 ≠ 处理全程不出机**；默认离线模式无任何出站 |
 | 实验记录 | `docs/collaboration/submissions/*`（磁盘文档） | 归档保留（rev1/rev2…） |

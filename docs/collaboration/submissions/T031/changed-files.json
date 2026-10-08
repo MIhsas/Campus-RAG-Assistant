@@ -1,0 +1,53 @@
+{
+  "note": "T031-R1 变更清单（submission_revision=2）。本轮=两页恢复状态修复 + 行为测试桩原生 select 语义 + R1 因果链场景 + 提交材料更新。未改后端算法/语义、语料、T030 数据、选择映射与实验结果（哈希复核未变：selection-map 42d63bc4…、experiment 57b22f93…、T030 questions 5fde70a3…）。",
+  "modified_this_round": [
+    {
+      "path": "step2_code/backend/src/campus_assistant/static/search.html",
+      "change": "T031-R1：restorePending 待恢复快照/一次性应用/ghost 保留/恢复与空选提交防护/状态失败路径应用",
+      "sha256": "934593ea5a8e13ca86a7820554bc7d198c2de1b15d963133bed1f77d4e7291e2",
+      "size": 40026
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/static/ask.html",
+      "change": "同上 + 422/502/503 message 统一展示",
+      "sha256": "4e40d17287f27e73ae00c31b47b140e28a6339049a09afc8aadec1b3edb257f9",
+      "size": 60388
+    },
+    {
+      "path": "step2_code/backend/scripts/check-search-behavior.cjs",
+      "change": "SelectElement 原生 select 语义桩 + R1 四场景（21 场景）",
+      "sha256": "720aa452ba72af40be4ecf14b0b37c0bbfb3c7839dc950a184b55a9d2c20f610",
+      "size": 29537
+    },
+    {
+      "path": "step2_code/backend/scripts/check-ask-behavior.cjs",
+      "change": "SelectElement 原生 select 语义桩 + R1 四场景（33 场景）",
+      "sha256": "a322bcf05fc7266d7421ffee573a8b267668f4542c63357dab27000e7fd6eff5",
+      "size": 48454
+    }
+  ],
+  "unchanged_from_revision1": [
+    "step2_code/backend/src/campus_assistant/retrieval/source_selection.py（T031 原实现）",
+    "step2_code/backend/src/campus_assistant/retrieval/service.py",
+    "step2_code/backend/src/campus_assistant/api/search.py",
+    "step2_code/backend/src/campus_assistant/api/ask.py",
+    "step2_code/backend/src/campus_assistant/qa/evidence.py",
+    "step2_code/backend/tests/test_source_selection.py",
+    "step2_code/backend/scripts/evaluate-source-selection.py",
+    "step2_code/backend/scripts/demo-source-selection.py",
+    "step2_code/backend/scripts/serve-source-selection.py",
+    "data/evaluations/sicau-rag-source-selection-v1/（selection-map/freeze/experiment 全部未改）",
+    "data/evaluations/sicau-rag-pilot-eval-v1/（T030 v1.3 全部只读未改）"
+  ],
+  "submissions": [
+    "docs/collaboration/submissions/T031/fix-report.md（新增）",
+    "docs/collaboration/submissions/T031/report.md",
+    "docs/collaboration/submissions/T031/verification.md",
+    "docs/collaboration/submissions/T031/submission.json",
+    "docs/collaboration/submissions/T031/changed-files.json",
+    "docs/collaboration/submissions/T031/demo-notes.md（第 8 项前提修正）",
+    "docs/collaboration/submissions/T031/continuation-progress.md",
+    "docs/collaboration/submissions/T031/rev1/（revision 1 九件原字节归档，9/9 核验一致）"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值。"
+}

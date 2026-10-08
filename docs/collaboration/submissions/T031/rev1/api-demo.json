@@ -1,0 +1,400 @@
+{
+  "note": "T031 本地 API 演示（真实包 v1.1，in-process ASGI client；零外部模型调用）",
+  "query": "申请转专业必须符合哪些条件 课程要求",
+  "steps": [
+    {
+      "step": "catalog",
+      "status": "ok",
+      "count": 20,
+      "sample": [
+        {
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "title": "本科生转专业实施办法（校教发[2026]1号）",
+          "version_label": "校教发〔2026〕1号",
+          "policy_group_id": "sicau-zhuan-zhuanye",
+          "published_at": "2026-01-08",
+          "effective_from": "2026-01-08",
+          "effective_to": null,
+          "is_synthetic": false
+        },
+        {
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "title": "本科生转专业实施办法（校教发[2023]1号）",
+          "version_label": "校教发〔2023〕1号",
+          "policy_group_id": "sicau-zhuan-zhuanye",
+          "published_at": "2023-05-09",
+          "effective_from": null,
+          "effective_to": null,
+          "is_synthetic": false
+        }
+      ]
+    },
+    {
+      "step": "select-2023",
+      "mode": "bm25",
+      "http": 200,
+      "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+      "source_selection": {
+        "selected": true,
+        "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+        "title": "本科生转专业实施办法（校教发[2023]1号）",
+        "version_label": "校教发〔2023〕1号",
+        "policy_group_id": "sicau-zhuan-zhuanye",
+        "is_admitted": true,
+        "allowed_before_selection": 20,
+        "allowed_after_selection": 1,
+        "notes": [
+          "仅在所选文件内检索；不代表该版本现行有效",
+          "所选来源来自用户明确选择，未从查询或答案自动推断版本"
+        ]
+      },
+      "hit_documents": [
+        "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93"
+      ],
+      "hits": [
+        {
+          "rank": 1,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "9d80c82df18c4c15",
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/9d80c82df18c4c15",
+          "title": "本科生转专业实施办法（校教发[2023]1号）",
+          "version_label": "校教发〔2023〕1号"
+        },
+        {
+          "rank": 2,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "11a7d7dcafd8fd1d",
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/11a7d7dcafd8fd1d",
+          "title": "本科生转专业实施办法（校教发[2023]1号）",
+          "version_label": "校教发〔2023〕1号"
+        },
+        {
+          "rank": 3,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "e56dd8918dc5a429",
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/e56dd8918dc5a429",
+          "title": "本科生转专业实施办法（校教发[2023]1号）",
+          "version_label": "校教发〔2023〕1号"
+        }
+      ],
+      "all_hits_inside_selected": true,
+      "preview_prefix_ok": true
+    },
+    {
+      "step": "select-2023",
+      "mode": "dense",
+      "http": 200,
+      "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+      "source_selection": {
+        "selected": true,
+        "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+        "title": "本科生转专业实施办法（校教发[2023]1号）",
+        "version_label": "校教发〔2023〕1号",
+        "policy_group_id": "sicau-zhuan-zhuanye",
+        "is_admitted": true,
+        "allowed_before_selection": 20,
+        "allowed_after_selection": 1,
+        "notes": [
+          "仅在所选文件内检索；不代表该版本现行有效",
+          "所选来源来自用户明确选择，未从查询或答案自动推断版本"
+        ]
+      },
+      "hit_documents": [
+        "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93"
+      ],
+      "hits": [
+        {
+          "rank": 1,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "9d80c82df18c4c15",
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/9d80c82df18c4c15",
+          "title": "本科生转专业实施办法（校教发[2023]1号）",
+          "version_label": "校教发〔2023〕1号"
+        },
+        {
+          "rank": 2,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "e56dd8918dc5a429",
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/e56dd8918dc5a429",
+          "title": "本科生转专业实施办法（校教发[2023]1号）",
+          "version_label": "校教发〔2023〕1号"
+        },
+        {
+          "rank": 3,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "11a7d7dcafd8fd1d",
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/11a7d7dcafd8fd1d",
+          "title": "本科生转专业实施办法（校教发[2023]1号）",
+          "version_label": "校教发〔2023〕1号"
+        }
+      ],
+      "all_hits_inside_selected": true,
+      "preview_prefix_ok": true
+    },
+    {
+      "step": "select-2023",
+      "mode": "hybrid",
+      "http": 200,
+      "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+      "source_selection": {
+        "selected": true,
+        "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+        "title": "本科生转专业实施办法（校教发[2023]1号）",
+        "version_label": "校教发〔2023〕1号",
+        "policy_group_id": "sicau-zhuan-zhuanye",
+        "is_admitted": true,
+        "allowed_before_selection": 20,
+        "allowed_after_selection": 1,
+        "notes": [
+          "仅在所选文件内检索；不代表该版本现行有效",
+          "所选来源来自用户明确选择，未从查询或答案自动推断版本"
+        ]
+      },
+      "hit_documents": [
+        "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93"
+      ],
+      "hits": [
+        {
+          "rank": 1,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "9d80c82df18c4c15",
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/9d80c82df18c4c15",
+          "title": "本科生转专业实施办法（校教发[2023]1号）",
+          "version_label": "校教发〔2023〕1号"
+        },
+        {
+          "rank": 2,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "11a7d7dcafd8fd1d",
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/11a7d7dcafd8fd1d",
+          "title": "本科生转专业实施办法（校教发[2023]1号）",
+          "version_label": "校教发〔2023〕1号"
+        },
+        {
+          "rank": 3,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "e56dd8918dc5a429",
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/e56dd8918dc5a429",
+          "title": "本科生转专业实施办法（校教发[2023]1号）",
+          "version_label": "校教发〔2023〕1号"
+        }
+      ],
+      "all_hits_inside_selected": true,
+      "preview_prefix_ok": true
+    },
+    {
+      "step": "select-2026",
+      "mode": "bm25",
+      "http": 200,
+      "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+      "source_selection": {
+        "selected": true,
+        "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+        "title": "本科生转专业实施办法（校教发[2026]1号）",
+        "version_label": "校教发〔2026〕1号",
+        "policy_group_id": "sicau-zhuan-zhuanye",
+        "is_admitted": true,
+        "allowed_before_selection": 20,
+        "allowed_after_selection": 1,
+        "notes": [
+          "仅在所选文件内检索；不代表该版本现行有效",
+          "所选来源来自用户明确选择，未从查询或答案自动推断版本"
+        ]
+      },
+      "hit_documents": [
+        "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76"
+      ],
+      "hits": [
+        {
+          "rank": 1,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "44392bef6f807d23",
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/44392bef6f807d23",
+          "title": "本科生转专业实施办法（校教发[2026]1号）",
+          "version_label": "校教发〔2026〕1号"
+        },
+        {
+          "rank": 2,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "bb74305aaa5f63e8",
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/bb74305aaa5f63e8",
+          "title": "本科生转专业实施办法（校教发[2026]1号）",
+          "version_label": "校教发〔2026〕1号"
+        },
+        {
+          "rank": 3,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "5c3a798d8c0fce01",
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/5c3a798d8c0fce01",
+          "title": "本科生转专业实施办法（校教发[2026]1号）",
+          "version_label": "校教发〔2026〕1号"
+        }
+      ],
+      "all_hits_inside_selected": true,
+      "preview_prefix_ok": true
+    },
+    {
+      "step": "select-2026",
+      "mode": "dense",
+      "http": 200,
+      "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+      "source_selection": {
+        "selected": true,
+        "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+        "title": "本科生转专业实施办法（校教发[2026]1号）",
+        "version_label": "校教发〔2026〕1号",
+        "policy_group_id": "sicau-zhuan-zhuanye",
+        "is_admitted": true,
+        "allowed_before_selection": 20,
+        "allowed_after_selection": 1,
+        "notes": [
+          "仅在所选文件内检索；不代表该版本现行有效",
+          "所选来源来自用户明确选择，未从查询或答案自动推断版本"
+        ]
+      },
+      "hit_documents": [
+        "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76"
+      ],
+      "hits": [
+        {
+          "rank": 1,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "44392bef6f807d23",
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/44392bef6f807d23",
+          "title": "本科生转专业实施办法（校教发[2026]1号）",
+          "version_label": "校教发〔2026〕1号"
+        },
+        {
+          "rank": 2,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "5c3a798d8c0fce01",
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/5c3a798d8c0fce01",
+          "title": "本科生转专业实施办法（校教发[2026]1号）",
+          "version_label": "校教发〔2026〕1号"
+        },
+        {
+          "rank": 3,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "bb74305aaa5f63e8",
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/bb74305aaa5f63e8",
+          "title": "本科生转专业实施办法（校教发[2026]1号）",
+          "version_label": "校教发〔2026〕1号"
+        }
+      ],
+      "all_hits_inside_selected": true,
+      "preview_prefix_ok": true
+    },
+    {
+      "step": "select-2026",
+      "mode": "hybrid",
+      "http": 200,
+      "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+      "source_selection": {
+        "selected": true,
+        "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+        "title": "本科生转专业实施办法（校教发[2026]1号）",
+        "version_label": "校教发〔2026〕1号",
+        "policy_group_id": "sicau-zhuan-zhuanye",
+        "is_admitted": true,
+        "allowed_before_selection": 20,
+        "allowed_after_selection": 1,
+        "notes": [
+          "仅在所选文件内检索；不代表该版本现行有效",
+          "所选来源来自用户明确选择，未从查询或答案自动推断版本"
+        ]
+      },
+      "hit_documents": [
+        "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76"
+      ],
+      "hits": [
+        {
+          "rank": 1,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "44392bef6f807d23",
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/44392bef6f807d23",
+          "title": "本科生转专业实施办法（校教发[2026]1号）",
+          "version_label": "校教发〔2026〕1号"
+        },
+        {
+          "rank": 2,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "bb74305aaa5f63e8",
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/bb74305aaa5f63e8",
+          "title": "本科生转专业实施办法（校教发[2026]1号）",
+          "version_label": "校教发〔2026〕1号"
+        },
+        {
+          "rank": 3,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "5c3a798d8c0fce01",
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/5c3a798d8c0fce01",
+          "title": "本科生转专业实施办法（校教发[2026]1号）",
+          "version_label": "校教发〔2026〕1号"
+        }
+      ],
+      "all_hits_inside_selected": true,
+      "preview_prefix_ok": true
+    },
+    {
+      "step": "file-plus-date-excluded",
+      "http": 200,
+      "source_selection": {
+        "selected": true,
+        "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+        "title": "本科生转专业实施办法（校教发[2026]1号）",
+        "version_label": "校教发〔2026〕1号",
+        "policy_group_id": "sicau-zhuan-zhuanye",
+        "is_admitted": false,
+        "allowed_before_selection": 1,
+        "allowed_after_selection": 0,
+        "notes": [
+          "所选文件未通过现有适用条件筛选，最终可准入 0 份；未取消筛选、未回退其他文件",
+          "仅在所选文件内检索；不代表该版本现行有效",
+          "所选来源来自用户明确选择，未从查询或答案自动推断版本"
+        ]
+      },
+      "filter_summary": {
+        "active": true,
+        "document_total": 20,
+        "allowed_count": 1,
+        "excluded_counts": {
+          "scope_unknown": 0,
+          "scope_mismatch": 0,
+          "date_unknown_from": 16,
+          "not_yet_effective": 3,
+          "expired": 0
+        },
+        "counting_rules": "统计对象为文档；每份被排除文档只计入首个命中原因，优先级为 scope_unknown（被筛维度未标注）→ scope_mismatch（被筛维度不匹配）→ date_unknown_from（effective_from 未标注）→ not_yet_effective（查询日早于生效日）→ expired（查询日晚于失效日）；各原因计数互斥，之和等于被排除文档数。",
+        "notes": [
+          "1 份适用文档未标注截止日期（effective_to=null），不证明永久有效。"
+        ]
+      },
+      "hits": [],
+      "hits_empty": true
+    },
+    {
+      "step": "unknown-id",
+      "http": 422,
+      "body": {
+        "code": "SOURCE_DOCUMENT_NOT_FOUND",
+        "message": "document_id 不在当前成功解析的文档目录中: doc-not-exist",
+        "request_id": "76717107-fdf8-429d-952c-b867b5d8ea79"
+      }
+    },
+    {
+      "step": "ask-extractive-select-2023",
+      "http": 200,
+      "status": "evidence_only",
+      "evidence_state": "ok",
+      "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+      "evidence_documents": [
+        "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93"
+      ],
+      "evidence_previews": [
+        "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/9d80c82df18c4c15",
+        "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/11a7d7dcafd8fd1d",
+        "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/e56dd8918dc5a429"
+      ]
+    }
+  ]
+}

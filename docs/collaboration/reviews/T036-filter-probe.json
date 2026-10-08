@@ -1,0 +1,11 @@
+{
+  "layer": "DOM stub, not browser",
+  "changed": "q/q01/f1-s1",
+  "expected_visible": [
+    "q01"
+  ],
+  "actual_visible": [
+    "q01"
+  ],
+  "pass": true
+}

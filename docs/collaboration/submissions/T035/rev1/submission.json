@@ -1,0 +1,40 @@
+{
+  "task_id": "T035",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "summary": "T035 真实资料论文与答辩交付包更新完成（纯文档收尾）：归档 T028 原六件至 docs/delivery/archive-t028-delivery/（6/6 字节核验，旧 rev1 保留）；更新六件同步 T029—T034 已验收成果（真实 20/1182 文件与保守排除、2026 版转专业模板 1.2 已接入、T031 指定文件/T033 关键词来源入口已验证、RAGFlow/TinyAgent=reference、T025 partial/planner_live_verified=false）；新增 experiment-index.md（E0 合成—E3 重叠消融四表身份/输入/指标/局限，数值取机器产物）与 human-review-pending.md（24 题 gold/模板语义/论文格式/答辩时长待复核，不代签）。实验分表呈现：T027 合成历史对照、T030 v1.3 真实基线（BM25 0.725/0.75/0.6、Dense 0.7/0.7/0.44333…、Hybrid 0.7/0.7/0.54166…）、T031 文件选择对照（非纯算法提升）、T034 重叠消融（默认不采用）；R/H/M≠答对率、空检索率≠拒答率、gold 人工未复核保留。答辩主线=真实检索→对应版本办事入口→个人待办（8—10 分钟，备选项逐项标证据层级，未实跑不称已验证）；Windows 手册含空格路径安全的真实 BM25+模板启动命令与实验复现边界。T034-R1 四项非阻断说明补为 T034-doc-errata.md（实际窗口 [400,506)/[400,569)、q10/q11 回退不归因 top5 重复、兼容范围限 chunk 列表、旧元字段 1.1≠当前 v1.3），实验章引用，未覆盖历史数据/冻结。",
+  "verification": {
+    "links_paths": "交付包 md 相对链接 10/10 存在；新文档内联路径归一化后全部可解析",
+    "cli_source": "serve-corpus --help 与手册逐项一致；chunk --help 含 --overlap-chars；api/search document_id+422+/documents、api/procedures related_keywords+source_document_ids、source_selection 求交与文档一致",
+    "metrics_consistency": "表 6-1/6-2/6-3/6-4 数值与 T027 记录、T030 results summary、T031/T034 experiment.json aggregates 逐值核对通过（机器交叉断言 exit 0）",
+    "spot_checks": "主流程抽查 3 处（source_selection 交集、ask 目录驱动入口/快照链接、chunk overlap 默认兼容）与文档一致",
+    "scope_note": "本轮未重跑浏览器/模型/实验/全量测试；历史浏览器证据引用 T031-R2/T033-R1；产品/模板/语料/gold/历史实验/Astra 文件只读"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "T034-doc-errata.md"
+  ],
+  "delivery_paths": {
+    "archived": "docs/delivery/archive-t028-delivery/（T028 原六件）+ docs/delivery/rev1/（更早，保留）",
+    "updated_six": "docs/delivery/{README,system-design,thesis-outline,evidence-matrix,defense-script,windows-runbook}.md",
+    "new_two": "docs/delivery/experiment-index.md、docs/delivery/human-review-pending.md"
+  },
+  "known_gaps": [
+    "人工审定（24 题 gold、模板语义/政策现行性）未完成——human-review-pending.md 待签署",
+    "defense-script 中 [本轮未实跑] 步骤未现场执行；答辩时长/论文格式待用户提供",
+    "后续优先级（gold 签署、版本结构化过滤等）仅建议，未获授权执行"
+  ],
+  "not_claimed": [
+    "人工复核已通过或政策语义审定",
+    "本轮重新验证浏览器/实验（引用历史已存证据）",
+    "校园准确率/答案质量结论",
+    "提出的后续工作已获授权"
+  ],
+  "workspace_note": "产品代码/模板/语料/gold/历史实验（T027—T034）/Astra 文件只读未改；零外部调用、无下载/安装/commit/push"
+}

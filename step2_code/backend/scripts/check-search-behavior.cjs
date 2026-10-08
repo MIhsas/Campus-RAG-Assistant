@@ -56,13 +56,52 @@ class Element {
   set innerHTML(v) { this.text = String(v); this.children = []; }
 }
 
-function setup() {
+// Native-select semantics (T031-R1): assigning a value with no matching
+// option stores '' — exactly what real <select> does. This is what caused
+// the two P1 bugs, so the stub must reproduce it rather than accept any
+// string.
+class SelectElement extends Element {
+  constructor(attrs = {}) {
+    super('select', attrs);
+    this._value = '';
+  }
+  get value() {
+    const opts = this.children.filter(c => c.tag === 'option');
+    if (opts.some(o => String(o.value) === String(this._value))) return String(this._value);
+    return opts.length ? String(opts[0].value) : '';
+  }
+  set value(v) {
+    const s = (v === null || v === undefined) ? '' : String(v);
+    const opts = this.children.filter(c => c.tag === 'option');
+    this._value = (s === '' || opts.some(o => String(o.value) === s)) ? s : '';
+  }
+  set innerHTML(v) { this.children = []; this.text = String(v); this._value = ''; }
+}
+
+function makeSelect(ids, id, optionValues) {
+  const sel = new SelectElement();
+  for (const v of optionValues) {
+    const o = new Element('option');
+    o.value = v;
+    sel.appendChild(o);
+  }
+  ids[id] = sel;
+  return sel;
+}
+
+function setup(locationSearch, stateOverrides) {
   const ids = {};
   for (const id of ['query-input', 'search-btn', 'status-area', 'results-area',
-                    'filter-campus', 'filter-student-type', 'filter-admission-year',
-                    'filter-as-of-date', 'clear-filters-btn']) {
+                    'filter-as-of-date', 'clear-filters-btn',
+                    'clear-source-btn', 'source-hint', 'nav-ask']) {
     ids[id] = new Element();
   }
+  // Native selects with their static-HTML initial options (T031-R1 stubs).
+  makeSelect(ids, 'filter-campus', ['']);
+  makeSelect(ids, 'filter-student-type', ['']);
+  makeSelect(ids, 'filter-admission-year', ['']);
+  makeSelect(ids, 'source-mode', ['all', 'doc']);
+  makeSelect(ids, 'source-doc', ['']);
   const modeSelector = new Element('div');
   for (const m of ['bm25', 'dense', 'hybrid']) {
     const b = new Element('button', { 'data-mode': m });
@@ -73,20 +112,42 @@ function setup() {
 
   const requests = [];
   const state = {
+    catalog: [], // T031: source-selection catalog entries
+    deferCatalog: false, // T031-R1: hold the catalog response until releaseCatalog()
+    releaseCatalog: null,
     statusOptions: {
       campus: ['成都校区', '都江堰校区'],
       student_type: ['全日制本科'],
       admission_year: [2024, 2025],
     },
   };
+  if (stateOverrides) Object.assign(state, stateOverrides);
   const context = {
     document: {
       getElementById: id => ids[id],
       createElement: t => new Element(t),
       createTextNode: t => { const e = new Element(); e.textContent = t; return e; },
     },
+    location: { search: locationSearch || '' },
     fetch: (url, options) => {
       if (!options) {
+        if (String(url).indexOf('/api/v1/search/documents') >= 0) {
+          // T031: source-selection catalog (deferrable for restore-timing chains)
+          const respond = () => Promise.resolve({
+            ok: true, status: 200,
+            json: async () => ({
+              status: 'ok', available: true,
+              documents: state.catalog || [],
+              count: (state.catalog || []).length,
+            }),
+          });
+          if (state.deferCatalog) {
+            return new Promise(resolve => {
+              state.releaseCatalog = () => resolve(respond());
+            });
+          }
+          return respond();
+        }
         // GET status — filter_options read at json() time so tests can
         // change the option set mid-flight.
         return Promise.resolve({
@@ -426,6 +487,197 @@ const findButton = e => {
       campus: null, student_type: null, admission_year: 2024, as_of_date: null,
     }, 'next search still carries the vanished-but-kept condition');
     s.requests[1].resolve(okResponse());
+    await flush();
+    passed++;
+  }
+
+  // ---- T031: source selection (file scope snapshot, empty states, retry) ----
+  const cat23 = {
+    document_id: 'doc-2023', title: '转专业实施办法（2023）', version_label: '校教发〔2023〕1号',
+    policy_group_id: 'g', published_at: null, effective_from: '2023-05-09', effective_to: null,
+    is_synthetic: true,
+  };
+  const cat26 = {
+    document_id: 'doc-2026', title: '转专业实施办法（2026）', version_label: '校教发〔2026〕1号',
+    policy_group_id: 'g', published_at: null, effective_from: '2026-01-08', effective_to: null,
+    is_synthetic: true,
+  };
+  const sourceSelected = (id, over = {}) => ({
+    selected: true, document_id: id,
+    title: id === 'doc-2023' ? cat23.title : cat26.title,
+    version_label: id === 'doc-2023' ? cat23.version_label : cat26.version_label,
+    policy_group_id: 'g', is_admitted: true,
+    allowed_before_selection: 2, allowed_after_selection: 1,
+    notes: ['仅在所选文件内检索；不代表该版本现行有效'],
+    ...over,
+  });
+
+  // Scenario: select 2023 → submit carries the id; status refresh keeps the
+  // selection; editing to 2026 does not rewrite the result snapshot line.
+  {
+    const s = setup();
+    s.state.catalog = [cat23, cat26];
+    await flush(); await flush();
+    s.ids['source-mode'].value = 'doc';
+    s.ids['source-mode'].listeners.change();
+    s.ids['source-doc'].value = 'doc-2023';
+    s.ids['source-doc'].listeners.change();
+    s.submit('转专业 课程要求');
+    assert.equal(s.requests[0].body.document_id, 'doc-2023', 'submit carries selected document_id');
+    s.requests[0].resolve(okResponse({
+      hits: [{ rank: 1, score: 1, preview_url: '/preview#doc-2023/b', matched_terms: [],
+               chunk: { document_id: 'doc-2023', block_id: 'b', metadata: { title: cat23.title, version_label: cat23.version_label }, text: 'x' } }],
+      document_id: 'doc-2023', source_selection: sourceSelected('doc-2023'),
+    }));
+    await flush(); await flush();
+    assert.match(s.ids['results-area'].textContent, /指定文件：转专业实施办法（2023）/, 'result shows source snapshot');
+    assert.equal(s.ids['source-doc'].value, 'doc-2023', 'status refresh after search keeps the selection');
+    // edit controls after the search — old result line must not change
+    s.ids['source-doc'].value = 'doc-2026';
+    s.ids['source-doc'].listeners.change();
+    assert.match(s.ids['results-area'].textContent, /转专业实施办法（2023）/, 'editing controls does not rewrite the old snapshot');
+    passed++;
+  }
+
+  // Scenario: empty states distinguish excluded-file from in-file-no-hit.
+  {
+    const s = setup();
+    s.state.catalog = [cat23, cat26];
+    await flush(); await flush();
+    s.ids['source-mode'].value = 'doc';
+    s.ids['source-mode'].listeners.change();
+    s.ids['source-doc'].value = 'doc-2026';
+    s.ids['source-doc'].listeners.change();
+    s.submit('课程');
+    s.requests[0].resolve(okResponse({
+      hits: [], document_id: 'doc-2026',
+      source_selection: sourceSelected('doc-2026', { is_admitted: false, allowed_after_selection: 0 }),
+    }));
+    await flush();
+    assert.match(s.ids['results-area'].textContent, /所选文件被适用条件排除/, 'excluded file gets its own empty state');
+    s.submit('课程');
+    s.requests[1].resolve(okResponse({
+      hits: [], document_id: 'doc-2026',
+      source_selection: sourceSelected('doc-2026'),
+    }));
+    await flush();
+    assert.match(s.ids['results-area'].textContent, /所选文件内没有检索命中/, 'in-file no-hit is distinct');
+    passed++;
+  }
+
+  // Scenario: failure retry reuses the submitted source snapshot, not the
+  // edited control.
+  {
+    const s = setup();
+    s.state.catalog = [cat23, cat26];
+    await flush(); await flush();
+    s.ids['source-mode'].value = 'doc';
+    s.ids['source-mode'].listeners.change();
+    s.ids['source-doc'].value = 'doc-2023';
+    s.ids['source-doc'].listeners.change();
+    s.submit('转专业');
+    s.requests[0].resolve({ ok: false, status: 503, json: async () => ({ message: '检索不可用' }) });
+    await flush();
+    // user edits the selector while the failure state is shown
+    s.ids['source-doc'].value = 'doc-2026';
+    const retryBtn = findButton(s.ids['results-area']);
+    assert.ok(retryBtn, 'retry button shown on failure');
+    retryBtn.listeners.click();
+    await flush();
+    assert.equal(s.requests[1].body.document_id, 'doc-2023', 'retry uses the submitted snapshot source');
+    s.requests[1].resolve(okResponse({ document_id: 'doc-2023', source_selection: sourceSelected('doc-2023') }));
+    await flush();
+    passed++;
+  }
+
+  // ---- T031-R1: restore chains (native select semantics) ----
+
+  // Chain A (ask→search direction): URL carries student_type + valid file;
+  // controls keep both after options load; explicit submit carries originals.
+  {
+    const s = setup('?query=申请转专业&student_type=本科&document_id=doc-2023', {
+      catalog: [cat23, cat26],
+      statusOptions: { campus: ['成都校区'], student_type: ['本科'], admission_year: [2023] },
+    });
+    await flush(); await flush();
+    assert.equal(s.ids['filter-student-type'].value, '本科', 'URL student_type restored AFTER options load');
+    assert.equal(s.ids['source-mode'].value, 'doc');
+    assert.equal(s.ids['source-doc'].value, 'doc-2023', 'URL document_id restored from catalog');
+    s.submit('申请转专业 课程要求');
+    assert.equal(s.requests.length, 1, 'submit allowed after restore completed');
+    assert.equal(s.requests[0].body.document_id, 'doc-2023');
+    assert.deepEqual(s.requests[0].body.filters, {
+      campus: null, student_type: '本科', admission_year: null, as_of_date: null,
+    }, 'explicit submit still carries the restored condition');
+    s.requests[0].resolve(okResponse({ document_id: 'doc-2023', source_selection: sourceSelected('doc-2023') }));
+    await flush();
+    passed++;
+  }
+
+  // Chain B: invalid document_id in URL — kept as explicit unavailable
+  // selection and submitted as the ORIGINAL id (server 422), never null/all.
+  {
+    const s = setup('?query=申请转专业&document_id=unavailable-review-file', {
+      catalog: [cat23, cat26],
+      statusOptions: { campus: [], student_type: ['本科'], admission_year: [] },
+    });
+    await flush(); await flush();
+    assert.equal(s.ids['source-doc'].value, 'unavailable-review-file',
+      'stale id preserved as an explicit option value (native select keeps added option)');
+    assert.match(s.ids['source-hint'].textContent, /已失效|保留/, 'stale-id warning shown');
+    s.submit('申请转专业');
+    assert.equal(s.requests.length, 1);
+    assert.equal(s.requests[0].body.document_id, 'unavailable-review-file',
+      'submit carries the ORIGINAL id for server 422 — never document_id=null');
+    s.requests[0].resolve({
+      ok: false, status: 422,
+      json: async () => ({ message: 'document_id 不在当前成功解析的文档目录中: unavailable-review-file' }),
+    });
+    await flush();
+    assert.match(s.ids['results-area'].textContent, /不在当前成功解析的文档目录/, '422 message surfaces');
+    passed++;
+  }
+
+  // Chain C: catalog delay — submit is blocked (no request with lost
+  // conditions) until restore completes; then the originals are sent.
+  {
+    const s = setup('?student_type=本科&document_id=doc-2023', {
+      catalog: [cat23, cat26], deferCatalog: true,
+      statusOptions: { campus: ['成都校区'], student_type: ['本科'], admission_year: [2023] },
+    });
+    await flush(); // status loaded (filters applied); catalog still pending
+    s.submit('申请转专业');
+    assert.equal(s.requests.length, 0, 'submit blocked while catalog/restore pending');
+    assert.match(s.ids['results-area'].textContent, /暂不提交|正在恢复/, 'block reason shown');
+    s.state.releaseCatalog();
+    await flush(); await flush();
+    s.submit('申请转专业');
+    assert.equal(s.requests.length, 1);
+    assert.equal(s.requests[0].body.document_id, 'doc-2023');
+    assert.equal(s.requests[0].body.filters.student_type, '本科',
+      'delayed restore still delivers both conditions on submit');
+    s.requests[0].resolve(okResponse({ document_id: 'doc-2023', source_selection: sourceSelected('doc-2023') }));
+    await flush();
+    passed++;
+  }
+
+  // Chain D: 指定文件 mode with no file chosen — blocked, never silently
+  // submitted as all-documents.
+  {
+    const s = setup('', { catalog: [cat23, cat26] });
+    await flush(); await flush();
+    s.ids['source-mode'].value = 'doc';
+    s.ids['source-mode'].listeners.change();
+    s.submit('申请转专业');
+    assert.equal(s.requests.length, 0, 'doc mode without a file never submits');
+    assert.match(s.ids['results-area'].textContent, /请选择文件|切换回/, 'explicit completion hint shown');
+    // explicit switch back to all is allowed
+    s.ids['source-mode'].value = 'all';
+    s.ids['source-mode'].listeners.change();
+    s.submit('申请转专业');
+    assert.equal(s.requests.length, 1);
+    assert.equal(s.requests[0].body.document_id, undefined, 'explicit all-mode submits without document_id');
+    s.requests[0].resolve(okResponse());
     await flush();
     passed++;
   }

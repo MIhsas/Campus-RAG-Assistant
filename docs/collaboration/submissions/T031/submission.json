@@ -1,0 +1,57 @@
+{
+  "task_id": "T031",
+  "task_revision": "v1+T031-R1",
+  "submission_revision": 2,
+  "responds_to": "T031-R1",
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "summary": "T031-R1 两项 P1 页面问题修复完成（只修 search/ask 恢复状态与行为测试桩）：①跨页 URL 四条件恢复——init 不再提前写原生 select（早写丢值根因），参数进入独立待恢复快照，选项/目录就绪后一次性应用，缺失选项以 ghost 保留并提示、不放宽；状态失败路径同样完成应用；恢复未完成时明确阻止提交（目录延迟不丢条件）；显式提交仍携带原条件（两方向行为链验证）。②失效 document_id——原始 ID 保留为明确不可用选项（已失效/目录未确认标注），提交携带原 ID 由服务端 422 校验，绝不转 null 全库检索；仅用户显式选「全部资料」才撤销指定；「指定文件」模式未选文件明确阻止提交；ask 页 422/502/503 message 统一展示。测试桩改为原生 select 语义（对不存在 option 赋 value 得 ''），两条因果链×两方向+目录延迟+空选四场景在 search/ask 行为脚本落地。demo-notes 第 8 项前提修正（未启用生成器时生成按钮禁用，该链由行为测试覆盖）。验证：JS 语法 9 文件、search 行为 21 场景、ask 行为 33 场景，均 exit 0；未重跑向量实验/全量测试，T030 数据与实验结果未改。无真实浏览器工具，浏览器复验留待 Astra。",
+  "verification": {
+    "js_syntax": "node scripts/check-js-syntax.cjs：9 个 HTML 内联 JS 全过，exit 0",
+    "search_behavior": "node scripts/check-search-behavior.cjs：21 scenarios passed（17 既有 + 4 R1 链），exit 0",
+    "ask_behavior": "node scripts/check-ask-behavior.cjs：33 scenarios passed（29 既有 + 4 R1 链），exit 0",
+    "causal_chains": "A 携带学生类型+有效文件跨页→控件保留→显式提交携带原条件（search→ask 与 ask→search 两方向）；B 失效 ID→保留原值+提示→提交 document_id=原值（非 null）→422 展示；C 目录延迟→提交阻止→就绪后携带两条件；D 指定文件模式空选→阻止→显式切回全部后正常提交",
+    "stub_semantics": "SelectElement 复现原生 select：不存在 option 的赋值得 ''；两根因在桩中可复现，非宽松桩加断言",
+    "scope_note": "未改检索算法/后端语义/语料/T030 数据/选择映射/实验结果；selection-map 42d63bc4…、experiment 57b22f93…、T030 questions 5fde70a3… 复核未变；零外部调用、无下载/安装/commit/push；未改 Astra 文件/STATUS/CLAUDE"
+  },
+  "fix_scope": {
+    "fixed": [
+      "P1-1 URL 四条件跨页恢复（待恢复快照+一次性应用+缺失保留提示+恢复未完成阻止提交）",
+      "P1-2 失效 document_id 不转 null（保留原 ID、服务端 422、空选阻止、仅显式全部才撤销）",
+      "行为测试桩原生 select 语义 + 两条因果链覆盖（含反向、目录延迟、空选）",
+      "demo-notes 生成器步骤前提修正；ask 页错误 message 展示（附带）"
+    ],
+    "not_changed": "检索/解析/筛选/计分算法、后端 API 语义、语料、T030 题集/gold/冻结、selection-map、experiment.json、Astra 文件"
+  },
+  "deliverables": [
+    "fix-report.md",
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "experiment-report.md",
+    "api-demo.json",
+    "demo-notes.md",
+    "T030-doc-errata.md",
+    "continuation-progress.md",
+    "rev1/"
+  ],
+  "data_paths": {
+    "selection_map": "data/evaluations/sicau-rag-source-selection-v1/selection-map.json（未改）",
+    "experiment_freeze": "data/evaluations/sicau-rag-source-selection-v1/freeze.json（未改）",
+    "experiment_rows": "data/evaluations/sicau-rag-source-selection-v1/experiment.json（未改）"
+  },
+  "known_gaps": [
+    "真实浏览器复验未运行（本环境无浏览器工具）——P1 两条链的浏览器验证留待 Astra，不代签",
+    "生成失败转摘录的浏览器实证未做（未启用生成器时按钮禁用）；该因果链由行为测试覆盖，本地模拟路径为既有 scripts/demo-deepseek-mock.py",
+    "revision 1 的完整 11 项浏览器清单仍未全部完成（沿 R1 记录）"
+  ],
+  "not_claimed": [
+    "真实浏览器已验证（仅 DOM/fetch 桩行为回归）",
+    "无额外输入的检索算法提升",
+    "全校准确率或可靠拒答",
+    "T030 gold 已人工复核"
+  ],
+  "workspace_note": "revision 1 九件原字节归档于 submissions/T031/rev1/（9/9 核验一致）；工作区原有用户/Astra 未提交改动未触碰"
+}

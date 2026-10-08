@@ -1,0 +1,23 @@
+== 1. real schema (positive) ==
+[real-freeze] exit=0 | CHECK OK: 24 题 / 57 条证据（契约、引句、准入、事实分组）；冻结哈希核对 38 项（dataset/corpus/implementation/model/annotation）
+== 2. missing required sections (each must exit 1, never zero-item pass) ==
+[missing-dataset] exit=1 | FAIL: freeze.dataset.questions_sha256 缺失或非 64 位哈希 / CHECK FAILED: 2 项
+[missing-corpus_pack] exit=1 | FAIL: freeze.corpus_pack.files 缺失或为空清单 / CHECK FAILED: 3 项
+[missing-implementation_sha256] exit=1 | FAIL: freeze.implementation_sha256 为空清单 / CHECK FAILED: 2 项
+[missing-embedding_model] exit=1 | FAIL: freeze.embedding_model.identity_files_sha256 缺失或为空 / CHECK FAILED: 2 项
+[missing-annotation_files] exit=1 | FAIL: freeze.annotation_files 缺失或为空清单 / CHECK FAILED: 2 项
+[empty-corpus-files] exit=1 | FAIL: freeze.corpus_pack.files 缺失或为空清单 / CHECK FAILED: 1 项
+== 3. parametrized single-item hash drift (each category, must exit 1) ==
+[drift-corpus-file] exit=1 | FAIL: freeze: 语料文件哈希不符 06815fdadca1dca19c65295667f712a4288876139dfc9493d2deb55cb826f2d8.pdf / CHECK FAILED: 1 项
+[drift-impl-file] exit=1 | FAIL: freeze: 实现文件哈希不符 src/campus_assistant/evaluation/models.py / CHECK FAILED: 1 项
+[drift-model-identity] exit=1 | FAIL: freeze: 模型身份文件哈希不符 config.json / CHECK FAILED: 1 项
+[drift-annotation-file] exit=1 | FAIL: freeze: 标注说明文件哈希不符 data/evaluations/sicau-rag-pilot-eval-v1/annotation-check.md / CHECK FAILED: 1 项
+[drift-questions] exit=1 | FAIL: freeze: 题集 questions_sha256 与实际文件不符 / CHECK FAILED: 1 项
+[drift-manifest] exit=1 | FAIL: freeze: manifest_sha256 与实际文件不符 / CHECK FAILED: 1 项
+== 4. q05 alternative-source scoring regression (same saved rankings) ==
+q05 gold: rev1 2 源 -> v1.2 5 源
+q05 [bm25] 同一排名(rev1) | rev1 gold: recall=1.0 hit=1.0 mrr=1.0 || v1.2 gold: recall=1.0 hit=1.0 mrr=1.0
+q05 [dense] 同一排名(rev1) | rev1 gold: recall=1.0 hit=1.0 mrr=0.2 || v1.2 gold: recall=1.0 hit=1.0 mrr=0.5
+q05 [hybrid] 同一排名(rev1) | rev1 gold: recall=1.0 hit=1.0 mrr=0.3333333333333333 || v1.2 gold: recall=1.0 hit=1.0 mrr=1.0
+PROBE DONE
+EXITCODE=0

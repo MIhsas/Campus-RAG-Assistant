@@ -1,0 +1,38 @@
+{
+  "fixture": "F:\\Collage Paper\\step2_code\\backend\\.cache\\astra-t029-w97w0976",
+  "external_model_calls": 0,
+  "cases": [
+    {
+      "case": "initial_build",
+      "expected_success": true,
+      "actual_exit_code": 0,
+      "output_unchanged": true,
+      "passed": true,
+      "stdout": "manifest.json: 1 份；产品校验器: valid"
+    },
+    {
+      "case": "unchanged_verify",
+      "expected_success": true,
+      "actual_exit_code": 0,
+      "output_unchanged": true,
+      "passed": true,
+      "stdout": "VERIFY OK: 1 份输入/输出一致（未写入）"
+    },
+    {
+      "case": "source_bytes_changed_manifest_unchanged",
+      "expected_success": false,
+      "actual_exit_code": 0,
+      "output_unchanged": true,
+      "passed": false,
+      "stdout": "VERIFY OK: 1 份输入/输出一致（未写入）"
+    },
+    {
+      "case": "selection_evidence_changed",
+      "expected_success": false,
+      "actual_exit_code": 0,
+      "output_unchanged": true,
+      "passed": false,
+      "stdout": "VERIFY OK: 1 份输入/输出一致（未写入）"
+    }
+  ]
+}

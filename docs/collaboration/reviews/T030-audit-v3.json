@@ -1,0 +1,44 @@
+{
+  "dataset_version": "1.3",
+  "questions_sha256": "5fde70a332744b642e48014abc82902009abc1a106a84e6241b3c460e4faed5c",
+  "hash_count": 38,
+  "results": {
+    "bm25": {
+      "summary": {
+        "evidence_recall": 0.725,
+        "hit": 0.75,
+        "mrr": 0.6,
+        "answerable_count": 20,
+        "unanswerable_count": 4,
+        "empty_result_rate": 0.0
+      },
+      "score_changed_from_v12": []
+    },
+    "dense": {
+      "summary": {
+        "evidence_recall": 0.7,
+        "hit": 0.7,
+        "mrr": 0.44333333333333336,
+        "answerable_count": 20,
+        "unanswerable_count": 4,
+        "empty_result_rate": 0.0
+      },
+      "score_changed_from_v12": [
+        "q13"
+      ]
+    },
+    "hybrid": {
+      "summary": {
+        "evidence_recall": 0.7,
+        "hit": 0.7,
+        "mrr": 0.5416666666666667,
+        "answerable_count": 20,
+        "unanswerable_count": 4,
+        "empty_result_rate": 0.0
+      },
+      "score_changed_from_v12": []
+    }
+  },
+  "errors": [],
+  "scope": "38 hashes,72 saved scores/rank sources,group summaries; no new retrieval"
+}

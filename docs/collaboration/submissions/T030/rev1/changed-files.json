@@ -1,0 +1,16 @@
+{
+  "note": "T030 变更清单（相对项目根）。仅新增校验工具与说明；未改产品算法（parser/chunker/retriever/filters/metrics）、旧 gold、已验收包 v1.1。题集/冻结/三模式结果在被忽略的 data/ 下（路径与哈希见报告）。",
+  "new": [
+    {
+      "path": "step2_code/backend/scripts/check-real-eval.py",
+      "sha256": "fcf446e199bfe9b8a5c49d47ceebfaa0ae7313218d377bcdab20542b804e603c",
+      "size": 5540
+    }
+  ],
+  "data_products": {
+    "questions": "data/evaluations/sicau-rag-pilot-eval-v1/questions.json（sha256 a9f284b0…）",
+    "freeze": "data/evaluations/sicau-rag-pilot-eval-v1/freeze.json（评测前保存）",
+    "results": "data/evaluations/sicau-rag-pilot-eval-v1/results/{bm25,dense,hybrid}.json+stderr.log+exitcode.txt（各一次，均 exit 0）",
+    "annotation_check": "data/evaluations/sicau-rag-pilot-eval-v1/annotation-check.md"
+  }
+}

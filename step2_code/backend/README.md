@@ -676,6 +676,18 @@ Set-Location 'F:\Collage Paper\step2_code\backend'
 3. **PDF 人工核对**：登记后用 preview 页逐块核对提取文本与页码（对照原文，数字/否定词/条款号），确认无缺页/乱序问题再启动服务；某页“未提取到文本”即需 OCR/人工补资料，不强行入索引。
 4. **正常资料库启动**用 `serve-corpus.py`：只加载所给语料，**不得默认加载**合成办事模板、自查规则或 mock 生成器（这些仅由测试/演示显式注入）。
 
+**首批真实语料包（T029，当前版本 v1.1）**：`data/corpora/sicau-rag-pilot-v1.1/`（20 份真实资料，来源=用户提供的 `data/datasets/sicau-rag-v1`，原字节与哈希保留）。
+
+```powershell
+& .\.venv\Scripts\python.exe scripts\serve-corpus.py `
+  --manifest 'F:\Collage Paper\data\corpora\sicau-rag-pilot-v1.1\manifest.json' `
+  --corpus-root 'F:\Collage Paper\data\corpora\sicau-rag-pilot-v1.1'
+```
+
+语料包由 `scripts/prepare-real-corpus.py`（--dataset-root/--selection/--out-dir；重复执行进入核验模式，任何输入/边车漂移非零退出且不覆盖）生成；清单适配与版本关系见 `docs/collaboration/submissions/T029/mapping-notes.md`。**未知元数据不猜测**（日期=null、适用范围=空数组）；用户加筛选时空数组=未知会被保守排除，如实说明。
+
+**v1 → v1.1 差异**（T029-R1）：同一批 20 份原字节与文档 ID（逐字节一致）；① `source_site` 改按已选 source_url 主机解析（2 处纠正：d1fe991c rwy→jiaowu、92049a1c jiaowu→jwnews；原来源页面站点完整保留在 provenance）；② 补正 2 份已核实日期（bb8ba97c 发文/生效 2025-11-11、68fb3704 发文 2018-12-20，原文页码/原句见 selection notes）；其余未核实日期继续 null。**v1 包保留**于 `data/corpora/sicau-rag-pilot-v1/`（历史证据，勿覆盖）。
+
 ## 统一离线演示入口（T018）
 
 一条命令启动**全部五个功能 + 统一首页**的离线演示服务（问答、证据搜索、办事与待办、版本对比、语料预览）：

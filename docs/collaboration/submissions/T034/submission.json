@@ -1,0 +1,50 @@
+{
+  "task_id": "T034",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "summary": "T034 重叠分块离线对照完成：corpus/chunk.py 增加显式可选 overlap_chars（默认 0 与历史逐字节兼容——golden chunk ID/字段 schema 回归通过；重叠仅作用 paragraph 块内窗口，尾窗到块尾终止，table_row/解析块不变，策略名与参数进入 chunk ID）。真实包 v1.1 + T030 v1.3 全部 24 题一次固定参数对照（500/100/步长400 vs 无重叠；原题面/四条件/gold/评分/TopK/BM25/BGE/RRF 不变；不混入 T031 文件选择；不网格搜索）。BM25 未改路径与 T030 存储排名 24/24 一致（基线身份明确）；Dense/Hybrid 候选共享单次编码（1233 块 31.9s）。结果如实三录：收益——2 处真实边界事实源可覆盖性改善（q10/q20，未转化为 question 级 Recall，OR 组已满足）、Dense/Hybrid MRR 小升（0.443→0.467/0.542→0.583）；回退——Dense Recall 0.700→0.675（q11 1.0→0.5 挤占）、q10 dense MRR 1.0→0.5、q17 bm25 MRR 0.333→0.25（同块重叠重复命中挤占）；重复命中 3-4 题/模式（各 4 对）；无改善 65/72 对比行。不足 4 题空检索率双分支 0.000（非拒答率）。结论：收益与代价抵消且不稳定，建议不采用为默认（保持 overlap=0），参数保留为显式实验选项；本轮不改产品默认配置。",
+  "verification": {
+    "regressions": "tests/test_chunk_overlap.py 9 项（默认字节/ID golden 兼容、重叠跨度逐字+尾窗终止、跨硬边界事实仅候选完整覆盖、table_row 不变、参数校验）+ 既有 chunk 54 项 = 63 passed；检索/评测聚焦 98 passed（评分口径未改）；均 exit 0",
+    "experiment": "scripts/evaluate-overlap-chunks.py exit 0：跑前冻结 frozen-config.json；BM25 兼容 24/24；聚合/分组/逐题/边界案例/回退/重复区间/无改善全录于 experiment.json；首轮 TypeError 已修正重跑（首轮未写盘）",
+    "scope_note": "chunk.py 最小扩展+独立实验脚本；未改产品默认/网页/服务参数/检索模型/评分公式；原语料、T030-T033 实验与模板、Astra 文件只读；无外部调用/下载/安装/commit/push"
+  },
+  "results_summary": {
+    "k5_answerable_n20": {
+      "bm25": {"baseline": {"recall": 0.725, "hit": 0.75, "mrr": 0.6}, "candidate": {"recall": 0.725, "hit": 0.75, "mrr": 0.596}},
+      "dense": {"baseline": {"recall": 0.7, "hit": 0.7, "mrr": 0.443}, "candidate": {"recall": 0.675, "hit": 0.7, "mrr": 0.467}},
+      "hybrid": {"baseline": {"recall": 0.7, "hit": 0.7, "mrr": 0.542}, "candidate": {"recall": 0.7, "hit": 0.7, "mrr": 0.583}}
+    },
+    "unanswerable_n4": {"empty_result_rate_baseline": 0.0, "empty_result_rate_candidate": 0.0, "note": "空检索率，非拒答率"},
+    "boundary_cases": "2（q10 f1-s7、q20 f1-s2：源可覆盖性改善，question 级 Recall 未变）",
+    "regressions": "3（q11 dense Recall 1.0→0.5；q10 dense MRR 1.0→0.5；q17 bm25 MRR 0.333→0.25）",
+    "duplicates": "candidate top5 同块/重叠命中 3-4 题/模式（各 4 对）",
+    "non_improvements": "65/72 对比行双分支完全相同",
+    "recommendation": "不采用为默认（保持 overlap=0）；显式参数保留；本轮不切换产品默认"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "experiment-report.md"
+  ],
+  "data_paths": {
+    "frozen_config": "data/evaluations/sicau-rag-overlap-v1/frozen-config.json",
+    "experiment_rows": "data/evaluations/sicau-rag-overlap-v1/experiment.json"
+  },
+  "known_gaps": [
+    "单次实验、无显著性检验；开发集已见 gold（模型辅助、人工未复核）",
+    "「整题回答正确/答案质量」不在评价范围（仅事实可覆盖与 top5 检索指标）",
+    "首轮脚本 TypeError 修正后重跑；未做第二重复验证"
+  ],
+  "not_claimed": [
+    "重叠分块提升检索能力（结果混合、含回退）",
+    "独立测试集或校园准确率",
+    "默认配置已切换（明确未切换）",
+    "答案质量或整题正确性结论"
+  ],
+  "workspace_note": "原语料/manifest、T030-T033 实验与模板、Astra 文件只读未改；无外部调用、下载/安装/commit/push"
+}

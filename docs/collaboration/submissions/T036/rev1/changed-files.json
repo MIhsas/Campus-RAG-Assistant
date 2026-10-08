@@ -1,0 +1,29 @@
+{
+  "note": "T036 变更清单（submission_revision=1）。范围=离线人工复核包工具（构建脚本/HTML 模板/聚焦测试/桩检查）+ 交付文档两处顺带修正 + 提交五件。产品/模板/语料/gold/历史实验/Astra 文件未改。",
+  "new_code": [
+    {"path": "step2_code/backend/scripts/build-human-review-pack.py", "change": "复核包构建 CLI（--manifest/--corpus-root/--questions/--procedures/--out-dir；77 条引用逐字核对、失败不写包、非空目录拒覆盖；不加载模型）", "sha256": "96465a9ff4e002cd0dff7bb101f2f19c0ae6b3e9f4816ad96c9c07a347c5996f", "size": 14742},
+    {"path": "step2_code/backend/scripts/human-review-pack.html", "change": "自包含离线复核页面模板（无网络/localStorage；四档意见初值未复核；导出新 JSON 不写回）", "sha256": "7d71204c727a8a4c3fd52f3785adc724c1ffec6f2d04482ce03be2af1c784483", "size": 19741},
+    {"path": "step2_code/backend/scripts/check-review-pack.cjs", "change": "DOM/JS 桩行为检查 15 项（默认未复核/单项导出语义/输入 SHA/离线断言）+ 模拟导出样例输出", "sha256": "f39cf5a96818ade9865d1264920c8c663e2e51e8aab012f0f70eef62a2319620", "size": 8128},
+    {"path": "step2_code/backend/tests/test_human_review_pack.py", "change": "聚焦测试 4 项（完整性/离线默认/拒覆盖/坏引用拒绝）", "sha256": "d085108b0bb9234694bb0c98eef4cd2ec9096b3d3419322260d397105f337611", "size": 4090}
+  ],
+  "generated_outputs": {
+    "pack": "step2_code/backend/.cache/human-review/T036-v1/（review.html f557f3e7…、pack.json 53dccd30…、README.md 66bc59f4…）",
+    "simulated_export": "step2_code/backend/.cache/human-review/T036-v1-simulated-export.json（eec10bf8…，标注模拟操作测试）",
+    "note": "按任务书不提交生成包副本；本机输出保持可用并已记录 SHA"
+  },
+  "updated_docs": [
+    {"path": "docs/delivery/defense-script.md", "change": "第 3→4 节衔接：2023 对照后切回 2026→重新整理依据→确认入口→点击（计入 130 秒，总预算 560 不变）", "sha256": "e96bce130d815d7a38fb951f42aa953f679e69626cf428b9c5e8cfc7a01934e8", "size": 10746},
+    {"path": "docs/delivery/human-review-pending.md", "change": "§0 复核包工具入口（打开/数据/用法/边界/模拟示例）", "sha256": "9fb09514b3303e93add5234e2831bf7af89f1084922ae98abbe7c59b48c07e08", "size": 5530}
+  ],
+  "unchanged": [
+    "产品代码/页面、模板（v1.2）、语料、T030 gold/冻结、T031—T035 历史实验与提交、Astra 任务/评审/STATUS/CLAUDE"
+  ],
+  "submissions": [
+    "docs/collaboration/submissions/T036/report.md",
+    "docs/collaboration/submissions/T036/verification.md",
+    "docs/collaboration/submissions/T036/submission.json",
+    "docs/collaboration/submissions/T036/changed-files.json",
+    "docs/collaboration/submissions/T036/demo-notes.md"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值。"
+}

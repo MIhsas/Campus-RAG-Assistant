@@ -1,0 +1,74 @@
+{
+  "task_id": "T030",
+  "task_revision": "v1+T030-R1+T030-R2",
+  "submission_revision": 3,
+  "responds_to": "T030-R2",
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "dataset_version": "1.3",
+  "summary": "T030-R2 两处收尾完成（冻结校验已关闭，不重复返工）：①q10 两条 f1 半事实修正——cc25/dc971233、bb8b/090f4a9c 引文由「导师评定成绩（50%）」延长至「和答辩成绩（50%）」（两个组成部分+比例齐备；被分页截断的句尾「组成」不追补），R2 最小探针实证的「单命中导师50%误计 Recall 0.5」路径已由聚焦断言固化为失败场景；q10 query/conditions 不变、复用排名重计分、分数不变（如实记录）。②q13 后半问改为「依据该办法第十条和第十一条，哪些课程不作学分认定？」（条文限定），声明本题为受单块引文证据契约限制的开发集题目、不覆盖第四条情形；gold 不变、仅 q13 三模式重检索（dense MRR 0.5→0.333，其余不变）。数据版本 v1.2→1.3（题集 5fde70a3…）重冻 38 项；v1.2 基线归档 archive-v1_2-rev2base/ 与 submissions/T030/rev2/（10/10 字节核验）。基线（K=5,n=20）：BM25 0.725/0.750/0.600、Dense 0.700/0.700/0.443、Hybrid 0.700/0.700/0.542。人工复核=未复核；零外部模型调用。",
+  "verification": {
+    "annotation": "check-real-eval.py CHECK OK（24 题/57 证据/38 项）exit 0（正向一次；冻结校验代码本轮未改，未重复缺节/漂移矩阵，R1 日志仍有效）",
+    "freeze": "freeze.json v1.3（frozen_at 2026-10-07；questions_sha256=5fde70a332744b642e48014abc82902009abc1a106a84e6241b3c460e4faed5c；annotation 8d391b62…；38 项）",
+    "q10_half_fact": "focused-probe.py 第5节 8 断言全过（半命中 recall 0.0/f1 未覆盖；完整跨度 0.5/f1 覆盖）；汇总断言 15 checks/0 failures，PROBE OK exit 0；断言失败路径实测 exit 1",
+    "runs": "q13 三模式子集 CLI 各 exit 0（rerun-v13）；eval-v2-rescore 合并 exit 0（23 复用重计分+1 rerun）；排名 72/72 逐项一致、未变题 66/66 分数零漂移；q10 重计分分数不变（如实记录）",
+    "scope_note": "本轮仅 q10/q13 两处标注及相关产出+探针断言；未改产品算法/语料/其他旧 gold/Astra 文件；未跑全量/UI/ASR/Agent；零外部调用、无下载/安装/commit/push"
+  },
+  "results_summary": {
+    "k5": {
+      "bm25": {"recall": 0.725, "hit": 0.75, "mrr": 0.6},
+      "dense": {"recall": 0.7, "hit": 0.7, "mrr": 0.4433},
+      "hybrid": {"recall": 0.7, "hit": 0.7, "mrr": 0.5417}
+    },
+    "unanswerable": {
+      "count": 4,
+      "empty_rate": 0.0,
+      "unrecorded": 2,
+      "admission_excluded": 2
+    },
+    "note": "当前开发集检索基线（dataset v1.3）；v1.2→v1.3 仅 q13 dense MRR 变化；与 T027 分表不合并；Hit/MRR 非整题答对率"
+  },
+  "deliverables": [
+    "evaluation-report.md",
+    "gold-revisions.md",
+    "human-review.md",
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "continuation-progress.md",
+    "fix-checks/focused-probe.py",
+    "fix-checks/focused-probe-output.txt",
+    "fix-checks/focused-probe-r2-output.txt",
+    "fix-checks/astra-probe-rerun.txt",
+    "rev1/",
+    "rev2/"
+  ],
+  "data_paths": {
+    "questions": "data/evaluations/sicau-rag-pilot-eval-v1/questions.json",
+    "freeze": "data/evaluations/sicau-rag-pilot-eval-v1/freeze.json",
+    "results": "data/evaluations/sicau-rag-pilot-eval-v1/results/",
+    "annotation_check": "data/evaluations/sicau-rag-pilot-eval-v1/annotation-check.md",
+    "rev1_archive": "data/evaluations/sicau-rag-pilot-eval-v1/rev1/",
+    "midway_archive": "data/evaluations/sicau-rag-pilot-eval-v1/midway-20261004-v1_1-draft/",
+    "v1_2_archive": "data/evaluations/sicau-rag-pilot-eval-v1/archive-v1_2-rev2base/"
+  },
+  "human_review_status": "未复核（24 题全部；MiMo 不代签通过）",
+  "known_gaps": [
+    "q13 第四条修读情形排除因跨分页单块引文契约限制未入 gold，已在题面条文限定与修订记录中显式声明本题不覆盖全部排除情形",
+    "q10 的 cc25/bb8b 两源句尾「组成」被分页截断，跨度含两个组成部分+比例但不含该尾词（按 R2 不改解析器/不引入跨页契约）",
+    "旧 revision 1 的 evaluation-report.md 原件缺失（已归档记录，不伪造）",
+    "results/*.stderr.log|exitcode.txt 为 2026-10-03 rev1 全量 CLI 遗留日志，非合并运行证据；合并工具内置 T027-R2 模板字样（脚本未修改）"
+  ],
+  "not_claimed": [
+    "正式校园准确率（开发集、人工未复核）",
+    "可靠拒答（不足题空检索率 0）",
+    "Hit/MRR=整题答对率",
+    "统计显著性（单次小样本）",
+    "检索能力/算法改进（变化来自标注与题面修正）",
+    "题目为教师/学生独立标注（模型辅助已声明）",
+    "q13 覆盖该办法全部排除情形（仅第十/十一条）"
+  ],
+  "workspace_note": "未改已验收包 v1.1、产品算法、旧 gold（旧 8 题与 T027 v2.1 保留）、Astra 文件；未联网/下载/安装/commit/push；原始数据集与各归档只读"
+}

@@ -1,0 +1,48 @@
+{
+  "task_id": "T029",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T029-R1",
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "summary": "T029-R1 定向返工完成：① 重复核验漏检修复——VERIFY 六项比对（选定输入原文件 SHA、产品 manifest、selection、provenance 逐条结构化、输出哈希、产品校验器），任何漂移 DIFF 明确报出、非零退出、不写入；Astra 隔离探针原样复跑 4/4 passed exit 0（输入字节变化/selection 边车变化均正确失败且不覆盖）；精简回归 3 passed。② 元数据修正——source_site 改按已选 source_url 主机解析（20/20 同源；d1fe991c rwy→jiaowu、92049a1c jiaowu→jwnews，原来源页面站点留 provenance）；补正 2 份已核实日期（bb8ba97c 发文/生效 2025-11-11 PDF p75 施行条款、68fb3704 发文 2018-12-20 p2 落款、无施行条款不复制 effective）；准入对照 as_of=2026-10-03 准入 3/20→4/20（bb8b 补正后准入，筛选未放宽）。生成 data/corpora/sicau-rag-pilot-v1.1（同批 20 份原字节/ID，v1 保留），构建+两次 VERIFY OK。③ 随单整理——数量对账（25 条选择=20+5；其余 1157=930+227；processing/inspection 维度不相加；non_text≠图片数）、scope 18 份本科+2 份空、演示预期改已验证三版题 q2（不预言跨校区句入 top5）、compare 固定提示改中性解析块级口径（JS 9 页通过）。旧排名证据对应 v1 与 v1.1 同字节等价；v1.1 摘录主路径补核；compare 新增9/删除5/修改0/未变0 标注为解析块级结果。",
+  "verification": {
+    "astra_probe": "T029-prepare-probe.py 原样复跑：4/4 passed，exit 0（通过标准未改、v1 原始输出未覆盖）",
+    "lean_regressions": "tests/test_prepare_real_corpus.py 3 passed（来源站点/输入变化/边车变化）；JS 语法 9 页通过",
+    "pack_v1_1": "构建+2 次 VERIFY OK exit 0；v1↔v1.1 逐字节一致、manifest 差异恰为 source_site×2+日期×2；source_site 20/20 同源",
+    "admission": "as_of=2026-10-03 准入 3/20→4/20（bb8b 补正生效；68fb 不推算生效日仍排除）；筛选未放宽",
+    "main_path": "v1.1 摘录→出处 E1=68fb3704/8a790c05/span[0,364]/preview；synthetic_count=0",
+    "scope_note": "未跑全量/UI/ASR/Agent；未重复向量编码/九题（同字节证据等价）；零外部调用、无下载/安装/commit/push"
+  },
+  "deliverables": [
+    "fix-report.md",
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "intake-report.md(rev2)",
+    "mapping-notes.md(rev2)",
+    "demo-notes.md(rev2)",
+    "parse-summary.json",
+    "query-checks.json",
+    "citation-crosscheck.md",
+    "rev1/（v1 提交件存档）"
+  ],
+  "counts": {
+    "dataset_inventory": 1182,
+    "selection_records": "25（20 include + 5 defer）",
+    "not_selected": "1157（930 可提取文本 + 227 其他）",
+    "first_batch": 20,
+    "parse_success": 20,
+    "query_checks": 9
+  },
+  "not_claimed": [
+    "全库已入库（20/1182）",
+    "真实校园准确率已验证",
+    "compare 条款级准确识别（解析块级结果）",
+    "生效日未核实者已补齐（仅 2 份有据补正）",
+    "浏览器已核验（交 Astra）"
+  ],
+  "workspace_note": "未改检索/筛选算法、旧 gold、Astra 探针/评论、STATUS/CLAUDE、原数据集；v1 包与 v1 提交件保留；data/ 受忽略、未 commit/push"
+}

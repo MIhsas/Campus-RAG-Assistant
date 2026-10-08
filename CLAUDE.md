@@ -1,5 +1,7 @@
 # 本项目的 Mimo 执行约定
 
+**2026-10-08最新状态：T036 revision3已通过，见docs/collaboration/reviews/T036-R3.md。** 当前有效包T036-v3；两探针和28项行为检查通过，但真实浏览器与人工语义审定仍未完成。当前无新的MiMo执行授权，保持待命；用户/导师填写复核记录后交Astra，由Astra发布T037。不自改gold/模板、不重建包、不追加实验/模型调用/安装/Git操作，不代填人工结论。本段覆盖下方历史指令。
+
 项目采用 Astra 安排与验收、Claude Code 中的 Mimo 执行的分阶段流程。
 
 开始工作先读取 `docs/collaboration/STATUS.md` 和 `docs/collaboration/PROJECT_CONTEXT.md`，只执行其中明确授权给 Mimo 的任务或返工单。完整协议见 `docs/collaboration/PROTOCOL.md`。返工单优先于原任务中被修订的要求，任务正文优先于通用实现习惯；用户的新指令优先于本文。
@@ -12,5 +14,7 @@
 - 只在任务允许的范围安装依赖、访问外部服务、改配置或执行提交；不要发布站点、推送代码或调用付费模型来证明功能。
 - 交付时写入任务指定目录并停止，等待 Astra 的验收或返工单。未安装的技能无需为本流程额外安装，按任务书逐项执行即可。
 
-T028 revision 2 已通过，见 docs/collaboration/reviews/T028-R2.md。当前仅允许该记录列出的非阻断文档收尾，完成即待命；不改产品代码、语料或gold，不调用外部模型。T029待用户提供真实资料后由Astra发布，未发布前不推进。历史交接指令以 STATUS.md 为准。
+T029 revision 2 已验收通过，当前真实包为 data/corpora/sicau-rag-pilot-v1.1/。2026-10-04 T030 revision 1 退回修改；当前唯一执行授权为 docs/collaboration/reviews/T030-R1.md，原T030任务为背景：修复冻结哈希校验、补齐可替代证据、明确题面与完整事实范围，一次复核24题。归档rev1后递增数据版本；gold-only复用排名计分，query/conditions变化才重检索。模型辅助标注不得冒充教师/学生人工gold。原始数据与已验收包只读，不改产品检索/筛选/计分算法或其他旧gold，不跑无关全量/UI/ASR/Agent，零外部模型调用，不下载/安装，不commit/push。提交revision 2后即停，T031未发布。历史交接指令以 docs/collaboration/STATUS.md 为准。
+
+2026-10-04：旧执行窗口输出超限中断，T030-R1部分成果已落盘，尚未完成/验收。新窗口必须先读 docs/collaboration/handoffs/T030-R1-20261004-MiMo续接.md；从已确认进度续接，不从零重跑。按小步骤更新提交目录中的continuation-progress.md，长内容分段读写。后续仍由Astra发布审核、MiMo执行，交接不增加任务或外部调用授权。
 

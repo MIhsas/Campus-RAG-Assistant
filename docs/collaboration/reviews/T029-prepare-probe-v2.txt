@@ -1,0 +1,38 @@
+{
+  "fixture": "F:\\Collage Paper\\step2_code\\backend\\.cache\\astra-t029-5jojr26g",
+  "external_model_calls": 0,
+  "cases": [
+    {
+      "case": "initial_build",
+      "expected_success": true,
+      "actual_exit_code": 0,
+      "output_unchanged": true,
+      "passed": true,
+      "stdout": "manifest.json: 1 份；产品校验器: valid"
+    },
+    {
+      "case": "unchanged_verify",
+      "expected_success": true,
+      "actual_exit_code": 0,
+      "output_unchanged": true,
+      "passed": true,
+      "stdout": "VERIFY OK: 1 份输入/输出/边车一致（未写入）"
+    },
+    {
+      "case": "source_bytes_changed_manifest_unchanged",
+      "expected_success": false,
+      "actual_exit_code": 1,
+      "output_unchanged": true,
+      "passed": true,
+      "stdout": "DIFF: 输入原文件 SHA 与数据集声明不一致: f5f103cbef9aa942a67dbda5e7e1db566b74c55e50231e219246c3f11ea31701\n输入原文件已被改动，拒绝构建（非零退出）"
+    },
+    {
+      "case": "selection_evidence_changed",
+      "expected_success": false,
+      "actual_exit_code": 1,
+      "output_unchanged": true,
+      "passed": true,
+      "stdout": "DIFF: selection.json 与当前推导结果不一致（结构化比较）\nDIFF: provenance.jsonl 与当前推导结果不一致（逐条结构化比较）\nVERIFY FAILED: 2 处不一致（不覆盖已有输出）"
+    }
+  ]
+}

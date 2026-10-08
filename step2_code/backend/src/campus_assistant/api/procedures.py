@@ -77,20 +77,32 @@ def create_procedures_router() -> APIRouter:
                     "request_id": request.state.request_id,
                 },
             )
+
+        def _entry(p: dict) -> dict:
+            # T033: entry metadata for the ask-page related entry.
+            # source_document_ids is derived from the template's own citations
+            # (never model-guessed); identity fields only — no paths or text.
+            src_ids: list[str] = []
+            for s in p.get("steps", []):
+                for c in s.get("citations", []):
+                    did = c.get("document_id")
+                    if did and did not in src_ids:
+                        src_ids.append(did)
+            return {
+                "procedure_id": p["procedure_id"],
+                "title": p.get("title"),
+                "summary": p.get("summary"),
+                "template_version": p["template_version"],
+                "is_synthetic": bool(p.get("is_synthetic", False)),
+                "step_count": len(p.get("steps", [])),
+                "related_keywords": list(p.get("related_keywords") or []),
+                "source_document_ids": src_ids,
+            }
+
         return {
             "configured": True,
             "is_synthetic": bool(procedures.get("is_synthetic", False)),
-            "procedures": [
-                {
-                    "procedure_id": p["procedure_id"],
-                    "title": p.get("title"),
-                    "summary": p.get("summary"),
-                    "template_version": p["template_version"],
-                    "is_synthetic": bool(p.get("is_synthetic", False)),
-                    "step_count": len(p.get("steps", [])),
-                }
-                for p in procedures["procedures"]
-            ],
+            "procedures": [_entry(p) for p in procedures["procedures"]],
             "request_id": request.state.request_id,
         }
 

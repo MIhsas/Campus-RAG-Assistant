@@ -1,0 +1,40 @@
+{
+  "note": "T032-R1 变更清单（submission_revision=2）。本轮仅模板引用修复与说明同步；未改解析器、verify-procedures-citations.py 校验口径、页面、算法；原语料/gold/历史实验只读。",
+  "modified_this_round": [
+    {
+      "path": "data/procedures/sicau-transfer-2026-v1/procedures.json",
+      "change": "v1.0→v1.1：t2/t8/t12 三条前页引用补页尾漏字（5c3a798d 260→271、10ea5893 505→507、bb74305a 457→463，块尾切片脚本生成）；t12 次引去「— 5 —」页码前缀（d64f4351[6:34]）；t8 detail 明确排序展开见 t2",
+      "sha256": "6039d1c941881b63e50394ee28f4243121ce470776cf66edb6b2238338ea4d18",
+      "size": 23012
+    },
+    {
+      "path": "data/procedures/sicau-transfer-2026-v1/SOURCE-CHECK.md",
+      "change": "v1.1 修订说明（补齐页尾漏字/去页码前缀/t8 指向 t2；旧快照归档）",
+      "sha256": "7005f2ba55d384b1c29ea9b54e22b698b65a0ebe7e7c881984ff4b8e66776f56",
+      "size": 3138
+    }
+  ],
+  "regenerated_docs": [
+    "docs/collaboration/submissions/T032/citation-crosscheck.md（更正旧摘要误称、附 v1.0→v1.1 修订对照与真实核对输出）",
+    "docs/collaboration/submissions/T032/api-demo.json（v1.1 正常草稿/verify 示例重生成）",
+    "docs/collaboration/submissions/T032/report.md",
+    "docs/collaboration/submissions/T032/verification.md",
+    "docs/collaboration/submissions/T032/submission.json",
+    "docs/collaboration/submissions/T032/changed-files.json"
+  ],
+  "unchanged": [
+    "step2_code/backend/scripts/verify-procedures-citations.py（原校验口径未改）",
+    "step2_code/backend/scripts/demo-t032-procedures.py",
+    "step2_code/backend/src/campus_assistant/（解析器/服务/页面本轮均未改）",
+    "docs/collaboration/reviews/T032-span-probe.py（Astra 探针原样运行）"
+  ],
+  "archives": [
+    "docs/collaboration/submissions/T032/rev1/（revision 1 七件，字节核验一致）",
+    "data/procedures/sicau-transfer-2026-v1/archive-v1.0/（v1.0 模板 + 旧 SOURCE-CHECK 快照）"
+  ],
+  "source_readonly": {
+    "source_pdf": "data/corpora/sicau-rag-pilot-v1.1/5cb2ac21…e76.pdf（sha256=同名，未修改）",
+    "note": "语料包/manifest、T030 gold/冻结、T031 selection-map/experiment 全部只读未动"
+  },
+  "hash_note": "本清单哈希为落盘后实测全值。"
+}

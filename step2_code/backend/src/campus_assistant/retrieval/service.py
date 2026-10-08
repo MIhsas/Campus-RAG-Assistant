@@ -47,6 +47,7 @@ def execute_search(
     bm25_index: Any,
     dense_index: Any,
     embedding_service: Any,
+    document_id: str | None = None,
 ) -> dict[str, Any]:
     """Run the shared retrieval pipeline.
 
@@ -57,21 +58,38 @@ def execute_search(
         filters_norm: Normalized T011 filters (or None = unrestricted).
         documents: Parsed documents for applicability filtering.
         bm25_index / dense_index / embedding_service: Built at app creation.
+        document_id: Optional user-selected single source document (T031).
+            None = previous behaviour. Intersected with the filter-admitted
+            set BEFORE Top-K; never relaxes filters or falls back to other
+            documents when the intersection is empty.
 
     Returns:
-        {"query_tokens": [...], "hits": [...], "filter_summary": {...}}
+        {"query_tokens": [...], "hits": [...], "filter_summary": {...},
+         "source_selection": {...}}
     """
     from campus_assistant.retrieval.filters import compute_allowed_document_ids
+    from campus_assistant.retrieval.source_selection import (
+        build_source_selection,
+        intersect_allowed,
+    )
     from campus_assistant.retrieval.tokenize import tokenize
 
     query_tokens = tokenize(query)
     filter_result = compute_allowed_document_ids(documents, filters_norm)
-    allowed = filter_result["allowed_document_ids"]
+    allowed_by_filters = filter_result["allowed_document_ids"]
     filter_summary = {k: filter_result[k] for k in FILTER_SUMMARY_KEYS}
+
+    # T031: user-selected source ∩ four-condition admission, before Top-K.
+    allowed = intersect_allowed(allowed_by_filters, document_id)
+    source_selection = build_source_selection(
+        document_id=document_id,
+        documents=documents,
+        allowed_document_ids=allowed_by_filters,
+    )
 
     # Admission is applied inside each retriever BEFORE Top-K truncation;
     # an empty allowed set returns empty hits and never falls back to
-    # excluded documents.
+    # excluded documents (including when the selected file is excluded).
     hits = []
     if allowed is None or len(allowed) > 0:
         if mode == "bm25":
@@ -109,4 +127,5 @@ def execute_search(
         "query_tokens": query_tokens,
         "hits": hits,
         "filter_summary": filter_summary,
+        "source_selection": source_selection,
     }

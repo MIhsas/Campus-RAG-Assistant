@@ -1,0 +1,102 @@
+{
+  "note": "T031 变更清单（相对项目根，submission_revision=1）。范围=来源选择后端契约 + search/ask 页面闭环 + 聚焦测试/行为脚本 + 对照实验与演示脚本 + T031 提交材料 + T030 文档勘误。未改分词/BM25/Dense/RRF/切块算法、T030 数据/gold/冻结、真实包、Astra 文件。",
+  "new_modules": [
+    {
+      "path": "step2_code/backend/src/campus_assistant/retrieval/source_selection.py",
+      "change": "单文件来源选择模块（normalize/resolve/catalog/intersect/summary）",
+      "sha256": "262a3a0d8ff466d788b2636baad3d39f0f814b15ab066c80497832628f0ecce3",
+      "size": 6510
+    },
+    {
+      "path": "step2_code/backend/tests/test_source_selection.py",
+      "change": "T031 聚焦测试 20 项",
+      "sha256": "0b8631ad928017d64f37cbd7d48c769f23954ebb0f5655f0c9687a877d6781fb",
+      "size": 15219
+    },
+    {
+      "path": "step2_code/backend/scripts/evaluate-source-selection.py",
+      "change": "对照实验脚本（baseline vs 明确文件选择）",
+      "sha256": "7b3afb3caac13d18a2a517c38bc03e32a714cc3c445bddf6c314a4d1e7099134",
+      "size": 8978
+    },
+    {
+      "path": "step2_code/backend/scripts/demo-source-selection.py",
+      "change": "真实包本地 API 演示",
+      "sha256": "f995b10800ef9876feb6ceda0983cae05954b9e049405f3bcace934f719d2bc2",
+      "size": 6268
+    },
+    {
+      "path": "step2_code/backend/scripts/serve-source-selection.py",
+      "change": "真实包+本地 BGE 的浏览器核对启动器",
+      "sha256": "79a2529dd1e692acf8c294e2d49e5cae15e88e73b8fbf8858be02fab7867eb3f",
+      "size": 1514
+    }
+  ],
+  "modified_product_surface": [
+    {
+      "path": "step2_code/backend/src/campus_assistant/retrieval/service.py",
+      "change": "execute_search 增加 document_id（求交先准入后 TopK）与 source_selection 摘要；检索/排序算法不变",
+      "sha256": "2b587ed868939292f9e603763a96bdc96f4a9029fbfaec7e905f9c97d12ee641",
+      "size": 4870
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/api/search.py",
+      "change": "SearchRequest.document_id 契约（422 语义）、GET /api/v1/search/documents、响应 source_selection",
+      "sha256": "c2a18343e21b1d89eba07350742ac1dd4043d1ba0bd1a8e17838ca5965759bc0",
+      "size": 16661
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/api/ask.py",
+      "change": "继承 document_id、同校验/同管线、响应 source_selection",
+      "sha256": "2af92f1638a4d4bf57e9c6548054b2d040bb2a1133f76de4dd11bacb521fb516",
+      "size": 14254
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/qa/evidence.py",
+      "change": "空态最小扩展：所选文件被排除→no_admissible_docs（与文件内无命中区分）",
+      "sha256": "c8f7274cffa4d58ffb5383cb915222a04bcbb4bd885180684e7ff4ca9aeeb89e",
+      "size": 4433
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/static/search.html",
+      "change": "资料范围选择器/快照/空态/互跳/422 提示",
+      "sha256": "b2d71a3f41bbff63a6ea2f598595e1a81deabd18c618f885f9ba46ef4235123e",
+      "size": 34478
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/static/ask.html",
+      "change": "同上 + 历史 document_id/失效提示/转摘录快照/办事入口说明",
+      "sha256": "12e426ca30a36dc4ff1a7221601d098315a6d4cc889a031ad6ba94e6d9b18069",
+      "size": 55377
+    },
+    {
+      "path": "step2_code/backend/scripts/check-search-behavior.cjs",
+      "change": "T031 页面行为场景 3 项 + 目录桩",
+      "sha256": "2ac517be18b1b3e765440980af20e498cad31d9a3d175c381bfc4951e99bd5ae",
+      "size": 23109
+    },
+    {
+      "path": "step2_code/backend/scripts/check-ask-behavior.cjs",
+      "change": "T031 页面行为场景 3 项 + 目录/存储桩",
+      "sha256": "1d2bb8656ca77982d73e28f68f8d1ddf018de5bb3c6b74dfb2eb3066a434ab41",
+      "size": 41953
+    }
+  ],
+  "data_products": {
+    "selection_map": "data/evaluations/sicau-rag-source-selection-v1/selection-map.json（跑前冻结，sha256 42d63bc4558584c0874737df5581171f2f4456deba59197291ff60fb5ee10de7）",
+    "experiment_freeze": "data/evaluations/sicau-rag-source-selection-v1/freeze.json（映射+实现+模型身份；T030 冻结未改）",
+    "experiment_rows": "data/evaluations/sicau-rag-source-selection-v1/experiment.json（逐题 R/H/M、命中文档分布、命中序列、baseline 一致性）"
+  },
+  "submissions": [
+    "docs/collaboration/submissions/T031/report.md",
+    "docs/collaboration/submissions/T031/verification.md",
+    "docs/collaboration/submissions/T031/submission.json",
+    "docs/collaboration/submissions/T031/changed-files.json",
+    "docs/collaboration/submissions/T031/experiment-report.md",
+    "docs/collaboration/submissions/T031/api-demo.json",
+    "docs/collaboration/submissions/T031/demo-notes.md",
+    "docs/collaboration/submissions/T031/T030-doc-errata.md",
+    "docs/collaboration/submissions/T031/continuation-progress.md"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值。"
+}

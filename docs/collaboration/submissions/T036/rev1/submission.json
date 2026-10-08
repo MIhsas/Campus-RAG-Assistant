@@ -1,0 +1,41 @@
+{
+  "task_id": "T036",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "human_review_status": "unreviewed",
+  "summary": "T036 离线人工复核包完成：build-human-review-pack.py（标准库+现有解析器，不加载检索/ASR/生成器）将真实 24 题（20 可答+4 不足）×57 证据与 13 步模板×20 引用集中为本机离线包（.cache/human-review/T036-v1/：review.html/pack.json/README.md）。构建前逐条程序化核对 77 条引用（文档 SHA/块存在/跨度/quote 逐字），失败非零退出不写半成品；输出目录非空拒绝覆盖。pack.json 记录输入 SHA/版本、模型辅助声明、人工未复核；逐题保留原 query/条件/事实组/理由/已查范围，逐步保留 detail/未说明项；每条含逐字 quote、原块全文、前后相邻块、页码定位（未知如实）、本地原件路径；OR/AND 语义与「无 gold≠无规定」注记常驻。review.html 自包含（无网络/CDN/localStorage），逐题目/证据/步骤/引用四档意见（初值全未复核，无预填签名日期），「导出复核记录」下载新 JSON（含输入 SHA），不写回 gold/模板/历史文件；页面仅汇总计数不标已审定。模拟导出示例 1 条「需修订+意见」（record_title=模拟操作测试，非真实结论），默认包零测试选择。验证：构建 exit 0、拒覆盖 exit 1、坏引用拒绝 exit 1（原件未动）、pytest 4 项、DOM/JS 桩 15 项（默认 114/114 未复核、单项导出语义、输入 SHA 持久、离线断言）；输入与 T031/T034 历史实验 SHA 前后不变、未重算分数。顺带修正 defense-script 第 3→4 段衔接（2023 对照后切回 2026→重新整理依据→确认入口→点击，计入 130 秒，总预算 560≤600）与 human-review-pending 工具入口。未代填任何人工结论；真实浏览器未跑（Astra 短清单见 demo-notes）。",
+  "verification": {
+    "build": "构建命令 exit 0：77 条引用逐字/跨度/哈希核对通过；24 题(20+4)/57 证据/13 步/20 引用齐备",
+    "completeness": "tests/test_human_review_pack.py 4 passed（计数/逐条 quote==块切片/64 位 ID 未截断/HTML 离线与默认未复核）",
+    "export_semantics": "scripts/check-review-pack.cjs（DOM/JS 桩，15 项）：默认 114/114 未复核、reviewer/标题空；模拟 1 项需修订+意见导出、其余 113 项未复核、输入 SHA 不变、tally 一致；localStorage/fetch 触达即失败",
+    "guardrails": "非空目录拒绝覆盖 exit 1；隔离坏引用拒绝 exit 1、不写包、原模板/questions SHA 未变",
+    "invariance": "questions 5fde70a3…/manifest 34e182f1…/procedures 78f1c1d9…/T031 experiment 57b22f93…/T034 experiment cef9f162… 前后一致；未重算评测分数",
+    "scope_note": "未加载模型、未重跑实验/浏览器/ASR/Agent/无关全量；产品/模板/语料/gold/历史产物/Astra 文件只读"
+  },
+  "outputs": {
+    "pack_dir": "step2_code/backend/.cache/human-review/T036-v1/（review.html f557f3e7…、pack.json 53dccd30…、README.md 66bc59f4…）",
+    "simulated_export": "step2_code/backend/.cache/human-review/T036-v1-simulated-export.json（eec10bf8…；record_title=模拟操作测试）"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "demo-notes.md"
+  ],
+  "known_gaps": [
+    "真实浏览器未运行——导出/浏览为 DOM/JS 桩证据，Astra 短清单待复验",
+    "模拟导出示例非真实复核结论；人工语义审定（24 题 gold、模板现行性）仍未复核",
+    "生成包为审阅辅助，不代表人工复核完成"
+  ],
+  "not_claimed": [
+    "人工复核已通过或已代填结论",
+    "真实浏览器已验证（仅桩证据）",
+    "程序化逐字一致=语义正确/政策现行有效",
+    "导出记录=签署认证或学校政策确认"
+  ],
+  "workspace_note": "产品/模板/语料/gold/历史实验（T027—T035）/Astra 文件只读未改；零外部调用、无下载/安装/commit/push"
+}

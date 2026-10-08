@@ -1,0 +1,65 @@
+{
+  "task_id": "T030",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "summary": "T030 真实语料检索基线完成：以已验收 v1.1 包（20 份真实资料）为只读冻结输入，原文优先编制 24 题开发集（20 可答+4 不足=2 未记载+2 准入排除；5 主题/13 份来源文档；直述9/口语2/多事实4/指定版本5；2 组版本对照+2 组同题筛选对；≤6 道 T029 已见诊断题）。标注完整事实与可替代证据（组内 OR 每源独立完整、组间 AND；版本约束题面明示；不足题记已查范围，非“没搜到”），评测前冻结哈希，三模式各一次同条件运行（TopK=5，BGE 本地）。指标（n=20）：BM25 0.633/0.650/0.483、Dense 0.633/0.650/0.391、Hybrid 0.683/0.700/0.421（R/H/M）；不足题空检索率 0.000（分开未记载/准入排除，不叫拒答率）。7 个失分案例现象/假设分开（页级大块 chunk 错位、同族挤占、文号页眉吸引、RRF 掉出）；2 题手算与机器一致；≤3 项优化建议只建议不实施。题面/标注模型辅助、人工复核=未复核；与 T027 合成指标分表不合并；未反推 gold/未调参/未改算法。",
+  "verification": {
+    "annotation": "check-real-eval.py CHECK OK（24 题/37 证据：契约/引句逐字/准入/事实分组）；annotation-check.md 语义层依据逐条记录",
+    "freeze": "freeze.json 于运行前保存（题集/manifest/20 文件/11 实现文件/BGE 身份）；运行哈希与冻结一致（a9f284b0…/34e182f1…）",
+    "runs": "三模式各一次 EXIT 0（stdout JSON/stderr/exitcode 三件套留存）；2 题手算对照一致",
+    "scope_note": "仅新增 check-real-eval.py；未改产品算法/旧 gold/v1.1 包；未跑 UI/ASR/Agent/全量；零外部调用、无下载/安装/commit/push"
+  },
+  "results_summary": {
+    "k5": {
+      "bm25": {
+        "recall": 0.6333,
+        "hit": 0.65,
+        "mrr": 0.4833
+      },
+      "dense": {
+        "recall": 0.6333,
+        "hit": 0.65,
+        "mrr": 0.3908
+      },
+      "hybrid": {
+        "recall": 0.6833,
+        "hit": 0.7,
+        "mrr": 0.4208
+      }
+    },
+    "unanswerable": {
+      "count": 4,
+      "empty_rate": 0.0,
+      "unrecorded": 2,
+      "admission_excluded": 2
+    },
+    "note": "当前开发集检索基线；与 T027 分表不合并；Hit/MRR 非整题答对率"
+  },
+  "deliverables": [
+    "evaluation-report.md",
+    "human-review.md",
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json"
+  ],
+  "data_paths": {
+    "questions": "data/evaluations/sicau-rag-pilot-eval-v1/questions.json",
+    "freeze": "data/evaluations/sicau-rag-pilot-eval-v1/freeze.json",
+    "results": "data/evaluations/sicau-rag-pilot-eval-v1/results/",
+    "annotation_check": "data/evaluations/sicau-rag-pilot-eval-v1/annotation-check.md"
+  },
+  "human_review_status": "未复核（24 题全部；MiMo 不代签通过）",
+  "not_claimed": [
+    "正式校园准确率（开发集、人工未复核）",
+    "可靠拒答（不足题空检索率 0）",
+    "Hit/MRR=整题答对率",
+    "统计显著性（单次小样本）",
+    "Hybrid 优胜结论（仅本集观察）",
+    "题目为教师/学生独立标注（模型辅助已声明）"
+  ],
+  "workspace_note": "未改已验收包 v1.1、产品算法、旧 gold（旧 8 题与 T027 v2.1 保留）；未联网/下载/安装/commit/push；原始数据集只读"
+}

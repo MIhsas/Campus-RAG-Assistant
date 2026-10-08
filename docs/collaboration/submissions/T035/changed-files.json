@@ -1,0 +1,32 @@
+{
+  "note": "T035-R1 变更清单（submission_revision=2）。仅当前交付文档与提交说明；产品/模板/语料/gold/冻结/实验产物/Astra 文件未改。revision 1 已原字节归档。",
+  "archived_revision1": [
+    "docs/delivery/archive-t035-rev1/（交付八件：README/system-design/thesis-outline/evidence-matrix/defense-script/windows-runbook/experiment-index/human-review-pending）",
+    "docs/collaboration/submissions/T035/rev1/（提交五件：report/verification/submission/changed-files/T034-doc-errata）",
+    "13/13 SHA-256 字节核验一致；docs/delivery/archive-t028-delivery/ 与 rev1/ 历史未覆盖"
+  ],
+  "updated_delivery_docs": [
+    {"path": "docs/delivery/README.md", "change": "T031/T033 证据范围限定、图例补充、时长口径", "sha256": "06ad9cfdfe45b836c8ac7d7681b7aa43e55f81aba9c2baf9c6b20c4b623d8aca", "size": 7087},
+    {"path": "docs/delivery/system-design.md", "change": "边界改为已接入首批 20/1182；装配原则收窄「默认关闭」为可选组件", "sha256": "dab469a6497a122c9996ef22058b7a55d64b265880f731af66903b944875fb55", "size": 14462},
+    {"path": "docs/delivery/thesis-outline.md", "change": "摘要/副题改当前真实阶段并分清已完成/未完成实验；表 6-4 明示分母", "sha256": "07f92376c0e9405e39ccc8c6407e35f76bce6eba5dcc824a1edbecfdbb10eb74", "size": 16472},
+    {"path": "docs/delivery/evidence-matrix.md", "change": "评测管线行覆盖风险如实；元数据行首批已入库表述", "sha256": "4c84fa3d14e5acd138fbae68a66b3585db76786b20f9e53df89ec5e7e2a432b9", "size": 12105},
+    {"path": "docs/delivery/defense-script.md", "change": "560 秒预算表、/ask 显式入口路径、逐操作证据标注、备选装配前提", "sha256": "aa93373bd51e30abf5420a01aa27aafa4d2ef6dbbe7c5699b6a4e85ce6fd49b8", "size": 10093},
+    {"path": "docs/delivery/windows-runbook.md", "change": "§4 复现边界按源码写入点更正（覆盖行为/禁止例行执行）；§2 标题与注释收窄默认关闭", "sha256": "d55a0db02cbd228ea728ac9c65e11043f83fb9ea4282af291e678a7cdac46f13", "size": 11251},
+    {"path": "docs/delivery/experiment-index.md", "change": "E3 输入行明示分母（24=20+4）", "sha256": "9762be383bd58ddac85420d9bbb3677f022c32b08d27308468c1b276fb62eedc", "size": 5245},
+    {"path": "docs/delivery/human-review-pending.md", "change": "答辩时长口径同步预算表述", "sha256": "11a671893a5e9e776c7b35532f6c1514bfc7dd5b7b421a76ac5b3c87dc664002", "size": 4160}
+  ],
+  "updated_submissions": [
+    "docs/collaboration/submissions/T035/report.md（revision 2）",
+    "docs/collaboration/submissions/T035/verification.md（revision 2）",
+    "docs/collaboration/submissions/T035/submission.json",
+    "docs/collaboration/submissions/T035/changed-files.json"
+  ],
+  "new": [
+    {"path": "docs/collaboration/submissions/T035/fix-report.md", "change": "四项修复说明+源码写入点核对+证据层级+未验证项"}
+  ],
+  "unchanged": [
+    "docs/collaboration/submissions/T035/T034-doc-errata.md（revision 1 起保留）",
+    "产品代码、模板、语料、T030 gold/冻结、T031/T034 实验产物、Astra 任务/评审/STATUS/CLAUDE"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值。"
+}

@@ -57,6 +57,13 @@ def load_procedures(path: Path) -> dict[str, Any]:
         seen.add(pid)
         if not isinstance(p.get("template_version"), str) or not p.get("template_version"):
             raise ValueError(f"{pid} 缺少 template_version")
+        # T033: optional entry metadata; templates without it load unchanged.
+        if "related_keywords" in p:
+            kws = p["related_keywords"]
+            if not isinstance(kws, list) or any(
+                not isinstance(k, str) or not k.strip() for k in kws
+            ):
+                raise ValueError(f"{pid} related_keywords 必须是非空字符串列表")
         steps = p.get("steps")
         if not isinstance(steps, list) or not steps:
             raise ValueError(f"{pid} 缺少步骤")
@@ -203,7 +210,12 @@ def build_draft(
         "saveable": saveable,
         "status": "ready" if saveable else "insufficient",
         "issues": issues,
-        "disclaimer": "合成演示清单，不代表学校受理或资格认证；政策步骤来自原文引用，缺失信息不编造。",
+        "disclaimer": (
+            "合成演示清单，不代表学校受理或资格认证；政策步骤来自原文引用，缺失信息不编造。"
+            if bool(proc.get("is_synthetic", procedures.get("is_synthetic", False)))
+            else "真实资料办理清单（仅说明模板绑定版本所载内容，不宣称现行有效、不判定资格、不保证申请成功）；"
+                 "政策步骤来自原文引用，缺失信息不编造，保存为个人待办不等于向学校提交申请。"
+        ),
     }
 
 

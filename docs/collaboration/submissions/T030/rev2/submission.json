@@ -1,0 +1,71 @@
+{
+  "task_id": "T030",
+  "task_revision": "v1+T030-R1",
+  "submission_revision": 2,
+  "responds_to": "T030-R1",
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "dataset_version": "1.2",
+  "summary": "T030-R1 三项必修完成：①冻结校验按真实 schema 修复（五节哈希核对、拒绝零项通过、缺结构/错哈希/分类漂移全部非零退出，标注说明文件哈希随单补入，Astra 错哈希探针复跑通过）；②可替代证据补全（q05 五源、q08 同文重述计源，续接另补 q10 教学管理族 4 组跨版本源，q05 计分回归与 Astra 反事实数字一致）；③题目范围与 gold 一致化（q01/q02 初修、q06/u04 基本信息情形限定与 fact 重组、q11 四情形、q12 基本申请条件、q14/q15 对照范围、q18 前提消歧、q13 短期课程排除补全与提问口径收窄），24 题逐题修改/不变及理由见 gold-revisions.md。数据版本递增 v1.1→1.2（题集 799ed1c1…），重新冻结 38 项。仅 q06/q13/q18/u04 三模式子集重检索（各 exit 0），其余 20 题复用已存排名重计分（72 条排名逐项一致、gold 未变题零漂移）。基线（K=5,n=20）：BM25 0.725/0.750/0.600、Dense 0.700/0.700/0.452、Hybrid 0.700/0.700/0.542（R/H/M），升降全部来自标注/题面修正，不主张算法改进。人工复核=未复核，不代签；与 T027 分表不合并；零外部模型调用。",
+  "verification": {
+    "annotation": "check-real-eval.py CHECK OK（24 题/57 证据：契约/引句逐字/准入/事实分组）exit 0；annotation-check.md v1.2 语义层依据逐条记录",
+    "freeze": "freeze.json v1.2（frozen_at 2026-10-07；38 项=题集+manifest+20 语料+11 实现+4 模型身份+标注说明；questions_sha256=799ed1c1…）；v1.1 草稿冻结存 midway 归档未追溯改写",
+    "focused_regression": "有效结构通过；缺 5 节/空清单 6 场景 exit 1；单点哈希漂移 6 类参数化 exit 1；Astra 错哈希探针复跑 exit 0（wrong_hash_rejected=True）；q05 替代源计分回归 dense 0.2→0.5、hybrid 1/3→1",
+    "runs": "v1.2 变更 4 题三模式子集 CLI 各 exit 0（rerun-v12 三件套）；eval-v2-rescore 合并 exit 0；排名来源一致性 72/72、gold 未变题分数 54/54 零漂移",
+    "scope_note": "文件范围=题集/标注/冻结/结果与 T030 提交材料+校验脚本及其聚焦探针；未改产品算法/旧 gold/Astra 文件/STATUS/CLAUDE；未跑 UI/ASR/Agent/全量；零外部调用、无下载/安装/commit/push"
+  },
+  "results_summary": {
+    "k5": {
+      "bm25": {"recall": 0.725, "hit": 0.75, "mrr": 0.6},
+      "dense": {"recall": 0.7, "hit": 0.7, "mrr": 0.4517},
+      "hybrid": {"recall": 0.7, "hit": 0.7, "mrr": 0.5417}
+    },
+    "unanswerable": {
+      "count": 4,
+      "empty_rate": 0.0,
+      "unrecorded": 2,
+      "admission_excluded": 2
+    },
+    "note": "当前开发集检索基线（dataset v1.2）；与 T027 分表不合并；Hit/MRR 非整题答对率；对比 rev1/草稿的升降含 gold 与题面双重修订影响"
+  },
+  "deliverables": [
+    "evaluation-report.md",
+    "gold-revisions.md",
+    "human-review.md",
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "continuation-progress.md",
+    "fix-checks/focused-probe.py",
+    "fix-checks/focused-probe-output.txt",
+    "fix-checks/astra-probe-rerun.txt",
+    "rev1/"
+  ],
+  "data_paths": {
+    "questions": "data/evaluations/sicau-rag-pilot-eval-v1/questions.json",
+    "freeze": "data/evaluations/sicau-rag-pilot-eval-v1/freeze.json",
+    "results": "data/evaluations/sicau-rag-pilot-eval-v1/results/",
+    "annotation_check": "data/evaluations/sicau-rag-pilot-eval-v1/annotation-check.md",
+    "rev1_archive": "data/evaluations/sicau-rag-pilot-eval-v1/rev1/",
+    "midway_archive": "data/evaluations/sicau-rag-pilot-eval-v1/midway-20261004-v1_1-draft/"
+  },
+  "human_review_status": "未复核（24 题全部；MiMo 不代签通过）",
+  "known_gaps": [
+    "旧 revision 1 的 evaluation-report.md 原件缺失（旧窗口覆盖前无备份），不伪造历史报告",
+    "results/*.stderr.log|exitcode.txt 为 2026-10-03 rev1 全量 CLI 遗留日志，非本次合并运行证据",
+    "合并工具内置 merge_note 含 T027-R2 模板字样（脚本未修改），实际口径以 rescore-v12.json 与 verification.md 为准",
+    "q13 第四条修读情形排除因跨分页单块无法独立完整支持未入 gold，范围差异已入档"
+  ],
+  "not_claimed": [
+    "正式校园准确率（开发集、人工未复核）",
+    "可靠拒答（不足题空检索率 0）",
+    "Hit/MRR=整题答对率",
+    "统计显著性（单次小样本）",
+    "Hybrid 优胜结论（仅本集观察）",
+    "检索能力/算法改进（变化来自标注与题面修正）",
+    "题目为教师/学生独立标注（模型辅助已声明）"
+  ],
+  "workspace_note": "未改已验收包 v1.1、产品算法、旧 gold（旧 8 题与 T027 v2.1 保留）；未联网/下载/安装/commit/push；原始数据集与 rev1 归档只读；工作区其他未提交改动（README/compare/STATUS 等）非本任务成果，未触碰"
+}

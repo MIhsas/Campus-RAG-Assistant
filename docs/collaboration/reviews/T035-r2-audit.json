@@ -1,0 +1,105 @@
+{
+  "relative_links_matched": 10,
+  "current_delivery_hashes_matched": 8,
+  "revision1_known_hashes_matched": 9,
+  "revision1_submission_files_present": 5,
+  "archive_scope_note": "8 delivery files and errata matched declared revision1 hashes; other four submission files existence only, not independent original-byte verification",
+  "seconds": [
+    30,
+    20,
+    140,
+    120,
+    130,
+    50,
+    50,
+    20
+  ],
+  "total_seconds": 560,
+  "metrics": {
+    "bm25": {
+      "baseline": {
+        "evidence_recall": 0.725,
+        "hit": 0.75,
+        "mrr": 0.6,
+        "answerable_count": 20,
+        "unanswerable_count": 4,
+        "empty_result_rate": 0.0
+      },
+      "selection": {
+        "evidence_recall": 0.9,
+        "hit": 0.9,
+        "mrr": 0.5033333333333333,
+        "answerable_count": 10,
+        "unanswerable_count": 0,
+        "empty_result_rate": null
+      },
+      "overlap": {
+        "evidence_recall": 0.725,
+        "hit": 0.75,
+        "mrr": 0.5958333333333333,
+        "answerable_count": 20,
+        "unanswerable_count": 4,
+        "empty_result_rate": 0.0
+      }
+    },
+    "dense": {
+      "baseline": {
+        "evidence_recall": 0.7,
+        "hit": 0.7,
+        "mrr": 0.44333333333333336,
+        "answerable_count": 20,
+        "unanswerable_count": 4,
+        "empty_result_rate": 0.0
+      },
+      "selection": {
+        "evidence_recall": 0.9,
+        "hit": 0.9,
+        "mrr": 0.5483333333333333,
+        "answerable_count": 10,
+        "unanswerable_count": 0,
+        "empty_result_rate": null
+      },
+      "overlap": {
+        "evidence_recall": 0.675,
+        "hit": 0.7,
+        "mrr": 0.4666666666666667,
+        "answerable_count": 20,
+        "unanswerable_count": 4,
+        "empty_result_rate": 0.0
+      }
+    },
+    "hybrid": {
+      "baseline": {
+        "evidence_recall": 0.7,
+        "hit": 0.7,
+        "mrr": 0.5416666666666667,
+        "answerable_count": 20,
+        "unanswerable_count": 4,
+        "empty_result_rate": 0.0
+      },
+      "selection": {
+        "evidence_recall": 0.9,
+        "hit": 0.9,
+        "mrr": 0.5,
+        "answerable_count": 10,
+        "unanswerable_count": 0,
+        "empty_result_rate": null
+      },
+      "overlap": {
+        "evidence_recall": 0.7,
+        "hit": 0.7,
+        "mrr": 0.5833333333333333,
+        "answerable_count": 20,
+        "unanswerable_count": 4,
+        "empty_result_rate": 0.0
+      }
+    }
+  },
+  "historical_inputs_checked": [
+    "T030 questions",
+    "T031 selection-map",
+    "T031 experiment"
+  ],
+  "scope": "read-only stored data; no experiment/model/browser/test suite",
+  "nonblocking": "After /ask 2023 source-mismatch demo, explicitly restore 2026 and arrange evidence again before clicking procedure entry; include in T036."
+}

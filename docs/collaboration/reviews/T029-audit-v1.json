@@ -1,0 +1,283 @@
+{
+  "date": "2026-10-03",
+  "external_model_calls": 0,
+  "dataset_manifest_sha256": "6a41ff3cdf3eebfe78ad6a555b1b288242d71dff34751a597dc70288e8c4e514",
+  "parse_valid": true,
+  "parsed_count": 20,
+  "block_count": 1031,
+  "warning_count": 41,
+  "file_hash_checks": {
+    "passed": 20,
+    "total": 20
+  },
+  "all_sources_checks": {
+    "passed": 20,
+    "total": 20
+  },
+  "citation_span_checks": [
+    {
+      "citation": 1,
+      "document": "68fb37043ab7",
+      "block": "8a790c05ff004510",
+      "expected_page": 1,
+      "locator": {
+        "type": "pdf_page",
+        "page": 1,
+        "part": 1
+      },
+      "start": 191,
+      "end": 226,
+      "matches": true
+    },
+    {
+      "citation": 2,
+      "document": "5cb2ac21497c",
+      "block": "d64f435102a25796",
+      "expected_page": 5,
+      "locator": {
+        "type": "pdf_page",
+        "page": 5,
+        "part": 1
+      },
+      "start": 66,
+      "end": 133,
+      "matches": true
+    },
+    {
+      "citation": 3,
+      "document": "5cb2ac21497c",
+      "block": "44392bef6f807d23",
+      "expected_page": 2,
+      "locator": {
+        "type": "pdf_page",
+        "page": 2,
+        "part": 1
+      },
+      "start": 199,
+      "end": 228,
+      "matches": true
+    },
+    {
+      "citation": 4,
+      "document": "d1fe991c4137",
+      "block": "e56dd8918dc5a429",
+      "expected_page": 1,
+      "locator": {
+        "type": "pdf_page",
+        "page": 1,
+        "part": 4
+      },
+      "start": 132,
+      "end": 151,
+      "matches": true
+    },
+    {
+      "citation": 5,
+      "document": "287dcca750a4",
+      "block": "842680f7b649e005",
+      "expected_page": 7,
+      "locator": {
+        "type": "pdf_page",
+        "page": 7,
+        "part": 1
+      },
+      "start": 225,
+      "end": 246,
+      "matches": true
+    },
+    {
+      "citation": 6,
+      "document": "bb8ba97c0a03",
+      "block": "6e325fb94217d343",
+      "expected_page": 5,
+      "locator": {
+        "type": "pdf_page",
+        "page": 5,
+        "part": 1
+      },
+      "start": 385,
+      "end": 423,
+      "matches": true
+    },
+    {
+      "citation": 7,
+      "document": "83eb3948386d",
+      "block": "f74aff0841628203",
+      "expected_page": 4,
+      "locator": {
+        "type": "pdf_page",
+        "page": 4,
+        "part": 1
+      },
+      "start": 143,
+      "end": 174,
+      "matches": true
+    },
+    {
+      "citation": 8,
+      "document": "5cb2ac21497c",
+      "block": "44392bef6f807d23",
+      "expected_page": 2,
+      "locator": {
+        "type": "pdf_page",
+        "page": 2,
+        "part": 1
+      },
+      "start": 82,
+      "end": 93,
+      "matches": true
+    },
+    {
+      "citation": 9,
+      "document": "d1fe991c4137",
+      "block": "9d80c82df18c4c15",
+      "expected_page": 2,
+      "locator": {
+        "type": "pdf_page",
+        "page": 2,
+        "part": 1
+      },
+      "start": 72,
+      "end": 88,
+      "matches": true
+    }
+  ],
+  "source_site_mismatches": [
+    {
+      "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+      "site": "rwy.sicau.edu.cn",
+      "url_host": "jiaowu.sicau.edu.cn"
+    },
+    {
+      "document_id": "92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719",
+      "site": "jiaowu.sicau.edu.cn",
+      "url_host": "jwnews.sicau.edu.cn"
+    }
+  ],
+  "date_metadata_examples": [
+    {
+      "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+      "last_page": 75,
+      "text_tail": "断督促教师提高教学\n能力与水平。\n（4）针对督导、督查、专家、同行及学生评价反映出的共性\n教学问题等，由教务处牵头成立校级专项研究项目，督促课程组\n教师进一步完善教学方法，提高教学质量。\n2.改进跟踪\n教务处确定专人或团队，对需改进情况进行调查、记录，及\n时监控教学质量改进情况。对整改不到位、无明显改善的单位给\n予警告或警示，加大督促整改力度；对经多次帮扶后改进很少或\n无改进的教师，可调离教学岗位。\n3.改进查询\n质量改进情况及时上传教务系统，学生、教师、专业负责人、\n领导干部、管理人员等可随时查询，并对改进效果进行评价。\n本办法自发文之日起施行，由教务处负责解释。若其他有关\n文件规定与本办法不一致的，以本办法为准；与上级文件不一致\n的，则以上级文件规定为准。\n四川农业大学\n2025年11 月11日\n四川农业大学党政办公室 2025年11月11日印发",
+      "published_at": null,
+      "effective_from": null
+    },
+    {
+      "document_id": "68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06",
+      "last_page": 2,
+      "text_tail": "并予以重修标注。不合格课程再修最终总成绩≥65分的，以\n65 分记载；其余以实际分数记载。  \n已合格课程再修成绩以实际最高分记为有效成绩，并予\n以再修标注。 \n四、毕业前自修考试成绩的评定与记载 \n1. 毕业生在校学习的最后一学期，未达毕业条件且无\n法跟班修读课程者，可申请参加学校统一组织的毕业前自修\n考试。 \n2. 毕业前自修考试（含提前考试）成绩不计算平时成\n绩。考试成绩≥60 分的，以 60 分记载；其余以实际分数记\n载。重修课程将予以标注。毕业前自修考试成绩计入成绩档\n案，为该课程有效成绩。 \n五、其他 \n除疾病住院治疗等客观原因未参加考试者，将不纳入提\n请校学位评定委员会特别审议的范围。 \n \n \n    教   务  处    \n2018 年12 月 20日 \n ",
+      "published_at": null,
+      "effective_from": null
+    }
+  ],
+  "processing_labels": {
+    "可提取文本": 955,
+    "政策表格需解析": 19,
+    "需要OCR": 63,
+    "旧版Office需转换": 144,
+    "演示文稿需解析": 1
+  },
+  "inspection_status": {
+    "text_extracted": 957,
+    "ocr_needed": 60,
+    "legacy_or_table_review": 141,
+    "non_text": 4,
+    "excluded_by_direct_title": 20
+  },
+  "selection_decisions": {
+    "include": 20,
+    "defer": 5
+  },
+  "not_in_selection_count": 1157,
+  "unselected_by_processing": {
+    "可提取文本": 930,
+    "政策表格需解析": 19,
+    "需要OCR": 63,
+    "旧版Office需转换": 144,
+    "演示文稿需解析": 1
+  },
+  "scope_counts": {
+    "{\"admission_years\": [], \"campus\": [], \"student_type\": [\"本科\"]}": 18,
+    "{\"admission_years\": [], \"campus\": [], \"student_type\": []}": 2
+  },
+  "known_date_filter_probe": [
+    {
+      "case": "submitted",
+      "date": "2025-11-10",
+      "target_admitted": false,
+      "allowed_count": 2,
+      "excluded_counts": {
+        "scope_unknown": 0,
+        "scope_mismatch": 0,
+        "date_unknown_from": 17,
+        "not_yet_effective": 1,
+        "expired": 0
+      }
+    },
+    {
+      "case": "submitted",
+      "date": "2025-11-11",
+      "target_admitted": false,
+      "allowed_count": 2,
+      "excluded_counts": {
+        "scope_unknown": 0,
+        "scope_mismatch": 0,
+        "date_unknown_from": 17,
+        "not_yet_effective": 1,
+        "expired": 0
+      }
+    },
+    {
+      "case": "submitted",
+      "date": "2026-10-03",
+      "target_admitted": false,
+      "allowed_count": 3,
+      "excluded_counts": {
+        "scope_unknown": 0,
+        "scope_mismatch": 0,
+        "date_unknown_from": 17,
+        "not_yet_effective": 0,
+        "expired": 0
+      }
+    },
+    {
+      "case": "in_memory_known_date",
+      "date": "2025-11-10",
+      "target_admitted": false,
+      "allowed_count": 2,
+      "excluded_counts": {
+        "scope_unknown": 0,
+        "scope_mismatch": 0,
+        "date_unknown_from": 16,
+        "not_yet_effective": 2,
+        "expired": 0
+      }
+    },
+    {
+      "case": "in_memory_known_date",
+      "date": "2025-11-11",
+      "target_admitted": true,
+      "allowed_count": 3,
+      "excluded_counts": {
+        "scope_unknown": 0,
+        "scope_mismatch": 0,
+        "date_unknown_from": 16,
+        "not_yet_effective": 1,
+        "expired": 0
+      }
+    },
+    {
+      "case": "in_memory_known_date",
+      "date": "2026-10-03",
+      "target_admitted": true,
+      "allowed_count": 4,
+      "excluded_counts": {
+        "scope_unknown": 0,
+        "scope_mismatch": 0,
+        "date_unknown_from": 16,
+        "not_yet_effective": 0,
+        "expired": 0
+      }
+    }
+  ]
+}

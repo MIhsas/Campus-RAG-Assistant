@@ -1,0 +1,7 @@
+Independent hashes: 37 matched: 37
+Saved ranking scores: {'bm25': [], 'dense': [], 'hybrid': []}
+submitted exit= 0 CHECK OK: 24 题 / 57 条证据（契约、引句、准入、事实分组）；冻结哈希核对 38 项（dataset/corpus/implementation/model/annotation）
+wrong_questions_hash exit= 1 FAIL: freeze: 题集 questions_sha256 与实际文件不符
+CHECK FAILED: 1 项
+wrong_hash_rejected= True
+EXITCODE=0

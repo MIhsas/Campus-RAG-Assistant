@@ -1,0 +1,187 @@
+{
+  "scope": "8 current delivery markdown files; literal relative markdown links; 9 declared SHA values; stored T030/T031/T034 aggregate values, no experiments executed",
+  "delivery_files": 8,
+  "relative_links": [
+    {
+      "file": "README.md",
+      "target": "human-review-pending.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "system-design.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "thesis-outline.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "evidence-matrix.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "defense-script.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "windows-runbook.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "experiment-index.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "human-review-pending.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "experiment-index.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "defense-script.md",
+      "exists": true
+    }
+  ],
+  "declared_hashes_matched": 9,
+  "archive_file_count": 6,
+  "archive_note": "Existence/count checked; no independent original-byte comparison claimed",
+  "baseline": {
+    "bm25": {
+      "evidence_recall": 0.725,
+      "hit": 0.75,
+      "mrr": 0.6,
+      "answerable_count": 20,
+      "unanswerable_count": 4,
+      "empty_result_rate": 0.0
+    },
+    "dense": {
+      "evidence_recall": 0.7,
+      "hit": 0.7,
+      "mrr": 0.44333333333333336,
+      "answerable_count": 20,
+      "unanswerable_count": 4,
+      "empty_result_rate": 0.0
+    },
+    "hybrid": {
+      "evidence_recall": 0.7,
+      "hit": 0.7,
+      "mrr": 0.5416666666666667,
+      "answerable_count": 20,
+      "unanswerable_count": 4,
+      "empty_result_rate": 0.0
+    }
+  },
+  "selection": {
+    "bm25/baseline": {
+      "evidence_recall": 0.55,
+      "hit": 0.6,
+      "mrr": 0.35,
+      "answerable_count": 10,
+      "unanswerable_count": 0,
+      "empty_result_rate": null
+    },
+    "bm25/selection": {
+      "evidence_recall": 0.9,
+      "hit": 0.9,
+      "mrr": 0.5033333333333333,
+      "answerable_count": 10,
+      "unanswerable_count": 0,
+      "empty_result_rate": null
+    },
+    "dense/baseline": {
+      "evidence_recall": 0.5,
+      "hit": 0.5,
+      "mrr": 0.23333333333333334,
+      "answerable_count": 10,
+      "unanswerable_count": 0,
+      "empty_result_rate": null
+    },
+    "dense/selection": {
+      "evidence_recall": 0.9,
+      "hit": 0.9,
+      "mrr": 0.5483333333333333,
+      "answerable_count": 10,
+      "unanswerable_count": 0,
+      "empty_result_rate": null
+    },
+    "hybrid/baseline": {
+      "evidence_recall": 0.4,
+      "hit": 0.4,
+      "mrr": 0.2833333333333333,
+      "answerable_count": 10,
+      "unanswerable_count": 0,
+      "empty_result_rate": null
+    },
+    "hybrid/selection": {
+      "evidence_recall": 0.9,
+      "hit": 0.9,
+      "mrr": 0.5,
+      "answerable_count": 10,
+      "unanswerable_count": 0,
+      "empty_result_rate": null
+    }
+  },
+  "overlap": {
+    "bm25/baseline_stored": {
+      "evidence_recall": 0.725,
+      "hit": 0.75,
+      "mrr": 0.6,
+      "answerable_count": 20,
+      "unanswerable_count": 4,
+      "empty_result_rate": 0.0
+    },
+    "bm25/candidate": {
+      "evidence_recall": 0.725,
+      "hit": 0.75,
+      "mrr": 0.5958333333333333,
+      "answerable_count": 20,
+      "unanswerable_count": 4,
+      "empty_result_rate": 0.0
+    },
+    "dense/baseline_stored": {
+      "evidence_recall": 0.7,
+      "hit": 0.7,
+      "mrr": 0.44333333333333336,
+      "answerable_count": 20,
+      "unanswerable_count": 4,
+      "empty_result_rate": 0.0
+    },
+    "dense/candidate": {
+      "evidence_recall": 0.675,
+      "hit": 0.7,
+      "mrr": 0.4666666666666667,
+      "answerable_count": 20,
+      "unanswerable_count": 4,
+      "empty_result_rate": 0.0
+    },
+    "hybrid/baseline_stored": {
+      "evidence_recall": 0.7,
+      "hit": 0.7,
+      "mrr": 0.5416666666666667,
+      "answerable_count": 20,
+      "unanswerable_count": 4,
+      "empty_result_rate": 0.0
+    },
+    "hybrid/candidate": {
+      "evidence_recall": 0.7,
+      "hit": 0.7,
+      "mrr": 0.5833333333333333,
+      "answerable_count": 20,
+      "unanswerable_count": 4,
+      "empty_result_rate": 0.0
+    }
+  },
+  "defense_main_seconds_minimum": 610,
+  "review_note": "Numeric/link/hash checks pass; document acceptance is separate. See T035-R1 for overwriting commands, script timing/route/evidence and stale current-state text."
+}

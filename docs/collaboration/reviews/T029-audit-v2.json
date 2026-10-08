@@ -1,0 +1,223 @@
+{
+  "date": "2026-10-03",
+  "external_model_calls": 0,
+  "dataset_manifest_sha256": "6a41ff3cdf3eebfe78ad6a555b1b288242d71dff34751a597dc70288e8c4e514",
+  "v1_manifest_sha256": "ab0ad517981947f9ae41a0632a04b746007f96ac71e68a3a1e2ccb2637f267fc",
+  "v1_1_manifest_sha256": "34e182f18178c8a8dc3f3bbfcb151150272f0c86579236191ed1e754298b1108",
+  "document_checks": [
+    {
+      "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "d4d3092195ed4cf325b57d76d70e674dc9989293116a58e4694579a07f09b2cc",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "db05e0cab194beeee9d4017458f26df2c14aefb8e250293d0e539c350477dc75",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "06815fdadca1dca19c65295667f712a4288876139dfc9493d2deb55cb826f2d8",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "df04ebec20b8bfe7a4ff062b4b51233f13f73ed457d8997a5ce3c4a40e8de5da",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "858406369942a287d8042aa9f2ef1383ea26f4f61ef25e362a191e78f706d17f",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "57c0945c4b4ff808ed989667c658d9b8eb5b8ed62b8f2bbd2411374329d80959",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "55e0ddd6861b91a76b28245dab4325ec779435affa05f2807304f6832158ab92",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    },
+    {
+      "document_id": "92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719",
+      "original_bytes_unchanged": true,
+      "source_host_correct": true,
+      "all_sources_preserved": true
+    }
+  ],
+  "metadata_diff": [
+    {
+      "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+      "field": "source_site",
+      "before": "rwy.sicau.edu.cn",
+      "after": "jiaowu.sicau.edu.cn"
+    },
+    {
+      "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+      "field": "published_at",
+      "before": null,
+      "after": "2025-11-11"
+    },
+    {
+      "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+      "field": "effective_from",
+      "before": null,
+      "after": "2025-11-11"
+    },
+    {
+      "document_id": "68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06",
+      "field": "published_at",
+      "before": null,
+      "after": "2018-12-20"
+    },
+    {
+      "document_id": "92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719",
+      "field": "source_site",
+      "before": "jiaowu.sicau.edu.cn",
+      "after": "jwnews.sicau.edu.cn"
+    }
+  ],
+  "date_admission": [
+    {
+      "pack": "v1",
+      "date": "2025-11-10",
+      "allowed_count": 2,
+      "bb8b_admitted": false,
+      "68fb_admitted": false
+    },
+    {
+      "pack": "v1",
+      "date": "2025-11-11",
+      "allowed_count": 2,
+      "bb8b_admitted": false,
+      "68fb_admitted": false
+    },
+    {
+      "pack": "v1",
+      "date": "2026-10-03",
+      "allowed_count": 3,
+      "bb8b_admitted": false,
+      "68fb_admitted": false
+    },
+    {
+      "pack": "v1.1",
+      "date": "2025-11-10",
+      "allowed_count": 2,
+      "bb8b_admitted": false,
+      "68fb_admitted": false
+    },
+    {
+      "pack": "v1.1",
+      "date": "2025-11-11",
+      "allowed_count": 3,
+      "bb8b_admitted": true,
+      "68fb_admitted": false
+    },
+    {
+      "pack": "v1.1",
+      "date": "2026-10-03",
+      "allowed_count": 4,
+      "bb8b_admitted": true,
+      "68fb_admitted": false
+    }
+  ],
+  "changed_file_hash_checks": [
+    {
+      "path": "step2_code/backend/tests/test_prepare_real_corpus.py",
+      "match": true
+    },
+    {
+      "path": "step2_code/backend/scripts/prepare-real-corpus.py",
+      "match": true
+    },
+    {
+      "path": "step2_code/backend/src/campus_assistant/static/compare.html",
+      "match": true
+    },
+    {
+      "path": "step2_code/backend/README.md",
+      "match": true
+    }
+  ]
+}

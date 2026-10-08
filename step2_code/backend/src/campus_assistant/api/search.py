@@ -93,6 +93,18 @@ class SearchRequest(BaseModel):
     top_k: int = Field(default=5)
     mode: str = Field(default="bm25")
     filters: SearchFilters | None = Field(default=None)
+    document_id: str | None = Field(
+        default=None,
+        description="可选的用户明确选择的单份来源文件（T031）；null/未传=全部资料。"
+        "只支持单文件，不从查询自动猜测；非法值返回 422",
+    )
+
+    @field_validator("document_id", mode="before")
+    @classmethod
+    def validate_document_id(cls, v: Any) -> str | None:
+        from campus_assistant.retrieval.source_selection import normalize_document_id
+
+        return normalize_document_id(v)
 
     @field_validator("query", mode="before")
     @classmethod
@@ -222,6 +234,51 @@ class FilterSummary(BaseModel):
     notes: list[str] = Field(default_factory=list)
 
 
+class SourceSelectionSummary(BaseModel):
+    """User-selected single-file scope (T031). Distinct from filter_summary:
+    filter_summary counts the four applicability conditions only;
+    allowed_after_selection counts the final intersection (conditions ∩
+    selected file). The two counts are never interchangeable."""
+
+    selected: bool = Field(description="是否指定了来源文件")
+    document_id: str | None = None
+    title: str | None = Field(default=None, description="服务端目录映射的标题；未知为 null")
+    version_label: str | None = Field(default=None, description="版本标签；无版本如实为 null")
+    policy_group_id: str | None = None
+    is_admitted: bool | None = Field(
+        default=None,
+        description="所选文件是否通过现有适用条件；未选择时为 null。False=被条件排除，无准入依据",
+    )
+    allowed_before_selection: int = Field(
+        description="仅四项适用条件下的可准入文档数（无条件=文档总数）"
+    )
+    allowed_after_selection: int = Field(
+        description="再与所选文件求交后的可准入数（选中且通过=1；被排除=0）"
+    )
+    notes: list[str] = Field(default_factory=list)
+
+
+class DocumentCatalogEntry(BaseModel):
+    """Selection catalog entry — identity/metadata only, no paths or text."""
+
+    document_id: str
+    title: str | None = None
+    version_label: str | None = None
+    policy_group_id: str | None = None
+    published_at: str | None = None
+    effective_from: str | None = None
+    effective_to: str | None = None
+    is_synthetic: bool = False
+
+
+class DocumentCatalogResponse(BaseModel):
+    status: str = Field(description="ok | unconfigured | failed")
+    available: bool = Field(description="目录是否可用；false 时 documents 为空")
+    documents: list[DocumentCatalogEntry]
+    count: int
+    request_id: str
+
+
 class SearchResponse(BaseModel):
     query: str
     query_tokens: list[str]
@@ -234,6 +291,12 @@ class SearchResponse(BaseModel):
         default=None, description="回显的规范化筛选条件（与提交一致）"
     )
     filter_summary: FilterSummary | None = None
+    document_id: str | None = Field(
+        default=None, description="回显的来源文件选择（与提交一致；null=全部资料）"
+    )
+    source_selection: SourceSelectionSummary | None = Field(
+        default=None, description="来源选择摘要（与 filter_summary 四条件口径分开）"
+    )
     errors: list[dict[str, Any]]
     request_id: str
 
@@ -275,6 +338,34 @@ def create_search_router() -> APIRouter:
             "embedding_error": getattr(request.app.state, "embedding_error", None),
             "filter_options": getattr(request.app.state, "filter_options", {}),
             "errors": request.app.state.search_errors,
+            "request_id": request.state.request_id,
+        }
+
+    @router.get("/documents", response_model=DocumentCatalogResponse)
+    async def search_documents(request: Request) -> dict:
+        """Selection catalog of successfully parsed documents (T031).
+
+        Identity/metadata fields only — no disk paths, no full text, no
+        secrets. Unconfigured/failed corpora return a clear unavailable
+        state with an empty catalog rather than an error page.
+        """
+        from campus_assistant.retrieval.source_selection import build_document_catalog
+
+        status = request.app.state.search_status
+        if status in ("unconfigured", "failed"):
+            return {
+                "status": status,
+                "available": False,
+                "documents": [],
+                "count": 0,
+                "request_id": request.state.request_id,
+            }
+        catalog = build_document_catalog(request.app.state.corpus_data or [])
+        return {
+            "status": "ok",
+            "available": True,
+            "documents": catalog,
+            "count": len(catalog),
             "request_id": request.state.request_id,
         }
 
@@ -321,6 +412,27 @@ def create_search_router() -> APIRouter:
                 },
             )
 
+        # T031: user-selected source must name a currently parsed document.
+        # Unknown IDs are an explicit 422 — never silently widened to "all".
+        from campus_assistant.retrieval.source_selection import (
+            SourceSelectionError,
+            resolve_document_id,
+        )
+
+        try:
+            document_id = resolve_document_id(
+                body.document_id, request.app.state.corpus_data or []
+            )
+        except SourceSelectionError as e:
+            return JSONResponse(
+                status_code=422,
+                content={
+                    "code": e.code,
+                    "message": str(e),
+                    "request_id": request_id,
+                },
+            )
+
         from campus_assistant.retrieval.service import execute_search
 
         query = body.query
@@ -335,6 +447,7 @@ def create_search_router() -> APIRouter:
             bm25_index=request.app.state.search_index,
             dense_index=request.app.state.dense_index,
             embedding_service=request.app.state.embedding_service,
+            document_id=document_id,
         )
 
         return {
@@ -347,6 +460,8 @@ def create_search_router() -> APIRouter:
             "hits": result["hits"],
             "filters": body.filters,
             "filter_summary": result["filter_summary"],
+            "document_id": document_id,
+            "source_selection": result["source_selection"],
             "errors": request.app.state.search_errors,
             "request_id": request_id,
         }

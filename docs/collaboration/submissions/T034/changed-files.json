@@ -1,0 +1,39 @@
+{
+  "note": "T034 变更清单（submission_revision=1）。范围=chunk.py 显式重叠参数（默认兼容）+ 独立对照实验脚本 + 聚焦回归 + 实验数据与提交材料。产品默认/网页/服务/模型/评分未改；原语料与历史实验只读。",
+  "code": [
+    {
+      "path": "step2_code/backend/src/campus_assistant/corpus/chunk.py",
+      "change": "可选 overlap_chars（默认 0 逐字节兼容：旧 ID/顺序/文本/字段 schema/table 处理不变；重叠仅 paragraph 块内窗口、尾窗终止；策略 block_window_overlap_v1 与参数进入 chunk ID）；chunk_manifest/CLI --overlap-chars 透传",
+      "sha256": "f2a21a5069da5a1cdb05f4c5125e3de5fbd101528b7ec481d3416752272056f0",
+      "size": 13068
+    },
+    {
+      "path": "step2_code/backend/scripts/evaluate-overlap-chunks.py",
+      "change": "独立对照实验（跑前冻结/基线身份核对/候选单次编码/逐题与聚合/重复区间/边界与回退案例）",
+      "sha256": "0837d6ee573633ccc81276c878b0ceb24be76fc41e3ec9fededc9c9debc4ff53",
+      "size": 17828
+    },
+    {
+      "path": "step2_code/backend/tests/test_chunk_overlap.py",
+      "change": "任务指定四项业务回归 + 参数校验（9 项）",
+      "sha256": "9560ac24041435ee83f31555bb429e216aba8ffdd8890a62bf90b34c3e29530d",
+      "size": 5926
+    }
+  ],
+  "data_products": {
+    "frozen_config": "data/evaluations/sicau-rag-overlap-v1/frozen-config.json（跑前冻结：参数/输入/实现/模型/T030 结果身份哈希）",
+    "experiment_rows": "data/evaluations/sicau-rag-overlap-v1/experiment.json（逐题原始输出：双分支 R/H/M、命中区间、覆盖证据、事实可覆盖性、重复统计、案例）"
+  },
+  "unchanged": [
+    "产品默认分块（overlap=0）、检索/评分/模型、网页与服务参数",
+    "T030 v1.3 题集/gold/结果、T031/T032/T033 实验与模板、原语料、Astra 文件"
+  ],
+  "submissions": [
+    "docs/collaboration/submissions/T034/report.md",
+    "docs/collaboration/submissions/T034/verification.md",
+    "docs/collaboration/submissions/T034/submission.json",
+    "docs/collaboration/submissions/T034/changed-files.json",
+    "docs/collaboration/submissions/T034/experiment-report.md"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值。"
+}

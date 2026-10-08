@@ -1,0 +1,58 @@
+{
+  "saved_branches_rescored": 144,
+  "historical_rankings_matched": 72,
+  "default_chunks_equal_git_head": 1231,
+  "candidate_verbatim_chunks": 1233,
+  "bm25_baseline_rerun_matched": 24,
+  "unchanged_rows": 65,
+  "metrics": {
+    "bm25/baseline_stored": {
+      "evidence_recall": 0.725,
+      "hit": 0.75,
+      "mrr": 0.6,
+      "answerable_count": 20,
+      "unanswerable_count": 4,
+      "empty_result_rate": 0.0
+    },
+    "bm25/candidate": {
+      "evidence_recall": 0.725,
+      "hit": 0.75,
+      "mrr": 0.5958333333333333,
+      "answerable_count": 20,
+      "unanswerable_count": 4,
+      "empty_result_rate": 0.0
+    },
+    "dense/baseline_stored": {
+      "evidence_recall": 0.7,
+      "hit": 0.7,
+      "mrr": 0.44333333333333336,
+      "answerable_count": 20,
+      "unanswerable_count": 4,
+      "empty_result_rate": 0.0
+    },
+    "dense/candidate": {
+      "evidence_recall": 0.675,
+      "hit": 0.7,
+      "mrr": 0.4666666666666667,
+      "answerable_count": 20,
+      "unanswerable_count": 4,
+      "empty_result_rate": 0.0
+    },
+    "hybrid/baseline_stored": {
+      "evidence_recall": 0.7,
+      "hit": 0.7,
+      "mrr": 0.5416666666666667,
+      "answerable_count": 20,
+      "unanswerable_count": 4,
+      "empty_result_rate": 0.0
+    },
+    "hybrid/candidate": {
+      "evidence_recall": 0.7,
+      "hit": 0.7,
+      "mrr": 0.5833333333333333,
+      "answerable_count": 20,
+      "unanswerable_count": 4,
+      "empty_result_rate": 0.0
+    }
+  }
+}

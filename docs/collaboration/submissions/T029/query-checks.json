@@ -1,0 +1,1209 @@
+{
+  "note": "T029 开发核查查询记录（真实资料本地检索；预期先于查询保存；引句匹配=空白归一化后包含（PDF 折行沿用解析规则不做清洗）；原块引用跨度以 block 原文为准；非正式人工 gold）",
+  "pack": "F:\\Collage Paper\\data\\corpora\\sicau-rag-pilot-v1",
+  "index": {
+    "chunks": 1231,
+    "model": "models/bge-small-zh-v1.5（本地既有，无下载）",
+    "builds": "BM25+Dense 各一次"
+  },
+  "quote_match_note": "expected_quote 存在于 top5 命中块文本（空白归一）；正式引用跨度须逐字符对应原块",
+  "questions": [
+    {
+      "id": "q1",
+      "category": "明确规则/数字记载",
+      "query": "缓考课程成绩如何评定和记载？",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "expected": {
+        "expected_doc_id_prefix": "68fb37043ab7",
+        "expected_quote": "缓考课程最终总成绩≥85 分的，以 85 分记载；其余以实际分数记载",
+        "expected_quote_alt": null,
+        "expected_note": "教发〔2018〕10号 一、缓考课程成绩的评定与记载"
+      },
+      "analysis": "top1 即教发〔2018〕10号缓补考规定（正确来源）；引句含 PDF 折行，字面直配失败、空白归一后命中（跨行文本的引用跨度仍以原块为准）",
+      "runs": {
+        "bm25": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 34.9685,
+              "document_id": "68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06",
+              "block_id": "8a790c05ff004510",
+              "char_start": 0,
+              "char_end": 364,
+              "preview_url": "/preview#68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06/8a790c05ff004510",
+              "text_head": "关于本科课程缓(补)考成绩评定的补充规定\n为进一步加强考试和成绩管理，保障本科生培养规格和\n质量，根据教育部《关于加快建设高水平本科教育  全面提\n高人才培养能力的意见》 （新时代高教40条） 精神，"
+            },
+            {
+              "rank": 2,
+              "score": 25.0456,
+              "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+              "block_id": "9de19468b7427552",
+              "char_start": 0,
+              "char_end": 460,
+              "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/9de19468b7427552",
+              "text_head": "— 23 —\n（五）成绩认定\n1.成绩标准\n课程成绩评定采用百分制，各考核环节合格标准由课程组设\n定，最终成绩达60 分及以上表示成绩合格并获得该课程学分。\n2.成绩记载\n（1）课程考核成绩采用加权计"
+            },
+            {
+              "rank": 3,
+              "score": 24.8939,
+              "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+              "block_id": "0476dada43618364",
+              "char_start": 0,
+              "char_end": 426,
+              "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/0476dada43618364",
+              "text_head": "— 12 —\n（三）成绩记载\n初修、 再修和重修课程考核成绩采用加权计算方式。 对缓考、\n补考、重修和再修等取得的成绩予以标注。\n1.初修课程成绩记载\n（1）初修课程课终考试后,各环节考核成绩合格的，"
+            },
+            {
+              "rank": 4,
+              "score": 24.3837,
+              "document_id": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9",
+              "block_id": "4bc986e4ba15ca0c",
+              "char_start": 0,
+              "char_end": 483,
+              "preview_url": "/preview#cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9/4bc986e4ba15ca0c",
+              "text_head": "— 23 —\n1.成绩标准\n课程成绩评定采用百分制，各考核环节合格标准由课程组设\n定，最终成绩达60分及以上表示成绩合格并获得该课程学分。\n2.成绩记载\n（1）课程考核成绩采用加权计算方式。各环节考核"
+            },
+            {
+              "rank": 5,
+              "score": 24.0513,
+              "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+              "block_id": "76e08b7bafb2f601",
+              "char_start": 0,
+              "char_end": 500,
+              "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/76e08b7bafb2f601",
+              "text_head": "— 21 —\n课程成绩评定采用百分制，各考核环节合格标准由课程组设\n定，最终成绩达60分及以上表示成绩合格并获得该课程学分。\n2.成绩记载\n（1）课程考核成绩采用加权计算方式。各环节考核成绩合\n格的，"
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            true,
+            false
+          ]
+        },
+        "dense": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 0.6682,
+              "document_id": "68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06",
+              "block_id": "8a790c05ff004510",
+              "char_start": 0,
+              "char_end": 364,
+              "preview_url": "/preview#68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06/8a790c05ff004510",
+              "text_head": "关于本科课程缓(补)考成绩评定的补充规定\n为进一步加强考试和成绩管理，保障本科生培养规格和\n质量，根据教育部《关于加快建设高水平本科教育  全面提\n高人才培养能力的意见》 （新时代高教40条） 精神，"
+            },
+            {
+              "rank": 2,
+              "score": 0.6622,
+              "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+              "block_id": "c641f1723ab4cb48",
+              "char_start": 0,
+              "char_end": 206,
+              "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/c641f1723ab4cb48",
+              "text_head": "— 13 —\n效成绩；缓考后成绩按初修课程缓考成绩记载方法记载。\n4.其他方面\n（1）因学习困难的民族地区少数民族学生补考不合格者，\n经严格审核后， 其补考后最终成绩可加15分， 但最终成绩不超过\n6"
+            },
+            {
+              "rank": 3,
+              "score": 0.6532,
+              "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+              "block_id": "34172617d06578b9",
+              "char_start": 0,
+              "char_end": 496,
+              "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/34172617d06578b9",
+              "text_head": "— 19 —\n考试的学生，须本人网上提交缓考申请，经任课教师同意、学院\n审核、教务处审批通过后方可缓考，否则视为旷考。缓考于下学\n期开学初与补考同时进行；境外实习学生缓考另行安排。平时考\n核环节或实践"
+            },
+            {
+              "rank": 4,
+              "score": 0.6386,
+              "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+              "block_id": "090f4a9cd36ca74b",
+              "char_start": 0,
+              "char_end": 500,
+              "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/090f4a9cd36ca74b",
+              "text_head": "— 21 —\n参加正考的学生，须本人网上提交电子证明材料申请缓考，经任\n课教师和教务处审批通过后方可缓考，否则视为旷考。缓考于下\n学期开学初与补考同时进行；境外实习学生缓考另行安排。平时\n考核或实践教"
+            },
+            {
+              "rank": 5,
+              "score": 0.6332,
+              "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+              "block_id": "9de19468b7427552",
+              "char_start": 0,
+              "char_end": 460,
+              "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/9de19468b7427552",
+              "text_head": "— 23 —\n（五）成绩认定\n1.成绩标准\n课程成绩评定采用百分制，各考核环节合格标准由课程组设\n定，最终成绩达60 分及以上表示成绩合格并获得该课程学分。\n2.成绩记载\n（1）课程考核成绩采用加权计"
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            true,
+            false
+          ]
+        },
+        "hybrid": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 0.0328,
+              "document_id": "68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06",
+              "block_id": "8a790c05ff004510",
+              "char_start": 0,
+              "char_end": 364,
+              "preview_url": "/preview#68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06/8a790c05ff004510",
+              "text_head": "关于本科课程缓(补)考成绩评定的补充规定\n为进一步加强考试和成绩管理，保障本科生培养规格和\n质量，根据教育部《关于加快建设高水平本科教育  全面提\n高人才培养能力的意见》 （新时代高教40条） 精神，"
+            },
+            {
+              "rank": 2,
+              "score": 0.0315,
+              "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+              "block_id": "9de19468b7427552",
+              "char_start": 0,
+              "char_end": 460,
+              "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/9de19468b7427552",
+              "text_head": "— 23 —\n（五）成绩认定\n1.成绩标准\n课程成绩评定采用百分制，各考核环节合格标准由课程组设\n定，最终成绩达60 分及以上表示成绩合格并获得该课程学分。\n2.成绩记载\n（1）课程考核成绩采用加权计"
+            },
+            {
+              "rank": 3,
+              "score": 0.031,
+              "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+              "block_id": "0476dada43618364",
+              "char_start": 0,
+              "char_end": 426,
+              "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/0476dada43618364",
+              "text_head": "— 12 —\n（三）成绩记载\n初修、 再修和重修课程考核成绩采用加权计算方式。 对缓考、\n补考、重修和再修等取得的成绩予以标注。\n1.初修课程成绩记载\n（1）初修课程课终考试后,各环节考核成绩合格的，"
+            },
+            {
+              "rank": 4,
+              "score": 0.0308,
+              "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+              "block_id": "34172617d06578b9",
+              "char_start": 0,
+              "char_end": 496,
+              "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/34172617d06578b9",
+              "text_head": "— 19 —\n考试的学生，须本人网上提交缓考申请，经任课教师同意、学院\n审核、教务处审批通过后方可缓考，否则视为旷考。缓考于下学\n期开学初与补考同时进行；境外实习学生缓考另行安排。平时考\n核环节或实践"
+            },
+            {
+              "rank": 5,
+              "score": 0.0304,
+              "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+              "block_id": "c641f1723ab4cb48",
+              "char_start": 0,
+              "char_end": 206,
+              "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/c641f1723ab4cb48",
+              "text_head": "— 13 —\n效成绩；缓考后成绩按初修课程缓考成绩记载方法记载。\n4.其他方面\n（1）因学习困难的民族地区少数民族学生补考不合格者，\n经严格审核后， 其补考后最终成绩可加15分， 但最终成绩不超过\n6"
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            true,
+            false
+          ]
+        }
+      }
+    },
+    {
+      "id": "q2",
+      "category": "两版差异",
+      "query": "申请转专业对已修课程有什么要求？",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "expected": {
+        "expected_doc_id_prefix": [
+          "5cb2ac21497c",
+          "d1fe991c4137"
+        ],
+        "expected_quote": "已修读的所有课程均合格",
+        "expected_quote_alt": "已修读的所有课程无补考或重修记录",
+        "expected_note": "2026 版要求‘均合格’；2023/2020 版要求‘无补考或重修记录’且有排名门槛（前40%/前30%）——版本差异点"
+      },
+      "analysis": "三版转专业办法全部进入 top5（2023 版 rank1、2026 版 rank3），两版不同措辞引句均命中——版本差异可见",
+      "runs": {
+        "bm25": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 23.9308,
+              "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+              "block_id": "9d80c82df18c4c15",
+              "char_start": 0,
+              "char_end": 348,
+              "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/9d80c82df18c4c15",
+              "text_head": "— 2 —\n二、申请条件\n（一）申请转专业同学必须符合下列条件：\n1.大一或大二在读学生；\n2.所修读必修课加权平均成绩专业排名前40%；\n3.已修读的所有课程无补考或重修记录；\n4.未受过任何纪律处"
+            },
+            {
+              "rank": 2,
+              "score": 23.3962,
+              "document_id": "d4d3092195ed4cf325b57d76d70e674dc9989293116a58e4694579a07f09b2cc",
+              "block_id": "62f61fc3eef66e37",
+              "char_start": 0,
+              "char_end": 440,
+              "preview_url": "/preview#d4d3092195ed4cf325b57d76d70e674dc9989293116a58e4694579a07f09b2cc/62f61fc3eef66e37",
+              "text_head": "— 2 —\n（一）申请转专业同学必须符合下列条件：\n1.大一或大二在读学生;\n2.所修读必修课加权平均成绩专业排名前30%；\n3.已修读的所有课程无补考或重修记录；\n4.未受过任何纪律处分。\n（二）有"
+            },
+            {
+              "rank": 3,
+              "score": 20.2216,
+              "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+              "block_id": "44392bef6f807d23",
+              "char_start": 0,
+              "char_end": 365,
+              "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/44392bef6f807d23",
+              "text_head": "— 2 —\n成绩专业排名百分比排序获得资格，百分比相同时以平均成绩高\n者优先。\n二、申请条件\n（一）申请转专业同学必须符合下列条件：\n1.大一或大二在读学生；\n2.已修读的所有课程均合格；\n3.未受过"
+            },
+            {
+              "rank": 4,
+              "score": 18.525,
+              "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+              "block_id": "3e00390e3e347d7c",
+              "char_start": 0,
+              "char_end": 467,
+              "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/3e00390e3e347d7c",
+              "text_head": "— 4 —\n（1）因病休学申请复学，须三级乙等及以上医院开具诊断证\n明，经学院同意，教务处审批后办理复学手续。\n（2）因其他原因休学申请复学，须提供必要证明，报学校审\n查合格后，办理复学手续。\n（四）"
+            },
+            {
+              "rank": 5,
+              "score": 18.3364,
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "0e3399b10752a515",
+              "char_start": 0,
+              "char_end": 17,
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/0e3399b10752a515",
+              "text_head": "（1）学生只在第3学期申请转专业。"
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            true,
+            true
+          ]
+        }
+      }
+    },
+    {
+      "id": "q3",
+      "category": "两版差异（冲突条款）",
+      "query": "跨校区转专业允许吗？",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "expected": {
+        "expected_doc_id_prefix": [
+          "5cb2ac21497c",
+          "d1fe991c4137",
+          "d4d3092195ed"
+        ],
+        "expected_quote": "校区间不转专业（参军退役复学学生除外）",
+        "expected_quote_alt": "学生可申请转入符合高考选考科目要求的三校区相关专业",
+        "expected_note": "2023/2020 版禁止校区间转专业；2026 版改为三校区可申请转入（跨校区资格制）——检索命中某版≠适用于当前学生"
+      },
+      "analysis": "top5 含 2026 版（跨校区允许句命中）与教学管理 2025 版；2023/2020 版‘校区间不转专业’句未入 top5（其措辞与查询词面距离较远），版本冲突对照部分呈现",
+      "runs": {
+        "bm25": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 36.7674,
+              "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+              "block_id": "10ea589326529a38",
+              "char_start": 0,
+              "char_end": 500,
+              "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/10ea589326529a38",
+              "text_head": "— 3 —\n1. 休学复学学生原专业撤销的，可转入相近专业。\n2. 中外合作类专业参军退役复学学生可申请转相对应的普\n通专业。\n四、组织程序\n每年春季学期（第二或第四学期）统一开展转专业工作。学\n校相"
+            },
+            {
+              "rank": 2,
+              "score": 29.7155,
+              "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+              "block_id": "bb74305aaa5f63e8",
+              "char_start": 0,
+              "char_end": 463,
+              "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/bb74305aaa5f63e8",
+              "text_head": "— 4 —\n续转专业未成功，则该资格不替补和增选。放弃跨校区转专业资\n格的，不得再次申请跨校区转专业。\n（五）转专业志愿填报。符合转出条件的学生可填报两个专\n业志愿。获得跨校区转专业资格的学生可填报获"
+            },
+            {
+              "rank": 3,
+              "score": 26.6168,
+              "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+              "block_id": "6e325fb94217d343",
+              "char_start": 0,
+              "char_end": 493,
+              "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/6e325fb94217d343",
+              "text_head": "— 5 —\n内自主确定专业可接收转入人数，经教务处审核后在每年转专业\n开展前向全校公布。若申请转入专业的学生超额，由学院组织综\n合考核择优录取。\n3.组织程序\n学校每年春季学期（第二或第四学期）开展转"
+            },
+            {
+              "rank": 4,
+              "score": 16.5893,
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "bbab8008efe62478",
+              "char_start": 0,
+              "char_end": 34,
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/bbab8008efe62478",
+              "text_head": "（1）校区间不转专业。教学资源许可情况下，尽量满足校区内转专业需求。"
+            },
+            {
+              "rank": 5,
+              "score": 14.679,
+              "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+              "block_id": "3e00390e3e347d7c",
+              "char_start": 0,
+              "char_end": 467,
+              "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/3e00390e3e347d7c",
+              "text_head": "— 4 —\n（1）因病休学申请复学，须三级乙等及以上医院开具诊断证\n明，经学院同意，教务处审批后办理复学手续。\n（2）因其他原因休学申请复学，须提供必要证明，报学校审\n查合格后，办理复学手续。\n（四）"
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            false,
+            true
+          ]
+        },
+        "dense": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 0.7032,
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "bbab8008efe62478",
+              "char_start": 0,
+              "char_end": 34,
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/bbab8008efe62478",
+              "text_head": "（1）校区间不转专业。教学资源许可情况下，尽量满足校区内转专业需求。"
+            },
+            {
+              "rank": 2,
+              "score": 0.6949,
+              "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+              "block_id": "6e325fb94217d343",
+              "char_start": 0,
+              "char_end": 493,
+              "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/6e325fb94217d343",
+              "text_head": "— 5 —\n内自主确定专业可接收转入人数，经教务处审核后在每年转专业\n开展前向全校公布。若申请转入专业的学生超额，由学院组织综\n合考核择优录取。\n3.组织程序\n学校每年春季学期（第二或第四学期）开展转"
+            },
+            {
+              "rank": 3,
+              "score": 0.6913,
+              "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+              "block_id": "10ea589326529a38",
+              "char_start": 0,
+              "char_end": 500,
+              "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/10ea589326529a38",
+              "text_head": "— 3 —\n1. 休学复学学生原专业撤销的，可转入相近专业。\n2. 中外合作类专业参军退役复学学生可申请转相对应的普\n通专业。\n四、组织程序\n每年春季学期（第二或第四学期）统一开展转专业工作。学\n校相"
+            },
+            {
+              "rank": 4,
+              "score": 0.681,
+              "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+              "block_id": "bb74305aaa5f63e8",
+              "char_start": 0,
+              "char_end": 463,
+              "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/bb74305aaa5f63e8",
+              "text_head": "— 4 —\n续转专业未成功，则该资格不替补和增选。放弃跨校区转专业资\n格的，不得再次申请跨校区转专业。\n（五）转专业志愿填报。符合转出条件的学生可填报两个专\n业志愿。获得跨校区转专业资格的学生可填报获"
+            },
+            {
+              "rank": 5,
+              "score": 0.6712,
+              "document_id": "d4d3092195ed4cf325b57d76d70e674dc9989293116a58e4694579a07f09b2cc",
+              "block_id": "63d4072cf77da312",
+              "char_start": 0,
+              "char_end": 10,
+              "preview_url": "/preview#d4d3092195ed4cf325b57d76d70e674dc9989293116a58e4694579a07f09b2cc/63d4072cf77da312",
+              "text_head": "本科生转专业实施办法"
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            false,
+            false
+          ]
+        },
+        "hybrid": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 0.0323,
+              "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+              "block_id": "10ea589326529a38",
+              "char_start": 0,
+              "char_end": 500,
+              "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/10ea589326529a38",
+              "text_head": "— 3 —\n1. 休学复学学生原专业撤销的，可转入相近专业。\n2. 中外合作类专业参军退役复学学生可申请转相对应的普\n通专业。\n四、组织程序\n每年春季学期（第二或第四学期）统一开展转专业工作。学\n校相"
+            },
+            {
+              "rank": 2,
+              "score": 0.032,
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "bbab8008efe62478",
+              "char_start": 0,
+              "char_end": 34,
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/bbab8008efe62478",
+              "text_head": "（1）校区间不转专业。教学资源许可情况下，尽量满足校区内转专业需求。"
+            },
+            {
+              "rank": 3,
+              "score": 0.032,
+              "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+              "block_id": "6e325fb94217d343",
+              "char_start": 0,
+              "char_end": 493,
+              "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/6e325fb94217d343",
+              "text_head": "— 5 —\n内自主确定专业可接收转入人数，经教务处审核后在每年转专业\n开展前向全校公布。若申请转入专业的学生超额，由学院组织综\n合考核择优录取。\n3.组织程序\n学校每年春季学期（第二或第四学期）开展转"
+            },
+            {
+              "rank": 4,
+              "score": 0.0318,
+              "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+              "block_id": "bb74305aaa5f63e8",
+              "char_start": 0,
+              "char_end": 463,
+              "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/bb74305aaa5f63e8",
+              "text_head": "— 4 —\n续转专业未成功，则该资格不替补和增选。放弃跨校区转专业资\n格的，不得再次申请跨校区转专业。\n（五）转专业志愿填报。符合转出条件的学生可填报两个专\n业志愿。获得跨校区转专业资格的学生可填报获"
+            },
+            {
+              "rank": 5,
+              "score": 0.0294,
+              "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+              "block_id": "e56dd8918dc5a429",
+              "char_start": 0,
+              "char_end": 241,
+              "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/e56dd8918dc5a429",
+              "text_head": "本科生转专业实施办法\n为进一步调动学生学习积极性和主动性，尊重学生志向和爱\n好,给学生成长创造良好条件， 根据 《普通高等学校学生管理规定》\n（教育部令第41号）和《本科教学管理办法》（校教发〔202"
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            true,
+            false
+          ]
+        }
+      }
+    },
+    {
+      "id": "q4",
+      "category": "办理流程",
+      "query": "转专业工作什么时候开展，如何录取？",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "expected": {
+        "expected_doc_id_prefix": "5cb2ac21497c",
+        "expected_quote": "每年春季学期（第二或第四学期）统一开展转专业工作",
+        "expected_quote_alt": null,
+        "expected_note": "2026 版四、组织程序；录取‘按第一志愿、第二志愿顺序分批择优录取’‘公示不少于 3 个工作日’"
+      },
+      "analysis": "top1 2020 版（同款组织程序句命中）；三版流程表述一致部分可互为替代来源",
+      "runs": {
+        "bm25": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 22.641,
+              "document_id": "d4d3092195ed4cf325b57d76d70e674dc9989293116a58e4694579a07f09b2cc",
+              "block_id": "62f61fc3eef66e37",
+              "char_start": 0,
+              "char_end": 440,
+              "preview_url": "/preview#d4d3092195ed4cf325b57d76d70e674dc9989293116a58e4694579a07f09b2cc/62f61fc3eef66e37",
+              "text_head": "— 2 —\n（一）申请转专业同学必须符合下列条件：\n1.大一或大二在读学生;\n2.所修读必修课加权平均成绩专业排名前30%；\n3.已修读的所有课程无补考或重修记录；\n4.未受过任何纪律处分。\n（二）有"
+            },
+            {
+              "rank": 2,
+              "score": 20.6708,
+              "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+              "block_id": "11a7d7dcafd8fd1d",
+              "char_start": 0,
+              "char_end": 429,
+              "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/11a7d7dcafd8fd1d",
+              "text_head": "— 3 —\n（二）学院成立转专业工作领导小组，负责学院转专业工作\n方案的制定和实施。在转专业工作方案中，应明确各专业拟接收\n人数、考核方式和评分标准等。学院应对申请转入相关专业的学\n生进行综合考核，择"
+            },
+            {
+              "rank": 3,
+              "score": 20.5844,
+              "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+              "block_id": "10ea589326529a38",
+              "char_start": 0,
+              "char_end": 500,
+              "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/10ea589326529a38",
+              "text_head": "— 3 —\n1. 休学复学学生原专业撤销的，可转入相近专业。\n2. 中外合作类专业参军退役复学学生可申请转相对应的普\n通专业。\n四、组织程序\n每年春季学期（第二或第四学期）统一开展转专业工作。学\n校相"
+            },
+            {
+              "rank": 4,
+              "score": 20.1918,
+              "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+              "block_id": "6e325fb94217d343",
+              "char_start": 0,
+              "char_end": 493,
+              "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/6e325fb94217d343",
+              "text_head": "— 5 —\n内自主确定专业可接收转入人数，经教务处审核后在每年转专业\n开展前向全校公布。若申请转入专业的学生超额，由学院组织综\n合考核择优录取。\n3.组织程序\n学校每年春季学期（第二或第四学期）开展转"
+            },
+            {
+              "rank": 5,
+              "score": 19.6399,
+              "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+              "block_id": "cd72971e25fb9fd6",
+              "char_start": 0,
+              "char_end": 437,
+              "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/cd72971e25fb9fd6",
+              "text_head": "— 5 —\n3.组织程序\n学校每年春季学期（第二或第四学期）开展转专业工作。由\n学院成立转专业领导小组，负责学院转专业工作方案的制定和实\n施。转专业名单经公示并报学校审核批准后统一公布。\n4.学籍与学"
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            true,
+            false
+          ]
+        }
+      }
+    },
+    {
+      "id": "q5",
+      "category": "明确规则/时限",
+      "query": "毕业论文答辩前多久要交答辩小组评阅？",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "expected": {
+        "expected_doc_id_prefix": "287dcca750a4",
+        "expected_quote": "应在答辩前一周交答辩小组教师进行答辩前评阅",
+        "expected_quote_alt": null,
+        "expected_note": "教发〔2016〕10号 毕业论文管理规范（试行）"
+      },
+      "analysis": "top5 内 3 条均来自教发〔2016〕10号规范（正确来源），引句命中",
+      "runs": {
+        "bm25": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 44.1059,
+              "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+              "block_id": "a7824b29ba7a3900",
+              "char_start": 500,
+              "char_end": 1000,
+              "preview_url": "/preview#287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816/a7824b29ba7a3900",
+              "text_head": "文（设计）写作专题讲座，指导学生规范撰写论文（设计）；\n3.学生按规范撰写毕业论文（设计）初稿，提交导师审阅修改。\n第七学期\n第 13 周前\n6 评阅及资\n格审查\n1.导师依据评分标准对论文（设计）进"
+            },
+            {
+              "rank": 2,
+              "score": 41.7713,
+              "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+              "block_id": "842680f7b649e005",
+              "char_start": 0,
+              "char_end": 500,
+              "preview_url": "/preview#287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816/842680f7b649e005",
+              "text_head": "7\n（三）答辩实施。专业负责人上网提交答辩安排，公布答辩小组\n名单、答辩学生名单、分组情况及时间地点，并报教务处备案。答辩\n小组由本学科教师 4 人(含秘书 1 人)组成，组长原则上由教授或副教\n授担"
+            },
+            {
+              "rank": 3,
+              "score": 37.6654,
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "a6e7cb5f1538e074",
+              "char_start": 0,
+              "char_end": 185,
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/a6e7cb5f1538e074",
+              "text_head": "导师对学生毕业论文（设计）进行审查、评分并签署意见，教务处组织对毕业论文（设计）进行学术不端行为检测，学院审查答辩资格，审查的学生方能参加各专业组织的毕业论文（设计）答辩，学生须在答辩前一周将毕业论文"
+            },
+            {
+              "rank": 4,
+              "score": 34.1254,
+              "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+              "block_id": "325d107568461bba",
+              "char_start": 0,
+              "char_end": 500,
+              "preview_url": "/preview#287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816/325d107568461bba",
+              "text_head": "6\n层次清楚，论证充分，重点突出，文字通顺，尤其要强化英文摘要翻\n译，做到语法正确，用词规范。\n五、毕业论文（设计）答辩\n毕业论文（设计）答辩每年安排两次，分别在第七学期和第八学\n期，学生根据实际情况"
+            },
+            {
+              "rank": 5,
+              "score": 30.8073,
+              "document_id": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9",
+              "block_id": "7270f8a8a8ce482c",
+              "char_start": 0,
+              "char_end": 500,
+              "preview_url": "/preview#cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9/7270f8a8a8ce482c",
+              "text_head": "— 14 —\n查阅文献，撰写开题报告。开题通过后，方能进入毕业论文（设\n计）试验开展。\n3.论文（设计）开展\n学生在导师指导下根据开题报告方案开展实验、调查或设\n计，并将实验、调查或设计结果撰写形成毕"
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            true,
+            false
+          ]
+        },
+        "dense": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 0.7218,
+              "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+              "block_id": "842680f7b649e005",
+              "char_start": 500,
+              "char_end": 626,
+              "preview_url": "/preview#287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816/842680f7b649e005",
+              "text_head": "结束后，答辩小组应将答辩意见返回给导师及学生，\n学生在导师指导下，对论文（设计）进行修改完善，并按规范要求装\n订成册，经导师审查后交学院。\n六、成绩评定及优秀学士学位论文评选\n（一）成绩评定\n开题报告"
+            },
+            {
+              "rank": 2,
+              "score": 0.7087,
+              "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+              "block_id": "a7824b29ba7a3900",
+              "char_start": 500,
+              "char_end": 1000,
+              "preview_url": "/preview#287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816/a7824b29ba7a3900",
+              "text_head": "文（设计）写作专题讲座，指导学生规范撰写论文（设计）；\n3.学生按规范撰写毕业论文（设计）初稿，提交导师审阅修改。\n第七学期\n第 13 周前\n6 评阅及资\n格审查\n1.导师依据评分标准对论文（设计）进"
+            },
+            {
+              "rank": 3,
+              "score": 0.708,
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "a6e7cb5f1538e074",
+              "char_start": 0,
+              "char_end": 185,
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/a6e7cb5f1538e074",
+              "text_head": "导师对学生毕业论文（设计）进行审查、评分并签署意见，教务处组织对毕业论文（设计）进行学术不端行为检测，学院审查答辩资格，审查的学生方能参加各专业组织的毕业论文（设计）答辩，学生须在答辩前一周将毕业论文"
+            },
+            {
+              "rank": 4,
+              "score": 0.704,
+              "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+              "block_id": "689a2faf98b3a455",
+              "char_start": 0,
+              "char_end": 500,
+              "preview_url": "/preview#287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816/689a2faf98b3a455",
+              "text_head": "5\n告答辩小组，答辩小组由本学科教师 4 人(含秘书 1 人)组成，组长原\n则上由教授或副教授担任。答辩小组应按照学院要求开展答辩工作，\n提前一周审阅学生开题报告，拟定答辩提纲，对学生选题质量及技术\n"
+            },
+            {
+              "rank": 5,
+              "score": 0.6953,
+              "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+              "block_id": "d1c8677ea57f9f92",
+              "char_start": 0,
+              "char_end": 7,
+              "preview_url": "/preview#287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816/d1c8677ea57f9f92",
+              "text_head": "答辩小组意见："
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            false,
+            false
+          ]
+        },
+        "hybrid": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 0.0325,
+              "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+              "block_id": "a7824b29ba7a3900",
+              "char_start": 500,
+              "char_end": 1000,
+              "preview_url": "/preview#287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816/a7824b29ba7a3900",
+              "text_head": "文（设计）写作专题讲座，指导学生规范撰写论文（设计）；\n3.学生按规范撰写毕业论文（设计）初稿，提交导师审阅修改。\n第七学期\n第 13 周前\n6 评阅及资\n格审查\n1.导师依据评分标准对论文（设计）进"
+            },
+            {
+              "rank": 2,
+              "score": 0.0317,
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "a6e7cb5f1538e074",
+              "char_start": 0,
+              "char_end": 185,
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/a6e7cb5f1538e074",
+              "text_head": "导师对学生毕业论文（设计）进行审查、评分并签署意见，教务处组织对毕业论文（设计）进行学术不端行为检测，学院审查答辩资格，审查的学生方能参加各专业组织的毕业论文（设计）答辩，学生须在答辩前一周将毕业论文"
+            },
+            {
+              "rank": 3,
+              "score": 0.0308,
+              "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+              "block_id": "842680f7b649e005",
+              "char_start": 0,
+              "char_end": 500,
+              "preview_url": "/preview#287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816/842680f7b649e005",
+              "text_head": "7\n（三）答辩实施。专业负责人上网提交答辩安排，公布答辩小组\n名单、答辩学生名单、分组情况及时间地点，并报教务处备案。答辩\n小组由本学科教师 4 人(含秘书 1 人)组成，组长原则上由教授或副教\n授担"
+            },
+            {
+              "rank": 4,
+              "score": 0.0299,
+              "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+              "block_id": "842680f7b649e005",
+              "char_start": 500,
+              "char_end": 626,
+              "preview_url": "/preview#287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816/842680f7b649e005",
+              "text_head": "结束后，答辩小组应将答辩意见返回给导师及学生，\n学生在导师指导下，对论文（设计）进行修改完善，并按规范要求装\n订成册，经导师审查后交学院。\n六、成绩评定及优秀学士学位论文评选\n（一）成绩评定\n开题报告"
+            },
+            {
+              "rank": 5,
+              "score": 0.0297,
+              "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+              "block_id": "689a2faf98b3a455",
+              "char_start": 0,
+              "char_end": 500,
+              "preview_url": "/preview#287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816/689a2faf98b3a455",
+              "text_head": "5\n告答辩小组，答辩小组由本学科教师 4 人(含秘书 1 人)组成，组长原\n则上由教授或副教授担任。答辩小组应按照学院要求开展答辩工作，\n提前一周审阅学生开题报告，拟定答辩提纲，对学生选题质量及技术\n"
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            true,
+            false
+          ]
+        }
+      }
+    },
+    {
+      "id": "q6",
+      "category": "带条件的准入 / 未知被排除",
+      "query": "转专业申请需要什么条件？",
+      "conditions": {
+        "campus": null,
+        "student_type": "本科",
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "expected": {
+        "expected_doc_id_prefix": [
+          "5cb2ac21497c",
+          "d1fe991c4137",
+          "d4d3092195ed"
+        ],
+        "expected_quote": "大一或大二在读学生",
+        "expected_quote_alt": null,
+        "expected_note": "student_type=本科 准入含三版转专业办法（scope.student_type=[本科]）；学籍查询指南等 scope 空=未知文档被保守排除（如实说明）"
+      },
+      "analysis": "student_type=本科 下三版办法与教学管理族准入；引句命中；学籍指南（scope 空=未知）未入 top5——未知范围文档在加条件时被保守排除（如实说明）",
+      "runs": {
+        "bm25": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 20.4227,
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "45ef160f5775dd4a",
+              "char_start": 0,
+              "char_end": 62,
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/45ef160f5775dd4a",
+              "text_head": "（2）每年10月下旬开展转专业申请及审批工作。学生在教务管理系统中提交转专业申请，经转出、转入学院同意，学校审批后公示结果。"
+            },
+            {
+              "rank": 2,
+              "score": 16.9267,
+              "document_id": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6",
+              "block_id": "063490d0a097de4f",
+              "char_start": 0,
+              "char_end": 435,
+              "preview_url": "/preview#c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6/063490d0a097de4f",
+              "text_head": "学校不再保留其学籍。家庭经济困难的学生可以根据自身情况\n申请助学贷款或其他形式资助，办理有关手续后注册。\n（二）转专业\n1.原则\n（1）校区间不转专业。教学资源许可情况下，尽量满足校\n区内转专业需求。"
+            },
+            {
+              "rank": 3,
+              "score": 14.8356,
+              "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+              "block_id": "9d80c82df18c4c15",
+              "char_start": 0,
+              "char_end": 348,
+              "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/9d80c82df18c4c15",
+              "text_head": "— 2 —\n二、申请条件\n（一）申请转专业同学必须符合下列条件：\n1.大一或大二在读学生；\n2.所修读必修课加权平均成绩专业排名前40%；\n3.已修读的所有课程无补考或重修记录；\n4.未受过任何纪律处"
+            },
+            {
+              "rank": 4,
+              "score": 14.321,
+              "document_id": "d4d3092195ed4cf325b57d76d70e674dc9989293116a58e4694579a07f09b2cc",
+              "block_id": "62f61fc3eef66e37",
+              "char_start": 0,
+              "char_end": 440,
+              "preview_url": "/preview#d4d3092195ed4cf325b57d76d70e674dc9989293116a58e4694579a07f09b2cc/62f61fc3eef66e37",
+              "text_head": "— 2 —\n（一）申请转专业同学必须符合下列条件：\n1.大一或大二在读学生;\n2.所修读必修课加权平均成绩专业排名前30%；\n3.已修读的所有课程无补考或重修记录；\n4.未受过任何纪律处分。\n（二）有"
+            },
+            {
+              "rank": 5,
+              "score": 14.1441,
+              "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+              "block_id": "6e325fb94217d343",
+              "char_start": 0,
+              "char_end": 493,
+              "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/6e325fb94217d343",
+              "text_head": "— 5 —\n内自主确定专业可接收转入人数，经教务处审核后在每年转专业\n开展前向全校公布。若申请转入专业的学生超额，由学院组织综\n合考核择优录取。\n3.组织程序\n学校每年春季学期（第二或第四学期）开展转"
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            true,
+            false
+          ]
+        }
+      }
+    },
+    {
+      "id": "q7",
+      "category": "办理材料/流程",
+      "query": "新生如何查询核对学籍信息？",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "expected": {
+        "expected_doc_id_prefix": "83eb3948386d",
+        "expected_quote": "新生学籍信息查询核对操作指南",
+        "expected_quote_alt": null,
+        "expected_note": "办理地点见指南正文（成都校区 1 教 105 室或雅安校区综合楼 217 室）"
+      },
+      "analysis": "top5 三条均为学籍查询指南块（正确来源），引句命中",
+      "runs": {
+        "bm25": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 43.9316,
+              "document_id": "83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31",
+              "block_id": "27fc6e4fb939e279",
+              "char_start": 0,
+              "char_end": 252,
+              "preview_url": "/preview#83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31/27fc6e4fb939e279",
+              "text_head": "附件 1：\n新生学籍信息查询核对操作指南\n（此指南适用于所有在校生学籍/学历/毕业生电子注册图像信息查询等）\n第一步：注册学信网账号（学生在校期间相关学籍/照片/学历/征兵/招生报名/学生\n工作等信息"
+            },
+            {
+              "rank": 2,
+              "score": 12.9701,
+              "document_id": "83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31",
+              "block_id": "873897c71e3e8fff",
+              "char_start": 0,
+              "char_end": 261,
+              "preview_url": "/preview#83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31/873897c71e3e8fff",
+              "text_head": "请慎重选择手机号、邮箱、密码，本次注册账号将长期用于学籍查询、学历查询、\n招生报名、毕业生图像查询、征兵网，后面学生工作依然会用到，务必记住账号。\n3、注册可能遇到的问题：\n●手机号已使用：\n可以在以"
+            },
+            {
+              "rank": 3,
+              "score": 10.7272,
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "04f5fc2cbd7016af",
+              "char_start": 0,
+              "char_end": 107,
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/04f5fc2cbd7016af",
+              "text_head": "（1）新生入学后，学校在3个月内按照国家招生规定对其进行复查。复查者予以注册，取得学籍；复查不者，学校视情况予以处理，直至取消入学资格。凡属弄虚作假、徇私舞弊取得学籍者，取消学籍，情节严重者，提请有关"
+            },
+            {
+              "rank": 4,
+              "score": 9.7151,
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "825c0b7a7cc25ae8",
+              "char_start": 0,
+              "char_end": 133,
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/825c0b7a7cc25ae8",
+              "text_head": "（2）新生因病或其他特殊原因，可申请保留入学资格1年。新生应征参加中国人民解放军（含中国人民武装警察部队），保留其入学资格至退役后2年。保留入学资格者不具有学籍。保留入学资格期内可向学校申请入学，经学"
+            },
+            {
+              "rank": 5,
+              "score": 9.5181,
+              "document_id": "83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31",
+              "block_id": "77535693d76ccbfa",
+              "char_start": 0,
+              "char_end": 19,
+              "preview_url": "/preview#83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31/77535693d76ccbfa",
+              "text_head": "学生点【提供学籍或学历信息】完成审核。"
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            true,
+            false
+          ]
+        }
+      }
+    },
+    {
+      "id": "q8",
+      "category": "无所问依据但可能有检索命中",
+      "query": "缓考最多可以申请几门课程？",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "expected": {
+        "expected_doc_id_prefix": null,
+        "expected_quote": null,
+        "expected_quote_alt": null,
+        "expected_note": "首批包无‘缓考门数上限’规定；预计命中缓考相关文档（缓补考规定/教学管理办法）但不含所问依据——有命中≠有依据"
+      },
+      "analysis": "无‘门数上限’依据；top5 为教学管理族（含缓考字样）——有命中≠有依据，实测支持",
+      "runs": {
+        "bm25": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 14.0427,
+              "document_id": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9",
+              "block_id": "4bc986e4ba15ca0c",
+              "char_start": 0,
+              "char_end": 483,
+              "preview_url": "/preview#cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9/4bc986e4ba15ca0c",
+              "text_head": "— 23 —\n1.成绩标准\n课程成绩评定采用百分制，各考核环节合格标准由课程组设\n定，最终成绩达60分及以上表示成绩合格并获得该课程学分。\n2.成绩记载\n（1）课程考核成绩采用加权计算方式。各环节考核"
+            },
+            {
+              "rank": 2,
+              "score": 13.7697,
+              "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+              "block_id": "76e08b7bafb2f601",
+              "char_start": 0,
+              "char_end": 500,
+              "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/76e08b7bafb2f601",
+              "text_head": "— 21 —\n课程成绩评定采用百分制，各考核环节合格标准由课程组设\n定，最终成绩达60分及以上表示成绩合格并获得该课程学分。\n2.成绩记载\n（1）课程考核成绩采用加权计算方式。各环节考核成绩合\n格的，"
+            },
+            {
+              "rank": 3,
+              "score": 13.31,
+              "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+              "block_id": "29859d49be6e5025",
+              "char_start": 0,
+              "char_end": 448,
+              "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/29859d49be6e5025",
+              "text_head": "— 49 —\n校级一流课程，并优先推荐参加省级和国家级一流课程的评选认\n定。\n（2）经费支持与使用  学校对获得立项的课程给予经费资\n助。启动经费按资助总额的 60%划拨，中期检查合格后划拨剩余\n经费"
+            },
+            {
+              "rank": 4,
+              "score": 10.1226,
+              "document_id": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9",
+              "block_id": "dc971233370e26a1",
+              "char_start": 0,
+              "char_end": 500,
+              "preview_url": "/preview#cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9/dc971233370e26a1",
+              "text_head": "— 21 —\n（2）补考  课终考核成绩不合格者可参加 1 次免费补考，\n由教务处在每学期开学初统一安排，课程平时考核环节不合格、\n实践教学不合格、旷考或考试违规违纪的学生不得参加补考。\n（3）缓考 "
+            },
+            {
+              "rank": 5,
+              "score": 10.1168,
+              "document_id": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6",
+              "block_id": "552366eec917322d",
+              "char_start": 0,
+              "char_end": 492,
+              "preview_url": "/preview#c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6/552366eec917322d",
+              "text_head": "答案题型为客观性和主观性试题，考查学生掌握和运用基础知\n识的能力；非标准答案题型主要为主观性试题，着重考察学生\n创新能力。标准答案题型包括填空题、选择题、名词解释题、\n判断题、改错题、简答题、制图题等"
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            false,
+            false
+          ]
+        }
+      }
+    },
+    {
+      "id": "q9",
+      "category": "明确规则",
+      "query": "重修课程上课时间冲突怎么办？",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "expected": {
+        "expected_doc_id_prefix": [
+          "c0ccb884f67d",
+          "bb8ba97c0a03"
+        ],
+        "expected_quote": "确因重修课程上课时间冲突，学生可申请免听冲突时间段的重修课程",
+        "expected_quote_alt": null,
+        "expected_note": "本科教学管理办法族 选课/重修条款（多版含该句，任一命中即有依据）"
+      },
+      "analysis": "top5 均为教学管理族（正确来源文档）；引句含 PDF 折行，字面直配失败、空白归一后命中",
+      "runs": {
+        "bm25": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 29.2413,
+              "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+              "block_id": "cd666df81f3d590c",
+              "char_start": 0,
+              "char_end": 471,
+              "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/cd666df81f3d590c",
+              "text_head": "— 10 —\n学位评定委员会审议，通过后准予毕业或授予学士学位。\n2.学位评定\n学校每年 6 月和 12 月召开校学位评定委员会，校学位评定\n委员会在做出授予学士学位决定时，应以无记名投票方式表决，\n"
+            },
+            {
+              "rank": 2,
+              "score": 28.9504,
+              "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+              "block_id": "b1f400190ffd0224",
+              "char_start": 0,
+              "char_end": 499,
+              "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/b1f400190ffd0224",
+              "text_head": "— 11 —\n学费，原则上每学期修读课程不超过13 门（不含实践教学、课带\n实验）。开学初，除重修、复学等特殊原因外所有学生不得选课\n或退课。\n（三）免听\n确因重修课程上课时间冲突，学生可申请免听冲突"
+            },
+            {
+              "rank": 3,
+              "score": 28.4092,
+              "document_id": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9",
+              "block_id": "347527c990ed21ef",
+              "char_start": 0,
+              "char_end": 500,
+              "preview_url": "/preview#cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9/347527c990ed21ef",
+              "text_head": "— 10 —\n学校按照人才培养方案要求开设各类课程、安排教学任务、\n发布课表、 安排网上选课， 人数少于20人的选修课原则上不开课。\n（二）选课与退课\n每学期期末，学生根据通知网上选（退）课程，选课前"
+            },
+            {
+              "rank": 4,
+              "score": 18.0353,
+              "document_id": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6",
+              "block_id": "efd87668d22c3c0a",
+              "char_start": 0,
+              "char_end": 423,
+              "preview_url": "/preview#c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6/efd87668d22c3c0a",
+              "text_head": "③思想政治理论课和实践教学环节不得免修。\n④校际交换生和境外实习生，在校外学习期间修读并获得\n学分的课程，经所在学院认定，教务处审核，可免修其 人才培\n养方案中未修的相同或相近课程。\n免修结果公布后，"
+            },
+            {
+              "rank": 5,
+              "score": 14.1788,
+              "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+              "block_id": "0476dada43618364",
+              "char_start": 0,
+              "char_end": 426,
+              "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/0476dada43618364",
+              "text_head": "— 12 —\n（三）成绩记载\n初修、 再修和重修课程考核成绩采用加权计算方式。 对缓考、\n补考、重修和再修等取得的成绩予以标注。\n1.初修课程成绩记载\n（1）初修课程课终考试后,各环节考核成绩合格的，"
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            true,
+            false
+          ]
+        },
+        "dense": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 0.6096,
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "aa3207841f95272f",
+              "char_start": 0,
+              "char_end": 106,
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/aa3207841f95272f",
+              "text_head": "再修和双学位课程若与主修专业教学环节相冲突，学生可申请全部或部分免听，但须完成规定的课程训练和实验，方能取得有效成绩。每学期免听课程不得超过2门。专业核心骨干课程、思想政治理论课、体育课以及实践教学环"
+            },
+            {
+              "rank": 2,
+              "score": 0.5894,
+              "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+              "block_id": "b1f400190ffd0224",
+              "char_start": 0,
+              "char_end": 499,
+              "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/b1f400190ffd0224",
+              "text_head": "— 11 —\n学费，原则上每学期修读课程不超过13 门（不含实践教学、课带\n实验）。开学初，除重修、复学等特殊原因外所有学生不得选课\n或退课。\n（三）免听\n确因重修课程上课时间冲突，学生可申请免听冲突"
+            },
+            {
+              "rank": 3,
+              "score": 0.5753,
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "dc8852cefc2154c5",
+              "char_start": 0,
+              "char_end": 132,
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/dc8852cefc2154c5",
+              "text_head": "选课前，学生应登录教务管理系统查看本专业本年级人才培养方案，预先了解课程安排和毕业要求，确定学习计划。学生每学期根据教务处通知上网选课。选定的课程若与其他课程冲突或因其他原因无法完成，在规定时间内申请"
+            },
+            {
+              "rank": 4,
+              "score": 0.5724,
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "966f87fa9b89e9d7",
+              "char_start": 0,
+              "char_end": 29,
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/966f87fa9b89e9d7",
+              "text_head": "课程成绩不及格者可选择参加补考，也可选择再次修读该门课程。"
+            },
+            {
+              "rank": 5,
+              "score": 0.572,
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "2290913c55284199",
+              "char_start": 0,
+              "char_end": 80,
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/2290913c55284199",
+              "text_head": "（2）课程免修  由于学籍异动、提前修读等原因，已修读课程与人才培养方案要求修读的课程近似，可申请免修，成绩以原修读课程考试成绩记载，学分按免修课程的学分计算。"
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            true,
+            false
+          ]
+        },
+        "hybrid": {
+          "hit_count": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "score": 0.0323,
+              "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+              "block_id": "b1f400190ffd0224",
+              "char_start": 0,
+              "char_end": 499,
+              "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/b1f400190ffd0224",
+              "text_head": "— 11 —\n学费，原则上每学期修读课程不超过13 门（不含实践教学、课带\n实验）。开学初，除重修、复学等特殊原因外所有学生不得选课\n或退课。\n（三）免听\n确因重修课程上课时间冲突，学生可申请免听冲突"
+            },
+            {
+              "rank": 2,
+              "score": 0.031,
+              "document_id": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9",
+              "block_id": "347527c990ed21ef",
+              "char_start": 0,
+              "char_end": 500,
+              "preview_url": "/preview#cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9/347527c990ed21ef",
+              "text_head": "— 10 —\n学校按照人才培养方案要求开设各类课程、安排教学任务、\n发布课表、 安排网上选课， 人数少于20人的选修课原则上不开课。\n（二）选课与退课\n每学期期末，学生根据通知网上选（退）课程，选课前"
+            },
+            {
+              "rank": 3,
+              "score": 0.031,
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "dc8852cefc2154c5",
+              "char_start": 0,
+              "char_end": 132,
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/dc8852cefc2154c5",
+              "text_head": "选课前，学生应登录教务管理系统查看本专业本年级人才培养方案，预先了解课程安排和毕业要求，确定学习计划。学生每学期根据教务处通知上网选课。选定的课程若与其他课程冲突或因其他原因无法完成，在规定时间内申请"
+            },
+            {
+              "rank": 4,
+              "score": 0.0305,
+              "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+              "block_id": "cd666df81f3d590c",
+              "char_start": 0,
+              "char_end": 471,
+              "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/cd666df81f3d590c",
+              "text_head": "— 10 —\n学位评定委员会审议，通过后准予毕业或授予学士学位。\n2.学位评定\n学校每年 6 月和 12 月召开校学位评定委员会，校学位评定\n委员会在做出授予学士学位决定时，应以无记名投票方式表决，\n"
+            },
+            {
+              "rank": 5,
+              "score": 0.0284,
+              "document_id": "92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719",
+              "block_id": "4dbaa430cf7053d2",
+              "char_start": 500,
+              "char_end": 583,
+              "preview_url": "/preview#92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719/4dbaa430cf7053d2",
+              "text_head": "修读课程与我校重修课程教\n学内容比较的论证材料。 论证内容、 程序和方式参照境外修读课程学\n分认定备案论证。\n第十九条 境外学校修读的同一门课程只能申请一次课程学分认"
+            }
+          ],
+          "expected_quote_in_top5_normalized": [
+            true,
+            false
+          ]
+        }
+      }
+    }
+  ]
+}

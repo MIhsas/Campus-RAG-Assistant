@@ -1,0 +1,49 @@
+{
+  "task_id": "T032",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "summary": "T032 真实转专业办理清单完成：依据真实包《本科生转专业实施办法（校教发〔2026〕1号）》（5cb2ac21…e76，文件哈希复算与 manifest 一致，2026-01-08 生效，scope=本科）完整通读后按原文组织程序整理单一模板 sicau-transfer-2026（v1.0，is_synthetic=false，标题含文号/2026版）：13 步/20 条引用，前置（适用范围与申请资格自查、基本原则与转入限制、转入接收规则与特殊情况）+组织程序(一)–(七)+学籍学业+其他。每步主体/动作/时限取原文明示；材料清单、入口、联系方式、具体日历日期等标注「资料未说明」不编造、不借 2020/2023 版补齐；关键例外保留（2024 及之前入学按〔2023〕1号、艺体中外合作仅同类互转、跨校区资格放弃不得再次申请、注册前受处分取消资格、学籍生效不得撤销）。每条引用绑定 document_id/文件SHA/block_id/块内跨度/逐字quote，跨页事实多引共同支持不截半句。通过 serve-corpus.py --procedures 显式装配办事页（普通启动不加载模板、合成演示保留）；草稿→原文查看→保存本机个人待办→勾选/备注/刷新恢复→核对依据闭环。排除条件（as_of_date=2020-01-01 早于生效日）→依据不足不可保存、失败引用 quote=null 不泄漏、不回退其他版本；保存快照 verify=unchanged。聚焦验证：引用程序化核对 20/20 ok、API 演示全链 exit 0、JS 语法 9 页、procedures 行为 11 场景、test_procedures 14 项全过。不宣称现行有效/资格/申请成功；编制=模型辅助，人工复核=未复核。",
+  "verification": {
+    "source_identity": "manifest 条目（ID/标题/文号/2026-01-08/scope=本科/is_synthetic=false）与正文页眉落款一致；来源 PDF SHA-256=5cb2ac21…e76 复算一致",
+    "citations": "scripts/verify-procedures-citations.py（真实包新解析+service 校验）：20/20 ok、无条件草稿 saveable，exit 0；逐字对照表见 citation-crosscheck.md",
+    "business": "api-demo.json（exit 0）：模板列出/草稿可保存（无条件与本科 20/20）/排除条件不可保存且 quote=null 不泄漏/保存快照 verify=unchanged/篡改快照 verify=changed",
+    "regression": "check-js-syntax 9 页 exit 0；check-procedures-behavior 11 场景 exit 0；tests/test_procedures.py 14 passed",
+    "scope_note": "仅新增模板+核对/演示脚本+两处免责文案最小修正；未改检索/筛选/计分算法、ASR/Planner/生成器、原合成演示；语料/T030/T031 数据只读未动"
+  },
+  "template": {
+    "path": "data/procedures/sicau-transfer-2026-v1/procedures.json",
+    "procedure_id": "sicau-transfer-2026",
+    "template_version": "1.0",
+    "is_synthetic": false,
+    "steps": 13,
+    "citations": 20,
+    "sha256": "f1f1f5bb4140876096abaeaa60e93a76b642aaadcf87d0d67107be8f376c21d8",
+    "source_document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+    "source_sha256": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "citation-crosscheck.md",
+    "api-demo.json",
+    "demo-notes.md"
+  ],
+  "known_gaps": [
+    "真实浏览器复验未运行（本环境无浏览器工具）——短清单交 Astra，不代签",
+    "模板语义是否符合学校实际办理属人工复核事项（人工复核状态：未复核）",
+    "原文未写明的入口/材料清单/联系方式/日历日期全部标注「资料未说明」，未补齐",
+    "2024 年及之前入学学生按〔2023〕1号执行，不在本模板范围（原文自述例外）"
+  ],
+  "not_claimed": [
+    "模板语义审定或校园准确率已通过",
+    "该版本必然现行有效（原文未标注失效日期，仅载自发文之日起施行）",
+    "用户符合资格或申请成功",
+    "真实浏览器已验证（仅 API/桩证据）"
+  ],
+  "workspace_note": "原语料/manifest、T030 gold/冻结、T031 实验只读未改；无外部调用/下载/安装/commit/push；未改 Astra 文件/STATUS/CLAUDE"
+}

@@ -1,0 +1,91 @@
+{
+  "note": "T032 本地 API 演示（真实包 v1.1 + sicau-transfer-2026 模板；in-process；零外部调用）",
+  "steps": [
+    {
+      "step": "list",
+      "http": 200,
+      "procedures": [
+        {
+          "procedure_id": "sicau-transfer-2026",
+          "title": "本科生转专业办理清单（校教发〔2026〕1号·2026版）",
+          "template_version": "1.1",
+          "is_synthetic": false
+        }
+      ]
+    },
+    {
+      "step": "draft-no-filters",
+      "http": 200,
+      "saveable": true,
+      "status": "ready",
+      "steps_count": 13,
+      "citations_ok": 20,
+      "sample_step": {
+        "step_id": "t1",
+        "title": "自查适用范围与申请资格（前置）",
+        "detail_head": "适用范围（主体=学生自查）：本办法适用于 2025 年及之后入学学生；2024 年及之前入学学生按原《本科生转专业实施办",
+        "first_citation": {
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "d64f435102a25796",
+          "char_start": 63,
+          "char_end": 133,
+          "status": "ok",
+          "usable": true
+        }
+      },
+      "disclaimer": "真实资料办理清单（仅说明模板绑定版本所载内容，不宣称现行有效、不判定资格、不保证申请成功）；政策步骤来自原文引用，缺失信息不编造，保存为个人待办不等于向学校提交申请。"
+    },
+    {
+      "step": "draft-student-type-本科",
+      "http": 200,
+      "saveable": true,
+      "status": "ready",
+      "steps_count": 13,
+      "citations_ok": 20,
+      "sample_step": {
+        "step_id": "t1",
+        "title": "自查适用范围与申请资格（前置）",
+        "detail_head": "适用范围（主体=学生自查）：本办法适用于 2025 年及之后入学学生；2024 年及之前入学学生按原《本科生转专业实施办",
+        "first_citation": {
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "d64f435102a25796",
+          "char_start": 63,
+          "char_end": 133,
+          "status": "ok",
+          "usable": true
+        }
+      },
+      "disclaimer": "真实资料办理清单（仅说明模板绑定版本所载内容，不宣称现行有效、不判定资格、不保证申请成功）；政策步骤来自原文引用，缺失信息不编造，保存为个人待办不等于向学校提交申请。"
+    },
+    {
+      "step": "draft-excluded-by-date",
+      "http": 200,
+      "saveable": false,
+      "status": "insufficient",
+      "issues": [
+        "步骤「自查适用范围与申请资格（前置）」：来源不符合当前筛选条件（不放宽筛选）（5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/d64f435102a25796）",
+        "步骤「自查适用范围与申请资格（前置）」：来源不符合当前筛选条件（不放宽筛选）（5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/44392bef6f807d23）",
+        "步骤「自查适用范围与申请资格（前置）」：来源不符合当前筛选条件（不放宽筛选）（5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/44392bef6f807d23）"
+      ],
+      "failed_citation_statuses": [
+        "source_excluded"
+      ],
+      "failed_quotes_are_null": true,
+      "failed_details_suppressed": true
+    },
+    {
+      "step": "verify-saved-snapshot",
+      "http": 200,
+      "verdict": "unchanged",
+      "issues": []
+    },
+    {
+      "step": "verify-tampered-snapshot",
+      "http": 200,
+      "verdict": "changed",
+      "issues": [
+        "步骤「自查适用范围与申请资格（前置）」依据变化：引用跨度与当前原文不一致（5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/d64f435102a25796）"
+      ]
+    }
+  ]
+}

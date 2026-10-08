@@ -27,6 +27,7 @@ def build_evidence_pack(
     hits: list[dict[str, Any]],
     *,
     filter_summary: dict[str, Any] | None = None,
+    source_selection: dict[str, Any] | None = None,
     max_items: int = DEFAULT_MAX_ITEMS,
     max_total_chars: int = DEFAULT_MAX_TOTAL_CHARS,
 ) -> dict[str, Any]:
@@ -35,6 +36,10 @@ def build_evidence_pack(
     Args:
         hits: Formatted hits from retrieval.service.execute_search.
         filter_summary: The request's filter_summary (for empty-state split).
+        source_selection: T031 source-selection summary; when the selected
+            file is excluded by the applicability conditions the empty state
+            is "no_admissible_docs" (no admissible material), not "no_hits"
+            (searched and found nothing inside an admitted file).
         max_items / max_total_chars: context budget; whole items only.
 
     Returns:
@@ -100,8 +105,15 @@ def build_evidence_pack(
     elif skipped_items > 0:
         state = "budget_empty"
     else:
+        ss = source_selection or {}
+        selected = bool(ss.get("selected"))
+        selected_excluded = selected and not ss.get("is_admitted", False)
         fs = filter_summary or {}
-        if fs.get("active") and fs.get("allowed_count", 0) == 0:
+        if selected_excluded:
+            state = "no_admissible_docs"
+        elif selected and ss.get("allowed_after_selection", 0) == 0:
+            state = "no_admissible_docs"
+        elif fs.get("active") and fs.get("allowed_count", 0) == 0:
             state = "no_admissible_docs"
         else:
             state = "no_hits"

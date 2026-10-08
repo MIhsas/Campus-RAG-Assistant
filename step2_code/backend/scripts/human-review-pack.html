@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>真实题集与模板 · 离线人工复核包（T036）</title>
+<style>
+  body { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; margin: 0; background: #f5f6f8; color: #222; }
+  .header { background: #1f3a5f; color: #fff; padding: 14px 22px; }
+  .header h1 { margin: 0 0 6px; font-size: 19px; }
+  .header .sub { font-size: 12px; opacity: .92; line-height: 1.6; }
+  .notice { background: #fff6e5; border-bottom: 1px solid #e8d9b0; padding: 8px 22px; font-size: 12.5px; color: #7a5b1e; }
+  .wrap { padding: 14px 22px 40px; max-width: 1200px; margin: 0 auto; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; background: #fff; border: 1px solid #ddd; border-radius: 6px; padding: 10px 12px; margin-bottom: 12px; }
+  .toolbar input[type=text], .toolbar select { padding: 6px 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px; }
+  .toolbar input[type=text] { flex: 1 1 260px; min-width: 200px; }
+  .btn { padding: 7px 14px; border-radius: 4px; border: 1px solid #1f3a5f; background: #1f3a5f; color: #fff; cursor: pointer; font-size: 13px; }
+  .btn.secondary { background: #fff; color: #1f3a5f; }
+  .tally { font-size: 12.5px; color: #555; }
+  .tabs { display: flex; gap: 8px; margin: 4px 0 12px; }
+  .tab { padding: 8px 16px; border: 1px solid #ccc; border-bottom: none; border-radius: 6px 6px 0 0; background: #e9edf2; cursor: pointer; font-size: 13.5px; }
+  .tab.active { background: #fff; font-weight: 600; border-color: #9bb; }
+  .card { background: #fff; border: 1px solid #d5dae0; border-radius: 6px; margin-bottom: 14px; padding: 12px 14px; }
+  .card h3 { margin: 0 0 8px; font-size: 15px; }
+  .badge { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
+  .b-ver { background: #e3f2e8; color: #1c6b36; border: 1px solid #a7d5b5; }
+  .b-cond { background: #e8eefb; color: #1d4e9e; border: 1px solid #a9c1ec; }
+  .b-model { background: #f3eaf7; color: #6b2d86; border: 1px solid #d5b3e2; }
+  .b-orig { background: #fdeede; color: #8a5417; border: 1px solid #eec49a; }
+  .b-unans { background: #f3d9d9; color: #8f2727; border: 1px solid #e0aaaa; }
+  .lbl { font-size: 12px; color: #666; margin: 6px 0 2px; }
+  .field { font-size: 13.5px; line-height: 1.65; white-space: pre-wrap; }
+  .modelbox { background: #faf6fc; border-left: 3px solid #b07cc6; padding: 6px 10px; margin: 6px 0; font-size: 13px; white-space: pre-wrap; }
+  .ev { border: 1px solid #e2e6ea; border-radius: 5px; margin: 8px 0; padding: 8px 10px; background: #fcfdfe; }
+  .ev h4 { margin: 0 0 4px; font-size: 13px; }
+  .meta { font-size: 12px; color: #555; line-height: 1.7; }
+  .quote { background: #f4f7f3; border-left: 3px solid #6c9b63; padding: 6px 9px; margin: 5px 0; font-size: 12.5px; white-space: pre-wrap; }
+  details { margin: 5px 0; }
+  summary { cursor: pointer; font-size: 12.5px; color: #1d4e9e; }
+  .blocktext { background: #f6f7f9; border: 1px solid #e1e4e8; padding: 7px 9px; font-size: 12px; white-space: pre-wrap; max-height: 260px; overflow: auto; }
+  .neigh { background: #fbfbfc; border: 1px dashed #d8dce1; padding: 6px 9px; font-size: 11.5px; white-space: pre-wrap; color: #555; max-height: 160px; overflow: auto; }
+  .opinion-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 7px 0 3px; padding-top: 6px; border-top: 1px dashed #e3e6ea; }
+  .opinion-row label { font-size: 12px; color: #444; }
+  .opinion-row select, .opinion-row input, .opinion-row textarea { padding: 5px 7px; border: 1px solid #ccc; border-radius: 4px; font-size: 12.5px; }
+  .opinion-row textarea { flex: 1 1 320px; min-width: 220px; min-height: 34px; }
+  .op-st { font-size: 11px; padding: 1px 6px; border-radius: 3px; border: 1px solid #ccc; color: #555; background: #f0f0f0; }
+  .warnbox { background: #fdecea; border: 1px solid #e5b3ab; color: #7d2a20; padding: 8px 12px; border-radius: 5px; font-size: 12.5px; margin: 10px 0; }
+  .hidden { display: none; }
+  .footer { font-size: 11.5px; color: #777; margin-top: 18px; line-height: 1.7; }
+  .sem { font-size: 12px; color: #666; background: #f2f5f8; border-radius: 5px; padding: 7px 11px; margin: 8px 0; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>真实题集与模板 · 离线人工复核包</h1>
+  <div class="sub" id="identity-line">加载中…</div>
+</div>
+<div class="notice">这是<strong>人工意见记录工具</strong>：程序化逐字一致（构建时已核对）不代表语义正确或政策现行有效；页面只能汇总人手选择的数量，<strong>不能把整套资料标成已审定</strong>；导出记录不是签署认证、不是学校政策确认。页面不自动保存（无 localStorage）——<strong>刷新/关闭会丢失未导出的意见</strong>，可随时导出阶段性记录。</div>
+<div class="wrap">
+  <div class="toolbar">
+    <input type="text" id="search" placeholder="按题目/步骤编号或文字查找…">
+    <select id="filter-op">
+      <option value="">全部意见状态</option>
+      <option value="未复核">未复核</option>
+      <option value="确认">确认</option>
+      <option value="需修订">需修订</option>
+      <option value="未确认">未确认</option>
+    </select>
+    <span class="tally" id="tally"></span>
+    <input type="text" id="record-title" placeholder="记录标题（可选；测试导出请写明「模拟操作测试」）" style="flex: 0 1 300px">
+    <input type="text" id="reviewer" placeholder="复核人（手填，留空=未署名）" style="flex: 0 1 200px">
+    <button class="btn" id="export-btn">导出复核记录（新 JSON）</button>
+  </div>
+  <div class="warnbox hidden" id="warn"></div>
+  <div class="sem" id="sem-notes"></div>
+  <div class="tabs">
+    <div class="tab active" data-tab="questions">题目（24）</div>
+    <div class="tab" data-tab="template">办理模板（13 步）</div>
+  </div>
+  <div id="questions-pane"></div>
+  <div id="template-pane" class="hidden"></div>
+  <div class="footer">
+    导出的复核记录含输入文件 SHA 与各项意见，是<strong>新文件</strong>——不会写回 gold、模板或历史 human-review.md；不提供导入合并、自动改标注、全选通过、登录或云同步。<br>
+    记录导出本身不是人工签署认证，更不是学校政策确认；允许保留「需修订/未确认」。
+  </div>
+</div>
+<script>
+const PACK = /*__PACK_DATA__*/null;
+
+function esc(s){
+  return String(s === null || s === undefined ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+const OPINIONS = ['未复核','确认','需修订','未确认'];
+const state = {}; // key -> {opinion, comment}
+
+function keyFor(){ return Array.prototype.slice.call(arguments).join('/'); }
+
+function opinionRow(key, label){
+  const st = state[key] || (state[key] = {opinion: '未复核', comment: ''});
+  const row = document.createElement('div');
+  row.className = 'opinion-row';
+  row.innerHTML = '<label>意见（' + esc(label) + '）</label>';
+  const sel = document.createElement('select');
+  sel.className = 'op-sel'; // 意见行标记：供卡片按“本卡实际意见行”筛选（不猜归属）
+  OPINIONS.forEach(function(o){
+    const opt = document.createElement('option');
+    opt.value = o; opt.textContent = o;
+    if(st.opinion === o) opt.selected = true;
+    sel.appendChild(opt);
+  });
+  sel.value = st.opinion; // 显式设定当前值（与真实 select 选中语义一致；初值=未复核）
+  sel.addEventListener('change', function(){
+    st.opinion = sel.value;
+    tag.textContent = '当前：' + st.opinion;
+    renderTally();
+    applyFilter(); // 修改意见时同步当前筛选，避免残留旧显示
+  });
+  const ta = document.createElement('textarea');
+  ta.placeholder = '意见说明（手填；允许为空）';
+  ta.value = st.comment;
+  ta.addEventListener('input', function(){ st.comment = ta.value; });
+  const tag = document.createElement('span');
+  tag.className = 'op-st';
+  tag.textContent = '当前：' + st.opinion;
+  row.appendChild(sel); row.appendChild(tag); row.appendChild(ta);
+  return row;
+}
+
+function evBlock(ev, labelPrefix, keyPrefix, withRequired){
+  const div = document.createElement('div');
+  div.className = 'ev';
+  const req = withRequired ? (ev.required ? ' 必要引用' : ' 可选引用') : '';
+  div.innerHTML =
+    '<h4>' + esc(labelPrefix) + '<span class="badge b-orig">原文引用</span>' + req +
+    ' <span class="badge b-ver">构建时逐字核对</span></h4>' +
+    '<div class="meta">' +
+      '文档：' + esc(ev.document_title || '(未知标题)') + ' <span class="badge b-ver">' + esc(ev.version_label || '无版本标注') + '</span><br>' +
+      '定位：' + esc(ev.locator_display) + '　文档ID：' + esc(ev.document_id) + '　块ID：' + esc(ev.block_id) + '<br>' +
+      '跨度：[' + ev.char_start + ', ' + ev.char_end + ')　块长：' + ev.block_len + '　发布：' + esc(ev.published_at || '未标注') + '　生效：' + esc(ev.effective_from || '未标注') + '　失效：' + esc(ev.effective_to || '未标注截止') + '<br>' +
+      '适用范围：' + esc(JSON.stringify(ev.scope || {})) + '　合成资料：' + (ev.is_synthetic ? '是' : '否') + '<br>' +
+      '本地原件：' + esc(ev.local_file || '未知') + '（可复制路径另开原件核对；本工具不访问来源网站）' +
+    '</div>' +
+    '<div class="lbl">逐字 quote（原块切片）：</div><div class="quote">' + esc(ev.quote) + '</div>';
+  const d1 = document.createElement('details');
+  d1.innerHTML = '<summary>展开：原解析块全文（' + ev.block_len + ' 字）</summary><div class="blocktext">' + esc(ev.block_text) + '</div>';
+  const d2 = document.createElement('details');
+  d2.innerHTML = '<summary>展开：前后相邻块</summary>' +
+    '<div class="lbl">前一块：</div><div class="neigh">' + esc(ev.prev_block ? ev.prev_block.text : '（无）') + '</div>' +
+    '<div class="lbl">后一块：</div><div class="neigh">' + esc(ev.next_block ? ev.next_block.text : '（无）') + '</div>';
+  div.appendChild(d1); div.appendChild(d2);
+  div.appendChild(opinionRow(keyPrefix, labelPrefix + ' 条目'));
+  return div;
+}
+
+function renderQuestions(){
+  const pane = document.getElementById('questions-pane');
+  pane.innerHTML = '';
+  PACK.questions.forEach(function(q){
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.setAttribute('data-search', (q.question_id + ' ' + q.query).toLowerCase());
+    const condStr = Object.entries(q.conditions || {}).filter(function(kv){ return kv[1] !== null; })
+      .map(function(kv){ return kv[0] + '=' + kv[1]; }).join('，') || '无（不限）';
+    let h = '<h3>' + esc(q.question_id) + '：' + esc(q.query) +
+      (q.answerable ? '' : '<span class="badge b-unans">不足题</span>') +
+      '<span class="badge b-cond">条件：' + esc(condStr) + '</span>' +
+      '<span class="badge b-model">模型辅助标注</span></h3>';
+    card.innerHTML = h;
+    const facts = (q.fact_groups || []).map(function(g){
+      return g.label + '（' + g.evidence_ids.join('、') + '）';
+    }).join('；');
+    const info = document.createElement('div');
+    info.className = 'modelbox';
+    info.textContent = '事实组（模型整理，人工待核对）：' + (facts || '（不足题无 gold 引用）') +
+      '　|　组间语义：' + (q.fact_semantics || '') +
+      '\n理由/说明：' + (q.rationale || '—') +
+      (q.missing ? '\n已查范围/不足依据：' + q.missing : '') +
+      (q.revision_note ? '\n修订记录：' + q.revision_note : '');
+    card.appendChild(info);
+    if(!q.evidence || q.evidence.length === 0){
+      const un = document.createElement('div');
+      un.className = 'sem';
+      un.textContent = '本题为不足题：无 gold 引用 ≠「学校无规定」。请核对上方已查范围/排除依据是否成立。';
+      card.appendChild(un);
+    }
+    (q.evidence || []).forEach(function(ev){
+      card.appendChild(evBlock(ev, ev.evidence_id + '（fact ' + (ev.fact_id || '—') + '）',
+        keyFor('q', q.question_id, ev.evidence_id), false));
+    });
+    card.appendChild(opinionRow(keyFor('q', q.question_id), q.question_id + ' 题目本身'));
+    card._opinionSelects = card.querySelectorAll('.op-sel'); // 本卡片实际意见行（完整归属，不猜）
+    pane.appendChild(card);
+  });
+}
+
+function renderTemplate(){
+  const pane = document.getElementById('template-pane');
+  pane.innerHTML = '';
+  PACK.templates.forEach(function(p){
+    const head = document.createElement('div');
+    head.className = 'card';
+    head.innerHTML = '<h3>' + esc(p.title) + '<span class="badge b-ver">模板 ' + esc(p.template_version) + '</span>' +
+      (p.is_synthetic ? '<span class="badge b-unans">合成演示</span>' : '<span class="badge b-orig">真实资料模板</span>') + '</h3>' +
+      '<div class="modelbox">摘要（模型整理）：' + esc(p.summary) + '</div>';
+    pane.appendChild(head);
+    p.steps.forEach(function(s){
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.setAttribute('data-search', (s.step_id + ' ' + s.title).toLowerCase());
+      card.innerHTML = '<h3>步骤 ' + esc(s.step_id) + '：' + esc(s.title) +
+        '<span class="badge b-model">模型整理步骤</span></h3>' +
+        '<div class="modelbox">办理说明（模型整理，非标准答案）：' + esc(s.detail || '—') + '</div>' +
+        ((s.unspecified && s.unspecified.length) ?
+          '<div class="sem">资料未说明（原文未写明，不编造）：' + esc(s.unspecified.join('、')) + '</div>' : '');
+      (s.citations || []).forEach(function(c){
+        card.appendChild(evBlock(c, '引用 ' + c.block_id.slice(0, 8) + '[' + c.char_start + ':' + c.char_end + ']',
+          keyFor('t', p.procedure_id, s.step_id, c.block_id, c.char_start, c.char_end), true));
+      });
+      card.appendChild(opinionRow(keyFor('t', p.procedure_id, s.step_id), '步骤 ' + s.step_id + ' 本身'));
+      card._opinionSelects = card.querySelectorAll('.op-sel'); // 本卡片实际意见行（完整归属，不猜）
+      pane.appendChild(card);
+    });
+  });
+}
+
+function renderTally(){
+  const t = {'未复核': 0, '确认': 0, '需修订': 0, '未确认': 0};
+  Object.keys(state).forEach(function(k){ t[state[k].opinion] = (t[state[k].opinion] || 0) + 1; });
+  document.getElementById('tally').textContent =
+    '条目合计 ' + Object.keys(state).length + '：未复核 ' + t['未复核'] + ' / 确认 ' + t['确认'] +
+    ' / 需修订 ' + t['需修订'] + ' / 未确认 ' + t['未确认'] + '（仅汇总，不代表已审定）';
+}
+
+function applyFilter(){
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const op = document.getElementById('filter-op').value;
+  document.querySelectorAll('.card').forEach(function(c){
+    // 文字条件：按卡片检索键/全文
+    let ok = !q || ((c.getAttribute('data-search') || '') + ' ' + c.textContent).toLowerCase().indexOf(q) >= 0;
+    if(ok && op){
+      // 意见条件：只读**本卡片实际拥有的意见行 select 当前值**（渲染时绑定）。
+      // 不扫描全局 state，不用短证据 ID/正文/跨度数字猜归属——同名 f1-s1、相同
+      // 跨度数字在多题/多步重复，短匹配会错误放行其他卡片。
+      // T036-R2：querySelectorAll 返回 NodeList（可索引/迭代/forEach，无 some）
+      // ——先 Array.from 转数组再 some，兼容真实 DOM 形态。
+      const sels = Array.from(c._opinionSelects || []);
+      ok = sels.some(function(s){ return s.value === op; });
+      // 无意见行的卡片（如模板摘要卡）不匹配任何意见条件：仅在无意见筛选时
+      // 作为上下文展示，不据此计入匹配步骤。
+    }
+    c.classList.toggle('hidden', !ok);
+  });
+}
+
+function exportRecord(){
+  const warn = document.getElementById('warn');
+  warn.classList.add('hidden');
+  const tally = {'未复核': 0, '确认': 0, '需修订': 0, '未确认': 0};
+  Object.keys(state).forEach(function(k){ tally[state[k].opinion] = (tally[state[k].opinion] || 0) + 1; });
+  const record = {
+    record_type: 'human_review_record',
+    record_title: document.getElementById('record-title').value || '',
+    exported_at: new Date().toISOString(),
+    reviewer: document.getElementById('reviewer').value || '',
+    note: '人工意见记录导出（新文件）。不是签署认证，不是学校政策确认；未写回 gold/模板/历史 human-review.md。导出前所有条目默认未复核。',
+    pack_identity: {
+      inputs: PACK.pack_meta.inputs,
+      counts: PACK.pack_meta.counts,
+      pack_human_review_status: PACK.pack_meta.human_review_status,
+      declaration: PACK.pack_meta.declaration,
+    },
+    tally: tally,
+    question_opinions: PACK.questions.map(function(q){
+      return {
+        question_id: q.question_id,
+        opinion: (state[keyFor('q', q.question_id)] || {}).opinion || '未复核',
+        comment: (state[keyFor('q', q.question_id)] || {}).comment || '',
+        evidence_opinions: (q.evidence || []).map(function(ev){
+          const st = state[keyFor('q', q.question_id, ev.evidence_id)] || {};
+          return { evidence_id: ev.evidence_id, opinion: st.opinion || '未复核', comment: st.comment || '' };
+        }),
+      };
+    }),
+    template_opinions: PACK.templates.map(function(p){
+      return {
+        procedure_id: p.procedure_id,
+        steps: p.steps.map(function(s){
+          const st = state[keyFor('t', p.procedure_id, s.step_id)] || {};
+          return {
+            step_id: s.step_id,
+            opinion: st.opinion || '未复核',
+            comment: st.comment || '',
+            citation_opinions: (s.citations || []).map(function(c){
+              const k = keyFor('t', p.procedure_id, s.step_id, c.block_id, c.char_start, c.char_end);
+              const st2 = state[k] || {};
+              return { block_id: c.block_id, char_start: c.char_start, char_end: c.char_end,
+                       opinion: st2.opinion || '未复核', comment: st2.comment || '' };
+            }),
+          };
+        }),
+      };
+    }),
+  };
+  const blob = new Blob([JSON.stringify(record, null, 2)], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'human-review-record.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+  warn.textContent = '已导出复核记录（浏览器下载 human-review-record.json）。导出不是签署认证；刷新/关闭仍会丢失未导出的新改动。';
+  warn.classList.remove('hidden');
+}
+
+function init(){
+  const meta = PACK.pack_meta;
+  document.getElementById('identity-line').textContent =
+    '输入身份：题集 ' + meta.inputs.questions.dataset_version + '（SHA ' + meta.inputs.questions.sha256.slice(0, 16) + '…）　模板 ' +
+    meta.inputs.procedures.template_version + '（SHA ' + meta.inputs.procedures.sha256.slice(0, 16) + '…）　' +
+    '条目：' + meta.counts.questions + ' 题（' + meta.counts.answerable + ' 可答 + ' + meta.counts.unanswerable + ' 不足）/' +
+    meta.counts.evidence + ' 证据/' + meta.counts.template_steps + ' 步/' + meta.counts.template_citations + ' 引用　人工复核状态：未复核';
+  document.getElementById('sem-notes').innerHTML = PACK.semantics_notes.map(function(n){ return '· ' + esc(n); }).join('<br>');
+  renderQuestions();
+  renderTemplate();
+  renderTally();
+  document.getElementById('search').addEventListener('input', applyFilter);
+  document.getElementById('filter-op').addEventListener('change', applyFilter);
+  document.getElementById('export-btn').addEventListener('click', exportRecord);
+  document.querySelectorAll('.tab').forEach(function(t){
+    t.addEventListener('click', function(){
+      document.querySelectorAll('.tab').forEach(function(x){ x.classList.remove('active'); });
+      t.classList.add('active');
+      const isQ = t.getAttribute('data-tab') === 'questions';
+      document.getElementById('questions-pane').classList.toggle('hidden', !isQ);
+      document.getElementById('template-pane').classList.toggle('hidden', isQ);
+    });
+  });
+}
+init();
+</script>
+</body>
+</html>

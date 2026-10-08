@@ -1,0 +1,21 @@
+{
+  "note": "T029 变更清单（相对项目根）。新增适配脚本与 README 真实包说明；数据产物在被忽略的 data/ 下（data/corpora/sicau-rag-pilot-v1/，报告已注明位置与哈希），未复制原文进提交目录。未改产品解析/检索代码、语料/gold/旧题集。",
+  "new": [
+    {
+      "path": "step2_code/backend/scripts/prepare-real-corpus.py",
+      "sha256": "1c46c85feb2448fda10e5f89f29b6450c661929654c7a4b4d8133b1af6a4d26b",
+      "size": 7886
+    }
+  ],
+  "modified": [
+    {
+      "path": "step2_code/backend/README.md",
+      "sha256": "55844c2eca8a3c3b7bea0e8b380be4f330c72a68cd774b715596935c62cc2c1d",
+      "size": 52999
+    }
+  ],
+  "data_products": {
+    "pack": "data/corpora/sicau-rag-pilot-v1/（manifest.json + 20 原文件 + provenance.jsonl + selection.json；文件名=doc_id=原 SHA-256）",
+    "dataset_manifest_sha256": "6a41ff3cdf3eebfe78ad6a555b1b288242d71dff34751a597dc70288e8c4e514"
+  }
+}
