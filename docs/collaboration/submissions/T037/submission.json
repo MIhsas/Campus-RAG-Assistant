@@ -1,0 +1,43 @@
+{
+  "task_id": "T037",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "human_review_status": "user_review_received_with_open_items",
+  "human_review_counts": {"确认": 109, "需修订": 3, "未确认": 2, "未复核": 0, "total": 114,
+                          "template_confirmed": "33（13 步+20 引用，本任务不复审）"},
+  "summary": "T037 人工意见核实与定向修订方案完成（只设计不实施）：用户 109/3/2 意见精确落档。q10/f2-s1：同前提比较无冲突——2016 论文规范与 2018/2020/2022/2025 教学管理族均为双前提（普通 50/50；互评 40/10/50），最新 2025 版仍并列；f1/f2 属前提不同非版本冲突；无点名废止、兜底条款对一致条文无适用余地，发布较晚≠废止——部分采纳（分情形答案示例），不采纳「2016 已失效」处置。u03：30 分钟事实无冲突，不足属日期准入（服务复现：as_of=2026-10-03 下 16 排除/4 准入、两来源均排除；无筛选可见；准入不足≠学校无规定）；bed3ac 正文落款/印发 2019-11-07+自发文之日起执行=effective_from 修订候选（未写 manifest）；方案=严格日期结果+显式「查看日期未核实资料」独立分区（仅日期未知可讨论放宽，其他条件保留）。u04：内容存在属实，排除属 scope 准入（本科筛选下 scope_unknown 2 排除含 83eb）；正文「适用于所有在校生」含本科但登记来源为研究生语境通知附件——scope 映射待用户裁定（[本科] vs 保持未知+独立查看），gold 改可答前提链（元数据+产品语义+新冻结）已列。q08 释义去修订腔采纳（原引保留）；u01/u02 保留未确认。proposed-changes 分「已核实可修订/需要用户决定/证据不足暂保留」三档，汇总数轮实施建议；本轮未改筛选/版本规则/冻结 gold/manifest/模板/历史实验/产品代码。",
+  "verification": {
+    "slices": "真实解析器逐字切片：q10 全 14 条 gold 跨度 14/14 OK；q08/u03/u04 争议引文全 OK；废止检索 11 处命中无一点名废止 2016 规范",
+    "filters": "现有筛选服务复现：u03 as_of 排除（16/4）含两 30 分钟来源；u04 本科筛选 scope_unknown 排除含 83eb；无筛选对照均可见；exit 0",
+    "invariance": "questions/manifest/procedures/T031/T034 实验/用户记录 6/6 SHA 不变，exit 0",
+    "scope_note": "未查学校现行网页/未验证废止关系；未改 manifest/gold/模板/产品代码；未跑 pytest 全量/实验/浏览器/模型"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "opinion-resolution.md",
+    "source-check.json",
+    "proposed-changes.md"
+  ],
+  "data_paths": {
+    "source_snapshots": ".cache/T037-source-check/（5 份原块全文快照，SHA 见 verification §4）",
+    "generator": "step2_code/backend/.cache/t030-r2/gen-t037-source-check.py（source-check.json 生成脚本）"
+  },
+  "known_gaps": [
+    "2016 规范废止关系需权威来源/人工认定；bed3ac 日期依正文落款推断无独立发文登记",
+    "83eb scope 映射待用户裁定；u03/u04 gold 可答性翻转需前提链齐备后另行实施",
+    "「查看日期未核实/范围未知资料」为设计方案，未实施"
+  ],
+  "not_claimed": [
+    "程序化裁决替代人工认可",
+    "2016 规范现行性/废止结论",
+    "本轮已实施任何修订（仅方案）",
+    "整套题集已通过人工审定"
+  ],
+  "workspace_note": "原数据/manifest/gold/模板/历史实验/Astra 文件只读未改；零外部调用、无下载/安装/commit/push"
+}

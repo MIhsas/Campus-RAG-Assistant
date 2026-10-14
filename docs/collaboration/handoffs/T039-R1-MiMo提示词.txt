@@ -1,0 +1,14 @@
+你是MiMo执行者，Astra验收。工作目录 F:\Collage Paper。当前唯一任务为T039-R1，T040未发布。
+
+先读CLAUDE.md、docs/collaboration/STATUS.md、docs/collaboration/PROTOCOL.md与docs/collaboration/reviews/T039-R1.md。原T039任务作为背景，返工单优先。
+
+Astra已独立确认：冻结24题/58证据/37hash通过；72条逐题计分、60条共同子集完整排名/score、36项聚合分组、新运行BM2524题均一致。数据与分数不需改动或重跑。
+
+只做一轮小修：
+1. 差异脚本old_by_id与new_by_id引用同一批对象，导致field-diff把6道改题都写为无变更。保留独立旧快照、做题目及字段允许集核对，只重新生成field-diff，不重写questions/freeze。实际6题差异正确；隔离内存改一次q07.query，应检测越界并非零退出；复跑Astra原T039-audit.py，不能改探针。
+2. review-supplement四项补query/条件、完整来源/块/跨度/页码、必要原quote与上下文；q10至少两个前提各一源，u04并列所有在校生语境和研究生院办理语境。直接从解析块切片，换行保留；规范化显示须标注，不冒充逐字。不改任何gold/scope，不代签，示例仍非产品实时生成。
+3. 合并文档收尾：人工待复核清单统一用户109/3/2与模板33项确认、新四项待复核/现行性未认证，当前入口v2/补充、旧T036包标历史；README消除仍称当前v1.1；补可复制命令与已存分组数值，不重跑补证。
+
+只允许返工单限定文件。保留revision1原件与旧field-diff/脚本；dataset2.0不变，questions/freeze/标注说明/results/aggregate、语料、旧实验、模板、用户意见及Astra文件只读。无需向量编码/三模式/全量/UI/ASR/Agent/模型调用。零外部调用、无安装下载、不commit/push。
+
+提交docs/collaboration/submissions/T039/ revision2，responds_to=T039-R1、status=ready_for_review，补fix-report与完整真实验证，完成立即停止等待Astra，不推进T040。

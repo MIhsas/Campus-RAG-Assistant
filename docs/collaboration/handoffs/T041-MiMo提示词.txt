@@ -1,0 +1,21 @@
+你是MiMo执行者，Astra发布与审核。工作目录F:\Collage Paper。
+T040 revision4已按四题限定真实冒烟验收通过；当前唯一任务T041文档收尾，T042未发布。
+
+先读docs/collaboration/STATUS.md、PROTOCOL.md、根CLAUDE.md、reviews/T040-R4.md、tasks/T041-当前交付包与真实生成案例收尾.md、T039评审与T040原始live两件/核对记录，再按工单执行。工单与此提示词发布不代表已自动送到执行窗口。
+
+目标：统一docs/delivery当前八件到T038真实包v1.2、T039开发集v2.0、T040真实四题已存证据，新增generation-casebook.md。只改涉及当前状态/数字/证据的部分；旧实验保留历史分表。不要再把T035/T030写成当前基线，也不机械重写全篇。
+
+先将当前八件按原字节归档archive-pre-t041-20261011/（见工单逐文件列表），已存在不能覆盖；早期archive/rev/提交/Astra材料只读。允许八件文档、新casebook、submissions/T041提交材料。产品/脚本/语料/模板/gold/冻结/实验/用户记录/docs01—04不改，不commit/push、不安装下载。
+
+重要边界：
+- 原T040授权已用满4/4且结束。本任务零外部调用，不读密钥/环境、不运行live/模型探测，不重跑mock/全量/UI/ASR/向量/检索实验。
+- 当前包v1.2首批20/1182；未知日期/范围保守排除，T038候选独立不进入生成。
+- 当前T039题集24=21可答+3不足/58证据，R/H/M从aggregate原值读取，分母21；共同子集20单列，修订不是算法改善。T027/T030/T031/T034历史各表，选择文件不是纯算法提升，overlap默认0。
+- T040真实4次=四题各1、provider4/ask8；q10/u03作答，q08/u04模型不足。prompt6080/completion388/total6468，不算费用、不算准确率/拒答率。live_verified=true仅历史四题链路与存档核查；Planner false/T025partial不变；无本轮浏览器生成闭环证据。
+- q10 P1/P2明确支持；P3“不纳入上述比例”推断留用户核实，不标全逐字支持；q08 f1未覆盖，合理不足不等于答对gold；u04不足不等于学校无规定。不改原模型答案，不代签109/3/2、模板33、新四项/新答案。
+
+casebook含四题原问/条件/完整答案或理由、关键E来源/页码/跨度、支持性质/gold覆盖/用户状态三层；链接T040完整材料与评审，不复制全库、不改写为漂亮答案。
+答辩主线仍480—600秒（可保持560），真实案例放可选“历史已存结果”，无新授权不能现场点实时生成/规划；不冒称本轮浏览器操作/计时。启动手册当前v1.2+真实模板1.2命令按源码/--help核对，保留旧实验覆盖冻结风险警示，live命令标历史不可例行重跑。
+
+仅精简核对：归档字节、文档链接/关键路径、已存指标、四题原文本、token算术、秒数；必要--help，不跑产品套件。验证文档分本轮实跑/历史/未验证，不以测试条数为目标。
+提交report/verification/submission/changed-files实测哈希，task_id=T041、task_revision=v1、submission_revision=1、status=ready_for_review、external_model_calls=0、planner_live_verified=false。T040 live_verified引用要带历史限定，不声称本轮live验证。完成停止等Astra验收，不推进T042。

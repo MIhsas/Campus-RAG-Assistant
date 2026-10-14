@@ -1,0 +1,51 @@
+{
+  "kind": "T040-B 真实资料限定生成冒烟执行记录",
+  "responds_to": "T040-B",
+  "task_revision": "B-v1",
+  "mode": "live",
+  "authorization_note": "用户 2026-10-09 对四题/官方端点/deepseek-flash/≤4 次尝试/1500 输出 tokens/30s/零重试/首次技术失败即停回复“授权”；无人民币上限指定，不虚构金额或价格",
+  "run_identity": {
+    "endpoint": null,
+    "model": null,
+    "max_tokens": null,
+    "timeout_seconds": null,
+    "config_source": "未构造 provider",
+    "question_order": [
+      "q08",
+      "q10",
+      "u03",
+      "u04"
+    ],
+    "corpus": "F:\\Collage Paper\\data\\corpora\\sicau-rag-pilot-v1.2",
+    "questions_path": "F:\\Collage Paper\\data\\evaluations\\sicau-rag-pilot-eval-v2\\questions.json",
+    "a_identity": {
+      "ok": true,
+      "problems": [],
+      "a_materials_sha_checked": 12,
+      "input_files_sha_checked": 10,
+      "questions_content_checked": 4,
+      "request_uuid_note": "请求 UUID 不作为证据差异；比较字段=query/conditions/mode/top_k/filters/E 全文/预算/messages"
+    }
+  },
+  "preflight": {
+    "a_identity_ok": true,
+    "config_check": {
+      "ok": false,
+      "reason": "缺密钥或未构造生成器（DEEPSEEK_API_KEY 不存在/为空）：零请求拒绝"
+    },
+    "key_present": false,
+    "reason": "前置未通过：零外部请求"
+  },
+  "attempt_accounting": {
+    "budget_max_external_http_attempts": 4,
+    "max_attempts_per_question": 1,
+    "external_http_attempts": 0,
+    "ask_calls": 0
+  },
+  "questions": {},
+  "stop": null,
+  "unavailable_fields_note": "供应商未返回或适配器未暴露的字段记 null（含连接/超时/映射错误的供应商原始状态）；不伪造 usage/价格/请求 ID；本地 /ask HTTP 状态与供应商 HTTP 状态分开记录",
+  "exit_ok": false,
+  "stage_note": "前置未通过 → B 未发出任何外部请求；本记录即实际执行证据",
+  "output_dir": "F:\\Collage Paper\\step2_code\\backend\\.cache\\real-qa-smoke\\T040-B"
+}

@@ -1,0 +1,52 @@
+{
+  "task_id": "T043",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "summary": "T043 意见落档与未知学生类型正式准入：①T042 八项真实意见落档（8 项均确认，原件 SHA 7a0c6ec4… 只读，签名/日期空不补签；原 opinion/comment 照录；旧 109/3/2+模板33+本8项分域不相加；确认≠教师审定/现行认证）——两条聊天决定分列：u04 正式答案采用未知范围资料、u03 保留已核实日期不补源。②实施 include_unknown_student_type 参考准入（正式 search/ask 默认 true、UI 默认开可关回 strict；底层 compute 默认仍 strict 保护办事/自查/旧 CLI）：仅 student_type 未标注→参考纳入并逐命中/E/复制/快照/消息标注「学生类型未标注，适用范围尚未核实」，已知类型冲突与 campus/年级/日期检查保持（db05e0 等日期未知不入），document_id 求交、先准入后 TopK、BM25/向量/RRF 不变，不硬编码 u04/83eb/不塞 gold/不改 quote；build_messages 逐 E 状态入消息+提示允许给明明示办理地点并保留范围提示；候选按本次模式去重（关闭时 T038 原候选保持）；两页快照/重试/转摘录/历史/跨页携带开关，旧历史缺字段=当时 strict。③验证：聚焦 7 passed（真实包 u04 新模式 83eb 入正式 E 含明示地点+状态/严格排除+候选独立查看/候选去重；合成夹具冲突与其它维度/三模式共用准入/document_id/默认 strict；消息状态+mock 引用串通；两页结构）+ 回归 137 passed + API 演示六条本地实测（零网络）。无真实浏览器如实桩级+demo-notes 短检查表。旧 gold/冻结/指标/原意见/casebook/历史提交只读未改；新模式基线未评测。",
+  "verification": {
+    "focused_tests": "tests/test_unknown_student_type.py 7 passed（exit 0）：u04 真实包双模式/候选去重、合成夹具、消息状态+mock、三模式共用准入、两页结构",
+    "regression": "相关旧套件 137 passed（exit 0）：filters 默认 strict、办事/自查严格保持、旧协议不删覆盖",
+    "api_demo": "本地 TestClient 六条实测+build_messages 状态传递（api-demo.json/md；零外部请求）",
+    "preservation": "用户原件/旧提交/包/gold/freeze/指标/casebook 零写入（casebook 6ef5215d… 原字节）；改前三件归档 archive-t043-pre/",
+    "browser": "无浏览器工具：源码结构级+demo-notes 检查表，不冒充实测",
+    "scope_note": "零模型调用/不读密钥/无下载安装/commit/push；旧 T040 授权结束未执行 live；新准入实施授权≠模型调用授权"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "review-disposition.md",
+    "api-demo.md",
+    "api-demo.json",
+    "demo-notes.md"
+  ],
+  "code_changes": {
+    "filters": "step2_code/backend/src/campus_assistant/retrieval/filters.py（可选参考准入参数默认 strict；候选按模式排除集合）",
+    "service_api": "retrieval/service.py + api/search.py + api/ask.py（模式传参/回显/逐命中状态/统计分列）",
+    "messages": "qa/evidence.py + qa/deepseek.py（状态透传；messages 逐 E 状态+提示规则）",
+    "pages": "static/search.html + static/ask.html（开关/快照/历史/跨页/复制/候选同模式）",
+    "tests": "tests/test_unknown_student_type.py（聚焦 7 项）"
+  },
+  "user_record": {
+    "path": "data/reviews/T042-user-review-20261014/targeted-review-record.json",
+    "sha256": "7a0c6ec4a685f4a1a0904d793d35434e776426f8528d17ed6998ddad20c51133",
+    "state": "8 项均确认（四修订+四结果）；签名/日期空",
+    "decisions": ["u04：正式答案采用范围未知的资料（student_type 未知→参考准入）", "u03：保留已核实日期、不额外补源"]
+  },
+  "known_gaps": [
+    "新模式检索基线未评测（后续单独安排，不编造指标）",
+    "模型生成质量/资格判定/政策现行有效未验证（本轮零模型调用）",
+    "真实浏览器行为待人工按 demo-notes 走查"
+  ],
+  "not_claimed": [
+    "教师审定/全套 gold 认证",
+    "政策现行有效/校园准确率",
+    "浏览器实测",
+    "新模式指标改善"
+  ],
+  "next_gate": "Astra 验收 T043；T044 未发布"
+}

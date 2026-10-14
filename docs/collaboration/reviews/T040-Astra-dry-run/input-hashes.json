@@ -1,0 +1,22 @@
+{
+  "kind": "输入与源文件 SHA 对照（生成时实测）",
+  "files": {
+    "questions.json": "4e39229eb3b31dc9ccd5dc157e2d63203514ce70069450adca6b78c24b65c103",
+    "freeze.json": "8c289b2ae7f00b39be80f02f850cf2820d8cc6de90f6f7245c634ddd2a9b5a26",
+    "manifest.json": "b05c37557675f02c045e01e9fd776c539954c43172d5e0b07d0704da4e352b4a",
+    "review-supplement.md": "d82f4c993b2c77709ed26f3442800398a3091e6500c2ec31817e9417537da367",
+    "main.py": "0b5fb49e23ff65a940e45ae014418372a9c334c1009f0b1968172379a351bd8c",
+    "api/ask.py": "2af92f1638a4d4bf57e9c6548054b2d040bb2a1133f76de4dd11bacb521fb516",
+    "qa/evidence.py": "c8f7274cffa4d58ffb5383cb915222a04bcbb4bd885180684e7ff4ca9aeeb89e",
+    "qa/deepseek.py": "530c5e2b5e01623f29cc19d45139419c5f700c62cdf7a1cdf60aa37eb48366ce",
+    "retrieval/service.py": "dd7552936cf55f644448bf77a8594ae0c8b08f90268500524bed9932b2a0699b",
+    "prepare-real-qa-smoke.py": "8f0001d4a621854df0c85d715a5302e5877f5c45b89001d69110cfc718c77be2"
+  },
+  "frozen_question_entries": {
+    "q08": "a698e2a7a8938ef27aeb197b86956ca743129cf7f9dd6f2acabd58977983f23c",
+    "q10": "806ef47acf62746c88b92bfe95bf2965c17cf05b4b9fdedebd0d7a7195b7338b",
+    "u03": "b39a221f698e546ec086aae7f9a6eec6840db28671cdb2b05d81f46130a1ee5b",
+    "u04": "105eab5fa88480187d24506ee2e3d35a2a3cd30594060fdadca618b0398fe1c3"
+  },
+  "system_prompt_sha256": "1fbcede5d70b3d2b78e309abc61fd6b1659b95f3aa76fa58fa90cc463e7a2d79"
+}

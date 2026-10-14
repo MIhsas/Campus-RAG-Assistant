@@ -1,0 +1,167 @@
+{
+  "checks": [
+    {
+      "kind": "submission",
+      "path": "step2_code/backend/scripts/live-smoke-real-qa.py",
+      "pass": true
+    },
+    {
+      "kind": "submission",
+      "path": "step2_code/backend/tests/test_live_smoke_real_qa.py",
+      "pass": true
+    },
+    {
+      "kind": "submission",
+      "path": "docs/collaboration/submissions/T040/live-results.json",
+      "pass": true
+    },
+    {
+      "kind": "submission",
+      "path": "docs/collaboration/submissions/T040/live-answers-full.json",
+      "pass": true
+    },
+    {
+      "kind": "submission",
+      "path": "docs/collaboration/submissions/T040/live-review-notes.md",
+      "pass": true
+    },
+    {
+      "kind": "submission",
+      "path": "docs/collaboration/submissions/T040/report.md",
+      "pass": true
+    },
+    {
+      "kind": "submission",
+      "path": "docs/collaboration/submissions/T040/verification.md",
+      "pass": true
+    },
+    {
+      "kind": "submission",
+      "path": "docs/collaboration/submissions/T040/submission.json",
+      "pass": true
+    },
+    {
+      "kind": "A material",
+      "path": "docs\\collaboration\\submissions\\T040\\dry-run.json",
+      "pass": true
+    },
+    {
+      "kind": "A material",
+      "path": "docs\\collaboration\\submissions\\T040\\rev1\\dry-run.json",
+      "pass": true
+    },
+    {
+      "kind": "A material",
+      "path": "step2_code\\backend\\.cache\\real-qa-smoke\\T040-A\\dry-run.json",
+      "pass": true
+    },
+    {
+      "kind": "A material",
+      "path": "docs\\collaboration\\submissions\\T040\\input-hashes.json",
+      "pass": true
+    },
+    {
+      "kind": "A material",
+      "path": "docs\\collaboration\\submissions\\T040\\rev1\\input-hashes.json",
+      "pass": true
+    },
+    {
+      "kind": "A material",
+      "path": "step2_code\\backend\\.cache\\real-qa-smoke\\T040-A\\input-hashes.json",
+      "pass": true
+    },
+    {
+      "kind": "A material",
+      "path": "docs\\collaboration\\submissions\\T040\\generation-review-sheet.md",
+      "pass": true
+    },
+    {
+      "kind": "A material",
+      "path": "docs\\collaboration\\submissions\\T040\\rev1\\generation-review-sheet.md",
+      "pass": true
+    },
+    {
+      "kind": "A material",
+      "path": "step2_code\\backend\\.cache\\real-qa-smoke\\T040-A\\generation-review-sheet.md",
+      "pass": true
+    },
+    {
+      "kind": "A material",
+      "path": "docs\\collaboration\\submissions\\T040\\live-smoke-plan.md",
+      "pass": true
+    },
+    {
+      "kind": "A material",
+      "path": "docs\\collaboration\\submissions\\T040\\rev1\\live-smoke-plan.md",
+      "pass": true
+    },
+    {
+      "kind": "A material",
+      "path": "step2_code\\backend\\.cache\\real-qa-smoke\\T040-A\\live-smoke-plan.md",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v2\\questions.json",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v2\\freeze.json",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "data\\corpora\\sicau-rag-pilot-v1.2\\manifest.json",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "docs\\collaboration\\submissions\\T039\\review-supplement.md",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "step2_code\\backend\\src\\campus_assistant\\main.py",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "step2_code\\backend\\src\\campus_assistant\\api\\ask.py",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "step2_code\\backend\\src\\campus_assistant\\qa\\evidence.py",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "step2_code\\backend\\src\\campus_assistant\\qa\\deepseek.py",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "step2_code\\backend\\src\\campus_assistant\\retrieval\\service.py",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "step2_code\\backend\\scripts\\prepare-real-qa-smoke.py",
+      "pass": true
+    },
+    {
+      "kind": "run-1 copy",
+      "pass": true
+    }
+  ],
+  "count": 31,
+  "pass": true,
+  "raw_run_1": {
+    "key_present": false,
+    "external_http_attempts": 0,
+    "ask_calls": 0,
+    "question_keys": []
+  },
+  "boundary": "Hashes and stored preflight only; no live request, no current key-presence check"
+}

@@ -1,0 +1,17 @@
+这是 T040 B 阶段的待授权提示词，不是当前执行授权。T040 A revision1 已由 Astra 验收通过，不要重复 A。
+
+执行前提：用户另行明确批准本次公开真实资料四题、https://api.deepseek.com/chat/completions、deepseek-flash、最多4次HTTP尝试、每题至多1次、max_tokens=1500、timeout=30秒、零重试、首次技术失败即停，以及其另行给出的费用约束。未获得该新授权时，只读本提示词并停止；不要因复制本文件、旧T014/T025授权或本机已有密钥推定B已批准。Astra随后将以STATUS/工单发布B执行授权，未发布不执行。
+
+获新授权后使用工作区 F:\Collage Paper，项目 .venv Python；先读 CLAUDE/STATUS、原 T040任务、reviews/T040-R1.md、submissions/T040/live-smoke-plan.md 与 dry-run.json/input-hashes.json。A已通过；只续接授权B，不改A原件/题集/gold/冻结/产品/历史，不调参换题，不推进T041。
+
+目标：在现有真实 /ask→DeepSeekAnswerProvider 路径执行一次非常小的真实生成冒烟，核对生成与证据关系，不宣称校园准确率或可靠拒答。
+
+1. 在 scripts/ 新增最小 B 执行脚本，复用已有适配器与校验、原A准备的正式管线；不要削弱旧 live-smoke-deepseek.py 合成语料门，不改产品适配器。默认 dry-run，只有获授权后显式 live。少量本地 mock 验证计数/失败即停与前置不符零请求即可；mock不冒充真实服务，不跑大矩阵。
+2. 首次外部发送前核对实际解析的官方endpoint/model/1500/30秒（不以计划值冒充已解析值）、A输入SHA和本轮实际四题问题/条件/完整E证据/messages与已验收A材料一致。漂移则非零退出、零外部请求，报Astra，不临场换资料。只读取未来本地所需密钥且绝不打印，不读全量环境/配置文件；缺密钥明确失败不探测。若用户另给金额上限而无法可靠执行，先说明并停止，不把token次数伪装成金额限额。
+3. 题序固定 q08/q10/u03/u04，问题/条件/TopK=5/BM25不变。不将gold/候选/复核记录/全库/本机路径塞进模型messages，不用文件选择补证据。空证据本地短路不发送；有证据则每题至多一次HTTP，实际send处计数≤4，不用/ask条数推断尝试。无自动重试、无额外探测、首次HTTP/连接/超时/非法JSON/截断/结构校验等技术失败即停，未执行题标not_attempted；业务不足可继续下一题。
+4. 不启用Planner/ASR/向量/模板或答案修复循环；不用真实生成费用去调试脚本。实现本地验证后只在明确授权内运行live一次；失败原样保留，不自修重跑补预算。支持当前进程已有NO_PROXY配置，遇TLS错误记录失败，不能未经新授权再试一次。
+5. 新目录保存完整答案、实际E及出处、每题请求快照/messages身份、status/http成功/生成成功/业务不足/技术失败/实际HTTP次数/停止原因、provider真实审计（model/request_id/usage/finish_reason/latency/max_tokens；不可获得字段null并注明，不伪造）。密钥/Authorization/原始异常不入报告。不要覆盖A dry-run/input-hashes/核对表/历史证据。保留完整输出，摘要截短必须标截短。
+6. 逐段人工辅助核对“文本是否由所引用E实际支持”，仅合法E不算语义通过。q10保留两前提与比例，u03按来源30分钟条件；q08金标准原引缺口与u04无严格目标依据保持——合理不足不算失败；答出了gold却无发送证据支持，标为不受支持，不能用常识或未发送原文补证。语义评阅与用户原人工确认分开，不代签、不硬凑四题成功、不把小样本写成总体质量指标。
+7. 提交 revision2/相应B执行stage、responds_to=实际B工单，报告本地验证与真实运行严格分层，external_model_calls填真实次数。live_verified留待Astra认定，不自行置true。A revision1提交件先保全到新归档，输入/旧原件不覆盖，changed-files哈希实测。完成即停，不commit/push、不改Astra文件、不推进T041。
+
+聊天仅短摘要，详细证据小步落盘 continuation-progress，避免输出超限。无下载安装，无全量/UI/ASR/Agent/三模式/向量实验。本文件须与届时Astra发布的B工单及用户新授权一起使用。

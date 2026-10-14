@@ -1,0 +1,56 @@
+{
+  "task_id": "T039",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "human_review_status": "user_review_received_with_open_items",
+  "human_review_counts": {"确认": 109, "需修订": 3, "未确认": 2},
+  "summary": "T039 完成：①独立新题集 v2.0（dataset_id sicau-pilot-eval-v2，24 题/58 证据；标注先行）——仅实施四项已核实修订：u03 依 v1.2 核实日期改可答（gold=bed3ac/ebab438f[101:129] 完整前提引文，复用 q09 同事实源；db05e0 日期未知不入严格 gold；question_type=direct/missing=null）；u04 保持严格不足并注记可主动查看独立未核实候选；q08 仅 rationale 采纳简洁释义（引文「修改为」原样保留）；q10 仅 rationale 明确普通 50/50 与互评 40/10/50 为不同前提、不按年份断言 2016 废止（14 条 gold 不变）；u01/u02 保持不足+未确认。字段级 diff 意外漂移=0。②新冻结（五节 schema、实现 hash 取当前实际文件）+三模式基线（既有 evaluation.run 各一次，valid=true×3）：n=21 BM25 0.738/0.762/0.619、Dense 0.714/0.714/0.470、Hybrid 0.714/0.714/0.563；不足 3 题空检索率 0.000 独立分母。分表对照旧 T030（v1.1/v1.3 n=20）：差异=分母/准入/gold 修订，不称算法改善；共同子集 20×3=60 项排名与分数全部一致；u03 三模式 rank1/MRR 1.0；u04 正式命中≠合规依据。③review-supplement 四项（原意见→处置→逐字引用→模型辅助示例释义（非产品实时生成）→待确认；q10 两前提分列、u04 正式/候选两层）；T038-doc-errata（demo-notes 步骤 5：本科 18 份准入/正式 5 条命中/83eb 排除，非空搜索；浏览器证据归属 Astra）；README v1.2 运行命令+v1.1 历史边界；human-review-pending 过时表述修正。用户 109/3/2 与模板 33 项确认保留，新项不代确认。",
+  "verification": {
+    "annotations_first": "build-v2-questions：仅 6 题允许字段变更、意外漂移=0；契约 21/3；u03 逐源准入复核（bed3ac ✓/db05e0 排除）exit 0",
+    "freeze": "check-real-eval CHECK OK 24/58/37，exit 0；实现 hash=当前实际文件",
+    "baseline": "evaluation.run 三模式各一次 valid=true×3、exit 0×3（无 document_id/候选/生成/Agent）",
+    "aggregates": "aggregate.json 本轮重算；共同子集 60/60 排名与分数与 T030 一致；两例手算（u03/q10）",
+    "invariance": "旧输入/实验/用户意见 7/7 SHA 未变",
+    "scope_note": "未改产品算法/评分器/筛选/provider/页面；未跑 UI/ASR/Agent/全量/浏览器"
+  },
+  "results_summary": {
+    "k5_n21": {
+      "bm25": {"recall": 0.7380952380952381, "hit": 0.7619047619047619, "mrr": 0.6190476190476191},
+      "dense": {"recall": 0.7142857142857143, "hit": 0.7142857142857143, "mrr": 0.46984126984126984},
+      "hybrid": {"recall": 0.7142857142857143, "hit": 0.7142857142857143, "mrr": 0.5634920634920635}
+    },
+    "common_subset_n20": "与 T030 存储 60/60 一致（排名变化=无）",
+    "u03": "三模式 rank1、MRR 1.0（bed3ac 已准入源）",
+    "u04": "严格不足；正式命中≠合规依据；候选独立单列",
+    "insufficient_n3": "空检索率 0.000（非拒答率）",
+    "not_algorithm_improvement": "差异=分母/准入/gold 修订"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "evaluation-report.md",
+    "review-supplement.md",
+    "T038-doc-errata.md"
+  ],
+  "data_paths": {
+    "v2_dir": "data/evaluations/sicau-rag-pilot-eval-v2/（questions/annotation-check/gold-revisions/review-status/freeze/results/aggregate.json/field-diff.json）",
+    "helpers": "step2_code/backend/.cache/t039/（build-v2-questions / run-v2-baseline / aggregate-v2 脚本）"
+  },
+  "known_gaps": [
+    "新修订（u03 gold/q08/q10 说明/u04 注记）待定向人工复核；q10 废止主张待用户证据",
+    "非独立盲测/无显著性/小样本；不代表校园 QA 准确率或可靠拒答",
+    "示例释义为模型辅助示例（非产品实时生成）；学校现行性未认证"
+  ],
+  "not_claimed": [
+    "算法改善（差异含分母/准入/gold 修订）",
+    "校园准确率/可靠拒答/新盲测",
+    "DeepSeek 已生成正确回答",
+    "用户争议已关闭/导师认证"
+  ],
+  "workspace_note": "旧题集/实验/模板/用户意见/语料 v1.1 只读未改；产品算法/评分器未改；零外部调用、无下载/安装/commit/push"
+}

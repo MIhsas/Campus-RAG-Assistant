@@ -98,6 +98,19 @@ class SearchRequest(BaseModel):
         description="可选的用户明确选择的单份来源文件（T031）；null/未传=全部资料。"
         "只支持单文件，不从查询自动猜测；非法值返回 422",
     )
+    include_unknown_student_type: bool = Field(
+        default=True,
+        description="T043：是否将学生类型未标注资料纳入参考依据（正式 search/ask 默认开启，"
+        "可关闭回 strict）。仅影响 student_type 未知一个维度；已知类型冲突与 "
+        "campus/year/date 等其它检查保持；参考命中携带未核实状态说明。",
+    )
+
+    @field_validator("include_unknown_student_type", mode="before")
+    @classmethod
+    def validate_include_unknown(cls, v: Any) -> bool:
+        if isinstance(v, bool):
+            return v
+        raise ValueError("include_unknown_student_type 必须是布尔值")
 
     @field_validator("document_id", mode="before")
     @classmethod
@@ -181,6 +194,11 @@ class SearchHit(BaseModel):
     dense_rank: int | None = None
     bm25_score: float | None = None
     dense_score: float | None = None
+    student_type_status: str | None = Field(
+        default=None,
+        description="T043：仅参考纳入的学生类型未标注命中携带「学生类型未标注，适用范围尚未核实」；"
+        "普通命中为 null（旧协议）",
+    )
 
 
 class SearchStatusResponse(BaseModel):
@@ -232,6 +250,20 @@ class FilterSummary(BaseModel):
     )
     counting_rules: str = Field(description="各筛选计数的口径说明")
     notes: list[str] = Field(default_factory=list)
+    include_unknown_student_type: bool = Field(
+        default=False,
+        description="T043 本次请求的参考准入模式（false=旧 strict）",
+    )
+    unknown_student_type_document_ids: list[str] = Field(
+        default_factory=list,
+        description="以参考纳入的学生类型未标注文档（适用范围尚未核实，非适用性已确认）",
+    )
+    confirmed_count: int | None = Field(
+        default=None, description="学生类型已匹配的准入文档数"
+    )
+    reference_count: int | None = Field(
+        default=None, description="学生类型未标注、作为参考的文档数（不计为适用性已确认）"
+    )
 
 
 class SourceSelectionSummary(BaseModel):
@@ -296,6 +328,61 @@ class SearchResponse(BaseModel):
     )
     source_selection: SourceSelectionSummary | None = Field(
         default=None, description="来源选择摘要（与 filter_summary 四条件口径分开）"
+    )
+    include_unknown_student_type: bool = Field(
+        default=False,
+        description="回显本次实际准入模式（true=学生类型未标注资料可作参考；false=旧 strict）",
+    )
+    errors: list[dict[str, Any]]
+    request_id: str
+
+
+
+class CandidatesRequest(SearchRequest):
+    """T038: explicit uncertain-source candidate search.
+
+    Same query/mode/top_k/filters/document_id contract as /search (unknown
+    document_id = explicit 422). uncertainty_dimensions accepts only
+    'date' / 'student_type' (1-2 items); the request must have the
+    corresponding filter (as_of_date / student_type) for each dimension
+    actually used as a relaxation basis. Explicit request only — never runs
+    from status/startup/normal search/ask.
+    """
+
+    uncertainty_dimensions: list[str] = Field(
+        description="要查看的未核实维度：仅 date / student_type（可单项或两项）"
+    )
+
+
+class CandidateSearchHit(SearchHit):
+    """Hit enriched with the uncertainty actually unknown for its document."""
+
+    unknown_dimensions: list[str] = Field(default_factory=list)
+    uncertainty_note: str = ""
+
+
+class CandidateSummary(BaseModel):
+    document_total: int
+    strict_allowed_count: int
+    candidate_document_count: int
+    counting_rules: str
+
+
+class CandidatesResponse(BaseModel):
+    query: str
+    query_tokens: list[str]
+    mode: str
+    status: str
+    filters: SearchFilters | None = None
+    document_id: str | None = None
+    uncertainty_dimensions: list[str]
+    active_dimensions: list[str]
+    candidate_summary: CandidateSummary
+    hits: list[CandidateSearchHit]
+    disclaimer: str
+    include_unknown_student_type: bool = Field(
+        default=False,
+        description="回显本次候选去重所依据的准入模式（true=排除本次含参考的实际准入集合）",
     )
     errors: list[dict[str, Any]]
     request_id: str
@@ -448,6 +535,7 @@ def create_search_router() -> APIRouter:
             dense_index=request.app.state.dense_index,
             embedding_service=request.app.state.embedding_service,
             document_id=document_id,
+            include_unknown_student_type=body.include_unknown_student_type,
         )
 
         return {
@@ -462,8 +550,83 @@ def create_search_router() -> APIRouter:
             "filter_summary": result["filter_summary"],
             "document_id": document_id,
             "source_selection": result["source_selection"],
+            "include_unknown_student_type": body.include_unknown_student_type,
             "errors": request.app.state.search_errors,
             "request_id": request_id,
         }
+
+    @router.post(
+        "/candidates",
+        response_model=CandidatesResponse,
+        responses={
+            422: {"model": ErrorResponse, "description": "维度/条件/文档 ID 不合法"},
+            503: {"model": ErrorResponse, "description": "语料未配置或检索不可用"},
+        },
+    )
+    async def search_candidates(request: Request, body: CandidatesRequest) -> dict:
+        """T038: user-explicit read-only view of uncertain sources.
+
+        Candidates are re-checked independently per document and never mix
+        into strict results, ask evidence, generation messages or agent tools.
+        """
+        status = request.app.state.search_status
+        request_id = request.state.request_id
+        if status == "unconfigured":
+            return JSONResponse(status_code=503, content={
+                "code": "CORPUS_NOT_CONFIGURED", "message": "语料未配置", "request_id": request_id})
+        if status == "failed":
+            return JSONResponse(status_code=503, content={
+                "code": "SEARCH_UNAVAILABLE", "message": "检索不可用：索引构建失败", "request_id": request_id})
+        if body.mode not in request.app.state.available_modes:
+            return JSONResponse(status_code=503, content={
+                "code": "RETRIEVER_UNAVAILABLE",
+                "message": f"检索模式 {body.mode} 不可用", "request_id": request_id})
+
+        from campus_assistant.retrieval.filters import CandidateRequestError
+        from campus_assistant.retrieval.service import execute_candidates
+        from campus_assistant.retrieval.source_selection import (
+            SourceSelectionError, resolve_document_id)
+
+        try:
+            document_id = resolve_document_id(body.document_id, request.app.state.corpus_data or [])
+        except SourceSelectionError as e:
+            return JSONResponse(status_code=422, content={
+                "code": e.code, "message": str(e), "request_id": request_id})
+
+        try:
+            result = execute_candidates(
+                query=body.query,
+                mode=body.mode,
+                top_k=body.top_k,
+                filters_norm=body.filters.normalized() if body.filters else None,
+                document_id=document_id,
+                uncertainty_dimensions=body.uncertainty_dimensions,
+                documents=request.app.state.corpus_data or [],
+                bm25_index=request.app.state.search_index,
+                dense_index=request.app.state.dense_index,
+                embedding_service=request.app.state.embedding_service,
+                include_unknown_student_type=body.include_unknown_student_type,
+            )
+        except CandidateRequestError as e:
+            return JSONResponse(status_code=422, content={
+                "code": e.code, "message": str(e), "request_id": request_id})
+
+        return {
+            "query": body.query,
+            "query_tokens": result["query_tokens"],
+            "mode": body.mode,
+            "status": status,
+            "filters": body.filters,
+            "document_id": document_id,
+            "uncertainty_dimensions": result["uncertainty_dimensions"],
+            "active_dimensions": result["active_dimensions"],
+            "candidate_summary": result["candidate_summary"],
+            "hits": result["hits"],
+            "disclaimer": result["disclaimer"],
+            "include_unknown_student_type": body.include_unknown_student_type,
+            "errors": request.app.state.search_errors,
+            "request_id": request_id,
+        }
+
 
     return router

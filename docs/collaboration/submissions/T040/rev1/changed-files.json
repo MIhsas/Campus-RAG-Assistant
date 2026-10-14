@@ -1,0 +1,30 @@
+{
+  "note": "T040 A 阶段变更清单（submission_revision=1，stage=A_ready_for_review）。范围=本地预检脚本+少量业务测试+dry-run 材料/提交四件+delivery README 顶部纠偏。不改产品/提示/适配器/gold/冻结/results/aggregate/语料/模板/用户意见/历史证据/Astra 文件；git 全部脏文件为 T037—T039 累积修改，不列入本清单。哈希为落盘后实测全值；本清单不列自哈希。",
+  "new_code": [
+    {"path": "step2_code/backend/scripts/prepare-real-qa-smoke.py", "sha256": "8f0001d4a621854df0c85d715a5302e5877f5c45b89001d69110cfc718c77be2", "change": "T040 A 阶段本地预检/材料生成（仅 dry-run；导入前关三启用标志、显式 answer_provider=None、四题 extractive E 包、build_messages 未来材料、金标准离线对照、非空目录拒覆盖、失败非零退出；无 --live/付费分支）"},
+    {"path": "step2_code/backend/tests/test_prepare_real_qa_smoke.py", "sha256": "5356bb365de9bb590401b107579f1a6eb17e4279391de0a9587591430ada3d14", "change": "5 项必要业务回归：标志守卫/目录不覆盖/messages 一致+gold 拒入/零证据短路/合成语料小闭环+合成混入守卫"}
+  ],
+  "modified": [
+    {"path": "docs/delivery/README.md", "sha256": "a31a90337d99fde133e5d54122bc562e2cf8bb8965045f387a1a78703f349010", "change": "仅顶部纠偏：当前状态表指向 T038 真实包 v1.2、T039 基线与人工意见状态；T035 的 v1.1/T030/全未复核内容标注为历史快照（下方其余内容按 T035 原样，未扩写交付八件/论文）"}
+  ],
+  "submissions": [
+    {"path": "docs/collaboration/submissions/T040/report.md", "sha256": "7227cee3ec61443d0c6a14faa81d3f777c86d1d62d9f60745f7265113ff0d93a"},
+    {"path": "docs/collaboration/submissions/T040/verification.md", "sha256": "f83149685ecaeacc2378f0e9f2f9172cb25ec900a1fbfe491ce23b9faa1fae4f"},
+    {"path": "docs/collaboration/submissions/T040/submission.json", "sha256": "ada0beec9af8d79738b153881c6824e99d4644d952aab36b352a630fb8d32316"},
+    {"path": "docs/collaboration/submissions/T040/dry-run.json", "sha256": "31babb70e9312b62c1edd08d2e423f2fb4c2b8ff22a5a812d8c1a416e3ec49e1", "change": "四题实际请求/证据/跨度/来源/messages/检查/离线对照/计划（=raw 输出同哈希复制）"},
+    {"path": "docs/collaboration/submissions/T040/input-hashes.json", "sha256": "b9be154cefaa3acc42823b7b8a0c3783b33a7f346b3207394cfd7f3038a6bab1", "change": "输入/源文件/四题条目/系统提示 SHA 对照"},
+    {"path": "docs/collaboration/submissions/T040/generation-review-sheet.md", "sha256": "d417c9233f356ba1c6c09c8a0628d9719dc347fd16088e6e9f4bd44ccd18afcc", "change": "逐题人工核对表（四道标准+初值全待核对；链接 T039 四项补充）"},
+    {"path": "docs/collaboration/submissions/T040/live-smoke-plan.md", "sha256": "74ae1bb1a03bc5cfcff2b7cdfe8ae5abcc73d7d73021b3b78d73d8f459f977a8", "change": "未来 B 计划（≤4 次尝试/零证据短路/出站清单/不发送清单/记录要求；未执行未授权）"},
+    {"path": "docs/collaboration/submissions/T040/continuation-progress.md", "change": "执行日志（小步记录/命令/退出码）；提交前最后更新，不列哈希避免自指过期"}
+  ],
+  "raw_outputs": {
+    "dir": "step2_code/backend/.cache/real-qa-smoke/T040-A/",
+    "note": "脚本原始输出四件，与 submissions/T040/ 对应件同哈希；新目录、非空拒覆盖（复跑 exit 1 实证）；目录内文件哈希见上（dry-run/input-hashes/sheet/plan）"
+  },
+  "unchanged": [
+    "产品实现/生成提示/qa 适配器/筛选/评分器/旧冒烟脚本（含 live-smoke-deepseek.py）",
+    "gold/冻结/标注说明/results/aggregate（questions 4e39229e…/freeze 8c289b2a…/aggregate fcecdc9c… 身份未变）",
+    "语料/manifest（v1.2 b05c3755…）、模板、用户意见原件、历史证据、Astra 任务/评审/状态文件"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值；continuation-progress.md 为运行日志不列哈希；本清单自身不列自哈希。"
+}

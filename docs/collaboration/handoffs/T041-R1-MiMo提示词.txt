@@ -1,0 +1,18 @@
+你是MiMo执行者，Astra发布/审核。cwd F:\Collage Paper。
+当前唯一任务T041-R1两项文档口径修复，不推进T042。
+
+读docs/collaboration/STATUS.md、根CLAUDE.md、PROTOCOL.md、reviews/T041-R1.md、原tasks/T041-当前交付包与真实生成案例收尾.md及当前提交。Astra已确认13提交SHA/28链接、指标/四题照录/token/560秒等结构正确；不要重做这些验证或重跑实验。
+
+必修1（实验索引+答辩稿）：
+experiment-index开头共同局限/末尾实验间关系、defense-script第6节/问题1与8仍笼统说“人工未复核”。统一为“模型辅助编制；已收到用户逐项意见109确认/3需修订/2未确认，模板33项已确认；T039新改项与T040新答案待定向复核，非完整教师审定或盲评gold”。不抹掉已有意见，不代签开放项。历史表若保留实验运行时未复核，明确时点。
+
+必修2（证据矩阵）：
+§8称“T038—T041均无浏览器实操/历史归属T016—T023”错误。读取reviews/T038-R1.md与T038-browser/verification.md，按其真实范围保留T038浏览器主路径证据；其它历史浏览器只按各评审实际操作范围。T041本轮无新浏览器测试、T040无浏览器生成闭环证据仍保留，不能用本轮未测否定历史，也不扩大PASS。
+
+同批非阻断收紧（不用新测试）：README“其余部分T035原样”限历史快照；q08 gold缺口限本次T040 BM25正式证据包，不外推三模式；论文末尾接入路线标后续扩充参考（当前首批已接入）；runbook模板状态不能让人误以为没有真实2026模板，区分已接入/用户确认与学校现行性未认证。
+
+范围仅当前delivery涉及的文档与T041提交材料。改前保全当前九件文档到新archive-t041-rev1/，当前五件提交到submissions/T041/rev1/，既有archive/rev不覆盖。原archive-pre-t041保持，不重新构建或覆盖。数据/产品/脚本/语料/模板/gold/冻结/实验/用户记录/T040输出/Astra文件/docs01—04只读；原模型调用授权已结束，不读密钥/环境、不调用模型、不跑UI/浏览器/mock/产品套件/实验、不下载安装/commit/push。
+
+修完对九件正文作一次当前/历史口径扫查，只核对这两项历史依据、涉及链接和本轮修改SHA；已过的数字/原文/token/秒数/--help不重复。别把删除某个关键词当成语义正确，按当前/历史范围准确陈述。Astra自己的audit/输出不改不重写；语义最终由Astra复验，不写accepted。
+更新report/verification/fix-report/submission/changed-files，保留revision1，submission_revision=2/responds_to=T041-R1/status=ready_for_review/external_model_calls=0/planner_live_verified=false；T040 live_verified仅历史限定不变。
+提交后停止等Astra，不推进T042。

@@ -1,0 +1,522 @@
+{
+  "checks": [
+    {
+      "kind": "submission hash",
+      "label": "step2_code/backend/scripts/build-targeted-review-pack.py",
+      "pass": true
+    },
+    {
+      "kind": "submission hash",
+      "label": "step2_code/backend/scripts/targeted-review-pack.html",
+      "pass": true
+    },
+    {
+      "kind": "submission hash",
+      "label": "step2_code/backend/scripts/check-targeted-review-pack.cjs",
+      "pass": true
+    },
+    {
+      "kind": "submission hash",
+      "label": "step2_code/backend/tests/test_targeted_review_pack.py",
+      "pass": true
+    },
+    {
+      "kind": "submission hash",
+      "label": "docs/collaboration/submissions/T042/report.md",
+      "pass": true
+    },
+    {
+      "kind": "submission hash",
+      "label": "docs/collaboration/submissions/T042/verification.md",
+      "pass": true
+    },
+    {
+      "kind": "submission hash",
+      "label": "docs/collaboration/submissions/T042/submission.json",
+      "pass": true
+    },
+    {
+      "kind": "submission hash",
+      "label": "docs/collaboration/submissions/T042/demo-notes.md",
+      "pass": true
+    },
+    {
+      "kind": "submission hash",
+      "label": "docs/collaboration/submissions/T042/simulated-export-sample.json",
+      "pass": true
+    },
+    {
+      "kind": "submission hash",
+      "label": "docs/delivery/human-review-pending.md",
+      "pass": true
+    },
+    {
+      "kind": "pack hash",
+      "label": "review.html",
+      "pass": true
+    },
+    {
+      "kind": "independent rebuild",
+      "label": "review.html",
+      "pass": true
+    },
+    {
+      "kind": "pack hash",
+      "label": "pack.json",
+      "pass": true
+    },
+    {
+      "kind": "independent rebuild",
+      "label": "pack.json",
+      "pass": true
+    },
+    {
+      "kind": "pack hash",
+      "label": "README.md",
+      "pass": true
+    },
+    {
+      "kind": "independent rebuild",
+      "label": "README.md",
+      "pass": true
+    },
+    {
+      "kind": "scope",
+      "label": "8 separated IDs",
+      "pass": true
+    },
+    {
+      "kind": "scope",
+      "label": "unreviewed pack and counts",
+      "pass": true
+    },
+    {
+      "kind": "input identity",
+      "label": "questions",
+      "pass": true
+    },
+    {
+      "kind": "input identity",
+      "label": "manifest",
+      "pass": true
+    },
+    {
+      "kind": "input identity",
+      "label": "review_supplement",
+      "pass": true
+    },
+    {
+      "kind": "input identity",
+      "label": "live_answers_full",
+      "pass": true
+    },
+    {
+      "kind": "input identity",
+      "label": "casebook",
+      "pass": true
+    },
+    {
+      "kind": "input identity",
+      "label": "user_record",
+      "pass": true
+    },
+    {
+      "kind": "snapshot",
+      "label": "revision:q08",
+      "pass": true
+    },
+    {
+      "kind": "gold exact",
+      "label": "revision:q08",
+      "pass": true
+    },
+    {
+      "kind": "candidate label",
+      "label": "revision:q08",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:q08/gold",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:q08/gold",
+      "pass": true
+    },
+    {
+      "kind": "snapshot",
+      "label": "revision:q10",
+      "pass": true
+    },
+    {
+      "kind": "gold exact",
+      "label": "revision:q10",
+      "pass": true
+    },
+    {
+      "kind": "candidate label",
+      "label": "revision:q10",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:q10/gold",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:q10/gold",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:q10/gold",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:q10/gold",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:q10/gold",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:q10/gold",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:q10/gold",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:q10/gold",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:q10/gold",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:q10/gold",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:q10/gold",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:q10/gold",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:q10/gold",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:q10/gold",
+      "pass": true
+    },
+    {
+      "kind": "snapshot",
+      "label": "revision:u03",
+      "pass": true
+    },
+    {
+      "kind": "gold exact",
+      "label": "revision:u03",
+      "pass": true
+    },
+    {
+      "kind": "candidate label",
+      "label": "revision:u03",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:u03/gold",
+      "pass": true
+    },
+    {
+      "kind": "snapshot",
+      "label": "revision:u04",
+      "pass": true
+    },
+    {
+      "kind": "gold exact",
+      "label": "revision:u04",
+      "pass": true
+    },
+    {
+      "kind": "candidate label",
+      "label": "revision:u04",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:u04/candidate",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:u04/candidate",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "revision:u04/candidate",
+      "pass": true
+    },
+    {
+      "kind": "snapshot",
+      "label": "answer:q08",
+      "pass": true
+    },
+    {
+      "kind": "original answers",
+      "label": "answer:q08",
+      "pass": true
+    },
+    {
+      "kind": "sent exact",
+      "label": "answer:q08",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:q08/sent",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:q08/sent",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:q08/sent",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:q08/sent",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:q08/sent",
+      "pass": true
+    },
+    {
+      "kind": "snapshot",
+      "label": "answer:q10",
+      "pass": true
+    },
+    {
+      "kind": "original answers",
+      "label": "answer:q10",
+      "pass": true
+    },
+    {
+      "kind": "sent exact",
+      "label": "answer:q10",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:q10/sent",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:q10/sent",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:q10/sent",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:q10/sent",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:q10/sent",
+      "pass": true
+    },
+    {
+      "kind": "snapshot",
+      "label": "answer:u03",
+      "pass": true
+    },
+    {
+      "kind": "original answers",
+      "label": "answer:u03",
+      "pass": true
+    },
+    {
+      "kind": "sent exact",
+      "label": "answer:u03",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:u03/sent",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:u03/sent",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:u03/sent",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:u03/sent",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:u03/sent",
+      "pass": true
+    },
+    {
+      "kind": "snapshot",
+      "label": "answer:u04",
+      "pass": true
+    },
+    {
+      "kind": "original answers",
+      "label": "answer:u04",
+      "pass": true
+    },
+    {
+      "kind": "sent exact",
+      "label": "answer:u04",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:u04/sent",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:u04/sent",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:u04/sent",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:u04/sent",
+      "pass": true
+    },
+    {
+      "kind": "embedded span",
+      "label": "answer:u04/sent",
+      "pass": true
+    },
+    {
+      "kind": "reference counts",
+      "label": "17 gold /3 candidate/20 sent",
+      "pass": true
+    },
+    {
+      "kind": "html contains correct data",
+      "label": "embedded PACK equals pack.json",
+      "pass": true
+    },
+    {
+      "kind": "delivery preserved",
+      "label": "docs/delivery/experiment-index.md",
+      "pass": true
+    },
+    {
+      "kind": "delivery preserved",
+      "label": "docs/delivery/defense-script.md",
+      "pass": true
+    },
+    {
+      "kind": "delivery preserved",
+      "label": "docs/delivery/evidence-matrix.md",
+      "pass": true
+    },
+    {
+      "kind": "delivery preserved",
+      "label": "docs/delivery/README.md",
+      "pass": true
+    },
+    {
+      "kind": "delivery preserved",
+      "label": "docs/delivery/thesis-outline.md",
+      "pass": true
+    },
+    {
+      "kind": "delivery preserved",
+      "label": "docs/delivery/windows-runbook.md",
+      "pass": true
+    },
+    {
+      "kind": "delivery preserved",
+      "label": "docs/delivery/system-design.md",
+      "pass": true
+    },
+    {
+      "kind": "delivery preserved",
+      "label": "docs/delivery/generation-casebook.md",
+      "pass": true
+    },
+    {
+      "kind": "append only",
+      "label": "human-review-pending original prefix preserved",
+      "pass": true
+    },
+    {
+      "kind": "frozen",
+      "label": "data/evaluations/sicau-rag-pilot-eval-v2/freeze.json",
+      "pass": true
+    },
+    {
+      "kind": "frozen",
+      "label": "data/evaluations/sicau-rag-pilot-eval-v2/aggregate.json",
+      "pass": true
+    },
+    {
+      "kind": "mock sample only",
+      "label": "one answer:q10 change labelled simulated",
+      "pass": false
+    }
+  ],
+  "count": 102,
+  "reference_counts": {
+    "gold": 17,
+    "candidate": 3,
+    "sent": 20
+  },
+  "pass": false,
+  "boundary": "Independent rebuild validated40 citations against fresh real parser; this audit compares the outputs and identities. Page behavior is VM stub, not browser. Browser file URL was rejected by policy; no workaround attempted. No human opinions certified."
+}

@@ -1,0 +1,26 @@
+{
+  "fresh_parse_documents": 20,
+  "source_refs_verified": 17,
+  "q10_gold_refs_verified": 14,
+  "input_hash_checks": 4,
+  "historical_experiment_hash_checks": {
+    "data/evaluations/sicau-rag-source-selection-v1/experiment.json": "57b22f93bd1420faf276915c6425b3f8e8f9c978058935f8a1c69de39bd5c618",
+    "data/evaluations/sicau-rag-overlap-v1/experiment.json": "cef9f162f1eb164adbb65b1c9acc1634ee24e985edcc197fae09a6ac07dd2d95"
+  },
+  "u03_allowed": 4,
+  "u04_allowed": 18,
+  "unrestricted": 20,
+  "human_record_tally": {
+    "未复核": 0,
+    "确认": 109,
+    "需修订": 3,
+    "未确认": 2
+  },
+  "source_check_sha256": "579c13a6988f14dd122dff1e8d77749761e9a2c08cbe978756d30c843e71714f",
+  "not_verified": [
+    "policy current validity or revocation",
+    "human withdrawal of open opinions",
+    "browser behavior",
+    "candidate implementation"
+  ]
+}

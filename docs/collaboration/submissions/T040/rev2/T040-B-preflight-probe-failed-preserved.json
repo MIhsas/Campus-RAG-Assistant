@@ -1,0 +1,20 @@
+{
+  "level": "isolated mock; zero real network",
+  "checks": {
+    "nonempty_output_before_send": {
+      "identity_note": "A gate stubbed true to isolate output-check timing",
+      "mock_post_calls": 4,
+      "error": "输出目录非空，拒绝覆盖: F:\\Collage Paper\\docs\\collaboration\\reviews\\t040-output-659p2j3p\\existing",
+      "old_file_unchanged": true,
+      "new_audit_written": false,
+      "pass": false
+    },
+    "counter_matches_actual_send": {
+      "mock_post_calls": 0,
+      "reported_external_http_attempts": 1,
+      "first_outcome": "technical_failure",
+      "pass": false
+    }
+  },
+  "pass": false
+}

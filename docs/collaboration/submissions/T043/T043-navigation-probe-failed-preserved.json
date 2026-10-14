@@ -1,0 +1,72 @@
+{
+  "level": "DOM/fetch stub; real product scripts; no model calls",
+  "rows": [
+    {
+      "name": "search: URL restores checkbox",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "search: immediate reverse navigation keeps strict",
+      "expected": "0",
+      "actual": null,
+      "pass": false
+    },
+    {
+      "name": "search: explicit request preserves strict",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "search: submitted navigation ignores later control edits",
+      "expected": "0",
+      "actual": "0",
+      "pass": true
+    },
+    {
+      "name": "ask: URL restores checkbox",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "ask: immediate reverse navigation keeps strict",
+      "expected": "0",
+      "actual": null,
+      "pass": false
+    },
+    {
+      "name": "ask: explicit request preserves strict",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "ask: submitted navigation ignores later control edits",
+      "expected": "0",
+      "actual": "0",
+      "pass": true
+    },
+    {
+      "name": "old history restores without requests",
+      "expected": 1,
+      "actual": 1,
+      "pass": true
+    },
+    {
+      "name": "old history is labelled strict",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "name": "old history navigation uses historical strict",
+      "expected": "0",
+      "actual": "1",
+      "pass": false
+    }
+  ],
+  "failures": 3
+}

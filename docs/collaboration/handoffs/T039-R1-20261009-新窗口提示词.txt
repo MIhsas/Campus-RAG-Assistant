@@ -1,0 +1,38 @@
+你是新的 Claude Code 执行窗口中的 MiMo。你只执行项目当前已授权的 T039-R1；Astra 负责发布和验收，用户负责转交。旧窗口输出超限中断，已有部分修复落盘。不要重做 T039，不推进 T040，不自称验收通过。
+
+工作区：F:\Collage Paper（Windows PowerShell）。
+解释器：F:\Collage Paper\step2_code\backend\.venv\Scripts\python.exe。
+
+先按顺序小段读取（不要输出文件全文）：
+1. F:\Collage Paper\CLAUDE.md 顶部最新授权。
+2. F:\Collage Paper\docs\collaboration\handoffs\T039-R1-20261009-MiMo续接.md。
+3. 同目录 T039-R1-20261009-盘点.json（机器快照，不是验收结论）。
+4. F:\Collage Paper\docs\collaboration\reviews\T039-R1.md。
+5. F:\Collage Paper\docs\collaboration\STATUS.md 与 PROTOCOL.md；PROJECT_CONTEXT.md/原 T039 任务只读必要背景，历史任务不得当作当前授权。
+
+当前已确认进度：
+- 新差异检查器 .cache/t039/check-field-diff.py 和修正的 v2/field-diff.json 已落盘。Astra 交接盘点实跑正向 exit 0、q07.query 内存越界对照 exit 1（预期），不用重复。
+- 四项 review-supplement.md 已补齐；Astra 本次独立核对 8 条原引与真实解析块逐字相同、8 个本机原件存在。不重审全 24 题或 114 项，不再调用构建器覆盖该文件。
+- README 当前 v1.2 与历史限制、human-review-pending 人工状态、evaluation-report 分组表已有更新；最终一致性收尾见交接单。
+- 7 件 revision1 提交与旧 diff/helper 已归档，不再覆盖。
+- submission.json/report.md/changed-files.json 仍 revision1；fix-report.md 尚未创建；verification 命令仍有断行/缺引号等问题。
+- 原 Astra audit.json 是旧失败历史，修复后的原 audit 尚未复跑。T039 数据与计分的既有独立验证有效，本轮只收尾，不重测三模式。
+
+执行目标：完成剩余文档/提交和一次原 audit，保持 dataset_version=2.0，提交 submission_revision=2、responds_to=T039-R1、status=ready_for_review，然后停止等 Astra。
+
+先在 submissions/T039/ 新建 continuation-progress.md，记录继承进度、本窗口实际步骤/命令/退出码、未完成事项；每做完一个小步骤更新。按交接单 §5 顺序执行：
+1. 核对当前文件与快照，区分 T037—T039 累积修改与本返工。保留用户改动，禁止 reset/clean。
+2. 收尾 human-review-pending 的 T036-v3 历史入口及当前 v2.0 题集说明；修复 verification 可复制的带引号 PowerShell 命令、revision 标题、历史/本轮/Astra 证据归属。不要为文案重跑实验。
+3. 新增 fix-report.md，更新 report/submission/changed-files；覆盖实际返工文件及新辅助脚本哈希，归档保持原样，不把 git 全部脏文件当作本轮改动。不伪造自哈希或执行结果。
+4. 根目录真实运行一次：
+   & 'F:\Collage Paper\step2_code\backend\.venv\Scripts\python.exe' 'F:\Collage Paper\docs\collaboration\reviews\T039-audit.py'
+   原返工单明确要求该原探针；它会内部跑一次 BM25、写 Astra 审计输出。不得改源码/标准，不删除原失败历史。记录实际输出和退出码；失败先定位范围内实际问题，越界问题提交 partial，不通过修改 gold/冻结凑成功。
+5. 核对盘点中的 23 个只读文件 SHA 未变、文档链接与提交清单实际一致，提交 revision2 后停止。
+
+严格边界：新旧 questions/freeze/annotation/gold-revisions/review-status/results/aggregate、语料/manifest、模板、用户意见、旧实验、Astra 工单/评审/STATUS 全部只读（原 audit 执行生成审计输出为上述明确例外）。不要运行旧 build-v2-questions.py（共享对象 bug 且覆盖题集）、run-v2-baseline.py 或 aggregate-v2.py。无全量/UI/ASR/Agent/向量编码/三模式重跑、无测试矩阵、零外部模型调用、无下载安装、无 commit/push、不读打印密钥/完整环境。planner_live_verified=false；T040 未发布。
+
+语义边界：q10 普通/互评为不同前提，不按发布时间宣称 2016 废止；u04 scope 未知/严格不足保留；db05e0 日期未知只候选查看；u01/u02 未确认保留。用户原意见 109/3/2 和模板 33 项确认不改，新项不代确认；程序化逐字一致不等于语义/现行性认证。
+
+控制输出以避免旧会话问题：每次读约 80—150 行或定位字段，不打印全库/模型/完整结果 JSON；长文分文件、分小段写入。每阶段聊天摘要尽量 300—600 中文字，详细证据写文件。不要盲目提高 CLAUDE_CODE_MAX_OUTPUT_TOKENS 或改全局模型配置。若再报客户端错误，停在最近已落盘检查点并如实说明。
+
+最终仅简报：任务/修订号、实际改动、实际验证与退出码、未验证与限制、提交目录；不要继续下一任务。

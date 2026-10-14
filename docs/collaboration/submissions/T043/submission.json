@@ -1,0 +1,47 @@
+{
+  "task_id": "T043",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T043-R1",
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "summary": "T043-R1 前台导航上下文快照定向返工（submission_revision=2）：修复同一快照归属问题的两条因果链——①URL 恢复后未提交跨页丢问题/条件/开关（search 反向同样）；②旧 strict 历史显示正确但导航误带最近 reference 模式。修复=引入独立 navContext（当前显示上下文快照）：URL 恢复（含等待目录/选项）/提交结果/历史查看三处各自绑定并即时重建跨页链接（query/filters/document_id/include_unknown_student_type 完整），旧历史缺模式字段=当时 strict（false），查看历史零请求不重执行，控件编辑不改写旧结果导航；lastSubmitted 语义不变（重试/失败转摘录不受影响）；指定文件失效保留/目录延迟保护/候选绑定结果/默认 reference 不变。验证：两页行为桩 24/41 场景 exit 0（真实 checkbox 桩+新链：两方向 URL 恢复免提交跨页、历史导航 strict、改控件不改快照、提交/重试/转摘录/候选参数）；9 页 JS 语法 exit 0；Astra 导航探针原样运行 11/11 exit 0（修复前 3 失败；原失败记录保全 9374947e…；探针/标准未改、结果由原脚本自写）。revision 1 八件归档 rev1/；意见落档/两决定/后端参考准入（Astra 已通过）未动；confirmed_count 非阻断语义限定已记录。零模型调用、无真实浏览器（待 Astra 补验）。",
+  "verification": {
+    "behavior_stubs": "check-search-behavior 24 场景 / check-ask-behavior 41 场景，均 exit 0（真实 checkbox 桩；新链含两方向 URL 恢复免提交跨页、旧 strict 历史导航、控件编辑快照保护、新开关提交/重试/转摘录/候选参数）",
+    "js_syntax": "9 页 exit 0",
+    "astra_probe": "T043-navigation-probe.cjs 原样运行 11/11、failures=0、exit 0（修复前 3 失败/exit 1）；原失败记录保全 9374947e…；探针与通过标准未改",
+    "astra_prior": "revision 1 的 7+137 Python、34 项审计、真实浏览器参考链路——沿用不重跑",
+    "preservation": "rev1 八件归档；用户原件/casebook/gold/freeze/结果/指标/模型输出零写入；后端零改动",
+    "scope_note": "零模型调用/不读密钥/不 live/无 commit/push；无真实浏览器（URL 恢复与历史导航的浏览器复验待 Astra）"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "fix-report.md",
+    "submission.json",
+    "changed-files.json",
+    "review-disposition.md",
+    "api-demo.md",
+    "api-demo.json",
+    "demo-notes.md",
+    "T043-navigation-probe-failed-preserved.json",
+    "rev1/"
+  ],
+  "fix_scope": {
+    "pages": "static/search.html + static/ask.html（navContext 快照；三处绑定；导航重建）",
+    "stubs": "scripts/check-search-behavior.cjs + check-ask-behavior.cjs（真实 checkbox 桩+新链）",
+    "not_changed": "后端 filters/service/API/evidence/messages、意见落档、两决定实施、默认值（search/ask 默认 true、底层 strict）"
+  },
+  "known_gaps": [
+    "真实浏览器复验待 Astra（本窗口无浏览器工具）",
+    "confirmed_count 语义限定已记录，计数语义后续统一（未改后端）",
+    "模型质量/政策现行性未验证（保持）"
+  ],
+  "not_claimed": [
+    "浏览器实测",
+    "后端行为改变（本轮零后端改动）",
+    "人工政策认证/教师审定"
+  ],
+  "next_gate": "Astra 复验 revision 2（含浏览器补验）；T044 未发布"
+}

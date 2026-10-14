@@ -1,0 +1,18 @@
+你是MiMo执行者，Astra负责发布与审核。cwd F:\Collage Paper。
+T041 revision2已验收通过；当前唯一任务T042八项定向补充复核包，T043未发布。
+先读docs/collaboration/STATUS.md、PROTOCOL.md、根CLAUDE.md、reviews/T041-R2.md、tasks/T042-八项定向补充复核包.md，按完整工单执行。
+
+目标：提供一个离线小复核页，只含T039 q08/q10/u03/u04修订 + T040同四题历史真实结果，共8项；不让用户重审T036全部114项或模板33项。工具完成不等于人工复核完成。
+参考既有scripts/build-human-review-pack.py、human-review-pack.html、check-review-pack.cjs（T036成熟页面）；新增build-targeted-review-pack.py/targeted-review-pack.html及最少构建/JS行为检查，不改旧脚本/旧包/产品API/前台。不抽大框架、不装依赖。
+输出新目录backend/.cache/human-review/T042-v1/下review.html/pack.json/README.md；非空拒覆盖。只读输入v1.2真实包、v2.0题集、T039 review-supplement、T040原始live两件、T041casebook、用户原记录和评审。
+
+两分区8卡，稳定ID须分域（revision:q10与answer:q10分别存意见）。卡片显示原问题/条件、处置或原答案/不足理由、必要原文/定位与待确认点；原文和原答案不润色、不截半句。原块/相邻块可展开，不复制全库；程序化核对引用SHA/块/跨度/逐字，不改源输入补齐。
+q08修订gold和本次未命中该gold的模型证据不能混；q10两前提与P3推断突出、不能宣告2016废止；u03日期已核实但非现行性认证；u04未知范围候选不是实发E/严格答案依据。旧用户意见只读展示，不预填新意见。
+
+新8项全未复核；四档意见+说明，不全选通过、不自动保存、不fetch/localStorage/外部资源。导出新JSON含8个ID/对象类型/题号/意见/说明、输入版本与SHA、导出时间；签名/复核日期不预填。只汇总本次8项，不合并历史109/3/2、不改gold/模板/用户记录。不代签，提醒刷新关闭丢失未导出内容。
+
+验证只主链：构建8项与引用一致/原q10三段不变/全未复核；独立模拟仅answer:q10需修订+P3说明→导出，revision:q10和其余6项仍未复核、身份正确、源文件不变。模拟记录独立标模拟操作测试，不进默认包。保持NodeList真实形态与select原生语义；不需要新筛选就不加筛选矩阵。少量语法/聚焦测试即可，不跑产品/实验/模型/旧114项测试。
+有浏览器则实际打开/展开/改1项/导出；无工具如实桩级，demo-notes给Astra/用户短检查表，不假证据、不绕过拒绝。
+
+本任务零外部调用、不读密钥/环境、不调用ASR/向量/Planner、不安装下载/commit/push。所有产品/语料/模板/gold/冻结/实验/旧用户记录/T036包/T039/T040原始输出/Astra文件只读。旧模型授权已结束。
+提交submissions/T042四件+demo-notes，task_id=T042/task_revision=v1/submission_revision=1/status=ready_for_review/external_model_calls=0/human_review_status=unreviewed/planner_live_verified=false，清单实测SHA、分本轮/历史/未验证。完成后停止等Astra，不标accepted，不推进T043。

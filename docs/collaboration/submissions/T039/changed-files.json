@@ -1,0 +1,40 @@
+{
+  "note": "T039-R1 返工变更清单（submission_revision=2，responds_to=T039-R1）。范围=修复差异审计（共享对象缺陷）+ 四项可定位原文补充 + 文档/提交收尾 + 原 audit 复跑一次。不重跑三模式/向量/UI；不改 gold/冻结/结果/聚合/语料/模板/用户意见；dataset 2.0 不变。git 全部脏文件为 T037—T039 累积修改，不列入本清单。哈希为落盘后实测全值；本清单不列自哈希。",
+  "revision2_fixed": {
+    "diff_audit": {
+      "helper_new": {"path": "step2_code/backend/.cache/t039/check-field-diff.py", "sha256": "0ffcd66d1c65dc3272ba3641f55705c0c4c4b03e3a91697f01ae0ed5b2846ba4", "change": "新增只读差异检查器：旧/新题集独立加载（修复共享对象缺陷）、按字段允许集校验、--write 仅写派生清单、--inject-drift 内存负向对照"},
+      "field_diff": {"path": "data/evaluations/sicau-rag-pilot-eval-v2/field-diff.json", "sha256": "969036eea5d7ddd7a75e03fea6ac84734b434ec42e7e2731d93b1c8e7973158c", "change": "重生成派生清单：6 题非空差异（q08/q10=rationale,revision_note；u01/u02/u04=missing,rationale,revision_note；u03=answerable,evidence,missing,question_type,rationale,revision_note）、18 题无变更、query/conditions 全不变；正向 exit 0 / 隔离负向 exit 1（Astra 盘点实跑）"}
+    },
+    "review_supplement": {
+      "helper_new": {"path": "step2_code/backend/.cache/t039/build-review-supplement.py", "sha256": "bfd3a348ae2f8728c318611d02f92dba01966967408e333c12239b9aaf1a9f04", "change": "新增补充材料生成器：从冻结 gold 与真实解析块直接切片；本次续接未再运行"},
+      "supplement": {"path": "docs/collaboration/submissions/T039/review-supplement.md", "sha256": "d82f4c993b2c77709ed26f3442800398a3091e6500c2ec31817e9417537da367", "change": "q08/q10/u03/u04 四项补齐 query/条件、document_id/block_id/页码/跨度/本机路径与保留换行逐字原引；q10 两前提完整原引+上下文；u04 两页原文并列标未核实候选；Astra 比对 8/8 一致"}
+    }
+  },
+  "revision2_docs": [
+    {"path": "step2_code/backend/README.md", "sha256": "ccaeca3806ef8e0a2ee6026ddc437d95bcf1bbfdd6e5a3c6e575807d2d326ea5", "change": "当前包 v1.2、v1.1 历史边界、旧实验 OR/冻结限制改历史说明（旧窗口更新；本窗口只读核对）"},
+    {"path": "docs/delivery/human-review-pending.md", "sha256": "852a9517b277140c2309d3126cc540623726c0b3404fc7537e0659f957b3dce0", "change": "本窗口收尾：§0 收窄为 T036 首次意见对应历史包、§1 区分历史 v1.3/当前 v2.0 题集；顶部/§2/§5 统一口径（旧窗口）"},
+    {"path": "docs/collaboration/submissions/T039/evaluation-report.md", "sha256": "a8524325f852c336302af53a905d51514cc70c8efa480e35b00eb376cb4b1c5b", "change": "分组表填已存 aggregate 实际值（旧窗口）；本窗口对照 aggregate.json 核对一致未改"},
+    {"path": "docs/collaboration/submissions/T039/verification.md", "sha256": "889d9e3d15e172b37f4b98574b6069444f3375a995babfd713e5e94390fbd4d4", "change": "命令修复为可复制 PowerShell（转义损坏/缺引号）；bm25|dense|hybrid 改按 mode 各一次模板；revision 2 标题；历史/Astra 盘点/新窗口三层证据归属；写入 audit 复跑实测"},
+    {"path": "docs/collaboration/submissions/T039/fix-report.md", "sha256": "86f269ec63de228f755c56ff2571ab012952d6f203c4a421d69292ec89b5dd8e", "change": "新增：两项 P2 根因/修复/证据层级/归档/限制"},
+    {"path": "docs/collaboration/submissions/T039/report.md", "sha256": "964ba518083e88e9b7289644e7b6b853588bff3a97c0042c33ec55157115b8f3", "change": "revision 2 报告：返工说明、失效的『意外漂移=0』表述更正、验证摘要收尾"},
+    {"path": "docs/collaboration/submissions/T039/submission.json", "sha256": "7a198242c4500f281230c445ad08b9582598750e0ccccbd38398ca3b8ca3f7aa", "change": "submission_revision=2、responds_to=T039-R1、status=ready_for_review"},
+    {"path": "docs/collaboration/submissions/T039/T039-audit-rev1-failed-preserved.json", "sha256": "41f043a2e069da806662d5f6ee2d7972611345ac2aafcc77cddb3ba97b4f6f4a", "change": "新增：revision 1 失败审计输出保全副本（探针覆盖写前复制，逐字节一致；旧失败历史不删）"},
+    {"path": "docs/collaboration/submissions/T039/continuation-progress.md", "change": "新增：新窗口续接执行日志（继承进度/命令/退出码/未完成事项）。日志文件于提交前最后更新，不列哈希避免自指过期"}
+  ],
+  "probe_outputs": {
+    "note": "原返工单明确要求的 audit 复跑例外写入（Astra 审计输出）；探针源码/判据未改。旧失败输出已保全于上表",
+    "audit_json": {"path": "docs/collaboration/reviews/T039-audit.json", "sha256": "53e6f4592956a654b424b533199d288da5cc1f51d1bed656a23fc9977b61e962", "status": "ok（exit 0；72 rows/60 common/36 group/24 fresh BM25；SUBMITTED DIFF MISMATCHES=0）"},
+    "bm25_fresh": {"path": "docs/collaboration/reviews/T039-bm25-fresh.json", "sha256": "049973d4eea8aa321cce7ba4cfdf1d020948022d5fac7eeb16ad14826d7c89d6", "change": "探针内部一次 BM25 全 24 题与已存结果逐行一致；未覆盖 results/"}
+  },
+  "unchanged_readonly_identity": {
+    "v2_questions": "4e39229eb3b31dc9ccd5dc157e2d63203514ce70069450adca6b78c24b65c103",
+    "v2_freeze": "8c289b2ae7f00b39be80f02f850cf2820d8cc6de90f6f7245c634ddd2a9b5a26",
+    "v2_aggregate": "fcecdc9c884a55cdcf80870131326991f56a30a7b0cf9b9969ad54d4ae7af747",
+    "note": "38 项（23 只读+8 部分成果+7 归档）对照 handoffs/T039-R1-20261009-盘点.json SHA256 drift_or_missing=0；两标注说明/results 全部/语料 manifest/模板/用户意见/旧实验/旧题集只读未改"
+  },
+  "archives_untouched": [
+    "docs/collaboration/submissions/T039/rev1/（revision 1 七件，保持原样）",
+    "step2_code/backend/.cache/t039/archive-r1/（旧 diff 清单与原构建脚本，build-v2-questions.py 保留历史原件不运行）"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值；continuation-progress.md 为运行日志不列哈希；本清单自身不列自哈希。"
+}

@@ -1,0 +1,33 @@
+{
+  "note": "T041-R1 变更清单（submission_revision=2，responds_to=T041-R1）。范围=六件交付文档口径修复 + 本提交材料。不改数据/产品/脚本/语料/模板/gold/冻结/实验/用户记录/T040 输出/Astra 文件/docs01—04；零外部调用。哈希为落盘后实测全值；本清单不列自哈希。",
+  "delivery_modified": [
+    {"path": "docs/delivery/experiment-index.md", "sha256": "7949627417c31ce52d33265781284f2167e06600708a232dcb00ad8e0afe052c", "change": "必修1：开头共同局限与末尾实验间关系人工口径统一；E1 历史表与历史分表加「实验运行时点」标注；同批 E4 q08 缺口限定本次 T040 BM25 正式证据包"},
+    {"path": "docs/delivery/defense-script.md", "sha256": "911df941900015800e6e2041b06b5715a18a42462ea36b979d3f949cd4be05d2", "change": "必修1：§6 讲解与常见问题 1/8 三处人工口径统一"},
+    {"path": "docs/delivery/evidence-matrix.md", "sha256": "623045cc4f146a35e111e19b3287d6c5d540315b01a6667fabc0b4c422836764", "change": "必修2：§8 浏览器行按各评审实际范围改写（T038 主路径 7 项操作+依据链接；T029/T031/T032/T033 并列；T041 无新实操/T040 无闭环保留）；§4 待办行归属修正（T032-R1/T033-R1）"},
+    {"path": "docs/delivery/README.md", "sha256": "52240b078537339b3ae35b4d5954539415420650a175e003c11695dbd3702713", "change": "同批：「按 T035 原样」限定为历史快照段落"},
+    {"path": "docs/delivery/thesis-outline.md", "sha256": "e36314c0e8bbfb5172f6b1d7aabe5df662da31e571e9d72bd4f77bc1a414f590", "change": "同批：表 6-5 q08 缺口限定本次 T040 BM25 正式证据包；末节改题为后续扩充参考（首批已接入）"},
+    {"path": "docs/delivery/windows-runbook.md", "sha256": "ac927d462e5841ed39803c435e0250818ba53b233684e6338d806033be6c3c24", "change": "同批：§6 模板行区分 2026 真实模板 1.2 已接入+用户确认 33 项 与 学校政策现行性未认证"}
+  ],
+  "delivery_unchanged": [
+    {"path": "docs/delivery/system-design.md", "sha256": "bca58be93c0cc9d6d1334fc2d1ec3c1db03cc147bda3786f7191c21f527a1712"},
+    {"path": "docs/delivery/human-review-pending.md", "sha256": "b16a4fab19b0d0bbe53adbf200b4cbfb7c87180f8a23d7ba7a17e6b8d15829f1"},
+    {"path": "docs/delivery/generation-casebook.md", "sha256": "6ef5215d190d694d47bd4780e73f947049c8eb275aac491fa9ec480be05c11c8", "change": "本轮未改（与 rev1 归档一致）"}
+  ],
+  "archives": [
+    {"path": "docs/delivery/archive-t041-rev1/", "change": "改前九件原字节（新目录）"},
+    {"path": "docs/collaboration/submissions/T041/rev1/", "change": "revision 1 五件（新目录）；archive-pre-t041-20261011/ 与既有 archive/rev 未覆盖"}
+  ],
+  "submissions": [
+    {"path": "docs/collaboration/submissions/T041/report.md", "sha256": "79546b6668806211c93375f20bef8550947d2334bbaaa047b7a05804618a8500"},
+    {"path": "docs/collaboration/submissions/T041/verification.md", "sha256": "0b9351a12764d7032a6d3bad9212a611665952e99e32dc147ca8beff04fe373b"},
+    {"path": "docs/collaboration/submissions/T041/fix-report.md", "sha256": "6f93d0bec9d3bd6fa45d9ee665be65d0e3c4c0bdb3bd6cd2b6d736bac395d18c", "change": "新增：两项根因/修复/依据与同批收紧"},
+    {"path": "docs/collaboration/submissions/T041/submission.json", "sha256": "5bc8b72c3c17b6cd74a1bfb58871772df5f80303081e6dbc51041b1f2193263f", "change": "submission_revision=2、responds_to=T041-R1、status=ready_for_review"},
+    {"path": "docs/collaboration/submissions/T041/changed-files.json", "change": "本清单（不列自哈希）"},
+    {"path": "docs/collaboration/submissions/T041/t041-verify.json", "change": "revision 1 核对产物，保留原样（rev1/ 内有副本）"}
+  ],
+  "unchanged": [
+    "数据/产品/脚本/语料/模板/gold/冻结/实验/用户记录/T040 输出/Astra 文件/docs01—04",
+    "已通过验证项（指标/四题原文/token/560 秒/--help/结构矩阵）未重跑未改动"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值；本清单自身不列自哈希。"
+}

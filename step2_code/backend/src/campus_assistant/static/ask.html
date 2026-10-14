@@ -114,6 +114,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     <select id="filter-admission-year" aria-label="入学年份"><option value="">不限</option></select>
     <label for="filter-as-of-date">查询日期</label>
     <input type="date" id="filter-as-of-date" aria-label="查询日期">
+    <label class="filter-label" for="include-unknown-type" title="开启后，学生类型未标注的资料作为参考纳入正式依据并标注「适用范围尚未核实」；关闭回到严格准入"><input type="checkbox" id="include-unknown-type" checked> 纳入学生类型未标注资料（参考）</label>
     <button type="button" class="filter-clear-btn" id="clear-filters-btn">清除条件</button>
   </div>
   <div class="filter-bar" id="source-bar">
@@ -145,6 +146,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
   <div id="transcript-area"></div>
   <div id="status-area"></div>
   <div id="results-area"></div>
+  <div id="candidate-area"></div>
   <div class="history-bar" id="history-bar">
     <label for="history-toggle"><input type="checkbox" id="history-toggle"> 在本机保存历史</label>
     <span class="ev-budget" id="history-privacy">仅保存在此浏览器本机，不是学校账户记录。</span>
@@ -188,6 +190,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
   var lastSubmittedFilters = null;
   var lastSubmittedAnswerMode = 'extractive';
   var lastSubmittedDocumentId = null;
+  var lastSubmittedIncludeUnknown = true; // T043：提交时快照（默认开；旧历史缺字段=当时 strict）
+  var includeUnknownEl = document.getElementById('include-unknown-type');
+  // T043-R1：导航使用「当前显示上下文」快照——URL 恢复/提交结果/历史查看各自绑定；
+  // 不随控件编辑变化，也不影响重试/转摘录的 lastSubmitted 原请求快照。
+  var navContext = { query: '', filters: null, documentId: null, includeUnknown: true };
   var selectedMode = 'bm25';
   var availableModes = [];
   var lastFilterOptionsJson = '';
@@ -573,14 +580,30 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
         ? ('指定文件：' + entry.document_id)
         : (('source_selection' in (entry.result || {}) || 'document_id' in (entry.result || {})) ? '全部资料' : '全部资料（旧记录未含来源选择）');
       item.appendChild(ce('span', 'h-meta', '保存于 ' + entry.saved_at + '　条件：' + filtersText(entry.filters) + '　来源：' + srcLabel));
+      // T043：旧历史缺字段=当时 strict，不按新准入重解释历史结果
+      item.appendChild(ce('span', 'h-tag', ('include_unknown_student_type' in entry) && entry.include_unknown_student_type
+        ? '参考准入（学生类型未标注）' : '严格准入（当时）'));
       if(entry.document_id && sourceCatalog.length &&
          !sourceCatalog.some(function(e){ return e.document_id === entry.document_id; })){
         item.appendChild(ce('span', 'h-tag', '所选来源已不在当前目录（失效提示；恢复仅本地显示，不会按全部资料执行）'));
       }
       var viewBtn = ce('button', '', '查看');
       viewBtn.addEventListener('click', function(){
-        // 本地恢复：仅渲染，不发任何请求，不调用模型
-        renderResult(entry.result, entry.query, entry.mode, entry.answer_mode, {fromHistory: entry.saved_at});
+        // 本地恢复：仅渲染，不发任何请求，不调用模型。
+        // T043-R1：历史查看绑定该条自己的完整快照（缺模式字段=当时 strict），
+        // 导航不再误用最近一次请求的准入模式。
+        renderResult(entry.result, entry.query, entry.mode, entry.answer_mode, {
+          fromHistory: entry.saved_at,
+          nav: {
+            query: entry.query,
+            filters: entry.filters || null,
+            documentId: entry.document_id || null,
+            includeUnknown: ('include_unknown_student_type' in entry)
+              ? !!entry.include_unknown_student_type
+              : ((entry.result && 'include_unknown_student_type' in entry.result)
+                  ? !!entry.result.include_unknown_student_type : false)
+          }
+        });
       });
       var delBtn = ce('button', '', '删除');
       delBtn.addEventListener('click', function(){
@@ -606,6 +629,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
       filters: d.filters || null,
       document_id: (d.source_selection && d.source_selection.selected) ? d.source_selection.document_id : (d.document_id || null),
       answer_mode: answerMode,
+      include_unknown_student_type: ('include_unknown_student_type' in d) ? !!d.include_unknown_student_type : lastSubmittedIncludeUnknown,
       status: d.status,
       result: d
     };
@@ -734,7 +758,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     input.disabled = on;
   }
 
-  async function doAsk(answerMode, query, topK, mode, filters, documentId){
+  async function doAsk(answerMode, query, topK, mode, filters, documentId, includeUnknown){
     if(busy) return;
     if(query === undefined) query = input.value;
     if(topK === undefined) topK = 5;
@@ -742,6 +766,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     if(filters === undefined) filters = currentFilters();
     if(answerMode === undefined) answerMode = 'extractive';
     if(documentId === undefined) documentId = currentDocumentId();
+    if(includeUnknown === undefined) includeUnknown = includeUnknownEl ? includeUnknownEl.checked : true;
     askSeq++;
     var mySeq = askSeq;
     if(!query.trim()){
@@ -756,16 +781,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
       resultsArea.appendChild(ce('div','empty-state', blocked));
       return;
     }
-    // Submit-time snapshot: query/mode/filters/answer_mode/document_id.
+    // Submit-time snapshot: query/mode/filters/answer_mode/document_id/include_unknown_student_type.
     lastSubmittedQuery = query;
     lastSubmittedMode = mode;
     lastSubmittedFilters = filters;
     lastSubmittedAnswerMode = answerMode;
     lastSubmittedDocumentId = documentId;
+    lastSubmittedIncludeUnknown = includeUnknown;
+    // T043-R1：本次提交成为当前显示上下文（导航按此快照，不随控件后续编辑变化）
+    navContext = { query: query, filters: filters, documentId: documentId, includeUnknown: !!includeUnknown };
+    clearCandidates(); // 新正式请求清空旧候选
     setBusy(true);
     resultsArea.innerHTML = '';
     resultsArea.appendChild(ce('div','loading', busyText(answerMode)));
-    await executeAsk(query, topK, mode, filters, answerMode, mySeq, lastSubmittedDocumentId);
+    await executeAsk(query, topK, mode, filters, answerMode, mySeq, lastSubmittedDocumentId, lastSubmittedIncludeUnknown);
     if(mySeq === askSeq) setBusy(false);
     updateNavLinks();
   }
@@ -777,23 +806,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     setBusy(true);
     resultsArea.innerHTML = '';
     resultsArea.appendChild(ce('div','loading', busyText(lastSubmittedAnswerMode)));
-    // Retry uses the submitted snapshot (incl. source selection) — never the edited controls.
-    executeAsk(lastSubmittedQuery, 5, lastSubmittedMode, lastSubmittedFilters, lastSubmittedAnswerMode, mySeq, lastSubmittedDocumentId).then(function(){
+    // Retry uses the submitted snapshot (incl. source selection & 新开关) — never the edited controls.
+    executeAsk(lastSubmittedQuery, 5, lastSubmittedMode, lastSubmittedFilters, lastSubmittedAnswerMode, mySeq, lastSubmittedDocumentId, lastSubmittedIncludeUnknown).then(function(){
       if(mySeq === askSeq) setBusy(false);
     });
   }
 
-  // 生成失败后：用失败请求的查询/筛选/来源快照走 extractive，不调用模型、不丢条件。
+  // 生成失败后：用失败请求的查询/筛选/来源/开关快照走 extractive，不调用模型、不丢条件。
   function viewEvidenceForLastRequest(){
     if(busy) return;
-    doAsk('extractive', lastSubmittedQuery, 5, lastSubmittedMode, lastSubmittedFilters, lastSubmittedDocumentId);
+    doAsk('extractive', lastSubmittedQuery, 5, lastSubmittedMode, lastSubmittedFilters, lastSubmittedDocumentId, lastSubmittedIncludeUnknown);
   }
 
-  async function executeAsk(query, topK, mode, filters, answerMode, mySeq, documentId){
+  async function executeAsk(query, topK, mode, filters, answerMode, mySeq, documentId, includeUnknown){
     try {
       var body = {query: query, top_k: topK, mode: mode, answer_mode: answerMode};
       if(hasFilter(filters)) body.filters = filters;
       if(documentId) body.document_id = documentId;
+      body.include_unknown_student_type = !!includeUnknown;
       var r = await fetch(ASK_API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
       if(mySeq !== askSeq) return;
       if(!r.ok){
@@ -847,6 +877,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     lines.push('问题：' + d.query);
     lines.push('条件：' + filtersText(d.filters));
     lines.push('来源：' + sourceScopeText(d));
+    lines.push('准入模式：' + (('include_unknown_student_type' in d)
+      ? (d.include_unknown_student_type ? '参考准入（含学生类型未标注资料）' : '严格准入')
+      : '严格准入（旧记录未含模式字段）'));
     if(d.status === 'generated' && d.answer && d.answer.paragraphs){
       lines.push('说明：' + (d.disclaimer || ''));
       d.answer.paragraphs.forEach(function(p){
@@ -861,6 +894,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     (d.evidence || []).forEach(function(ev){
       lines.push('');
       lines.push('【' + ev.evidence_id + '】' + (ev.title || ev.document_id));
+      if(ev.student_type_status) lines.push('（' + ev.student_type_status + '）');
       var meta = [];
       if(ev.version_label) meta.push('版本：' + ev.version_label);
       meta.push('适用范围：' + scopeText(ev.scope));
@@ -900,6 +934,141 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     card.classList.add('highlight');
   }
 
+  // ---- T038: 显式候选查看（独立区；仅用户点击才请求；绑定正式结果快照）----
+  var candidateArea = document.getElementById('candidate-area');
+  var candidateSeq = 0;
+  var candidateSnapshot = null;
+
+  function clearCandidates(){
+    candidateSeq++;          // 旧异步响应作废
+    candidateSnapshot = null;
+    if(candidateArea) candidateArea.innerHTML = '';
+  }
+
+  function candidateHitCard(h){
+    var div = ce('div', 'ev-card');
+    var chunk = h.chunk || {};
+    var meta = chunk.metadata || {};
+    var unk = (h.unknown_dimensions || []).join('、');
+    var h4 = ce('div', 'ev-title');
+    h4.textContent = (meta.title || chunk.document_id || '') + (meta.version_label ? '（' + meta.version_label + '）' : '');
+    div.appendChild(h4);
+    var scopeVals = (meta.scope && (meta.scope.student_type || []).length) ? meta.scope.student_type.join('、') : '未标注（含本科与否未核实）';
+    div.appendChild(ce('div', 'unspecified',
+      '未核实维度：' + (unk || '未知') + '　' + (h.uncertainty_note || '') + '　来源适用范围：' + scopeVals));
+    var loc = (chunk.locator && chunk.locator.type === 'pdf_page') ? ('PDF 第 ' + chunk.locator.page + ' 页') : (chunk.locator ? JSON.stringify(chunk.locator) : '未知定位');
+    div.appendChild(ce('div', 'ev-meta', '定位：' + loc));
+    div.appendChild(ce('div', 'ev-text', chunk.text || ''));
+    var a = ce('a');
+    a.href = h.preview_url || ('/preview#' + chunk.document_id + '/' + chunk.block_id);
+    a.textContent = '查看原文';
+    div.appendChild(a);
+    return div;
+  }
+
+  function renderCandidatePanel(d, query, mode, documentId){
+    if(!candidateArea) return;
+    clearCandidates();
+    if(!d) return;
+    candidateSnapshot = {
+      query: query, mode: mode, topK: 5,
+      filters: d.filters || null,
+      documentId: documentId || null,
+      // T043：候选按本次正式结果 snapshot 的准入模式去重（不重复显示已准入文档）；
+      // 旧记录缺字段=当时 strict，不用新准入重解释历史
+      includeUnknown: ('include_unknown_student_type' in d) ? !!d.include_unknown_student_type : false
+    };
+    var wrap = ce('div', 'disclaimer');
+    wrap.appendChild(ce('b', '', '查看未核实资料（独立候选）'));
+    wrap.appendChild(document.createTextNode(
+      '　候选未通过所选日期或学生类型条件核实，仅供原文核对，不作为已确认适用的答案依据；不并入正式证据/自动答案/待办保存。'));
+    var f = candidateSnapshot.filters || {};
+    var row = ce('div');
+    var cbDate = document.createElement('input');
+    cbDate.type = 'checkbox';
+    cbDate.disabled = !f.as_of_date;
+    var lbDate = document.createElement('label');
+    lbDate.textContent = f.as_of_date ? '日期未核实（本结果筛选：查询日期=' + f.as_of_date + '）' : '日期未核实（本结果未使用日期筛选，不可选）';
+    row.appendChild(cbDate); row.appendChild(lbDate);
+    row.appendChild(document.createTextNode('　'));
+    var cbType = document.createElement('input');
+    cbType.type = 'checkbox';
+    cbType.disabled = !f.student_type;
+    var lbType = document.createElement('label');
+    lbType.textContent = f.student_type ? '学生类型未核实（本结果筛选：类型=' + f.student_type + '）' : '学生类型未核实（本结果未使用类型筛选，不可选）';
+    row.appendChild(cbType); row.appendChild(lbType);
+    wrap.appendChild(row);
+    var btnC = ce('button', 'filter-clear-btn', '查看候选原文');
+    var out = ce('div');
+    btnC.addEventListener('click', function(){
+      var dims = [];
+      if(!cbDate.disabled && cbDate.checked) dims.push('date');
+      if(!cbType.disabled && cbType.checked) dims.push('student_type');
+      if(!dims.length){
+        out.innerHTML = '';
+        out.appendChild(ce('div', 'empty-state', '请先勾选与本结果筛选对应的未核实维度。'));
+        return;
+      }
+      fetchCandidates(dims, out);
+    });
+    wrap.appendChild(btnC);
+    wrap.appendChild(out);
+    candidateArea.appendChild(wrap);
+  }
+
+  async function fetchCandidates(dims, out){
+    if(!candidateSnapshot) return;
+    candidateSeq++;
+    var mySeq = candidateSeq;
+    out.innerHTML = '';
+    out.appendChild(ce('div', 'loading', '候选加载中…'));
+    try {
+      var body = {
+        query: candidateSnapshot.query, mode: candidateSnapshot.mode,
+        top_k: candidateSnapshot.topK, uncertainty_dimensions: dims,
+        include_unknown_student_type: !!candidateSnapshot.includeUnknown
+      };
+      if(hasFilter(candidateSnapshot.filters)) body.filters = candidateSnapshot.filters;
+      if(candidateSnapshot.documentId) body.document_id = candidateSnapshot.documentId;
+      var r = await fetch('/api/v1/search/candidates', {
+        method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)
+      });
+      if(mySeq !== candidateSeq) return; // 旧响应不得挂到新结果
+      out.innerHTML = '';
+      if(!r.ok){
+        var msg = '候选加载失败（正式结果不受影响）';
+        try { var ej = await r.json(); if(ej && ej.message) msg = '候选加载失败：' + ej.message; } catch(e2){}
+        if(mySeq !== candidateSeq) return;
+        out.appendChild(ce('div', 'empty-state', msg));
+        var rb = ce('button', 'retry-btn', '按候选快照重试');
+        rb.addEventListener('click', function(){ fetchCandidates(dims, out); });
+        out.appendChild(rb);
+        return;
+      }
+      var cd = await r.json();
+      if(mySeq !== candidateSeq) return;
+      out.appendChild(ce('div', 'disclaimer', cd.disclaimer || ''));
+      out.appendChild(ce('div', 'ev-meta',
+        '候选快照：查询「' + cd.query + '」　条件：' + filtersText(cd.filters) +
+        '　来源：' + (cd.document_id ? ('指定文件 ' + cd.document_id.slice(0, 8) + '…') : '全部资料') +
+        '　维度：' + (cd.uncertainty_dimensions || []).join('、')));
+      if(!cd.hits || cd.hits.length === 0){
+        out.appendChild(ce('div', 'empty-state', '当前条件下没有这些未核实候选资料（不代表学校无规定）。'));
+        return;
+      }
+      out.appendChild(ce('div', 'ev-meta',
+        '候选文档 ' + (cd.candidate_summary ? cd.candidate_summary.candidate_document_count : '?') + ' 份（严格准入 ' +
+        (cd.candidate_summary ? cd.candidate_summary.strict_allowed_count : '?') + ' 份已排除）'));
+      (cd.hits || []).forEach(function(h){ out.appendChild(candidateHitCard(h)); });
+    } catch(e){
+      if(mySeq !== candidateSeq) return;
+      out.innerHTML = '';
+      out.appendChild(ce('div', 'empty-state', '候选加载失败：网络错误（正式结果不受影响）'));
+      var rb = ce('button', 'retry-btn', '按候选快照重试');
+      rb.addEventListener('click', function(){ fetchCandidates(dims, out); });
+      out.appendChild(rb);
+    }
+  }
   // T033: 相关事项入口渲染（候选=配置模板关键词∩本结果 query；来源集合约束）
   function renderRelatedEntry(d, query, opts){
     opts = opts || {};
@@ -966,11 +1135,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     resultsArea.innerHTML = '';
     var hitCount = (d.evidence && d.evidence.length) || 0;
     // Snapshot of the submitted request — later control edits don't rewrite it.
+    var admissionLabel = ('include_unknown_student_type' in d)
+      ? (d.include_unknown_student_type ? '参考准入（含学生类型未标注资料）' : '严格准入')
+      : '严格准入（旧记录未含模式字段，按当时 strict 显示）';
     var ql = ce('div', 'query-label',
       '问题：' + query + '　模式：' + ({bm25:'关键词',dense:'语义',hybrid:'混合'}[mode]||mode) +
       '　方式：' + (answerMode === 'generated' ? '生成答案' : '原文摘录') +
       '　条件：' + filtersText(d.filters) + '　来源：' + sourceScopeText(d) + '　证据：' + hitCount + ' 条');
     resultsArea.appendChild(ql);
+    resultsArea.appendChild(ce('div', 'disclaimer', '准入模式（快照）：' + admissionLabel));
 
     if(d.source_selection && d.source_selection.selected){
       var ssN = (d.source_selection.notes || []).slice();
@@ -984,6 +1157,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
       resultsArea.appendChild(ce('div', 'history-banner',
         '历史结果，资料可能已更新（保存于 ' + opts.fromHistory + '）。如需最新结果请重新提问；查看历史不会发出任何请求。'));
     }
+    // T043-R1：历史/指定结果显示时把导航绑定到该显示上下文（含准入模式）
+    if(opts.nav){
+      navContext = opts.nav;
+      updateNavLinks();
+    }
 
     // T033: 相关办事事项入口——按配置模板关键词+来源集合确定；链接携带本条
     // 结果的问题/四条件快照（非当前控件）；目录晚到由 loadProceduresConfigured 补渲染。
@@ -992,6 +1170,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     lastResultView = { d: d, query: query, opts: opts || {} };
     var relNode = renderRelatedEntry(d, query, opts);
     if(relNode) relatedHost.appendChild(relNode);
+    renderCandidatePanel(d, query, mode, d.document_id); // T038：绑定正式结果快照（含历史恢复），不自动请求
 
     if(d.status === 'generated'){
       resultsArea.appendChild(ce('div', 'answer-mode-label label-generated', '自动生成（需人工核对适用条件与语义支持）'));
@@ -1066,6 +1245,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
       titleEl.textContent = ev.title || ev.document_id;
       if(ev.is_synthetic) titleEl.appendChild(ce('span', 'synthetic-badge', '合成测试资料'));
       card.appendChild(titleEl);
+      // T043：参考证据固定状态说明（普通证据无此字段=旧协议）
+      if(ev.student_type_status){
+        card.appendChild(ce('div', 'disclaimer', '⚠ ' + ev.student_type_status + '（参考依据，非适用性确认）'));
+      }
       var metaLine = [];
       if(ev.version_label) metaLine.push('版本：' + ev.version_label);
       if(ev.locator && ev.locator.type === 'pdf_page') metaLine.push('PDF 第 ' + ev.locator.page + ' 页');
@@ -1325,15 +1508,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
   // /ask→/search 互跳携带查询条件时，来源选择一并一致（用提交快照）
   function updateNavLinks(){
     if(!searchNav) return;
+    // T043-R1：导航链接按「当前显示上下文」快照重建（URL 恢复/历史查看后无需
+    // 提交即可原样跨页；控件编辑/后续请求不改写旧上下文导航）。
+    var ctx = navContext;
     var parts = [];
-    if(lastSubmittedQuery) parts.push('query=' + encodeURIComponent(lastSubmittedQuery));
-    if(lastSubmittedFilters && hasFilter(lastSubmittedFilters)){
-      if(lastSubmittedFilters.campus) parts.push('campus=' + encodeURIComponent(lastSubmittedFilters.campus));
-      if(lastSubmittedFilters.student_type) parts.push('student_type=' + encodeURIComponent(lastSubmittedFilters.student_type));
-      if(lastSubmittedFilters.admission_year !== null && lastSubmittedFilters.admission_year !== undefined) parts.push('admission_year=' + encodeURIComponent(lastSubmittedFilters.admission_year));
-      if(lastSubmittedFilters.as_of_date) parts.push('as_of_date=' + encodeURIComponent(lastSubmittedFilters.as_of_date));
+    if(ctx.query) parts.push('query=' + encodeURIComponent(ctx.query));
+    if(ctx.filters && hasFilter(ctx.filters)){
+      if(ctx.filters.campus) parts.push('campus=' + encodeURIComponent(ctx.filters.campus));
+      if(ctx.filters.student_type) parts.push('student_type=' + encodeURIComponent(ctx.filters.student_type));
+      if(ctx.filters.admission_year !== null && ctx.filters.admission_year !== undefined) parts.push('admission_year=' + encodeURIComponent(ctx.filters.admission_year));
+      if(ctx.filters.as_of_date) parts.push('as_of_date=' + encodeURIComponent(ctx.filters.as_of_date));
     }
-    if(lastSubmittedDocumentId) parts.push('document_id=' + encodeURIComponent(lastSubmittedDocumentId));
+    if(ctx.documentId) parts.push('document_id=' + encodeURIComponent(ctx.documentId));
+    parts.push('include_unknown_type=' + (ctx.includeUnknown ? '1' : '0'));
     searchNav.href = '/search' + (parts.length ? '?' + parts.join('&') : '');
   }
   historyToggle.addEventListener('change', function(){ renderHistoryNote(); });
@@ -1372,6 +1559,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     sourceDocSel.disabled = false;
     updateSourceHint();
   }
+  // T043：跨页携带准入开关（缺省=页面默认开；新请求可切换）
+  if(initParams.include_unknown_type !== undefined && includeUnknownEl){
+    includeUnknownEl.checked = initParams.include_unknown_type !== '0';
+  }
+  // T043-R1：URL 恢复建立导航上下文（含等待选项/目录期间），无需提交即可原样跨页
+  navContext = {
+    query: initParams.query || '',
+    filters: restorePending.filters,
+    documentId: initParams.document_id || null,
+    includeUnknown: initParams.include_unknown_type === undefined
+      ? true
+      : initParams.include_unknown_type !== '0'
+  };
+  updateNavLinks();
   renderHistoryNote();
   renderHistory();
   loadStatus();

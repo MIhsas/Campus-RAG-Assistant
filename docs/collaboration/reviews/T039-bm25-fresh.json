@@ -1,0 +1,2402 @@
+{
+  "schema_version": "1.0",
+  "evaluator_version": "1.0",
+  "valid": true,
+  "dataset_id": "sicau-pilot-eval-v2",
+  "dataset_version": "2.0",
+  "split": "dev",
+  "is_synthetic": false,
+  "retriever_version": "1.0",
+  "tokenizer_version": "cjk_bigram_ascii_v1",
+  "chunker_version": "1.0",
+  "parser_version": "1.0",
+  "mode": "bm25",
+  "model": null,
+  "embedding_model_id": null,
+  "embedding_model_revision": null,
+  "truncated_chunk_count": null,
+  "truncation_note": null,
+  "embedding_normalization": null,
+  "query_prefix": null,
+  "rrf_k": null,
+  "parameters": {
+    "max_chars": 500,
+    "k1": 1.5,
+    "b": 0.75,
+    "top_k": 5
+  },
+  "question_count": 24,
+  "answerable_count": 21,
+  "unanswerable_count": 3,
+  "manifest_sha256": "b05c37557675f02c045e01e9fd776c539954c43172d5e0b07d0704da4e352b4a",
+  "questions_sha256": "4e39229eb3b31dc9ccd5dc157e2d63203514ce70069450adca6b78c24b65c103",
+  "corpus_documents": [
+    {
+      "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+      "sha256": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76"
+    },
+    {
+      "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+      "sha256": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93"
+    },
+    {
+      "document_id": "d4d3092195ed4cf325b57d76d70e674dc9989293116a58e4694579a07f09b2cc",
+      "sha256": "d4d3092195ed4cf325b57d76d70e674dc9989293116a58e4694579a07f09b2cc"
+    },
+    {
+      "document_id": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6",
+      "sha256": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6"
+    },
+    {
+      "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+      "sha256": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31"
+    },
+    {
+      "document_id": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9",
+      "sha256": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9"
+    },
+    {
+      "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+      "sha256": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a"
+    },
+    {
+      "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+      "sha256": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd"
+    },
+    {
+      "document_id": "83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31",
+      "sha256": "83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31"
+    },
+    {
+      "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+      "sha256": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e"
+    },
+    {
+      "document_id": "68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06",
+      "sha256": "68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06"
+    },
+    {
+      "document_id": "db05e0cab194beeee9d4017458f26df2c14aefb8e250293d0e539c350477dc75",
+      "sha256": "db05e0cab194beeee9d4017458f26df2c14aefb8e250293d0e539c350477dc75"
+    },
+    {
+      "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+      "sha256": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f"
+    },
+    {
+      "document_id": "06815fdadca1dca19c65295667f712a4288876139dfc9493d2deb55cb826f2d8",
+      "sha256": "06815fdadca1dca19c65295667f712a4288876139dfc9493d2deb55cb826f2d8"
+    },
+    {
+      "document_id": "df04ebec20b8bfe7a4ff062b4b51233f13f73ed457d8997a5ce3c4a40e8de5da",
+      "sha256": "df04ebec20b8bfe7a4ff062b4b51233f13f73ed457d8997a5ce3c4a40e8de5da"
+    },
+    {
+      "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+      "sha256": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816"
+    },
+    {
+      "document_id": "858406369942a287d8042aa9f2ef1383ea26f4f61ef25e362a191e78f706d17f",
+      "sha256": "858406369942a287d8042aa9f2ef1383ea26f4f61ef25e362a191e78f706d17f"
+    },
+    {
+      "document_id": "57c0945c4b4ff808ed989667c658d9b8eb5b8ed62b8f2bbd2411374329d80959",
+      "sha256": "57c0945c4b4ff808ed989667c658d9b8eb5b8ed62b8f2bbd2411374329d80959"
+    },
+    {
+      "document_id": "55e0ddd6861b91a76b28245dab4325ec779435affa05f2807304f6832158ab92",
+      "sha256": "55e0ddd6861b91a76b28245dab4325ec779435affa05f2807304f6832158ab92"
+    },
+    {
+      "document_id": "92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719",
+      "sha256": "92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719"
+    }
+  ],
+  "authoring_note": "事实依据来自真实文档（data/corpora/sicau-rag-pilot-v1.2，20 份，is_synthetic=false）。题目与标注由 MiMo（执行模型辅助）编制/修订；用户首次人工意见已收到（109 确认/3 需修订/2 未确认，记录 data/reviews/T036-user-review-20261008/human-review-record.json），本轮按已核实意见做定向修订，新修订尚待定向人工复核（既非全未人工复核，也不是完整教师 gold）。开发集：非随机学生问题、非独立盲测。v2.0 相对 T030 v1.3 的定向修订（见 gold-revisions.md）：u03 依 v1.2 核实日期改可答；u04 保持严格不足并注记用户可主动查看独立未核实候选；q08 采纳简洁释义（引文“修改为”字样原样保留）；q10 说明普通/互评为不同前提、不按年份断言 2016 文件废止。其余题目 query/conditions/gold 引文与事实组逐字继承 v1.3。同 fact_id=同一事实可替代来源（OR，各源独立完整支持），不同 fact_id=不同必要事实（AND）。",
+  "metrics_semantics": "fact_group_or_v1.1",
+  "recall_definition": "evidence_recall = 被完整覆盖的必要事实数 / 必要事实总数（同 fact_id 的可替代来源组内 OR；不同 fact_id 组间 AND；未标 fact_id 的旧数据等价于逐证据口径）",
+  "summary": {
+    "evidence_recall": 0.7380952380952381,
+    "hit": 0.7619047619047619,
+    "mrr": 0.6190476190476191,
+    "answerable_count": 21,
+    "unanswerable_count": 3,
+    "empty_result_rate": 0.0
+  },
+  "summary_by_type": {
+    "direct": {
+      "evidence_recall": 0.875,
+      "hit": 0.875,
+      "mrr": 0.875,
+      "answerable_count": 8,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 8,
+      "question_ids": [
+        "q01",
+        "q02",
+        "q05",
+        "q06",
+        "q09",
+        "q19",
+        "q20",
+        "u03"
+      ]
+    },
+    "version_constrained": {
+      "evidence_recall": 0.5714285714285714,
+      "hit": 0.5714285714285714,
+      "mrr": 0.3095238095238095,
+      "answerable_count": 7,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 7,
+      "question_ids": [
+        "q03",
+        "q04",
+        "q14",
+        "q15",
+        "q16",
+        "q17",
+        "q18"
+      ]
+    },
+    "paraphrase": {
+      "evidence_recall": 0.5,
+      "hit": 0.5,
+      "mrr": 0.25,
+      "answerable_count": 2,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 2,
+      "question_ids": [
+        "q07",
+        "q08"
+      ]
+    },
+    "multi_fact": {
+      "evidence_recall": 0.875,
+      "hit": 1.0,
+      "mrr": 0.8333333333333334,
+      "answerable_count": 4,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 4,
+      "question_ids": [
+        "q10",
+        "q11",
+        "q12",
+        "q13"
+      ]
+    },
+    "unanswerable": {
+      "evidence_recall": null,
+      "hit": null,
+      "mrr": null,
+      "answerable_count": 0,
+      "unanswerable_count": 3,
+      "empty_result_rate": 0.0,
+      "question_count": 3,
+      "question_ids": [
+        "u01",
+        "u02",
+        "u04"
+      ]
+    }
+  },
+  "summary_by_filter_group": {
+    "no_filter": {
+      "evidence_recall": 0.725,
+      "hit": 0.75,
+      "mrr": 0.6,
+      "answerable_count": 20,
+      "unanswerable_count": 2,
+      "empty_result_rate": 0.0,
+      "question_count": 22,
+      "question_ids": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08",
+        "q09",
+        "q10",
+        "q11",
+        "q12",
+        "q13",
+        "q14",
+        "q15",
+        "q16",
+        "q17",
+        "q18",
+        "q19",
+        "q20",
+        "u01",
+        "u02"
+      ]
+    },
+    "gp-filter-asof-entry|filtered": {
+      "evidence_recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "answerable_count": 1,
+      "unanswerable_count": 0,
+      "empty_result_rate": null,
+      "question_count": 1,
+      "question_ids": [
+        "u03"
+      ]
+    },
+    "gp-filter-studenttype-xueji|filtered": {
+      "evidence_recall": null,
+      "hit": null,
+      "mrr": null,
+      "answerable_count": 0,
+      "unanswerable_count": 1,
+      "empty_result_rate": 0.0,
+      "question_count": 1,
+      "question_ids": [
+        "u04"
+      ]
+    }
+  },
+  "timing_seconds": {
+    "note": "仅记录本轮单次运行的分段耗时（索引构建/查询），非统计稳定性能，不作速度结论",
+    "index_build_bm25": 0.1718,
+    "index_build_dense": null,
+    "query_total": 0.1097,
+    "query_scope": "24 题串行查询（含编码查询向量的耗时）"
+  },
+  "per_question": [
+    {
+      "question_id": "q01",
+      "query": "初修课程缓考成绩最高按多少分记载？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 50.28775425962045,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "0476dada43618364",
+          "chunk_id": "05c0d50925d883ebc16690e68802ceb2af55e525ff63d64c851e449ba754616c",
+          "char_start": 0,
+          "char_end": 426,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/0476dada43618364"
+        },
+        {
+          "rank": 2,
+          "score": 45.2738637463264,
+          "document_id": "68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06",
+          "block_id": "8a790c05ff004510",
+          "chunk_id": "1ebae76fbd81abebcc37ca187d4dc762633bde0100f5e9be6ce9228a58452e0f",
+          "char_start": 0,
+          "char_end": 364,
+          "preview_url": "/preview#68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06/8a790c05ff004510"
+        },
+        {
+          "rank": 3,
+          "score": 44.4783892583252,
+          "document_id": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9",
+          "block_id": "4bc986e4ba15ca0c",
+          "chunk_id": "e15545e8e5195716219acc2d171c65a8c412fbaa7bd90b8061453ab3ec8133ba",
+          "char_start": 0,
+          "char_end": 483,
+          "preview_url": "/preview#cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9/4bc986e4ba15ca0c"
+        },
+        {
+          "rank": 4,
+          "score": 43.833993172357125,
+          "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+          "block_id": "76e08b7bafb2f601",
+          "chunk_id": "35f3875bab175d6d7b9657b1851d57794afc64e827b73a3c08e32717d7e6f9f1",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/76e08b7bafb2f601"
+        },
+        {
+          "rank": 5,
+          "score": 43.27098678700767,
+          "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+          "block_id": "9de19468b7427552",
+          "chunk_id": "dce6466a44089b3343693da7742e802ca26404999bbd7de8dbe86b878fd9cea7",
+          "char_start": 0,
+          "char_end": 460,
+          "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/9de19468b7427552"
+        }
+      ],
+      "gold_count": 5,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1",
+            "f1-s2",
+            "f1-s3",
+            "f1-s4",
+            "f1-s5"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "f1-s1",
+        "f1-s2",
+        "f1-s3",
+        "f1-s4",
+        "f1-s5"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "direct",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "直述数字（初修限定）：初修课程缓考成绩最高记 85 分。五源各自完整表述该上限（OR）；68fb 分节（一缓考课程/二初修补考/三不合格再修）结构表明其一节为初修缓考口径（三节另述再修缓考按初修方法）；bed3ac/6e12/cc25/bb8b 明示「初修课程缓考后」。重修缓考 65 分另属其他规定，不并入本题。",
+      "missing": null
+    },
+    {
+      "question_id": "q02",
+      "query": "初修课程补考成绩最高按多少分记载？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 50.50684949867693,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "0476dada43618364",
+          "chunk_id": "05c0d50925d883ebc16690e68802ceb2af55e525ff63d64c851e449ba754616c",
+          "char_start": 0,
+          "char_end": 426,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/0476dada43618364"
+        },
+        {
+          "rank": 2,
+          "score": 47.42478233505433,
+          "document_id": "68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06",
+          "block_id": "8a790c05ff004510",
+          "chunk_id": "1ebae76fbd81abebcc37ca187d4dc762633bde0100f5e9be6ce9228a58452e0f",
+          "char_start": 0,
+          "char_end": 364,
+          "preview_url": "/preview#68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06/8a790c05ff004510"
+        },
+        {
+          "rank": 3,
+          "score": 41.59980666670117,
+          "document_id": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9",
+          "block_id": "4bc986e4ba15ca0c",
+          "chunk_id": "e15545e8e5195716219acc2d171c65a8c412fbaa7bd90b8061453ab3ec8133ba",
+          "char_start": 0,
+          "char_end": 483,
+          "preview_url": "/preview#cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9/4bc986e4ba15ca0c"
+        },
+        {
+          "rank": 4,
+          "score": 41.05354279715495,
+          "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+          "block_id": "76e08b7bafb2f601",
+          "chunk_id": "35f3875bab175d6d7b9657b1851d57794afc64e827b73a3c08e32717d7e6f9f1",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/76e08b7bafb2f601"
+        },
+        {
+          "rank": 5,
+          "score": 39.132646081382035,
+          "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+          "block_id": "9de19468b7427552",
+          "chunk_id": "dce6466a44089b3343693da7742e802ca26404999bbd7de8dbe86b878fd9cea7",
+          "char_start": 0,
+          "char_end": 460,
+          "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/9de19468b7427552"
+        }
+      ],
+      "gold_count": 5,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1",
+            "f1-s2",
+            "f1-s3",
+            "f1-s4",
+            "f1-s5"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "f1-s1",
+        "f1-s2",
+        "f1-s3",
+        "f1-s4",
+        "f1-s5"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "direct",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "直述数字（初修限定）：初修补考成绩最高记 75 分。五源各自完整（OR）；重修补考 60 分另属其他规定不并入。",
+      "missing": null
+    },
+    {
+      "question_id": "q03",
+      "query": "《本科课程考试管理办法（校教发〔2019〕7号）》规定缓考申请须经过哪几级审批？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 43.35181128646693,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "347b2fb11c789997",
+          "chunk_id": "d3d347decf7f9ef1b0d2864be4732049a9aefdbeaaf5e32322a35dcae95c7824",
+          "char_start": 0,
+          "char_end": 10,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/347b2fb11c789997"
+        },
+        {
+          "rank": 2,
+          "score": 36.97626467357067,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "dd0de8b5cfdfb2a4",
+          "chunk_id": "6285f778624f320ee3a2090602b04fdf34cbc7f0deea5ab9e6c95202c30f4a92",
+          "char_start": 0,
+          "char_end": 169,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/dd0de8b5cfdfb2a4"
+        },
+        {
+          "rank": 3,
+          "score": 35.06726975574375,
+          "document_id": "68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06",
+          "block_id": "8a790c05ff004510",
+          "chunk_id": "1ebae76fbd81abebcc37ca187d4dc762633bde0100f5e9be6ce9228a58452e0f",
+          "char_start": 0,
+          "char_end": 364,
+          "preview_url": "/preview#68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06/8a790c05ff004510"
+        },
+        {
+          "rank": 4,
+          "score": 34.733072442768375,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "4996f164478e88c0",
+          "chunk_id": "bbc62dce5ded972ba28f6a30851de8da7a88648600a0f37021531277c6d7f5da",
+          "char_start": 0,
+          "char_end": 11,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/4996f164478e88c0"
+        },
+        {
+          "rank": 5,
+          "score": 30.276521689828684,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "e56dd8918dc5a429",
+          "chunk_id": "9529b9ed75080b29946180da0d4928100a4ed17f966549d9f8dbe75fd288c8d4",
+          "char_start": 0,
+          "char_end": 241,
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/e56dd8918dc5a429"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 0,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1"
+          ],
+          "covered": false
+        }
+      ],
+      "covered_evidence_ids": [],
+      "recall": 0.0,
+      "hit": 0.0,
+      "mrr": 0.0,
+      "returned_count": 5,
+      "question_type": "version_constrained",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "指定版本（校教发〔2019〕7号）：三级审批链（任课教师同意→学院审核→教务处审批）。版本消歧：bb8b（2025 版）为「经任课教师和教务处审批通过」两级表述，与三级链实质冲突，不并入；c0ccb/6e12/cc25 亦为三级表述但属其他版本，不作本版 gold。",
+      "missing": null
+    },
+    {
+      "question_id": "q04",
+      "query": "《本科课程考试管理办法（校教发〔2019〕7号）》规定缓考申请原因仅限于哪几类？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 43.35181128646693,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "347b2fb11c789997",
+          "chunk_id": "d3d347decf7f9ef1b0d2864be4732049a9aefdbeaaf5e32322a35dcae95c7824",
+          "char_start": 0,
+          "char_end": 10,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/347b2fb11c789997"
+        },
+        {
+          "rank": 2,
+          "score": 36.97626467357067,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "dd0de8b5cfdfb2a4",
+          "chunk_id": "6285f778624f320ee3a2090602b04fdf34cbc7f0deea5ab9e6c95202c30f4a92",
+          "char_start": 0,
+          "char_end": 169,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/dd0de8b5cfdfb2a4"
+        },
+        {
+          "rank": 3,
+          "score": 35.205326134880075,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "69af59761fb93844",
+          "chunk_id": "349caa290e58e36e37419ee07d3c8faa33d7e520ac023ee09e04e64253d90136",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/69af59761fb93844"
+        },
+        {
+          "rank": 4,
+          "score": 35.06726975574375,
+          "document_id": "68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06",
+          "block_id": "8a790c05ff004510",
+          "chunk_id": "1ebae76fbd81abebcc37ca187d4dc762633bde0100f5e9be6ce9228a58452e0f",
+          "char_start": 0,
+          "char_end": 364,
+          "preview_url": "/preview#68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06/8a790c05ff004510"
+        },
+        {
+          "rank": 5,
+          "score": 34.733072442768375,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "4996f164478e88c0",
+          "chunk_id": "bbc62dce5ded972ba28f6a30851de8da7a88648600a0f37021531277c6d7f5da",
+          "char_start": 0,
+          "char_end": 11,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/4996f164478e88c0"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "f1-s1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.3333333333333333,
+      "returned_count": 5,
+      "question_type": "version_constrained",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "指定版本（校教发〔2019〕7号）：四类限定原因（闭集，含证明材料要求）。版本消歧：bb8b（2025）「严重伤病、役前训练等不可抗力」为开集表述、c0ccb/6e12/cc25「严重伤病等不可抗力」同为开集——闭集 vs 开集实质冲突，不并入。",
+      "missing": null
+    },
+    {
+      "question_id": "q05",
+      "query": "本科毕业论文（设计）应在答辩前多久交答辩小组？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 47.67318711769273,
+          "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+          "block_id": "842680f7b649e005",
+          "chunk_id": "41949a326ec0b183958aafad7b6d300a042482be3fea3326d109f38ba90abd1b",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816/842680f7b649e005"
+        },
+        {
+          "rank": 2,
+          "score": 46.54733352474337,
+          "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+          "block_id": "a6e7cb5f1538e074",
+          "chunk_id": "8545b7c301f831a3c759b5ac817543236bf426a19b5b7c34f024829c823e25f9",
+          "char_start": 0,
+          "char_end": 185,
+          "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/a6e7cb5f1538e074"
+        },
+        {
+          "rank": 3,
+          "score": 42.454035877533116,
+          "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+          "block_id": "a7824b29ba7a3900",
+          "chunk_id": "34e889b63e250a35c62381b20496a8adc9d032b513787bfafed38499ff562d69",
+          "char_start": 500,
+          "char_end": 1000,
+          "preview_url": "/preview#287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816/a7824b29ba7a3900"
+        },
+        {
+          "rank": 4,
+          "score": 37.74074701830045,
+          "document_id": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9",
+          "block_id": "7270f8a8a8ce482c",
+          "chunk_id": "2273ad3a0010ee170423a3e42cc522ec0e3c36d29bcfb8d2d8aa17be4d9c0dc4",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9/7270f8a8a8ce482c"
+        },
+        {
+          "rank": 5,
+          "score": 36.67576561465108,
+          "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+          "block_id": "4d3161ce5333e6cc",
+          "chunk_id": "5f87e9dcc0bd21692793dd636debfb3f57d6c492815c360ab0ed08feb0b5e692",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/4d3161ce5333e6cc"
+        }
+      ],
+      "gold_count": 5,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1",
+            "f1-s2",
+            "f1-s3",
+            "f1-s4",
+            "f1-s5"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "f1-s1",
+        "f1-s2",
+        "f1-s3",
+        "f1-s5"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "direct",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "直述时限：答辩前一周/1 周交答辩小组（评阅）。五源同一时限事实各自完整（OR）；cc25/bb8b 的「答辩前提交」缺周数限定，表述不完整不作源。",
+      "missing": null
+    },
+    {
+      "question_id": "q06",
+      "query": "学籍基本信息有误需要更正时，学生本人去哪里办理？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 41.834724058113125,
+          "document_id": "83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31",
+          "block_id": "f74aff0841628203",
+          "chunk_id": "26c22a1ee34aba3967f6ddd04a0fc19558c8c919fb8f0b9fb88d86c3777d22cb",
+          "char_start": 0,
+          "char_end": 380,
+          "preview_url": "/preview#83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31/f74aff0841628203"
+        },
+        {
+          "rank": 2,
+          "score": 14.596869003432435,
+          "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+          "block_id": "65cb910093298b1b",
+          "chunk_id": "24f07b72caa1c98b4d7568de57719f7158e4c45215b3f0e431b5593b71934f36",
+          "char_start": 0,
+          "char_end": 433,
+          "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/65cb910093298b1b"
+        },
+        {
+          "rank": 3,
+          "score": 13.596941069847365,
+          "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+          "block_id": "b713d77a1e1ebeb1",
+          "chunk_id": "de79a1b9a81df705ce6937607edd66afffaaaabb460ffb66447879bc70522db8",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/b713d77a1e1ebeb1"
+        },
+        {
+          "rank": 4,
+          "score": 13.492857716559968,
+          "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+          "block_id": "9fa03cb8cd3e4404",
+          "chunk_id": "c6c479f9b58d90876201164510332bde49f5428ffa0dffda91f6fde5eeeecad2",
+          "char_start": 0,
+          "char_end": 155,
+          "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/9fa03cb8cd3e4404"
+        },
+        {
+          "rank": 5,
+          "score": 13.382683298436739,
+          "document_id": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6",
+          "block_id": "f5ce20e3629d7fc4",
+          "chunk_id": "0bdc77dfb757e14e6dcdef2e10b2f027f5eec8690fb99a954f78e52970b94e02",
+          "char_start": 0,
+          "char_end": 452,
+          "preview_url": "/preview#c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6/f5ce20e3629d7fc4"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "f1-s1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "direct",
+      "group_id": "gp-filter-studenttype-xueji",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "直述地点（限定「基本信息有误」更正场景）：学生的基本信息（姓名、性别、出生日期、身份证号）有误时，由学生本人提交申请并附相关证明材料，到成都校区 1 教 105 室或雅安校区综合楼 217 室办理。完整事实=情形（基本信息有误）+主体（学生本人）+办理地点（两校区房间），跨度含前提与结论。同块「在校期间需修改姓名、身份证号」属不同情形（合法变更而非差错更正，引文还省略雅安楼栋），「录取信息有误」由培养单位统一报研究生院（主体与程序不同）——均不作本事实 OR 源；普通信息核查在学信档案进行，属不同事项。",
+      "missing": null
+    },
+    {
+      "question_id": "q07",
+      "query": "必修课补考没通过的话还得再修吗？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 32.10963054920303,
+          "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+          "block_id": "8c2342f3bec3abe2",
+          "chunk_id": "33bc3cfaf18edd193be4d247d975ee7be9aee238131d3acda16825f90cb3fd89",
+          "char_start": 0,
+          "char_end": 70,
+          "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/8c2342f3bec3abe2"
+        },
+        {
+          "rank": 2,
+          "score": 27.147040608280903,
+          "document_id": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6",
+          "block_id": "c02156710013e431",
+          "chunk_id": "d7f18bf774486ad8a3abae8e4758d797261bc9769a2c2e96731571c65b543807",
+          "char_start": 0,
+          "char_end": 369,
+          "preview_url": "/preview#c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6/c02156710013e431"
+        },
+        {
+          "rank": 3,
+          "score": 15.592127367627882,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "0476dada43618364",
+          "chunk_id": "05c0d50925d883ebc16690e68802ceb2af55e525ff63d64c851e449ba754616c",
+          "char_start": 0,
+          "char_end": 426,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/0476dada43618364"
+        },
+        {
+          "rank": 4,
+          "score": 15.129028250110235,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "e5450a5d4c8b53fa",
+          "chunk_id": "e03e9ee72f1cd3d4d75f32f24064eb045fed3c03c397a3136941510bfa445f7e",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/e5450a5d4c8b53fa"
+        },
+        {
+          "rank": 5,
+          "score": 15.055980462872206,
+          "document_id": "68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06",
+          "block_id": "8a790c05ff004510",
+          "chunk_id": "1ebae76fbd81abebcc37ca187d4dc762633bde0100f5e9be6ce9228a58452e0f",
+          "char_start": 0,
+          "char_end": 364,
+          "preview_url": "/preview#68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06/8a790c05ff004510"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "f1-s1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.5,
+      "returned_count": 5,
+      "question_type": "paraphrase",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "口语改写：「没通过」→「不合格」；答案为应再修该门课程直至合格。单一完整来源（2018]2号）；c888 同句尾缺字（「直至；」）表述不完整不作源。",
+      "missing": null
+    },
+    {
+      "question_id": "q08",
+      "query": "考试时带小抄算什么行为？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 11.160346312181538,
+          "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+          "block_id": "3ce7acf59b97df4b",
+          "chunk_id": "001106b14f07c816ed98340c5fe02c34fa0c5c2d92a469a4b0cfc933e990be3d",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f/3ce7acf59b97df4b"
+        },
+        {
+          "rank": 2,
+          "score": 10.514059935850113,
+          "document_id": "06815fdadca1dca19c65295667f712a4288876139dfc9493d2deb55cb826f2d8",
+          "block_id": "4315a80153e84a23",
+          "chunk_id": "f0cda9663dd9fec22da4193a360066c04a4a6532c72f85a7c4198e44cdcb45df",
+          "char_start": 0,
+          "char_end": 131,
+          "preview_url": "/preview#06815fdadca1dca19c65295667f712a4288876139dfc9493d2deb55cb826f2d8/4315a80153e84a23"
+        },
+        {
+          "rank": 3,
+          "score": 10.208423491488977,
+          "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+          "block_id": "88df0e97c016c2bd",
+          "chunk_id": "0ea52a51c56d9c05af3ebd2659f7cecbfbc3b793d77c37fca65ca41f281b3cf1",
+          "char_start": 500,
+          "char_end": 721,
+          "preview_url": "/preview#ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f/88df0e97c016c2bd"
+        },
+        {
+          "rank": 4,
+          "score": 9.782276068930383,
+          "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+          "block_id": "cf9f6bdf21254842",
+          "chunk_id": "68040222fe3e2b8dadbc35d4a6ca909ddb06e8e8d32a9bfa1254c71bc6e3ab50",
+          "char_start": 500,
+          "char_end": 1000,
+          "preview_url": "/preview#ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f/cf9f6bdf21254842"
+        },
+        {
+          "rank": 5,
+          "score": 9.666258050560518,
+          "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+          "block_id": "d52ec7af0bd573c3",
+          "chunk_id": "2c68a68174bc43f546c86a9795ed1ce94c0d5aa83ba0dce422a3218b84ce0ad9",
+          "char_start": 500,
+          "char_end": 867,
+          "preview_url": "/preview#ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f/d52ec7af0bd573c3"
+        }
+      ],
+      "gold_count": 2,
+      "fact_count": 1,
+      "covered_fact_count": 0,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1",
+            "f1-s2"
+          ],
+          "covered": false
+        }
+      ],
+      "covered_evidence_ids": [],
+      "recall": 0.0,
+      "hit": 0.0,
+      "mrr": 0.0,
+      "returned_count": 5,
+      "question_type": "paraphrase",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "口语改写：「带小抄」→「携带与考试内容相关的材料」；面向用户的简洁释义：带小抄属于应当认定为考试作弊的行为（释义不带修订决定措辞；原文引用中的“修改为”字样原样保留）。两源（正文条项 / 修改决定同文重述）各自完整支持「判断类别+行为」——同文重述可作 OR 来源（R1 口径），不因同文而排除。",
+      "missing": null
+    },
+    {
+      "question_id": "q09",
+      "query": "考试开始多久后迟到考生不得进入考场？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 60.367337995716504,
+          "document_id": "db05e0cab194beeee9d4017458f26df2c14aefb8e250293d0e539c350477dc75",
+          "block_id": "eade67e9b2ccc2ef",
+          "chunk_id": "21f986b973895852a010878acd5cb287ed0d2f59ac0aaebfc1df35492c4c51bb",
+          "char_start": 0,
+          "char_end": 389,
+          "preview_url": "/preview#db05e0cab194beeee9d4017458f26df2c14aefb8e250293d0e539c350477dc75/eade67e9b2ccc2ef"
+        },
+        {
+          "rank": 2,
+          "score": 42.440680073982676,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "ebab438ffbe33010",
+          "chunk_id": "14287d56b299009c879e4c103f465dae5577e3327fea7fc24b7c1df6448da059",
+          "char_start": 0,
+          "char_end": 452,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/ebab438ffbe33010"
+        },
+        {
+          "rank": 3,
+          "score": 28.902249189511352,
+          "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+          "block_id": "d52ec7af0bd573c3",
+          "chunk_id": "2c68a68174bc43f546c86a9795ed1ce94c0d5aa83ba0dce422a3218b84ce0ad9",
+          "char_start": 500,
+          "char_end": 867,
+          "preview_url": "/preview#ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f/d52ec7af0bd573c3"
+        },
+        {
+          "rank": 4,
+          "score": 24.54858290360579,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "2e279e8478109aee",
+          "chunk_id": "a4a12c758ba245acde97b9f633d84d7095efc6212c42f48e30ce82223b89b679",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/2e279e8478109aee"
+        },
+        {
+          "rank": 5,
+          "score": 15.463515372821197,
+          "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+          "block_id": "88df0e97c016c2bd",
+          "chunk_id": "0ea52a51c56d9c05af3ebd2659f7cecbfbc3b793d77c37fca65ca41f281b3cf1",
+          "char_start": 500,
+          "char_end": 721,
+          "preview_url": "/preview#ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f/88df0e97c016c2bd"
+        }
+      ],
+      "gold_count": 2,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1",
+            "f1-s2"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "f1-s1",
+        "f1-s2"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "direct",
+      "group_id": "gp-filter-asof-entry",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "直述时限：30 分钟后禁入、逾时缺考。两源同一规则各自完整（OR）。与 u03 同题不同 as_of 对照。",
+      "missing": null
+    },
+    {
+      "question_id": "q10",
+      "query": "本科毕业论文（设计）成绩由哪几部分组成、各占多少？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 39.34187711321649,
+          "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+          "block_id": "a2d88cea5badd699",
+          "chunk_id": "a5ef7a05caa17ae1a654f7a93a26730ab54d74eb219540b81f3fcce654100b88",
+          "char_start": 0,
+          "char_end": 123,
+          "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/a2d88cea5badd699"
+        },
+        {
+          "rank": 2,
+          "score": 28.457854850135103,
+          "document_id": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6",
+          "block_id": "ca36d9c1b4b07cee",
+          "chunk_id": "b03134892f1d360c04c6fd2232ba778aa2a1dd8dfdc4efc49e523b554c38ceff",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6/ca36d9c1b4b07cee"
+        },
+        {
+          "rank": 3,
+          "score": 25.29639966099336,
+          "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+          "block_id": "f508bb547911836a",
+          "chunk_id": "e83eabd729cdaffec9edc58b158663ed3ee4de3ce4b3c6768835c6707c4fa4c0",
+          "char_start": 0,
+          "char_end": 97,
+          "preview_url": "/preview#287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816/f508bb547911836a"
+        },
+        {
+          "rank": 4,
+          "score": 25.199587068490423,
+          "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+          "block_id": "2da82e18397c15bf",
+          "chunk_id": "ea0689bb7c749be9029f0618695da53be1bee3fff60d524b9c7491addb5216e2",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816/2da82e18397c15bf"
+        },
+        {
+          "rank": 5,
+          "score": 24.16190379111,
+          "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+          "block_id": "86bcb2d8a04416c2",
+          "chunk_id": "ab5b0ef15255d0d2ac130a70eb6b7cd0834fdb4386634f61e39caa11fd637b5e",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/86bcb2d8a04416c2"
+        }
+      ],
+      "gold_count": 14,
+      "fact_count": 2,
+      "covered_fact_count": 2,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1",
+            "f1-s2",
+            "f1-s3",
+            "f1-s4",
+            "f1-s5",
+            "f1-s6",
+            "f1-s7"
+          ],
+          "covered": true
+        },
+        {
+          "fact_id": "f2",
+          "evidence_ids": [
+            "f2-s1",
+            "f2-s2",
+            "f2-s3",
+            "f2-s4",
+            "f2-s5",
+            "f2-s6",
+            "f2-s7"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "f1-s3",
+        "f2-s3",
+        "f1-s4",
+        "f2-s4"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "multi_fact",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "多事实（AND）：f1 普通情形 50/50（导师+答辩）；f2 开展学生互评的专业 40/10/50（导师+互评+答辩小组）——两者是不同前提（是否开展学生互评），不构成同前提版本冲突；不得因年份断言 2016 文件已废止（各版同列两种前提、无点名废止依据；用户关于废止的建议按 T037 部分采纳，意见原样保留、不代撤回）。各源独立完整支持本组事实（同结论不同措辞：导师评定/导师审阅、答辩成绩/论文答辩成绩/答辩小组评定）——287d 正文、287d 表注、c888 学业办法、c0ccb/6e12/cc25/bb8b 教学管理族跨版本源；cc25/bb8b 的 f1 句分页截断取完整子句（含两个组成部分与比例）。",
+      "missing": null
+    },
+    {
+      "question_id": "q11",
+      "query": "教发〔2018〕10号对缓考、初修补考、不合格课程再修、已合格课程再修的成绩分别怎么记载？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 69.21597257654784,
+          "document_id": "68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06",
+          "block_id": "8a790c05ff004510",
+          "chunk_id": "1ebae76fbd81abebcc37ca187d4dc762633bde0100f5e9be6ce9228a58452e0f",
+          "char_start": 0,
+          "char_end": 364,
+          "preview_url": "/preview#68fb37043ab78d9f90548e9582930d727435608f096adefadb3843c7a8dccb06/8a790c05ff004510"
+        },
+        {
+          "rank": 2,
+          "score": 65.25825002562901,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "0476dada43618364",
+          "chunk_id": "05c0d50925d883ebc16690e68802ceb2af55e525ff63d64c851e449ba754616c",
+          "char_start": 0,
+          "char_end": 426,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/0476dada43618364"
+        },
+        {
+          "rank": 3,
+          "score": 42.46088958186358,
+          "document_id": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9",
+          "block_id": "4bc986e4ba15ca0c",
+          "chunk_id": "e15545e8e5195716219acc2d171c65a8c412fbaa7bd90b8061453ab3ec8133ba",
+          "char_start": 0,
+          "char_end": 483,
+          "preview_url": "/preview#cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9/4bc986e4ba15ca0c"
+        },
+        {
+          "rank": 4,
+          "score": 41.798450067304074,
+          "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+          "block_id": "76e08b7bafb2f601",
+          "chunk_id": "35f3875bab175d6d7b9657b1851d57794afc64e827b73a3c08e32717d7e6f9f1",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/76e08b7bafb2f601"
+        },
+        {
+          "rank": 5,
+          "score": 41.56723047160803,
+          "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+          "block_id": "9de19468b7427552",
+          "chunk_id": "dce6466a44089b3343693da7742e802ca26404999bbd7de8dbe86b878fd9cea7",
+          "char_start": 0,
+          "char_end": 460,
+          "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/9de19468b7427552"
+        }
+      ],
+      "gold_count": 4,
+      "fact_count": 4,
+      "covered_fact_count": 2,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1"
+          ],
+          "covered": true
+        },
+        {
+          "fact_id": "f2",
+          "evidence_ids": [
+            "f2-s1"
+          ],
+          "covered": true
+        },
+        {
+          "fact_id": "f3",
+          "evidence_ids": [
+            "f3-s1"
+          ],
+          "covered": false
+        },
+        {
+          "fact_id": "f4",
+          "evidence_ids": [
+            "f4-s1"
+          ],
+          "covered": false
+        }
+      ],
+      "covered_evidence_ids": [
+        "f1-s1",
+        "f2-s1"
+      ],
+      "recall": 0.5,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "multi_fact",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "多事实（AND）+指定版本（教发〔2018〕10号）：缓考 85 / 初修补考 75 / 不合格再修 65 / 已合格再修按实际最高分——四情形完整覆盖该文成绩记载规则，三档不再代表全部再修规则。其他版本同主题表述不替代本版证据。",
+      "missing": null
+    },
+    {
+      "question_id": "q12",
+      "query": "校教发〔2026〕1号办法中申请转专业必须符合的基本申请条件（不含不能申请的情形）有哪些？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 38.73848087494623,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "9d80c82df18c4c15",
+          "chunk_id": "7503d4a40f8f4d789400bfb5416b57fc00a60be41890a5abdef206a325c44fa0",
+          "char_start": 0,
+          "char_end": 348,
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/9d80c82df18c4c15"
+        },
+        {
+          "rank": 2,
+          "score": 37.18748729556657,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "5c3a798d8c0fce01",
+          "chunk_id": "bb357d2d3e7b2dab6e9e1a861640b90ddeae7e6db3e696425f4e54a20189e0dc",
+          "char_start": 0,
+          "char_end": 271,
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/5c3a798d8c0fce01"
+        },
+        {
+          "rank": 3,
+          "score": 34.585196170695795,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "44392bef6f807d23",
+          "chunk_id": "4045edad3ed09223cf8be6c5689778175a217ae8d7761c7aae59d4f7bbfdb52d",
+          "char_start": 0,
+          "char_end": 365,
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/44392bef6f807d23"
+        },
+        {
+          "rank": 4,
+          "score": 32.89274964094165,
+          "document_id": "d4d3092195ed4cf325b57d76d70e674dc9989293116a58e4694579a07f09b2cc",
+          "block_id": "62f61fc3eef66e37",
+          "chunk_id": "78cc2579de802afc5c679d18e0753ac72fd83a575dbdf39dceb12c27278dbf12",
+          "char_start": 0,
+          "char_end": 440,
+          "preview_url": "/preview#d4d3092195ed4cf325b57d76d70e674dc9989293116a58e4694579a07f09b2cc/62f61fc3eef66e37"
+        },
+        {
+          "rank": 5,
+          "score": 30.13730681624138,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "e56dd8918dc5a429",
+          "chunk_id": "9529b9ed75080b29946180da0d4928100a4ed17f966549d9f8dbe75fd288c8d4",
+          "char_start": 0,
+          "char_end": 241,
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/e56dd8918dc5a429"
+        }
+      ],
+      "gold_count": 3,
+      "fact_count": 3,
+      "covered_fact_count": 3,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1"
+          ],
+          "covered": true
+        },
+        {
+          "fact_id": "f2",
+          "evidence_ids": [
+            "f2-s1"
+          ],
+          "covered": true
+        },
+        {
+          "fact_id": "f3",
+          "evidence_ids": [
+            "f3-s1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "f1-s1",
+        "f2-s1",
+        "f3-s1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.3333333333333333,
+      "returned_count": 5,
+      "question_type": "multi_fact",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "多事实（AND）+指定版本：二（一）三项基本申请条件（年级/课程/纪律）。题面明示不含不能申请情形（二（二）四类排除情形另属其他条款，不并入本题）。",
+      "missing": null
+    },
+    {
+      "question_id": "q13",
+      "query": "本科生赴境外修读课程学分认定遵循什么原则？依据该办法第十条和第十一条，哪些课程不作学分认定？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 80.86100923036875,
+          "document_id": "92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719",
+          "block_id": "718818984e31813b",
+          "chunk_id": "0d4219a33b1960bee2f51999dc19adcfe226604c336f84511efcf9ac50c7e050",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719/718818984e31813b"
+        },
+        {
+          "rank": 2,
+          "score": 70.86090240229552,
+          "document_id": "92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719",
+          "block_id": "4dbaa430cf7053d2",
+          "chunk_id": "2fa2ba8cb50d5860f067cb5815f46721b433c364b3e5530486834c3cab212cd7",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719/4dbaa430cf7053d2"
+        },
+        {
+          "rank": 3,
+          "score": 66.88971057441624,
+          "document_id": "92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719",
+          "block_id": "85e0f05e8960841b",
+          "chunk_id": "332229b92e88f95f6a3d83c3fd5d689a63837b707b86420c1bf56b101eff6239",
+          "char_start": 0,
+          "char_end": 341,
+          "preview_url": "/preview#92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719/85e0f05e8960841b"
+        },
+        {
+          "rank": 4,
+          "score": 58.32790985162451,
+          "document_id": "92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719",
+          "block_id": "90655d94f9a6c4b0",
+          "chunk_id": "8d1ea279453ff14e745c7289063e3a28ac1d4149c275396dad2b3aedfe8986ee",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719/90655d94f9a6c4b0"
+        },
+        {
+          "rank": 5,
+          "score": 51.648148080343844,
+          "document_id": "92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719",
+          "block_id": "4dbaa430cf7053d2",
+          "chunk_id": "382877841355d69391411e80ea4a3d86d8877401a318edaff99f52570a5f9fe1",
+          "char_start": 500,
+          "char_end": 583,
+          "preview_url": "/preview#92049a1c9068efa31f3b0c50964fc75acb6f0c46864361d75fc63fda4422a719/4dbaa430cf7053d2"
+        }
+      ],
+      "gold_count": 3,
+      "fact_count": 3,
+      "covered_fact_count": 3,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1"
+          ],
+          "covered": true
+        },
+        {
+          "fact_id": "f2",
+          "evidence_ids": [
+            "f2-s1"
+          ],
+          "covered": true
+        },
+        {
+          "fact_id": "f3",
+          "evidence_ids": [
+            "f3-s1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "f1-s1",
+        "f2-s1",
+        "f3-s1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "multi_fact",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "多事实（AND）+显式条文范围（教发〔2024〕2号）：f1 认定遵循“教学等效，事前备案、事后认定”原则（第六条）；f2 原则上短期学习（学时<16）课程不作学分认定（第十条）；f3 思想政治类课程不进行境外学习课程学分认定（第十一条）——题面明确限定「依据该办法第十条和第十一条」，与 gold 范围一致。bb8b（2025 教学管理）「教学等效、事前备案、事后认定」属其他情况学分认定（双少等），适用范围不同不并入。同文第四条另有修读情形类排除（未经批准自行修读/以获得境外证书为目标修读，均不予认定）：完整句跨 PDF 分页两块（85e0f05e 尾/90655d94 头），单块引文无法独立完整支持。本题为**受现有证据契约（单块引文）限制而设计的开发集题目**，提问范围=第十条/第十一条课程排除，**不称其为该办法全部排除情形**；第四条情形如实记录于修订记录，待跨块引文能力后再议。",
+      "missing": null
+    },
+    {
+      "question_id": "q14",
+      "query": "校教发〔2023〕1号办法的申请条件中，对已修课程有什么要求？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 25.309254913446487,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "af8f1360c133face",
+          "chunk_id": "c5367fc82e5b9f1d47f6aff103fbd90493cb1ecc472b2081c2bcf53671a209aa",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/af8f1360c133face"
+        },
+        {
+          "rank": 2,
+          "score": 23.24540524229423,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "5c3a798d8c0fce01",
+          "chunk_id": "bb357d2d3e7b2dab6e9e1a861640b90ddeae7e6db3e696425f4e54a20189e0dc",
+          "char_start": 0,
+          "char_end": 271,
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/5c3a798d8c0fce01"
+        },
+        {
+          "rank": 3,
+          "score": 19.36102356704195,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "d64f435102a25796",
+          "chunk_id": "c65e808fe016bb7ffb48031d00a56d59a45a9149187ad02b7ca643db48fe8804",
+          "char_start": 0,
+          "char_end": 231,
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/d64f435102a25796"
+        },
+        {
+          "rank": 4,
+          "score": 17.891840993507312,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "e56dd8918dc5a429",
+          "chunk_id": "9529b9ed75080b29946180da0d4928100a4ed17f966549d9f8dbe75fd288c8d4",
+          "char_start": 0,
+          "char_end": 241,
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/e56dd8918dc5a429"
+        },
+        {
+          "rank": 5,
+          "score": 16.6186016894112,
+          "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+          "block_id": "9ecee68300f57e69",
+          "chunk_id": "d61f26193f8848be956a9dfc7a1e4be67e9f898c8cfcf436773d53accc09e5cd",
+          "char_start": 0,
+          "char_end": 6,
+          "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/9ecee68300f57e69"
+        }
+      ],
+      "gold_count": 2,
+      "fact_count": 2,
+      "covered_fact_count": 0,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1"
+          ],
+          "covered": false
+        },
+        {
+          "fact_id": "f2",
+          "evidence_ids": [
+            "f2-s1"
+          ],
+          "covered": false
+        }
+      ],
+      "covered_evidence_ids": [],
+      "recall": 0.0,
+      "hit": 0.0,
+      "mrr": 0.0,
+      "returned_count": 5,
+      "question_type": "version_constrained",
+      "group_id": "gp-version-course-req",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "指定版本（校教发〔2023〕1号）申请条件条款中的课程要求：排名前 40% + 无补考或重修记录（AND）。2020 版（前30%）、2026 版（均合格）同主题不同要求不替代；d4d3 同句属 2020 版不并入。",
+      "missing": null
+    },
+    {
+      "question_id": "q15",
+      "query": "校教发〔2026〕1号办法的申请条件中，对已修课程有什么要求？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 27.937219632332514,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "5c3a798d8c0fce01",
+          "chunk_id": "bb357d2d3e7b2dab6e9e1a861640b90ddeae7e6db3e696425f4e54a20189e0dc",
+          "char_start": 0,
+          "char_end": 271,
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/5c3a798d8c0fce01"
+        },
+        {
+          "rank": 2,
+          "score": 21.761466077534976,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "d64f435102a25796",
+          "chunk_id": "c65e808fe016bb7ffb48031d00a56d59a45a9149187ad02b7ca643db48fe8804",
+          "char_start": 0,
+          "char_end": 231,
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/d64f435102a25796"
+        },
+        {
+          "rank": 3,
+          "score": 17.891840993507312,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "e56dd8918dc5a429",
+          "chunk_id": "9529b9ed75080b29946180da0d4928100a4ed17f966549d9f8dbe75fd288c8d4",
+          "char_start": 0,
+          "char_end": 241,
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/e56dd8918dc5a429"
+        },
+        {
+          "rank": 4,
+          "score": 16.6186016894112,
+          "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+          "block_id": "9ecee68300f57e69",
+          "chunk_id": "d61f26193f8848be956a9dfc7a1e4be67e9f898c8cfcf436773d53accc09e5cd",
+          "char_start": 0,
+          "char_end": 6,
+          "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/9ecee68300f57e69"
+        },
+        {
+          "rank": 5,
+          "score": 16.271442429557908,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "9d80c82df18c4c15",
+          "chunk_id": "7503d4a40f8f4d789400bfb5416b57fc00a60be41890a5abdef206a325c44fa0",
+          "char_start": 0,
+          "char_end": 348,
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/9d80c82df18c4c15"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 0,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1"
+          ],
+          "covered": false
+        }
+      ],
+      "covered_evidence_ids": [],
+      "recall": 0.0,
+      "hit": 0.0,
+      "mrr": 0.0,
+      "returned_count": 5,
+      "question_type": "version_constrained",
+      "group_id": "gp-version-course-req",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "指定版本（校教发〔2026〕1号）申请条件条款中的课程要求：已修课程均合格（该申请条件条款无排名门槛）。注意：同文跨校区超额遴选按必修课初修加权平均成绩专业排名百分比排序属**遴选规则（另一条款）**，不得读作任何场景均无排名要求，也不属申请条件课程要求。与 q14 构成版本对照组。",
+      "missing": null
+    },
+    {
+      "question_id": "q16",
+      "query": "校教发〔2023〕1号办法对专业转出、转入人数有何比例限制？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 34.3145002848535,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "5c3a798d8c0fce01",
+          "chunk_id": "bb357d2d3e7b2dab6e9e1a861640b90ddeae7e6db3e696425f4e54a20189e0dc",
+          "char_start": 0,
+          "char_end": 271,
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/5c3a798d8c0fce01"
+        },
+        {
+          "rank": 2,
+          "score": 32.55832651611814,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "e56dd8918dc5a429",
+          "chunk_id": "9529b9ed75080b29946180da0d4928100a4ed17f966549d9f8dbe75fd288c8d4",
+          "char_start": 0,
+          "char_end": 241,
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/e56dd8918dc5a429"
+        },
+        {
+          "rank": 3,
+          "score": 26.136509370306833,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "10ea589326529a38",
+          "chunk_id": "e97030d0ebcb471dbdfb8e201d6ff11d08c3ddb95e711070486a14a20754f757",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/10ea589326529a38"
+        },
+        {
+          "rank": 4,
+          "score": 25.67583037677303,
+          "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+          "block_id": "3e00390e3e347d7c",
+          "chunk_id": "fda94515b531f1621ef0c1856114bf6dadf9aa21f1b02730bc47ddcf0a3f6418",
+          "char_start": 0,
+          "char_end": 467,
+          "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/3e00390e3e347d7c"
+        },
+        {
+          "rank": 5,
+          "score": 25.309254913446487,
+          "document_id": "d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93",
+          "block_id": "af8f1360c133face",
+          "chunk_id": "c5367fc82e5b9f1d47f6aff103fbd90493cb1ecc472b2081c2bcf53671a209aa",
+          "char_start": 0,
+          "char_end": 12,
+          "preview_url": "/preview#d1fe991c41377ab75fb3d93283de95b274f98b9d99f9e18463f9d374d8327b93/af8f1360c133face"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "f1-s1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.5,
+      "returned_count": 5,
+      "question_type": "version_constrained",
+      "group_id": "gp-version-quota",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "指定版本（校教发〔2023〕1号）：20% 以内控制；d4d3（2020 版）同句不并入（版本约束）；与 q17 对照。",
+      "missing": null
+    },
+    {
+      "question_id": "q17",
+      "query": "校教发〔2026〕1号办法对各专业转入人数上限有何规定？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 52.81913180695836,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "5c3a798d8c0fce01",
+          "chunk_id": "bb357d2d3e7b2dab6e9e1a861640b90ddeae7e6db3e696425f4e54a20189e0dc",
+          "char_start": 0,
+          "char_end": 271,
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/5c3a798d8c0fce01"
+        },
+        {
+          "rank": 2,
+          "score": 45.13123365428854,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "10ea589326529a38",
+          "chunk_id": "e97030d0ebcb471dbdfb8e201d6ff11d08c3ddb95e711070486a14a20754f757",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/10ea589326529a38"
+        },
+        {
+          "rank": 3,
+          "score": 37.68701691083442,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "44392bef6f807d23",
+          "chunk_id": "4045edad3ed09223cf8be6c5689778175a217ae8d7761c7aae59d4f7bbfdb52d",
+          "char_start": 0,
+          "char_end": 365,
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/44392bef6f807d23"
+        },
+        {
+          "rank": 4,
+          "score": 35.87363092122171,
+          "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+          "block_id": "3e00390e3e347d7c",
+          "chunk_id": "fda94515b531f1621ef0c1856114bf6dadf9aa21f1b02730bc47ddcf0a3f6418",
+          "char_start": 0,
+          "char_end": 467,
+          "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/3e00390e3e347d7c"
+        },
+        {
+          "rank": 5,
+          "score": 29.624380035380494,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "d64f435102a25796",
+          "chunk_id": "c65e808fe016bb7ffb48031d00a56d59a45a9149187ad02b7ca643db48fe8804",
+          "char_start": 0,
+          "char_end": 231,
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/d64f435102a25796"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "f1-s1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 0.3333333333333333,
+      "returned_count": 5,
+      "question_type": "version_constrained",
+      "group_id": "gp-version-quota",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "指定版本（校教发〔2026〕1号）：不超过 30%。同文「净转入总人数上限」（跨校区核定）与「公布转入人数上限」（程序表述）非同一事实，不并入；与 q16 口径不同不混版。",
+      "missing": null
+    },
+    {
+      "question_id": "q18",
+      "query": "本科课程考试管理办法（校教发〔2019〕7号）规定因学习困难的民族地区少数民族学生补考不合格最多可加多少分？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 93.48725250653695,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "c641f1723ab4cb48",
+          "chunk_id": "4c79a4d3b73501d336ae9f74a3d79a0e816c4b5a722693573a6f6bfcfb77aedd",
+          "char_start": 0,
+          "char_end": 206,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/c641f1723ab4cb48"
+        },
+        {
+          "rank": 2,
+          "score": 91.65388453977576,
+          "document_id": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6",
+          "block_id": "c02156710013e431",
+          "chunk_id": "d7f18bf774486ad8a3abae8e4758d797261bc9769a2c2e96731571c65b543807",
+          "char_start": 0,
+          "char_end": 369,
+          "preview_url": "/preview#c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6/c02156710013e431"
+        },
+        {
+          "rank": 3,
+          "score": 72.88677644319642,
+          "document_id": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9",
+          "block_id": "4bc986e4ba15ca0c",
+          "chunk_id": "e15545e8e5195716219acc2d171c65a8c412fbaa7bd90b8061453ab3ec8133ba",
+          "char_start": 0,
+          "char_end": 483,
+          "preview_url": "/preview#cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9/4bc986e4ba15ca0c"
+        },
+        {
+          "rank": 4,
+          "score": 71.60651729472397,
+          "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+          "block_id": "76e08b7bafb2f601",
+          "chunk_id": "35f3875bab175d6d7b9657b1851d57794afc64e827b73a3c08e32717d7e6f9f1",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/76e08b7bafb2f601"
+        },
+        {
+          "rank": 5,
+          "score": 44.427049017184956,
+          "document_id": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6",
+          "block_id": "9f1580f915098756",
+          "chunk_id": "406b6449b88631a99bed011890fe08241147239ec699bcb97cb93ee1699e78a5",
+          "char_start": 0,
+          "char_end": 464,
+          "preview_url": "/preview#c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6/9f1580f915098756"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "f1-s1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "version_constrained",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "指定来源（校教发〔2019〕7号）+数字：因学习困难的民族地区少数民族学生补考不合格者，经严格审核后，补考后最终成绩可加 15 分，但最终成绩不超过 60 分（双限定）。跨度含前提主体与结论，独立完整支持。教学管理族（c0ccb/6e12/cc25/bb8b）另有 15 分表述，但适用前提/措辞不同且属其他版本，不并入。",
+      "missing": null
+    },
+    {
+      "question_id": "q19",
+      "query": "《国家教育考试违规处理办法》规定考试违纪的考生如何处理？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 65.45445600792965,
+          "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+          "block_id": "2e39739015cd2bb3",
+          "chunk_id": "9c647ca9a31122498fa64bf213d6ff580942b50f92b5e5b3cd2ba82cfe9762d7",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f/2e39739015cd2bb3"
+        },
+        {
+          "rank": 2,
+          "score": 59.190016818100474,
+          "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+          "block_id": "d52ec7af0bd573c3",
+          "chunk_id": "db9a39dedae79e581fa243bb7a7f2154a3386cb0abc7fffb8506cde4108a6fb5",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f/d52ec7af0bd573c3"
+        },
+        {
+          "rank": 3,
+          "score": 47.26805736653396,
+          "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+          "block_id": "c5b04cec1f79a03c",
+          "chunk_id": "7ed4bd1ad2da307ea8b84273dacd2084968b1c33b5e787f3e99b82c8f7f8c7f4",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f/c5b04cec1f79a03c"
+        },
+        {
+          "rank": 4,
+          "score": 46.993821128470515,
+          "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+          "block_id": "cf9f6bdf21254842",
+          "chunk_id": "7f55b445931601470e486966e426f7f31fc9a731a281fe5407055d220dd4a2be",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f/cf9f6bdf21254842"
+        },
+        {
+          "rank": 5,
+          "score": 43.193582894480606,
+          "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+          "block_id": "cf9f6bdf21254842",
+          "chunk_id": "68040222fe3e2b8dadbc35d4a6ca909ddb06e8e8d32a9bfa1254c71bc6e3ab50",
+          "char_start": 500,
+          "char_end": 1000,
+          "preview_url": "/preview#ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f/cf9f6bdf21254842"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 0,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1"
+          ],
+          "covered": false
+        }
+      ],
+      "covered_evidence_ids": [],
+      "recall": 0.0,
+      "hit": 0.0,
+      "mrr": 0.0,
+      "returned_count": 5,
+      "question_type": "direct",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "直述处理：违纪取消该科目成绩（区别于作弊的各科成绩无效）。单一来源（教育部令）。",
+      "missing": null
+    },
+    {
+      "question_id": "q20",
+      "query": "本科毕业论文（设计）抽检应重点考察哪些方面？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 36.48082651189704,
+          "document_id": "858406369942a287d8042aa9f2ef1383ea26f4f61ef25e362a191e78f706d17f",
+          "block_id": "8858dd37d003b468",
+          "chunk_id": "9233b862df03e1cebdbf34988d238d055f242039e6569de588a5a2fddae41b3f",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#858406369942a287d8042aa9f2ef1383ea26f4f61ef25e362a191e78f706d17f/8858dd37d003b468"
+        },
+        {
+          "rank": 2,
+          "score": 31.085370041356484,
+          "document_id": "858406369942a287d8042aa9f2ef1383ea26f4f61ef25e362a191e78f706d17f",
+          "block_id": "f42a5be130d00330",
+          "chunk_id": "4a836df699035e55164eb811d2627c4f996f15b407b0d00c28904dd491a12bcb",
+          "char_start": 0,
+          "char_end": 430,
+          "preview_url": "/preview#858406369942a287d8042aa9f2ef1383ea26f4f61ef25e362a191e78f706d17f/f42a5be130d00330"
+        },
+        {
+          "rank": 3,
+          "score": 29.86986015855142,
+          "document_id": "858406369942a287d8042aa9f2ef1383ea26f4f61ef25e362a191e78f706d17f",
+          "block_id": "3fc7dffee50a6848",
+          "chunk_id": "7d5fa8365c3e2627283b899901e30ecc97611dfe6e734471a1739866d5726f43",
+          "char_start": 0,
+          "char_end": 24,
+          "preview_url": "/preview#858406369942a287d8042aa9f2ef1383ea26f4f61ef25e362a191e78f706d17f/3fc7dffee50a6848"
+        },
+        {
+          "rank": 4,
+          "score": 28.733333951508563,
+          "document_id": "858406369942a287d8042aa9f2ef1383ea26f4f61ef25e362a191e78f706d17f",
+          "block_id": "a919e83942078c01",
+          "chunk_id": "c037d8896f46686fd455341695461ab7cdbebb6ab25da248dee1c0d7812bc2f4",
+          "char_start": 0,
+          "char_end": 31,
+          "preview_url": "/preview#858406369942a287d8042aa9f2ef1383ea26f4f61ef25e362a191e78f706d17f/a919e83942078c01"
+        },
+        {
+          "rank": 5,
+          "score": 26.336752269362883,
+          "document_id": "858406369942a287d8042aa9f2ef1383ea26f4f61ef25e362a191e78f706d17f",
+          "block_id": "9d179618097f7d2d",
+          "chunk_id": "e685336e1bbbdfe768deb825923cc1ba97e1579946bff0f561250b4c47de1277",
+          "char_start": 0,
+          "char_end": 374,
+          "preview_url": "/preview#858406369942a287d8042aa9f2ef1383ea26f4f61ef25e362a191e78f706d17f/9d179618097f7d2d"
+        }
+      ],
+      "gold_count": 3,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1",
+            "f1-s2",
+            "f1-s3"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "f1-s1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "direct",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "直述清单：五方面评议重点。三源同一清单各自完整（OR）：教育部办法「等」与校内办法「五个方面」同结论不同表述（列举内容一致）。",
+      "missing": null
+    },
+    {
+      "question_id": "u01",
+      "query": "缓考最多可以申请几门课程？",
+      "answerable": false,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 14.042666292349294,
+          "document_id": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9",
+          "block_id": "4bc986e4ba15ca0c",
+          "chunk_id": "e15545e8e5195716219acc2d171c65a8c412fbaa7bd90b8061453ab3ec8133ba",
+          "char_start": 0,
+          "char_end": 483,
+          "preview_url": "/preview#cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9/4bc986e4ba15ca0c"
+        },
+        {
+          "rank": 2,
+          "score": 13.769736045903981,
+          "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+          "block_id": "76e08b7bafb2f601",
+          "chunk_id": "35f3875bab175d6d7b9657b1851d57794afc64e827b73a3c08e32717d7e6f9f1",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/76e08b7bafb2f601"
+        },
+        {
+          "rank": 3,
+          "score": 13.310042250407843,
+          "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+          "block_id": "29859d49be6e5025",
+          "chunk_id": "f1323073d4711deaa49b0c4ff9d634e8f44b6c8c5ad2625fdd15cd9b4ecb6eae",
+          "char_start": 0,
+          "char_end": 448,
+          "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/29859d49be6e5025"
+        },
+        {
+          "rank": 4,
+          "score": 10.122631304411852,
+          "document_id": "cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9",
+          "block_id": "dc971233370e26a1",
+          "chunk_id": "c66507965590324e3d72b8e900b7b8631b337e9a54054be8626897fe7c5752b3",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#cc25a92b2dd9e222dc8d30342818364dc83dd6532a85b45caffa906af47a34e9/dc971233370e26a1"
+        },
+        {
+          "rank": 5,
+          "score": 10.11683926812401,
+          "document_id": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6",
+          "block_id": "552366eec917322d",
+          "chunk_id": "74da85fe2d29935ac88b5a2244cba61cbf812b98e7545a749868fa47b789e003",
+          "char_start": 0,
+          "char_end": 492,
+          "preview_url": "/preview#c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6/552366eec917322d"
+        }
+      ],
+      "gold_count": 0,
+      "covered_evidence_ids": [],
+      "recall": null,
+      "hit": null,
+      "mrr": null,
+      "returned_count": 5,
+      "question_type": "unanswerable",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "首批资料未记载：已查 68fb（成绩记载全文）、bed3ac（原因/审批/安排/成绩记载）、教学管理族（补考再修/免修）、c888 学业办法——均无缓考门数上限规定。仅断言首批 20 份范围内缺依据，不概括全校。 用户首次意见状态：未确认（等待后续文档），不代确认。",
+      "missing": "首批 20 份资料范围内缺依据（不称学校无规定）"
+    },
+    {
+      "question_id": "u02",
+      "query": "学生宿舍晚归如何处理？",
+      "answerable": false,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 7.844768708963682,
+          "document_id": "5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76",
+          "block_id": "d64f435102a25796",
+          "chunk_id": "c65e808fe016bb7ffb48031d00a56d59a45a9149187ad02b7ca643db48fe8804",
+          "char_start": 0,
+          "char_end": 231,
+          "preview_url": "/preview#5cb2ac21497c2dade0961bedb355b3ed568b4ea409fb964e3064ea9197209e76/d64f435102a25796"
+        },
+        {
+          "rank": 2,
+          "score": 6.874971262432612,
+          "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+          "block_id": "3c2465a96cb89e1d",
+          "chunk_id": "6f61228d3500cc7cb4ce7a5f96fb92ffaf61700a3bf3bf9d785f32ee9a8985f7",
+          "char_start": 0,
+          "char_end": 40,
+          "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/3c2465a96cb89e1d"
+        },
+        {
+          "rank": 3,
+          "score": 5.616394867268857,
+          "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+          "block_id": "c5b04cec1f79a03c",
+          "chunk_id": "7ed4bd1ad2da307ea8b84273dacd2084968b1c33b5e787f3e99b82c8f7f8c7f4",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f/c5b04cec1f79a03c"
+        },
+        {
+          "rank": 4,
+          "score": 5.602782624496516,
+          "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+          "block_id": "5f54054b160420e0",
+          "chunk_id": "c59dd17d0c03c44d50b99331379e7ba182b18b3dad5afaa480407f58d21f660d",
+          "char_start": 500,
+          "char_end": 572,
+          "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/5f54054b160420e0"
+        },
+        {
+          "rank": 5,
+          "score": 5.516399805673419,
+          "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+          "block_id": "cda36f46d13841cd",
+          "chunk_id": "ba1694edff4b392af8aafdd4d62e8269448687462fee21e4383773e9be7a7c3e",
+          "char_start": 0,
+          "char_end": 67,
+          "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/cda36f46d13841cd"
+        }
+      ],
+      "gold_count": 0,
+      "covered_evidence_ids": [],
+      "recall": null,
+      "hit": null,
+      "mrr": null,
+      "returned_count": 5,
+      "question_type": "unanswerable",
+      "group_id": null,
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "首批资料未记载：20 份均为教学/考试/论文/学籍/学分类制度与指南，无宿舍管理内容。仅断言首批范围内缺依据。 用户首次意见状态：未确认（等待后续文档），不代确认。",
+      "missing": "首批 20 份资料范围内缺依据（不称学校无规定）"
+    },
+    {
+      "question_id": "u03",
+      "query": "考试开始多久后迟到考生不得进入考场？",
+      "answerable": true,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 42.440680073982676,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "ebab438ffbe33010",
+          "chunk_id": "14287d56b299009c879e4c103f465dae5577e3327fea7fc24b7c1df6448da059",
+          "char_start": 0,
+          "char_end": 452,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/ebab438ffbe33010"
+        },
+        {
+          "rank": 2,
+          "score": 24.54858290360579,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "2e279e8478109aee",
+          "chunk_id": "a4a12c758ba245acde97b9f633d84d7095efc6212c42f48e30ce82223b89b679",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/2e279e8478109aee"
+        },
+        {
+          "rank": 3,
+          "score": 8.991241485432298,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "69af59761fb93844",
+          "chunk_id": "349caa290e58e36e37419ee07d3c8faa33d7e520ac023ee09e04e64253d90136",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/69af59761fb93844"
+        },
+        {
+          "rank": 4,
+          "score": 8.961746542959744,
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "block_id": "2e279e8478109aee",
+          "chunk_id": "6551a4b8a107721671aa8acb0d10c3e7f6c0f15500bd51a97db305bd702507ce",
+          "char_start": 500,
+          "char_end": 570,
+          "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/2e279e8478109aee"
+        },
+        {
+          "rank": 5,
+          "score": 7.849974671885507,
+          "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+          "block_id": "b1f400190ffd0224",
+          "chunk_id": "ee9070af53c46877d774d5962c91d7bb45d6caae7a0f5809461e26f977edece5",
+          "char_start": 0,
+          "char_end": 499,
+          "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/b1f400190ffd0224"
+        }
+      ],
+      "gold_count": 1,
+      "fact_count": 1,
+      "covered_fact_count": 1,
+      "facts": [
+        {
+          "fact_id": "f1",
+          "evidence_ids": [
+            "f1-s1"
+          ],
+          "covered": true
+        }
+      ],
+      "covered_evidence_ids": [
+        "f1-s1"
+      ],
+      "recall": 1.0,
+      "hit": 1.0,
+      "mrr": 1.0,
+      "returned_count": 5,
+      "question_type": "direct",
+      "group_id": "gp-filter-asof-entry",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": "2026-10-03"
+      },
+      "rationale": "准入核实（v1.2）：bed3ac 发文/生效日期已核实为 2019-11-07（落款/印发/“自发文之日起执行”），as_of=2026-10-03 下准入；30 分钟禁入事实真实存在（完整前提见引文：考试开始30分钟后禁止进入考场，逾时作缺考处理）。gold 组内每源独立完整支持；**db05e0 日期未知，不能作为此题严格 gold**（可由用户在独立未核实候选中主动查看，候选不作正式依据）。已查范围：v1.2 全 20 份中仅 bed3ac（已准入）与 db05e0（日期未知）载有该时限，未发现其他等价来源。",
+      "missing": null
+    },
+    {
+      "question_id": "u04",
+      "query": "学籍基本信息有误需要更正时，学生本人去哪里办理？",
+      "answerable": false,
+      "hit_summary": [
+        {
+          "rank": 1,
+          "score": 14.596869003432435,
+          "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+          "block_id": "65cb910093298b1b",
+          "chunk_id": "24f07b72caa1c98b4d7568de57719f7158e4c45215b3f0e431b5593b71934f36",
+          "char_start": 0,
+          "char_end": 433,
+          "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/65cb910093298b1b"
+        },
+        {
+          "rank": 2,
+          "score": 13.596941069847365,
+          "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+          "block_id": "b713d77a1e1ebeb1",
+          "chunk_id": "de79a1b9a81df705ce6937607edd66afffaaaabb460ffb66447879bc70522db8",
+          "char_start": 0,
+          "char_end": 500,
+          "preview_url": "/preview#6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31/b713d77a1e1ebeb1"
+        },
+        {
+          "rank": 3,
+          "score": 13.492857716559968,
+          "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+          "block_id": "9fa03cb8cd3e4404",
+          "chunk_id": "c6c479f9b58d90876201164510332bde49f5428ffa0dffda91f6fde5eeeecad2",
+          "char_start": 0,
+          "char_end": 155,
+          "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/9fa03cb8cd3e4404"
+        },
+        {
+          "rank": 4,
+          "score": 13.382683298436739,
+          "document_id": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6",
+          "block_id": "f5ce20e3629d7fc4",
+          "chunk_id": "0bdc77dfb757e14e6dcdef2e10b2f027f5eec8690fb99a954f78e52970b94e02",
+          "char_start": 0,
+          "char_end": 452,
+          "preview_url": "/preview#c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6/f5ce20e3629d7fc4"
+        },
+        {
+          "rank": 5,
+          "score": 12.991918293767059,
+          "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+          "block_id": "cffca738241b0ed3",
+          "chunk_id": "014108e8fb7cba6fe2438c33ef5bfabce84a2bb88cb51eb62ed4744347e6b7b6",
+          "char_start": 0,
+          "char_end": 487,
+          "preview_url": "/preview#bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a/cffca738241b0ed3"
+        }
+      ],
+      "gold_count": 0,
+      "covered_evidence_ids": [],
+      "recall": null,
+      "hit": null,
+      "mrr": null,
+      "returned_count": 5,
+      "question_type": "unanswerable",
+      "group_id": "gp-filter-studenttype-xueji",
+      "conditions": {
+        "campus": null,
+        "student_type": "本科",
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "rationale": "准入排除（严格口径）：所问事实在 83eb（学籍指南，scope 未标注=未知）；student_type=本科 筛选下未知范围文档被保守排除，其余 18 份本科范围文档均无基本信息更正办理地点信息。严格准入依据不足，可由用户主动查看独立未核实候选原文（候选仅供原文核对，不作为已确认适用的答案依据）。属资料准入不足，非学生不满足资格。",
+      "missing": "严格准入依据不足：83eb 指南 scope 未标注，student_type=本科 筛选下被保守排除；可由用户主动查看独立未核实候选原文"
+    }
+  ],
+  "errors": []
+}

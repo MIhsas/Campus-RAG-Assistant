@@ -1,0 +1,64 @@
+{
+  "task_id": "T040",
+  "task_revision": "B-v1",
+  "submission_revision": 3,
+  "responds_to": "T040-R2",
+  "stage": "B_not_started",
+  "status": "partial",
+  "external_model_calls": 0,
+  "live_verified": false,
+  "planner_live_verified": false,
+  "summary": "T040-R2 定向返工（submission_revision=3）：①必修1 输出目录前置门——run_b 任何生成/发送前检查并准备输出目录，非空立即拒绝（零 post）、最终防覆盖保留、已有输出不删、无可用输出路径不开始付费调用、恢复真实执行须用新明确目录（不复用 T040-B/run-1）。②必修2 实际发送计数——新增 SendCountingClient 经适配器 client 注入（不改产品适配器/无全局补丁），外部 HTTP 次数只在 post 发送处查预算（≤4）递增一次：连接失败计 1、发送前本地异常/零证据计 0；provider_calls 另列；每题≤1、零重试、失败即停保持。验证：6 项测试（4 原+2 新业务链）exit 0；Astra 原探针原样运行 exit 0（两链 pass）。同批整理：run-1 勘误（机器记录 questions={} 非四条 not_attempted，四题均未执行；原件不改，此后前置记录补齐四题状态与停止原因）；缺密钥表述收敛为“本次执行进程环境及列明位置未发现可用配置”（非全位置断言）；权限分类器拒绝历史保留。revision 2 提交 8 件归档 rev2/ 与 run-1 字节核验一致。B 仍未开始（真实外部 0、四题授权有效预算未消耗）；恢复条件=Astra 关闭两项代码问题+用户将 DEEPSEEK_API_KEY 配置到实际执行进程环境。本轮未执行 --live。",
+  "verification": {
+    "business_chains": "必修1：非空输出+可用 mock→调用前拒绝/post=0/旧文件不变；必修2：发送前消息构造失败→post=0/外部计数=0/provider_calls=1（tests/test_live_smoke_real_qa.py 6 passed，exit 0）",
+    "original_mocks": "原 4 项保持通过（连接失败计 1/失败即停/业务不足继续/前置拒绝零请求/零证据零尝试）",
+    "astra_probe": "T040-B-preflight-probe.py 原样运行 exit 0（nonempty_output_before_send、counter_matches_actual_send 均 pass）；旧失败记录保全 rev2/T040-B-preflight-probe-failed-preserved.json（94e3944f…）",
+    "preservation": "rev2 归档 8 件与原件同哈希（live-results 34cbf5f9…）；run-1 原件未改；rev1/、A 缓存、A 四件未覆盖",
+    "erratum": "run-1 机器记录 questions={}/stop=null（四题均未执行），非四条 not_attempted；原机读文件不改，此后记录补齐",
+    "scope_note": "mock/探针≠模型质量证据；未跑全量/UI/向量/三模式/A 原准备；零真实请求；未改产品/适配器/提示/gold/冻结/语料/模板/用户意见/Astra 文件"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "fix-report.md",
+    "submission.json",
+    "changed-files.json",
+    "continuation-progress.md",
+    "live-results.json",
+    "live-answers-full.json",
+    "live-review-notes.md",
+    "dry-run.json",
+    "input-hashes.json",
+    "generation-review-sheet.md",
+    "live-smoke-plan.md",
+    "rev1/",
+    "rev2/"
+  ],
+  "paths": {
+    "script": "step2_code/backend/scripts/live-smoke-real-qa.py",
+    "tests": "step2_code/backend/tests/test_live_smoke_real_qa.py",
+    "run1_record": "step2_code/backend/.cache/real-qa-smoke/T040-B/live-results.json（未改）",
+    "archives": "rev1/（A 九件）、rev2/（revision 2 八件+探针失败记录保全）"
+  },
+  "resume_conditions": {
+    "code_gate": "Astra 关闭必修1/必修2 两项代码问题",
+    "key_gate": "用户将 DEEPSEEK_API_KEY 配置到实际运行 Claude Code/Python 的进程环境（另一终端设置不自动传入；必要时重启执行窗口；不让用户粘贴聊天密钥）",
+    "authorization_still_valid": "q08→q10→u03→u04、官方端点/deepseek-flash、≤4 次真实 HTTP、每题≤1、1500/30s、零重试、技术失败即停；不额外探测、不补跑、不以模型答错为由再请求",
+    "output_dir_rule": "使用新的明确输出目录，不复用 T040-B/run-1、不删原件"
+  },
+  "known_gaps": [
+    "B 真实生成未执行：无模型答案，忠实性/拒答/质量未验证（live_verified=false 待 Astra 认定）",
+    "缺密钥：本次执行进程环境及列明位置未发现可用配置（非全位置断言）",
+    "q08 f1 gold 缺口（A 阶段记录）保留；u04 命中可能不相关；学校政策现行性未认证",
+    "run-1 记录 ask_calls=0 瑕疵（已披露；外部次数 0 准确；revision 2 起脚本已补计）"
+  ],
+  "not_claimed": [
+    "任何模型答案已生成或正确",
+    "B 已执行",
+    "mock/探针证明生成质量",
+    "密钥在所有位置均不存在",
+    "价格/usage/费用上限",
+    "语义审定/政策现行有效"
+  ],
+  "next_gate": "Astra 核查 revision 3 两项修复；通过后按恢复条件执行已授权真实运行；T041 未授权"
+}

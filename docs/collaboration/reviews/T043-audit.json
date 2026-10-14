@@ -1,0 +1,183 @@
+{
+  "scope": "hashes + actual local extractive API + build_messages; no model HTTP",
+  "rows": [
+    {
+      "name": "submitted SHA: step2_code/backend/src/campus_assistant/retrieval/filters.py",
+      "pass_": true,
+      "detail": "3ecf9be49617dc1b7203286b9682e920c72a6f50260963d1647e83115fffb6c5"
+    },
+    {
+      "name": "submitted SHA: step2_code/backend/src/campus_assistant/retrieval/service.py",
+      "pass_": true,
+      "detail": "62169f73da818b5c9d3e1444b7dcda2d80be9a2fcf06882a0ad8489a53a2522b"
+    },
+    {
+      "name": "submitted SHA: step2_code/backend/src/campus_assistant/api/search.py",
+      "pass_": true,
+      "detail": "c56ec40a5f57f3100e6eeb94f1d9fde4e2e0f248b8c667aac4f427f19b2aa6ce"
+    },
+    {
+      "name": "submitted SHA: step2_code/backend/src/campus_assistant/api/ask.py",
+      "pass_": true,
+      "detail": "9409a15a14441d9ad8068f7fc134a48eeeb4307005d4b98e2672772604abb48c"
+    },
+    {
+      "name": "submitted SHA: step2_code/backend/src/campus_assistant/qa/evidence.py",
+      "pass_": true,
+      "detail": "a038c6fed8c81e272587bf0fc0a7e61fbc9d214e9f7068be59798e8d7d36a48b"
+    },
+    {
+      "name": "submitted SHA: step2_code/backend/src/campus_assistant/qa/deepseek.py",
+      "pass_": true,
+      "detail": "e255f999a721068c058322a59da04e213e98e949639a564ef3d5561004b58467"
+    },
+    {
+      "name": "submitted SHA: step2_code/backend/src/campus_assistant/static/search.html",
+      "pass_": true,
+      "detail": "b5c924b1d7c44d0b37ee01e884f1d7b5ebbd601d904f2fa545cc02a4cd51ec8c"
+    },
+    {
+      "name": "submitted SHA: step2_code/backend/src/campus_assistant/static/ask.html",
+      "pass_": true,
+      "detail": "e0321265ffd574fb30606c758549a9bf72f844010ea32aa97b871d95586927d2"
+    },
+    {
+      "name": "submitted SHA: step2_code/backend/tests/test_unknown_student_type.py",
+      "pass_": true,
+      "detail": "3e4bdeea3d4e3b952c756c1900e2091cd2cf6a4179d45b7dc21ebbd015858f25"
+    },
+    {
+      "name": "submitted SHA: docs/delivery/review-disposition-T043.md",
+      "pass_": true,
+      "detail": "432f34953ed77da4d87d3d13284b85d2b3aa39a6eb895b24742653c81c7ffb93"
+    },
+    {
+      "name": "submitted SHA: docs/delivery/README.md",
+      "pass_": true,
+      "detail": "4096f904c56c361bd45579ba57e65bdf8571d09f2bf75b3bd56652f8cec0b297"
+    },
+    {
+      "name": "submitted SHA: docs/delivery/system-design.md",
+      "pass_": true,
+      "detail": "e287daeff781d9dc16aff1b9857df819765bb97803b2e9a44ed9b0d94be3a3f5"
+    },
+    {
+      "name": "submitted SHA: docs/delivery/human-review-pending.md",
+      "pass_": true,
+      "detail": "ebd7ed91290ef6a54a69c039dd9cce42528eb93a23483ad069a7b6b02e5f3e82"
+    },
+    {
+      "name": "submitted SHA: docs/collaboration/submissions/T043/report.md",
+      "pass_": true,
+      "detail": "2752787218ccc497013aed3470a15c85c1e021210f968ebf3628d5edac9a5a23"
+    },
+    {
+      "name": "submitted SHA: docs/collaboration/submissions/T043/verification.md",
+      "pass_": true,
+      "detail": "f4ddc1e464ebc30b5035483aadfe609da5740d66ecf163759e7a13667bb1379d"
+    },
+    {
+      "name": "submitted SHA: docs/collaboration/submissions/T043/submission.json",
+      "pass_": true,
+      "detail": "9c5a1034f5102c14c6dd238adcfd7cc6d5a1e0e94eca6a26b05637e6986821e5"
+    },
+    {
+      "name": "submitted SHA: docs/collaboration/submissions/T043/review-disposition.md",
+      "pass_": true,
+      "detail": "1189c1e59a473dc443774d9a841841daf8a7ef93ecf16c874edad0ff20c702a3"
+    },
+    {
+      "name": "submitted SHA: docs/collaboration/submissions/T043/api-demo.md",
+      "pass_": true,
+      "detail": "3815f91631f52bb718160a3c3ce6c0652a0bf6ec55b755f19576c457d2b67d78"
+    },
+    {
+      "name": "submitted SHA: docs/collaboration/submissions/T043/api-demo.json",
+      "pass_": true,
+      "detail": "088eeb171b816b2d5fdc9294bbc288cd817f973ec5291e62fddca88b2e69733a"
+    },
+    {
+      "name": "submitted SHA: docs/collaboration/submissions/T043/demo-notes.md",
+      "pass_": true,
+      "detail": "e2ae6dc0dd4aada7301afb7ffcd3eb56e22225c5bc700b5bde0077432cc542a8"
+    },
+    {
+      "name": "preserved: data/reviews/T042-user-review-20261014/targeted-review-record.json",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "preserved: docs/delivery/generation-casebook.md",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "preserved: data/evaluations/sicau-rag-pilot-eval-v2/questions.json",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "preserved: data/evaluations/sicau-rag-pilot-eval-v2/freeze.json",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "preserved: data/corpora/sicau-rag-pilot-v1.2/manifest.json",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "preserved: docs/collaboration/submissions/T040/live-results.json",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "preserved: docs/collaboration/submissions/T040/live-answers-full.json",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "extractive HTTP False",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "extractive HTTP True",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "strict excludes unknown source",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "reference mode sends location evidence",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "reference status on actual E",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "actual E warning and unmodified quote in messages",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "generator remains off",
+      "pass_": true,
+      "detail": null
+    }
+  ],
+  "checks": 34,
+  "failures": 0,
+  "statistics_without_student_type_filter": {
+    "active": false,
+    "confirmed_count": 20,
+    "reference_count": 0,
+    "allowed_count": 20
+  }
+}

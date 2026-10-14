@@ -1,0 +1,20 @@
+{
+  "note": "T037 变更清单（submission_revision=1）。本任务无产品代码变更；新增提交目录 7 件 + 原文快照目录 + 生成脚本。原数据/manifest/gold/模板/历史实验/Astra 文件未改。",
+  "new_submissions": [
+    {"path": "docs/collaboration/submissions/T037/report.md"},
+    {"path": "docs/collaboration/submissions/T037/verification.md"},
+    {"path": "docs/collaboration/submissions/T037/submission.json"},
+    {"path": "docs/collaboration/submissions/T037/changed-files.json"},
+    {"path": "docs/collaboration/submissions/T037/opinion-resolution.md", "change": "意见处理表（原意见原样/来源核实/采纳状态/建议措施 + q10 分情形示例 + u03/u04 方案 + q08 释义 + u01/u02 后续）"},
+    {"path": "docs/collaboration/submissions/T037/source-check.json", "change": "结构化证据（身份 SHA/文号/页码块跨度/逐字 quote/判断/未验证点），SHA 579c13a6988f14dd…"},
+    {"path": "docs/collaboration/submissions/T037/proposed-changes.md", "change": "三档定向修订方案（已核实可修订/需要用户决定/证据不足暂保留）+ 一轮实施建议 + 未实施声明"}
+  ],
+  "new_supporting": [
+    {"path": ".cache/T037-source-check/", "change": "5 份争议文档原块全文快照（287dcca7/bed3ac95/db05e0ca/83eb3948/bb8ba97c），SHA 见 verification §4"},
+    {"path": "step2_code/backend/.cache/t030-r2/gen-t037-source-check.py", "change": "source-check.json 生成脚本（逐字断言构建）"}
+  ],
+  "unchanged": [
+    "产品代码/页面、筛选与版本规则、questions.json（gold）、manifest、procedures.json（模板）、T031/T034 实验与冻结、Astra 任务/评审/STATUS/CLAUDE、用户意见原件与副本"
+  ],
+  "hash_note": "本清单不含代码变更哈希（无产品代码改动）；source-check.json 与快照哈希见 verification。"
+}

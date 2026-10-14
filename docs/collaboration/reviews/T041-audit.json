@@ -1,0 +1,476 @@
+{
+  "structural_checks": [
+    {
+      "kind": "submitted hash",
+      "label": "docs/delivery/README.md",
+      "pass": true
+    },
+    {
+      "kind": "submitted hash",
+      "label": "docs/delivery/system-design.md",
+      "pass": true
+    },
+    {
+      "kind": "submitted hash",
+      "label": "docs/delivery/thesis-outline.md",
+      "pass": true
+    },
+    {
+      "kind": "submitted hash",
+      "label": "docs/delivery/evidence-matrix.md",
+      "pass": true
+    },
+    {
+      "kind": "submitted hash",
+      "label": "docs/delivery/defense-script.md",
+      "pass": true
+    },
+    {
+      "kind": "submitted hash",
+      "label": "docs/delivery/windows-runbook.md",
+      "pass": true
+    },
+    {
+      "kind": "submitted hash",
+      "label": "docs/delivery/experiment-index.md",
+      "pass": true
+    },
+    {
+      "kind": "submitted hash",
+      "label": "docs/delivery/human-review-pending.md",
+      "pass": true
+    },
+    {
+      "kind": "submitted hash",
+      "label": "docs/delivery/generation-casebook.md",
+      "pass": true
+    },
+    {
+      "kind": "submitted hash",
+      "label": "docs/collaboration/submissions/T041/report.md",
+      "pass": true
+    },
+    {
+      "kind": "submitted hash",
+      "label": "docs/collaboration/submissions/T041/verification.md",
+      "pass": true
+    },
+    {
+      "kind": "submitted hash",
+      "label": "docs/collaboration/submissions/T041/submission.json",
+      "pass": true
+    },
+    {
+      "kind": "submitted hash",
+      "label": "docs/collaboration/submissions/T041/t041-verify.json",
+      "pass": true
+    },
+    {
+      "kind": "links",
+      "label": "all relative Markdown links exist",
+      "pass": true
+    },
+    {
+      "kind": "case text",
+      "label": "q08 query",
+      "pass": true
+    },
+    {
+      "kind": "case text",
+      "label": "q08 insufficiency",
+      "pass": true
+    },
+    {
+      "kind": "case text",
+      "label": "q10 query",
+      "pass": true
+    },
+    {
+      "kind": "case text",
+      "label": "q10 paragraph 1",
+      "pass": true
+    },
+    {
+      "kind": "case text",
+      "label": "q10 paragraph 2",
+      "pass": true
+    },
+    {
+      "kind": "case text",
+      "label": "q10 paragraph 3",
+      "pass": true
+    },
+    {
+      "kind": "case text",
+      "label": "u03 query",
+      "pass": true
+    },
+    {
+      "kind": "case text",
+      "label": "u03 paragraph 1",
+      "pass": true
+    },
+    {
+      "kind": "case text",
+      "label": "u04 query",
+      "pass": true
+    },
+    {
+      "kind": "case text",
+      "label": "u04 insufficiency",
+      "pass": true
+    },
+    {
+      "kind": "metrics",
+      "label": "bm25 recorded verify",
+      "pass": true
+    },
+    {
+      "kind": "metrics",
+      "label": "bm25 experiment-index.md",
+      "pass": true
+    },
+    {
+      "kind": "metrics",
+      "label": "bm25 thesis-outline.md",
+      "pass": true
+    },
+    {
+      "kind": "metrics",
+      "label": "bm25 evidence-matrix.md",
+      "pass": true
+    },
+    {
+      "kind": "metrics",
+      "label": "dense recorded verify",
+      "pass": true
+    },
+    {
+      "kind": "metrics",
+      "label": "dense experiment-index.md",
+      "pass": true
+    },
+    {
+      "kind": "metrics",
+      "label": "dense thesis-outline.md",
+      "pass": true
+    },
+    {
+      "kind": "metrics",
+      "label": "dense evidence-matrix.md",
+      "pass": true
+    },
+    {
+      "kind": "metrics",
+      "label": "hybrid recorded verify",
+      "pass": true
+    },
+    {
+      "kind": "metrics",
+      "label": "hybrid experiment-index.md",
+      "pass": true
+    },
+    {
+      "kind": "metrics",
+      "label": "hybrid thesis-outline.md",
+      "pass": true
+    },
+    {
+      "kind": "metrics",
+      "label": "hybrid evidence-matrix.md",
+      "pass": true
+    },
+    {
+      "kind": "metrics",
+      "label": "bm25 common subset",
+      "pass": true
+    },
+    {
+      "kind": "metrics",
+      "label": "dense common subset",
+      "pass": true
+    },
+    {
+      "kind": "metrics",
+      "label": "hybrid common subset",
+      "pass": true
+    },
+    {
+      "kind": "usage",
+      "label": "sum and copied token values",
+      "pass": true
+    },
+    {
+      "kind": "time",
+      "label": "8 segments total560",
+      "pass": true
+    },
+    {
+      "kind": "archive",
+      "label": "8 prior reported digest prefixes",
+      "pass": true
+    },
+    {
+      "kind": "T040 preserved",
+      "label": "docs/collaboration/submissions/T040/live-results.json",
+      "pass": true
+    },
+    {
+      "kind": "T040 preserved",
+      "label": "docs/collaboration/submissions/T040/live-answers-full.json",
+      "pass": true
+    },
+    {
+      "kind": "T040 preserved",
+      "label": "docs/collaboration/submissions/T040/report.md",
+      "pass": true
+    },
+    {
+      "kind": "T040 preserved",
+      "label": "docs/collaboration/submissions/T040/verification.md",
+      "pass": true
+    },
+    {
+      "kind": "T040 preserved",
+      "label": "docs/collaboration/submissions/T040/live-review-notes.md",
+      "pass": true
+    },
+    {
+      "kind": "T040 preserved",
+      "label": "docs/collaboration/submissions/T040/submission.json",
+      "pass": true
+    },
+    {
+      "kind": "frozen",
+      "label": "data/evaluations/sicau-rag-pilot-eval-v2/questions.json",
+      "pass": true
+    },
+    {
+      "kind": "frozen",
+      "label": "data/evaluations/sicau-rag-pilot-eval-v2/freeze.json",
+      "pass": true
+    },
+    {
+      "kind": "frozen",
+      "label": "data/evaluations/sicau-rag-pilot-eval-v2/aggregate.json",
+      "pass": true
+    },
+    {
+      "kind": "frozen",
+      "label": "data/corpora/sicau-rag-pilot-v1.2/manifest.json",
+      "pass": true
+    },
+    {
+      "kind": "source for prose finding",
+      "label": "T038 actually records browser path",
+      "pass": true
+    }
+  ],
+  "structural_pass": true,
+  "links": [
+    {
+      "file": "README.md",
+      "target": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "human-review-pending.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "system-design.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "thesis-outline.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "evidence-matrix.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "defense-script.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "windows-runbook.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "experiment-index.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "human-review-pending.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "experiment-index.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "defense-script.md",
+      "pass": true
+    },
+    {
+      "file": "thesis-outline.md",
+      "target": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "file": "evidence-matrix.md",
+      "target": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "file": "defense-script.md",
+      "target": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "file": "windows-runbook.md",
+      "target": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "file": "human-review-pending.md",
+      "target": "../collaboration/submissions/T039/review-supplement.md",
+      "pass": true
+    },
+    {
+      "file": "human-review-pending.md",
+      "target": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "file": "human-review-pending.md",
+      "target": "../collaboration/submissions/T039/evaluation-report.md",
+      "pass": true
+    },
+    {
+      "file": "human-review-pending.md",
+      "target": "../collaboration/submissions/T039/review-supplement.md",
+      "pass": true
+    },
+    {
+      "file": "human-review-pending.md",
+      "target": "../collaboration/submissions/T039/review-supplement.md",
+      "pass": true
+    },
+    {
+      "file": "human-review-pending.md",
+      "target": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "file": "generation-casebook.md",
+      "target": "../collaboration/submissions/T040/live-answers-full.json",
+      "pass": true
+    },
+    {
+      "file": "generation-casebook.md",
+      "target": "../collaboration/submissions/T040/live-results.json",
+      "pass": true
+    },
+    {
+      "file": "generation-casebook.md",
+      "target": "../collaboration/submissions/T040/live-review-notes.md",
+      "pass": true
+    },
+    {
+      "file": "generation-casebook.md",
+      "target": "../collaboration/reviews/T040-R4.md",
+      "pass": true
+    },
+    {
+      "file": "generation-casebook.md",
+      "target": "../collaboration/reviews/T040-R4-audit.json",
+      "pass": true
+    },
+    {
+      "file": "generation-casebook.md",
+      "target": "defense-script.md",
+      "pass": true
+    }
+  ],
+  "archive": [
+    {
+      "file": "README.md",
+      "sha256": "a31a90337d99fde133e5d54122bc562e2cf8bb8965045f387a1a78703f349010",
+      "expected_prior_prefix": "a31a9033",
+      "prefix_match": true
+    },
+    {
+      "file": "system-design.md",
+      "sha256": "dab469a6497a122c9996ef22058b7a55d64b265880f731af66903b944875fb55",
+      "expected_prior_prefix": "dab469a6",
+      "prefix_match": true
+    },
+    {
+      "file": "thesis-outline.md",
+      "sha256": "07f92376c0e9405e39ccc8c6407e35f76bce6eba5dcc824a1edbecfdbb10eb74",
+      "expected_prior_prefix": "07f92376",
+      "prefix_match": true
+    },
+    {
+      "file": "evidence-matrix.md",
+      "sha256": "4c84fa3d14e5acd138fbae68a66b3585db76786b20f9e53df89ec5e7e2a432b9",
+      "expected_prior_prefix": "4c84fa3d",
+      "prefix_match": true
+    },
+    {
+      "file": "defense-script.md",
+      "sha256": "e96bce130d815d7a38fb951f42aa953f679e69626cf428b9c5e8cfc7a01934e8",
+      "expected_prior_prefix": "e96bce13",
+      "prefix_match": true
+    },
+    {
+      "file": "windows-runbook.md",
+      "sha256": "d55a0db02cbd228ea728ac9c65e11043f83fb9ea4282af291e678a7cdac46f13",
+      "expected_prior_prefix": "d55a0db0",
+      "prefix_match": true
+    },
+    {
+      "file": "experiment-index.md",
+      "sha256": "9762be383bd58ddac85420d9bbb3677f022c32b08d27308468c1b276fb62eedc",
+      "expected_prior_prefix": "9762be38",
+      "prefix_match": true
+    },
+    {
+      "file": "human-review-pending.md",
+      "sha256": "852a9517b277140c2309d3126cc540623726c0b3404fc7537e0659f957b3dce0",
+      "expected_prior_prefix": "852a9517",
+      "prefix_match": true
+    }
+  ],
+  "archive_boundary": "Prior eight digest prefixes checked and current full digests recorded; no independent complete pre-change snapshot for all eight.",
+  "prose_findings": [
+    {
+      "id": "human-state",
+      "file": "experiment-index.md",
+      "detail": "Current shared limitation wrongly blanket-labels human review absent; received109/3/2 and remaining current items must be distinguished."
+    },
+    {
+      "id": "browser-history",
+      "file": "evidence-matrix.md",
+      "detail": "Claims T038 had no browser work although T038-R1 documents real browser paths; distinguish T041/no new generated-answer browser evidence."
+    }
+  ],
+  "pass": false
+}

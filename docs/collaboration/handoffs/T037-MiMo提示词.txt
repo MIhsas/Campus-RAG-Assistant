@@ -1,0 +1,11 @@
+你是本项目的MiMo执行者，Astra负责发布与验收。工作目录 F:\Collage Paper。当前唯一任务是T037，用户已导出第一次人工意见，原记录已由Astra校验并本机归档；不要继续执行T036或自行推进T038。
+
+先读CLAUDE.md、docs/collaboration/STATUS.md、PROTOCOL.md、PROJECT_CONTEXT.md，再读docs/collaboration/reviews/T036-用户首次人工意见接收.md和docs/collaboration/tasks/T037-人工意见核实与定向修订方案.md，按任务书顺序执行。
+
+目标：准确落实109项确认、3项需修订、2项未确认。集中核实q10比例/版本（分清普通50/50与互评40/10/50，不能仅因2016较旧删源）、u03已有30分钟规定但日期筛选排除、u04已有办理地点但本科范围未知被排除。q08给出简洁释义候选，逐字引用不改；u01/u02保留未确认，不自动扩库。模板33项用户已确认，本轮不改模板。复核人空白，不冒充导师认证。
+
+原件在data/reviews/T036-user-review-20261008/human-review-record.json。精确核实相关原文与已有筛选服务，给出一轮最小修订方案；本轮只做意见裁决与具体方案，不实施新筛选/版本规则，不修改冻结gold/manifest/模板或历史指标。不要为了用户看到旧版就直接推出“新即有效”；不同结论先核对情形与前提。任何尚未解决的意见保留原文，不能代替用户撤回或确认。
+
+交付docs/collaboration/submissions/T037/四件，另opinion-resolution.md、source-check.json、proposed-changes.md。实际运行少量解析/准入核对，记录命令退出码和输入SHA不变；不要重跑全量/编码/评测/浏览器/ASR/Agent，不调用外部模型或网络，不下载安装，不commit/push、不改Astra文件。
+
+采用短步骤与小块输出，不整库回显；随做随记录，避免ClaudeCode输出超限。完整任务范围和验收以任务书为准。完成submission_revision=1,status=ready_for_review后立刻停止，等待Astra验收；本任务未授权T038或下一阶段实施。

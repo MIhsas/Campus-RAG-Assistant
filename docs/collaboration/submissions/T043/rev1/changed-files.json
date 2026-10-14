@@ -1,0 +1,38 @@
+{
+  "note": "T043 变更清单（submission_revision=1）。范围=意见落档文档 + include_unknown_student_type 参考准入实施（filters/service/API/evidence/messages/两页/聚焦测试）+ T043 提交材料。零模型调用；不改 gold/冻结/指标/原意见/casebook/历史提交/Astra 文件。哈希为落盘后实测全值；本清单不列自哈希。",
+  "code_modified": [
+    {"path": "step2_code/backend/src/campus_assistant/retrieval/filters.py", "sha256": "3ecf9be49617dc1b7203286b9682e920c72a6f50260963d1647e83115fffb6c5", "change": "compute_allowed_document_ids 增可选 include_unknown_student_type（默认 false=strict）；仅 student_type 未知可参考纳入（其余维度/日期检查保持）；统计分列 confirmed/reference；compute_candidate_document_ids 增 exclude_document_ids（默认=strict 原行为）"},
+    {"path": "step2_code/backend/src/campus_assistant/retrieval/service.py", "sha256": "62169f73da818b5c9d3e1444b7dcda2d80be9a2fcf06882a0ad8489a53a2522b", "change": "execute_search/execute_candidates 传参；逐命中 student_type_status（仅参考命中）；filter_summary 分列；候选按本次模式去重"},
+    {"path": "step2_code/backend/src/campus_assistant/api/search.py", "sha256": "c56ec40a5f57f3100e6eeb94f1d9fde4e2e0f248b8c667aac4f427f19b2aa6ce", "change": "SearchRequest.include_unknown_student_type（正式默认 true，严格布尔校验）；SearchHit/FilterSummary 状态与分列字段；search/candidates 回显模式"},
+    {"path": "step2_code/backend/src/campus_assistant/api/ask.py", "sha256": "9409a15a14441d9ad8068f7fc134a48eeeb4307005d4b98e2672772604abb48c", "change": "EvidenceItem.student_type_status；AskResponse 模式回显；execute_search 传参"},
+    {"path": "step2_code/backend/src/campus_assistant/qa/evidence.py", "sha256": "a038c6fed8c81e272587bf0fc0a7e61fbc9d214e9f7068be59798e8d7d36a48b", "change": "证据项透传 student_type_status（普通证据 null=旧协议）"},
+    {"path": "step2_code/backend/src/campus_assistant/qa/deepseek.py", "sha256": "e255f999a721068c058322a59da04e213e98e949639a564ef3d5561004b58467", "change": "build_messages 逐 E 状态入消息头（quote 不改）；SYSTEM_PROMPT 第 7 条（允许据实给明明示办理信息并保留范围提示、不判资格）"},
+    {"path": "step2_code/backend/src/campus_assistant/static/search.html", "sha256": "b5c924b1d7c44d0b37ee01e884f1d7b5ebbd601d904f2fa545cc02a4cd51ec8c", "change": "新开关（默认开）；请求体/提交快照/重试/跨页/候选同模式；命中状态提示；模式回显"},
+    {"path": "step2_code/backend/src/campus_assistant/static/ask.html", "sha256": "e0321265ffd574fb30606c758549a9bf72f844010ea32aa97b871d95586927d2", "change": "同上 + 转摘录快照/历史存取（旧缺字段=当时 strict）/复制文本含状态与模式"}
+  ],
+  "tests_new": [
+    {"path": "step2_code/backend/tests/test_unknown_student_type.py", "sha256": "3e4bdeea3d4e3b952c756c1900e2091cd2cf6a4179d45b7dc21ebbd015858f25", "change": "聚焦 7 项（真实包 u04 双模式/候选去重、合成夹具、消息+mock、三模式共用准入、两页结构）"}
+  ],
+  "delivery_docs": [
+    {"path": "docs/delivery/review-disposition-T043.md", "sha256": "432f34953ed77da4d87d3d13284b85d2b3aa39a6eb895b24742653c81c7ffb93", "change": "新增：当前意见状态索引与两决定说明（casebook 冻结指向）"},
+    {"path": "docs/delivery/README.md", "sha256": "4096f904c56c361bd45579ba57e65bdf8571d09f2bf75b3bd56652f8cec0b297", "change": "当前状态：参考准入语义+8 项确认+分域口径"},
+    {"path": "docs/delivery/system-design.md", "sha256": "e287daeff781d9dc16aff1b9857df819765bb97803b2e9a44ed9b0d94be3a3f5", "change": "边界行：准入语义（T043 参考准入/strict 历史基线/候选边界）"},
+    {"path": "docs/delivery/human-review-pending.md", "sha256": "ebd7ed91290ef6a54a69c039dd9cce42528eb93a23483ad069a7b6b02e5f3e82", "change": "人工状态：8 项确认落档；T040 新答案行转已确认（事实注记保持）；优先级与工具节更新"}
+  ],
+  "submissions": [
+    {"path": "docs/collaboration/submissions/T043/report.md", "sha256": "2752787218ccc497013aed3470a15c85c1e021210f968ebf3628d5edac9a5a23"},
+    {"path": "docs/collaboration/submissions/T043/verification.md", "sha256": "f4ddc1e464ebc30b5035483aadfe609da5740d66ecf163759e7a13667bb1379d"},
+    {"path": "docs/collaboration/submissions/T043/submission.json", "sha256": "9c5a1034f5102c14c6dd238adcfd7cc6d5a1e0e94eca6a26b05637e6986821e5"},
+    {"path": "docs/collaboration/submissions/T043/review-disposition.md", "sha256": "1189c1e59a473dc443774d9a841841daf8a7ef93ecf16c874edad0ff20c702a3", "change": "八项落档+两决定+实施+边界"},
+    {"path": "docs/collaboration/submissions/T043/api-demo.md", "sha256": "3815f91631f52bb718160a3c3ce6c0652a0bf6ec55b755f19576c457d2b67d78"},
+    {"path": "docs/collaboration/submissions/T043/api-demo.json", "sha256": "088eeb171b816b2d5fdc9294bbc288cd817f973ec5291e62fddca88b2e69733a", "change": "本地 TestClient 六条实测机器记录"},
+    {"path": "docs/collaboration/submissions/T043/demo-notes.md", "sha256": "e2ae6dc0dd4aada7301afb7ffcd3eb56e22225c5bc700b5bde0077432cc542a8", "change": "桩级声明+7 步人工检查表"},
+    {"path": "docs/collaboration/submissions/T043/changed-files.json", "change": "本清单（不列自哈希）"}
+  ],
+  "preserved_readonly": {
+    "user_record": "data/reviews/T042-user-review-20261014/targeted-review-record.json = 7a0c6ec4a685f4a1…（原件零写入）",
+    "casebook": "docs/delivery/generation-casebook.md = 6ef5215d190d694d…（T042 冻结输入，原字节）",
+    "history": "T036/T039/T040/T041/T042 提交与包、gold/freeze/标注/结果/aggregate/metadata/模板/Astra 文件零写入；改前三件归档 archive-t043-pre/（52240b07/3a54c639/bca58be9）"
+  },
+  "hash_note": "本清单哈希为落盘后实测全值；本清单自身不列自哈希。"
+}

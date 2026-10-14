@@ -1,0 +1,48 @@
+{
+  "task_id": "T042",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "human_review_status": "unreviewed",
+  "planner_live_verified": false,
+  "summary": "T042 八项定向补充复核包：新增 build-targeted-review-pack.py（只读构建，40 条引用逐字/跨度/SHA 对真实解析块核验，失败不出包，非空拒覆盖）、targeted-review-pack.html（自包含离线页：两分区 8 卡、稳定分域 ID revision:*/answer:*、原意见只读不预填、8 项新意见全未复核、四档+说明、无 localStorage/fetch/外链/全选通过/筛选矩阵、导出新 JSON 含 8 项+输入版本 SHA+导出时间、签名/日期不预填）。q08 gold 与 T040 未检出该 gold 分区显示；q10 两前提分列+P3 推断突出、不宣告 2016 废止；u03 日期已核实≠现行性认证；u04 未核实候选标「未核实范围/非本次模型依据」且未混入实发 E。输出 .cache/human-review/T042-v1/{review.html,pack.json,README.md}。验证：构建测试 6 passed、JS 桩检查 24 项通过（独立模拟仅 answer:q10 需修订+P3→导出而 revision:q10 与其余 6 项保持未复核；模拟样例独立标注不进默认包）；源输入前后 SHA 一致。无真实浏览器：如实桩级+demo-notes 短检查表。工具完成≠人工复核完成；8 项待用户填写；不合并历史 109/3/2、不改 gold/模板/历史。",
+  "verification": {
+    "build": "40 条引用（17 gold+3 候选+20 实发 E）逐字/跨度/SHA 核对通过；8 卡分域 ID；全未复核；非空拒覆盖 exit 1；构建 exit 0",
+    "build_tests": "tests/test_targeted_review_pack.py 6 passed（exit 0）：q10 三段/P3 逐字不变、q08 gold 不混实发 E、u04 候选标注与 83eb 排除、源输入 SHA 前后一致",
+    "js_stub": "check-targeted-review-pack.cjs 24 项通过（exit 0）：默认全未复核/不预填、独立模拟 answer:q10 分域生效、NodeList/select 语义、无存储 API/外链",
+    "simulated_sample": "simulated-export-sample.json（模拟操作测试，非真人意见，不在默认包）",
+    "preservation": "源输入 SHA 前后一致；旧 T036/产品/gold/冻结/指标/模板/历史输出零写入；human-review-pending 仅追加位置预告",
+    "scope_note": "零外部调用、不读密钥/环境；无真实浏览器（如实桩级+demo-notes）；未跑产品/实验/模型/旧 114 项测试"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "demo-notes.md",
+    "simulated-export-sample.json"
+  ],
+  "tool_outputs": {
+    "pack": "step2_code/backend/.cache/human-review/T042-v1/{review.html,pack.json,README.md}",
+    "new_scripts": [
+      "step2_code/backend/scripts/build-targeted-review-pack.py",
+      "step2_code/backend/scripts/targeted-review-pack.html",
+      "step2_code/backend/scripts/check-targeted-review-pack.cjs",
+      "step2_code/backend/tests/test_targeted_review_pack.py"
+    ]
+  },
+  "review_scope": "T039 四项修订（revision:q08/q10/u03/u04）+ T040 同四题历史真实结果（answer:q08/q10/u03/u04），共 8 项；不重审 114 项/模板 33 项",
+  "known_gaps": [
+    "8 项新意见全未复核，待用户填写；填写后处置属后续任务",
+    "语义正确性/政策现行性未验证；程序化核对≠语义审定",
+    "真实浏览器行为待用户按 demo-notes 走查（本窗口无浏览器工具）"
+  ],
+  "not_claimed": [
+    "accepted/验收通过",
+    "人工复核完成",
+    "真实浏览器实测",
+    "语义正确/政策现行有效"
+  ],
+  "next_gate": "Astra 验收工具后再交用户填写；T043 未发布"
+}

@@ -1,0 +1,17 @@
+用户已在2026-10-09的Astra对话中，对四题限定真实生成回复“授权”。Astra现已发布T040 B工单；无需重复索取同一授权。旧“待授权提示词”是历史，以本文件与最新工单为准。
+
+你是Claude Code中的MiMo，Astra继续审核。工作区F:\Collage Paper。先读CLAUDE.md/STATUS.md最新段，再读：
+F:\Collage Paper\docs\collaboration\tasks\T040-B-真实资料限定生成冒烟.md
+背景：reviews/T040-R1.md、submissions/T040/dry-run.json/input-hashes.json/live-smoke-plan.md。T040 A已通过，不重复A，不推进T041。
+
+只执行本次B：固定q08/q10/u03/u04、真实包v1.2、A原问题/条件/E/messages、BM25/top_k5；https://api.deepseek.com/chat/completions、deepseek-flash、max_tokens1500、timeout30秒；总计最多4次真实HTTP尝试、每题至多一次、零重试、首次技术失败即停。用户未另设人民币上限，不虚构金额或价格；旧T014/T025授权不作为依据，本次有独立授权。
+
+新增最小live-smoke-real-qa.py（默认dry-run，显式--live）与少量必要本地mock测试，复用现有/ask生成路径与provider/校验。先核对A文件身份、当前正式E/messages与A一致及实际provider授权参数，缺配置/漂移/非官方目标先拒绝、零请求非零退出。密钥仅本地读取不输出；不打印全量环境/HTTP headers/原始异常。可以当前进程保留NO_PROXY既有项并补api.deepseek.com，不做额外网络探测。
+
+计数在真实发送位置；/ask条数不当作模型次数，连接失败也消耗一次。少量mock验证计数/失败即停/前置拒绝/完整记录，不跑冗余矩阵。通过后按已授权范围直接运行live一次，不再问同一授权。JSON/截断/结构等技术失败也立即停，未执行题not_attempted；业务不足可继续。零证据本地短路。失败保留，不自修再试、不换模型/地址/题目或追加请求。
+
+先归档A九件至submissions/T040/rev1（不覆盖既有归档）；A dry-run/input-hashes/人工核对表/原计划保留原字节。新增完整live-results/live-answers-full/live-review-notes，更新revision2四件与continuation-progress。完整E与答案、paragraph→E、实际审计/次数/停止原因记录清楚；不可获得的供应商字段null并说明，不伪造，不把本地HTTP状态当供应商状态。
+
+逐段核对实际所引E能否支持文本，合法编号不等于语义正确。q10两前提比例分开，u03条件按原文；q08缺gold与u04依据不确定保留，合理不足可接受，答出gold但本次E不支持不能判忠实性通过。不能往messages塞gold/候选/用户复核记录，不修改数据/产品/适配器/提示/旧合成冒烟门，用户原意见不代改签。
+
+submission_revision=2、task_revision=B-v1、responds_to=T040-B、stage=B_executed、status=ready_for_review；真实external_model_calls按发送计数，live_verified留false待Astra认定，planner_live_verified=false。前置未执行则B_not_started/partial如实提交。完成即停等Astra，不commit/push、不下载安装、不跑全量/UI/ASR/Agent/三模式/向量或旧评测。详细证据分步写文件，聊天短摘要，避免输出超限。

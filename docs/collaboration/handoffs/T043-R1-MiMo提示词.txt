@@ -1,0 +1,27 @@
+你是本项目执行者 MiMo，Astra负责发布与验收。工作目录 F:\Collage Paper。现在只执行T043-R1前台导航定向返工，T044未发布。不要重复后端实施或重新要求用户确认已经明确的u04/u03选择。
+
+先读：
+docs/collaboration/STATUS.md
+docs/collaboration/PROTOCOL.md
+docs/collaboration/reviews/T043-R1.md
+docs/collaboration/tasks/T043-意见落档与未知学生类型正式准入.md
+
+已确认并保持：Astra本轮新增7项+旧137项Python通过，20个提交SHA+7只读身份+真实E/messages的34项审计通过；参考准入主路径与复制在真实浏览器正常。无需重跑这些后端检查。用户8项全部确认、旧109/3/2和模板33分域保持；正式search/ask默认true、底层默认strict均是授权设计，不要改默认值。
+
+唯一必修是导航上下文快照，两条因果链一起修：
+1. 严格搜索→问答页恢复strict正确→不重新提交直接返回搜索，链接仍静态/search，条件/问题/开关丢失并默认true。search反向接收URL也有同类缺陷。URL恢复后应能不提交再次跨页，完整保留query/filters/document_id/include_unknown_student_type。
+2. 最近reference请求之后查看旧历史，显示strict但导航仍带最近请求的true。历史显示上下文应绑定历史自己的完整快照，缺模式字段按false；查看零请求，不得重执行历史来修复。
+
+最小实现由你决定。建议独立导航上下文，避免将lastSubmitted当所有场景的唯一状态：不能破坏重试/失败转摘录的原请求快照，不能让用户稍改控件就篡改旧结果导航。初始化的待恢复URL快照不应丢失；指定文件/失效ID/目录延迟保护保持。
+
+范围仅两页search.html/ask.html、两份check-*-behavior.cjs与T043当前提交材料。现有行为桩根本没有新checkbox，须加入默认checked且能真实读写checked的控件；不得只查源码字符串。补少量业务链：两个方向URL恢复后立刻跨页、旧strict历史恢复后导航strict、当前提交后改控件仍用原快照；合并验证新开关提交/重试/转摘录/候选参数。不要建额外边界矩阵。
+
+验证：两页行为检查+9页JS语法，并原样运行
+& 'D:\nodejs\node.exe' docs/collaboration/reviews/T043-navigation-probe.cjs
+其当前11检查/3失败/exit1，修后应exit0；禁止改Astra脚本/通过标准。探针结果文件由原脚本运行更新允许，但先将原失败json原字节备份到你的fix证据中；不要手改结果。无浏览器工具就如实声明，Astra补验。没有后端改动就不跑144项Python/全量/模型/三模式实验。
+
+review中的confirmed_count说明为非阻断整理，可加一句限定，不能借机扩后端改造。
+
+先归档revision1提交材料且不覆盖既有历史；完成后更新report/verification/submission/changed-files，新增fix-report，submission_revision=2、responds_to=T043-R1、status=ready_for_review、external_model_calls=0、planner_live_verified=false。报告区分Astra已运行证据与本窗口实跑，不代签浏览器或人工政策认证。原意见/语料/metadata/模板/gold/freeze/指标/原模型输出/casebook只读。
+
+不读密钥/环境，不调用DeepSeek，旧T040授权已结束；不安装下载，不commit/push，不修改Astra工单/STATUS/CLAUDE/PROJECT_CONTEXT，不推进T044。提交后停止等待Astra。输出保持短小，不打印大文件或整批结果，避免旧窗口输出超限。

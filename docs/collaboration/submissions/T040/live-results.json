@@ -1,0 +1,479 @@
+{
+  "kind": "T040-B 真实资料限定生成冒烟执行记录",
+  "responds_to": "T040-B",
+  "task_revision": "B-v1",
+  "mode": "live",
+  "authorization_note": "用户 2026-10-09 对四题/官方端点/deepseek-flash/≤4 次尝试/1500 输出 tokens/30s/零重试/首次技术失败即停回复“授权”；无人民币上限指定，不虚构金额或价格",
+  "run_identity": {
+    "endpoint": "https://api.deepseek.com/chat/completions",
+    "model": "deepseek-flash",
+    "max_tokens": 1500,
+    "timeout_seconds": 30.0,
+    "config_source": "实际 provider 只读属性（非计划值）",
+    "question_order": [
+      "q08",
+      "q10",
+      "u03",
+      "u04"
+    ],
+    "corpus": "F:\\Collage Paper\\data\\corpora\\sicau-rag-pilot-v1.2",
+    "questions_path": "F:\\Collage Paper\\data\\evaluations\\sicau-rag-pilot-eval-v2\\questions.json",
+    "a_identity": {
+      "ok": true,
+      "problems": [],
+      "a_materials_sha_checked": 12,
+      "input_files_sha_checked": 10,
+      "questions_content_checked": 4,
+      "request_uuid_note": "请求 UUID 不作为证据差异；比较字段=query/conditions/mode/top_k/filters/E 全文/预算/messages"
+    }
+  },
+  "preflight": {
+    "a_identity_ok": true,
+    "config_check": {
+      "ok": true,
+      "reason": null
+    },
+    "key_present": true
+  },
+  "attempt_accounting": {
+    "budget_max_external_http_attempts": 4,
+    "max_attempts_per_question": 1,
+    "external_http_attempts": 4,
+    "ask_calls": 8,
+    "ask_calls_note": "含前置本地 extractive 核对（非模型次数）；外部 HTTP 次数单独计数",
+    "provider_calls": 4,
+    "provider_calls_note": "provider.generate 调用数（另列，不作外部次数）",
+    "ask_calls_generated_only": 4,
+    "attempt_log": [
+      {
+        "index": 1,
+        "outcome": "returned",
+        "supplier_http_status": 200,
+        "supplier_status_note": "generate() 成功返回蕴含供应商 HTTP 200（适配器仅在 status==200 时返回）",
+        "error_type": null,
+        "user_message": null,
+        "generation_meta": {
+          "provider": "deepseek",
+          "model": "deepseek-flash",
+          "request_id": "6fbea0b9-56ce-4c51-a39b-69681696fd50",
+          "usage": {
+            "prompt_tokens": 1344,
+            "completion_tokens": 107,
+            "total_tokens": 1451,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 1344
+          },
+          "latency_ms": 1359,
+          "max_tokens": 1500,
+          "finish_reason": "stop"
+        }
+      },
+      {
+        "index": 2,
+        "outcome": "returned",
+        "supplier_http_status": 200,
+        "supplier_status_note": "generate() 成功返回蕴含供应商 HTTP 200（适配器仅在 status==200 时返回）",
+        "error_type": null,
+        "user_message": null,
+        "generation_meta": {
+          "provider": "deepseek",
+          "model": "deepseek-flash",
+          "request_id": "3f1bb74d-54e2-42a0-81c7-e8b4eb0f1f4c",
+          "usage": {
+            "prompt_tokens": 1379,
+            "completion_tokens": 171,
+            "total_tokens": 1550,
+            "prompt_tokens_details": {
+              "cached_tokens": 128
+            },
+            "prompt_cache_hit_tokens": 128,
+            "prompt_cache_miss_tokens": 1251
+          },
+          "latency_ms": 1092,
+          "max_tokens": 1500,
+          "finish_reason": "stop"
+        }
+      },
+      {
+        "index": 3,
+        "outcome": "returned",
+        "supplier_http_status": 200,
+        "supplier_status_note": "generate() 成功返回蕴含供应商 HTTP 200（适配器仅在 status==200 时返回）",
+        "error_type": null,
+        "user_message": null,
+        "generation_meta": {
+          "provider": "deepseek",
+          "model": "deepseek-flash",
+          "request_id": "02163ecf-4d89-4a64-a31c-8b90f6f4f04b",
+          "usage": {
+            "prompt_tokens": 1667,
+            "completion_tokens": 53,
+            "total_tokens": 1720,
+            "prompt_tokens_details": {
+              "cached_tokens": 128
+            },
+            "prompt_cache_hit_tokens": 128,
+            "prompt_cache_miss_tokens": 1539
+          },
+          "latency_ms": 922,
+          "max_tokens": 1500,
+          "finish_reason": "stop"
+        }
+      },
+      {
+        "index": 4,
+        "outcome": "returned",
+        "supplier_http_status": 200,
+        "supplier_status_note": "generate() 成功返回蕴含供应商 HTTP 200（适配器仅在 status==200 时返回）",
+        "error_type": null,
+        "user_message": null,
+        "generation_meta": {
+          "provider": "deepseek",
+          "model": "deepseek-flash",
+          "request_id": "8ca1e764-f56f-4568-89b4-dda3568ebf7f",
+          "usage": {
+            "prompt_tokens": 1690,
+            "completion_tokens": 57,
+            "total_tokens": 1747,
+            "prompt_tokens_details": {
+              "cached_tokens": 128
+            },
+            "prompt_cache_hit_tokens": 128,
+            "prompt_cache_miss_tokens": 1562
+          },
+          "latency_ms": 811,
+          "max_tokens": 1500,
+          "finish_reason": "stop"
+        }
+      }
+    ],
+    "send_log": [
+      {
+        "index": 1,
+        "endpoint": "https://api.deepseek.com/chat/completions",
+        "outcome": "response",
+        "response_status": 200,
+        "error_type": null
+      },
+      {
+        "index": 2,
+        "endpoint": "https://api.deepseek.com/chat/completions",
+        "outcome": "response",
+        "response_status": 200,
+        "error_type": null
+      },
+      {
+        "index": 3,
+        "endpoint": "https://api.deepseek.com/chat/completions",
+        "outcome": "response",
+        "response_status": 200,
+        "error_type": null
+      },
+      {
+        "index": 4,
+        "endpoint": "https://api.deepseek.com/chat/completions",
+        "outcome": "response",
+        "response_status": 200,
+        "error_type": null
+      }
+    ]
+  },
+  "questions": {
+    "q08": {
+      "query": "考试时带小抄算什么行为？",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "request_body": {
+        "query": "考试时带小抄算什么行为？",
+        "mode": "bm25",
+        "top_k": 5,
+        "answer_mode": "generated",
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": null,
+          "as_of_date": null
+        }
+      },
+      "local_http_status": 200,
+      "local_http_status_note": "本地 /ask 接口状态，非供应商 HTTP 状态",
+      "supplier_http_status": 200,
+      "supplier_status_note": "generate() 成功返回蕴含供应商 HTTP 200（适配器仅在 status==200 时返回）",
+      "attempts": 1,
+      "provider_calls": 1,
+      "ask_calls_included": 1,
+      "outcome": "business_insufficient",
+      "ask_status": "insufficient_evidence",
+      "paragraphs": null,
+      "generation_meta": {
+        "provider": "deepseek",
+        "model": "deepseek-flash",
+        "request_id": "6fbea0b9-56ce-4c51-a39b-69681696fd50",
+        "usage": {
+          "prompt_tokens": 1344,
+          "completion_tokens": 107,
+          "total_tokens": 1451,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 1344
+        },
+        "latency_ms": 1359,
+        "max_tokens": 1500,
+        "finish_reason": "stop"
+      },
+      "insufficient_reason": "【原文摘录】仅列有考试违纪的五种情形和考试作弊的若干认定情形，但均未直接包含‘携带小抄’或‘考试时带小抄’的认定表述；E5第五条第一项‘携带规定以外的物品进入考场或者未放在指定位置的’与‘小抄’并非同一表述，且该条定性为考试违纪而非作弊，摘录不足以直接回答带小抄算违纪还是作弊。",
+      "error": null
+    },
+    "q10": {
+      "query": "本科毕业论文（设计）成绩由哪几部分组成、各占多少？",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "request_body": {
+        "query": "本科毕业论文（设计）成绩由哪几部分组成、各占多少？",
+        "mode": "bm25",
+        "top_k": 5,
+        "answer_mode": "generated",
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": null,
+          "as_of_date": null
+        }
+      },
+      "local_http_status": 200,
+      "local_http_status_note": "本地 /ask 接口状态，非供应商 HTTP 状态",
+      "supplier_http_status": 200,
+      "supplier_status_note": "generate() 成功返回蕴含供应商 HTTP 200（适配器仅在 status==200 时返回）",
+      "attempts": 1,
+      "provider_calls": 1,
+      "ask_calls_included": 1,
+      "outcome": "answered",
+      "ask_status": "generated",
+      "paragraphs": [
+        {
+          "text": "毕业论文（设计）成绩的组成分两种情形：一般情形下，由导师评定成绩（50%）和答辩成绩（50%）两部分组成。",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ],
+          "citations": [
+            {
+              "evidence_id": "E1",
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "a2d88cea5badd699",
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/a2d88cea5badd699"
+            },
+            {
+              "evidence_id": "E2",
+              "document_id": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6",
+              "block_id": "ca36d9c1b4b07cee",
+              "preview_url": "/preview#c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6/ca36d9c1b4b07cee"
+            }
+          ]
+        },
+        {
+          "text": "开展学生互评的专业，成绩由导师评定成绩（40%）、学生互评成绩（10%）和答辩小组评定成绩（50%）三部分组成。",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ],
+          "citations": [
+            {
+              "evidence_id": "E1",
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "a2d88cea5badd699",
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/a2d88cea5badd699"
+            },
+            {
+              "evidence_id": "E2",
+              "document_id": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6",
+              "block_id": "ca36d9c1b4b07cee",
+              "preview_url": "/preview#c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6/ca36d9c1b4b07cee"
+            }
+          ]
+        },
+        {
+          "text": "开题报告成绩不纳入上述组成比例，而是按两级制单独记载（通过或不通过）。",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ],
+          "citations": [
+            {
+              "evidence_id": "E1",
+              "document_id": "c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd",
+              "block_id": "a2d88cea5badd699",
+              "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/a2d88cea5badd699"
+            },
+            {
+              "evidence_id": "E2",
+              "document_id": "c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6",
+              "block_id": "ca36d9c1b4b07cee",
+              "preview_url": "/preview#c0ccb884f67dc0c0059955220a158d745242cbb6a3d9f7fb091294eb6e5876f6/ca36d9c1b4b07cee"
+            }
+          ]
+        }
+      ],
+      "generation_meta": {
+        "provider": "deepseek",
+        "model": "deepseek-flash",
+        "request_id": "3f1bb74d-54e2-42a0-81c7-e8b4eb0f1f4c",
+        "usage": {
+          "prompt_tokens": 1379,
+          "completion_tokens": 171,
+          "total_tokens": 1550,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 1251
+        },
+        "latency_ms": 1092,
+        "max_tokens": 1500,
+        "finish_reason": "stop"
+      },
+      "error": null
+    },
+    "u03": {
+      "query": "考试开始多久后迟到考生不得进入考场？",
+      "conditions": {
+        "campus": null,
+        "student_type": null,
+        "admission_year": null,
+        "as_of_date": "2026-10-03"
+      },
+      "request_body": {
+        "query": "考试开始多久后迟到考生不得进入考场？",
+        "mode": "bm25",
+        "top_k": 5,
+        "answer_mode": "generated",
+        "filters": {
+          "campus": null,
+          "student_type": null,
+          "admission_year": null,
+          "as_of_date": "2026-10-03"
+        }
+      },
+      "local_http_status": 200,
+      "local_http_status_note": "本地 /ask 接口状态，非供应商 HTTP 状态",
+      "supplier_http_status": 200,
+      "supplier_status_note": "generate() 成功返回蕴含供应商 HTTP 200（适配器仅在 status==200 时返回）",
+      "attempts": 1,
+      "provider_calls": 1,
+      "ask_calls_included": 1,
+      "outcome": "answered",
+      "ask_status": "generated",
+      "paragraphs": [
+        {
+          "text": "考试开始30分钟后考生禁止进入考场，逾时考生作缺考处理。",
+          "evidence_ids": [
+            "E1"
+          ],
+          "citations": [
+            {
+              "evidence_id": "E1",
+              "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+              "block_id": "ebab438ffbe33010",
+              "preview_url": "/preview#bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e/ebab438ffbe33010"
+            }
+          ]
+        }
+      ],
+      "generation_meta": {
+        "provider": "deepseek",
+        "model": "deepseek-flash",
+        "request_id": "02163ecf-4d89-4a64-a31c-8b90f6f4f04b",
+        "usage": {
+          "prompt_tokens": 1667,
+          "completion_tokens": 53,
+          "total_tokens": 1720,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 1539
+        },
+        "latency_ms": 922,
+        "max_tokens": 1500,
+        "finish_reason": "stop"
+      },
+      "error": null
+    },
+    "u04": {
+      "query": "学籍基本信息有误需要更正时，学生本人去哪里办理？",
+      "conditions": {
+        "campus": null,
+        "student_type": "本科",
+        "admission_year": null,
+        "as_of_date": null
+      },
+      "request_body": {
+        "query": "学籍基本信息有误需要更正时，学生本人去哪里办理？",
+        "mode": "bm25",
+        "top_k": 5,
+        "answer_mode": "generated",
+        "filters": {
+          "campus": null,
+          "student_type": "本科",
+          "admission_year": null,
+          "as_of_date": null
+        }
+      },
+      "local_http_status": 200,
+      "local_http_status_note": "本地 /ask 接口状态，非供应商 HTTP 状态",
+      "supplier_http_status": 200,
+      "supplier_status_note": "generate() 成功返回蕴含供应商 HTTP 200（适配器仅在 status==200 时返回）",
+      "attempts": 1,
+      "provider_calls": 1,
+      "ask_calls_included": 1,
+      "outcome": "business_insufficient",
+      "ask_status": "insufficient_evidence",
+      "paragraphs": null,
+      "generation_meta": {
+        "provider": "deepseek",
+        "model": "deepseek-flash",
+        "request_id": "8ca1e764-f56f-4568-89b4-dda3568ebf7f",
+        "usage": {
+          "prompt_tokens": 1690,
+          "completion_tokens": 57,
+          "total_tokens": 1747,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 1562
+        },
+        "latency_ms": 811,
+        "max_tokens": 1500,
+        "finish_reason": "stop"
+      },
+      "insufficient_reason": "提供的原文摘录涉及转学、退学、学分预警、升级等内容，未包含学籍基本信息有误需要更正时学生本人前往何处办理的相关规定，无法依据摘录回答该问题。",
+      "error": null
+    }
+  },
+  "stop": {
+    "reason": "completed_all",
+    "completed": [
+      "q08",
+      "q10",
+      "u03",
+      "u04"
+    ],
+    "not_attempted": []
+  },
+  "unavailable_fields_note": "供应商未返回或适配器未暴露的字段记 null（含连接/超时/映射错误的供应商原始状态）；不伪造 usage/价格/请求 ID；本地 /ask HTTP 状态与供应商 HTTP 状态分开记录",
+  "exit_ok": true
+}

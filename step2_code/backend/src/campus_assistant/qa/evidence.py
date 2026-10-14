@@ -89,6 +89,8 @@ def build_evidence_pack(
             "is_synthetic": meta.get("is_synthetic", False),
             "locator": chunk.get("locator"),
             "preview_url": hit.get("preview_url", ""),
+            # T043：仅学生类型未标注的参考证据携带状态；普通证据为 None（旧协议）
+            "student_type_status": hit.get("student_type_status"),
         })
 
     budget = {

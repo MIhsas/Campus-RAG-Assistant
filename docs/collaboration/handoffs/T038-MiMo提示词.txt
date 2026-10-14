@@ -1,0 +1,13 @@
+你是MiMo执行者，Astra负责安排与验收。工作目录 F:\Collage Paper。T037 revision1已验收通过，当前唯一任务是T038，完成后停止，不推进T039。
+
+先读CLAUDE.md、docs/collaboration/STATUS.md、PROTOCOL.md，再读docs/collaboration/reviews/T037-R1.md及docs/collaboration/tasks/T038-元数据补正与未核实资料候选查看.md。
+
+目标合并为一轮实施：
+1. 新建真实语料v1.2，仅补bed3ac文档2019-11-07发文/生效日期；原文件字节/ID与旧v1.1不动。印发日期引文补足实际日期，末尾解析“印”不补字。83eb正文含研究生院，整篇scope继续未知，不直接设本科。
+2. 增独立POST /api/v1/search/candidates，用户明确选择查看日期/学生类型未知资料，保留其余全部已知条件和单文件选择；候选与严格结果分离，不进入答案生成或Agent。逐维检查，不按单一首个排除原因放宽。
+3. search/ask两页添加默认关闭的主动候选查看，绑定正式结果快照，原文/版本/未知原因/跳转可见；旧异步结果不得串入新结果，不自动提问或模型调用。
+4. 优化实际DeepSeek SYSTEM_PROMPT与契约提示：简洁释义、不同前提分情形表达，不因年份直接断言废止。quote/引用/HTTP契约不变，不硬编码题目答案。
+
+任务书是具体契约与验收依据。只跑少量因果链与受影响回归，不重复全量/真实编码/历史实验/ASR/Agent。保持T030 gold/冻结/结果、T031/T034实验、模板与用户意见原样，不重计指标。无需额外确认日期修正；本轮零外部模型调用、无安装/下载、不commit/push、不改Astra文件。
+
+分段读写、记录完整实际命令/退出码，避免整库输出。提交docs/collaboration/submissions/T038/四件与任务要求的补证/API示例/浏览器检查表，submission_revision=1,status=ready_for_review后立即停止等待Astra验收。

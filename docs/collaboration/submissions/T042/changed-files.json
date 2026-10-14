@@ -1,0 +1,33 @@
+{
+  "note": "T042 变更清单（submission_revision=1）。范围=新增复核包构建工具/页面/测试/检查 + T042 提交材料 + human-review-pending 追加位置预告。不改产品 API/前台、旧 T036 脚本/HTML/包、gold/冻结/指标/模板/历史输出/用户原记录/Astra 文件；零外部调用。哈希为落盘后实测全值；本清单不列自哈希。",
+  "new_scripts": [
+    {"path": "step2_code/backend/scripts/build-targeted-review-pack.py", "sha256": "db3a9baaeea06d4187220a72c039cf3e0a08722f01a98910eca0c238e48b515b", "change": "只读构建：解析 review-supplement/live-answers/冻结题集，40 条引用对真实解析块逐字/跨度/SHA 核验，失败不出包；非空拒覆盖"},
+    {"path": "step2_code/backend/scripts/targeted-review-pack.html", "sha256": "e8e3e3de0a3e512145ef9ba441a4febf11062b4311523b8a6875ceac52e12012", "change": "自包含离线页面模板：两分区 8 卡、分域 ID、原意见只读、8 项全未复核、四档+说明、展开原块/相邻块、导出新 JSON；无存储/外链/全选通过/筛选"},
+    {"path": "step2_code/backend/scripts/check-targeted-review-pack.cjs", "sha256": "a3996685e9d9d4d7868295da12f0b2233cbc0e42b8efe9ee2213416801ff9962", "change": "JS 行为检查（DOM/桩级）24 项：默认全未复核、独立模拟 answer:q10 分域、NodeList/select 语义、无存储/外链"},
+    {"path": "step2_code/backend/tests/test_targeted_review_pack.py", "sha256": "87b5929973a347ac8f47ddcbb2a15ac4d7312fad2952211d9b3398b466fbd16a", "change": "构建聚焦测试 6 项（含 q10 三段/P3 逐字、q08 gold 不混实发 E、u04 候选标注、源输入 SHA 前后一致）"}
+  ],
+  "pack_outputs": {
+    "dir": "step2_code/backend/.cache/human-review/T042-v1/",
+    "review_html": "bdc0356cba587382936f8f8577e04511f19711b7478a83a256460ac922a428f8",
+    "pack_json": "023a959d10eef35b0e6d5b468b34f9b1e47d34fb42ac86425a84ade92965ac8d",
+    "readme": "66c0d7cf1ca31a69f5d5d3a03a293a2228be732e84bf21a827e584ab9614dd49",
+    "note": "正式输出（40 条引用核验、8 卡全未复核）；非空拒覆盖已实证"
+  },
+  "submissions": [
+    {"path": "docs/collaboration/submissions/T042/report.md", "sha256": "f3833bb6359839cfbe71959039e763de3d401da8d2ff259ffbf3470f6bbdb5a0"},
+    {"path": "docs/collaboration/submissions/T042/verification.md", "sha256": "3065dd4d6240c12dcd1c7932d3f3fcc9c785dad1bbdc688de3f5e6af1cad358c"},
+    {"path": "docs/collaboration/submissions/T042/submission.json", "sha256": "aba700e2a69b0dace6d775d7b8e7269c9835da97b198397169b5eafce8576370"},
+    {"path": "docs/collaboration/submissions/T042/demo-notes.md", "sha256": "307d350c78b221bc12910b7e29b28058ca028336b5c69eac118f5e51484e0ea4", "change": "桩级证据声明 + 用户/Astra 7 步短检查表（无浏览器不冒充）"},
+    {"path": "docs/collaboration/submissions/T042/simulated-export-sample.json", "sha256": "4703b78210705366999c1c554c7f200b3c9f963c8524e8e133370e6db2607435", "change": "模拟操作测试导出样例（非真人意见，不在默认包）"},
+    {"path": "docs/collaboration/submissions/T042/changed-files.json", "change": "本清单（不列自哈希）"}
+  ],
+  "delivery_touched": [
+    {"path": "docs/delivery/human-review-pending.md", "sha256": "3a54c639d181b3a4f62ca809ee1e7ad7366a9ac34f9d031be3a1a58a0e12db21", "change": "仅末尾追加「待验收的新补充工具（T042）」位置预告；意见/入口/历史状态未改"}
+  ],
+  "unchanged": [
+    "产品 API/前台/全部产品代码；旧 T036 build-human-review-pack.py/human-review-pack.html/check-review-pack.cjs 与已生成 T036 包",
+    "gold/冻结/指标/题集 v2.0/语料 v1.2/模板/历史输出（T039/T040/T041 各件）/用户原记录/Astra 文件",
+    "只读输入源文件（构建前后 SHA 一致，测试断言）"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值；本清单自身不列自哈希。"
+}

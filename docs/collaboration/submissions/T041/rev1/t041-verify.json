@@ -1,0 +1,116 @@
+{
+ "n21": {
+  "bm25": [
+   0.7380952380952381,
+   0.7619047619047619,
+   0.6190476190476191
+  ],
+  "dense": [
+   0.7142857142857143,
+   0.7142857142857143,
+   0.46984126984126984
+  ],
+  "hybrid": [
+   0.7142857142857143,
+   0.7142857142857143,
+   0.5634920634920635
+  ]
+ },
+ "n20": {
+  "bm25": [
+   0.725,
+   0.75,
+   0.6
+  ],
+  "dense": [
+   0.7,
+   0.7,
+   0.44333333333333336
+  ],
+  "hybrid": [
+   0.7,
+   0.7,
+   0.5416666666666667
+  ]
+ },
+ "tokens": {
+  "prompt": 6080,
+  "completion": 388,
+  "total": 6468
+ },
+ "checks": [
+  [
+   "E4 exact bm25",
+   true
+  ],
+  [
+   "thesis 6-5 exact",
+   true
+  ],
+  [
+   "n20 common in E4",
+   true
+  ],
+  [
+   "token 6080",
+   true
+  ],
+  [
+   "token 388",
+   true
+  ],
+  [
+   "token 6468",
+   true
+  ],
+  [
+   "casebook token text",
+   true
+  ],
+  [
+   "q08 reason verbatim",
+   true
+  ],
+  [
+   "q08 query verbatim",
+   true
+  ],
+  [
+   "q10 para verbatim",
+   true
+  ],
+  [
+   "q10 para verbatim",
+   true
+  ],
+  [
+   "q10 para verbatim",
+   true
+  ],
+  [
+   "q10 query verbatim",
+   true
+  ],
+  [
+   "u03 para verbatim",
+   true
+  ],
+  [
+   "u03 query verbatim",
+   true
+  ],
+  [
+   "u04 reason verbatim",
+   true
+  ],
+  [
+   "u04 query verbatim",
+   true
+  ],
+  [
+   "560 in script",
+   true
+  ]
+ ],
+ "all_pass": true
+}

@@ -1,0 +1,31 @@
+{
+  "note": "T038 变更清单（submission_revision=1）。范围=新语料包 v1.2 + 候选 API/服务/页面 + 生成提示 + 测试/行为桩 + 提交材料。旧 v1/v1.1、gold、模板、冻结实验、用户意见、Astra 文件未改。",
+  "new_data": [
+    {"path": "data/corpora/sicau-rag-pilot-v1.2/", "change": "20 份原件（与 v1.1 逐字节相同）+ manifest（bed3ac published_at/effective_from=2019-11-07，唯一差异）+ selection.json/provenance.jsonl（记录修订依据）", "manifest_sha256": "b05c37557675f02c045e01e9fd776c539954c43172d5e0b07d0704da4e352b4a"}
+  ],
+  "backend": [
+    {"path": "step2_code/backend/src/campus_assistant/retrieval/filters.py", "change": "新增独立候选集合函数（compute_candidate_document_ids/CandidateRequestError）；严格准入语义未改", "sha256": "23365ba7d60f701d25b969e4465fbfd850094b41f7d65f205ac331efd3fd96c4"},
+    {"path": "step2_code/backend/src/campus_assistant/retrieval/service.py", "change": "抽取 _search_mode 共用检索（严格/候选同一套 mode 分派与索引）；新增 execute_candidates（快照/摘要/免责语/交集）", "sha256": "dd7552936cf55f644448bf77a8594ae0c8b08f90268500524bed9932b2a0699b"},
+    {"path": "step2_code/backend/src/campus_assistant/api/search.py", "change": "POST /api/v1/search/candidates（CandidatesRequest/CandidateSearchHit；422 契约）", "sha256": "ee2a6d1254ef980a58fabce85a5c25badf20d3ea834bc6d8c2e451f88f5c816b"},
+    {"path": "step2_code/backend/src/campus_assistant/qa/deepseek.py", "change": "SYSTEM_PROMPT 增加表达规则（不拿修订决定措辞当回答/前提分别说明/同前提冲突并列）", "sha256": "530c5e2b5e01623f29cc19d45139419c5f700c62cdf7a1cdf60aa37eb48366ce"},
+    {"path": "step2_code/backend/src/campus_assistant/qa/providers.py", "change": "PROMPT_TEMPLATE 同步新规则；更正过时 docstring（真实 provider 已接入）；HTTP 契约未改", "sha256": "53cd92fee6505d7a61024bfde10cb0a0355c28dd24967f3f953d3c9e0b810715"}
+  ],
+  "pages": [
+    {"path": "step2_code/backend/src/campus_assistant/static/search.html", "change": "独立候选区（快照绑定/显式请求/序号防串/空态失败口径）", "sha256": "1454721bece6afde23590e8b75f202b111b7d9f33bd96fe169b74ea09cea9778"},
+    {"path": "step2_code/backend/src/campus_assistant/static/ask.html", "change": "同款候选区（候选不进正式证据/复制/历史）", "sha256": "84ac0eeb7dcc5896122c73aa6652602f3c6bcbe12af8e9e41902fe1dccc2badb"}
+  ],
+  "tests_and_demo": [
+    {"path": "step2_code/backend/tests/test_uncertain_sources.py", "change": "新增 11 项（候选准入/契约/提示规则）", "sha256": "901959d41b3f27ae4e543a9cbf210d2c23403870481785c7411d08b9aca474f5"},
+    {"path": "step2_code/backend/scripts/check-search-behavior.cjs", "change": "+2 候选因果链场景（23）", "sha256": "1f147f845ca26ff24c3510276187fc27941cf21beabeae32dfcc461d941f4949"},
+    {"path": "step2_code/backend/scripts/check-ask-behavior.cjs", "change": "+2 候选因果链场景（40）", "sha256": "894b11da028623f5a5f290eb6284ec6817ea97f4677deb31bf1cd599d0462420"},
+    {"path": "step2_code/backend/scripts/demo-t038-candidates.py", "change": "真实 v1.2 包候选 API 演示", "sha256": "c5f4a4f919c4bd0728cd72542f18e0323b2793a7146c554cd98251edf4e2efb0"}
+  ],
+  "docs": [
+    {"path": "docs/collaboration/submissions/T038/（四件+metadata-crosscheck.md+candidate-api-demo.json+demo-notes.md）"},
+    {"path": "docs/delivery/human-review-pending.md", "change": "仅更新当前人工状态/后续待项/新资料身份"}
+  ],
+  "unchanged": [
+    "v1/v1.1 语料包、T030 gold/冻结/结果、T031/T034 实验、模板 v1.2、用户意见原件、Astra 文件、默认检索/chunk/评分策略、BM25/Dense/RRF 配置"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值；新包 manifest 与旧包区分列示。"
+}

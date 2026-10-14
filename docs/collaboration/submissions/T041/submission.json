@@ -1,0 +1,56 @@
+{
+  "task_id": "T041",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T041-R1",
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "summary": "T041-R1 两项文档口径修复（submission_revision=2）：①必修1——experiment-index 开头共同局限/末尾实验间关系与 defense-script §6 讲解/问题1/8 的笼统「人工未复核」统一为「模型辅助编制；已收到用户逐项意见 109 确认/3 需修订/2 未确认（模板 33 项已确认）；T039 新改项与 T040 新答案待定向复核，非完整教师审定或盲评 gold」，历史分表标「实验运行时点（当时尚未收到人工意见）」，不抹已有意见不代签。②必修2——evidence-matrix §8 删除「T038—T041 均无浏览器实操/历史归属 T016—T023」错误，改为按各评审实际操作范围引用（T016—T023 各记录；T038 真实浏览器主路径：候选/控件绑定/PDF 第 4 页跳转/复制与历史隔离/清旧列表/指定文件求交不回退，依据 T038-R1+T038-browser/verification.md；T029/T031/T032/T033 各按范围），T041 无新浏览器实操与 T040 无浏览器生成闭环保留，§4 待办行归属同批修正。③同批收紧——README「按 T035 原样」限定历史快照；q08 缺口注明「本次 T040 BM25 正式证据包」；thesis 末节标后续扩充参考（首批已接入）；runbook 模板行区分已接入+用户确认与现行性未认证。改前九件归档 archive-t041-rev1/、五件提交归档 rev1/；链接 30/30；六件修改 SHA 实测、三件未变与 rev1 一致。零外部调用，未重跑已通过验证，不写 accepted。",
+  "verification": {
+    "must_fix_1": "人工状态统一口径 3 文件 5 处替换；历史表加实验运行时点标注；扫查无当前态「全未复核/人工未复核」残留",
+    "must_fix_2": "浏览器归属按实际范围改写（T038 主路径 7 项操作依 T038-R1/T038-browser/verification.md）；T041 无新浏览器实操、T040 无闭环两条保留；§4 行同批修正",
+    "batch_tightening": "README 历史快照限定/q08 缺口范围/thesis 末节/runbook 模板行 4 处收紧",
+    "links": "九件相对链接 30/30（含新增 T038 依据 2 条）",
+    "sha": "六件修改实测；三件未变（system-design/human-review-pending/generation-casebook）与 rev1 归档一致",
+    "preservation": "archive-t041-rev1/ 九件 + submissions/T041/rev1/ 五件先于修改；既有归档未覆盖",
+    "scope_note": "零外部调用、不读密钥/环境；未重跑指标/原文/token/秒数/--help/结构矩阵（沿用 T041-audit 53 项与 T040-R4）；Astra audit 未改；不写 accepted"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "fix-report.md",
+    "submission.json",
+    "changed-files.json",
+    "rev1/"
+  ],
+  "delivery_outputs": {
+    "modified_this_round": [
+      "docs/delivery/experiment-index.md",
+      "docs/delivery/defense-script.md",
+      "docs/delivery/evidence-matrix.md",
+      "docs/delivery/README.md",
+      "docs/delivery/thesis-outline.md",
+      "docs/delivery/windows-runbook.md"
+    ],
+    "unchanged_this_round": [
+      "docs/delivery/system-design.md",
+      "docs/delivery/human-review-pending.md",
+      "docs/delivery/generation-casebook.md"
+    ],
+    "archive": "docs/delivery/archive-t041-rev1/（改前九件）；archive-pre-t041-20261011/ 保持"
+  },
+  "historical_reference_note": "T040 live_verified=true 仅历史四题链路/存档限定不变；planner_live_verified=false；T040 授权已结束，本轮零外部调用",
+  "known_gaps": [
+    "q10 P3 推断、T039 新四项/T040 新答案待用户定向复核",
+    "学校政策现行性未认证",
+    "语义认定待 Astra 复验（本提交不写 accepted）"
+  ],
+  "not_claimed": [
+    "accepted/验收通过",
+    "全已审定或全未复核",
+    "浏览器交互全部通过",
+    "本轮 live/浏览器/实验验证"
+  ],
+  "next_gate": "Astra 复验 T041-R1 修订语义；T042 未发布"
+}

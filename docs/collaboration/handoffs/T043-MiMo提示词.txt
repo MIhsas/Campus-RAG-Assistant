@@ -1,0 +1,19 @@
+你是MiMo执行者，Astra安排与验收。cwd F:\Collage Paper。
+当前唯一任务T043意见落档与未知学生类型正式准入，T044未发布。
+读docs/collaboration/STATUS.md、PROTOCOL.md、根CLAUDE.md、reviews/T042-用户导出接收.md、tasks/T043-意见落档与未知学生类型正式准入.md，按完整工单执行。
+
+真实用户导出已由Astra找到、原字节存data/reviews/T042-user-review-20261014/targeted-review-record.json，SHA 7a0c6ec4a685f4a1a0904d793d35434e776426f8528d17ed6998ddad20c51133。21项身份核对通过，8项均确认、签名/日期空。原opinion/comment不改、不补签、不与旧109/3/2简单相加。
+两条直接聊天决定为可信本轮范围：
+1. u04“让正式答案也采用范围未知的资料”。针对student_type未知，正式search/ask纳入参考，明确标范围尚未核实，已知类型冲突仍排除。
+2. u03“保留已核实的日期，不再额外补充来源”。不改已核实日期、不额外补源，不取消日期规则。
+
+落实小型新策略：建议include_unknown_student_type布尔，正式search/ask默认true，UI默认开且可关闭回strict；底层filter/helper默认仍strict，正式服务显式传开关。未知只对student_type，本科已知通过、研究生已知冲突排除；campus/year/date及document_id其它约束保持，先准入后TopK，BM25 IDF/向量/RRF不改，不硬编码u04/83eb或塞gold。
+response/snapshot回显模式，未知命中/E标“学生类型未标注，适用范围尚未核实”，统计不冒充已确认适用。把每E的状态实际写入build_messages，允许从真实E给出明示办理地点并保留范围提示；不改quote，不推测资格/本科适用。候选按本次模式排除已正式准入文档，关闭时保留T038原strict候选。
+search/ask两页快照、跨页、重试、转摘录、历史/复制携带开关；旧历史缺字段代表当时strict，不用新规则重解释历史。办事/self-check继续严格核查不放宽资格。详细要求见工单。
+
+落档说明逐项原意见+澄清+实施，新增delivery/review-disposition-T043.md；current README/human-review-pending可改本8项已确认，其余相关现行说明标新模式/历史strict。generation-casebook是T042冻结输入，保持原字节，通过新落档链接说明当前确认状态。所有旧T036/T039/T040/T041/T042提交、包、用户JSON/gold/freeze/结果/aggregate/metadata/模板/Astra文件只读，既有数字不改，不拿旧strict不足gold评新模式。改前文档先保全新归档。
+
+只做变更相关聚焦检索/筛选/API/候选/消息与两页主链测试；真实包u04新模式可进83eb正式E，关闭后严格排除；已知冲突和其它条件保持；mock证明正式E可供生成且消息带未知状态（不是实模型）。若TopK未命中如实报告，显式来源准入可补证明，不调算法硬凑。不开全量/大矩阵/下载/三模式评测。旧测试strict预期显式false但不删覆盖。
+
+本轮零外部模型调用，不读密钥/环境、不安装下载、commit/push；旧付费授权已结束。新准入实施授权不是模型调用授权，不执行live。无浏览器能力如实桩级，demo-notes给短检查表。
+提交submissions/T043四件+review-disposition/API演示/demo-notes，实测哈希，task_id=T043/task_revision=v1/submission_revision=1/status=ready_for_review/external_model_calls=0/planner_live_verified=false。保留原8项确认，不写全gold教师审定/可靠拒答/现行有效。完成后停止等Astra，不推进T044。

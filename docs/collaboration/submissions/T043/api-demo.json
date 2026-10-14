@@ -1,0 +1,139 @@
+{
+  "note": "T043 API 演示（本地 TestClient 实测，零外部请求；mock/本地证据非模型质量结论）",
+  "calls": [
+    {
+      "name": "search/new-mode",
+      "http": 200,
+      "include_echo": true,
+      "hits": [
+        {
+          "doc": "83eb3948",
+          "status": "学生类型未标注，适用范围尚未核实"
+        },
+        {
+          "doc": "bb8ba97c",
+          "status": null
+        },
+        {
+          "doc": "6e128a36",
+          "status": null
+        },
+        {
+          "doc": "c888c99a",
+          "status": null
+        },
+        {
+          "doc": "c0ccb884",
+          "status": null
+        }
+      ],
+      "evidence": [],
+      "stats": {
+        "allowed": 20,
+        "confirmed": 18,
+        "reference": 2,
+        "unknown_ids": [
+          "83eb3948",
+          "ddf41747"
+        ]
+      }
+    },
+    {
+      "name": "search/strict",
+      "http": 200,
+      "include_echo": false,
+      "hits": [
+        {
+          "doc": "bb8ba97c",
+          "status": null
+        },
+        {
+          "doc": "6e128a36",
+          "status": null
+        },
+        {
+          "doc": "c888c99a",
+          "status": null
+        },
+        {
+          "doc": "c0ccb884",
+          "status": null
+        },
+        {
+          "doc": "bb8ba97c",
+          "status": null
+        }
+      ],
+      "evidence": [],
+      "stats": {
+        "allowed": 18,
+        "confirmed": 18,
+        "reference": 0,
+        "unknown_ids": []
+      }
+    },
+    {
+      "name": "ask-extractive/new-mode",
+      "http": 200,
+      "include_echo": true,
+      "hits": [],
+      "evidence": [
+        {
+          "id": "E1",
+          "doc": "83eb3948",
+          "status": "学生类型未标注，适用范围尚未核实"
+        },
+        {
+          "id": "E2",
+          "doc": "bb8ba97c",
+          "status": null
+        },
+        {
+          "id": "E3",
+          "doc": "6e128a36",
+          "status": null
+        },
+        {
+          "id": "E4",
+          "doc": "c888c99a",
+          "status": null
+        },
+        {
+          "id": "E5",
+          "doc": "c0ccb884",
+          "status": null
+        }
+      ],
+      "stats": {
+        "allowed": 20,
+        "confirmed": 18,
+        "reference": 2,
+        "unknown_ids": [
+          "83eb3948",
+          "ddf41747"
+        ]
+      }
+    },
+    {
+      "name": "candidates/strict-dedup",
+      "cand_docs": [
+        "83eb3948",
+        "ddf41747"
+      ]
+    },
+    {
+      "name": "candidates/new-mode-dedup",
+      "cand_docs": []
+    }
+  ],
+  "ev83_in_ask": {
+    "present": true,
+    "status": "学生类型未标注，适用范围尚未核实",
+    "has_location_text": true
+  },
+  "messages_check": {
+    "status_marker_in_user_msg": true,
+    "system_prompt_has_rule7": true
+  },
+  "external_model_calls": 0
+}

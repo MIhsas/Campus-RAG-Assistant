@@ -1,0 +1,13 @@
+你是MiMo执行者，Astra负责发布与验收。工作目录 F:\Collage Paper。T038 revision1已验收通过，唯一新任务T039，完成提交即停止，不推进T040。
+
+先读CLAUDE.md、docs/collaboration/STATUS.md、docs/collaboration/PROTOCOL.md、docs/collaboration/reviews/T038-R1.md，执行docs/collaboration/tasks/T039-新语料基线与人工意见定向落实.md。任务书为具体契约，本提示词不扩大范围。
+
+本轮合并完成：
+1. 从旧T030 v1.3复制24题到独立 data/evaluations/sicau-rag-pilot-eval-v2/，dataset_version=2.0。query/conditions不改。u03因已验收v1.2日期补正改为可答，用真实准入的30分钟完整引文；u04仍严格不足，候选不进gold。q08只改释义、q10只明确普通/互评两个前提，原引与gold不变；u01/u02保留不足与原人工未确认。其余字段原样继承。
+2. 新题集/语料/当前实现/本地BGE身份按现有五节schema先冻结，再用既有评测器TopK5三模式各一次。新基线预计21可答+3不足；旧T030是20+4，两表分开，不把分母与元数据变化称算法提升。另报原20题共同子集、u03单题实际名次、两例手算；不混入文件选择或候选结果。
+3. 保留原109确认/3修订/2未确认用户记录与模板33项确认。新修订不自动确认、不代签；做q08/q10/u03/u04小范围review-supplement.md方便用户补核，不让用户重审全部114项，不新建复核UI。
+4. 合并三项非阻断文档整理：T038步骤5正式不是空检索；README补当前v1.2运行/旧v1.1实验分工；human-review-pending区分已收到确认、新项待复核、现行有效性未认证。旧T038原提交只读，勘误另存。
+
+复用现有脚本，禁止运行会覆盖T031/T034冻结的实验脚本；所有新输出写新目录。原语料、T030 gold/freeze/results、T031/T034实验、模板和用户记录hash前后核对。只跑必要校验/新三模式/手算，不重复全量/浏览器/ASR/Agent/冗余边界矩阵。
+
+零外部调用、无下载安装、不改产品算法/页面/评分器、不commit/push、不改Astra文件。分段读写避免输出超限。提交docs/collaboration/submissions/T039/四件+evaluation-report.md+review-supplement.md+T038-doc-errata.md，status=ready_for_review、submission_revision=1、external_model_calls=0、planner_live_verified=false，立即停止等待Astra验收。

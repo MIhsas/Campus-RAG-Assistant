@@ -1,0 +1,121 @@
+{
+  "question_count": 24,
+  "evidence_count": 58,
+  "expected_question_diffs": {
+    "q08": [
+      "rationale",
+      "revision_note"
+    ],
+    "q10": [
+      "rationale",
+      "revision_note"
+    ],
+    "u01": [
+      "missing",
+      "rationale",
+      "revision_note"
+    ],
+    "u02": [
+      "missing",
+      "rationale",
+      "revision_note"
+    ],
+    "u03": [
+      "answerable",
+      "evidence",
+      "missing",
+      "question_type",
+      "rationale",
+      "revision_note"
+    ],
+    "u04": [
+      "missing",
+      "rationale",
+      "revision_note"
+    ]
+  },
+  "submitted_diff_mismatches": [],
+  "score_rows_recomputed": 72,
+  "common_ranking_and_score_checks": 60,
+  "aggregate_and_group_checks": 36,
+  "aggregates": {
+    "bm25": {
+      "evidence_recall": 0.7380952380952381,
+      "hit": 0.7619047619047619,
+      "mrr": 0.6190476190476191,
+      "answerable_count": 21,
+      "unanswerable_count": 3,
+      "empty_result_rate": 0.0
+    },
+    "dense": {
+      "evidence_recall": 0.7142857142857143,
+      "hit": 0.7142857142857143,
+      "mrr": 0.46984126984126984,
+      "answerable_count": 21,
+      "unanswerable_count": 3,
+      "empty_result_rate": 0.0
+    },
+    "hybrid": {
+      "evidence_recall": 0.7142857142857143,
+      "hit": 0.7142857142857143,
+      "mrr": 0.5634920634920635,
+      "answerable_count": 21,
+      "unanswerable_count": 3,
+      "empty_result_rate": 0.0
+    }
+  },
+  "manual_examples": {
+    "bm25": {
+      "u03": {
+        "fact_count": 1,
+        "covered_facts": 1,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "q10": {
+        "fact_count": 2,
+        "covered_facts": 2,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "dense": {
+      "u03": {
+        "fact_count": 1,
+        "covered_facts": 1,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "q10": {
+        "fact_count": 2,
+        "covered_facts": 2,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "hybrid": {
+      "u03": {
+        "fact_count": 1,
+        "covered_facts": 1,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "q10": {
+        "fact_count": 2,
+        "covered_facts": 2,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    }
+  },
+  "fresh_bm25_rows_equal": 24,
+  "historical_hashes_verified": {
+    "data\\corpora\\sicau-rag-pilot-v1.1\\manifest.json": "34e182f18178c8a8dc3f3bbfcb151150272f0c86579236191ed1e754298b1108",
+    "data/evaluations/sicau-rag-pilot-eval-v1/questions.json": "5fde70a332744b642e48014abc82902009abc1a106a84e6241b3c460e4faed5c",
+    "data/procedures/sicau-transfer-2026-v1/procedures.json": "78f1c1d9f839c41da2fc5b13fdb67014826bdde93d57a5f872c33a79f47b7cfa",
+    "data/evaluations/sicau-rag-source-selection-v1/experiment.json": "57b22f93bd1420faf276915c6425b3f8e8f9c978058935f8a1c69de39bd5c618",
+    "data/evaluations/sicau-rag-overlap-v1/experiment.json": "cef9f162f1eb164adbb65b1c9acc1634ee24e985edcc197fae09a6ac07dd2d95",
+    "data/reviews/T036-user-review-20261008/human-review-record.json": "2e1af1493846efd76f2ec593ac248c31df5dc725e77a1abe845e980e3efc5791"
+  },
+  "status": "ok"
+}

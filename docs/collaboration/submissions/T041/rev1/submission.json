@@ -1,0 +1,44 @@
+{
+  "task_id": "T041",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "summary": "T041 文档收尾：①八件先按原字节归档 archive-pre-t041-20261011/（8/8 与改前哈希一致）；②定向更新 docs/delivery 八件至 T038/T039/T040 已验收状态——当前口径统一为真实包 v1.2（首批 20/1182，83eb scope/db05e0 日期未知保守排除、T038 候选独立不进生成）、T039 v2.0 当前基线（24=21+3/58 证据，R/H/M 分母 21 从 aggregate 逐值，共同子集 20 单列，修订≠算法改善；T027/T030/T031/T034 历史分表、文件选择非算法提升、overlap 默认不采用）、人工意见 109/3/2+模板 33 项确认保持且 T039 新四项与 T040 新答案不代签、T040 一次四题真实冒烟（发送 4/provider 4/ask 8，q10/u03 作答、q08/u04 模型不足，usage 6080+388=6468 未测价格，live_verified=true 仅限历史四题链路/存档核查、Planner false/T025 partial、无本轮浏览器生成闭环证据）；③新增 generation-casebook.md——四题原问/条件/答案或不足理由照录、关键 E 来源/页码/跨度、E 支持性/gold 覆盖/用户确认三层分列，链接 T040 完整材料与 T040-R4 评审，q10 P3 标推断待用户核实、q08 缺口保持、u04 不足≠学校无规定；④答辩 560 秒主线保持、T040 案例仅只读可选展示；runbook §2a 主线命令改 v1.2 并按 --help 只读复核，live 冒烟标历史禁止无授权重跑。精简核验：归档字节 8/8、链接 28/28、指标对 aggregate 逐值、四题文本逐字、token 算术、秒数、--help 参数全部一致（t041-verify.json）。零外部调用、不读密钥、不改产品/数据/历史。",
+  "verification": {
+    "archive_bytes": "archive-pre-t041-20261011/ 8 件与改前哈希逐一致",
+    "links_paths": "九件文档 28 条相对链接+6 关键路径全解析",
+    "metrics_vs_aggregate": "E4/表6-5/evidence-matrix 当前基线行对 aggregate.json 逐值一致；n=20 共同子集单列",
+    "verbatim_texts": "四题 query/答案/不足理由对 live-answers-full.json 逐字一致",
+    "token_math": "6080+388=6468 算术正确（未换算费用）",
+    "seconds_and_help": "defense 560 秒在 480—600 内；serve-corpus --help 参数与 runbook §2a 一致",
+    "scope_note": "零外部调用、不读密钥/环境；未跑产品测试/mock/实验/UI/浏览器；不改产品/语料/模板/gold/冻结/实验/用户记录/docs01—04"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "t041-verify.json"
+  ],
+  "delivery_outputs": {
+    "updated_eight": "docs/delivery/{README,system-design,thesis-outline,evidence-matrix,defense-script,windows-runbook,experiment-index,human-review-pending}.md",
+    "new": "docs/delivery/generation-casebook.md",
+    "archive": "docs/delivery/archive-pre-t041-20261011/（改前八件原字节）"
+  },
+  "historical_reference_note": "live_verified=true 系 T040-R4 对历史四题链路/存档核查的认定（非本轮 live 验证）；planner_live_verified=false（T025 partial）；T040 授权 4/4 已用满结束，本轮零外部调用",
+  "known_gaps": [
+    "q10 P3「不纳入上述组成比例」推断待用户核实（casebook/README/human-review-pending 均已标注）",
+    "T039 新四项与 T040 新答案均待定向人工复核、不代签",
+    "学校政策现行性未认证；真实答案质量未评测",
+    "无本轮浏览器实操与现场计时实测"
+  ],
+  "not_claimed": [
+    "本轮 live 验证",
+    "校园准确率/可靠拒答",
+    "语义审定/现行有效",
+    "用户已确认新项"
+  ],
+  "next_gate": "Astra 验收 T041 文档；T042 未发布"
+}

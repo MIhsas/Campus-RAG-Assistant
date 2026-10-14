@@ -234,6 +234,15 @@ app = create_app(manifest_path=Path("path/to/manifest.json"), corpus_root=Path("
 
 `manifest_path` 和 `corpus_root` 必须同时提供或同时省略。不提供时服务以"未配置"状态启动。
 
+**当前真实运行（语料包 v1.2，T039 起）**——含空格路径完整引号（PowerShell 正斜杠路径，避免转义问题）：
+
+```powershell
+& 'F:/Collage Paper/step2_code/backend/.venv/Scripts/python.exe' 'F:/Collage Paper/step2_code/backend/scripts/serve-corpus.py' --manifest 'F:/Collage Paper/data/corpora/sicau-rag-pilot-v1.2/manifest.json' --corpus-root 'F:/Collage Paper/data/corpora/sicau-rag-pilot-v1.2' --procedures 'F:/Collage Paper/data/procedures/sicau-transfer-2026-v1/procedures.json' --port 8010
+```
+
+- **历史基线（T030 v1.1 资料 / v1.3 题集）**复现仍显式指向旧包：`--manifest 'F:/Collage Paper/data/corpora/sicau-rag-pilot-v1.1/manifest.json' --corpus-root 'F:/Collage Paper/data/corpora/sicau-rag-pilot-v1.1'`（旧实验输入未改，新 v1.2 不是旧冻结实验的输入）。
+- 候选「查看未核实资料」为**显式用户功能**：仅供原文核对，**不进正式答案、不等于已确认本科适用**。日期区间核查≠现行有效认证。
+
 ### API 端点
 
 | 端点 | 说明 |
@@ -676,7 +685,7 @@ Set-Location 'F:\Collage Paper\step2_code\backend'
 3. **PDF 人工核对**：登记后用 preview 页逐块核对提取文本与页码（对照原文，数字/否定词/条款号），确认无缺页/乱序问题再启动服务；某页“未提取到文本”即需 OCR/人工补资料，不强行入索引。
 4. **正常资料库启动**用 `serve-corpus.py`：只加载所给语料，**不得默认加载**合成办事模板、自查规则或 mock 生成器（这些仅由测试/演示显式注入）。
 
-**首批真实语料包（T029，当前版本 v1.1）**：`data/corpora/sicau-rag-pilot-v1.1/`（20 份真实资料，来源=用户提供的 `data/datasets/sicau-rag-v1`，原字节与哈希保留）。
+**当前真实语料包 = v1.2**（T038 起）：`data/corpora/sicau-rag-pilot-v1.2/`（20 份真实资料，bed3ac 日期补正；**T029 历史首批包 v1.1**=`data/corpora/sicau-rag-pilot-v1.1/` 保留，为 T030/T031/T034 历史实验输入，复现旧基线时显式指定）。
 
 ```powershell
 & .\.venv\Scripts\python.exe scripts\serve-corpus.py `
@@ -819,12 +828,12 @@ UTF-8 JSON，顶层必需 `schema_version="1.0"`、`dataset_id`、`dataset_versi
 
 每题详情：q01 mrr=0.5（首条非最相关）；q02-q06 mrr=1.0；q07-q08 不可答。
 
-### 限制
+### 限制（旧 8 题合成阶段·历史记录，勿当作当前实现）
 
 - 合成开发集验证评测流程，不代表论文准确率
 - 金标准为人工标注的字符区间，不绑定 chunk_id
 - 真实语料题集在用户提供资料后另行标注
-- 不支持等价替代证据组或测试集冻结
+- **当时**不支持等价替代证据组或测试集冻结（历史限制；**当前实现已支持**事实组 OR/AND 与冻结校验，见 evaluation/models、metrics 与 check-real-eval）
 - 向量检索使用 CPU 推理，大规模语料需考虑 FAISS
 
 ## 复现验证（可选）

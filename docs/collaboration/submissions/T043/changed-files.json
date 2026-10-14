@@ -1,0 +1,33 @@
+{
+  "note": "T043-R1 变更清单（submission_revision=2，responds_to=T043-R1）。范围=两页导航上下文快照 + 两份行为桩 + T043 提交材料。零后端改动/零模型调用；不改 gold/冻结/指标/原意见/casebook/历史/Astra 脚本。哈希为落盘后实测全值；本清单不列自哈希。",
+  "pages_fixed": [
+    {"path": "step2_code/backend/src/campus_assistant/static/search.html", "sha256": "6601548a8cd7878baa3cf0d8737a3b0bd8100393dc504b6933725345d39bce5f", "change": "navContext（当前显示上下文快照）：URL 恢复/提交结果两处绑定并即时重建导航链接（query/filters/document_id/include_unknown_student_type 完整）；控件编辑不改写；lastSubmitted 重试语义不变"},
+    {"path": "step2_code/backend/src/campus_assistant/static/ask.html", "sha256": "b43fd85f6b59537d1c4f391c6450f1a05e05d15993bc1757a2fff0b8b0da9b1b", "change": "同上 + 历史查看绑定该条自身快照（缺模式字段=false/当时 strict，零请求不重执行）；失败转摘录仍用原请求快照"}
+  ],
+  "stubs_updated": [
+    {"path": "step2_code/backend/scripts/check-search-behavior.cjs", "sha256": "bb2de59ca8e033d52a59620d2951252a765ad0ecd1923b67434f1ae065c53e9c", "change": "真实 checkbox 桩（默认 checked/真实读写）+ 新链（URL 恢复免提交跨页、提交携带开关、改控件不改快照、候选按结果快照模式）"},
+    {"path": "step2_code/backend/scripts/check-ask-behavior.cjs", "sha256": "12fbf3752618abfecd681106acd5459e65c281974ce9f7ec2377ccdbf12641d3", "change": "同上 + 重试/转摘录按原请求快照、旧 strict 历史查看→导航切回历史快照且零请求"}
+  ],
+  "submissions": [
+    {"path": "docs/collaboration/submissions/T043/report.md", "sha256": "e953b831d46807079107763d1275390cf20ee40b1a96b66697872e64f6ab2d6e"},
+    {"path": "docs/collaboration/submissions/T043/verification.md", "sha256": "e483e4e48477f3939973cd422225f4e1d0956f59f7212635747fe9e7b4b6f25d"},
+    {"path": "docs/collaboration/submissions/T043/fix-report.md", "sha256": "f34757874a4dac8d758e5a569fbe2818ecba1404b08eed5c09596b87582bd4fe", "change": "新增：两因果链根因/修复/验证/非阻断 confirmed_count 语义限定"},
+    {"path": "docs/collaboration/submissions/T043/submission.json", "sha256": "d3c87abc8b3d416301670cca2b7e3ec96322ab64f42acdd9ffb96d68e648578b", "change": "submission_revision=2、responds_to=T043-R1、status=ready_for_review"},
+    {"path": "docs/collaboration/submissions/T043/T043-navigation-probe-failed-preserved.json", "sha256": "9374947e3b3a1e904cc38e1a11ba424ed5796c39216995a1686fabf2d425c00c", "change": "探针原失败记录原字节保全（运行前复制；运行后原件由探针自写更新为 pass，未手改）"},
+    {"path": "docs/collaboration/submissions/T043/changed-files.json", "change": "本清单（不列自哈希）"}
+  ],
+  "archives": [
+    {"path": "docs/collaboration/submissions/T043/rev1/", "change": "revision 1 八件原样归档（report/verification/submission/changed-files/review-disposition/api-demo.md/json/demo-notes）"}
+  ],
+  "unchanged": [
+    "后端 filters/service/API/evidence/messages（revision 1 已验收实施；默认值未动）",
+    "review-disposition.md、api-demo.md/json、demo-notes.md（revision 1 内容保持，rev1/ 有副本）",
+    "用户原件/casebook/gold/freeze/结果/指标/语料/模板/模型输出/Astra 工单与脚本"
+  ],
+  "probe_output": {
+    "path": "docs/collaboration/reviews/T043-navigation-probe.json",
+    "sha256": "73e669207601fee533033f1f7c757d0583adb740ff6c1487dadc078968bb51cf",
+    "change": "探针自写更新：11/11 pass、failures=0（旧失败已保全于提交目录）"
+  },
+  "hash_note": "本清单哈希为落盘后实测全值；本清单自身不列自哈希。"
+}

@@ -1,0 +1,40 @@
+你是本项目执行者 MiMo，Astra负责发布与验收。工作目录 F:\Collage Paper。
+仅执行 T040-R2 本地定向返工，不推进 T041。本提示词已由Astra发布，完成后停止，不自验收通过。
+
+先读：
+1. docs/collaboration/STATUS.md、PROTOCOL.md、CLAUDE.md
+2. docs/collaboration/reviews/T040-R2.md
+3. docs/collaboration/tasks/T040-B-真实资料限定生成冒烟.md
+4. submissions/T040/ 当前提交与 continuation-progress.md
+5. reviews/T040-B-preflight-probe.py/.json（原探针只读）
+
+当前事实：
+- A阶段通过且身份保持。B revision2缺密钥被前置拒绝，真实外部次数0，不是B已完成。
+- Astra本轮实跑原4项mock全过，31项提交/A身份核对全一致。
+- 两条独立mock探针失败：非空输出目录仍发送4次mock后报错且无新审计；消息构造发送前失败，实际post0但外部计数1。
+- 用户原四题授权仍有效，预算未消耗，不索取重复授权。本次先修代码交Astra核查，不执行 --live。
+
+修改范围仅 live-smoke-real-qa.py、test_live_smoke_real_qa.py 与 T040提交材料。
+不改产品适配器/生成提示/检索筛选评分器、A脚本/A四件、语料/manifest、gold/冻结/results/aggregate、模板、用户意见、历史及Astra文件。不安装下载、不commit/push。
+
+必修1：输出目录前置门。
+在真实生成和实际发送之前检查、准备本轮输出目录。已有非空目录立即非零退出，零post；保留最终防覆盖，不删除旧输出。无可用输出路径不开始付费调用。未来真实恢复使用新的明确目录，不能复用已有T040-B/run-1。
+
+必修2：实际发送计数。
+现有provider.generate入口不能作为实际HTTP次数。只在本脚本创建/装配的客户端post发送处检查总预算、递增一次，预算<=4；连接失败计1，发送前本地异常/零证据计0。可以通过现有适配器client注入参数装配计数客户端，不改产品适配器。避免全局猴子补丁。provider调用数如需保留另列。保持每题最多一次、零重试、首次技术失败即停。
+
+同批整理（不加新矩阵）：
+- 原run-1 ask_calls=0瑕疵保留并勘误，不重写原机读文件；原questions={}不是四条not_attempted，修正报告描述。后续前置失败新记录列四题not_attempted与停止原因。
+- 缺密钥只描述执行进程与已查位置，不作所有位置均不存在的绝对断言。不要读取或打印密钥值、全量环境、headers或原始异常。
+- 记录刷新此前被自动权限审查拒绝，保留该历史。再次被拒绝则说明具体动作/原因并停止该动作，不换工具、命令或路径绕过拒绝。
+
+验证仅两条业务链及原4项：
+1. 非空输出+可用mock：调用前拒绝、实际post=0、旧文件不变。
+2. 发送前消息构造失败：实际post=0、外部计数=0；原连接失败计1、失败即停等4项保持。
+运行原Astra T040-B-preflight-probe.py，预期exit0；不改探针、断言或通过标准。不重跑全量/UI/向量/三模式/A原准备，不发真实请求。
+用新的验证日志说明本轮范围、真实退出码与层级；少量mock不是模型质量证据。
+
+保全当前revision2提交与run-1（字节核验），不要覆盖rev1/A缓存。更新report/verification/fix-report/continuation-progress/submission/changed-files，哈希为实测值。
+提交 submission_revision=3、responds_to=T040-R2、stage=B_not_started、status=partial、external_model_calls=0、live_verified=false、planner_live_verified=false。完成后停止等Astra，不运行live、不推进T041。
+
+后续真实调用恢复条件（本轮不执行）：Astra关闭两项代码问题；用户把DEEPSEEK_API_KEY配置到实际运行Claude Code/Python的进程环境。另一个已运行终端设置不会自动传入当前进程；必要时从已配置环境重新启动执行窗口。不要让用户粘贴聊天密钥。原授权固定q08→q10→u03→u04，官方端点/deepseek-flash，<=4次真实HTTP，每题<=1，1500输出token/30s，零重试，技术失败即停；不额外探测、不补跑，不以模型答错为理由再请求。

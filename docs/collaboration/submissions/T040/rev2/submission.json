@@ -1,0 +1,60 @@
+{
+  "task_id": "T040",
+  "task_revision": "B-v1",
+  "submission_revision": 2,
+  "responds_to": "T040-B",
+  "stage": "B_not_started",
+  "status": "partial",
+  "external_model_calls": 0,
+  "live_verified": false,
+  "planner_live_verified": false,
+  "summary": "T040 B（responds_to=T040-B）：本地实施与验证已完成（新增 live-smoke-real-qa.py：默认 dry-run/显式 --live、发送位置计数、官方配置门核对实际 provider 属性、A 身份前置核对、失败即停/业务不足可继续/零证据短路、本地与供应商 HTTP 状态分开、未知字段 null 不伪造；4 项 mock 测试 passed exit 0）。--live 入口实际执行一次（run-1）：A 身份核对通过（材料/输入 SHA 未漂移、四题 E/messages 与 A 一致），但执行环境缺 DEEPSEEK_API_KEY（进程含非沙箱/User/Machine 级均不存在；仓库无 .env）→ 按工单前置拒绝、零外部请求、四题 not_attempted、exit 1。如实提交 partial（stage=B_not_started），不冒称 B 已执行、不索取密钥文本、不暗改输入。A 九件已归档 rev1/ 原样；A 四件材料原字节保持；live-results.json 为拒绝记录、live-answers-full.json 如实无答案、live-review-notes.md 锁定核对框架与语义边界。配置 DEEPSEEK_API_KEY 后重跑 --live 一次即按已授权范围执行（题/模型/地址/次数不变）。已知记录瑕疵：run-1 ask_calls=0 未计入前置 4 次本地 extractive（外部次数 0 准确），脚本已修正，记录刷新重跑被权限分类器拦截、run-1 原样保留。",
+  "verification": {
+    "mock_tests": "tests/test_live_smoke_real_qa.py 4 passed，exit 0（发送位计数/失败即停/前置零请求/完整记录；mock 零网络，不冒充真实质量）",
+    "a_identity": "前置核对通过：A 材料 SHA 三处一致×4、输入 SHA 10 项未漂移、四题 E/messages 与 A 一致（UUID 不作差异）",
+    "live_entry": "--live run-1 实际执行：缺密钥前置拒绝，external_http_attempts=0、not_attempted×4、exit 1（记录=live-results.json）",
+    "key_env_check": "仅存在性检查：进程（含非沙箱）/User/Machine 级 DEEPSEEK_API_KEY 均不存在；未读取或输出任何值",
+    "preservation": "A 九件 rev1/ 归档原样；A 四件材料三处同字节；输入/源文件 SHA 未变（questions 4e39229e…/freeze 8c289b2a…/manifest b05c3755…）",
+    "scope_note": "未改产品/适配器/提示/gold/冻结/结果/聚合/语料/模板/用户意见/Astra 文件；零 commit/push、无下载安装；未跑全量/UI/ASR/Agent/三模式/向量"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "continuation-progress.md",
+    "live-results.json",
+    "live-answers-full.json",
+    "live-review-notes.md",
+    "dry-run.json",
+    "input-hashes.json",
+    "generation-review-sheet.md",
+    "live-smoke-plan.md",
+    "rev1/"
+  ],
+  "paths": {
+    "script": "step2_code/backend/scripts/live-smoke-real-qa.py",
+    "tests": "step2_code/backend/tests/test_live_smoke_real_qa.py",
+    "raw_run_dir": "step2_code/backend/.cache/real-qa-smoke/T040-B/（live-results.json 拒绝记录）",
+    "a_archive": "docs/collaboration/submissions/T040/rev1/（A 九件原样）"
+  },
+  "blocker": {
+    "reason": "缺密钥：DEEPSEEK_API_KEY 不存在于执行环境（进程/User/Machine 级均无；仓库无 .env；机制=环境变量）",
+    "evidence": "live-results.json（run-1 前置拒绝、零外部请求）；verification.md §3",
+    "resume_condition": "用户将 DEEPSEEK_API_KEY 配置进会话环境（不经聊天传递密钥）后，重跑 --live 一次即按已授权范围执行（q08→q10→u03→u04、官方端点、deepseek-flash、≤4 次尝试、1500/30s、零重试、失败即停）"
+  },
+  "known_gaps": [
+    "B 真实生成未执行：无模型答案，忠实性/拒答/质量均未验证（live_verified=false 待 Astra 认定）",
+    "run-1 记录 ask_calls=0 未计入前置 4 次本地 extractive（外部次数 0 准确）；脚本已修正，记录刷新被权限分类器拦截、run-1 原样保留",
+    "q08 f1 gold 缺口（A 阶段已记录）保留；u04 已有命中可能不相关；学校政策现行性未认证",
+    "核对表初值仍为“待真实运行/待核对”（live-review-notes.md 框架就绪，无评价对象）"
+  ],
+  "not_claimed": [
+    "任何模型答案已生成或正确",
+    "B 已执行或已获费用确认（授权已有、执行被密钥缺失阻断）",
+    "价格/usage/费用上限",
+    "模型会拒答/答案忠于证据",
+    "语义审定/政策现行有效"
+  ],
+  "next_gate": "Astra 验收本次 partial；配置密钥后由用户/Astra 决定重跑 --live 一次；T041 未授权"
+}

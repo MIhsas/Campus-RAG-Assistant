@@ -1,0 +1,63 @@
+{
+  "task_id": "T040",
+  "task_revision": "B-v1",
+  "submission_revision": 4,
+  "responds_to": "T040-B-恢复执行",
+  "stage": "B_executed",
+  "status": "ready_for_review",
+  "external_model_calls": 4,
+  "live_verified": false,
+  "planner_live_verified": false,
+  "summary": "T040 B 恢复执行（submission_revision=4）：密钥按 2026-10-09 配置补充授权就绪（执行进程未继承→仅加载 User 级一条变量入执行 PowerShell，存在性 True，不打印值）；从新目录 T040-B-resume-1 运行已验收脚本 --live 一次，exit 0。前置门全过（A 身份/E/messages 一致、实际官方配置 deepseek-flash/1500/30s、输出目录新目录、安全摘要先行）。真实执行：q08→q10→u03→u04 各发送 1 次共 external_http_attempts=4（发送位点计数）、provider_calls=4、/ask 8、零重试、completed_all 无技术失败；供应商审计为已观察值（4×HTTP 200、finish_reason=stop、request_id/usage/latency 入档）。逐段核对（三层分列，详见 live-review-notes.md）：q10 三段中 P1/P2 逐字获实发 E 支持、P3 基本支持（「不纳入比例」系适度推断留人工），两前提分开未按年份宣布废止，f1/f2 gold 覆盖；u03 逐字获 bed3ac 支持、f1 覆盖、未从 db05e0 补；q08 拒答忠于实发 E（E5 属违纪非作弊、无小抄认定表述）——合理不足，f1 缺口保持不兜底；u04 拒答忠于实发 E、未推测办理部门、83eb 未混入。用户确认状态四题均「未确认」，不代签。revision 3 九件归档 rev3/、旧 live 三件保全、run-1 缓存未改（34cbf5f9…）。未改代码/产品/数据；未重跑 mock/A 准备/实验；无 commit/push。真实质量与学校现行性仍待验证，live_verified=false 待 Astra 认定。",
+  "verification": {
+    "key_readiness": "执行进程 False→按授权加载 User 级一条变量后 True（存在性布尔，未打印值/未查其他位置）",
+    "live_run": "live-smoke-real-qa.py --live --out-dir T040-B-resume-1 一次运行 exit 0：前置门全过、completed_all、external_http_attempts=4、provider_calls=4、ask_calls=8、零重试",
+    "audit_observed": "4×HTTP 200、finish_reason=stop×4、request_id/usage/latency 如实入档（prompt 1344/1379/1667/1690、completion 107/171/53/57、811—1359ms）；未测价格",
+    "paragraph_review": "q10 P1/P2 逐字支持/P3 适度推断留人工；u03 逐字支持；q08/u04 拒答忠于实发 E（合理不足）；gold：q10 f1/f2、u03 f1 覆盖，q08 f1 缺口保持；语义边界（两前提分开/不按年份废止/不从 db05e0 补/不推测 u04 部门/83eb 未混入）全部保持",
+    "preservation": "rev3 归档 9 件；旧 live 三件保全于 rev3/；run-1 缓存 34cbf5f9… 未改；rev1/rev2、A 四件三处保持",
+    "scope_note": "未改代码/产品/语料/模板/gold/冻结/实验/用户记录/Astra 文件；未重跑 mock/A 准备/实验；无 commit/push、下载安装"
+  },
+  "results_summary": {
+    "q08": "business_insufficient（拒答忠于证据；f1 缺口保持）",
+    "q10": "answered 3 段（一般 50/50、互评 40/10/50 分列、开题两级制）；E1/E2 支持",
+    "u03": "answered（30 分钟禁入+逾时缺考，bed3ac 逐字支持）",
+    "u04": "business_insufficient（未推测部门；83eb 未混入）",
+    "counts": "external_http_attempts=4 / provider_calls=4 / ask_calls=8；completed_all；零技术失败"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "live-review-notes.md",
+    "submission.json",
+    "changed-files.json",
+    "continuation-progress.md",
+    "live-results.json",
+    "live-answers-full.json",
+    "fix-report.md",
+    "dry-run.json",
+    "input-hashes.json",
+    "generation-review-sheet.md",
+    "live-smoke-plan.md",
+    "rev1/",
+    "rev2/",
+    "rev3/"
+  ],
+  "paths": {
+    "raw_run_dir": "step2_code/backend/.cache/real-qa-smoke/T040-B-resume-1/（原始 live-results/live-answers-full）",
+    "run1_preserved": "step2_code/backend/.cache/real-qa-smoke/T040-B/（未改）",
+    "archives": "rev1/（A 九件）、rev2/（revision 2 八件+探针失败记录）、rev3/（revision 3 九件）"
+  },
+  "known_gaps": [
+    "真实答案质量/学校政策现行性未认证（live_verified=false 待 Astra 认定）",
+    "q08 f1 gold 缺口保持（本次 E 不支持小抄定性；合理不足已记录）",
+    "q10 P3「不纳入上述组成比例」系对「单独记载」的适度推断，留人工核对",
+    "用户确认状态四题均未确认；不代签"
+  ],
+  "not_claimed": [
+    "校园总体准确率或可靠拒答",
+    "答案语义正确/政策现行有效已认证",
+    "费用/价格（未测）",
+    "用户意见已确认新项"
+  ],
+  "next_gate": "Astra 验收 B 执行结果并认定 live_verified；T041 未授权"
+}

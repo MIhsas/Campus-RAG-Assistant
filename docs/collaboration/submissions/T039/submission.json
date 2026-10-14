@@ -1,0 +1,63 @@
+{
+  "task_id": "T039",
+  "task_revision": "v1",
+  "submission_revision": 2,
+  "responds_to": "T039-R1",
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "planner_live_verified": false,
+  "human_review_status": "user_review_received_with_open_items",
+  "human_review_counts": {"确认": 109, "需修订": 3, "未确认": 2},
+  "summary": "T039 revision 2（responds_to=T039-R1）：数据/计分沿用 revision 1 已核对结果（24 题/58 证据 v2.0；四项定向修订 u03 可答/u04 严格不足+候选/q08 释义/q10 分情形口径；三模式 n=21 基线与共同子集 60/60 一致），本轮仅按返工单定向修复并收尾：①差异清单共享对象缺陷——新增独立检查器 check-field-diff.py（旧/新题集独立加载、按字段允许集校验）重生成 field-diff.json：6 题非空差异（q08/q10=rationale,revision_note；u01/u02/u04=missing,rationale,revision_note；u03=answerable,evidence,missing,question_type,rationale,revision_note）、18 题无变更、query/conditions 全不变；正向 exit 0、隔离负向 q07:query exit 1（预期）由 Astra 盘点实跑；旧 build-v2-questions.py 共享对象缺陷保留原件不运行。②四项复核补充补齐可定位逐字原文（query/条件、document_id/block_id/页码/跨度/本机路径；q08/u03 保留换行切片+规范化摘录声明；q10 两前提完整原引+上下文；u04 两页原文并列、标未核实候选）；Astra 独立比对 8/8 逐字一致。③文档收尾：human-review-pending §0/§1（T036-v3=首次意见历史包、v1.3 历史/v2.0 当前分列）、verification 命令修复为可复制 PowerShell 与三层证据归属、README/evaluation-report 核对一致。④原 Astra audit 复跑一次 exit 0（72 行计分/60 共同排名/36 分组/新跑 BM25 24 行一致/MISMATCHES=0/status=ok），旧失败审计输出保全不删。revision 1 七件归档原样；dataset 2.0 未变；用户 109/3/2 与模板 33 项确认保留，新项不代确认。",
+  "verification": {
+    "diff_audit_fix": "check-field-diff.py 正向 exit 0（6 题允许集差异/18 题无变更）、--inject-drift q07:query exit 1（预期）——Astra 盘点实跑，见 handoffs/T039-R1-20261009-盘点.json",
+    "original_audit_rerun": "T039-audit.py 复跑一次 exit 0：72 rows/60 common/36 group/fresh BM25 24 rows、SUBMITTED DIFF MISMATCHES=0、status=ok（新窗口实跑；探针源码/判据未改）",
+    "quote_checks": "补充 8 条原引 Astra 真实解析器逐字比对 8/8 相等、8 本机原件路径存在（盘点实跑）；程序化逐字一致≠语义审定",
+    "readonly_identity": "38 项文件（23 只读+8 部分成果+7 归档）对照盘点快照 SHA256 drift_or_missing=0（新窗口实跑）",
+    "historical": "check-real-eval CHECK OK 24/58/37 exit 0；三模式各一次 valid=true×3 exit 0×3；aggregate 重算/60/60 共同排名/两例手算；旧输入 7/7 SHA 未变（历史执行，未重跑）",
+    "scope_note": "未改产品算法/评分器/筛选/provider/页面；未跑 UI/ASR/Agent/全量/浏览器/三模式重跑/向量编码；零外部调用"
+  },
+  "results_summary": {
+    "k5_n21": {
+      "bm25": {"recall": 0.7380952380952381, "hit": 0.7619047619047619, "mrr": 0.6190476190476191},
+      "dense": {"recall": 0.7142857142857143, "hit": 0.7142857142857143, "mrr": 0.46984126984126984},
+      "hybrid": {"recall": 0.7142857142857143, "hit": 0.7142857142857143, "mrr": 0.5634920634920635}
+    },
+    "common_subset_n20": "与 T030 存储 60/60 一致（排名变化=无）",
+    "u03": "三模式 rank1、MRR 1.0（bed3ac 已准入源）",
+    "u04": "严格不足；正式命中≠合规依据；候选独立单列",
+    "insufficient_n3": "空检索率 0.000（非拒答率）",
+    "not_algorithm_improvement": "差异=分母/准入/gold 修订；已存指标身份，revision 2 未重测"
+  },
+  "deliverables": [
+    "report.md",
+    "fix-report.md",
+    "verification.md",
+    "continuation-progress.md",
+    "submission.json",
+    "changed-files.json",
+    "evaluation-report.md",
+    "review-supplement.md",
+    "T038-doc-errata.md",
+    "T039-audit-rev1-failed-preserved.json"
+  ],
+  "data_paths": {
+    "v2_dir": "data/evaluations/sicau-rag-pilot-eval-v2/（questions/annotation-check/gold-revisions/review-status/freeze/results/aggregate.json/field-diff.json）",
+    "helpers": "step2_code/backend/.cache/t039/（check-field-diff.py 差异审计现行；build-review-supplement.py 补充材料生成；build-v2-questions.py/run-v2-baseline.py/aggregate-v2.py 历史原件不运行）",
+    "archive": "submissions/T039/rev1/（revision 1 七件）；.cache/t039/archive-r1/（旧 diff 与原构建脚本）"
+  },
+  "known_gaps": [
+    "新修订（u03 gold/q08/q10 说明/u04 注记）待定向人工复核；q10 废止主张待用户证据",
+    "真实浏览器跳转未验证（本窗口未跑 UI）",
+    "非独立盲测/无显著性/小样本；不代表校园 QA 准确率或可靠拒答",
+    "示例释义为模型辅助示例（非产品实时生成）；学校现行性未认证"
+  ],
+  "not_claimed": [
+    "算法改善（差异含分母/准入/gold 修订）",
+    "校园准确率/可靠拒答/新盲测",
+    "DeepSeek 已生成正确回答",
+    "用户争议已关闭/导师认证",
+    "程序化逐字一致=语义审定/政策现行有效"
+  ],
+  "workspace_note": "旧题集/实验/模板/用户意见/语料 v1.1 只读未改；产品算法/评分器未改；git 脏文件为 T037—T039 累积修改未 reset/clean；零外部调用、无下载/安装/commit/push"
+}

@@ -93,9 +93,12 @@ function setup(locationSearch, stateOverrides) {
   const ids = {};
   for (const id of ['query-input', 'search-btn', 'status-area', 'results-area',
                     'filter-as-of-date', 'clear-filters-btn',
-                    'clear-source-btn', 'source-hint', 'nav-ask']) {
+                    'clear-source-btn', 'source-hint', 'nav-ask', 'candidate-area']) {
     ids[id] = new Element();
   }
+  // T043-R1：真实 checkbox 桩（静态 HTML 默认 checked；支持 checked 真实读写）
+  ids['include-unknown-type'] = new Element('input');
+  ids['include-unknown-type'].checked = true;
   // Native selects with their static-HTML initial options (T031-R1 stubs).
   makeSelect(ids, 'filter-campus', ['']);
   makeSelect(ids, 'filter-student-type', ['']);
@@ -161,7 +164,7 @@ function setup(locationSearch, stateOverrides) {
         });
       }
       return new Promise((resolve, reject) => {
-        requests.push({ body: JSON.parse(options.body), resolve, reject });
+        requests.push({ url: String(url), body: JSON.parse(options.body), resolve, reject });
       });
     },
   };
@@ -678,6 +681,153 @@ const findButton = e => {
     assert.equal(s.requests.length, 1);
     assert.equal(s.requests[0].body.document_id, undefined, 'explicit all-mode submits without document_id');
     s.requests[0].resolve(okResponse());
+    await flush();
+    passed++;
+  }
+
+
+  // ---- T038: candidate panel — snapshot-bound, explicit-only, seq-guarded ----
+  const candBody = r => r.body;
+  {
+    const s = setup();
+    await flush();
+    // formal with a date filter
+    s.ids['filter-as-of-date'].value = '2026-10-03';
+    s.submit('转专业');
+    assert.equal(s.requests.length, 1, 'only the formal request is sent (candidates never auto-run)');
+    s.requests[0].resolve(okResponse({
+      filters: { campus: null, student_type: null, admission_year: null, as_of_date: '2026-10-03' },
+      hits: [{ rank: 1, score: 1, preview_url: '/preview#d/b', matched_terms: [],
+               chunk: { document_id: 'd', block_id: 'b', metadata: { title: 'T', version_label: 'v' }, text: 'x',
+                        locator: { type: 'pdf_page', page: 1 } } }],
+    }));
+    await flush();
+    assert.ok(s.ids['candidate-area'].children.length > 0, 'candidate panel shown after formal success');
+    // edit controls AFTER formal submit
+    s.ids['filter-as-of-date'].value = '2020-01-01';
+    // find the candidate button and date checkbox inside the panel
+    const panel = s.ids['candidate-area'];
+    const btnsIn = [];
+    const walkP = e => { for (const c of (e.children || [])) { if (c.tag === 'button') btnsIn.push(c); walkP(c); } };
+    walkP(panel);
+    const candBtn = btnsIn.find(b => b.textContent === '查看候选原文');
+    assert.ok(candBtn, 'candidate button present');
+    // find checkboxes (inputs) — set the date one
+    const inputs = [];
+    const walkI = e => { for (const c of (e.children || [])) { if (c.tag === 'input') inputs.push(c); walkI(c); } };
+    walkI(panel);
+    assert.equal(inputs.length, 2, 'two uncertainty checkboxes');
+    assert.equal(inputs[0].disabled, false, 'date checkbox enabled (snapshot has as_of)');
+    assert.equal(inputs[1].disabled, true, 'student_type checkbox disabled (snapshot lacks it)');
+    inputs[0].checked = true;
+    candBtn.listeners.click();
+    await flush();
+    assert.equal(s.requests.length, 2, 'candidate request sent only after explicit click');
+    const creq = s.requests[1];
+    assert.equal(creq.url, '/api/v1/search/candidates');
+    assert.deepEqual(creq.body.uncertainty_dimensions, ['date']);
+    assert.equal(creq.body.filters.as_of_date, '2026-10-03', 'candidate uses the RESULT snapshot filters (not edited controls)');
+    creq.resolve({ ok: true, status: 200, json: async () => ({
+      query: '转专业', uncertainty_dimensions: ['date'], active_dimensions: ['date'],
+      filters: { campus: null, student_type: null, admission_year: null, as_of_date: '2026-10-03' },
+      document_id: null,
+      candidate_summary: { document_total: 20, strict_allowed_count: 5, candidate_document_count: 1, counting_rules: 'r' },
+      disclaimer: '未通过所选日期或学生类型条件核实，仅供原文核对，不作为已确认适用的答案依据',
+      hits: [{ rank: 1, score: 1, preview_url: '/preview#d/b', unknown_dimensions: ['date'], uncertainty_note: 'n',
+               chunk: { document_id: 'd', block_id: 'b', metadata: { title: '未核实资料', version_label: '未标注', scope: {} },
+                        text: '候选原文', locator: null } }],
+    }) });
+    await flush();
+    assert.ok(panel.children.length > 0, 'candidate results rendered');
+    passed++;
+  }
+
+  // stale candidate response must not attach to a NEW result
+  {
+    const s = setup();
+    await flush();
+    s.ids['filter-as-of-date'].value = '2026-10-03';
+    s.submit('A');
+    s.requests[0].resolve(okResponse({
+      filters: { campus: null, student_type: null, admission_year: null, as_of_date: '2026-10-03' },
+    }));
+    await flush();
+    const panel = s.ids['candidate-area'];
+    const btnsIn = [];
+    const walkP = e => { for (const c of (e.children || [])) { if (c.tag === 'button') btnsIn.push(c); walkP(c); } };
+    walkP(panel);
+    const inputs = [];
+    const walkI = e => { for (const c of (e.children || [])) { if (c.tag === 'input') inputs.push(c); walkI(c); } };
+    walkI(panel);
+    inputs[0].checked = true;
+    btnsIn.find(b => b.textContent === '查看候选原文').listeners.click();
+    await flush();
+    // new formal submit BEFORE the candidate response resolves
+    s.submit('B');
+    assert.equal(s.ids['candidate-area'].children.length, 0, 'new formal request clears old candidates');
+    s.requests[2].resolve(okResponse({
+      filters: { campus: null, student_type: null, admission_year: null, as_of_date: '2026-10-03' },
+    }));
+    await flush();
+    // now let the stale candidate response land
+    s.requests[1].resolve({ ok: true, status: 200, json: async () => ({
+      query: 'A', uncertainty_dimensions: ['date'], active_dimensions: ['date'], filters: {}, document_id: null,
+      candidate_summary: { document_total: 20, strict_allowed_count: 5, candidate_document_count: 1, counting_rules: 'r' },
+      disclaimer: 'x', hits: [{ rank: 1, score: 1, preview_url: '', unknown_dimensions: ['date'], uncertainty_note: '',
+               chunk: { document_id: 'd', block_id: 'b', metadata: {}, text: '旧候选' } }],
+    }) });
+    await flush();
+    const txt = s.ids['candidate-area'].textContent;
+    assert.ok(txt.indexOf('旧候选') < 0, 'stale candidate response does NOT attach to the new result');
+    passed++;
+  }
+
+  // ---- T043-R1: 导航上下文快照——URL 恢复后无需提交即可原样跨页；控件编辑不改写快照 ----
+  {
+    const s = setup('?query=original&student_type=%E6%9C%AC%E7%A7%91&include_unknown_type=0', {
+      statusOptions: { campus: [], student_type: ['本科'], admission_year: [] },
+    });
+    await flush();
+    assert.equal(s.ids['include-unknown-type'].checked, false, 'URL 恢复：开关=关（strict）');
+    const nav0 = new URL(s.ids['nav-ask'].href, 'http://local');
+    assert.equal(nav0.searchParams.get('include_unknown_type'), '0', 'URL 恢复后不提交，跨页链接仍是 strict');
+    assert.equal(nav0.searchParams.get('query'), 'original', '跨页链接保留问题');
+    assert.equal(nav0.searchParams.get('student_type'), '本科', '跨页链接保留条件');
+    // 提交携带新开关（strict）
+    s.submit('original');
+    assert.equal(s.requests[0].body.include_unknown_student_type, false, '提交携带开关=strict');
+    s.requests[0].resolve(okResponse({
+      include_unknown_student_type: false,
+      filters: { campus: null, student_type: '本科', admission_year: null, as_of_date: null },
+    }));
+    await flush();
+    // 提交后改控件 → 导航仍用原快照
+    s.ids['include-unknown-type'].checked = true;
+    assert.equal(new URL(s.ids['nav-ask'].href, 'http://local').searchParams.get('include_unknown_type'), '0',
+      '改控件不改写已显示结果的导航快照');
+    // 候选参数按结果快照模式
+    const panel = s.ids['candidate-area'];
+    const btnsIn = [];
+    const walkP = e => { for (const c of (e.children || [])) { if (c.tag === 'button') btnsIn.push(c); walkP(c); } };
+    walkP(panel);
+    const inputs = [];
+    const walkI = e => { for (const c of (e.children || [])) { if (c.tag === 'input') inputs.push(c); walkI(c); } };
+    walkI(panel);
+    const typeCb = inputs[1];
+    assert.equal(typeCb.disabled, false, 'student_type 候选框按结果快照启用');
+    typeCb.checked = true;
+    btnsIn.find(b => b.textContent === '查看候选原文').listeners.click();
+    await flush();
+    const creq = s.requests[1];
+    assert.equal(creq.url, '/api/v1/search/candidates');
+    assert.equal(creq.body.include_unknown_student_type, false, '候选请求按结果快照模式（strict）');
+    creq.resolve({ ok: true, status: 200, json: async () => ({
+      query: 'original', uncertainty_dimensions: ['student_type'], active_dimensions: ['student_type'],
+      filters: { campus: null, student_type: '本科', admission_year: null, as_of_date: null },
+      document_id: null,
+      candidate_summary: { document_total: 20, strict_allowed_count: 5, candidate_document_count: 1, counting_rules: 'r' },
+      disclaimer: '未通过所选日期或学生类型条件核实', hits: [],
+    }) });
     await flush();
     passed++;
   }

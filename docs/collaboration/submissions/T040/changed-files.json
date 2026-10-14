@@ -1,0 +1,31 @@
+{
+  "note": "T040-B-恢复执行变更清单（submission_revision=4，responds_to=T040-B-恢复执行，stage=B_executed）。本轮未改代码/产品/数据；仅真实运行一次并更新提交材料。旧 live 三件替换前已归档 rev3/；run-1 缓存与全部历史保持。哈希为落盘后实测全值；本清单与 continuation-progress.md 不列自哈希。",
+  "live_outputs": [
+    {"path": "docs/collaboration/submissions/T040/live-results.json", "sha256": "e607654b34a51f6361215c9e804c496e864905ab24a9e7bbf1bfb46063784072", "change": "T040-B-resume-1 实跑记录（前置门/审计/send_log/停止原因 completed_all/四题结果）；== 原件同哈希"},
+    {"path": "docs/collaboration/submissions/T040/live-answers-full.json", "sha256": "9641695095912d3f6de19f9194beecf35fb2691f90afdad76f7323f46686cc4e", "change": "完整答案/E 全文/messages/审计（供人工核对）；== 原件同哈希"}
+  ],
+  "updated_docs": [
+    {"path": "docs/collaboration/submissions/T040/report.md", "sha256": "f7dedfbfa976c2a1d7ea360cb585944d502415c4c79260ac9712330d32ea6169", "change": "revision 4：执行事实/逐题核对摘要/保全与边界"},
+    {"path": "docs/collaboration/submissions/T040/verification.md", "sha256": "f8a462007e6432ec00f4e444bd8b2c423ca3376beca75cd144d93bb055f9361d", "change": "密钥就绪检查、真实运行命令与退出码、逐段核对、保全核验"},
+    {"path": "docs/collaboration/submissions/T040/live-review-notes.md", "sha256": "5fd552c93bcde593301988d5a1ec224b938a438525b26d3bb02f5523a1ce6a90", "change": "逐段三层核对（E 支持性/gold 覆盖/用户确认）；脚本自动记录与执行者辅助核对分列；不代签"},
+    {"path": "docs/collaboration/submissions/T040/submission.json", "sha256": "f08fa58c38a88559abfcebfa4e2c63769a6a29c64a1582761d7d6184b442b3a2", "change": "submission_revision=4、responds_to=T040-B-恢复执行、stage=B_executed、status=ready_for_review、external_model_calls=4"},
+    {"path": "docs/collaboration/submissions/T040/changed-files.json", "change": "本清单（不列自哈希）"},
+    {"path": "docs/collaboration/submissions/T040/continuation-progress.md", "change": "执行日志（提交前最后更新，不列哈希）"}
+  ],
+  "raw_run_dir": {
+    "dir": "step2_code/backend/.cache/real-qa-smoke/T040-B-resume-1/",
+    "note": "脚本原始输出 2 件，与提交副本同哈希（live-results e607654b…/live-answers-full 96416950…）；新目录、运行前无已有输出"
+  },
+  "preserved": {
+    "run1_cache": "step2_code/backend/.cache/real-qa-smoke/T040-B/live-results.json 未改（34cbf5f9d5a5c31d…）",
+    "old_live3_archived": "rev3/ 内 live-results/live-answers-full/live-review-notes（revision 3 版本）",
+    "a_materials": "dry-run/input-hashes/generation-review-sheet/live-smoke-plan 三处同哈希保持",
+    "archives": "rev1/（A 九件）、rev2/（revision 2 八件+探针失败记录 94e3944f…）、rev3/（revision 3 九件）均未覆盖"
+  },
+  "unchanged": [
+    "step2_code/backend/scripts/live-smoke-real-qa.py（e49d7541…）与 tests/test_live_smoke_real_qa.py（8a397075…）——本轮未改代码",
+    "产品代码/生成提示/qa 适配器/检索筛选评分器/prepare-real-qa-smoke.py/A 四件材料",
+    "gold/冻结/标注说明/results/aggregate（4e39229e…/8c289b2a…/fcecdc9c…）、语料/manifest（b05c3755…）、模板、用户意见原件、历史材料、Astra 文件"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值；本清单自身与 continuation-progress.md 不列自哈希。"
+}

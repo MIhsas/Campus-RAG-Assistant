@@ -1,0 +1,284 @@
+{
+  "snapshot_kind": "Astra handoff inventory, not acceptance",
+  "date": "2026-10-09",
+  "task_id": "T039",
+  "active_scope": "T039-R1",
+  "current_submission_revision": 1,
+  "current_submission_status": "ready_for_review",
+  "confirmed_this_turn": {
+    "field_diff_positive_exit": 0,
+    "q07_query_negative_exit": 1,
+    "quote_checks": [
+      {
+        "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+        "block_id": "88df0e97c016c2bd",
+        "char_start": 184,
+        "char_end": 237,
+        "matches_fresh_parse": true
+      },
+      {
+        "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+        "block_id": "2e39739015cd2bb3",
+        "char_start": 663,
+        "char_end": 728,
+        "matches_fresh_parse": true
+      },
+      {
+        "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+        "block_id": "8ba6ee7f3157a483",
+        "char_start": 4,
+        "char_end": 56,
+        "matches_fresh_parse": true
+      },
+      {
+        "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+        "block_id": "8ba6ee7f3157a483",
+        "char_start": 57,
+        "char_end": 119,
+        "matches_fresh_parse": true
+      },
+      {
+        "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+        "block_id": "ebab438ffbe33010",
+        "char_start": 101,
+        "char_end": 129,
+        "matches_fresh_parse": true
+      },
+      {
+        "document_id": "83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31",
+        "block_id": "27fc6e4fb939e279",
+        "char_start": 21,
+        "char_end": 54,
+        "matches_fresh_parse": true
+      },
+      {
+        "document_id": "83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31",
+        "block_id": "f74aff0841628203",
+        "char_start": 80,
+        "char_end": 175,
+        "matches_fresh_parse": true
+      },
+      {
+        "document_id": "83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31",
+        "block_id": "f74aff0841628203",
+        "char_start": 176,
+        "char_end": 235,
+        "matches_fresh_parse": true
+      }
+    ],
+    "local_original_paths_found": 8,
+    "frozen_identity_checks": 3
+  },
+  "historical_audit_note": "Existing T039-audit.json still records six diff mismatches; no new original audit run in this handoff turn.",
+  "unverified": [
+    "R1 original Astra audit rerun",
+    "final revision2 report and changed-files",
+    "real-browser navigation",
+    "semantic or current-validity certification"
+  ],
+  "readonly_snapshot_files": [
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v2/questions.json",
+      "sha256": "4e39229eb3b31dc9ccd5dc157e2d63203514ce70069450adca6b78c24b65c103",
+      "bytes": 56094
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v2/freeze.json",
+      "sha256": "8c289b2ae7f00b39be80f02f850cf2820d8cc6de90f6f7245c634ddd2a9b5a26",
+      "bytes": 6013
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v2/annotation-check.md",
+      "sha256": "35913bb6d33e5160fc716e0e89f37465c541b3d17c4d562111d5407261039eff",
+      "bytes": 3230
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v2/gold-revisions.md",
+      "sha256": "96ae2d2dd62ef145fb74a48c4708a767fd0efa99192a5e9d2e90f848b7426f6d",
+      "bytes": 3018
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v2/aggregate.json",
+      "sha256": "fcecdc9c884a55cdcf80870131326991f56a30a7b0cf9b9969ad54d4ae7af747",
+      "bytes": 5430
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v2/review-status.json",
+      "sha256": "4fb7cb63eeec113eb8996d319c860d5e7f70685962d3910053dc5b042a3d8d80",
+      "bytes": 2313
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v2/results/bm25.exitcode.txt",
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "bytes": 1
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v2/results/bm25.json",
+      "sha256": "77316bcbcc37bcd7d9de4e1427755d5e8244830f253962eb0c2394b48cc38aca",
+      "bytes": 99253
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v2/results/bm25.stderr.log",
+      "sha256": "4d0128dc8558599c7f7dbc49ae812fc5d0f44099d515166bb737c76e456f4120",
+      "bytes": 194
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v2/results/dense.exitcode.txt",
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "bytes": 1
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v2/results/dense.json",
+      "sha256": "a9121c6ef3bb55fbbfc0216f94ca43d5a01cc45398dca0c1e92bc1bcdfd5f976",
+      "bytes": 99396
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v2/results/dense.stderr.log",
+      "sha256": "9262d0a2310bb607d1ce0b55f1b601d122fab21c9312fa7af5db15c3064517d3",
+      "bytes": 341
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v2/results/hybrid.exitcode.txt",
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "bytes": 1
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v2/results/hybrid.json",
+      "sha256": "8526d57370827800c93ad0ef27820469aca8521f55fbc9f8a822f9f2f7e4c7c4",
+      "bytes": 99716
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v2/results/hybrid.stderr.log",
+      "sha256": "87ccdd03220b1c1ddc51d1795e7a0ebbda6ca8ff326a42bc6732c5eb10ee2259",
+      "bytes": 341
+    },
+    {
+      "path": "data/corpora/sicau-rag-pilot-v1.2/manifest.json",
+      "sha256": "b05c37557675f02c045e01e9fd776c539954c43172d5e0b07d0704da4e352b4a",
+      "bytes": 18378
+    },
+    {
+      "path": "data/corpora/sicau-rag-pilot-v1.1/manifest.json",
+      "sha256": "34e182f18178c8a8dc3f3bbfcb151150272f0c86579236191ed1e754298b1108",
+      "bytes": 18362
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v1/questions.json",
+      "sha256": "5fde70a332744b642e48014abc82902009abc1a106a84e6241b3c460e4faed5c",
+      "bytes": 55250
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v1/freeze.json",
+      "sha256": "fd2f2476c1f917ee98f8cd5ba83c53cf4954ca29d25f8a43bbd62742872ffda3",
+      "bytes": 6632
+    },
+    {
+      "path": "data/procedures/sicau-transfer-2026-v1/procedures.json",
+      "sha256": "78f1c1d9f839c41da2fc5b13fdb67014826bdde93d57a5f872c33a79f47b7cfa",
+      "bytes": 23211
+    },
+    {
+      "path": "data/reviews/T036-user-review-20261008/human-review-record.json",
+      "sha256": "2e1af1493846efd76f2ec593ac248c31df5dc725e77a1abe845e980e3efc5791",
+      "bytes": 17589
+    },
+    {
+      "path": "data/evaluations/sicau-rag-source-selection-v1/experiment.json",
+      "sha256": "57b22f93bd1420faf276915c6425b3f8e8f9c978058935f8a1c69de39bd5c618",
+      "bytes": 130104
+    },
+    {
+      "path": "data/evaluations/sicau-rag-overlap-v1/experiment.json",
+      "sha256": "cef9f162f1eb164adbb65b1c9acc1634ee24e985edcc197fae09a6ac07dd2d95",
+      "bytes": 213905
+    }
+  ],
+  "partial_work_files": [
+    {
+      "path": "step2_code/backend/.cache/t039/check-field-diff.py",
+      "sha256": "0ffcd66d1c65dc3272ba3641f55705c0c4c4b03e3a91697f01ae0ed5b2846ba4",
+      "bytes": 6062
+    },
+    {
+      "path": "step2_code/backend/.cache/t039/build-review-supplement.py",
+      "sha256": "bfd3a348ae2f8728c318611d02f92dba01966967408e333c12239b9aaf1a9f04",
+      "bytes": 9815
+    },
+    {
+      "path": "data/evaluations/sicau-rag-pilot-eval-v2/field-diff.json",
+      "sha256": "969036eea5d7ddd7a75e03fea6ac84734b434ec42e7e2731d93b1c8e7973158c",
+      "bytes": 4779
+    },
+    {
+      "path": "docs/collaboration/submissions/T039/review-supplement.md",
+      "sha256": "d82f4c993b2c77709ed26f3442800398a3091e6500c2ec31817e9417537da367",
+      "bytes": 11434
+    },
+    {
+      "path": "docs/collaboration/submissions/T039/verification.md",
+      "sha256": "77dd64e1fd8cc4ebda87a9b14dc0d1fca39b694b64f8dcf204d3a036f91d61c3",
+      "bytes": 4820
+    },
+    {
+      "path": "docs/collaboration/submissions/T039/evaluation-report.md",
+      "sha256": "a8524325f852c336302af53a905d51514cc70c8efa480e35b00eb376cb4b1c5b",
+      "bytes": 4463
+    },
+    {
+      "path": "step2_code/backend/README.md",
+      "sha256": "ccaeca3806ef8e0a2ee6026ddc437d95bcf1bbfdd6e5a3c6e575807d2d326ea5",
+      "bytes": 54920
+    },
+    {
+      "path": "docs/delivery/human-review-pending.md",
+      "sha256": "0a70018fdfc80476e676aa0b5eb96000b7feafdf9ef36df1ce1db91585d60b47",
+      "bytes": 7214
+    }
+  ],
+  "rev1_submission_archive": [
+    {
+      "path": "docs/collaboration/submissions/T039/rev1/changed-files.json",
+      "sha256": "1e78c7c4f6d489eaf53a33880558c2e6e45197cae3c5a07b007254e0e4a9537e",
+      "bytes": 2665,
+      "matches_current": true
+    },
+    {
+      "path": "docs/collaboration/submissions/T039/rev1/evaluation-report.md",
+      "sha256": "7d9d11ee49eaaf0ddf44aeccb542cfc8ff8d8a3eff12a8af83eddb8056db7448",
+      "bytes": 4406,
+      "matches_current": false
+    },
+    {
+      "path": "docs/collaboration/submissions/T039/rev1/report.md",
+      "sha256": "72ba54b59c5da772e8d1203e61d027efceacef10c4a89c93620629cc4ae1bc46",
+      "bytes": 5302,
+      "matches_current": true
+    },
+    {
+      "path": "docs/collaboration/submissions/T039/rev1/review-supplement.md",
+      "sha256": "c987b64bab63d56de4c617f803ebd085265ddba07ac41a4e5c2bbcb8897d048c",
+      "bytes": 4114,
+      "matches_current": false
+    },
+    {
+      "path": "docs/collaboration/submissions/T039/rev1/submission.json",
+      "sha256": "368a5f2f5bed321b4e884ab1b4983a4c61c1998f263c0301646693dcd0cd0f56",
+      "bytes": 4586,
+      "matches_current": true
+    },
+    {
+      "path": "docs/collaboration/submissions/T039/rev1/T038-doc-errata.md",
+      "sha256": "76be2bbe454fd5e228b1c3ee994eac8838fe1661fc5934a283fd68a2e0ade771",
+      "bytes": 1397,
+      "matches_current": true
+    },
+    {
+      "path": "docs/collaboration/submissions/T039/rev1/verification.md",
+      "sha256": "da9591dbf8e83922680f64091ee97028177b82f9f81a559d62cf3300da52ef25",
+      "bytes": 3702,
+      "matches_current": false
+    }
+  ],
+  "archived_helper_matches_current": true,
+  "inventory_started_on": "2026-10-08"
+}

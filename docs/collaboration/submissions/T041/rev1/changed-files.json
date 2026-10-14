@@ -1,0 +1,32 @@
+{
+  "note": "T041 变更清单（submission_revision=1）。范围=docs/delivery 八件定向更新 + 新增 casebook + 本提交目录。不改产品/脚本/语料/模板/gold/冻结/实验/用户记录/docs01—04；零外部调用。哈希为落盘后实测全值；本清单不列自哈希。",
+  "delivery_updated": [
+    {"path": "docs/delivery/README.md", "sha256": "afb48ba5803ef35ea5b48ef316639cc212a112ed216b6b1706103b8fafd9da9b", "change": "当前状态表更新至 T038/T039/T040（v1.2 首批 20/1182、v2.0 n=21 基线、T040 冒烟与 live_verified 历史限定、人工口径）；索引加 casebook；历史快照保留"},
+    {"path": "docs/delivery/system-design.md", "sha256": "bca58be93c0cc9d6d1334fc2d1ec3c1db03cc147bda3786f7191c21f527a1712", "change": "头部时间线；边界补 T038 候选独立不进生成；§8 补 T040 n=4 非可靠性证据、q10 P3 推断待核"},
+    {"path": "docs/delivery/thesis-outline.md", "sha256": "e257a3fa04d82d8d3babe650e361e42a114f907e6b6895846d274757725eb56e", "change": "摘要换当前基线数字与 v2.0 身份、加 T040 已存样本；第 6 章加表 6-5 当前基线/表 6-2 标历史；第 7 章加 T040 真实调用准确表述；人工口径更新"},
+    {"path": "docs/delivery/evidence-matrix.md", "sha256": "2f6253910a5bc18ee0b0bc6c95f1f83eed0b87c7c19f14d8d664b67dd4451b7f", "change": "图例加历史已存真实结果；§3 加 T040 行；§7 加 T039 当前基线行、T030 标历史；§8 口径更新"},
+    {"path": "docs/delivery/defense-script.md", "sha256": "398d0f01529002ccbcc19bd6c01cd2af72e855e7fe7a250cf1b7d070725f6f00", "change": "演示前提改 v1.2；560 秒保持；§6 当前基线+T030 历史；备选加 T040 案例只读展示；实时生成标新授权"},
+    {"path": "docs/delivery/windows-runbook.md", "sha256": "1e1b5bda2396293b7cc73e11665e07fa2f7ba19bf62162631a0735a4f3bc6e17", "change": "§2a 主线命令改 v1.2（--help 复核）；§4 live 冒烟标历史禁止无授权重跑；§6 live_verified 历史限定行；旧实验覆盖警示保留"},
+    {"path": "docs/delivery/experiment-index.md", "sha256": "06141f47de41eb61d788f54c1e91a4d5c40313119929931f00010f66cc8302ad", "change": "新增 E4 当前基线（aggregate 逐值）；E0—E3 标历史分表；实验间关系更新"},
+    {"path": "docs/delivery/human-review-pending.md", "sha256": "b16a4fab19b0d0bbe53adbf200b4cbfb7c87180f8a23d7ba7a17e6b8d15829f1", "change": "人工状态加 T040 新答案待定向复核（q10 P3 推断重点）；§3 加 T040 行；§5 优先级合并"}
+  ],
+  "delivery_new": [
+    {"path": "docs/delivery/generation-casebook.md", "sha256": "6ef5215d190d694d47bd4780e73f947049c8eb275aac491fa9ec480be05c11c8", "change": "四题真实生成案例（原问/条件/答案或理由照录、关键 E 来源/页码/跨度、三层核对、链接 T040 与 T040-R4）"}
+  ],
+  "archive": [
+    {"path": "docs/delivery/archive-pre-t041-20261011/", "change": "改前八件原字节（README a31a9033…/system-design dab469a6…/thesis-outline 07f92376…/evidence-matrix 4c84fa3d…/defense-script e96bce13…/windows-runbook d55a0db0…/experiment-index 9762be38…/human-review-pending 852a9517…，改后复核逐一致）"}
+  ],
+  "submissions": [
+    {"path": "docs/collaboration/submissions/T041/report.md", "sha256": "ebfd1862a99c5370137a9582f36a25fb4d69b3cc45aeb14376d07a2d29323389"},
+    {"path": "docs/collaboration/submissions/T041/verification.md", "sha256": "411593bd26df137e92d9fea072dc30f80ccf6eec875c40935352908b1c371abe"},
+    {"path": "docs/collaboration/submissions/T041/submission.json", "sha256": "400104ed832de0a4adf3506e41948ce7bd3726ef71692606620f3cbfafff4416"},
+    {"path": "docs/collaboration/submissions/T041/t041-verify.json", "sha256": "42fce843e8206131528bad76397e501c413a88e8517c18766b8959ca8f1ad82c", "change": "精简核对机器产物（逐项布尔/数值）"},
+    {"path": "docs/collaboration/submissions/T041/changed-files.json", "change": "本清单（不列自哈希）"}
+  ],
+  "unchanged": [
+    "产品代码/启动脚本/生成提示/qa 适配器（含 live-smoke-real-qa.py 等全部脚本）",
+    "语料/manifest（b05c3755…）、模板（78f1c1d9…）、gold/冻结/标注说明/results/aggregate（4e39229e…/8c289b2a…/fcecdc9c…）",
+    "T040 模型输出两件与 run 缓存、A 材料、用户意见原件、docs/01—04、历史提交与 Astra 文件"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值；本清单自身不列自哈希。"
+}

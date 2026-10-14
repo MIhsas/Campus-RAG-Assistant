@@ -1,0 +1,33 @@
+{
+  "note": "T039 变更清单（submission_revision=1）。范围=独立新评测集 v2 + 新冻结/基线/聚合 + 人工复核补充与文档整理。旧题集/实验/模板/用户意见/语料 v1.1/产品算法/评分器未改。",
+  "new_data": {
+    "dir": "data/evaluations/sicau-rag-pilot-eval-v2/",
+    "questions": {"path": "questions.json", "sha256": "4e39229eb3b31dc9ccd5dc157e2d63203514ce70069450adca6b78c24b65c103", "change": "24 题/58 证据；仅 u03/u04/q08/q10/u01/u02 定向修订；field-diff 意外漂移=0"},
+    "annotation": ["annotation-check.md", "gold-revisions.md", "review-status.json"],
+    "freeze": {"path": "freeze.json", "sha256": "8c289b2ae7f00b39be80f02f850cf2820d8cc6de90f6f7245c634ddd2a9b5a26", "change": "五节 schema；实现 hash=当前实际文件"},
+    "results": "results/{bm25,dense,hybrid}.json+stderr.log+exitcode.txt（valid=true×3，exit 0×3）",
+    "aggregate": {"path": "aggregate.json", "sha256": "fcecdc9c884a55cdcf80870131326991f56a30a7b0cf9b9969ad54d4ae7af747", "change": "本轮完整输出重算（含分组/共同子集/u03/不足 n=3）"}
+  },
+  "helpers": [
+    "step2_code/backend/.cache/t039/build-v2-questions.py（题集生成+字段级 diff）",
+    "step2_code/backend/.cache/t039/run-v2-baseline.py（既有 evaluation.run CLI 捕获输出）",
+    "step2_code/backend/.cache/t039/aggregate-v2.py（聚合/分组/共同子集重算）"
+  ],
+  "docs_updated": [
+    {"path": "step2_code/backend/README.md", "change": "v1.2 当前真实运行命令（正斜杠引号）+ v1.1 历史基线边界 + 候选查看边界", "sha256": "1b6a942da8c00e89c9a5eb39e58b5acd8ce2b46e3f660e9f36d1e908186c7594"},
+    {"path": "docs/delivery/human-review-pending.md", "change": "人工状态更新（用户意见已接收/模板 33 项确认/开放+新改待复核/现行性未认证）", "sha256": "0f7afd7133c9e7c7c2a9779cc44b94d1dd857efed2faeb124a19efe318e49901"}
+  ],
+  "submissions": [
+    "docs/collaboration/submissions/T039/report.md",
+    "docs/collaboration/submissions/T039/verification.md",
+    "docs/collaboration/submissions/T039/submission.json",
+    "docs/collaboration/submissions/T039/changed-files.json",
+    "docs/collaboration/submissions/T039/evaluation-report.md",
+    "docs/collaboration/submissions/T039/review-supplement.md",
+    "docs/collaboration/submissions/T039/T038-doc-errata.md"
+  ],
+  "unchanged": [
+    "T030 v1.3 题集/冻结/结果、T031/T034 实验、模板 v1.2、语料 v1.1 与 20 原件、用户意见原件、产品算法/评分器/筛选/provider/页面、Astra 文件"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值；新旧评测身份分列。"
+}

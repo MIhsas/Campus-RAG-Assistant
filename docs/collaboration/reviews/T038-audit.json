@@ -1,0 +1,76 @@
+{
+  "manifest_changes": [
+    {
+      "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+      "field": "published_at",
+      "old": null,
+      "new": "2019-11-07"
+    },
+    {
+      "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+      "field": "effective_from",
+      "old": null,
+      "new": "2019-11-07"
+    }
+  ],
+  "original_files_equal": 20,
+  "blocks_equal": 1031,
+  "date_citations": [
+    {
+      "block_id": "f3cdb912131cb20d",
+      "char_start": 40,
+      "char_end": 50,
+      "quote": "2019年11月7日",
+      "locator": {
+        "type": "pdf_page",
+        "page": 13,
+        "part": 2
+      }
+    },
+    {
+      "block_id": "a35360321b4bd88b",
+      "char_start": 32,
+      "char_end": 43,
+      "quote": "2019年11月7日印",
+      "locator": {
+        "type": "pdf_page",
+        "page": 13,
+        "part": 3
+      }
+    },
+    {
+      "block_id": "c641f1723ab4cb48",
+      "char_start": 135,
+      "char_end": 146,
+      "quote": "本办法自发文之日起执行",
+      "locator": {
+        "type": "pdf_page",
+        "page": 13,
+        "part": 1
+      }
+    }
+  ],
+  "date_admission_old_new": [
+    4,
+    5
+  ],
+  "historical_hashes": {
+    "data\\corpora\\sicau-rag-pilot-v1.1\\manifest.json": "34e182f18178c8a8dc3f3bbfcb151150272f0c86579236191ed1e754298b1108",
+    "data/evaluations/sicau-rag-pilot-eval-v1/questions.json": "5fde70a332744b642e48014abc82902009abc1a106a84e6241b3c460e4faed5c",
+    "data/procedures/sicau-transfer-2026-v1/procedures.json": "78f1c1d9f839c41da2fc5b13fdb67014826bdde93d57a5f872c33a79f47b7cfa",
+    "data/evaluations/sicau-rag-source-selection-v1/experiment.json": "57b22f93bd1420faf276915c6425b3f8e8f9c978058935f8a1c69de39bd5c618",
+    "data/evaluations/sicau-rag-overlap-v1/experiment.json": "cef9f162f1eb164adbb65b1c9acc1634ee24e985edcc197fae09a6ac07dd2d95",
+    "data/reviews/T036-user-review-20261008/human-review-record.json": "2e1af1493846efd76f2ec593ac248c31df5dc725e77a1abe845e980e3efc5791"
+  },
+  "candidate_document_count": 2,
+  "strict_hits_count": 5,
+  "strict_evidence_count": 5,
+  "strict_before_after_unchanged": true,
+  "generation_calls": 0,
+  "candidate_source_spans_verified": 5,
+  "not_verified": [
+    "current policy validity",
+    "live generated quality",
+    "human withdrawal of open opinions"
+  ]
+}

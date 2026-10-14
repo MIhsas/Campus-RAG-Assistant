@@ -1,0 +1,164 @@
+{
+  "source": "C:\\Users\\liu33\\Downloads\\targeted-review-record.json",
+  "archive": "F:\\Collage Paper\\data\\reviews\\T042-user-review-20261014\\targeted-review-record.json",
+  "sha256": "7a0c6ec4a685f4a1a0904d793d35434e776426f8528d17ed6998ddad20c51133",
+  "checks": [
+    {
+      "label": "copied raw bytes",
+      "pass": true
+    },
+    {
+      "label": "record type/scope",
+      "pass": true
+    },
+    {
+      "label": "not simulated label",
+      "pass": true
+    },
+    {
+      "label": "eight unique IDs",
+      "pass": true
+    },
+    {
+      "label": "revision:q08",
+      "pass": true
+    },
+    {
+      "label": "revision:q10",
+      "pass": true
+    },
+    {
+      "label": "revision:u03",
+      "pass": true
+    },
+    {
+      "label": "revision:u04",
+      "pass": true
+    },
+    {
+      "label": "answer:q08",
+      "pass": true
+    },
+    {
+      "label": "answer:q10",
+      "pass": true
+    },
+    {
+      "label": "answer:u03",
+      "pass": true
+    },
+    {
+      "label": "answer:u04",
+      "pass": true
+    },
+    {
+      "label": "tally derived from items",
+      "pass": true
+    },
+    {
+      "label": "input fields match accepted pack",
+      "pass": true
+    },
+    {
+      "label": "current known input: questions",
+      "pass": true
+    },
+    {
+      "label": "current known input: manifest",
+      "pass": true
+    },
+    {
+      "label": "current known input: review_supplement",
+      "pass": true
+    },
+    {
+      "label": "current known input: live_answers_full",
+      "pass": true
+    },
+    {
+      "label": "current known input: casebook",
+      "pass": true
+    },
+    {
+      "label": "current known input: user_record",
+      "pass": true
+    },
+    {
+      "label": "counts/declaration",
+      "pass": true
+    }
+  ],
+  "pass": true,
+  "tally": {
+    "未复核": 0,
+    "确认": 8,
+    "需修订": 0,
+    "未确认": 0
+  },
+  "exported_at": "2026-10-14T05:38:02.119Z",
+  "reviewer": "",
+  "review_date": "",
+  "items": [
+    {
+      "id": "revision:q08",
+      "object_type": "revision",
+      "question_id": "q08",
+      "opinion": "确认",
+      "comment": "合意"
+    },
+    {
+      "id": "revision:q10",
+      "object_type": "revision",
+      "question_id": "q10",
+      "opinion": "确认",
+      "comment": "接受分情形口径"
+    },
+    {
+      "id": "revision:u03",
+      "object_type": "revision",
+      "question_id": "u03",
+      "opinion": "确认",
+      "comment": "不要补正依据"
+    },
+    {
+      "id": "revision:u04",
+      "object_type": "revision",
+      "question_id": "u04",
+      "opinion": "确认",
+      "comment": "不管适用范围，有地点直接给出就行"
+    },
+    {
+      "id": "answer:q08",
+      "object_type": "answer",
+      "question_id": "q08",
+      "opinion": "确认",
+      "comment": ""
+    },
+    {
+      "id": "answer:q10",
+      "object_type": "answer",
+      "question_id": "q10",
+      "opinion": "确认",
+      "comment": ""
+    },
+    {
+      "id": "answer:u03",
+      "object_type": "answer",
+      "question_id": "u03",
+      "opinion": "确认",
+      "comment": ""
+    },
+    {
+      "id": "answer:u04",
+      "object_type": "answer",
+      "question_id": "u04",
+      "opinion": "确认",
+      "comment": ""
+    }
+  ],
+  "chat_clarifications": {
+    "u04": "用户选择：让正式答案也采用范围未知的资料。此次针对u04学生类型未知；保留范围未核实标识，已知冲突不纳入。",
+    "u03": "用户选择：保留已核实的日期，不再额外补充来源。"
+  },
+  "boundary": "User review of these8 items, unsigned; not teacher/current-policy certification or product change. Raw record/comments preserved; chat clarifications recorded separately."
+}

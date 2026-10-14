@@ -1,0 +1,17 @@
+你是 Claude Code 中的 MiMo，Astra 负责发布和审核。T039 revision2 已由 Astra 验收通过。现在只执行 T040 A 阶段：真实资料生成质量质检准备。
+
+工作区 F:\Collage Paper。先读 CLAUDE.md 顶部最新授权、docs/collaboration/STATUS.md、PROTOCOL.md，然后读取：
+F:\Collage Paper\docs\collaboration\tasks\T040-真实资料生成质量质检准备.md
+必要背景：docs/collaboration/reviews/T039-R2.md 与 submissions/T039/review-supplement.md。
+
+目标：从已冻结 v2.0 题集原样读取 q08/q10/u03/u04，用真实包 v1.2 与现有 /ask extractive 管线整理正式 E 证据；调用现有 qa.deepseek.build_messages 只构造未来请求材料，保存实际问题/条件/证据/跨度/来源/messages/输入SHA。四道核对标准与后续最多4次HTTP尝试的计划具体可审阅。A阶段不接真实DeepSeek，不读取密钥，不做服务探测，不新增或开放 --live。维护 continuation-progress.md 小步落盘，避免重复大输出。
+
+写入范围及详细步骤严格按任务书：新增 prepare-real-qa-smoke.py 与少量业务测试、submissions/T040/ 提交和原始dry-run材料；仅对 docs/delivery/README.md 顶部纠偏当前资料/基线/人工状态，将旧T035内容明确为历史。不要重写全部论文交付包。
+
+不改产品实现/提示/适配器、题集/gold/freeze/results/aggregate、语料manifest、模板、用户意见和历史证据；不改Astra文件。不得将gold或未核实候选塞入messages；真实模型是否忠于证据/能否拒答都待验证，不能以mock/提示存在证明改善。T014/T025旧授权不延续。
+
+只跑必要少量业务测试与一次真实本地dry-run：四题快照一致、证据准入/切片、messages一致、零外部请求、已有目录不覆盖。不要全量/UI/ASR/Agent/向量/三模式/大安全矩阵，不以测试条数为目标。无下载安装，无commit/push。
+
+未来B仅写计划：现有代码默认官方端点deepseek-flash/max_tokens1500/timeout30s；固定四题、≤4外部尝试、零重试、首次技术失败即停、无证据本地短路。列出具体出站内容和人工核对方法；不伪造价格/usage，不声称已经获授权。Astra先验收A，用户随后决定真实调用与费用约束。
+
+提交至 docs/collaboration/submissions/T040/：report、verification、submission、changed-files，以及实际dry-run/输入SHA/逐题核对表/live-smoke-plan。submission_revision=1、stage=A_ready_for_review、status=ready_for_review、external_model_calls=0、live_verified=false、planner_live_verified=false。完成停止，等待Astra，不执行B，不推进T041。详细证据写文件，聊天摘要尽量300—600中文字，不输出整库或完整大型JSON。

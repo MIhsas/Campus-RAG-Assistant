@@ -1,0 +1,454 @@
+{
+  "note": "T037 source-check：用户人工意见争议项的原文证据核对（真实解析+现有筛选服务+登记元数据精确查）；程序化裁决不替代人工认可",
+  "inputs": {
+    "user_record": {
+      "path": "data/reviews/T036-user-review-20261008/human-review-record.json",
+      "sha256": "2e1af1493846efd76f2ec593ac248c31df5dc725e77a1abe845e980e3efc5791"
+    },
+    "questions": {
+      "sha256": "5fde70a332744b642e48014abc82902009abc1a106a84e6241b3c460e4faed5c",
+      "version": "1.3"
+    },
+    "manifest": {
+      "sha256": "34e182f18178c8a8dc3f3bbfcb151150272f0c86579236191ed1e754298b1108"
+    },
+    "procedures": {
+      "sha256": "78f1c1d9f839c41da2fc5b13fdb67014826bdde93d57a5f872c33a79f47b7cfa",
+      "version": "1.2",
+      "note": "33 项用户均确认，本任务不复审"
+    }
+  },
+  "verification_layer": "①真实解析器逐字切片核对（quote==块切片，全部 OK）；②现有筛选服务复核准入排除与无筛选对照；③登记元数据按争议文件 ID 精确查；④未查学校现行网页、未验证废止关系",
+  "items": [
+    {
+      "question_id": "q10",
+      "issue": "用户：该回答与其他冲突，该文档是2016版本已不具备时效性，冲突时忽略时间靠前的版本",
+      "finding": "同前提比较无冲突：2016 论文规范（教发〔2016〕10号）与 2018/2020/2022/2025 教学管理族各版均为「普通情形 50/50（导师+答辩）；开展学生互评的专业 40/10/50（导师+互评+答辩小组）」双前提结构，最新 2025 版仍同时列两种情形。f1（50/50）与 f2（40/10/50）前提不同（是否开展学生互评），非版本冲突。无任何文件点名废止教发〔2016〕10号；后出文件仅含兜底条款「与本办法不一致的以本办法为准」，其作用范围为“不一致处”，本条各版一致故无适用余地。汇编发布日期较晚不等于已证明 2016 规范被废止。",
+      "citations": [
+        {
+          "label": "2016 论文规范·普通情形 50/50（正文）",
+          "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+          "document_sha256": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+          "version_label": "教发〔2016〕10号",
+          "block_id": "8ba6ee7f3157a483",
+          "locator": {
+            "type": "pdf_page",
+            "page": 8,
+            "part": 1
+          },
+          "char_start": 4,
+          "char_end": 56,
+          "quote": "成绩实行综合评定，采用百分制记分，由导师审阅成绩（占50%）\n和毕业论文（设计）答辩成绩（占50%）组成",
+          "slice_check": "逐字核对 OK（fresh parse）",
+          "judgement": "同前提（普通）各版一致",
+          "unverified": []
+        },
+        {
+          "label": "2016 论文规范·互评情形 40/10/50（正文，争议条目）",
+          "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+          "document_sha256": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+          "version_label": "教发〔2016〕10号",
+          "block_id": "8ba6ee7f3157a483",
+          "locator": {
+            "type": "pdf_page",
+            "page": 8,
+            "part": 1
+          },
+          "char_start": 57,
+          "char_end": 119,
+          "quote": "开展学生互评时，由导\n师审阅成绩（占 40%） 、学生互评成绩（占10%）和毕业论文（设计）\n答辩成绩（占50%）三部分组成",
+          "slice_check": "逐字核对 OK（fresh parse）",
+          "judgement": "同前提（互评）各版一致；与 f1 不同前提",
+          "unverified": []
+        },
+        {
+          "label": "2016 表注·普通 50/50",
+          "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+          "document_sha256": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+          "version_label": "教发〔2016〕10号",
+          "block_id": "49524b46feb8a278",
+          "locator": {
+            "type": "pdf_page",
+            "page": 24,
+            "part": 5
+          },
+          "char_start": 66,
+          "char_end": 104,
+          "quote": "最终成绩=导师审阅成绩（占 50%）+毕业论文（设计）答辩成绩（占 50%）",
+          "slice_check": "逐字核对 OK（fresh parse）",
+          "judgement": "与正文一致",
+          "unverified": []
+        },
+        {
+          "label": "2016 表注·互评 40/10/50",
+          "document_id": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+          "document_sha256": "287dcca750a4b5580cf6228253499e727583d65f6e36936cf111c2e0a9bad816",
+          "version_label": "教发〔2016〕10号",
+          "block_id": "49524b46feb8a278",
+          "locator": {
+            "type": "pdf_page",
+            "page": 24,
+            "part": 5
+          },
+          "char_start": 106,
+          "char_end": 157,
+          "quote": "开展学生\n互评的专业： 最终成绩=导师审阅成绩×40%+学生互评成绩×10%+答辩小组评定成绩×50%",
+          "slice_check": "逐字核对 OK（fresh parse）",
+          "judgement": "与正文一致",
+          "unverified": []
+        },
+        {
+          "label": "2025 教学管理·普通 50/50",
+          "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+          "document_sha256": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+          "version_label": "校教发〔2025〕14号",
+          "block_id": "090f4a9cd36ca74b",
+          "locator": {
+            "type": "pdf_page",
+            "page": 21,
+            "part": 1
+          },
+          "char_start": 470,
+          "char_end": 503,
+          "quote": "毕业论文\n（设计）成绩由导师评定成绩（50%）和答辩成绩（50%）",
+          "slice_check": "逐字核对 OK（fresh parse）",
+          "judgement": "最新版仍列普通情形",
+          "unverified": []
+        },
+        {
+          "label": "2025 教学管理·互评 40/10/50",
+          "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+          "document_sha256": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+          "version_label": "校教发〔2025〕14号",
+          "block_id": "6b65febc39acaa10",
+          "locator": {
+            "type": "pdf_page",
+            "page": 22,
+            "part": 1
+          },
+          "char_start": 10,
+          "char_end": 61,
+          "quote": "开展学生互评的专业，由导师评定成绩（40%）、学生互评\n成绩（10%）和答辩小组评定成绩（50%）组成",
+          "slice_check": "逐字核对 OK（fresh parse）",
+          "judgement": "最新版仍列互评情形",
+          "unverified": []
+        }
+      ],
+      "repeal_check": [
+        {
+          "label": "2025〕14号兜底条款",
+          "document_id": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+          "document_sha256": "bb8ba97c0a036004ba560659f77c817fad2b61dd83ab1cfb26270b562e00144a",
+          "version_label": "校教发〔2025〕14号",
+          "published_at": "2025-11-11",
+          "effective_from": "2025-11-11",
+          "block_id": "a283a31ee2008197",
+          "locator": {
+            "type": "pdf_page",
+            "page": 75,
+            "part": 1
+          },
+          "char_start": 291,
+          "char_end": 360,
+          "quote": "本办法自发文之日起施行，由教务处负责解释。若其他有关\n文件规定与本办法不一致的，以本办法为准；与上级文件不一致\n的，则以上级文件规定为准。",
+          "slice_check": "构建时逐字核对（quote==块切片）",
+          "judgement": "未点名废止 2016 规范；本条无不一致可适用",
+          "unverified": []
+        },
+        {
+          "label": "2020〕6号兜底条款（同构）",
+          "document_id": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+          "document_sha256": "6e128a36f94754ae91e572dfab50c1e38b5b90b28d74b8cff1b993a4cace7a31",
+          "version_label": "校教发〔2020〕6号",
+          "published_at": null,
+          "effective_from": null,
+          "block_id": "78d03dd5254c9b6d",
+          "locator": {
+            "type": "pdf_page",
+            "page": 74,
+            "part": 1
+          },
+          "char_start": 189,
+          "char_end": 258,
+          "quote": "本办法自发文之日起施行，由教务处负责解释。若其他有关\n文件规定与本办法不一致的，以本办法为准；与上级文件不一致\n的，则以上级文件规定为准。",
+          "slice_check": "构建时逐字核对（quote==块切片）",
+          "judgement": "同上",
+          "unverified": []
+        }
+      ],
+      "unverified": [
+        "未查阅学校现行网页、未验证政策废止关系（按任务仅限本地 20 份真实包）",
+        "2016 规范标注“（试行）”，包内无其失效/替代声明"
+      ]
+    },
+    {
+      "question_id": "u03",
+      "issue": "用户：已经有明确写了30分钟入场时限，在未出现冲突的情况下不需要管来源日期",
+      "finding": "30 分钟事实本身无冲突（两来源同规则）。当前不足属日期准入：两来源 manifest 日期均未标注（三日期 null），as_of=2026-10-03 下被 date_unknown_from 保守排除（现有筛选服务复现：16 件排除、4 件准入，两来源均不在准入集）；无筛选对照下两来源均可见。准入不足不等于学校没规定。bed3ac 正文落款/印发载明 2019-11-07 且“本办法自发文之日起执行”——可作 effective_from 元数据修订候选（本任务不写 manifest）；db05e0 正文无任何日期，保持未知。",
+      "citations": [
+        {
+          "label": "bed3ac 30 分钟禁入条款（q09 gold 同源）",
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "document_sha256": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "version_label": "未标注（标题注 2019 年 7 号）",
+          "block_id": "ebab438ffbe33010",
+          "locator": {
+            "type": "pdf_page",
+            "page": 7,
+            "part": 1
+          },
+          "char_start": 101,
+          "char_end": 129,
+          "quote": "考试开始30分钟后考生禁止进入考场，逾时考生作缺\n考处理",
+          "slice_check": "逐字核对 OK（fresh parse）",
+          "judgement": "事实无冲突",
+          "unverified": []
+        },
+        {
+          "label": "db05e0 考场规则 30 分钟条款（q09 gold 同源）",
+          "document_id": "db05e0cab194beeee9d4017458f26df2c14aefb8e250293d0e539c350477dc75",
+          "document_sha256": "db05e0cab194beeee9d4017458f26df2c14aefb8e250293d0e539c350477dc75",
+          "version_label": "未标注",
+          "block_id": "eade67e9b2ccc2ef",
+          "locator": {
+            "type": "paragraph",
+            "paragraph_index": 3
+          },
+          "char_start": 156,
+          "char_end": 181,
+          "quote": "考试开始30分钟后禁止迟到考生进入考场，按缺考处理",
+          "slice_check": "逐字核对 OK（fresh parse）",
+          "judgement": "事实无冲突",
+          "unverified": []
+        },
+        {
+          "label": "bed3ac 落款日期",
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "document_sha256": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "version_label": "未标注（标题注 2019 年 7 号）",
+          "published_at": null,
+          "effective_from": null,
+          "block_id": "f3cdb912131cb20d",
+          "locator": {
+            "type": "pdf_page",
+            "page": 13,
+            "part": 2
+          },
+          "char_start": 0,
+          "char_end": 50,
+          "quote": "四川农业大学\n                                 2019年11月7日",
+          "slice_check": "构建时逐字核对（quote==块切片）",
+          "judgement": "日期候选证据（2019-11-07）",
+          "unverified": []
+        },
+        {
+          "label": "bed3ac 印发日期",
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "document_sha256": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "version_label": "未标注（标题注 2019 年 7 号）",
+          "published_at": null,
+          "effective_from": null,
+          "block_id": "a35360321b4bd88b",
+          "locator": {
+            "type": "pdf_page",
+            "page": 13,
+            "part": 3
+          },
+          "char_start": 0,
+          "char_end": 30,
+          "quote": "四川农业大学党政办公室                   ",
+          "slice_check": "构建时逐字核对（quote==块切片）",
+          "judgement": "日期候选证据（2019-11-07 印发）",
+          "unverified": []
+        },
+        {
+          "label": "bed3ac 施行条款（自发文之日起执行）",
+          "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "document_sha256": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+          "version_label": "未标注（标题注 2019 年 7 号）",
+          "published_at": null,
+          "effective_from": null,
+          "block_id": "c641f1723ab4cb48",
+          "locator": {
+            "type": "pdf_page",
+            "page": 13,
+            "part": 1
+          },
+          "char_start": 135,
+          "char_end": 206,
+          "quote": "本办法自发文之日起执行，由教务处负责解释。以往有关规\n定与本办法不符之处，以本办法为准；本办法有关规定与上级最\n新文件不符时，以上级文件为准。",
+          "slice_check": "构建时逐字核对（quote==块切片）",
+          "judgement": "生效日=发文日，据落款/印发推 2019-11-07",
+          "unverified": []
+        }
+      ],
+      "filter_recheck": {
+        "as_of_2026_10_03": {
+          "allowed_count": 4,
+          "excluded": {
+            "date_unknown_from": 16
+          },
+          "bed3ac_admitted": false,
+          "db05e0_admitted": false
+        },
+        "no_filter_control": {
+          "allowed": "ALL 20",
+          "bed3ac_admitted": true,
+          "db05e0_admitted": true
+        }
+      },
+      "metadata_candidate": {
+        "document_id": "bed3ac952ed08d09180413737cc247263834375c1c09b54ab9dc23532f462d1e",
+        "field": "effective_from",
+        "candidate_value": "2019-11-07",
+        "basis": "正文落款「四川农业大学 2019年11月7日」+ 印发「2019年11月7日印发」+「本办法自发文之日起执行」",
+        "status": "候选，未写 manifest"
+      },
+      "unverified": [
+        "2019-11-07 依正文落款推断发文日，无独立发文登记佐证",
+        "db05e0 日期仍未知"
+      ]
+    },
+    {
+      "question_id": "u04",
+      "issue": "用户：文档 83eb3948…中已经给出了信息",
+      "finding": "内容存在属实（基本信息更正办理地点条款完整）。被排除属 scope 准入：manifest scope 三维空=未知，student_type=本科 筛选下 scope_unknown 保守排除（筛选服务复现：排除 2 件含 83eb；无筛选对照可见）。正文有明确适用范围语句「（此指南适用于所有在校生学籍/学历/毕业生电子注册图像信息查询等）」——按字面覆盖本科生（在校生含本科）；但登记来源上下文为「关于2025级研究生学籍自查的通知」附件与「研究生教学」站点，倾向研究生语境。正文依据与来源上下文并列呈现；是否据此定 student_type=本科待用户决定（定 [本科] 窄于正文“所有在校生”；定 [在校生] 则现有筛选精确匹配不放行=产品语义变更，另行授权）。",
+      "citations": [
+        {
+          "label": "正文适用范围语句",
+          "document_id": "83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31",
+          "document_sha256": "83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31",
+          "version_label": "未标注",
+          "published_at": null,
+          "effective_from": null,
+          "block_id": "27fc6e4fb939e279",
+          "locator": {
+            "type": "pdf_page",
+            "page": 1,
+            "part": 1
+          },
+          "char_start": 21,
+          "char_end": 54,
+          "quote": "（此指南适用于所有在校生学籍/学历/毕业生电子注册图像信息查询等）",
+          "slice_check": "构建时逐字核对（quote==块切片）",
+          "judgement": "正文依据（所有在校生，含本科）",
+          "unverified": []
+        },
+        {
+          "label": "基本信息更正办理地点条款（q06 gold 同源）",
+          "document_id": "83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31",
+          "document_sha256": "83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31",
+          "version_label": "未标注",
+          "published_at": null,
+          "effective_from": null,
+          "block_id": "f74aff0841628203",
+          "locator": {
+            "type": "pdf_page",
+            "page": 4,
+            "part": 1
+          },
+          "char_start": 80,
+          "char_end": 175,
+          "quote": "如学生的基本信息（姓名、性别、出生日期、身份证号）有误，由学生本人提交\n申请并附相关证明材料（身份证原件及复印件、招生报名表）到成都校区 1 教 105\n室或雅安校区综合楼 217 室办理。",
+          "slice_check": "构建时逐字核对（quote==块切片）",
+          "judgement": "内容存在属实",
+          "unverified": []
+        }
+      ],
+      "registry_context": {
+        "source_sites": "slxy.sicau.edu.cn；yscm.sicau.edu.cn",
+        "source_page_titles": [
+          "关于2025级研究生学籍自查的通知",
+          "研究生教学"
+        ],
+        "note": "来源上下文倾向研究生语境；按任务不据站点/页面标题泛推整篇 scope"
+      },
+      "filter_recheck": {
+        "student_type_本科": {
+          "allowed_count": 18,
+          "excluded": {
+            "scope_unknown": 2
+          },
+          "83eb_admitted": false
+        },
+        "no_filter_control": {
+          "83eb_admitted": true
+        }
+      },
+      "metadata_candidate": {
+        "document_id": "83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31",
+        "field": "scope.student_type",
+        "options": [
+          "[本科]（现有筛选可放行，但窄于正文“所有在校生”）",
+          "保持未知（现状）"
+        ],
+        "status": "需要用户决定，未写 manifest"
+      },
+      "unverified": [
+        "未查校外/现行网页确认适用对象",
+        "正文“所有在校生”与研究生语境来源的优先关系未由人裁定"
+      ]
+    },
+    {
+      "question_id": "q08",
+      "issue": "用户（确认且附意见）：答案应去掉“将第（一）项修改为”等修订决定措辞",
+      "finding": "两源均为逐字原文（正文条项/修改决定）；用户要求面向用户的释义不带修订腔，非删除原引。quote 保持原样不删改。",
+      "citations": [
+        {
+          "label": "正文条项（f1-s1）",
+          "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+          "document_sha256": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+          "version_label": "未标注",
+          "block_id": "88df0e97c016c2bd",
+          "locator": {
+            "type": "pdf_page",
+            "page": 5,
+            "part": 1
+          },
+          "char_start": 184,
+          "char_end": 237,
+          "quote": "应当认定为考试作弊：\n　　（一）携带与考试内容相关的材料或者存储有与考试内容相关资料的电子设备参加考试的；",
+          "slice_check": "逐字核对 OK（fresh parse）",
+          "judgement": "原引保留",
+          "unverified": []
+        },
+        {
+          "label": "修改决定同文重述（f1-s2，含“修改为”措辞）",
+          "document_id": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+          "document_sha256": "ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f",
+          "version_label": "未标注",
+          "block_id": "2e39739015cd2bb3",
+          "locator": {
+            "type": "pdf_page",
+            "page": 1,
+            "part": 1
+          },
+          "char_start": 663,
+          "char_end": 728,
+          "quote": "应当认定为\n考试作弊：”\n　　将第（一）项修改为：“携带与考试内容相关的材料或者存储有与考试内容相关资料的电子设备参加考试\n的；”",
+          "slice_check": "逐字核对 OK（fresh parse）",
+          "judgement": "原引保留不删改",
+          "unverified": []
+        }
+      ]
+    },
+    {
+      "question_id": "u01",
+      "issue": "用户（未确认）：等待后续文档多了后解决",
+      "finding": "维持未确认。首批 20 份资料未记载缓考申请门数上限",
+      "citations": [],
+      "unverified": [
+        "未扩库、不作“学校无规定”结论"
+      ]
+    },
+    {
+      "question_id": "u02",
+      "issue": "用户（未确认）：等待后续文档多了后解决",
+      "finding": "维持未确认。首批 20 份资料无宿舍管理相关规定",
+      "citations": [],
+      "unverified": [
+        "未扩库、不作“学校无规定”结论"
+      ]
+    }
+  ]
+}

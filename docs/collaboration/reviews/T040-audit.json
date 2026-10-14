@@ -1,0 +1,13 @@
+{
+  "status": "ok",
+  "material_hash_checks": 10,
+  "readonly_files_unchanged": 23,
+  "archive_files_unchanged": 7,
+  "deliverables": 9,
+  "fresh_cases_equal": 4,
+  "admitted_verbatim_evidence_checks": 20,
+  "messages_equal_to_current_builder": 4,
+  "new_external_calls": 0,
+  "q08_gold_gap_preserved": true,
+  "interpretation": "Nonempty evidence is not proof of answer support; q08 insufficient response can be appropriate."
+}

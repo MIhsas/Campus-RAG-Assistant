@@ -1,14 +1,18 @@
 # 人工待复核清单（human-review-pending.md）
 
-> 本清单请**用户/导师**逐项核对。MiMo/Astra 的技术验收**不等于**学校政策语义审定或人工 gold 确认——以下各项在人工签署前一律维持「未复核」。**不代签**。
+> 本清单请**用户/导师**逐项核对。MiMo/Astra 的技术验收**不等于**学校政策语义审定或人工 gold 确认。**不代签**。
+>
+> **人工状态（统一口径，T039-R1 + T040 + T043）**：用户逐项意见已收到（109 确认 / 3 需修订 / 2 未确认；记录 `data/reviews/T036-user-review-20261008/human-review-record.json`，只读保留）；模板 33 项（13 步+20 引用）**用户已确认**；**T042 八项补充意见（T039 四修订 + T040 四结果）已于 2026-10-14 真实导出收到并全部确认**（8 确认/0 其余，签名/日期空；原件 `data/reviews/T042-user-review-20261014/targeted-review-record.json`，SHA `7a0c6ec4…`，只读保留）；其中 u04/u03 两条聊天决定已实施（见 [review-disposition-T043.md](review-disposition-T043.md)）。**各意见分域记录保留、不相加**；本 8 项确认≠教师审定/现行认证；**学校政策现行性未认证**。当前入口：四项原文=[review-supplement（T039）](../collaboration/submissions/T039/review-supplement.md)；四题案例=[generation-casebook.md](generation-casebook.md)（冻结原件；当前确认状态见 review-disposition-T043.md）。T036-v3 复核包为**首次意见对应历史包**。
+>
+> **新资料身份**：语料包 `data/corpora/sicau-rag-pilot-v1.2/`（manifest SHA `b05c3755…`）——bed3ac 日期补正为 2019-11-07（正文落款/印发/生效条款证据，见 T038 metadata-crosscheck）；**83eb scope 仍未知、db05e0 日期仍未知**；20 份原件与 v1.1 逐字节相同。历史实验输入仍是 v1.1。
 
-## 0. 离线人工复核包（T036 工具入口）
+## 0. 离线人工复核包（T036 首次意见对应历史包）
 
-已生成**本机离线复核包**，把 24 题/57 证据与 13 步模板/20 引用集中为逐项原文对照与意见记录页：
+T036-v3 为**首次意见对应历史包**（用户 109/3/2 逐项意见即在此包上记录）：把当时的 24 题/57 证据与 13 步模板/20 引用集中为逐项原文对照与意见记录页。**当前四项定向复核入口见顶部 review-supplement（T039）链接**，本节仅为历史意见出处与工具备查：
 
 | 项 | 内容 |
 |---|---|
-| 打开 | **当前包=T036-v3**：`step2_code/backend/.cache/human-review/T036-v3/review.html`（浏览器直接打开，自包含、无网络；意见筛选兼容真实 DOM NodeList 形态）。历史版本 T036-v1/v2 保留备查，勿作日常入口 |
+| 打开 | **历史包=T036-v3**：`step2_code/backend/.cache/human-review/T036-v3/review.html`（浏览器直接打开，自包含、无网络；意见筛选兼容真实 DOM NodeList 形态）。历史版本 T036-v1/v2 保留备查；均非当前四项复核入口 |
 | 数据 | 同目录 `pack.json`（输入 SHA/版本、逐条 quote+原块全文+相邻块+页码定位+本地原件路径——相对工作区路径，从 `F:\Collage Paper` 解析）；说明见同目录 `README.md`（含空格路径的 Windows 构建命令） |
 | 用法 | 按题目/证据、步骤/引用逐项选「未复核/确认/需修订/未确认」并写意见；意见初值全部未复核；页面不自动保存——随时「导出复核记录」下载**新 JSON**（含输入身份 SHA），**不写回 gold/模板/历史文件**；允许保留需修订/未确认 |
 | 边界 | 程序化逐字一致≠语义正确/现行有效；导出记录不是签署认证或学校政策确认；重新构建请换新输出目录（构建脚本拒绝覆盖） |
@@ -20,10 +24,11 @@
 
 | 项 | 内容 |
 |---|---|
-| 路径 | 题集/标注：`data/evaluations/sicau-rag-pilot-eval-v1/questions.json`（v1.3，SHA `5fde70a332744b64…`）；标注说明：同目录 `annotation-check.md`；逐题修订理由：`docs/collaboration/submissions/T030/gold-revisions.md`；核对表：`docs/collaboration/submissions/T030/human-review.md`（24 行，复核栏全空） |
+| 当前题集 | **当前开发集 v2.0**：`data/evaluations/sicau-rag-pilot-eval-v2/questions.json`（基于语料 v1.2；21 可答 / 3 不足，58 条证据；dataset 2.0）。T039 六题定向修订后的四项（u03 新 gold、q08 释义、q10 分情形口径、u04 候选注记）待定向复核，入口见 [T039 review-supplement](../collaboration/submissions/T039/review-supplement.md) |
+| 历史题集 | **历史 v1.3**（首次意见 109/3/2 对应版本，只读保留）：`data/evaluations/sicau-rag-pilot-eval-v1/questions.json`（SHA `5fde70a332744b64…`）；标注说明：同目录 `annotation-check.md`；逐题修订理由：`docs/collaboration/submissions/T030/gold-revisions.md`；核对表：`docs/collaboration/submissions/T030/human-review.md`（24 行，复核栏全空）。下栏核对方法对新旧题集均适用 |
 | 如何核对 | ①**完整事实**：每题 query/条件与 gold 是否一致（范围/版本/前提不放大不缩小）；②**可替代证据**（同 fact_id 组内 OR）：每条引用是否独立完整支持该事实（判断类别+行为、前提+结论不拆散；跨页多引共同支持是否成立）；③**适用范围**：版本约束题（q03/q04/q11/q12/q14—q18）gold 是否只落在题面指定来源；不足题（u01—u04）的「已查范围/准入排除」是否成立 |
 | 记录位置 | `docs/collaboration/submissions/T030/human-review.md` 的「待确认点/人工复核」两栏；或本文件 §6 附注。允许「未确认」「需修订」结论 |
-| 已知边界 | 模型辅助编制/修订；开发集非随机学生问题、非盲测；q13 第四条情形未入 gold（分页限制，已在修订记录声明） |
+| 已知边界 | 模型辅助编制/修订；开发集非随机学生问题、非盲测；q13 第四条情形未入 gold（分页限制，已声明）；**T039 新改项（u03/q08/q10/u04）待定向复核**（见 [T039 review-supplement](../collaboration/submissions/T039/review-supplement.md)） |
 
 ## 2. 真实转专业办理模板
 
@@ -31,12 +36,13 @@
 |---|---|
 | 路径 | `data/procedures/sicau-transfer-2026-v1/procedures.json`（sicau-transfer-2026 **v1.2**，SHA `78f1c1d9…`；13 步 / 20 引用）；来源核对：同目录 `SOURCE-CHECK.md`；逐字对照：`docs/collaboration/submissions/T032/citation-crosscheck.md` |
 | 如何核对 | ①每步主体/动作/时限是否与原文一致；②「资料未说明」项是否确无原文依据（材料清单/入口/联系方式/日历日期）；③关键例外是否齐全（2024 及之前入学按〔2023〕1号、艺体中外合作仅同类互转、跨校区资格放弃不得再次申请、注册前受处分取消资格、学籍生效不得撤销）；④**语义组织**（步骤划分/先后顺序）是否符合实际办理 |
-| 边界 | 引用逐字/跨度/哈希已程序化核对（20/20）；**语义审定与政策现行性未人工确认**——模板不宣称现行有效、不判定资格、不保证申请成功 |
+| 边界 | 引用逐字/跨度/哈希已程序化核对（20/20）；**模板 33 项用户已确认**（语义组织经用户逐项确认）；**学校政策现行性未认证**——模板不宣称现行有效、不判定资格、不保证申请成功 |
 
 ## 3. 其余待确认项
 
 | 项 | 说明 | 记录位置 |
 |---|---|---|
+| **T040 四题真实新答案** | **用户已确认（2026-10-14，8 项确认之一）**——不改原答案、不预设需再次复核。事实注记仍有效：q10 P3「不纳入上述组成比例」为推断表述（「单独记载」有原文）；q08 合理不足≠答对 gold；u04 不足≠学校无规定。三层核对见 [generation-casebook.md](generation-casebook.md)（冻结原件） | 原件 `data/reviews/T042-user-review-20261014/`（只读） |
 | 论文格式 | 学校模板/引用规范/参考文献格式（交付包不代排版、不虚构参考文献） | 本文件 §6 或论文草稿批注 |
 | 答辩时长与形式 | 决定 defense-script 主线裁剪（当前时间预算 480—600 秒，合计表 560 秒；超时裁剪顺序见该脚本） | 同上 |
 | 题集扩充意愿 | 是否扩充真实题量/引入学生真实问题（当前 24 题为模型辅助开发集） | 同上 |
@@ -50,8 +56,8 @@
 
 ## 5. 后续优先级建议（不自动执行）
 
-1. 人工签署 24 题 gold（解除「未复核」状态）——最高优先级；
-2. 模板语义与现行性确认（含 2026 版是否仍是当前执行版本）；
+1. ~~T039 新四项 + T040 四题新答案定向复核~~ **已完成**（2026-10-14 用户 8 项确认，见 [review-disposition-T043.md](review-disposition-T043.md)）；如需追加意见可另出新导出，不覆盖原件；
+2. 学校政策现行性确认（含 2026 版是否仍是当前执行版本）；模板 33 项已确认不重复。
 3. 视答辩反馈决定是否补测（如指定版本检索的结构化过滤，见 E1 局限的后续建议）。
 
 > 以上建议**均未获授权执行**；gold/模板的任何修改需另行任务与验收。
@@ -61,3 +67,7 @@
 | 日期 | 项目 | 结论（确认/未确认/需修订） | 说明 |
 |---|---|---|---|
 | | | | |
+
+## 7. T042 补充复核包（已验收并使用完毕）
+
+> T042 八项定向补充复核包（`step2_code/backend/.cache/human-review/T042-v1/review.html`）经 Astra 验收后交用户填写：**8 项已全部确认并导出**（2026-10-14，原件 `data/reviews/T042-user-review-20261014/targeted-review-record.json`，SHA `7a0c6ec4…`，只读）。意见落档与两条聊天决定的实施见 [review-disposition-T043.md](review-disposition-T043.md)。

@@ -1,0 +1,243 @@
+{
+  "checks": [
+    {
+      "kind": "current submission",
+      "path": "step2_code\\backend\\scripts\\live-smoke-real-qa.py",
+      "expected_sha256": "e49d7541e19221dd74558d39a22fadf4bb776c92b8ea73dd7e887059cb4ba15a",
+      "pass": true
+    },
+    {
+      "kind": "current submission",
+      "path": "step2_code\\backend\\tests\\test_live_smoke_real_qa.py",
+      "expected_sha256": "8a397075cd7af538c433411da5f28d7b8f3be041c91321f3c38c3b7beab80dfe",
+      "pass": true
+    },
+    {
+      "kind": "current submission",
+      "path": "docs\\collaboration\\submissions\\T040\\fix-report.md",
+      "expected_sha256": "99428641999211e032f1df0a3eb1ac1051e96c76cf883fe6c00eeb4df0cf84ab",
+      "pass": true
+    },
+    {
+      "kind": "current submission",
+      "path": "docs\\collaboration\\submissions\\T040\\report.md",
+      "expected_sha256": "1f9f041046af7eca6e59dfecdc8dedfd1163e08e1603e474eefab9662063243b",
+      "pass": true
+    },
+    {
+      "kind": "current submission",
+      "path": "docs\\collaboration\\submissions\\T040\\verification.md",
+      "expected_sha256": "1092ec6623bcf1eef23a259f9c41a9043ff3649795cfba929ff7cbdb992a6169",
+      "pass": true
+    },
+    {
+      "kind": "current submission",
+      "path": "docs\\collaboration\\submissions\\T040\\submission.json",
+      "expected_sha256": "9d44cd089d5e2da1952ae862ed0e1d0d90fe8960878e1c8105d0371ba57a2029",
+      "pass": true
+    },
+    {
+      "kind": "A original",
+      "path": "docs\\collaboration\\submissions\\T040\\dry-run.json",
+      "expected_sha256": "31babb70e9312b62c1edd08d2e423f2fb4c2b8ff22a5a812d8c1a416e3ec49e1",
+      "pass": true
+    },
+    {
+      "kind": "A original",
+      "path": "docs\\collaboration\\submissions\\T040\\rev1\\dry-run.json",
+      "expected_sha256": "31babb70e9312b62c1edd08d2e423f2fb4c2b8ff22a5a812d8c1a416e3ec49e1",
+      "pass": true
+    },
+    {
+      "kind": "A original",
+      "path": "step2_code\\backend\\.cache\\real-qa-smoke\\T040-A\\dry-run.json",
+      "expected_sha256": "31babb70e9312b62c1edd08d2e423f2fb4c2b8ff22a5a812d8c1a416e3ec49e1",
+      "pass": true
+    },
+    {
+      "kind": "A original",
+      "path": "docs\\collaboration\\submissions\\T040\\input-hashes.json",
+      "expected_sha256": "b9be154cefaa3acc42823b7b8a0c3783b33a7f346b3207394cfd7f3038a6bab1",
+      "pass": true
+    },
+    {
+      "kind": "A original",
+      "path": "docs\\collaboration\\submissions\\T040\\rev1\\input-hashes.json",
+      "expected_sha256": "b9be154cefaa3acc42823b7b8a0c3783b33a7f346b3207394cfd7f3038a6bab1",
+      "pass": true
+    },
+    {
+      "kind": "A original",
+      "path": "step2_code\\backend\\.cache\\real-qa-smoke\\T040-A\\input-hashes.json",
+      "expected_sha256": "b9be154cefaa3acc42823b7b8a0c3783b33a7f346b3207394cfd7f3038a6bab1",
+      "pass": true
+    },
+    {
+      "kind": "A original",
+      "path": "docs\\collaboration\\submissions\\T040\\generation-review-sheet.md",
+      "expected_sha256": "d417c9233f356ba1c6c09c8a0628d9719dc347fd16088e6e9f4bd44ccd18afcc",
+      "pass": true
+    },
+    {
+      "kind": "A original",
+      "path": "docs\\collaboration\\submissions\\T040\\rev1\\generation-review-sheet.md",
+      "expected_sha256": "d417c9233f356ba1c6c09c8a0628d9719dc347fd16088e6e9f4bd44ccd18afcc",
+      "pass": true
+    },
+    {
+      "kind": "A original",
+      "path": "step2_code\\backend\\.cache\\real-qa-smoke\\T040-A\\generation-review-sheet.md",
+      "expected_sha256": "d417c9233f356ba1c6c09c8a0628d9719dc347fd16088e6e9f4bd44ccd18afcc",
+      "pass": true
+    },
+    {
+      "kind": "A original",
+      "path": "docs\\collaboration\\submissions\\T040\\live-smoke-plan.md",
+      "expected_sha256": "74ae1bb1a03bc5cfcff2b7cdfe8ae5abcc73d7d73021b3b78d73d8f459f977a8",
+      "pass": true
+    },
+    {
+      "kind": "A original",
+      "path": "docs\\collaboration\\submissions\\T040\\rev1\\live-smoke-plan.md",
+      "expected_sha256": "74ae1bb1a03bc5cfcff2b7cdfe8ae5abcc73d7d73021b3b78d73d8f459f977a8",
+      "pass": true
+    },
+    {
+      "kind": "A original",
+      "path": "step2_code\\backend\\.cache\\real-qa-smoke\\T040-A\\live-smoke-plan.md",
+      "expected_sha256": "74ae1bb1a03bc5cfcff2b7cdfe8ae5abcc73d7d73021b3b78d73d8f459f977a8",
+      "pass": true
+    },
+    {
+      "kind": "revision-2 archive",
+      "path": "docs\\collaboration\\submissions\\T040\\rev2\\live-results.json",
+      "expected_sha256": "34cbf5f9d5a5c31d6bbd733f2fe2a52de8daa5e51de9590aeda0f001caaff6ca",
+      "pass": true
+    },
+    {
+      "kind": "revision-2 archive",
+      "path": "docs\\collaboration\\submissions\\T040\\rev2\\live-answers-full.json",
+      "expected_sha256": "8ffc0d00e6d7b0d3ef6a8f6c414ae39bb09bc9c3aa4d77c9f178d07abb1973e0",
+      "pass": true
+    },
+    {
+      "kind": "revision-2 archive",
+      "path": "docs\\collaboration\\submissions\\T040\\rev2\\live-review-notes.md",
+      "expected_sha256": "3335a4fde21e9b33db51bae65f45445134fc34cd03cd020f7e0035461bb62288",
+      "pass": true
+    },
+    {
+      "kind": "revision-2 archive",
+      "path": "docs\\collaboration\\submissions\\T040\\rev2\\report.md",
+      "expected_sha256": "5f3febb99a9008f41a37343f41e9ecf7b70352a281fedc2f8286c82027d7264e",
+      "pass": true
+    },
+    {
+      "kind": "revision-2 archive",
+      "path": "docs\\collaboration\\submissions\\T040\\rev2\\verification.md",
+      "expected_sha256": "cce2087def758b89b0f4d475b60c4a905840c8a9980bf2721954dc10e215dedd",
+      "pass": true
+    },
+    {
+      "kind": "revision-2 archive",
+      "path": "docs\\collaboration\\submissions\\T040\\rev2\\submission.json",
+      "expected_sha256": "065286c4fd777e45bd3fa1e48d66ee5e16d9fb20ad638f7cc75c324b5b4af0f5",
+      "pass": true
+    },
+    {
+      "kind": "run-1 preserved",
+      "path": "docs\\collaboration\\submissions\\T040\\live-results.json",
+      "expected_sha256": "34cbf5f9d5a5c31d6bbd733f2fe2a52de8daa5e51de9590aeda0f001caaff6ca",
+      "pass": true
+    },
+    {
+      "kind": "run-1 preserved",
+      "path": "docs\\collaboration\\submissions\\T040\\live-answers-full.json",
+      "expected_sha256": "8ffc0d00e6d7b0d3ef6a8f6c414ae39bb09bc9c3aa4d77c9f178d07abb1973e0",
+      "pass": true
+    },
+    {
+      "kind": "run-1 preserved",
+      "path": "docs\\collaboration\\submissions\\T040\\live-review-notes.md",
+      "expected_sha256": "3335a4fde21e9b33db51bae65f45445134fc34cd03cd020f7e0035461bb62288",
+      "pass": true
+    },
+    {
+      "kind": "run-1 raw cache",
+      "path": "step2_code\\backend\\.cache\\real-qa-smoke\\T040-B\\live-results.json",
+      "expected_sha256": "34cbf5f9d5a5c31d6bbd733f2fe2a52de8daa5e51de9590aeda0f001caaff6ca",
+      "pass": true
+    },
+    {
+      "kind": "failed probe retained",
+      "path": "docs\\collaboration\\submissions\\T040\\rev2\\T040-B-preflight-probe-failed-preserved.json",
+      "actual_sha256": "94e3944fcb9ed026d6ec214b4a9039e9f5929372811dbd76220256ab94e55d7d",
+      "expected_sha256_prefix": "94e3944f",
+      "boundary": "Known prior digest prefix and failed probe content, not a full independent prior digest",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v2\\questions.json",
+      "expected_sha256": "4e39229eb3b31dc9ccd5dc157e2d63203514ce70069450adca6b78c24b65c103",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "data\\evaluations\\sicau-rag-pilot-eval-v2\\freeze.json",
+      "expected_sha256": "8c289b2ae7f00b39be80f02f850cf2820d8cc6de90f6f7245c634ddd2a9b5a26",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "data\\corpora\\sicau-rag-pilot-v1.2\\manifest.json",
+      "expected_sha256": "b05c37557675f02c045e01e9fd776c539954c43172d5e0b07d0704da4e352b4a",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "docs\\collaboration\\submissions\\T039\\review-supplement.md",
+      "expected_sha256": "d82f4c993b2c77709ed26f3442800398a3091e6500c2ec31817e9417537da367",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "step2_code\\backend\\src\\campus_assistant\\main.py",
+      "expected_sha256": "0b5fb49e23ff65a940e45ae014418372a9c334c1009f0b1968172379a351bd8c",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "step2_code\\backend\\src\\campus_assistant\\api\\ask.py",
+      "expected_sha256": "2af92f1638a4d4bf57e9c6548054b2d040bb2a1133f76de4dd11bacb521fb516",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "step2_code\\backend\\src\\campus_assistant\\qa\\evidence.py",
+      "expected_sha256": "c8f7274cffa4d58ffb5383cb915222a04bcbb4bd885180684e7ff4ca9aeeb89e",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "step2_code\\backend\\src\\campus_assistant\\qa\\deepseek.py",
+      "expected_sha256": "530c5e2b5e01623f29cc19d45139419c5f700c62cdf7a1cdf60aa37eb48366ce",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "step2_code\\backend\\src\\campus_assistant\\retrieval\\service.py",
+      "expected_sha256": "dd7552936cf55f644448bf77a8594ae0c8b08f90268500524bed9932b2a0699b",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "path": "step2_code\\backend\\scripts\\prepare-real-qa-smoke.py",
+      "expected_sha256": "8f0001d4a621854df0c85d715a5302e5877f5c45b89001d69110cfc718c77be2",
+      "pass": true
+    }
+  ],
+  "count": 39,
+  "pass": true,
+  "boundary": "File hashes only; no live request or current secret-presence check. Probe output hash excluded because temp-directory text changes on rerun."
+}

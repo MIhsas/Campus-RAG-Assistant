@@ -1,0 +1,39 @@
+{
+  "reviewer": "Astra",
+  "date": "2026-10-14",
+  "surface": "Codex in-app browser, actual HTTP product pages",
+  "server": "http://127.0.0.1:18764",
+  "configuration": "sicau-rag-pilot-v1.2, BM25, generator off, planner off, no templates/ASR/vector models",
+  "external_model_calls": 0,
+  "observations": [
+    {
+      "action": "Open /ask?query=test&student_type=本科&include_unknown_type=0, then click 证据搜索 without submitting",
+      "before": {"student_type": "本科", "checked": false, "return_href": "/search"},
+      "after": {"url": "http://127.0.0.1:18764/search", "student_type": "", "query": "", "checked": true},
+      "verdict": "FAIL: incoming snapshot lost on immediate next navigation"
+    },
+    {
+      "action": "On /search select 本科, uncheck reference admission, explicitly search 学籍基本信息有误需要更正时，学生本人去哪里办理？",
+      "observed": "Strict snapshot, five hits, no 83eb result. Link to /ask includes original query, student_type=本科, include_unknown_type=0.",
+      "verdict": "PASS within this submitted path"
+    },
+    {
+      "action": "Click the submitted strict search link to /ask; before resubmitting click 证据搜索",
+      "intermediate": {"student_type": "本科", "checked": false, "return_href": "/search"},
+      "after": {"url": "http://127.0.0.1:18764/search", "student_type": "", "query": "", "checked": true},
+      "verdict": "FAIL: second hop silently resets strict to default reference mode"
+    },
+    {
+      "action": "Repeat u04 search with 本科 and reference admission checked",
+      "observed": "83eb is rank 1, PDF page 4; location 1教105/综合楼217 and 学生类型未标注，适用范围尚未核实 are visibly displayed; reference snapshot and admission note displayed.",
+      "verdict": "PASS"
+    },
+    {
+      "action": "From reference search enter /ask, explicitly 整理依据, then 复制问题与摘录",
+      "observed": "E1 is 83eb page 4, original location text and reference warning visible; clipboard contains reference mode and the uncertainty warning; UI says 已复制为纯文本.",
+      "verdict": "PASS"
+    }
+  ],
+  "not_verified": ["Real generation quality", "Live DeepSeek", "New mode evaluation metrics", "Historical record interaction in real browser (covered separately by DOM probe)", "Original T042 file page"],
+  "boundary": "No attempt to reopen/serve/bypass the previously denied T042 file page. This is a new product HTTP test. No browser microphone or paid generation. User's original tab remains untouched."
+}

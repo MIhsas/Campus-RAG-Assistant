@@ -1,0 +1,110 @@
+{
+  "record_type": "targeted_review_record",
+  "review_scope": "T039 四项修订 + T040 同四题历史真实结果，共 8 项；不重审 T036 全部 114 项或模板 33 项",
+  "record_title": "模拟操作测试（MiMo 演示导出，非真实复核结论）",
+  "exported_at": "2026-10-13T04:53:28.755Z",
+  "reviewer": "（模拟测试，非真人复核）",
+  "review_date": "",
+  "note": "8 项补充意见记录导出（新文件）。不是签署认证，不是学校政策确认；不写回 gold/模板/历史用户记录；不与历史 109/3/2 合并。导出时间≠签署日期。",
+  "pack_identity": {
+    "inputs": {
+      "questions": {
+        "path": "F:\\Collage Paper\\data\\evaluations\\sicau-rag-pilot-eval-v2\\questions.json",
+        "sha256": "4e39229eb3b31dc9ccd5dc157e2d63203514ce70069450adca6b78c24b65c103",
+        "dataset_version": "2.0"
+      },
+      "manifest": {
+        "path": "F:\\Collage Paper\\data\\corpora\\sicau-rag-pilot-v1.2\\manifest.json",
+        "sha256": "b05c37557675f02c045e01e9fd776c539954c43172d5e0b07d0704da4e352b4a"
+      },
+      "review_supplement": {
+        "path": "F:\\Collage Paper\\docs\\collaboration\\submissions\\T039\\review-supplement.md",
+        "sha256": "d82f4c993b2c77709ed26f3442800398a3091e6500c2ec31817e9417537da367"
+      },
+      "live_answers_full": {
+        "path": "F:\\Collage Paper\\docs\\collaboration\\submissions\\T040\\live-answers-full.json",
+        "sha256": "9641695095912d3f6de19f9194beecf35fb2691f90afdad76f7323f46686cc4e"
+      },
+      "casebook": {
+        "path": "F:\\Collage Paper\\docs\\delivery\\generation-casebook.md",
+        "sha256": "6ef5215d190d694d47bd4780e73f947049c8eb275aac491fa9ec480be05c11c8"
+      },
+      "user_record": {
+        "path": "F:\\Collage Paper\\data\\reviews\\T036-user-review-20261008\\human-review-record.json",
+        "sha256": "2e1af1493846efd76f2ec593ac248c31df5dc725e77a1abe845e980e3efc5791"
+      }
+    },
+    "counts": {
+      "cards": 8,
+      "revision_cards": 4,
+      "answer_cards": 4,
+      "verified_refs": 40
+    },
+    "pack_human_review_status": "unreviewed",
+    "declaration": "本包是 8 项补充意见记录工具：工具完成不等于人工复核完成；程序化逐字一致不代表语义正确或政策现行有效。新意见初值全部「未复核」；导出是新 JSON 记录，不是签署认证或学校政策确认；不写回 gold/模板/历史用户记录。"
+  },
+  "tally": {
+    "未复核": 7,
+    "确认": 0,
+    "需修订": 1,
+    "未确认": 0
+  },
+  "items": [
+    {
+      "id": "revision:q08",
+      "object_type": "revision",
+      "question_id": "q08",
+      "opinion": "未复核",
+      "comment": ""
+    },
+    {
+      "id": "revision:q10",
+      "object_type": "revision",
+      "question_id": "q10",
+      "opinion": "未复核",
+      "comment": ""
+    },
+    {
+      "id": "revision:u03",
+      "object_type": "revision",
+      "question_id": "u03",
+      "opinion": "未复核",
+      "comment": ""
+    },
+    {
+      "id": "revision:u04",
+      "object_type": "revision",
+      "question_id": "u04",
+      "opinion": "未复核",
+      "comment": ""
+    },
+    {
+      "id": "answer:q08",
+      "object_type": "answer",
+      "question_id": "q08",
+      "opinion": "未复核",
+      "comment": ""
+    },
+    {
+      "id": "answer:q10",
+      "object_type": "answer",
+      "question_id": "q10",
+      "opinion": "需修订",
+      "comment": "P3「不纳入上述组成比例」系推断，请核实（模拟操作测试）"
+    },
+    {
+      "id": "answer:u03",
+      "object_type": "answer",
+      "question_id": "u03",
+      "opinion": "未复核",
+      "comment": ""
+    },
+    {
+      "id": "answer:u04",
+      "object_type": "answer",
+      "question_id": "u04",
+      "opinion": "未复核",
+      "comment": ""
+    }
+  ]
+}

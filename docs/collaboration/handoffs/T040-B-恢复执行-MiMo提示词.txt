@@ -1,0 +1,29 @@
+你是MiMo执行者，Astra负责发布与审核。工作目录 F:\Collage Paper。
+T040 revision3两项本地修复已由Astra验收通过，B真实生成仍未开始。当前任务仅恢复原授权内的T040 B一次运行，不推进T041。
+
+最新配置补充（2026-10-09，用户已明确授权Astra代为配置）：DEEPSEEK_API_KEY已写入当前Windows用户环境变量，用户级写入校验及子Python存在性校验均通过，零外部请求。密钥值不写本文件。既有Claude Code/VS Code进程可能未继承新变量；若本次执行进程为空，允许只读取这一条已授权的User环境变量并在执行Python的同一PowerShell中装入进程，不打印值，不泛查注册表/其他进程：
+  $env:DEEPSEEK_API_KEY = [Environment]::GetEnvironmentVariable('DEEPSEEK_API_KEY', 'User')
+随后仅验证存在性，在同一终端执行下方--live命令；仍为空才等待配置。此补充覆盖下方“仅进程环境/不读其他位置”的旧限制，仅允许读取这一条已配置变量。无需重复授权或再索取密钥。
+
+读取 STATUS.md、CLAUDE.md、PROTOCOL.md、reviews/T040-R3.md、tasks/T040-B-恢复执行.md、原tasks/T040-B-真实资料限定生成冒烟.md及当前submissions/T040材料。上述协作路径均位于docs/collaboration/（CLAUDE.md在根目录）。
+
+已确认：A通过；本轮Astra运行6项mock和原两链探针均exit0；38项完整hash+1项旧失败探针摘要/内容核对通过；输出前置门与实际post计数关闭。run-1缺密钥、真实请求0；原四题授权有效预算未消耗。未确认：当前密钥是否配置、真实答案质量/拒答/学校现行性。不要再询问同一调用授权，不把本地修复通过写成B已完成。
+
+只检查实际执行进程DEEPSEEK_API_KEY是否非空，输出至多存在性布尔。不要读取/打印完整环境、headers、密钥值，不请求用户粘贴聊天密钥，不重复搜索注册表/其他进程/.env。如仍缺失，等待用户在实际执行进程配置后继续；不反复运行--live生成拒绝记录。另一已运行终端的变量不自动传入当前进程，必要时从配置好的环境重启执行窗口。
+
+密钥就绪后：
+1. 保全当前revision3提交到新rev3/（不要覆盖已存在归档）；run-1 cache、旧live三件、A四件和全部历史保持。
+2. 使用新的明确输出目录 step2_code/backend/.cache/real-qa-smoke/T040-B-resume-1/，确认没有已有输出。不得删旧目录腾位置，不默认复用T040-B。
+3. 不重跑mock/原A准备/实验、不改代码，直接运行当前已验收脚本一次：
+   cd 'F:\Collage Paper\step2_code\backend'
+   .\.venv\Scripts\python.exe .\scripts\live-smoke-real-qa.py --live --out-dir '.\.cache\real-qa-smoke\T040-B-resume-1'
+   脚本原前置门全部保留：A身份/E/messages、实际官方配置、计数客户端、输出路径与安全摘要。不改配置偷偷通过前置。
+4. 原授权边界：q08→q10→u03→u04，https://api.deepseek.com/chat/completions，deepseek-flash，1500输出token/30秒，最多4次实际HTTP发送、每题最多1，零重试、技术失败即停。业务不足继续、无证据本地短路计0。不要新增探测、查账户价格、换模型地址、修复重跑、追加题目或第二版答案。技术失败/答错均保留原记录，不能因未用满4次补跑。
+
+若自动权限审查拒绝该动作，说明具体命令/原因后停止，不换工具/命令/路径绕过；原拒绝历史保留，不推定已发请求或计费。
+
+运行后逐段对照本次真正发出的E全文，分别记录：E支持性、gold目标覆盖、用户确认状态。合法E引用不等于语义正确。q08目标gold缺口保留，合理不足可接受；q10普通50/50与互评40/10/50分别说明，不按年份宣布废止；u03不从日期未知源补信息；u04不借未核实83eb候选推测本科部门。不要重写模型答案、gold或提示，不代签用户意见。
+
+保留新目录原始live-results.json/live-answers-full.json、完整messages与审计、停止原因、未执行题、实际send_log；未知字段null。/ask次数、provider_calls与external_http_attempts分列。run-1原件与旧失败历史不改；新产物拷贝到提交目录前先保全旧三件。
+更新report/verification/live-review-notes/submission/changed-files/continuation-progress（实测SHA，记录命令和退出码）；归档revision3。submission_revision=4、responds_to=T040-B-恢复执行、task_revision=B-v1；真实发送后stage=B_executed/status=ready_for_review，未发送则B_not_started/partial；external_model_calls填实际0—4；live_verified=false、planner_live_verified=false待Astra认定。
+提交后停止，无论成功/不足/失败，不重跑、不commit/push、不改产品/语料/模板/gold/冻结/实验/用户记录/Astra文件，不推进T041。

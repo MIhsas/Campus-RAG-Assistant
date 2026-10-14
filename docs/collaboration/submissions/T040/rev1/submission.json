@@ -1,0 +1,51 @@
+{
+  "task_id": "T040",
+  "task_revision": "v1",
+  "submission_revision": 1,
+  "stage": "A_ready_for_review",
+  "status": "ready_for_review",
+  "external_model_calls": 0,
+  "live_verified": false,
+  "planner_live_verified": false,
+  "summary": "T040 A 阶段（仅本地准备）：从冻结题集 v2.0 原样读取 q08/q10/u03/u04 的 query/conditions，用真实包 v1.2 与现有 /ask extractive 管线（显式 answer_provider=None、BM25/top_k=5/现证据预算）收集正式 E 证据包（四题 evidence_state=ok、各 5 E、切片逐字一致、候选未混入：u03 无 db05e0、u04 无 83eb），调用现有 qa.deepseek.build_messages 构造未来生成 messages（与 builder 逐字一致、gold 零泄漏、零外部请求、不读密钥）。四道人工核对标准逐题落入 generation-review-sheet.md（初值全部“待真实运行/待核对”，无模型答案）；金标准仅离线支持性对照：q10 f1/f2、u03 f1 真实跨度命中，q08 f1（2 源）已记录缺口不补数据。live-smoke-plan.md 写明未来 B 计划（当前代码计划参数：官方端点/deepseek-flash/max_tokens=1500/timeout=30s/零重试；一次四题≤4 次外部尝试、每题至多一次、首次技术失败即停、零证据本地短路；出站=问题+条件+选定正式证据+现有系统提示，不发送 gold/候选/复核记录/密钥/本机路径；不伪造价格/usage）。输出 .cache/real-qa-smoke/T040-A/ 新目录（非空拒覆盖已实证）+ 材料复制到本目录。B 未执行未验证；A 完成待 Astra 验收，用户随后决定真实调用与费用约束。",
+  "verification": {
+    "business_tests": "tests/test_prepare_real_qa_smoke.py 5 passed，exit 0（首跑 2 failed 为测试断言/fixture 修正，未改守卫逻辑）",
+    "dry_run": "prepare-real-qa-smoke.py 一次真实本地 dry-run exit 0：四题快照一致/证据切片准入/messages 一致无 gold/generator_configured=false/external_requests=0",
+    "no_overwrite": "复跑同命令 FAIL: 输出目录非空拒绝覆盖，exit 1（预期）",
+    "input_identity": "input-hashes.json：questions 4e39229e…/freeze 8c289b2a…/manifest b05c3755…/review-supplement d82f4c99… 与 T039 冻结身份一致",
+    "gap_recorded": "q08 f1（2 源）金标准缺口已记录，不修数据/不改条件补齐",
+    "scope_note": "未跑全量/UI/ASR/Agent/向量/三模式/矩阵；未改产品/提示/适配器/gold/冻结/语料/模板/用户意见/Astra 文件；零外部调用、无下载安装、无 commit/push"
+  },
+  "deliverables": [
+    "report.md",
+    "verification.md",
+    "submission.json",
+    "changed-files.json",
+    "continuation-progress.md",
+    "dry-run.json",
+    "input-hashes.json",
+    "generation-review-sheet.md",
+    "live-smoke-plan.md"
+  ],
+  "paths": {
+    "script": "step2_code/backend/scripts/prepare-real-qa-smoke.py",
+    "tests": "step2_code/backend/tests/test_prepare_real_qa_smoke.py",
+    "raw_outputs": "step2_code/backend/.cache/real-qa-smoke/T040-A/（与本目录四件材料同哈希）",
+    "inputs": "data/corpora/sicau-rag-pilot-v1.2/、data/evaluations/sicau-rag-pilot-eval-v2/questions.json、docs/collaboration/submissions/T039/review-supplement.md"
+  },
+  "known_gaps": [
+    "q08 f1（2 源）gold 跨度未被 top-5 证据覆盖——记录缺口，未补数据",
+    "真实生成未验证（live_verified=false）：答案忠实性/拒答行为/质量待 B 阶段人工核对",
+    "u04 已有命中可能不相关，不假称已验证拒答；学校政策现行性未认证",
+    "人工核对栏初值全部“待真实运行/待核对”"
+  ],
+  "not_claimed": [
+    "任何模型答案已生成或正确",
+    "提示存在=真实回答改善",
+    "模型会拒答/答案忠于证据",
+    "B 阶段已执行或已获授权",
+    "价格/usage/费用上限（未测未估）",
+    "语义审定/政策现行有效"
+  ],
+  "next_gate": "Astra 验收 A 阶段材料后，由用户决定 B 阶段真实调用授权与费用约束；未授权不执行 B，不推进 T041"
+}

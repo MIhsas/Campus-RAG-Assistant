@@ -1,6 +1,6 @@
 # Windows 运行说明（windows-runbook.md）
 
-> T028 交付包｜命令经真实 `--help` 与本地运行核对（见 `submissions/T028/verification.md`）。路径含空格（`F:\Collage Paper`）已按 PowerShell 规则加引号。**默认演示零收费**；外部模型仅在显式开关 + 用户点击时可达。密钥仅以占位符说明——**不在本文档读取或粘贴任何本地密钥文件**。
+> T028 交付包 → **T041 当前状态更新**（2026-10-11）｜命令经真实 `--help` 与本地运行核对（见 `submissions/T028/verification.md`；T041 复核 §2a 参数）。路径含空格（`F:\Collage Paper`）已按 PowerShell 规则加引号。**默认演示零收费**；外部模型仅在显式开关 + 用户点击时可达。密钥仅以占位符说明——**不在本文档读取或粘贴任何本地密钥文件**。
 
 ## 0. 环境
 
@@ -22,17 +22,19 @@ Set-Location 'F:\Collage Paper\step2_code\backend'
 
 ## 2. 正常运行入口（指定语料包后 BM25/摘录/预览即用；可选组件默认不启用）
 
-**2a. 真实资料主线（答辩/演示推荐；BM25 + 真实模板，零外部请求）**——整段可复制，含空格路径用单引号包裹：
+**2a. 真实资料主线（答辩/演示推荐；BM25 + 真实模板，零外部请求）**——整段可复制，含空格路径用单引号包裹（T041 按源码 `--help` 复核：`--manifest --corpus-root` 必填、`--port --procedures` 可选，与下式一致）：
 
 ```powershell
 # 在 step2_code\backend 目录下执行（路径含空格已用引号；PowerShell 反引号续行）
 & .\.venv\Scripts\python.exe scripts\serve-corpus.py `
-  --manifest 'F:\Collage Paper\data\corpora\sicau-rag-pilot-v1.1\manifest.json' `
-  --corpus-root 'F:\Collage Paper\data\corpora\sicau-rag-pilot-v1.1' `
+  --manifest 'F:\Collage Paper\data\corpora\sicau-rag-pilot-v1.2\manifest.json' `
+  --corpus-root 'F:\Collage Paper\data\corpora\sicau-rag-pilot-v1.2' `
   --procedures 'F:\Collage Paper\data\procedures\sicau-transfer-2026-v1\procedures.json' `
   --port 8010
 # 浏览器打开 http://127.0.0.1:8010/  （search / ask / procedures / preview）
 ```
+
+- 当前默认真实包=**v1.2**（T038，首批 20 份/原始 1182 文件）；历史 v1.1 包保留只读（历史实验输入）。
 
 - 该命令**只开 BM25+模板**；向量/ASR/生成器/规划器均为独立可选开关（见 2b），**不默认隐式开启**。
 - `data/corpora/` 与 `models/` **不在 Git 仓库**：克隆仓库≠完整可运行——需本机另有真实包目录（20 份文件+manifest）与 `models\bge-small-zh-v1.5`（仅向量模式需要）。演示机准备清单见本文 §0。
@@ -109,6 +111,7 @@ Set-Location 'F:\Collage Paper\step2_code\backend'
 
 - `evaluation/run` 实际参数：`--manifest --corpus-root --questions --top-k --mode {bm25,dense,hybrid} --model-path`。
 - `live-smoke-planner` 实际参数：`--mode {dry-run,live,mock}`、`--mock-base-url`（仅 mock）、`--out`。**`--mode live` 当前无授权**；历史授权已耗尽且不延续。
+- **T040 真实生成冒烟（`scripts/live-smoke-real-qa.py --live`）=历史已执行一次**（四题限定、4/4 发送用满、授权已结束）：**禁止无新用户授权例行重跑**；本文不提供“立即复现”指引，不做模型/服务探测。已存结果与核对见 `docs/collaboration/submissions/T040/` 与 [generation-casebook.md](generation-casebook.md)。
 - `trace-agent-planner.py`、`smoke-mock-sample.py`、`eval-v2-*.py` 等为离线 mock/合并工具（无 `--help` 子命令的按脚本头部注释用法）。
 
 ## 5. 语料登记（真实资料接入时）
@@ -124,9 +127,10 @@ Set-Location 'F:\Collage Paper\step2_code\backend'
 | 状态 | 含义 |
 |---|---|
 | 生成器“已配置” | 本地开关+密钥齐全；**连接未验证**（启动不探测） |
+| `live_verified=true`（T040 认定） | **仅限历史四题一次真实生成链路/存档核查**；非语义认证/校园准确率/可靠拒答/浏览器闭环；原授权 4/4 已用满结束 |
 | 规划器“已配置（未联调验证）” | 同上；`planner_live_verified=false`（真实链路冒烟 partial，完整流程未通过） |
 | 向量“模型加载完成” | 本地模型实际加载成功（这是已验证） |
-| 办事模板/自查规则“已配置” | 显式注入了本地文件；不代表学校事项已有真实模板 |
+| 办事模板/自查规则“已配置” | 显式注入了本地文件；**任意文件注入≠语义/现行性验证**（当前 2026 真实转专业模板 1.2 已接入并经用户确认 33 项；学校政策现行性未认证） |
 | 首页“读取失败/未知” | 状态接口异常——不等于“未配置” |
 
 ## 7. 常见故障定位

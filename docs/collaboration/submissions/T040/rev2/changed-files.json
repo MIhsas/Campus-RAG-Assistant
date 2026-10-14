@@ -1,0 +1,35 @@
+{
+  "note": "T040 变更清单（submission_revision=2，responds_to=T040-B，stage=B_not_started）。A 阶段九件归档 rev1/ 原样；A 四件材料原字节保持。B 新增执行脚本/mock 测试/live 记录三件并更新报告四件。不改产品/适配器/提示/gold/冻结/结果/聚合/语料/模板/用户意见/旧冒烟脚本/prepare-real-qa-smoke.py/Astra 文件。哈希为落盘后实测全值；本清单不列自哈希；continuation-progress.md 为运行日志不列哈希。",
+  "new_code": [
+    {"path": "step2_code/backend/scripts/live-smoke-real-qa.py", "sha256": "138fa4dd9e78ceb082a6a480993b5293f03657ee09cbdb065e1b232a3312ff52", "change": "B 单次执行入口：默认 dry-run/显式 --live；发送位置计数（连接失败占次）；官方配置门（实际 provider 属性）；A 身份前置核对；失败即停/业务不足可继续/零证据短路；本地与供应商 HTTP 状态分开、未知 null；非空目录拒覆盖；NO_PROXY 进程内补 api.deepseek.com"},
+    {"path": "step2_code/backend/tests/test_live_smoke_real_qa.py", "sha256": "8bd65da42a2437c9023b8a0b41806e34cf585f3f468a88c32b800f0f06d550d6", "change": "4 项本地 mock：计数/失败即停/not_attempted、业务不足继续+完整记录、前置拒绝零请求、零证据零尝试（FakeClient 零网络）"}
+  ],
+  "b_results": [
+    {"path": "docs/collaboration/submissions/T040/live-results.json", "sha256": "34cbf5f9d5a5c31d6bbd733f2fe2a52de8daa5e51de9590aeda0f001caaff6ca", "change": "run-1 拒绝记录（缺密钥、external_http_attempts=0、not_attempted×4）；= .cache/real-qa-smoke/T040-B/ 原件同哈希"},
+    {"path": "docs/collaboration/submissions/T040/live-answers-full.json", "sha256": "8ffc0d00e6d7b0d3ef6a8f6c414ae39bb09bc9c3aa4d77c9f178d07abb1973e0", "change": "如实无答案记录（B 未执行；四题 not_attempted；不伪造）"},
+    {"path": "docs/collaboration/submissions/T040/live-review-notes.md", "sha256": "3335a4fde21e9b33db51bae65f45445134fc34cd03cd020f7e0035461bb62288", "change": "逐段核对框架与语义边界锁定；无评价对象；记录瑕疵如实保留"}
+  ],
+  "updated_docs": [
+    {"path": "docs/collaboration/submissions/T040/report.md", "sha256": "5f3febb99a9008f41a37343f41e9ecf7b70352a281fedc2f8286c82027d7264e", "change": "revision 2：B 实际结果（缺密钥拒绝/partial）+ 本地实施/停止语义/核对框架"},
+    {"path": "docs/collaboration/submissions/T040/verification.md", "sha256": "cce2087def758b89b0f4d475b60c4a905840c8a9980bf2721954dc10e215dedd", "change": "B 验证记录：mock 4 passed、dry-run/--live run-1、密钥存在性核查、A/B 保全、记录瑕疵"},
+    {"path": "docs/collaboration/submissions/T040/submission.json", "sha256": "065286c4fd777e45bd3fa1e48d66ee5e16d9fb20ad638f7cc75c324b5b4af0f5", "change": "submission_revision=2、task_revision=B-v1、responds_to=T040-B、stage=B_not_started、status=partial、external_model_calls=0"},
+    {"path": "docs/collaboration/submissions/T040/changed-files.json", "change": "本清单（不列自哈希）"},
+    {"path": "docs/collaboration/submissions/T040/continuation-progress.md", "change": "A/B 执行日志（小步记录；提交前最后更新，不列哈希）"}
+  ],
+  "a_materials_unchanged": {
+    "note": "A 四件保持原字节（== rev1/ == .cache/real-qa-smoke/T040-A/ 三处一致，前置核对项）",
+    "dry-run.json": "31babb70e9312b62c1edd08d2e423f2fb4c2b8ff22a5a812d8c1a416e3ec49e1",
+    "input-hashes.json": "b9be154cefaa3acc42823b7b8a0c3783b33a7f346b3207394cfd7f3038a6bab1",
+    "generation-review-sheet.md": "d417c9233f356ba1c6c09c8a0628d9719dc347fd16088e6e9f4bd44ccd18afcc",
+    "live-smoke-plan.md": "74ae1bb1a03bc5cfcff2b7cdfe8ae5abcc73d7d73021b3b78d73d8f459f977a8"
+  },
+  "archives": [
+    {"path": "docs/collaboration/submissions/T040/rev1/", "change": "A 九件原样归档（2026-10-09 B-1 步骤创建；dry-run 归档哈希 31babb70… 与原件一致）"}
+  ],
+  "unchanged": [
+    "产品代码/生成提示/qa 适配器/检索筛选评分器/prepare-real-qa-smoke.py/旧 live-smoke-deepseek.py（含合成语料门）",
+    "gold/冻结/标注说明/results/aggregate（questions 4e39229e…/freeze 8c289b2a…/aggregate fcecdc9c… 未变）",
+    "语料/manifest（b05c3755…）、模板、用户意见原件、历史材料、Astra 任务/评审/状态文件"
+  ],
+  "hash_note": "本清单哈希为落盘后实测全值；本清单自身与 continuation-progress.md 不列自哈希。"
+}

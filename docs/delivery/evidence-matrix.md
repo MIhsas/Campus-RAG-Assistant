@@ -1,7 +1,7 @@
 # 证据矩阵（evidence-matrix.md）
 
-> T028 交付包｜2026-09-28。每项主张标注**实现位置**、**验证层级**与**局限**。验证层级严格区分：
-> **[实现]** 代码存在且被测试覆盖｜**[合成实验]** T027 合成评测（v2.1）｜**[模拟]** mock provider/脚本规划器/loopback mock（明确标注的模拟）｜**[历史真实调用]** T014/T025 受控真实 API 冒烟（各自任务记录）｜**[未验证]** 尚无证据。
+> T028 交付包｜T041 当前状态更新 2026-10-11。每项主张标注**实现位置**、**验证层级**与**局限**。验证层级严格区分：
+> **[实现]** 代码存在且被测试覆盖｜**[合成实验]** T027 合成评测（v2.1）｜**[模拟]** mock provider/脚本规划器/loopback mock（明确标注的模拟）｜**[历史真实调用]** T014/T025 受控真实 API 冒烟（各自任务记录）｜**[历史已存真实结果]** T040 四题限定真实生成一次（存档核查，非现场）｜**[未验证]** 尚无证据。
 > 不把设计、mock 与真实冒烟混写。本表为作者（执行模型辅助）整理，非独立教师/盲评标注。
 
 ## 1. 数据与解析
@@ -31,6 +31,7 @@
 | DeepSeek 生成问答适配（结构化 JSON、错误安全映射、零重试） | `qa/deepseek.py`、`qa/providers.py` | [实现] | `tests/test_deepseek_provider.py` | 协议已验证；生成质量未评测 |
 | 生成输出校验为**结构校验**（段落非空 + 引用 ID∈实发证据集） | `qa/providers.py::validate_generation` | [实现] | 本地核对（T028-R1）：不受支持文本+合法 E1 → kind=answer | **不含语义蕴含校验**；编号有效≠答案忠于证据；零证据可短路，非空不相关证据不保证识别不足 |
 | 真实生成链路可通（受控冒烟） | T014 `live-smoke-deepseek.py` | **[历史真实调用]** | `submissions/T014/`（2 题、1 次 no_hits 短路、usage 370+37=407 tokens） | 仅证明链路；非生成质量结论 |
+| 真实生成限定冒烟（四题一次，已存样本） | T040 `live-smoke-real-qa.py --live`（q08→q10→u03→u04） | **[历史已存真实结果]** | `docs/collaboration/submissions/T040/`（发送 4/provider 4/ask 8；q10/u03 作答、q08/u04 模型不足；usage 6080+388=6468 tokens，未测价格）；案例 [generation-casebook.md](generation-casebook.md) | **已存样本≠质量评测**；q10 P3「不纳入上述组成比例」为推断待用户核实；q08 gold 缺口保持；u04 不足≠学校无规定；`live_verified=true` 仅限本次链路/存档核查；授权 4/4 已用满结束 |
 | 引用跨度与解析块一致（非自证） | T021-R1 跨度独立对照测试 | [实现] | `tests/test_pdf_corpus.py::test_citation_spans_match_parsed_blocks` | — |
 
 ## 4. 办事、自查与比较
@@ -38,7 +39,7 @@
 | 主张 | 实现 | 验证层级 | 证据 | 局限 |
 |---|---|---|---|---|
 | 带引用办理草稿 + saveable 门（资料不足不冒充完整） | `procedures/service.py::build_draft/verify_snapshot` | [实现] | `tests/test_procedures.py`；本地核对（T028-R1）：proc-review-grade+年级2023 → insufficient/saveable=false（附表引用被准入筛除），proc-apply-defer+2023 → ready | 合成模板（2 事项）；引用核对为结构核对（哈希/跨度/准入）≠语义正确性；不代表学校受理 |
-| 办理页手动保存待办（localStorage） | `static/procedures.html` | [实现][模拟] | `scripts/check-procedures-behavior.cjs`（stub 级） | 浏览器行为为 stub/历史浏览器证据（T016—T023 各任务记录） |
+| 办理页手动保存待办（localStorage） | `static/procedures.html` | [实现][模拟] | `scripts/check-procedures-behavior.cjs`（stub 级） | 浏览器行为证据按评审范围：T032-R1（保存/勾选/键盘备注+失焦刷新保留）、T033-R1（进入办事页预选/恢复）；其余行为仍为 stub/历史记录（T016—T023） |
 | 条件自查（三态、unknown≠满足） | `selfcheck/service.py` | [实现] | `tests/test_self_check.py` | 合成规则一例 |
 | 版本比较（条号对齐 + SequenceMatcher 顺序匹配 + 相似度分级） | `comparison/service.py`（T017-R1 lookahead 修复；内部函数名 `_lcs_pairs`，实现为 difflib.SequenceMatcher，非严格 LCS） | [实现] | `tests/test_comparison.py` | 仅段落文本，不含表格语义 |
 
@@ -70,7 +71,8 @@
 |---|---|---|---|---|
 | 合成检索评测集 v2.1（24 题/13 文档/事实组语义） | `examples/evaluation-v2/`、`evaluation/*` | **[合成实验]** | `submissions/T027/`（gold-revisions、dataset-hashes、results） | 全合成；模型辅助标注；历史对照用 |
 | T027 三模式指标（历史对照） | T027 revision 3 | **[合成实验]** | K=5：BM25 0.950/0.950/0.925、Dense 0.900/0.900/0.705833、Hybrid 0.950/0.950/0.891667（n=20）；不足 4 空检索率 0 | 不与真实指标合并比较 |
-| **T030 v1.3 真实 24 题基线** | `data/evaluations/sicau-rag-pilot-eval-v1/` | **[真实实验]** | K=5：BM25 0.725/0.750/0.6、Dense 0.7/0.7/0.44333333333333336、Hybrid 0.7/0.7/0.5416666666666667（n=20）；题集 SHA `5fde70a3…`；Astra 独立重计分一致 | gold 模型辅助、**人工未复核**；R/H/M≠答对率 |
+| **T039 v2.0 真实 24 题当前基线** | `data/evaluations/sicau-rag-pilot-eval-v2/` | **[真实实验]** | K=5，n=21：BM25 0.7380952380952381/0.7619047619047619/0.6190476190476191、Dense 0.7142857142857143/0.7142857142857143/0.46984126984126984、Hybrid 0.7142857142857143/0.7142857142857143/0.5634920634920635；共同子集 n=20 与 T030 60/60 一致；aggregate 逐值 | 相对 T030 差异=分母/准入/gold 修正，**不是算法改善**；gold 新改项待定向复核 |
+| **T030 v1.3 真实 24 题基线（历史）** | `data/evaluations/sicau-rag-pilot-eval-v1/` | **[真实实验]** | K=5：BM25 0.725/0.750/0.6、Dense 0.7/0.7/0.44333333333333336、Hybrid 0.7/0.7/0.5416666666666667（n=20）；题集 SHA `5fde70a3…`；Astra 独立重计分一致 | 历史分表，不与当前合并；gold 模型辅助；R/H/M≠答对率 |
 | **T031 文件选择对照** | `data/evaluations/sicau-rag-source-selection-v1/` | **[真实实验]** | n=10：无选择 0.55/0.5/0.4（R 均值）→选择后 R/H 0.9（三模式）；baseline 与 T030 排名 30/30 一致；q19 不改善 | **增加用户条件，非算法提升**；不选择时混排仍在 |
 | **T034 重叠分块消融** | `data/evaluations/sicau-rag-overlap-v1/` | **[真实实验]** | baseline=表 6-2；candidate BM25 0.725/0.75/0.5958333333333333、Dense 0.675/0.7/0.4666666666666667、Hybrid 0.7/0.7/0.5833333333333333；边界案例/回退/重复命中全录 | 结果混合、**默认不采用**；勘误四则见 docs/collaboration/submissions/T035/T034-doc-errata.md |
 | 评测管线可复现（命令/哈希/版本） | `evaluation/run.py` + 各实验脚本 | [实现][真实实验] | 各实验 frozen-config/SHA 记录；T030 排名复用零漂移、T031/T034 基线兼容 30/30、24/24 | **两实验脚本会覆盖既有实验/冻结文件**（无统一安全输出参数）：source-selection 的 freeze.json 固定写入既有目录（--out 不保护冻结），overlap 无输出参数——当前冻结工作区禁止例行执行，复现仅限独立完整项目副本（见 windows-runbook §4） |
@@ -79,16 +81,16 @@
 
 | 事项 | 状态 | 说明 |
 |---|---|---|
-| 真实 24 题 gold 人工审定 | [未验证] | 模型辅助标注；技术验收≠学校政策语义审定（见 human-review-pending.md） |
+| 真实 24 题 gold 人工审定 | [未验证] | 模型辅助标注；用户逐项意见已收到（109/3/2）但 **T039 新四项与 T040 新答案仍待定向复核、不代签**；技术验收≠学校政策语义审定（见 human-review-pending.md） |
 | 校园准确率/答案质量 | [未验证] | 实验只评检索指标（Recall/Hit/MRR）；已见开发集不外推 |
 | 可靠拒答 | [未验证] | 不足题空检索率≠拒答率；非空不相关证据不保证识别不足 |
 | 重叠分块默认采用 | [明确不采用] | T034 结果混合；默认 overlap=0，参数保留显式选项 |
 | planner_live_verified | false | T025 真实规划 partial（完整无失败流程未通过） |
 | RAGFlow/TinyAgent 运行时集成 | [reference] | 参考资料，未引入运行时 |
 | planner_live_verified | **false** | T025 真实链路已通但完整运行 partial；不升级口径 |
-| 生成/规划质量 | [未验证] | T014/T025 仅为链路冒烟，非质量评测 |
+| 生成/规划质量 | [未验证] | T014/T025 仅为链路冒烟、T040 四题为已存限定样本（2 作答/2 合理不足，q10 P3 推断待核）——均**非质量评测**；不外推校园准确率/可靠拒答 |
 | 可靠拒答/空检索保证 | [未验证] | T027 实测三模式对不足题全部有命中（有命中≠有依据） |
-| 浏览器交互（本轮） | 未新测 | 各历史浏览器证据归属 T016—T023 验收记录；T028 为文档任务，demo 脚本未在本轮实操 |
+| 浏览器交互 | 历史已测/本轮未新测 | 真实浏览器证据按**各评审实际操作范围**引用：T016—T023 各验收记录；**T038（[T038-R1](../collaboration/reviews/T038-R1.md) + [T038-browser/verification.md](../collaboration/reviews/T038-browser/verification.md)）真实浏览器主路径已补齐**——日期/学生类型候选、改控件仍绑定原结果、候选→PDF 第 4 页原文跳转、复制隔离、历史恢复隔离、新请求清旧列表、指定文件求交不回退；T029/T031/T032/T033 等后续评审各有其范围（如摘录→原文主路径、单文件搜索、草稿/待办、办事入口）。**T041 本轮无新浏览器实操；T040 无真实浏览器生成闭环证据**（四题冒烟为脚本直发）。不以本轮未测否定历史已测，也不扩大 PASS 到各评审未测步骤 |
 | 统计显著性 | [未验证] | 单次小样本运行，无假设检验 |
 
 ## 9. T027-R3 文字勘误（本交付包内声明，不改历史原始产出）

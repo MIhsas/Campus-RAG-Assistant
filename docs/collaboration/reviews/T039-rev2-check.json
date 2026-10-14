@@ -1,0 +1,18 @@
+{
+  "status": "ok",
+  "readonly_files_unchanged": 23,
+  "rev1_archive_unchanged": 7,
+  "authorized_partial_changes": [
+    "docs/collaboration/submissions/T039/verification.md",
+    "docs/delivery/human-review-pending.md"
+  ],
+  "changed_file_hashes": 14,
+  "deliverables_exist": 10,
+  "diff_mismatches": 0,
+  "score_rows_recomputed": 72,
+  "common_full_rankings": 60,
+  "group_checks": 36,
+  "new_retrieval_or_model_calls": 0,
+  "quote_note": "Supplement hash unchanged since Astra 8/8 real-parser quote check.",
+  "nonblocking_note": "38-file zero-drift wording describes the earlier inventory; final two authorized document changes are explicit here."
+}

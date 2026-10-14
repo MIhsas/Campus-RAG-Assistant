@@ -1,0 +1,176 @@
+{
+  "note": "T038 候选 API 真实演示（语料包 v1.2、BM25、in-process；零外部调用；非浏览器证据）",
+  "steps": [
+    {
+      "step": "strict-as_of-2026-10-03",
+      "allowed_count": 5,
+      "excluded": {
+        "scope_unknown": 0,
+        "scope_mismatch": 0,
+        "date_unknown_from": 15,
+        "not_yet_effective": 0,
+        "expired": 0
+      },
+      "bed3ac_admitted": true,
+      "db05e0_admitted": false
+    },
+    {
+      "step": "candidates-date-u03",
+      "http": 200,
+      "candidate_count": 15,
+      "strict_allowed": 5,
+      "disclaimer": "未通过所选日期或学生类型条件核实，仅供原文核对，不作为已确认适用的答案依据",
+      "hits": [
+        {
+          "document_id": "db05e0cab194",
+          "title": "附件2.四川农业大学考场规则",
+          "version_label": "未标注",
+          "unknown_dimensions": [
+            "date"
+          ],
+          "preview_url": "/preview#db05e0cab194beeee9d4017458f26df2c14aefb8e250293d0e539c350477dc75/eade67e9b2ccc2ef"
+        },
+        {
+          "document_id": "ddf417476f6d",
+          "title": "《国家教育考试违规处理办法》",
+          "version_label": "未标注",
+          "unknown_dimensions": [
+            "date"
+          ],
+          "preview_url": "/preview#ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f/d52ec7af0bd573c3"
+        },
+        {
+          "document_id": "ddf417476f6d",
+          "title": "《国家教育考试违规处理办法》",
+          "version_label": "未标注",
+          "unknown_dimensions": [
+            "date"
+          ],
+          "preview_url": "/preview#ddf417476f6d59266ba1abea1f312e98fc3b87c653717e716a36ed7a5b88238f/88df0e97c016c2bd"
+        }
+      ]
+    },
+    {
+      "step": "candidates-student-type-u04",
+      "http": 200,
+      "candidate_count": 2,
+      "hits": [
+        {
+          "document_id": "83eb3948386d",
+          "title": "附件1：新生学籍信息查询核对操作指南 (1)",
+          "version_label": "未标注",
+          "unknown_dimensions": [
+            "student_type"
+          ],
+          "preview_url": "/preview#83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31/f74aff0841628203"
+        },
+        {
+          "document_id": "83eb3948386d",
+          "title": "附件1：新生学籍信息查询核对操作指南 (1)",
+          "version_label": "未标注",
+          "unknown_dimensions": [
+            "student_type"
+          ],
+          "preview_url": "/preview#83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31/27fc6e4fb939e279"
+        },
+        {
+          "document_id": "83eb3948386d",
+          "title": "附件1：新生学籍信息查询核对操作指南 (1)",
+          "version_label": "未标注",
+          "unknown_dimensions": [
+            "student_type"
+          ],
+          "preview_url": "/preview#83eb3948386df27ddc8db35591dbab6c97dd795b92c8b003f2f524339cec2f31/77535693d76ccbfa"
+        }
+      ]
+    },
+    {
+      "step": "candidates-both-dimensions",
+      "http": 200,
+      "candidate_count": 15,
+      "hits": [
+        {
+          "document_id": "c888c99a6409",
+          "title": "四川农业大学学生学业管理办法",
+          "version_label": "未标注",
+          "unknown_dimensions": [
+            "date"
+          ],
+          "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/996b0beafb5a41a7"
+        },
+        {
+          "document_id": "c888c99a6409",
+          "title": "四川农业大学学生学业管理办法",
+          "version_label": "未标注",
+          "unknown_dimensions": [
+            "date"
+          ],
+          "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/eed52ea2b74c81b6"
+        },
+        {
+          "document_id": "c888c99a6409",
+          "title": "四川农业大学学生学业管理办法",
+          "version_label": "未标注",
+          "unknown_dimensions": [
+            "date"
+          ],
+          "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/931dc613f58ce2c1"
+        },
+        {
+          "document_id": "c888c99a6409",
+          "title": "四川农业大学学生学业管理办法",
+          "version_label": "未标注",
+          "unknown_dimensions": [
+            "date"
+          ],
+          "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/70593411168e9720"
+        },
+        {
+          "document_id": "c888c99a6409",
+          "title": "四川农业大学学生学业管理办法",
+          "version_label": "未标注",
+          "unknown_dimensions": [
+            "date"
+          ],
+          "preview_url": "/preview#c888c99a64095e35f5a0475c15f39b814872bbedd5a9de7dc51efebea42b78bd/723d457304c59d7e"
+        }
+      ]
+    },
+    {
+      "step": "contract-empty-dims",
+      "http": 422,
+      "code": "UNCERTAINTY_DIMENSIONS_INVALID",
+      "message": "uncertainty_dimensions 不能为空；仅接受 date、student_type"
+    },
+    {
+      "step": "contract-invalid-dim",
+      "http": 422,
+      "code": "UNCERTAINTY_DIMENSIONS_INVALID",
+      "message": "uncertainty_dimensions 仅接受 date、student_type"
+    },
+    {
+      "step": "contract-dim-without-filter",
+      "http": 422,
+      "code": "UNCERTAINTY_DIMENSIONS_INVALID",
+      "message": "所选不确定性维度均无对应筛选条件（date 需 as_of_date、student_type 需 student_type）——没有可放宽的未知维度"
+    },
+    {
+      "step": "contract-unknown-document",
+      "http": 422,
+      "code": "SOURCE_DOCUMENT_NOT_FOUND",
+      "message": "document_id 不在当前成功解析的文档目录中: unavailable-file"
+    },
+    {
+      "step": "strict-search-unchanged",
+      "http": 200,
+      "has_candidate_fields": false,
+      "hits": 5
+    },
+    {
+      "step": "strict-ask-unchanged",
+      "http": 200,
+      "evidence_count": 5,
+      "has_candidate_fields": false
+    }
+  ]
+}

@@ -1,0 +1,324 @@
+{
+  "checks": [
+    {
+      "kind": "current hash",
+      "label": "docs/delivery/experiment-index.md",
+      "pass": true
+    },
+    {
+      "kind": "current hash",
+      "label": "docs/delivery/defense-script.md",
+      "pass": true
+    },
+    {
+      "kind": "current hash",
+      "label": "docs/delivery/evidence-matrix.md",
+      "pass": true
+    },
+    {
+      "kind": "current hash",
+      "label": "docs/delivery/README.md",
+      "pass": true
+    },
+    {
+      "kind": "current hash",
+      "label": "docs/delivery/thesis-outline.md",
+      "pass": true
+    },
+    {
+      "kind": "current hash",
+      "label": "docs/delivery/windows-runbook.md",
+      "pass": true
+    },
+    {
+      "kind": "current hash",
+      "label": "docs/delivery/system-design.md",
+      "pass": true
+    },
+    {
+      "kind": "current hash",
+      "label": "docs/delivery/human-review-pending.md",
+      "pass": true
+    },
+    {
+      "kind": "current hash",
+      "label": "docs/delivery/generation-casebook.md",
+      "pass": true
+    },
+    {
+      "kind": "current hash",
+      "label": "docs/collaboration/submissions/T041/report.md",
+      "pass": true
+    },
+    {
+      "kind": "current hash",
+      "label": "docs/collaboration/submissions/T041/verification.md",
+      "pass": true
+    },
+    {
+      "kind": "current hash",
+      "label": "docs/collaboration/submissions/T041/fix-report.md",
+      "pass": true
+    },
+    {
+      "kind": "current hash",
+      "label": "docs/collaboration/submissions/T041/submission.json",
+      "pass": true
+    },
+    {
+      "kind": "prior delivery archive",
+      "label": "docs/delivery/README.md",
+      "pass": true
+    },
+    {
+      "kind": "prior delivery archive",
+      "label": "docs/delivery/system-design.md",
+      "pass": true
+    },
+    {
+      "kind": "prior delivery archive",
+      "label": "docs/delivery/thesis-outline.md",
+      "pass": true
+    },
+    {
+      "kind": "prior delivery archive",
+      "label": "docs/delivery/evidence-matrix.md",
+      "pass": true
+    },
+    {
+      "kind": "prior delivery archive",
+      "label": "docs/delivery/defense-script.md",
+      "pass": true
+    },
+    {
+      "kind": "prior delivery archive",
+      "label": "docs/delivery/windows-runbook.md",
+      "pass": true
+    },
+    {
+      "kind": "prior delivery archive",
+      "label": "docs/delivery/experiment-index.md",
+      "pass": true
+    },
+    {
+      "kind": "prior delivery archive",
+      "label": "docs/delivery/human-review-pending.md",
+      "pass": true
+    },
+    {
+      "kind": "prior delivery archive",
+      "label": "docs/delivery/generation-casebook.md",
+      "pass": true
+    },
+    {
+      "kind": "prior submission archive",
+      "label": "docs/collaboration/submissions/T041/report.md",
+      "pass": true
+    },
+    {
+      "kind": "prior submission archive",
+      "label": "docs/collaboration/submissions/T041/verification.md",
+      "pass": true
+    },
+    {
+      "kind": "prior submission archive",
+      "label": "docs/collaboration/submissions/T041/submission.json",
+      "pass": true
+    },
+    {
+      "kind": "prior submission archive",
+      "label": "docs/collaboration/submissions/T041/t041-verify.json",
+      "pass": true
+    },
+    {
+      "kind": "links",
+      "label": "30 existing relative links",
+      "pass": true
+    },
+    {
+      "kind": "unchanged delivery",
+      "label": "system-design.md",
+      "pass": true
+    },
+    {
+      "kind": "unchanged delivery",
+      "label": "human-review-pending.md",
+      "pass": true
+    },
+    {
+      "kind": "unchanged delivery",
+      "label": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "kind": "preserved original verification",
+      "label": "t041-verify original bytes",
+      "pass": true
+    },
+    {
+      "kind": "reviewed prose",
+      "label": "current human status distinguished",
+      "pass": true
+    },
+    {
+      "kind": "reviewed prose",
+      "label": "T038 scope retained, current/new scope limited",
+      "pass": true
+    }
+  ],
+  "count": 33,
+  "links": [
+    {
+      "file": "defense-script.md",
+      "target": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "file": "evidence-matrix.md",
+      "target": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "file": "evidence-matrix.md",
+      "target": "../collaboration/reviews/T038-R1.md",
+      "pass": true
+    },
+    {
+      "file": "evidence-matrix.md",
+      "target": "../collaboration/reviews/T038-browser/verification.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "human-review-pending.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "system-design.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "thesis-outline.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "evidence-matrix.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "defense-script.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "windows-runbook.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "experiment-index.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "human-review-pending.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "experiment-index.md",
+      "pass": true
+    },
+    {
+      "file": "README.md",
+      "target": "defense-script.md",
+      "pass": true
+    },
+    {
+      "file": "thesis-outline.md",
+      "target": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "file": "windows-runbook.md",
+      "target": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "file": "human-review-pending.md",
+      "target": "../collaboration/submissions/T039/review-supplement.md",
+      "pass": true
+    },
+    {
+      "file": "human-review-pending.md",
+      "target": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "file": "human-review-pending.md",
+      "target": "../collaboration/submissions/T039/evaluation-report.md",
+      "pass": true
+    },
+    {
+      "file": "human-review-pending.md",
+      "target": "../collaboration/submissions/T039/review-supplement.md",
+      "pass": true
+    },
+    {
+      "file": "human-review-pending.md",
+      "target": "../collaboration/submissions/T039/review-supplement.md",
+      "pass": true
+    },
+    {
+      "file": "human-review-pending.md",
+      "target": "generation-casebook.md",
+      "pass": true
+    },
+    {
+      "file": "generation-casebook.md",
+      "target": "../collaboration/submissions/T040/live-answers-full.json",
+      "pass": true
+    },
+    {
+      "file": "generation-casebook.md",
+      "target": "../collaboration/submissions/T040/live-results.json",
+      "pass": true
+    },
+    {
+      "file": "generation-casebook.md",
+      "target": "../collaboration/submissions/T040/live-review-notes.md",
+      "pass": true
+    },
+    {
+      "file": "generation-casebook.md",
+      "target": "../collaboration/reviews/T040-R4.md",
+      "pass": true
+    },
+    {
+      "file": "generation-casebook.md",
+      "target": "../collaboration/reviews/T040-R4-audit.json",
+      "pass": true
+    },
+    {
+      "file": "generation-casebook.md",
+      "target": "defense-script.md",
+      "pass": true
+    }
+  ],
+  "pass": true,
+  "boundary": "Focused file and prose checks plus Astra source reading; previous numeric/case/token/time/help validation is carried forward, not rerun."
+}

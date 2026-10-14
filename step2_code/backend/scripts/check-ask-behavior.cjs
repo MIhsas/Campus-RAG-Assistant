@@ -120,12 +120,15 @@ function setup(locationSearch, stateOverrides) {
   const ids = {};
   for (const id of ['query-input', 'ask-btn', 'generate-btn', 'status-area', 'results-area',
                     'filter-as-of-date', 'clear-filters-btn',
-                    'clear-source-btn', 'source-hint', 'nav-search',
+                    'clear-source-btn', 'source-hint', 'nav-search', 'candidate-area',
                     'history-toggle', 'history-clear-btn', 'history-note', 'history-list',
                     'record-btn', 'record-stop-btn', 'record-cancel-btn',
                     'audio-file', 'transcribe-btn', 'voice-hint', 'transcript-area']) {
     ids[id] = new Element(id.endsWith('-btn') ? 'button' : 'div');
   }
+  // T043-R1：真实 checkbox 桩（静态 HTML 默认 checked；支持 checked 真实读写）
+  ids['include-unknown-type'] = new Element('input');
+  ids['include-unknown-type'].checked = true;
   // Native selects with their static-HTML initial options (T031-R1 stubs).
   makeSelect(ids, 'filter-campus', ['']);
   makeSelect(ids, 'filter-student-type', ['']);
@@ -1206,6 +1209,183 @@ const findButton = e => {
     s.requests[0].resolve(okResponse({}));
     await flush();
     assert.ok(!/相关事项入口/.test(s.ids['results-area'].textContent), 'no entry without keyword match');
+    passed++;
+  }
+
+
+  // ---- T038: candidate panel on /ask — snapshot-bound, explicit-only ----
+  {
+    const s = setup();
+    await flush();
+    s.ids['filter-as-of-date'].value = '2026-10-03';
+    s.submit('转专业');
+    assert.equal(s.requests.length, 1, 'formal ask only; candidates never auto-run');
+    s.requests[0].resolve(okResponse({
+      filters: { campus: null, student_type: null, admission_year: null, as_of_date: '2026-10-03' },
+      document_id: 'doc-x',
+    }));
+    await flush();
+    const panel = s.ids['candidate-area'];
+    assert.ok(panel.children.length > 0, 'candidate panel shown after formal result');
+    // edit controls after submit
+    s.ids['filter-as-of-date'].value = '2020-01-01';
+    const btnsIn = [];
+    const walkP = e => { for (const c of (e.children || [])) { if (c.tag === 'button') btnsIn.push(c); walkP(c); } };
+    walkP(panel);
+    const inputs = [];
+    const walkI = e => { for (const c of (e.children || [])) { if (c.tag === 'input') inputs.push(c); walkI(c); } };
+    walkI(panel);
+    assert.equal(inputs[0].disabled, false, 'date checkbox enabled from snapshot');
+    assert.equal(inputs[1].disabled, true, 'student_type checkbox disabled (snapshot lacks it)');
+    inputs[0].checked = true;
+    btnsIn.find(b => b.textContent === '查看候选原文').listeners.click();
+    await flush();
+    assert.equal(s.requests.length, 2, 'candidate request only after explicit click');
+    const creq = s.requests[1];
+    assert.equal(creq.url, '/api/v1/search/candidates');
+    assert.deepEqual(creq.body.uncertainty_dimensions, ['date']);
+    assert.equal(creq.body.filters.as_of_date, '2026-10-03', 'uses RESULT snapshot filters');
+    assert.equal(creq.body.document_id, 'doc-x', 'uses RESULT snapshot document_id');
+    creq.resolve({ ok: true, status: 200, json: async () => ({
+      query: '转专业', uncertainty_dimensions: ['date'], active_dimensions: ['date'],
+      filters: { campus: null, student_type: null, admission_year: null, as_of_date: '2026-10-03' },
+      document_id: 'doc-x',
+      candidate_summary: { document_total: 20, strict_allowed_count: 5, candidate_document_count: 1, counting_rules: 'r' },
+      disclaimer: '未通过所选日期或学生类型条件核实，仅供原文核对，不作为已确认适用的答案依据',
+      hits: [{ rank: 1, score: 1, preview_url: '/preview#d/b', unknown_dimensions: ['date'], uncertainty_note: 'n',
+               chunk: { document_id: 'd', block_id: 'b', metadata: { title: '未核实资料', version_label: '未标注', scope: {} },
+                        text: '候选原文', locator: null } }],
+    }) });
+    await flush();
+    // candidates must not enter formal evidence / saved history
+    const txt = s.ids['results-area'].textContent;
+    assert.ok(txt.indexOf('候选原文') < 0, 'candidate text stays out of formal results area');
+    const hist = s.ids['history-list'].textContent;
+    assert.ok(hist.indexOf('候选原文') < 0, 'candidates never saved into history');
+    passed++;
+  }
+
+  // stale candidate response must not attach after a new formal ask
+  {
+    const s = setup();
+    await flush();
+    s.ids['filter-as-of-date'].value = '2026-10-03';
+    s.submit('A');
+    s.requests[0].resolve(okResponse({
+      filters: { campus: null, student_type: null, admission_year: null, as_of_date: '2026-10-03' },
+    }));
+    await flush();
+    const panel = s.ids['candidate-area'];
+    const btnsIn = [];
+    const walkP = e => { for (const c of (e.children || [])) { if (c.tag === 'button') btnsIn.push(c); walkP(c); } };
+    walkP(panel);
+    const inputs = [];
+    const walkI = e => { for (const c of (e.children || [])) { if (c.tag === 'input') inputs.push(c); walkI(c); } };
+    walkI(panel);
+    inputs[0].checked = true;
+    btnsIn.find(b => b.textContent === '查看候选原文').listeners.click();
+    await flush();
+    s.submit('B');
+    assert.equal(s.ids['candidate-area'].children.length, 0, 'new formal ask clears old candidates');
+    s.requests[2].resolve(okResponse({
+      filters: { campus: null, student_type: null, admission_year: null, as_of_date: '2026-10-03' },
+    }));
+    await flush();
+    s.requests[1].resolve({ ok: true, status: 200, json: async () => ({
+      query: 'A', uncertainty_dimensions: ['date'], active_dimensions: ['date'], filters: {}, document_id: null,
+      candidate_summary: { document_total: 20, strict_allowed_count: 5, candidate_document_count: 1, counting_rules: 'r' },
+      disclaimer: 'x', hits: [{ rank: 1, score: 1, preview_url: '', unknown_dimensions: ['date'], uncertainty_note: '',
+               chunk: { document_id: 'd', block_id: 'b', metadata: {}, text: '旧候选' } }],
+    }) });
+    await flush();
+    assert.ok(s.ids['candidate-area'].textContent.indexOf('旧候选') < 0,
+       'stale candidate response does NOT attach to the new result');
+    passed++;
+  }
+
+  // ---- T043-R1: 导航上下文快照——URL 恢复/重试/转摘录/历史查看各自绑定 ----
+  {
+    const s = setup('?query=original&student_type=%E6%9C%AC%E7%A7%91&include_unknown_type=0', {
+      statusOptions: { campus: [], student_type: ['本科'], admission_year: [] },
+    });
+    s.state.generatorConfigured = true; // 初始状态加载即启用生成按钮（后续生成失败链用）
+    // 预置旧 strict 历史（缺模式字段=当时 strict）——渲染于首次目录 flush
+    s.state.storageRef.campus_ask_history_v1 = JSON.stringify([{
+      id: 'old', saved_at: 'historical', query: 'old strict',
+      filters: { campus: null, student_type: '本科', admission_year: null, as_of_date: null },
+      mode: 'bm25', answer_mode: 'extractive', status: 'evidence_only',
+      result: { query: 'old strict', status: 'evidence_only', evidence: [], evidence_state: 'ok',
+                filters: { campus: null, student_type: '本科', admission_year: null, as_of_date: null } },
+    }]);
+    await flush();
+    assert.equal(s.ids['include-unknown-type'].checked, false, 'URL 恢复：开关=关');
+    const nav0 = new URL(s.ids['nav-search'].href, 'http://local');
+    assert.equal(nav0.searchParams.get('include_unknown_type'), '0', 'URL 恢复后不提交，跨页链接仍是 strict');
+    assert.equal(nav0.searchParams.get('query'), 'original', '跨页链接保留问题');
+    assert.equal(nav0.searchParams.get('student_type'), '本科', '跨页链接保留条件');
+    // 提交（strict）→ 失败 → 改控件 → 重试仍用原快照
+    s.submit('original');
+    assert.equal(s.requests[0].body.include_unknown_student_type, false, '提交携带开关=strict');
+    s.requests[0].resolve({ ok: false, status: 503, json: async () => ({ code: 'CORPUS_NOT_CONFIGURED', message: '语料未配置' }) });
+    await flush();
+    s.ids['include-unknown-type'].checked = true; // 改控件
+    const btns = [];
+    const walk = e => { if (e.tag === 'button') btns.push(e); for (const c of (e.children || [])) walk(c); };
+    walk(s.ids['results-area']);
+    btns.find(b => b.textContent === '重试').listeners.click();
+    await flush();
+    assert.equal(s.requests[1].body.include_unknown_student_type, false, '重试用提交快照（不吃控件新值）');
+    s.requests[1].resolve(okResponse({
+      include_unknown_student_type: false,
+      filters: { campus: null, student_type: '本科', admission_year: null, as_of_date: null },
+    }));
+    await flush();
+    // 生成失败 → 转摘录仍用该次请求快照（开关回到 strict 后发起）
+    s.ids['include-unknown-type'].checked = false;
+    s.state.generatorConfigured = true;
+    s.ids['generate-btn'].listeners.click();
+    assert.equal(s.requests[2].body.include_unknown_student_type, false, '生成请求携带开关');
+    s.requests[2].resolve({ ok: false, status: 502, json: async () => ({ message: '生成器执行失败' }) });
+    await flush();
+    btns.length = 0;
+    walk(s.ids['results-area']);
+    const evBtn = btns.find(b => b.textContent === '查看本次问题的原文依据');
+    assert.ok(evBtn, '转摘录按钮存在');
+    evBtn.listeners.click();
+    await flush();
+    assert.equal(s.requests[3].body.answer_mode, 'extractive', '转摘录为 extractive（不调模型）');
+    assert.equal(s.requests[3].body.include_unknown_student_type, false, '转摘录用失败请求快照');
+    s.requests[3].resolve(okResponse({
+      include_unknown_student_type: false,
+      filters: { campus: null, student_type: '本科', admission_year: null, as_of_date: null },
+    }));
+    await flush();
+    // 新 reference 请求 → 导航跟随；再看旧 strict 历史 → 导航切回历史快照且零请求
+    s.ids['include-unknown-type'].checked = true;
+    s.ids['history-toggle'].checked = true;
+    s.ids['history-toggle'].listeners.change();
+    s.submit('current reference');
+    assert.equal(s.requests[4].body.include_unknown_student_type, true, 'reference 提交携带开关=开');
+    s.requests[4].resolve(okResponse({
+      query: 'current reference', include_unknown_student_type: true,
+      filters: { campus: null, student_type: '本科', admission_year: null, as_of_date: null },
+    }));
+    await flush();
+    assert.equal(new URL(s.ids['nav-search'].href, 'http://local').searchParams.get('include_unknown_type'), '1',
+      'reference 结果导航=开');
+    // 找到旧历史条目的查看按钮
+    const items = s.ids['history-list'].children;
+    const oldItem = items.find(it => it.textContent.indexOf('old strict') >= 0);
+    assert.ok(oldItem, '旧 strict 历史条目已渲染');
+    const oldBtns = [];
+    const walkH = e => { if (e.tag === 'button') oldBtns.push(e); for (const c of (e.children || [])) walkH(c); };
+    walkH(oldItem);
+    const before = s.requests.length;
+    oldBtns.find(b => b.textContent === '查看').listeners.click();
+    assert.equal(s.requests.length, before, '查看历史零请求（不重执行历史修复导航）');
+    assert.ok(s.ids['results-area'].textContent.indexOf('按当时 strict') >= 0, '历史结果标 strict（缺字段=当时）');
+    assert.equal(new URL(s.ids['nav-search'].href, 'http://local').searchParams.get('include_unknown_type'), '0',
+      '历史查看导航绑定历史自己的快照（strict），不误用最近 reference');
     passed++;
   }
 

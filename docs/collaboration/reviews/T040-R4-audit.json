@@ -1,0 +1,515 @@
+{
+  "checks": [
+    {
+      "kind": "submission hash",
+      "label": "docs\\collaboration\\submissions\\T040\\live-results.json",
+      "pass": true
+    },
+    {
+      "kind": "submission hash",
+      "label": "docs\\collaboration\\submissions\\T040\\live-answers-full.json",
+      "pass": true
+    },
+    {
+      "kind": "submission hash",
+      "label": "docs\\collaboration\\submissions\\T040\\report.md",
+      "pass": true
+    },
+    {
+      "kind": "submission hash",
+      "label": "docs\\collaboration\\submissions\\T040\\verification.md",
+      "pass": true
+    },
+    {
+      "kind": "submission hash",
+      "label": "docs\\collaboration\\submissions\\T040\\live-review-notes.md",
+      "pass": true
+    },
+    {
+      "kind": "submission hash",
+      "label": "docs\\collaboration\\submissions\\T040\\submission.json",
+      "pass": true
+    },
+    {
+      "kind": "raw live copy",
+      "label": "step2_code\\backend\\.cache\\real-qa-smoke\\T040-B-resume-1\\live-results.json",
+      "pass": true
+    },
+    {
+      "kind": "raw live copy",
+      "label": "step2_code\\backend\\.cache\\real-qa-smoke\\T040-B-resume-1\\live-answers-full.json",
+      "pass": true
+    },
+    {
+      "kind": "A preserved",
+      "label": "docs\\collaboration\\submissions\\T040\\dry-run.json",
+      "pass": true
+    },
+    {
+      "kind": "A preserved",
+      "label": "docs\\collaboration\\submissions\\T040\\rev1\\dry-run.json",
+      "pass": true
+    },
+    {
+      "kind": "A preserved",
+      "label": "step2_code\\backend\\.cache\\real-qa-smoke\\T040-A\\dry-run.json",
+      "pass": true
+    },
+    {
+      "kind": "A preserved",
+      "label": "docs\\collaboration\\submissions\\T040\\input-hashes.json",
+      "pass": true
+    },
+    {
+      "kind": "A preserved",
+      "label": "docs\\collaboration\\submissions\\T040\\rev1\\input-hashes.json",
+      "pass": true
+    },
+    {
+      "kind": "A preserved",
+      "label": "step2_code\\backend\\.cache\\real-qa-smoke\\T040-A\\input-hashes.json",
+      "pass": true
+    },
+    {
+      "kind": "A preserved",
+      "label": "docs\\collaboration\\submissions\\T040\\generation-review-sheet.md",
+      "pass": true
+    },
+    {
+      "kind": "A preserved",
+      "label": "docs\\collaboration\\submissions\\T040\\rev1\\generation-review-sheet.md",
+      "pass": true
+    },
+    {
+      "kind": "A preserved",
+      "label": "step2_code\\backend\\.cache\\real-qa-smoke\\T040-A\\generation-review-sheet.md",
+      "pass": true
+    },
+    {
+      "kind": "A preserved",
+      "label": "docs\\collaboration\\submissions\\T040\\live-smoke-plan.md",
+      "pass": true
+    },
+    {
+      "kind": "A preserved",
+      "label": "docs\\collaboration\\submissions\\T040\\rev1\\live-smoke-plan.md",
+      "pass": true
+    },
+    {
+      "kind": "A preserved",
+      "label": "step2_code\\backend\\.cache\\real-qa-smoke\\T040-A\\live-smoke-plan.md",
+      "pass": true
+    },
+    {
+      "kind": "revision3 preserved",
+      "label": "step2_code\\backend\\scripts\\live-smoke-real-qa.py",
+      "pass": true
+    },
+    {
+      "kind": "revision3 preserved",
+      "label": "step2_code\\backend\\tests\\test_live_smoke_real_qa.py",
+      "pass": true
+    },
+    {
+      "kind": "revision3 preserved",
+      "label": "docs\\collaboration\\submissions\\T040\\rev3\\fix-report.md",
+      "pass": true
+    },
+    {
+      "kind": "revision3 preserved",
+      "label": "docs\\collaboration\\submissions\\T040\\rev3\\report.md",
+      "pass": true
+    },
+    {
+      "kind": "revision3 preserved",
+      "label": "docs\\collaboration\\submissions\\T040\\rev3\\verification.md",
+      "pass": true
+    },
+    {
+      "kind": "revision3 preserved",
+      "label": "docs\\collaboration\\submissions\\T040\\rev3\\submission.json",
+      "pass": true
+    },
+    {
+      "kind": "old live archived",
+      "label": "docs\\collaboration\\submissions\\T040\\rev3\\live-results.json",
+      "pass": true
+    },
+    {
+      "kind": "old live archived",
+      "label": "docs\\collaboration\\submissions\\T040\\rev3\\live-answers-full.json",
+      "pass": true
+    },
+    {
+      "kind": "old live archived",
+      "label": "docs\\collaboration\\submissions\\T040\\rev3\\live-review-notes.md",
+      "pass": true
+    },
+    {
+      "kind": "run1 cache",
+      "label": "step2_code\\backend\\.cache\\real-qa-smoke\\T040-B\\live-results.json",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "label": "data\\evaluations\\sicau-rag-pilot-eval-v2\\questions.json",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "label": "data\\evaluations\\sicau-rag-pilot-eval-v2\\freeze.json",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "label": "data\\corpora\\sicau-rag-pilot-v1.2\\manifest.json",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "label": "docs\\collaboration\\submissions\\T039\\review-supplement.md",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "label": "step2_code\\backend\\src\\campus_assistant\\main.py",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "label": "step2_code\\backend\\src\\campus_assistant\\api\\ask.py",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "label": "step2_code\\backend\\src\\campus_assistant\\qa\\evidence.py",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "label": "step2_code\\backend\\src\\campus_assistant\\qa\\deepseek.py",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "label": "step2_code\\backend\\src\\campus_assistant\\retrieval\\service.py",
+      "pass": true
+    },
+    {
+      "kind": "A input",
+      "label": "step2_code\\backend\\scripts\\prepare-real-qa-smoke.py",
+      "pass": true
+    },
+    {
+      "kind": "current aggregate",
+      "label": "data\\evaluations\\sicau-rag-pilot-eval-v2\\aggregate.json",
+      "pass": true
+    },
+    {
+      "kind": "config",
+      "label": "official actual configuration",
+      "pass": true
+    },
+    {
+      "kind": "run",
+      "label": "four fixed questions complete",
+      "pass": true
+    },
+    {
+      "kind": "counts",
+      "label": "4 send /4 provider/8 local",
+      "pass": true
+    },
+    {
+      "kind": "counts",
+      "label": "send log actual response",
+      "pass": true
+    },
+    {
+      "kind": "corpus",
+      "label": "20 documents parsed without errors",
+      "pass": true
+    },
+    {
+      "kind": "snapshot",
+      "label": "q08",
+      "pass": true
+    },
+    {
+      "kind": "result",
+      "label": "q08",
+      "pass": true
+    },
+    {
+      "kind": "evidence",
+      "label": "q08 A equivalence",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "q08/E1",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "q08/E2",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "q08/E3",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "q08/E4",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "q08/E5",
+      "pass": true
+    },
+    {
+      "kind": "messages",
+      "label": "q08",
+      "pass": true
+    },
+    {
+      "kind": "audit",
+      "label": "q08",
+      "pass": true
+    },
+    {
+      "kind": "candidate isolation",
+      "label": "q08",
+      "pass": true
+    },
+    {
+      "kind": "snapshot",
+      "label": "q10",
+      "pass": true
+    },
+    {
+      "kind": "result",
+      "label": "q10",
+      "pass": true
+    },
+    {
+      "kind": "evidence",
+      "label": "q10 A equivalence",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "q10/E1",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "q10/E2",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "q10/E3",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "q10/E4",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "q10/E5",
+      "pass": true
+    },
+    {
+      "kind": "messages",
+      "label": "q10",
+      "pass": true
+    },
+    {
+      "kind": "citation",
+      "label": "q10",
+      "pass": true
+    },
+    {
+      "kind": "citation",
+      "label": "q10",
+      "pass": true
+    },
+    {
+      "kind": "citation",
+      "label": "q10",
+      "pass": true
+    },
+    {
+      "kind": "audit",
+      "label": "q10",
+      "pass": true
+    },
+    {
+      "kind": "candidate isolation",
+      "label": "q10",
+      "pass": true
+    },
+    {
+      "kind": "snapshot",
+      "label": "u03",
+      "pass": true
+    },
+    {
+      "kind": "result",
+      "label": "u03",
+      "pass": true
+    },
+    {
+      "kind": "evidence",
+      "label": "u03 A equivalence",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "u03/E1",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "u03/E2",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "u03/E3",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "u03/E4",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "u03/E5",
+      "pass": true
+    },
+    {
+      "kind": "messages",
+      "label": "u03",
+      "pass": true
+    },
+    {
+      "kind": "citation",
+      "label": "u03",
+      "pass": true
+    },
+    {
+      "kind": "audit",
+      "label": "u03",
+      "pass": true
+    },
+    {
+      "kind": "candidate isolation",
+      "label": "u03",
+      "pass": true
+    },
+    {
+      "kind": "snapshot",
+      "label": "u04",
+      "pass": true
+    },
+    {
+      "kind": "result",
+      "label": "u04",
+      "pass": true
+    },
+    {
+      "kind": "evidence",
+      "label": "u04 A equivalence",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "u04/E1",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "u04/E2",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "u04/E3",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "u04/E4",
+      "pass": true
+    },
+    {
+      "kind": "span",
+      "label": "u04/E5",
+      "pass": true
+    },
+    {
+      "kind": "messages",
+      "label": "u04",
+      "pass": true
+    },
+    {
+      "kind": "audit",
+      "label": "u04",
+      "pass": true
+    },
+    {
+      "kind": "candidate isolation",
+      "label": "u04",
+      "pass": true
+    },
+    {
+      "kind": "coverage",
+      "label": "q08 missing; q10 complete; u03 complete; u04 no gold",
+      "pass": true
+    },
+    {
+      "kind": "audit",
+      "label": "4 distinct observed request IDs",
+      "pass": true
+    },
+    {
+      "kind": "outcomes",
+      "label": "two answers and two model insufficiencies",
+      "pass": true
+    },
+    {
+      "kind": "limited secret scan",
+      "label": "no DeepSeek-shaped key in the two output JSON files",
+      "pass": true
+    }
+  ],
+  "check_count": 98,
+  "pass": true,
+  "gold_fact_coverage": {
+    "q08": {
+      "f1": false
+    },
+    "q10": {
+      "f1": true,
+      "f2": true
+    },
+    "u03": {
+      "f1": true
+    },
+    "u04": {}
+  },
+  "observed_token_usage": {
+    "prompt_tokens": 6080,
+    "completion_tokens": 388,
+    "total_tokens": 6468
+  },
+  "boundary": "Saved live audit and offline structural verification; no independent server-side accounting, no network replay, no automatic semantic certification or human signature."
+}

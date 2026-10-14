@@ -1,0 +1,15 @@
+{
+  "kind": "T040-B 完整答案与出站材料（人工核对用）",
+  "responds_to": "T040-B",
+  "task_revision": "B-v1",
+  "status": "B_not_started（前置缺密钥被拒，零外部请求）",
+  "note": "本文件如实记录：B 阶段未生成任何模型答案。DEEPSEEK_API_KEY 在执行环境不存在，--live 入口在前置零请求拒绝（见 live-results.json）；四题均未到达生成器。不存在可核对的答案文本；A 阶段已验收的正式 E 与 messages 材料见 dry-run.json / rev1 材料（保持原字节），不在此重复或改写。不伪造任何答案/usage/供应商字段。",
+  "questions": {
+    "q08": {"query": "考试时带小抄算什么行为？", "conditions": {"campus": null, "student_type": null, "admission_year": null, "as_of_date": null}, "outcome": "not_attempted", "answer_paragraphs_full": null, "generation_meta": null, "attempts": 0},
+    "q10": {"query": "本科毕业论文（设计）成绩由哪几部分组成、各占多少？", "conditions": {"campus": null, "student_type": null, "admission_year": null, "as_of_date": null}, "outcome": "not_attempted", "answer_paragraphs_full": null, "generation_meta": null, "attempts": 0},
+    "u03": {"query": "考试开始多久后迟到考生不得进入考场？", "conditions": {"campus": null, "student_type": null, "admission_year": null, "as_of_date": "2026-10-03"}, "outcome": "not_attempted", "answer_paragraphs_full": null, "generation_meta": null, "attempts": 0},
+    "u04": {"query": "学籍基本信息有误需要更正时，学生本人去哪里办理？", "conditions": {"campus": null, "student_type": "本科", "admission_year": null, "as_of_date": null}, "outcome": "not_attempted", "answer_paragraphs_full": null, "generation_meta": null, "attempts": 0}
+  },
+  "evidence_and_messages_location": "A 阶段已验收材料：submissions/T040/dry-run.json（四题正式 E 全文/跨度/来源与 messages）、submissions/T040/input-hashes.json（输入 SHA）；与本 B 入口前置核对一致（a_identity_ok=true，请求 UUID 不作差异）",
+  "outbound_note": "本次零出站。未来实际出站=问题+适用条件+选定正式 E+现有系统提示（见 live-smoke-plan.md）；gold/候选/用户复核记录/密钥/本机路径不发送。"
+}

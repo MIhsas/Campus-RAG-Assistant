@@ -67,6 +67,11 @@ class EvidenceItem(BaseModel):
     locator: dict[str, Any] | None = Field(
         default=None, description="原文定位（如 PDF 页码）；来源跳转见 preview_url"
     )
+    student_type_status: str | None = Field(
+        default=None,
+        description="T043：仅学生类型未标注的参考证据携带「学生类型未标注，适用范围尚未核实」；"
+        "普通证据为 null（旧协议）",
+    )
     preview_url: str
 
 
@@ -132,6 +137,10 @@ class AskResponse(BaseModel):
     source_selection: dict[str, Any] | None = Field(
         default=None,
         description="来源选择摘要（与 filter_summary 四条件口径分开；同 /search）",
+    )
+    include_unknown_student_type: bool = Field(
+        default=False,
+        description="回显本次实际准入模式（true=学生类型未标注资料可作参考；false=旧 strict）",
     )
     request_id: str
 
@@ -238,6 +247,7 @@ def create_ask_router() -> APIRouter:
             dense_index=request.app.state.dense_index,
             embedding_service=request.app.state.embedding_service,
             document_id=document_id,
+            include_unknown_student_type=body.include_unknown_student_type,
         )
         pack = build_evidence_pack(
             result["hits"],
@@ -257,6 +267,7 @@ def create_ask_router() -> APIRouter:
             "filter_summary": result["filter_summary"],
             "document_id": document_id,
             "source_selection": result["source_selection"],
+            "include_unknown_student_type": body.include_unknown_student_type,
             "request_id": request_id,
         }
 
